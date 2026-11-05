@@ -1,0 +1,161 @@
+{
+  "id": "holox-lab-9x9-03",
+  "name": "holoX 비밀 연구소",
+  "width": 9,
+  "height": 9,
+  "footprintIncludesWalls": true,
+  "rows": [
+    "#########",
+    "#F.#FFF.#",
+    "#..+....#",
+    "#..#F.FF#",
+    "#..###..#",
+    "#.......#",
+    "#F.#F...#",
+    "#.......#",
+    "######+##"
+  ],
+  "legend": {
+    "#": "opaque_wall",
+    ".": "walkable_floor",
+    "F": "blocked_workstation",
+    "+": "closed_door"
+  },
+  "connectors": [
+    {
+      "x": 6,
+      "y": 8,
+      "direction": "south"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "direction": "internal"
+    }
+  ],
+  "stations": [
+    {
+      "id": "laplus",
+      "member": "라플라스",
+      "name": "총수의 제단",
+      "motif": "검보라 뿔·금색 사슬을 얹은 작은 제단",
+      "x": 1,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "color": "#ae8cdb"
+    },
+    {
+      "id": "lui",
+      "member": "루이",
+      "name": "까마귀 관측대",
+      "motif": "까마귀·버건디 천의 낮은 철제 받침",
+      "x": 6,
+      "y": 1,
+      "w": 1,
+      "h": 1,
+      "color": "#c47784"
+    },
+    {
+      "id": "koyori",
+      "member": "코요리",
+      "name": "연금 실험대",
+      "motif": "세 개의 시약병·작은 분홍 DNA 문양",
+      "x": 4,
+      "y": 3,
+      "w": 1,
+      "h": 1,
+      "color": "#d391bc"
+    },
+    {
+      "id": "chloe",
+      "member": "클로에",
+      "name": "범고래 장비 상자",
+      "motif": "범고래 문양·검정 상자·빨강 끈",
+      "x": 1,
+      "y": 6,
+      "w": 1,
+      "h": 1,
+      "color": "#d88285"
+    },
+    {
+      "id": "iroha",
+      "member": "이로하",
+      "name": "경비 칼걸이",
+      "motif": "칼 한 자루·녹색 잎·연노랑 매듭",
+      "x": 4,
+      "y": 6,
+      "w": 1,
+      "h": 1,
+      "color": "#a5bf79"
+    }
+  ],
+  "encounterSlots": [
+    {
+      "x": 2,
+      "y": 3,
+      "role": "elite",
+      "implemented": false
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "role": "guard",
+      "implemented": false
+    }
+  ],
+  "rewardOptions": {
+    "research": [
+      {
+        "id": "potion",
+        "x": 7,
+        "y": 1,
+        "label": "실험용 포션",
+        "quantity": 2
+      },
+      {
+        "id": "scroll",
+        "x": 2,
+        "y": 3,
+        "label": "스크롤",
+        "quantity": 1
+      }
+    ],
+    "reserve": [
+      {
+        "id": "scroll",
+        "x": 7,
+        "y": 1,
+        "label": "스크롤",
+        "quantity": 2
+      },
+      {
+        "id": "potion",
+        "x": 2,
+        "y": 3,
+        "label": "포션",
+        "quantity": 1
+      }
+    ]
+  },
+  "balanceStatus": "placeholder supplies only; no combat or item-use; wand deferred",
+  "nativeGameIntegrated": false,
+  "fixtures": [
+    {
+      "id": "lab-counter",
+      "name": "싱크·시약 작업대",
+      "x": 6,
+      "y": 3,
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "lab-counter-back",
+      "name": "분석·세척 작업대",
+      "x": 4,
+      "y": 1,
+      "w": 2,
+      "h": 1
+    }
+  ]
+}

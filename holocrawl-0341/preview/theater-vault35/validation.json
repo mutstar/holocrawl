@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "geometry": {
+    "sizes": true,
+    "rewardPaths": true,
+    "slots": true,
+    "chairBlocked": true,
+    "curtainBlocked": true,
+    "aisleOpen": true
+  },
+  "doorOpenCostsTurn": true,
+  "keyboardMovement": true,
+  "weaponSinglePickup": true,
+  "suppliesPickup": true,
+  "autoWalkWithDoors": true,
+  "fogClosedDoorBlocksStage": true,
+  "mobileNoOverflow": true,
+  "errors": [],
+  "unchangedFrom34": [
+    "terrain.png",
+    "vault.json",
+    "layout.json"
+  ],
+  "newDecorLayer": "decor.js; integer pixels, before fog and actors"
+}

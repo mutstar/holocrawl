@@ -1,0 +1,259 @@
+{
+  "id": "holox-functional-zones-01",
+  "name": "holoX 비밀 연구소",
+  "width": 9,
+  "height": 9,
+  "footprintIncludesWalls": true,
+  "rows": [
+    "#########",
+    "#FF#....#",
+    "#.......#",
+    "#..#....#",
+    "#F.###..#",
+    "#..G...F#",
+    "#FF#FF..#",
+    "#.......#",
+    "######.##"
+  ],
+  "legend": {
+    "#": "opaque_wall",
+    ".": "walkable_floor",
+    "F": "blocked_workstation",
+    "G": "glass_barrier_transparent"
+  },
+  "connectors": [
+    {
+      "x": 6,
+      "y": 8,
+      "direction": "south",
+      "type": "open_passage"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "direction": "internal",
+      "type": "open_passage"
+    }
+  ],
+  "stations": [
+    {
+      "id": "laplus",
+      "member": "라플라스",
+      "name": "안쪽 봉인 장치",
+      "motif": "두 속박 지주와 사슬이 중앙 봉인판을 감싸는 설치물",
+      "x": 1,
+      "y": 1,
+      "w": 2,
+      "h": 1,
+      "color": "#ae8cdb",
+      "spriteFile": "laplus-64x32.png"
+    },
+    {
+      "id": "lui",
+      "member": "루이",
+      "name": "벽면 관제 표식",
+      "motif": "분석 작업대 옆 벽면에 매입된 붉은 깃 관제 문장",
+      "x": 6,
+      "y": 0,
+      "w": 2,
+      "h": 1,
+      "color": "#c47784",
+      "kind": "wall-plaque",
+      "sprite": false
+    },
+    {
+      "id": "koyori",
+      "member": "코요리",
+      "name": "코요리 벽면 연구대",
+      "motif": "백색·분홍 시약 작업대; 기존 작은 코요리 소품은 제거",
+      "x": 4,
+      "y": 4,
+      "w": 2,
+      "h": 1,
+      "color": "#d391bc",
+      "kind": "wall-counter",
+      "sprite": false
+    },
+    {
+      "id": "chloe",
+      "member": "클로에",
+      "name": "서쪽 장비 보관 코너",
+      "motif": "범고래 장비함·접은 보호 장비·빨간 리본이 한 구역을 이룸",
+      "x": 1,
+      "y": 6,
+      "w": 2,
+      "h": 1,
+      "color": "#d88285",
+      "spriteFile": "chloe-64x32.png"
+    },
+    {
+      "id": "iroha",
+      "member": "이로하",
+      "name": "입구 경비 구역",
+      "motif": "출입 통로 옆의 긴 카타나 걸이·녹색 경비 깃발",
+      "x": 4,
+      "y": 6,
+      "w": 2,
+      "h": 1,
+      "color": "#a5bf79",
+      "spriteFile": "iroha-64x32.png"
+    }
+  ],
+  "encounterSlots": [
+    {
+      "x": 2,
+      "y": 3,
+      "role": "elite",
+      "implemented": false
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "role": "guard",
+      "implemented": false
+    }
+  ],
+  "rewardOptions": {
+    "research": [
+      {
+        "id": "potion",
+        "x": 7,
+        "y": 1,
+        "label": "실험용 포션",
+        "quantity": 2
+      },
+      {
+        "id": "scroll",
+        "x": 2,
+        "y": 3,
+        "label": "스크롤",
+        "quantity": 1
+      }
+    ],
+    "reserve": [
+      {
+        "id": "scroll",
+        "x": 7,
+        "y": 1,
+        "label": "스크롤",
+        "quantity": 2
+      },
+      {
+        "id": "potion",
+        "x": 2,
+        "y": 3,
+        "label": "포션",
+        "quantity": 1
+      }
+    ]
+  },
+  "balanceStatus": "placeholder supplies only; no combat or item-use; wand deferred",
+  "nativeGameIntegrated": false,
+  "fixtures": [
+    {
+      "id": "lab-counter",
+      "name": "싱크·시약 작업대",
+      "x": 4,
+      "y": 4,
+      "w": 2,
+      "h": 1,
+      "asset": null,
+      "theme": "koyori",
+      "mount": "wall",
+      "serviceFrom": "north",
+      "render": "inset-wall-tile"
+    },
+    {
+      "id": "lab-counter-back",
+      "name": "분석·세척 작업대",
+      "x": 4,
+      "y": 0,
+      "w": 2,
+      "h": 1,
+      "asset": null,
+      "theme": "lui",
+      "mount": "wall",
+      "serviceFrom": "south",
+      "render": "inset-wall-tile"
+    },
+    {
+      "id": "lui-command-plaque",
+      "name": "벽면 관제 문장",
+      "x": 6,
+      "y": 0,
+      "w": 2,
+      "h": 1,
+      "theme": "lui",
+      "mount": "wall",
+      "asset": "luiPanel",
+      "render": "wall-plaque"
+    }
+  ],
+  "interiorFeatures": [
+    {
+      "id": "glass-partition",
+      "asset": "glassPartition",
+      "name": "실험실 유리 격벽",
+      "x": 3,
+      "y": 5,
+      "w": 1,
+      "h": 1,
+      "cell": "G",
+      "transparent": true,
+      "rotate": true
+    },
+    {
+      "id": "sample-tank",
+      "asset": "sampleTank",
+      "name": "시료 보관 탱크",
+      "x": 7,
+      "y": 5,
+      "w": 1,
+      "h": 1,
+      "cell": "F"
+    },
+    {
+      "id": "service-cabinet",
+      "asset": "serviceCabinet",
+      "name": "봉인실 설비함",
+      "x": 1,
+      "y": 4,
+      "w": 1,
+      "h": 1,
+      "cell": "F"
+    }
+  ],
+  "entranceDecor": {
+    "kind": "holodori-armored-entry",
+    "wallCells": [
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        8
+      ]
+    ],
+    "opening": {
+      "x": 6,
+      "y": 8
+    },
+    "description": "홀로도리 holoX 아지트 외형 참고: 검은 장갑 벽체, 둥근 보라 창, 노란 경고띠, 각진 보라 출입구 테두리. 개별 멤버 명판 없음."
+  },
+  "wallMaterial": {
+    "id": "holox-black-armour-connected",
+    "source": "52 entrance artwork",
+    "connectivity": "8-neighbour laboratory-only; original external rock independent",
+    "warningStripe": "continuous south/east exposed faces",
+    "windows": "wide south-facing straight sections; fixtures and corners excluded"
+  }
+}

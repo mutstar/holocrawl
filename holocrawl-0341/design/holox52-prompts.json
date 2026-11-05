@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "references": [
+    "design/holox52-reference/preview-hideout.jpg",
+    "preview/holox-floor51/lab-2.png"
+  ],
+  "prompt": "Use case: stylized-concept. Production game asset: a single LEFT wing of an OPEN secret laboratory entrance, two connected wall tiles, native pixel footprint 64 pixels wide by 32 pixels high. Reference image1 shows the holoX hideout in hololive Dreams: borrow the actual building's charcoal BLACK rounded armored industrial wall, bright PURPLE round porthole windows in dark thick collars, narrow purple edge trim and YELLOW/black CAUTION hazard strip. Reference image2 is our existing DCSS dungeon lab only for subdued pixel palette, scale and top-down wall perspective. Do NOT copy the chibi characters or entire 3D building. Make this a real little dungeon wall, with a shallow top ledge occupying its top quarter and a substantial SOUTH-facing front below. Left and middle: two large circular purple portholes. Right edge: substantial angled black-metal door jamb, purple inner trim, facing the open passage to its RIGHT. The yellow warning stripe runs horizontally across the lower wall front. Thick readable shapes, crisp pixel clusters, limited 20-24 color palette, medium value metal highlights to separate black machinery from the dungeon, purple ports must read at 1x 64x32. No individual member symbols, no signboards, no emblems, no lettering, no roof, no full building, no characters, no surrounding scene. Entire object rectangular 2:1 aspect, no projecting pipes/legs or floor outside it. Orthographic slightly top-down 2D DCSS tile art, never isometric miniature. Genuine transparent background around object, NO painted checkerboard. Fill most of canvas width with this single wall module; no other sprites. We will mirror it for the opposite side and attach it into existing connected steel walls; central passage stays open.",
+  "native": [
+    64,
+    32
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "asset": "assets/entrance-64x32.png",
+  "original": "assets/entrance-original.png",
+  "bounds": {
+    "x": 17,
+    "y": 92,
+    "w": 1742,
+    "h": 740
+  },
+  "native": [
+    64,
+    32
+  ],
+  "visible": [
+    64,
+    27
+  ],
+  "colors": 24,
+  "reference": "../../design/holox52-reference/sources.json",
+  "prompt": "../../design/holox52-prompts.json",
+  "extension53": {
+    "newImageGeneration": false,
+    "method": "code-native connected wall shader;52 artwork port reused",
+    "atlas": "assets/wall-autotiles-256.png",
+    "connectionExamples": "assets/wall-connections.png"
+  }
+}

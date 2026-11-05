@@ -1,0 +1,12 @@
+{
+  "newImageGeneration": false,
+  "sourceAssets": "../holox-vault44/assets",
+  "wallMaterial": "../holox-vault43/assets/iron-wall-32.png",
+  "changes": [
+    "doors removed from terrain/data/render/UI",
+    "single Koyori sprite removed",
+    "pink counter mounted into wall4,4 through5,4",
+    "burgundy counter mounted into north interior-facing wall4,0 through5,0"
+  ],
+  "placementReview": "pending"
+}

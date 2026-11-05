@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "walls": {
+    "floorUntouched": true,
+    "actualMasks": [
+      223,
+      219,
+      187,
+      159,
+      155,
+      191,
+      221,
+      149,
+      183,
+      205,
+      55,
+      37,
+      3,
+      138,
+      8,
+      0,
+      237,
+      119,
+      139,
+      10,
+      26,
+      27
+    ],
+    "primaryShapes": 16,
+    "all256Generated": true
+  },
+  "lab": {
+    "customMaterials": true,
+    "brightness": 1.25,
+    "counterBlocked": true
+  },
+  "geometry": {
+    "nineByNine": true,
+    "fiveMembers": true,
+    "allConnected": true,
+    "rewardsReachable": true,
+    "stations": [
+      {
+        "id": "laplus",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "lui",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "koyori",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "chloe",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "iroha",
+        "blocked": true,
+        "approachable": true
+      }
+    ],
+    "encounterSlotsReachable": true
+  },
+  "keyboardMovement": true,
+  "doorOpenCostsTurn": true,
+  "internalDoorUsed": true,
+  "lootSinglePickup": true,
+  "alternateRewardReset": true,
+  "autoWalkWithDoors": true,
+  "fiveMemberButtons": true,
+  "fog": {
+    "on": true,
+    "behindDoorHidden": true,
+    "hasMemory": true
+  },
+  "mobileNoOverflow": true,
+  "errors": []
+}

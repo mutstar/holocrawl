@@ -1,0 +1,14 @@
+{
+  "base": "../theater-vault34/art-manifest.json",
+  "screenLayer": "../theater-vault35/decor.js",
+  "entranceSource": "../theater-wall31/assets/theater-native.png",
+  "method": "Reuse existing Gen2 theater sprite via exact canvas crops; no bitmap editing or new AI image",
+  "motifs": [
+    "Ayame oni mask",
+    "Subaru duck",
+    "Choco winged heart"
+  ],
+  "replaces": "generic LIVE text and generic mask/feather posters from35",
+  "geometryChanges": false,
+  "status": "user review pending"
+}

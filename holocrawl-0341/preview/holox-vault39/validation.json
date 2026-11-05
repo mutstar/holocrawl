@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "architecture": {
+    "brightness": 1.32,
+    "fixturesOnlyOnWalls": true,
+    "fixtureCount": 9
+  },
+  "geometry": {
+    "nineByNine": true,
+    "fiveMembers": true,
+    "allConnected": true,
+    "rewardsReachable": true,
+    "stations": [
+      {
+        "id": "laplus",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "lui",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "koyori",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "chloe",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "iroha",
+        "blocked": true,
+        "approachable": true
+      }
+    ],
+    "encounterSlotsReachable": true
+  },
+  "keyboardMovement": true,
+  "doorOpenCostsTurn": true,
+  "internalDoorUsed": true,
+  "lootSinglePickup": true,
+  "alternateRewardReset": true,
+  "autoWalkWithDoors": true,
+  "fiveMemberButtons": true,
+  "fog": {
+    "on": true,
+    "behindDoorHidden": true,
+    "hasMemory": true
+  },
+  "mobileNoOverflow": true,
+  "errors": []
+}

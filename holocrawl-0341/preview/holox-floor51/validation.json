@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scope": "Appearance-only portal contrast change; all three previews load, layout and collision data unchanged from validated50",
+  "cases": [
+    {
+      "case": 2,
+      "status": "passed",
+      "layoutUnchanged": true,
+      "entranceOpen": true,
+      "errors": []
+    },
+    {
+      "case": 0,
+      "status": "passed",
+      "layoutUnchanged": true,
+      "entranceOpen": true,
+      "errors": []
+    },
+    {
+      "case": 1,
+      "status": "passed",
+      "layoutUnchanged": true,
+      "entranceOpen": true,
+      "errors": []
+    }
+  ]
+}

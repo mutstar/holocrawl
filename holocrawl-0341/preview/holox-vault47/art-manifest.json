@@ -1,0 +1,76 @@
+{
+  "mode": "built-in image_gen",
+  "newAssets": [
+    {
+      "name": "laplus",
+      "bounds": {
+        "x": 55,
+        "y": 126,
+        "w": 1664,
+        "h": 678
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        60,
+        24
+      ]
+    },
+    {
+      "name": "chloe",
+      "bounds": {
+        "x": 89,
+        "y": 99,
+        "w": 1596,
+        "h": 718
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        58,
+        26
+      ]
+    },
+    {
+      "name": "iroha",
+      "bounds": {
+        "x": 94,
+        "y": 177,
+        "w": 1584,
+        "h": 617
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        60,
+        23
+      ]
+    },
+    {
+      "name": "lui-panel",
+      "bounds": {
+        "x": 75,
+        "y": 214,
+        "w": 2023,
+        "h": 333
+      },
+      "native": [
+        64,
+        12
+      ],
+      "visible": [
+        60,
+        10
+      ]
+    }
+  ],
+  "promptFile": "../../design/holox-vault47-prompts.json",
+  "reused": "46 inset laboratory wall and43 connected iron wall/floor",
+  "notes": "Three wide environmental furniture groups and one flush wall command plaque; original solo member props removed from renderer."
+}

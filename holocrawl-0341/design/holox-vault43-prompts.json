@@ -1,0 +1,41 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "iron-wall",
+      "alpha": false,
+      "prompt": "Use case: stylized-concept. ONE opaque seamless wall MATERIAL texture tile for HoloCrawl, logical32x32 pixels. Reference scene is style only. Material like an old thick iron security door: blue-gray cold steel plate, subtly brushed coarse pixel grain, sparse dull brown rust chips, a few shallow dents, restrained silver-gray highlights. NO doorknob, no door silhouette, no thick rim, no top concrete strip, no front/back composition, no repeating horizontal stripe, no black grout grid, no pipes, no bolts, no object, no scenery, no text or glow. Flat orthographic seamless edge-to-edge steel surface, 16 muted colors, coarse hard pixels without blur or antialias. Mid gray value, sufficiently lighter than dark dungeon floor, industrial not sci-fi spaceship. It will be used as material inside the game's existing connected corner/edge wall renderer, so surface only. Native32x32 scale.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-7f60bcdd-bf4e-4b2a-9092-17d2e7abc07c.png"
+    },
+    {
+      "name": "laplus",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup native32x32 item tile. Reference is STYLE AND SCALE only, not an edit target. ONE isolated small dungeon furnishing on TRUE TRANSPARENT background. Strict coarse low-res pixel art, simple broad clusters, about18 flat colors, hard1pixel dark outline. Mostly TOP-DOWN with shallow front lip, not an elaborate front-view miniature. Visible silhouette about22x25 logical pixels within32square. No people or human faces, no room or floor, no surrounding scenery, no text, no glow, no blur or antialias. Worn iron and wood remain moderately bright gray-brown. A bold recognizable member-specific accent occupies about25-30% of object, readable but not neon. Do not make a dull uniform gray lump or overly detailed showcase object. La+ Darknesss inspired sealing pedestal: a very small dark iron seal stand with TWO clearly curved violet horns on the upper corners, an obvious thick gold shackle chain diagonally across its surface, one violet seal in the middle and a tiny black crow perched at one corner. Emphasize horns and gold chain in large simple clusters. Not a giant throne, no computer. Palette charcoal with mid-bright purple and old gold.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-f13ae6f7-45ca-41f7-b821-6e279c15ecca.png"
+    },
+    {
+      "name": "lui",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup native32x32 item tile. Reference is STYLE AND SCALE only, not an edit target. ONE isolated small dungeon furnishing on TRUE TRANSPARENT background. Strict coarse low-res pixel art, simple broad clusters, about18 flat colors, hard1pixel dark outline. Mostly TOP-DOWN with shallow front lip, not an elaborate front-view miniature. Visible silhouette about22x25 logical pixels within32square. No people or human faces, no room or floor, no surrounding scenery, no text, no glow, no blur or antialias. Worn iron and wood remain moderately bright gray-brown. A bold recognizable member-specific accent occupies about25-30% of object, readable but not neon. Do not make a dull uniform gray lump or overly detailed showcase object. Takane Lui inspired executive observation stand: one small low charcoal control podium with a bold red-brown HAWK-WING crest, a tiny deep-red tie-shaped ribbon below crest, and one short gray antenna. The wing crest must have sharp broad feather shapes and NOT be a black crow. Burgundy, rust-red feather accent, ash-gray iron base. Compact square executive/surveillance furnishing.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-9de4c272-91b8-42f8-ac17-97ab377eb584.png"
+    },
+    {
+      "name": "koyori",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup native32x32 item tile. Reference is STYLE AND SCALE only, not an edit target. ONE isolated small dungeon furnishing on TRUE TRANSPARENT background. Strict coarse low-res pixel art, simple broad clusters, about18 flat colors, hard1pixel dark outline. Mostly TOP-DOWN with shallow front lip, not an elaborate front-view miniature. Visible silhouette about22x25 logical pixels within32square. No people or human faces, no room or floor, no surrounding scenery, no text, no glow, no blur or antialias. Worn iron and wood remain moderately bright gray-brown. A bold recognizable member-specific accent occupies about25-30% of object, readable but not neon. Do not make a dull uniform gray lump or overly detailed showcase object. Hakui Koyori inspired miniature reagent stand: pink-and-dirty-white square lab bench, two distinct pointed coyote-ear shapes on its small raised back holder, one large pink round-bottom flask and one pale-cyan test tube, and a coarse pink DNA double helix emblem on the front. Readable pink ears and pink chemistry, no character face. Only three clear large shapes, no microscopic detail.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-435ba43a-6ab4-4dfb-b472-f9c4fe8c48f6.png"
+    },
+    {
+      "name": "chloe",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup native32x32 item tile. Reference is STYLE AND SCALE only, not an edit target. ONE isolated small dungeon furnishing on TRUE TRANSPARENT background. Strict coarse low-res pixel art, simple broad clusters, about18 flat colors, hard1pixel dark outline. Mostly TOP-DOWN with shallow front lip, not an elaborate front-view miniature. Visible silhouette about22x25 logical pixels within32square. No people or human faces, no room or floor, no surrounding scenery, no text, no glow, no blur or antialias. Worn iron and wood remain moderately bright gray-brown. A bold recognizable member-specific accent occupies about25-30% of object, readable but not neon. Do not make a dull uniform gray lump or overly detailed showcase object. Sakamata Chloe inspired compact equipment chest: a clear black-and-offwhite orca mask emblem with TWO broad white eye-patches on lid, one prominent red bow/ribbon tied across front, short dark metal feet. Large simple orca patches, clearly visible red ribbon. No full diving locker or suit. Mostly top-down tiny chest, worn cream highlights, restrained bright crimson accents.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-f4a80734-31aa-449f-9af0-410ccda07b22.png"
+    },
+    {
+      "name": "iroha",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup native32x32 item tile. Reference is STYLE AND SCALE only, not an edit target. ONE isolated small dungeon furnishing on TRUE TRANSPARENT background. Strict coarse low-res pixel art, simple broad clusters, about18 flat colors, hard1pixel dark outline. Mostly TOP-DOWN with shallow front lip, not an elaborate front-view miniature. Visible silhouette about22x25 logical pixels within32square. No people or human faces, no room or floor, no surrounding scenery, no text, no glow, no blur or antialias. Worn iron and wood remain moderately bright gray-brown. A bold recognizable member-specific accent occupies about25-30% of object, readable but not neon. Do not make a dull uniform gray lump or overly detailed showcase object. Kazama Iroha inspired compact katana rack: ONE unmistakable pale-steel katana in a dark sheath laid diagonally on low dark-wood rack, with a thick pale-yellow cord knot and a broad leaf-green fabric pennant carrying a simple leaf shape. Bright green and pale gold accents, readable sword silhouette. No large cabinet, no multiple thin crossing swords, no person.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-1d81a462-3a0a-45b7-9be9-8af39a747819.png"
+    }
+  ]
+}

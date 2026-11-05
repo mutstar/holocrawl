@@ -1,0 +1,23 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "lab-wall",
+      "alpha": false,
+      "prompt": "Use case: stylized-concept. Make ONE opaque seamless game WALL MATERIAL TILE, logical native32x32 pixel art for Dungeon Crawl Stone Soup. References: image1 existing worn concrete wall material to match roughness and lighting; image2 game scene only for scale. New HoloCrawl laboratory wall: worn gray concrete beneath dirty off-white/gray industrial enamel wall panels, very faint gray-green tint. Lower two thirds are one broad recessed laboratory wall panel with a thin dark seam, two sparse small mounting bolts and a very narrow inset black conduit slot; upper third rough gray concrete cap. A few chipped edges reveal old concrete, restrained grunge. It should read as laboratory architecture not a mounted prop. Front orthographic wall surface, no perspective building. Opaque edge-to-edge square. Horizontal tile repetition should join, no thick all-around border, no isolated item, no room, no pipe, no window, no large light, no text, no glow. Hard coarse native pixels, about16 flat colors, modest midtone brightness matching existing concrete, sparse detail readable at32x32, no painted high resolution noise, no antialias. Not futuristic spaceship paneling. Output ONE wall tile.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-7539dd91-7ded-4f92-be69-01b6e272d3c7.png"
+    },
+    {
+      "name": "lab-floor",
+      "alpha": false,
+      "prompt": "Use case: stylized-concept. Make ONE opaque seamless FLOOR TILE, logical native32x32 pixel art for Dungeon Crawl Stone Soup. References: image1 existing worn concrete wall for material wear; image2 game scene for low contrast visual scale. New HoloCrawl laboratory flooring: gray-green desaturated worn linoleum/epoxy over concrete, subtle industrial square panel joints, sparse pale chips and scuffs. Broad unobtrusive pixel clusters, about12 flat colors, edge-to-edge full square, low contrast so sprites remain readable. Orthographic directly top-down texture, no perspective, no wall, no object, no border, no pipes, no symbols or text, no glow, no antialias, no high-resolution microtexture. Match gritty abandoned-city game while visibly cleaner and a little lighter than outdoor asphalt. Seamless four-way repetition, floor material only. Output ONE floor tile.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-e0e96c9c-e0a7-4229-b6d4-fc9a4e578597.png"
+    },
+    {
+      "name": "lab-counter",
+      "alpha": true,
+      "prompt": "Use case: stylized-concept. Make ONE isolated utilitarian laboratory counter sprite, logical native64x32, compatible with Dungeon Crawl Stone Soup and the reference city scene. References are STYLE AND SCALE only. Top-down orthographic with very shallow front lip, not front-view diorama. A low battered off-white/gray metal laboratory counter, broad dark gray work surface, a small square sink with faucet at one end and two simple gray glass reagent jars plus a shallow metal tray at the other. No computer, no colorful insignia, no character. Sparse coarse large native pixel clusters, about16 muted colors, material matches existing rough concrete. Hard dark1pixel outline, no blur or antialias, no glow, no finely detailed knobs or cables. Wide two-tile object, visible about58x23 inside64x32. TRUE transparent background with NO floor or room.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-cabdec98-6a1f-44d5-b55e-c92ba7042165.png"
+    }
+  ]
+}

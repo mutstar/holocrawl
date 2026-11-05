@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "scope": "Three static native-floor snapshots with browser vault insertion; not native generator integration",
+  "cases": [
+    {
+      "case": 0,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    },
+    {
+      "case": 1,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    },
+    {
+      "case": 2,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "mode": "built-in image_gen",
+  "newAssets": [
+    {
+      "name": "counter-koyori",
+      "bounds": {
+        "x": 177,
+        "y": 211,
+        "w": 1421,
+        "h": 487
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        60,
+        21
+      ]
+    },
+    {
+      "name": "counter-lui",
+      "bounds": {
+        "x": 176,
+        "y": 212,
+        "w": 1423,
+        "h": 485
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        60,
+        20
+      ]
+    },
+    {
+      "name": "glass-partition",
+      "bounds": {
+        "x": 451,
+        "y": 264,
+        "w": 634,
+        "h": 502
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        26,
+        21
+      ]
+    },
+    {
+      "name": "sample-tank",
+      "bounds": {
+        "x": 366,
+        "y": 264,
+        "w": 578,
+        "h": 735
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        20,
+        26
+      ]
+    },
+    {
+      "name": "service-cabinet",
+      "bounds": {
+        "x": 260,
+        "y": 264,
+        "w": 725,
+        "h": 757
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        25,
+        26
+      ]
+    }
+  ],
+  "promptFile": "../../design/holox-vault44-prompts.json",
+  "reusedWallsAndMembers": "../holox-vault43/",
+  "notes": "Two counter recolors and three new interior objects. Glass blocks movement but permits vision. No floor repaint."
+}

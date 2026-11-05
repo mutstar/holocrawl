@@ -1,0 +1,143 @@
+{
+  "id": "holox-lab-9x9-01",
+  "name": "holoX 비밀 연구소",
+  "width": 9,
+  "height": 9,
+  "footprintIncludesWalls": true,
+  "rows": [
+    "#########",
+    "#FF#FF..#",
+    "#..+....#",
+    "#..#FF..#",
+    "#..###..#",
+    "#.......#",
+    "#FF#FF..#",
+    "#.......#",
+    "######+##"
+  ],
+  "legend": {
+    "#": "opaque_wall",
+    ".": "walkable_floor",
+    "F": "blocked_workstation",
+    "+": "closed_door"
+  },
+  "connectors": [
+    {
+      "x": 6,
+      "y": 8,
+      "direction": "south"
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "direction": "internal"
+    }
+  ],
+  "stations": [
+    {
+      "id": "laplus",
+      "member": "라플라스",
+      "name": "총수 지휘실",
+      "motif": "검보라 뿔·금색 사슬·지휘 콘솔",
+      "x": 1,
+      "y": 1,
+      "w": 2,
+      "h": 1,
+      "color": "#ae8cdb"
+    },
+    {
+      "id": "lui",
+      "member": "루이",
+      "name": "까마귀 관제석",
+      "motif": "까마귀 횃대·버건디 관제 모니터",
+      "x": 4,
+      "y": 1,
+      "w": 2,
+      "h": 1,
+      "color": "#c47784"
+    },
+    {
+      "id": "koyori",
+      "member": "코요리",
+      "name": "실험 구역",
+      "motif": "분홍 시약·실험 플라스크·DNA 문양",
+      "x": 4,
+      "y": 3,
+      "w": 2,
+      "h": 1,
+      "color": "#d391bc"
+    },
+    {
+      "id": "chloe",
+      "member": "클로에",
+      "name": "잠수 장비실",
+      "motif": "범고래 문양·검정/빨강 장비함·산소통",
+      "x": 1,
+      "y": 6,
+      "w": 2,
+      "h": 1,
+      "color": "#d88285"
+    },
+    {
+      "id": "iroha",
+      "member": "이로하",
+      "name": "경비 대기실",
+      "motif": "칼걸이·잎 문양·연두색 장식",
+      "x": 4,
+      "y": 6,
+      "w": 2,
+      "h": 1,
+      "color": "#a5bf79"
+    }
+  ],
+  "encounterSlots": [
+    {
+      "x": 2,
+      "y": 3,
+      "role": "elite",
+      "implemented": false
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "role": "guard",
+      "implemented": false
+    }
+  ],
+  "rewardOptions": {
+    "research": [
+      {
+        "id": "potion",
+        "x": 7,
+        "y": 1,
+        "label": "실험용 포션",
+        "quantity": 2
+      },
+      {
+        "id": "scroll",
+        "x": 2,
+        "y": 3,
+        "label": "스크롤",
+        "quantity": 1
+      }
+    ],
+    "reserve": [
+      {
+        "id": "scroll",
+        "x": 7,
+        "y": 1,
+        "label": "스크롤",
+        "quantity": 2
+      },
+      {
+        "id": "potion",
+        "x": 2,
+        "y": 3,
+        "label": "포션",
+        "quantity": 1
+      }
+    ]
+  },
+  "balanceStatus": "placeholder supplies only; no combat or item-use; wand deferred",
+  "nativeGameIntegrated": false
+}

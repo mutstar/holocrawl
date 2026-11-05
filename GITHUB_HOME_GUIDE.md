@@ -1,3 +1,9 @@
+# 2026-11-06 최신 재개 안내
+
+회사·집 모두 기존 `mutstar/holocrawl`의 `main`에서 이어갑니다. 로컬 수정이 없음을 확인한 뒤 `git pull --ff-only`, `OPEN_LATEST_PREVIEW.cmd`를 실행하세요. 최신은 `holox-floor54`, 승인된 극장은 `theater-vault36`입니다. 가장 먼저 `CONTINUE_HERE.md` 상단을 읽으세요.
+
+아래 2026-11-05의 master/커밋0개/최초 업로드 절차는 **당시 감사 기록**입니다. 이미 존재하는 저장소에서 초기화·remote추가·최초생성 절차를 반복하지 않습니다.
+
 # HoloCrawl — 비공개 GitHub 저장소로 집에서 이어가기
 
 점검일: 2026-11-05. 비공개 원격은 https://github.com/mutstar/holocrawl 이다. 아래 최초 생성·업로드 절차는 점검 기록이며, 이미 연결된 회사PC에서 반복 실행하지 않는다. 집에서는3번 clone절차부터 진행한다.

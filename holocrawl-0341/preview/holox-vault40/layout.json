@@ -1,0 +1,144 @@
+{
+  "patches": [
+    {
+      "x": 14,
+      "y": 11,
+      "file": "assets/door-open-0.png"
+    },
+    {
+      "x": 11,
+      "y": 5,
+      "file": "assets/door-open-1.png"
+    }
+  ],
+  "map": {
+    "seed": "holox-vault40",
+    "place": "D:1",
+    "w": 24,
+    "h": 20,
+    "vaults": "elethiomel_arrival_maze, layout_basic and minmay_pentomino_s2",
+    "palette": {
+      "#": "rock_wall",
+      ".": "floor",
+      "S": "floor",
+      "C": "floor",
+      "F": "floor",
+      "+": "closed_door",
+      "<": "stone_stairs_up_i",
+      ">": "stone_stairs_down_i"
+    },
+    "rows": [
+      "########################",
+      "########################",
+      "########################",
+      "########################",
+      "#########F.#FFF.########",
+      "#########..+....########",
+      "#########..#F.FF########",
+      "##....###..###..##....##",
+      "##....###.......##....##",
+      "##....###F.#F...##....##",
+      "##....###.......##....##",
+      "##....########+###....##",
+      "##....................##",
+      "#####..............#####",
+      "#......................#",
+      "#.<..................>.#",
+      "#......................#",
+      "########################",
+      "########################",
+      "########################"
+    ],
+    "layout": "layout_basic",
+    "doorPlacement": {
+      "originalCount": 12,
+      "candidateEntrances": 2,
+      "density": 0.55,
+      "added": [
+        {
+          "x": 17,
+          "y": 51,
+          "axis": "vertical",
+          "rooms": [
+            2,
+            null
+          ],
+          "distanceToRoom": 1
+        }
+      ],
+      "total": 13,
+      "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+    },
+    "stairPlacement": {
+      "entry": [
+        38,
+        45
+      ],
+      "before": {
+        "entryMinSteps": 27,
+        "entryMinGridDistance": 24,
+        "downstairsMinSteps": 1,
+        "downstairsMinGridDistance": 1
+      },
+      "after": {
+        "entryMinSteps": 27,
+        "entryMinGridDistance": 13,
+        "downstairsMinSteps": 22,
+        "downstairsMinGridDistance": 21
+      },
+      "stairs": [
+        {
+          "feature": "stone_stairs_down_ii",
+          "old": [
+            44,
+            15
+          ],
+          "new": [
+            44,
+            15
+          ]
+        },
+        {
+          "feature": "stone_stairs_down_i",
+          "old": [
+            23,
+            21
+          ],
+          "new": [
+            23,
+            21
+          ]
+        },
+        {
+          "feature": "stone_stairs_down_iii",
+          "old": [
+            24,
+            21
+          ],
+          "new": [
+            25,
+            49
+          ]
+        }
+      ],
+      "moved": 1,
+      "rules": {
+        "entryMinSteps": 18,
+        "entryMinGridDistance": 9,
+        "downstairsMinSteps": 14,
+        "downstairsMinGridDistance": 8,
+        "stairsCount": "one entry, three downstairs",
+        "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+      }
+    },
+    "floorNumber": 1
+  },
+  "origin": {
+    "x": 8,
+    "y": 3
+  },
+  "start": {
+    "x": 14,
+    "y": 13
+  }
+}

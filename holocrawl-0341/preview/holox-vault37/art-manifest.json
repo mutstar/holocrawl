@@ -1,0 +1,94 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "laplus",
+      "bounds": {
+        "x": 204,
+        "y": 13,
+        "w": 1366,
+        "h": 862
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        46,
+        29
+      ]
+    },
+    {
+      "name": "lui",
+      "bounds": {
+        "x": 111,
+        "y": 73,
+        "w": 1560,
+        "h": 792
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        57,
+        29
+      ]
+    },
+    {
+      "name": "koyori",
+      "bounds": {
+        "x": 87,
+        "y": 68,
+        "w": 1600,
+        "h": 789
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        59,
+        29
+      ]
+    },
+    {
+      "name": "chloe",
+      "bounds": {
+        "x": 79,
+        "y": 46,
+        "w": 1617,
+        "h": 805
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        58,
+        29
+      ]
+    },
+    {
+      "name": "iroha",
+      "bounds": {
+        "x": 208,
+        "y": 65,
+        "w": 1358,
+        "h": 799
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        49,
+        29
+      ]
+    }
+  ],
+  "promptFile": "../../design/holox-vault37-prompts.json",
+  "reduction": "Existing PixelReducer: preserve alpha,28 colors,60x29 visible max in64x32",
+  "entrance": "../facility-wall33/assets/holox-native.png",
+  "actorSprites": "../city-layout07/assets"
+}

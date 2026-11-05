@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "laplus",
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup style dungeon furniture sprite. One isolated furniture object, no people, no room, no floor or ground plane. TRUE TRANSPARENT background. Strict coarse low-resolution pixel art: logical native64x32 pixels, wide2:1 silhouette, limited muted palette, hard square pixel clusters, dark1pixel outline, no smooth painting, no antialias, no gradients or bloom, no readable text. Front/top orthographic view with shallow top visible like DCSS furniture. Entire object fits within64x32 tile strip with small clear margins. Worn urban secret laboratory aesthetic, charcoal gray metal body, recognizable bold colored member motif, readable at64x32. A compact dark secret-society command console. Two thick curved purple-black demon horns rising from the center of its back panel, small violet monitor, dull gold chain and purple crest. Dark mechanical desk rather than throne. Dominant violet and charcoal.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-fba4c067-6b80-41df-905a-e80308919085.png"
+    },
+    {
+      "name": "lui",
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup style dungeon furniture sprite. One isolated furniture object, no people, no room, no floor or ground plane. TRUE TRANSPARENT background. Strict coarse low-resolution pixel art: logical native64x32 pixels, wide2:1 silhouette, limited muted palette, hard square pixel clusters, dark1pixel outline, no smooth painting, no antialias, no gradients or bloom, no readable text. Front/top orthographic view with shallow top visible like DCSS furniture. Entire object fits within64x32 tile strip with small clear margins. Worn urban secret laboratory aesthetic, charcoal gray metal body, recognizable bold colored member motif, readable at64x32. A burgundy command desk with a single black raven perched on a short metal stand integrated at one side. Raven silhouette with clear beak and folded wings, small red eye. A broad muted-red radar display on the desk. Dark charcoal metal, muted burgundy and feather gray.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-417744bf-d757-4fd0-810c-705954dd9c9b.png"
+    },
+    {
+      "name": "koyori",
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup style dungeon furniture sprite. One isolated furniture object, no people, no room, no floor or ground plane. TRUE TRANSPARENT background. Strict coarse low-resolution pixel art: logical native64x32 pixels, wide2:1 silhouette, limited muted palette, hard square pixel clusters, dark1pixel outline, no smooth painting, no antialias, no gradients or bloom, no readable text. Front/top orthographic view with shallow top visible like DCSS furniture. Entire object fits within64x32 tile strip with small clear margins. Worn urban secret laboratory aesthetic, charcoal gray metal body, recognizable bold colored member motif, readable at64x32. A pink-accented chemistry workbench with three round pink/cyan reagent flasks, small metal retort stand and a clearly visible tiny pink DNA double-helix emblem on the desk front. Sparse large shapes, dirty-white tabletop, muted pink controls.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-25b4557a-745b-47f6-808f-c634ce492868.png"
+    },
+    {
+      "name": "chloe",
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup style dungeon furniture sprite. One isolated furniture object, no people, no room, no floor or ground plane. TRUE TRANSPARENT background. Strict coarse low-resolution pixel art: logical native64x32 pixels, wide2:1 silhouette, limited muted palette, hard square pixel clusters, dark1pixel outline, no smooth painting, no antialias, no gradients or bloom, no readable text. Front/top orthographic view with shallow top visible like DCSS furniture. Entire object fits within64x32 tile strip with small clear margins. Worn urban secret laboratory aesthetic, charcoal gray metal body, recognizable bold colored member motif, readable at64x32. A squat black and red diving equipment locker. Clearly visible white orca silhouette emblem on its large black panel, red diver suit hanging at one side, two small dark oxygen cylinders and hose. Dominant black, off-white and muted red. Not a human figure.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-ebab261f-4c80-45c5-8543-017b811aa709.png"
+    },
+    {
+      "name": "iroha",
+      "prompt": "Use case: stylized-concept. Asset for HoloCrawl, Dungeon Crawl Stone Soup style dungeon furniture sprite. One isolated furniture object, no people, no room, no floor or ground plane. TRUE TRANSPARENT background. Strict coarse low-resolution pixel art: logical native64x32 pixels, wide2:1 silhouette, limited muted palette, hard square pixel clusters, dark1pixel outline, no smooth painting, no antialias, no gradients or bloom, no readable text. Front/top orthographic view with shallow top visible like DCSS furniture. Entire object fits within64x32 tile strip with small clear margins. Worn urban secret laboratory aesthetic, charcoal gray metal body, recognizable bold colored member motif, readable at64x32. A green-accented compact katana display rack with two sheathed swords, a small bamboo-leaf crest on the front, and one pale golden tassel. Low dark cabinet under the sword rack. Dominant muted leaf green, dark wood and pale steel, no person.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-b5db44a5-e839-4105-ba40-cf1903baecba.png"
+    }
+  ]
+}

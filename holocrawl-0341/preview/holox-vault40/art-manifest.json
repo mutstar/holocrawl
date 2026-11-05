@@ -1,0 +1,59 @@
+{
+  "mode": "built-in image_gen",
+  "newAssets": [
+    {
+      "name": "lab-wall",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1254,
+        "h": 1254
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "lab-floor",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1254,
+        "h": 1254
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        32,
+        32
+      ]
+    },
+    {
+      "name": "lab-counter",
+      "bounds": {
+        "x": 179,
+        "y": 212,
+        "w": 1419,
+        "h": 483
+      },
+      "native": [
+        64,
+        32
+      ],
+      "visible": [
+        60,
+        20
+      ]
+    }
+  ],
+  "promptFile": "../../design/holox-vault40-prompts.json",
+  "baseMemberSprites": "../holox-vault38/assets",
+  "notes": "New actual wall and floor material tiles. No architecture39 overlay or new pipe sprites."
+}

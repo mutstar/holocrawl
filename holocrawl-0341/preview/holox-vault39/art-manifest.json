@@ -1,0 +1,102 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "laplus",
+      "bounds": {
+        "x": 241,
+        "y": 168,
+        "w": 768,
+        "h": 866
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        22,
+        25
+      ]
+    },
+    {
+      "name": "lui",
+      "bounds": {
+        "x": 381,
+        "y": 301,
+        "w": 497,
+        "h": 681
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        18,
+        25
+      ]
+    },
+    {
+      "name": "koyori",
+      "bounds": {
+        "x": 314,
+        "y": 294,
+        "w": 626,
+        "h": 693
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        23,
+        25
+      ]
+    },
+    {
+      "name": "chloe",
+      "bounds": {
+        "x": 329,
+        "y": 388,
+        "w": 596,
+        "h": 515
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        24,
+        21
+      ]
+    },
+    {
+      "name": "iroha",
+      "bounds": {
+        "x": 303,
+        "y": 400,
+        "w": 646,
+        "h": 507
+      },
+      "native": [
+        32,
+        32
+      ],
+      "visible": [
+        24,
+        19
+      ]
+    }
+  ],
+  "promptFile": "../../design/holox-vault38-prompts.json",
+  "reduction": "Existing PixelReducer: preserve alpha,12 colors,24x25 visible max in32x32",
+  "entrance": "../facility-wall33/assets/holox-native.png",
+  "actorSprites": "../city-layout07/assets",
+  "variant39": {
+    "source": "../holox-vault38/assets",
+    "newRasterGeneration": false,
+    "renderBrightness": 1.32,
+    "renderSaturation": 1.08,
+    "architecture": "architecture.js, native integer-pixel wall fixtures and existing city pipe/cabinet sprites",
+    "geometryUnchanged": true
+  }
+}

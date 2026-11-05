@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": 0,
+      "status": "passed",
+      "originalRockOnlyFootprint": 81,
+      "outsideCellsPreserved": 5519,
+      "entranceAdjacentToOriginalFloor": true,
+      "stairsPreserved": 4
+    },
+    {
+      "case": 1,
+      "status": "passed",
+      "originalRockOnlyFootprint": 81,
+      "outsideCellsPreserved": 5519,
+      "entranceAdjacentToOriginalFloor": true,
+      "stairsPreserved": 4
+    },
+    {
+      "case": 2,
+      "status": "passed",
+      "originalRockOnlyFootprint": 81,
+      "outsideCellsPreserved": 5519,
+      "entranceAdjacentToOriginalFloor": true,
+      "stairsPreserved": 4
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "base": "../theater-vault34/art-manifest.json",
+  "addition": "decor.js",
+  "method": "native Canvas integer-pixel drawing",
+  "newElements": [
+    "north wall screen",
+    "screen side drapes",
+    "LIVE entrance marquee",
+    "wall lamps",
+    "two program posters"
+  ],
+  "collisionChanges": false,
+  "actorLayer": "decor before fog and actors"
+}

@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "scope": "Connected armour wall replacement; browser preview only, not native engine integration",
+  "walls": {
+    "inwardStripes": true,
+    "entryUpperFaceContinuous": true,
+    "opaque": true,
+    "primaryShapes": 16,
+    "all256Generated": true,
+    "capSeams": true,
+    "floorUntouched": true,
+    "insetCapPreserved": true
+  },
+  "cases": [
+    {
+      "case": 0,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "integratedEntry": true,
+      "unchangedCollision": true,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    },
+    {
+      "case": 1,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "integratedEntry": true,
+      "unchangedCollision": true,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    },
+    {
+      "case": 2,
+      "status": "passed",
+      "atStairs": true,
+      "allMembers": true,
+      "allRewards": true,
+      "stairs": true,
+      "size": [
+        80,
+        70
+      ],
+      "labDoors": false,
+      "integratedEntry": true,
+      "unchangedCollision": true,
+      "autoEnterAndPickup": true,
+      "fogAtStairs": true,
+      "mobileNoOverflow": true,
+      "errors": []
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 Hololive를 주제로 만드는 턴제 던전 프로젝트. 기반 엔진은 DCSS0.34.1이며, 현재는 브라우저에서 도시 타일·고정 지형·시야·이동을 검토하고 있습니다.
 
-현재 작업은 **2기생 극장8×8 고정 지형**입니다. 무대·커튼·객석·입구와 시험용 보상을 배치했으며, 적과 전투는 추후 연결합니다.
+현재 작업은 **holoX 연구소54의 9×9 고정 지형과 세 가지 층 맵 배치 미리보기**입니다. 검은 장갑 연결 벽·보라색 창·경고띠, 다섯 멤버 시설과 문 없는 비대칭 통로를 검토 중입니다. 최신 입구·좌우 벽 수정은 사용자 피드백을 기다립니다. 적·전투와 실제 네이티브 층 생성기 연결은 추후 진행합니다.
 
-## 집에서 시작
+## 회사·집에서 이어가기
 
 ```powershell
 git clone https://github.com/mutstar/holocrawl.git
@@ -17,14 +17,15 @@ Windows에서 `OPEN_LATEST_PREVIEW.cmd`를 실행합니다. Python3가 필요하
 py -3 -m http.server 8798 --bind 127.0.0.1 --directory holocrawl-0341/preview
 ```
 
-http://127.0.0.1:8798/theater-vault34/ 를 엽니다. `file://`로 직접 열지 않습니다.
+http://127.0.0.1:8798/holox-floor54/ 를 엽니다. `file://`로 직접 열지 않습니다.
 
 다음 작업부터는 이 폴더에서 `git pull --ff-only`로 최신 변경을 받으면 됩니다. 로컬 수정이 남아 있다면 먼저 커밋하거나 별도로 보관합니다.
 
 ## 이어받기
 
 - `CONTINUE_HERE.md`: 최신 진행 기록. 위에서부터 읽습니다.
-- `holocrawl-0341/design/theater-vault34.json`: 8×8 고정 지형과 보상·적 배치 예정 데이터.
+- `holocrawl-0341/design/HOLOX_FLOOR54.md`: 최신 연구소 외관·연결 벽·검증 기록.
+- `holocrawl-0341/preview/theater-vault36/`: 승인된 2기생 극장.
 - `GITHUB_HOME_GUIDE.md`: 회사/집 Git사용 및 엔진 복원 안내.
 - `holocrawl-0341/design/GIT_AUDIT_2026-11-05.json`: 보안 점검 범위와 한계.
 

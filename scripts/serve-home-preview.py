@@ -17,6 +17,9 @@ class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Cache-Control','no-store')
         super().end_headers()
-server=ThreadingHTTPServer(('127.0.0.1',args.port),partial(Handler,directory=str(preview_root)))
+class PreviewServer(ThreadingHTTPServer):
+    # A floor preview requests many tile patches concurrently.
+    request_queue_size=128
+server=PreviewServer(('127.0.0.1',args.port),partial(Handler,directory=str(preview_root)))
 print(f'HoloCrawl preview: http://127.0.0.1:{args.port}/city-explore01/',flush=True)
 server.serve_forever()

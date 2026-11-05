@@ -1,0 +1,29 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "laplus",
+      "wide": true,
+      "prompt": "Use case: stylized-concept. ONE coherent placeable dungeon furnishing for HoloCrawl. Reference1 is STYLE AND SCALE only (DCSS worn urban tiles). Reference2 current room for compatibility only: no copying room, no floor. TRUE TRANSPARENT background. Strict native64x32 logical pixel art, simple broad hard pixel clusters,20 muted readable colors, dark1pixel outlines, mostly top-down with shallow front lip. No painting, no tiny detailed knobs, no glow, no antialias, no people, no text. Worn charcoal metal, modest member accent colors, no freestanding miniature building or toy. The whole furnishing occupies two adjacent horizontal32px tiles, wide composition, visually anchored at back wall, no base floor patch. A low SECRET SEALING INSTALLATION: two small chunky dark iron anchor posts flanking a recessed central seal plate, violet curved horn fittings on the posts, two thick old-gold chain spans crossing toward the central violet seal. Slightly higher back edge, low front edge. One tiny black crow on the rear post. Broader environmental installation rather than a single square statue or podium. No throne, no computer, no many extra ornaments.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-078110a3-61a2-4f57-97a6-cafa9c08a7cf.png"
+    },
+    {
+      "name": "chloe",
+      "wide": true,
+      "prompt": "Use case: stylized-concept. ONE coherent placeable dungeon furnishing for HoloCrawl. Reference1 is STYLE AND SCALE only (DCSS worn urban tiles). Reference2 current room for compatibility only: no copying room, no floor. TRUE TRANSPARENT background. Strict native64x32 logical pixel art, simple broad hard pixel clusters,20 muted readable colors, dark1pixel outlines, mostly top-down with shallow front lip. No painting, no tiny detailed knobs, no glow, no antialias, no people, no text. Worn charcoal metal, modest member accent colors, no freestanding miniature building or toy. The whole furnishing occupies two adjacent horizontal32px tiles, wide composition, visually anchored at back wall, no base floor patch. A low EQUIPMENT STORAGE ALCOVE: black-and-cream orca-marked equipment case on the LEFT, compact charcoal hanging rack on RIGHT carrying a folded black-white protective hood and one bold red ribbon, two small gray oxygen cylinders tucked under rack. Sparse bold shapes, orca twin eye patches clearly readable on case lid. Low functional corner storage rather than giant locker or character. Restrained crimson accents, no person inside suit, no human face.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-31695141-7f65-4929-ab38-95a408a3aba2.png"
+    },
+    {
+      "name": "iroha",
+      "wide": true,
+      "prompt": "Use case: stylized-concept. ONE coherent placeable dungeon furnishing for HoloCrawl. Reference1 is STYLE AND SCALE only (DCSS worn urban tiles). Reference2 current room for compatibility only: no copying room, no floor. TRUE TRANSPARENT background. Strict native64x32 logical pixel art, simple broad hard pixel clusters,20 muted readable colors, dark1pixel outlines, mostly top-down with shallow front lip. No painting, no tiny detailed knobs, no glow, no antialias, no people, no text. Worn charcoal metal, modest member accent colors, no freestanding miniature building or toy. The whole furnishing occupies two adjacent horizontal32px tiles, wide composition, visually anchored at back wall, no base floor patch. A low ENTRANCE GUARD EQUIPMENT RACK: a single sheathed pale-steel katana resting horizontally across a dark-wood two-post rack, a broad leaf-green folded guard banner hanging from right end and a pale-yellow braided knot at left. Low long environmental prop for a guard corner, clear continuous sword silhouette across the two tiles, not a jumble of crossed weapons, not a huge cabinet. Broad green accent, sparse dark metal reinforcement.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-0d9b466c-ecac-4e51-b682-6f7c2a0a8f49.png"
+    },
+    {
+      "name": "lui-panel",
+      "wide": true,
+      "prompt": "Use case: stylized-concept. ONE flush wall-mounted COMMAND CREST PANEL for Takane Lui theme in a DCSS laboratory. References are style only. TRUE TRANSPARENT background. Design a narrow horizontal64x12 logical-pixel iron plaque with broad red-brown hawk wings in CENTER, a small deep-red tie-shaped hanging accent integrated flat on plate, two small gray indicator slots at sides and dark mounting bolts at corners. Whole panel wide5:1 silhouette even if output canvas has transparent extra margins. No stand, no feet, no desk, no back wall or floor, no character, no text. Muted burgundy and rust-red against gray-blue iron, simple coarse native pixel clusters with hard dark1pixel edges, about16 colors. It must inset into the existing wall's front face without protruding above a wall cap. Not a big shield or a square mailbox.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-0cf69504-b2a9-4b25-9b4a-1c60d10f312c.png"
+    }
+  ]
+}

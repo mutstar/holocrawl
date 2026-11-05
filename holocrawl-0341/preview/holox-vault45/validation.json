@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "mounting": {
+    "noDoors": true,
+    "noDoorUI": true,
+    "noSmallKoyori": true,
+    "countersInWalls": true,
+    "pinkBelowOldKoyori": true,
+    "oldKoyoriOpen": true,
+    "oldCounterOpen": true
+  },
+  "interior": {
+    "blocked": true,
+    "glassTransparent": true,
+    "features": 3,
+    "twoTableThemes": true
+  },
+  "walls": {
+    "floorUntouched": true,
+    "actualMasks": [
+      223,
+      219,
+      187,
+      159,
+      155,
+      191,
+      221,
+      145,
+      183,
+      205,
+      55,
+      36,
+      3,
+      138,
+      8,
+      0,
+      237,
+      119,
+      139,
+      10,
+      18,
+      27
+    ],
+    "primaryShapes": 16,
+    "all256Generated": true
+  },
+  "lab": {
+    "customMaterials": true,
+    "brightness": 1.25,
+    "counterBlocked": true
+  },
+  "geometry": {
+    "nineByNine": true,
+    "fiveMembers": true,
+    "allConnected": true,
+    "rewardsReachable": true,
+    "stations": [
+      {
+        "id": "laplus",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "lui",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "koyori",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "chloe",
+        "blocked": true,
+        "approachable": true
+      },
+      {
+        "id": "iroha",
+        "blocked": true,
+        "approachable": true
+      }
+    ],
+    "encounterSlotsReachable": true
+  },
+  "keyboardMovement": true,
+  "doorlessMovement": true,
+  "lootSinglePickup": true,
+  "alternateRewardReset": true,
+  "autoWalk": true,
+  "fiveMemberButtons": true,
+  "fog": {
+    "on": true,
+    "openEntryVisible": true,
+    "wallHidesRoom": true,
+    "hasMemory": true
+  },
+  "mobileNoOverflow": true,
+  "errors": []
+}

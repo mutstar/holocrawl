@@ -1,0 +1,9 @@
+{
+  "newImageGeneration": false,
+  "nativeWallVariant": "materials.js insetWall; four themed wall tiles",
+  "atlas": "assets/inset-counter-walls-46.png",
+  "removed": "Free-standing counter PNG rendering",
+  "invariant": "Unchanged cap, side bevel, outer contour; changes confined to y17..29 of wall face",
+  "source": "iron-wall-32.png and existing43 member sprites",
+  "review": "pending"
+}

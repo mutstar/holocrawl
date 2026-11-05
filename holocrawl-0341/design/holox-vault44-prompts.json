@@ -1,0 +1,50 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "counter-koyori",
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/holox-vault40/assets/lab-counter-original.png"
+      ],
+      "wide": true,
+      "prompt": "Use case: precise-object-edit. RECOLOR the reference laboratory counter ONLY. Preserve its exact silhouette, proportions, sink and faucet on LEFT, two reagent jars and tray on RIGHT, all details and transparent background. No new objects or shape changes. Hakui Koyori laboratory palette: worn dirty-white worktop and sink rim, dusty-pink cabinet fronts and pink edge trim, pale-pink and pale-cyan liquid in the two jars. Small dark-gray handles, charcoal shadows. Mid-bright but no neon or glow, match coarse original pixel texture. Logical64x32, no text, no floor.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-5862cdc8-e4d1-437d-a1c5-58f797a96a99.png"
+    },
+    {
+      "name": "counter-lui",
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/holox-vault40/assets/lab-counter-original.png"
+      ],
+      "wide": true,
+      "prompt": "Use case: precise-object-edit. RECOLOR the reference laboratory counter ONLY. Preserve exact silhouette, proportions, left sink/faucet, right two jars/tray, detail positions and transparent background. Takane Lui themed executive laboratory palette: ash-gray metal worktop and sink rim, dark burgundy red cabinet fronts and burgundy trim, restrained old-brass handles, gray-green jars. Not uniformly black or gray: burgundy cabinet color should read at native size. Coarse pixel art same as original, logical64x32, no new objects, no text, no glow or floor.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-b523d608-2eb9-4b89-9e19-edddc6bf701a.png"
+    },
+    {
+      "name": "glass-partition",
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/city-layout07/assets/scene-reference.png"
+      ],
+      "wide": false,
+      "prompt": "Use case: stylized-concept. Strict Dungeon Crawl Stone Soup tiny coarse pixel-art furnishing, mostly top-down with shallow front edge, dark1pixel outlines,18-20 muted but readable flat colors. No blur, antialias, glow or text. TRUE TRANSPARENT background, no floor or room, no characters. Sparse large shapes readable at logical32x32. One object only. One short laboratory safety GLASS PARTITION occupying a32x32 tile, shallow overhead DCSS perspective. A narrow worn blue-gray iron frame holding a clear desaturated cyan safety glass panel, feet at bottom corners. Large middle area remains see-through transparent with only two tiny pale diagonal reflection strips. About24x22 visible. No closed door, no filled opaque glass color, no sci-fi glow.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-9564a78b-cfa1-4334-af01-0c85a3bbce29.png"
+    },
+    {
+      "name": "sample-tank",
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/city-layout07/assets/scene-reference.png"
+      ],
+      "wide": false,
+      "prompt": "Use case: stylized-concept. Strict Dungeon Crawl Stone Soup tiny coarse pixel-art furnishing, mostly top-down with shallow front edge, dark1pixel outlines,18-20 muted but readable flat colors. No blur, antialias, glow or text. TRUE TRANSPARENT background, no floor or room, no characters. Sparse large shapes readable at logical32x32. One object only. One small squat cylindrical laboratory SAMPLE STORAGE TANK, sturdy dark iron lid and base, pale-cyan cloudy glass chamber with an indistinct dark sample inside, a tiny dusty-pink status indicator and one short side valve. Laboratory equipment not magical crystal, mid gray body, dirty-white metal highlights, readable cyan chamber. About23x25 visible within32x32, not a tall huge machine.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-12549460-87ba-46d6-98df-44a71235f46f.png"
+    },
+    {
+      "name": "service-cabinet",
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/city-layout07/assets/scene-reference.png"
+      ],
+      "wide": false,
+      "prompt": "Use case: stylized-concept. Strict Dungeon Crawl Stone Soup tiny coarse pixel-art furnishing, mostly top-down with shallow front edge, dark1pixel outlines,18-20 muted but readable flat colors. No blur, antialias, glow or text. TRUE TRANSPARENT background, no floor or room, no characters. Sparse large shapes readable at logical32x32. One object only. One squat worn steel SERVICE CABINET for a secret laboratory. Dull blue-gray square housing, two broad vent slits, one small muted-violet status window, short brass latch and a single reinforced seam. About24x23 visible within32tile. Not a chest with treasure, no pipes or wires spilling out, no complicated miniature machine.",
+      "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-16677e3c-51e0-4ae6-94d1-05ab03b7fb49.png"
+    }
+  ]
+}

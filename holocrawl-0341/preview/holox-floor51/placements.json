@@ -1,0 +1,110 @@
+[
+  {
+    "case": 0,
+    "sourceMap": 0,
+    "sourceSeed": "20261105201",
+    "candidateSlots": 3,
+    "solidFootprintBeforeInsertion": true,
+    "outsideFootprintUnchanged": true,
+    "stairsPreserved": [
+      {
+        "x": 44,
+        "y": 15,
+        "feature": "stone_stairs_down_ii"
+      },
+      {
+        "x": 23,
+        "y": 21,
+        "feature": "stone_stairs_down_i"
+      },
+      {
+        "x": 38,
+        "y": 45,
+        "feature": "stone_stairs_up_i"
+      },
+      {
+        "x": 25,
+        "y": 49,
+        "feature": "stone_stairs_down_iii"
+      }
+    ],
+    "sourceMapSize": [
+      80,
+      70
+    ],
+    "sourceVaults": "elethiomel_arrival_maze, layout_basic and minmay_pentomino_s2",
+    "method": "Browser placement into9x9 rock-only pocket adjacent to reachable corridor; native generator integration pending"
+  },
+  {
+    "case": 1,
+    "sourceMap": 1,
+    "sourceSeed": "20261105220",
+    "candidateSlots": 3,
+    "solidFootprintBeforeInsertion": true,
+    "outsideFootprintUnchanged": true,
+    "stairsPreserved": [
+      {
+        "x": 39,
+        "y": 21,
+        "feature": "stone_stairs_up_i"
+      },
+      {
+        "x": 24,
+        "y": 53,
+        "feature": "stone_stairs_down_iii"
+      },
+      {
+        "x": 57,
+        "y": 62,
+        "feature": "stone_stairs_down_i"
+      },
+      {
+        "x": 14,
+        "y": 67,
+        "feature": "stone_stairs_down_ii"
+      }
+    ],
+    "sourceMapSize": [
+      80,
+      70
+    ],
+    "sourceVaults": "roderic_crop_circles_arrival_small, layout_loops_corners and minmay_pentomino_o2",
+    "method": "Browser placement into9x9 rock-only pocket adjacent to reachable corridor; native generator integration pending"
+  },
+  {
+    "case": 2,
+    "sourceMap": 5,
+    "sourceSeed": "20261105209",
+    "candidateSlots": 37,
+    "solidFootprintBeforeInsertion": true,
+    "outsideFootprintUnchanged": true,
+    "stairsPreserved": [
+      {
+        "x": 21,
+        "y": 14,
+        "feature": "stone_stairs_down_ii"
+      },
+      {
+        "x": 65,
+        "y": 16,
+        "feature": "stone_stairs_down_iii"
+      },
+      {
+        "x": 26,
+        "y": 37,
+        "feature": "stone_stairs_up_i"
+      },
+      {
+        "x": 37,
+        "y": 47,
+        "feature": "stone_stairs_down_i"
+      }
+    ],
+    "sourceMapSize": [
+      80,
+      70
+    ],
+    "sourceVaults": "elethiomel_arrival_quiet and layout_basic",
+    "method": "Browser placement into9x9 rock-only pocket adjacent to reachable corridor; native generator integration pending"
+  }
+]
