@@ -1,0 +1,141 @@
+{
+  "mode": "built-in image_gen",
+  "status": "review; not aged; browser only",
+  "assets": [
+    {
+      "name": "gamers",
+      "label": "게이머즈 역",
+      "bounds": {
+        "x": 50,
+        "y": 33,
+        "w": 2072,
+        "h": 653
+      },
+      "native": [
+        96,
+        32
+      ],
+      "visible": [
+        96,
+        30
+      ],
+      "colors": 20
+    },
+    {
+      "name": "fantasy",
+      "label": "3기생 회관",
+      "bounds": {
+        "x": 49,
+        "y": 33,
+        "w": 2074,
+        "h": 651
+      },
+      "native": [
+        96,
+        32
+      ],
+      "visible": [
+        96,
+        30
+      ],
+      "colors": 20
+    },
+    {
+      "name": "holox",
+      "label": "holoX 아지트",
+      "bounds": {
+        "x": 48,
+        "y": 32,
+        "w": 2072,
+        "h": 653
+      },
+      "native": [
+        96,
+        32
+      ],
+      "visible": [
+        96,
+        30
+      ],
+      "colors": 20
+    },
+    {
+      "name": "wheel",
+      "label": "4기생 관람차 입구",
+      "bounds": {
+        "x": 46,
+        "y": 34,
+        "w": 2080,
+        "h": 651
+      },
+      "native": [
+        96,
+        32
+      ],
+      "visible": [
+        96,
+        30
+      ],
+      "colors": 20
+    },
+    {
+      "name": "clock",
+      "label": "Promise 시계탑 입구",
+      "bounds": {
+        "x": 47,
+        "y": 32,
+        "w": 2079,
+        "h": 657
+      },
+      "native": [
+        96,
+        32
+      ],
+      "visible": [
+        96,
+        30
+      ],
+      "colors": 20
+    }
+  ],
+  "cinema": "unchanged approved theater-wall31 asset",
+  "prompts": {
+    "mode": "built-in image_gen",
+    "assets": [
+      {
+        "name": "gamers",
+        "label": "게이머즈 역",
+        "desc": "Muted green strip and station sliding steel-glass double door center. Two split cream poster panels: left white fox silhouette above black-red wolf silhouette; right purple cat silhouette above brown floppy-ear dog silhouette. All four heads distinct, large ear shapes, no tiny faces. One small green ticket slot beside door. No giant gamepad sign.",
+        "prompt": "Use case: stylized-concept. Use the referenced APPROVED theatre entrance ONLY as style, composition and scale reference. Create a DIFFERENT Hololive-themed facility wall entrance overlay. One isolated flat 3:1 strip, native logical96x32 pixel sprite, ONLY32pixels high in-game. Central full-height dark double door or gate with two side poster/emblem panels and straight thin connecting lintel. NO roof, tower, full building, projecting floor, stage, background, masonry outer building, minuscule filigree, lettering or people. All symbols and trim stay inside flat strip. Dark weathered metal framing in muted charcoal-brown matching HoloCrawl concrete walls, 18-20flat colors, deliberately coarse square pixel clusters and dark contour. True transparent background around asset, including any gaps; no shadows outside strip. Small side panels should have clear bold shapes visible at logical12-20px; no photorealistic detail or blurred downsample look. Mild scuffs only; this is base version before aging. Use bright group colors ONLY on emblems and restrained trim. Preserve the approved reference's simple wall-embedded structural language, but do not carry over theatre masks, heart, duck or curtains. Muted green strip and station sliding steel-glass double door center. Two split cream poster panels: left white fox silhouette above black-red wolf silhouette; right purple cat silhouette above brown floppy-ear dog silhouette. All four heads distinct, large ear shapes, no tiny faces. One small green ticket slot beside door. No giant gamepad sign."
+      },
+      {
+        "name": "fantasy",
+        "label": "3기생 회관",
+        "desc": "Fantasy guild entrance reinterpretation, dark navy and brown wood door center with small silver metal studs. Left side panel one LARGE silver shield bearing BLUE RABBIT HEAD silhouette, combines Pekora and Noel. Right side two bold emblems: orange flame above burgundy pirate skull with crossed bones, Flare and Marine. Modest dull brass lintel, navy cloth narrow hanging trim. No castle or roof.",
+        "prompt": "Use case: stylized-concept. Use the referenced APPROVED theatre entrance ONLY as style, composition and scale reference. Create a DIFFERENT Hololive-themed facility wall entrance overlay. One isolated flat 3:1 strip, native logical96x32 pixel sprite, ONLY32pixels high in-game. Central full-height dark double door or gate with two side poster/emblem panels and straight thin connecting lintel. NO roof, tower, full building, projecting floor, stage, background, masonry outer building, minuscule filigree, lettering or people. All symbols and trim stay inside flat strip. Dark weathered metal framing in muted charcoal-brown matching HoloCrawl concrete walls, 18-20flat colors, deliberately coarse square pixel clusters and dark contour. True transparent background around asset, including any gaps; no shadows outside strip. Small side panels should have clear bold shapes visible at logical12-20px; no photorealistic detail or blurred downsample look. Mild scuffs only; this is base version before aging. Use bright group colors ONLY on emblems and restrained trim. Preserve the approved reference's simple wall-embedded structural language, but do not carry over theatre masks, heart, duck or curtains. Fantasy guild entrance reinterpretation, dark navy and brown wood door center with small silver metal studs. Left side panel one LARGE silver shield bearing BLUE RABBIT HEAD silhouette, combines Pekora and Noel. Right side two bold emblems: orange flame above burgundy pirate skull with crossed bones, Flare and Marine. Modest dull brass lintel, navy cloth narrow hanging trim. No castle or roof."
+      },
+      {
+        "name": "holox",
+        "label": "holoX 아지트",
+        "desc": "Secret headquarters with restrained violet trim and armored black-and-white orca patterned center double door. Left poster a large purple X with DARK CURVED HORNS and WHITE HAWK WINGS integrated as one simple crest, not projecting outside wall. Right side two coarse motifs: pink test tube beside teal katana. The secret crest large and legible. No bright all-white giant wings.",
+        "prompt": "Use case: stylized-concept. Use the referenced APPROVED theatre entrance ONLY as style, composition and scale reference. Create a DIFFERENT Hololive-themed facility wall entrance overlay. One isolated flat 3:1 strip, native logical96x32 pixel sprite, ONLY32pixels high in-game. Central full-height dark double door or gate with two side poster/emblem panels and straight thin connecting lintel. NO roof, tower, full building, projecting floor, stage, background, masonry outer building, minuscule filigree, lettering or people. All symbols and trim stay inside flat strip. Dark weathered metal framing in muted charcoal-brown matching HoloCrawl concrete walls, 18-20flat colors, deliberately coarse square pixel clusters and dark contour. True transparent background around asset, including any gaps; no shadows outside strip. Small side panels should have clear bold shapes visible at logical12-20px; no photorealistic detail or blurred downsample look. Mild scuffs only; this is base version before aging. Use bright group colors ONLY on emblems and restrained trim. Preserve the approved reference's simple wall-embedded structural language, but do not carry over theatre masks, heart, duck or curtains. Secret headquarters with restrained violet trim and armored black-and-white orca patterned center double door. Left poster a large purple X with DARK CURVED HORNS and WHITE HAWK WINGS integrated as one simple crest, not projecting outside wall. Right side two coarse motifs: pink test tube beside teal katana. The secret crest large and legible. No bright all-white giant wings."
+      },
+      {
+        "name": "wheel",
+        "label": "4기생 관람차 입구",
+        "desc": "Entrance to Gen4 Ferris wheel, not the actual whole wheel structure. Central dark purple metal ticket gate double doors. Left panel one LARGE clearly recognizable ferris wheel symbol using thick ring and just five colored gondola blocks: pale blue, orange, cream, purple, pink. Right panel has two stacked bold paired motifs: white angel wing and orange dragon horn above; cream sheep curl and purple devil wing around a pink crown below. Simplify symbols, no tiny faces. Dull brass/pink-purple narrow lintel, no freestanding wheel outside strip.",
+        "prompt": "Use case: stylized-concept. Use the referenced APPROVED theatre entrance ONLY as style, composition and scale reference. Create a DIFFERENT Hololive-themed facility wall entrance overlay. One isolated flat 3:1 strip, native logical96x32 pixel sprite, ONLY32pixels high in-game. Central full-height dark double door or gate with two side poster/emblem panels and straight thin connecting lintel. NO roof, tower, full building, projecting floor, stage, background, masonry outer building, minuscule filigree, lettering or people. All symbols and trim stay inside flat strip. Dark weathered metal framing in muted charcoal-brown matching HoloCrawl concrete walls, 18-20flat colors, deliberately coarse square pixel clusters and dark contour. True transparent background around asset, including any gaps; no shadows outside strip. Small side panels should have clear bold shapes visible at logical12-20px; no photorealistic detail or blurred downsample look. Mild scuffs only; this is base version before aging. Use bright group colors ONLY on emblems and restrained trim. Preserve the approved reference's simple wall-embedded structural language, but do not carry over theatre masks, heart, duck or curtains. Entrance to Gen4 Ferris wheel, not the actual whole wheel structure. Central dark purple metal ticket gate double doors. Left panel one LARGE clearly recognizable ferris wheel symbol using thick ring and just five colored gondola blocks: pale blue, orange, cream, purple, pink. Right panel has two stacked bold paired motifs: white angel wing and orange dragon horn above; cream sheep curl and purple devil wing around a pink crown below. Simplify symbols, no tiny faces. Dull brass/pink-purple narrow lintel, no freestanding wheel outside strip."
+      },
+      {
+        "name": "clock",
+        "label": "Promise 시계탑 입구",
+        "desc": "Entrance to Promise clock tower, no whole tower. Center navy steel double doors with slim dull brass trims. Left panel a LARGE CREAM ROUND CLOCK with bold navy hands and four ticks, about20px diameter, only clock sign not tower. Right panel three big colored bands containing green leaf, tan feather, red-black diamond, plus small rose crystal integrated at bottom. A small golden crescent lies on lintel INSIDE strip boundary. No height above wall.",
+        "prompt": "Use case: stylized-concept. Use the referenced APPROVED theatre entrance ONLY as style, composition and scale reference. Create a DIFFERENT Hololive-themed facility wall entrance overlay. One isolated flat 3:1 strip, native logical96x32 pixel sprite, ONLY32pixels high in-game. Central full-height dark double door or gate with two side poster/emblem panels and straight thin connecting lintel. NO roof, tower, full building, projecting floor, stage, background, masonry outer building, minuscule filigree, lettering or people. All symbols and trim stay inside flat strip. Dark weathered metal framing in muted charcoal-brown matching HoloCrawl concrete walls, 18-20flat colors, deliberately coarse square pixel clusters and dark contour. True transparent background around asset, including any gaps; no shadows outside strip. Small side panels should have clear bold shapes visible at logical12-20px; no photorealistic detail or blurred downsample look. Mild scuffs only; this is base version before aging. Use bright group colors ONLY on emblems and restrained trim. Preserve the approved reference's simple wall-embedded structural language, but do not carry over theatre masks, heart, duck or curtains. Entrance to Promise clock tower, no whole tower. Center navy steel double doors with slim dull brass trims. Left panel a LARGE CREAM ROUND CLOCK with bold navy hands and four ticks, about20px diameter, only clock sign not tower. Right panel three big colored bands containing green leaf, tan feather, red-black diamond, plus small rose crystal integrated at bottom. A small golden crescent lies on lintel INSIDE strip boundary. No height above wall."
+      }
+    ],
+    "native": [
+      96,
+      32
+    ]
+  }
+}

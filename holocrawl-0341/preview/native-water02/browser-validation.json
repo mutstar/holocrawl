@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "nativeMapsUnchanged": 6,
+  "approvedDoor12Unchanged": true,
+  "deepSurfaceUnchanged": true,
+  "shallowAndDeepSurfaces": [
+    128,
+    128
+  ],
+  "derived32pxPatchesPerSurface": 16,
+  "landEdgesAndConcaveCorners": true,
+  "depthTransition": true,
+  "mobileNoOverflow": true,
+  "errors": [],
+  "bad": [],
+  "nativeRuntimeModified": false
+}

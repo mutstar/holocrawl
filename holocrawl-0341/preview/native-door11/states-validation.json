@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "views": [
+    {
+      "axis": "horizontal",
+      "width": 24,
+      "height": 30,
+      "position": {
+        "x": 23,
+        "y": 6,
+        "score": 12
+      }
+    },
+    {
+      "axis": "vertical",
+      "width": 32,
+      "height": 30,
+      "position": {
+        "x": 44,
+        "y": 32,
+        "score": 0
+      }
+    }
+  ],
+  "openedBothOrientations": true,
+  "closedAndOpenVisuallyDifferent": true,
+  "nativeTerrainUnchanged": true,
+  "newRasterArtCreated": false,
+  "errors": [],
+  "bad": [],
+  "mobileNoOverflow": true
+}

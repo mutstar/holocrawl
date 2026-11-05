@@ -1,0 +1,403 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "map": 0,
+      "seed": 0,
+      "wall": "shirt-window",
+      "front": "plush-basket",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 1,
+      "wall": "shirt-window",
+      "front": "plush-basket",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 2,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 3,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 4,
+      "wall": "shirt-window",
+      "front": "plush-basket",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 5,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 6,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 7,
+      "wall": "shirt-window",
+      "front": "acrylic-rack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 8,
+      "wall": "shirt-window",
+      "front": "plush-basket",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 0,
+      "seed": 9,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 0,
+      "wall": "shirt-window",
+      "front": "hoodie-rack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 1,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 2,
+      "wall": "shirt-window",
+      "front": "plush-basket",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 3,
+      "wall": "shirt-window",
+      "front": "keychain-hooks",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 4,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 5,
+      "wall": "shirt-window",
+      "front": "hoodie-rack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 6,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 7,
+      "wall": "shirt-window",
+      "front": "keychain-hooks",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 8,
+      "wall": "shirt-window",
+      "front": "acrylic-rack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 1,
+      "seed": 9,
+      "wall": "shirt-window",
+      "front": "keychain-hooks",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 0,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 1,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 2,
+      "wall": "shirt-window",
+      "front": "keychain-hooks",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 3,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 4,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 5,
+      "wall": "shirt-window",
+      "front": "keychain-hooks",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 6,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 7,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 2,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 8,
+      "wall": "shirt-window",
+      "front": "hoodie-rack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    },
+    {
+      "map": 2,
+      "seed": 9,
+      "wall": "acrylic-window",
+      "front": "shirt-stack",
+      "shutters": [
+        "closed-shutter",
+        "half-shutter"
+      ],
+      "crates": 3,
+      "connected": true,
+      "unchangedRows": true
+    }
+  ],
+  "cratePositionsUnchanged": true,
+  "crateBounds": [
+    0,
+    0,
+    32,
+    32
+  ],
+  "errors": []
+}

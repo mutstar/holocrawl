@@ -1,0 +1,78 @@
+{
+  "mode": "browser exploration prototype",
+  "nativeTerrain": "fresh upstream0.34.1 D:1 headless builder exports, seeds2026110461/62/63",
+  "randomGeometryInBrowser": false,
+  "geometryChoices": 3,
+  "props": "one wall shop fixture + small rack, 2-3 destructible delivery crate fixtures, one rubbish pile; deterministic wall-edge placement",
+  "stairs": "selected DCSS original32x32 horizontal reflection, source PNG unchanged",
+  "LOS": "CrawlVisibility compute with original0.34.1 minimal ray footprints; opaque walls/closed doors block, clear walls transmit; radius7",
+  "movement": "8 directions, bump closed door opens before entering, impassable props and walls/deep water",
+  "memory": "explored fog and discovered-only routes/minimap",
+  "save": "position/exploration/doors plus broken crates, ground loot and inventory; backward compatible defaults",
+  "citySkin": "upstream trees and statues are blocked concrete structures in preview; rows unchanged",
+  "nativeGameArtApplied": false,
+  "combat": false,
+  "items": {
+    "implementation": "crate loot and pickup only",
+    "dropsPerCrate": 1,
+    "testTable": [
+      "healing potion x1",
+      "scroll x1",
+      "gold x10-20"
+    ],
+    "probability": "three equal draft categories, not final gameplay balance",
+    "useEffects": false
+  },
+  "floorTransitions": false,
+  "wallDecor": {
+    "types": [
+      "air conditioner (accepted unchanged)",
+      "horizontal connected piping3–5tiles",
+      "vent (accepted unchanged)",
+      "small electrical cabinet08 (unchanged)"
+    ],
+    "placement": "one per eligible wall run >=4 tiles, avoid doors/shopfronts",
+    "revision": "pipe-elbows10",
+    "pipeEnds": {
+      "left": "up",
+      "right": "down",
+      "lengthTiles": [
+        3,
+        5
+      ]
+    },
+    "pipeApproved": true,
+    "pipeApprovedDate": "2026-11-05",
+    "pipeApprovedRevision": "pipe-elbows10"
+  },
+  "shopDisplayPairing": {
+    "acrylic-window": "shirt-stack",
+    "shirt-window": [
+      "acrylic-rack",
+      "hoodie-rack",
+      "keychain-hooks",
+      "badge-trays",
+      "plush-basket"
+    ]
+  },
+  "shutters": [
+    "closed-shutter",
+    "half-shutter"
+  ],
+  "crateDrawing": {
+    "sourceBounds": [
+      3,
+      6,
+      26,
+      26
+    ],
+    "destination": [
+      32,
+      32
+    ],
+    "footprint": [
+      1,
+      1
+    ]
+  }
+}

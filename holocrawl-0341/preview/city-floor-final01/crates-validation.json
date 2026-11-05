@@ -1,0 +1,291 @@
+{
+  "status": "passed",
+  "placementCases": 30,
+  "crateCounts": [
+    3,
+    2
+  ],
+  "noPathBlocked": true,
+  "nearWalls": true,
+  "doorsAndStairsClear": true,
+  "oneTurnToBreak": true,
+  "oneDropPerCrate": true,
+  "deterministicLoot": true,
+  "stepToPickup": true,
+  "brokenDropInventorySaved": true,
+  "noDuplicateAfterReload": true,
+  "mobileNoOverflow": true,
+  "errors": [],
+  "cases": [
+    {
+      "map": 0,
+      "seed": 0,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 1,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 2,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 3,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 4,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 5,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 6,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 7,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 8,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 0,
+      "seed": 9,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 0,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 1,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 2,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 3,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 4,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 5,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 6,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 7,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 8,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 1,
+      "seed": 9,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 0,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 1,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 2,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 3,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 4,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 5,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 6,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 7,
+      "crates": 3,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 8,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    },
+    {
+      "map": 2,
+      "seed": 9,
+      "crates": 2,
+      "unchangedRows": true,
+      "allPathsRemain": true,
+      "clearOfDoorsAndStairs": true,
+      "wallBacked": true
+    }
+  ]
+}

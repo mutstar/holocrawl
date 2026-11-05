@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-05",
+  "nativeSeed": "2026110461",
+  "placementSeed": 21973769,
+  "geometryChoice": 0,
+  "crateCount": 2,
+  "fixtureCount": 7,
+  "shutterCount": 2,
+  "crateDrawSize": [
+    32,
+    32
+  ],
+  "mountedCount": 19,
+  "mountedTypes": 4,
+  "source": "one of three exported native D:1 geometries, new deterministic prop placement seed",
+  "explorationURL": "http://127.0.0.1:8798/city-explore01/?map=0&placement=21973769",
+  "reviewURL": "http://127.0.0.1:8798/city-explore01/layout-review.html",
+  "terrainUnchanged": true,
+  "stairsConnected": true,
+  "explorationMemoryUnchangedByReview": true,
+  "errors": []
+}

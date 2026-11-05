@@ -1,0 +1,17 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "seat",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon tile, native32x32 pixel art compatible with Dungeon Crawl Stone Soup tiles. Very low-resolution hard pixel clusters, limited muted palette, dark 1pixel outlines, no blur, no antialias, no gradients, no glow, no text. Orthographic top-down with front face depth as a DCSS object. Sparse readable forms. One single small abandoned theatre seat, dark burgundy padded back and seat, dull dark-metal armrests and two short legs. Facing SOUTH toward viewer, isolated TRUE TRANSPARENT background, no surrounding floor, no platform, no extra chairs. Object occupies about20x24px inside32tile; shadow only immediately under legs. Slight wear not huge broken parts. Avoid bright toy style."
+    },
+    {
+      "name": "curtain",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon tile, native32x32 pixel art compatible with Dungeon Crawl Stone Soup tiles. Very low-resolution hard pixel clusters, limited muted palette, dark 1pixel outlines, no blur, no antialias, no gradients, no glow, no text. Orthographic top-down with front face depth as a DCSS object. Sparse readable forms. One single vertical hanging theatre curtain wall decoration tile, burgundy cloth with three coarse vertical folds, narrow dark brass rail across top, frayed small lower edge, shadowed charcoal sides. TRUE TRANSPARENT background, no stage, no floor, no framing building. Curtain occupies about26pixels width and30height inside tile. Muted red dark enough for worn city setting but visible."
+    },
+    {
+      "name": "stage",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon tile, native32x32 pixel art compatible with Dungeon Crawl Stone Soup tiles. Very low-resolution hard pixel clusters, limited muted palette, dark 1pixel outlines, no blur, no antialias, no gradients, no glow, no text. Orthographic top-down with front face depth as a DCSS object. Sparse readable forms. One SEAMLESS FULL32x32 FLOOR texture tile for an old small theatre wooden stage, dark desaturated warm brown wooden planks running horizontally, only four broad plank courses, subtle irregular wear and sparse nail dots. Opaque edge-to-edge square, no borders, no wall, no perspective raised front, no objects, no emblem. Low contrast so loot sprites stay readable. Restrained low-resolution pixel art, no photographic noise."
+    }
+  ]
+}

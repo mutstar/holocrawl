@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "casesPerLayout": 60,
+  "totalMapCases": 180,
+  "connectedAndReachable": true,
+  "balancedMainRouteWidth3Preserved": true,
+  "meanSingleFileCells": {
+    "rooms": 106.73333333333333,
+    "balanced": 65.81666666666666,
+    "connected": 25.05
+  },
+  "meanWideCoreConnectedFraction": {
+    "rooms": 0.22184168526658662,
+    "balanced": 0.6552860933340401,
+    "connected": 0.9620467088415307
+  },
+  "balancedMetricsBetweenEndpoints": true,
+  "deterministicBySeed": true,
+  "walkedRouteSteps": 49,
+  "responsiveNoOverflow": true,
+  "nativeGameLaunched": false,
+  "errors": []
+}

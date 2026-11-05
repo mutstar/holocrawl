@@ -1,0 +1,24 @@
+{
+  "seed": "CITY-NATIVE-001",
+  "width": 80,
+  "height": 70,
+  "upstairs": {
+    "x": 16,
+    "y": 6
+  },
+  "downstairs": {
+    "x": 52,
+    "y": 65
+  },
+  "validation": {
+    "ok": true,
+    "walkable": 2484,
+    "reached": 2484,
+    "exitDistance": 130,
+    "border": true,
+    "prefab": true
+  },
+  "enemies": 0,
+  "items": 0,
+  "generator": "preview/street-vision01/generator.js"
+}

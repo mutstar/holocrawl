@@ -1,0 +1,165 @@
+{
+  "status": "passed",
+  "maps": [
+    {
+      "map": 0,
+      "plans": [
+        {
+          "start": 43,
+          "length": 5,
+          "end": 48,
+          "y": 8,
+          "safe": true
+        },
+        {
+          "start": 24,
+          "length": 3,
+          "end": 27,
+          "y": 19,
+          "safe": true
+        },
+        {
+          "start": 23,
+          "length": 4,
+          "end": 27,
+          "y": 26,
+          "safe": true
+        },
+        {
+          "start": 58,
+          "length": 5,
+          "end": 63,
+          "y": 30,
+          "safe": true
+        },
+        {
+          "start": 41,
+          "length": 3,
+          "end": 44,
+          "y": 46,
+          "safe": true
+        }
+      ],
+      "terrainUnchanged": true
+    },
+    {
+      "map": 1,
+      "plans": [
+        {
+          "start": 32,
+          "length": 5,
+          "end": 37,
+          "y": 13,
+          "safe": true
+        },
+        {
+          "start": 58,
+          "length": 5,
+          "end": 63,
+          "y": 19,
+          "safe": true
+        },
+        {
+          "start": 42,
+          "length": 3,
+          "end": 45,
+          "y": 29,
+          "safe": true
+        },
+        {
+          "start": 21,
+          "length": 5,
+          "end": 26,
+          "y": 47,
+          "safe": true
+        },
+        {
+          "start": 56,
+          "length": 4,
+          "end": 60,
+          "y": 48,
+          "safe": true
+        },
+        {
+          "start": 45,
+          "length": 4,
+          "end": 49,
+          "y": 49,
+          "safe": true
+        }
+      ],
+      "terrainUnchanged": true
+    },
+    {
+      "map": 2,
+      "plans": [
+        {
+          "start": 40,
+          "length": 5,
+          "end": 45,
+          "y": 10,
+          "safe": true
+        },
+        {
+          "start": 22,
+          "length": 3,
+          "end": 25,
+          "y": 13,
+          "safe": true
+        },
+        {
+          "start": 60,
+          "length": 4,
+          "end": 64,
+          "y": 14,
+          "safe": true
+        },
+        {
+          "start": 17,
+          "length": 3,
+          "end": 20,
+          "y": 20,
+          "safe": true
+        },
+        {
+          "start": 42,
+          "length": 3,
+          "end": 45,
+          "y": 40,
+          "safe": true
+        },
+        {
+          "start": 26,
+          "length": 3,
+          "end": 29,
+          "y": 44,
+          "safe": true
+        },
+        {
+          "start": 11,
+          "length": 4,
+          "end": 15,
+          "y": 55,
+          "safe": true
+        },
+        {
+          "start": 53,
+          "length": 4,
+          "end": 57,
+          "y": 58,
+          "safe": true
+        }
+      ],
+      "terrainUnchanged": true
+    }
+  ],
+  "selected": {
+    "start": 43,
+    "length": 5,
+    "end": 48,
+    "y": 8
+  },
+  "threeToFiveTiles": true,
+  "doorsAndShopfrontsAvoided": true,
+  "errors": []
+}

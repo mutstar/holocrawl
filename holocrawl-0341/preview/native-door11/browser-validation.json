@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "horizontalDoorPreserved": true,
+  "verticalNorthWallContextChanged": true,
+  "nativeMapsUnchanged": 6,
+  "mapAxisModeCases": 36,
+  "horizontalWidth": 24,
+  "verticalWidth": 32,
+  "openCloseWorks": true,
+  "comparisonCardsClickable": true,
+  "mobileNoOverflow": true,
+  "pageErrors": [],
+  "failedAssets": [],
+  "nativeRuntimeModified": false
+}

@@ -1,0 +1,14 @@
+{
+  "previous": "city-floor04",
+  "purpose": "mirror both stairs horizontally and add near-black outer contour",
+  "ascent": "right",
+  "descent": "left",
+  "outline": "1 native pixel; code-native canvas mask stroke preserves exact alpha boundary",
+  "sourceArt": "built-in imagegen outline edits; source kept before runtime mirror",
+  "terrainAndPlacementUnchanged": true,
+  "logicalFootprint": [
+    1,
+    1
+  ],
+  "nativeGameApplied": false
+}

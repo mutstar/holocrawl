@@ -1,0 +1,9 @@
+# Keep patches and shell scripts usable when checking out on Windows.
+*.patch text eol=lf
+*.sh text eol=lf
+
+*.png binary
+*.gif binary
+*.jpg binary
+*.jpeg binary
+*.webp binary

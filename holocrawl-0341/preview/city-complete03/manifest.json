@@ -1,0 +1,21 @@
+{
+  "purpose": "terrain contact and sprite grounding review",
+  "placement": "shop-front clusters, wall-backed deliveries, corner rubbish; open center",
+  "layout": "authored review map, not native procedural output",
+  "dimensions": [
+    42,
+    30
+  ],
+  "tileSize": 32,
+  "props": 20,
+  "terrainSource": "native-water02",
+  "commonArt": "city-layout07",
+  "nativeGameApplied": false,
+  "monsters": false,
+  "items": false,
+  "previous": "city-complete02",
+  "sameLayout": true,
+  "merchandiseSpritesUnchanged": true,
+  "stairArt": "built-in imagegen edits, transparent 32px derivatives",
+  "grounding": "canvas terrain wear, contact shadows and sprite base occlusion"
+}

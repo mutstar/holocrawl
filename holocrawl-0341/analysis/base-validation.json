@@ -1,0 +1,39 @@
+{
+  "tag": "0.34.1",
+  "checks": [
+    {
+      "name": "native-version",
+      "exitCode": 0,
+      "elapsedSeconds": 0.08,
+      "log": "analysis/native-version.log",
+      "versionConfirmed": true
+    },
+    {
+      "name": "native-builddb",
+      "exitCode": 0,
+      "elapsedSeconds": 6.88,
+      "log": "analysis/native-builddb.log"
+    },
+    {
+      "name": "native-los_maps",
+      "exitCode": 0,
+      "elapsedSeconds": 0.41,
+      "log": "analysis/native-los_maps.log"
+    },
+    {
+      "name": "native-los_symm",
+      "exitCode": 0,
+      "elapsedSeconds": 0.81,
+      "log": "analysis/native-los_symm.log"
+    },
+    {
+      "name": "native-los_csc",
+      "exitCode": 0,
+      "elapsedSeconds": 0.73,
+      "log": "analysis/native-los_csc.log"
+    }
+  ],
+  "nativeHolocrawlIntegrated": false,
+  "status": "passed",
+  "losTestInvocation": "Unmodified upstream Lua tests invoked through -script; not C++ diagnostic test harness."
+}

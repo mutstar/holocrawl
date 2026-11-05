@@ -1,0 +1,23 @@
+{
+  "version": "0.34.1",
+  "mapSource": "../native-layout08/native-maps.json",
+  "mapIndex": 1,
+  "crop": [
+    43,
+    10,
+    25,
+    19
+  ],
+  "stairs": {
+    "up": [
+      54,
+      16
+    ],
+    "down": [
+      57,
+      22
+    ]
+  },
+  "art": "unchanged upstream PNGs, default wall and floor families; deterministic illustrative variant choice, not original per-cell tile flavour",
+  "isGameScreenshot": false
+}

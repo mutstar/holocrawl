@@ -1,0 +1,382 @@
+[
+  {
+    "seed": "20261105201",
+    "originalCount": 12,
+    "candidateEntrances": 2,
+    "density": 0.55,
+    "added": [
+      {
+        "x": 17,
+        "y": 51,
+        "axis": "vertical",
+        "rooms": [
+          2,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 13,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105220",
+    "originalCount": 15,
+    "candidateEntrances": 7,
+    "density": 0.7,
+    "added": [
+      {
+        "x": 25,
+        "y": 30,
+        "axis": "horizontal",
+        "rooms": [
+          8,
+          5
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 13,
+        "y": 50,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          3
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 25,
+        "y": 26,
+        "axis": "horizontal",
+        "rooms": [
+          8,
+          5
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 13,
+        "y": 15,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          1
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 44,
+        "y": 18,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          13
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 13,
+        "y": 55,
+        "axis": "vertical",
+        "rooms": [
+          3,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 21,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105256",
+    "originalCount": 2,
+    "candidateEntrances": 13,
+    "density": 0.4,
+    "added": [
+      {
+        "x": 45,
+        "y": 44,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          9
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 47,
+        "y": 35,
+        "axis": "horizontal",
+        "rooms": [
+          4,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 40,
+        "y": 18,
+        "axis": "vertical",
+        "rooms": [
+          5,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 24,
+        "y": 44,
+        "axis": "horizontal",
+        "rooms": [
+          0,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 40,
+        "y": 52,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          6
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 43,
+        "y": 61,
+        "axis": "horizontal",
+        "rooms": [
+          7,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 49,
+        "y": 43,
+        "axis": "horizontal",
+        "rooms": [
+          9,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 9,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105203",
+    "originalCount": 0,
+    "candidateEntrances": 4,
+    "density": 0.7,
+    "added": [
+      {
+        "x": 30,
+        "y": 26,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          3
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 23,
+        "y": 57,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          1
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 25,
+        "y": 30,
+        "axis": "horizontal",
+        "rooms": [
+          2,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 36,
+        "y": 28,
+        "axis": "vertical",
+        "rooms": [
+          3,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 4,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105210",
+    "originalCount": 3,
+    "candidateEntrances": 6,
+    "density": 0.7,
+    "added": [
+      {
+        "x": 42,
+        "y": 49,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          6
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 30,
+        "y": 34,
+        "axis": "horizontal",
+        "rooms": [
+          2,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 22,
+        "y": 50,
+        "axis": "horizontal",
+        "rooms": [
+          0,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 37,
+        "y": 23,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          3
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 7,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105209",
+    "originalCount": 14,
+    "candidateEntrances": 2,
+    "density": 0.7,
+    "added": [
+      {
+        "x": 49,
+        "y": 35,
+        "axis": "horizontal",
+        "rooms": [
+          5,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 15,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105222",
+    "originalCount": 18,
+    "candidateEntrances": 8,
+    "density": 0.4,
+    "added": [
+      {
+        "x": 43,
+        "y": 52,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          12
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 19,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  },
+  {
+    "seed": "20261105297",
+    "originalCount": 7,
+    "candidateEntrances": 8,
+    "density": 0.7,
+    "added": [
+      {
+        "x": 31,
+        "y": 39,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          2
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 42,
+        "y": 26,
+        "axis": "horizontal",
+        "rooms": [
+          5,
+          null
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 50,
+        "y": 24,
+        "axis": "vertical",
+        "rooms": [
+          null,
+          10
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 30,
+        "y": 48,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          4
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 57,
+        "y": 35,
+        "axis": "horizontal",
+        "rooms": [
+          null,
+          12
+        ],
+        "distanceToRoom": 1
+      },
+      {
+        "x": 42,
+        "y": 32,
+        "axis": "horizontal",
+        "rooms": [
+          5,
+          null
+        ],
+        "distanceToRoom": 1
+      }
+    ],
+    "total": 13,
+    "rule": "probability at room entrances; preserve existing doors; small fallback only if total below two"
+  }
+]

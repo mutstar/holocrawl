@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "native": [
+    96,
+    32
+  ],
+  "wallFaceHeight": 32,
+  "alignedBottom": true,
+  "scaleToggle": true,
+  "mobileNoOverflow": true,
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "mode": "built-in image_gen",
+  "requestCorrection": "horizontal connected wall piping rather than multiple upright pipes",
+  "prompt": "Generate a NEW HORIZONTAL wall plumbing sprite strip for a DCSS-like urban dungeon. Attached old vertical pipe bundle is a MATERIAL/pixel-style reference ONLY. Primary requirement: a long continuous pipe running LEFT TO RIGHT across THREE adjacent32x32 wall tiles, final asset96x32. Extremely wide landscape strip. One main horizontal weathered gray-brown steel pipe, about4 native pixels thick, with visible coupling sleeves spaced along its length and three small wall fixing brackets. A thinner parallel conduit may run horizontally just below the main pipe, connected by one very short branch, but overwhelmingly horizontal. No tall upright bundle. Main pipe centerline must stay exactly horizontal at the SAME vertical height all the way across left, middle and right thirds. Middle third must be straight and reusable to extend the run to4-5tiles. Left/right ends can have compact flange caps; no long dangling pipes. Whole visible piping about96pixels wide and12-16pixels tall, centered vertically in96x32 transparent canvas. Hard chunky pixel art, designed for final native96x32 not a high detail illustration, dark1pixel outline, restrained metal highlights, rust at couplings matching muted brown-gray wall. Genuinely transparent outside pipes/brackets. No wall, no ground, no text, no cabinet, no schematic background.",
+  "referenceMaterialOnly": "assets/wall-pipe08-32.png",
+  "original": "assets/wall-pipe-horizontal09-original.png",
+  "tileStrip": "assets/wall-pipe-horizontal09-96.png",
+  "nativeSize": [
+    96,
+    32
+  ],
+  "visibleSize": [
+    96,
+    14
+  ],
+  "rendering": "left/middle/right32px segments; repeat straight middle to span3–5 consecutive safe wall tiles; do not cross doors or shopfronts",
+  "unchanged": [
+    "air conditioner",
+    "vent",
+    "small electrical cabinet08",
+    "gameplay and saved state"
+  ],
+  "validation": "horizontal-pipes09-validation.json"
+}

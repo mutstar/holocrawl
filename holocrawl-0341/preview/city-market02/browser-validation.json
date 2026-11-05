@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "fixtureTypes": 20,
+  "wallFacades": 5,
+  "floorProps": 15,
+  "members": 84,
+  "mapCases": 120,
+  "allFixtureTypesPlaced": true,
+  "allMembersReachableFromRandomPool": true,
+  "threeDistinctMembersPerDisplay": true,
+  "deterministicStock": true,
+  "stockShufflePreservesMapAndFixtures": true,
+  "shirtColorsAvailableForAllMembers": true,
+  "memberSearchWorks": true,
+  "responsiveNoOverflow": true,
+  "nativeGameLaunched": false,
+  "errors": []
+}

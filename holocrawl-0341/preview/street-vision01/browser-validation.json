@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "errors": [],
+  "initialFogEnabled": true,
+  "unexploredHidden": true,
+  "toggleKeepsExplorationMemory": true,
+  "hiddenEnemiesFiltered": true,
+  "exploredTerrainRetained": true,
+  "unknownClickDoesNotMove": true,
+  "autoWalkStopsOnNewEnemy": true,
+  "diagonalKeyboardMovement": true,
+  "responsiveNoOverflow": true,
+  "movementSteps": 49
+}

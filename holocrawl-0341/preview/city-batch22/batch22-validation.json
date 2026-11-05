@@ -1,0 +1,985 @@
+{
+  "status": "passed",
+  "mapCount": 8,
+  "sameEightLayoutsWithSeparatedStairs": true,
+  "eightMapSelectionWorks": true,
+  "errors": [],
+  "maps": [
+    {
+      "index": 0,
+      "seed": "20261105201",
+      "layout": "layout_basic",
+      "doors": 13,
+      "originalDoors": 12,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 3,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1469,
+        "reachable": 1460,
+        "blocked": 9,
+        "props": 10,
+        "fenceTiles": 3,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 47,
+            "y": 37,
+            "front": {
+              "x": 47,
+              "y": 38
+            },
+            "distance": 11
+          },
+          {
+            "x": 49,
+            "y": 3,
+            "front": {
+              "x": 50,
+              "y": 4
+            },
+            "distance": 51
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2368,
+        2112
+      ],
+      "stairPlacement": {
+        "entry": [
+          38,
+          45
+        ],
+        "before": {
+          "entryMinSteps": 27,
+          "entryMinGridDistance": 24,
+          "downstairsMinSteps": 1,
+          "downstairsMinGridDistance": 1
+        },
+        "after": {
+          "entryMinSteps": 27,
+          "entryMinGridDistance": 13,
+          "downstairsMinSteps": 22,
+          "downstairsMinGridDistance": 21
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              44,
+              15
+            ],
+            "new": [
+              44,
+              15
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              23,
+              21
+            ],
+            "new": [
+              23,
+              21
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              24,
+              21
+            ],
+            "new": [
+              25,
+              49
+            ]
+          }
+        ],
+        "moved": 1,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 1,
+      "seed": "20261105220",
+      "layout": "layout_loops_corners",
+      "doors": 21,
+      "originalDoors": 15,
+      "addedDoors": 6,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1603,
+        "reachable": 1595,
+        "blocked": 8,
+        "props": 10,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 29,
+            "y": 7,
+            "front": {
+              "x": 29,
+              "y": 8
+            },
+            "distance": 15
+          },
+          {
+            "x": 27,
+            "y": 40,
+            "front": {
+              "x": 28,
+              "y": 41
+            },
+            "distance": 27
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2240,
+        2176
+      ],
+      "stairPlacement": {
+        "entry": [
+          39,
+          21
+        ],
+        "before": {
+          "entryMinSteps": 14,
+          "entryMinGridDistance": 14,
+          "downstairsMinSteps": 9,
+          "downstairsMinGridDistance": 9
+        },
+        "after": {
+          "entryMinSteps": 36,
+          "entryMinGridDistance": 32,
+          "downstairsMinSteps": 19,
+          "downstairsMinGridDistance": 14
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              25,
+              12
+            ],
+            "new": [
+              57,
+              62
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              25,
+              21
+            ],
+            "new": [
+              24,
+              53
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              14,
+              67
+            ],
+            "new": [
+              14,
+              67
+            ]
+          }
+        ],
+        "moved": 2,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 2,
+      "seed": "20261105256",
+      "layout": "layout_loops_cross",
+      "doors": 9,
+      "originalDoors": 2,
+      "addedDoors": 7,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1119,
+        "reachable": 1112,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 14,
+            "y": 41,
+            "front": {
+              "x": 15,
+              "y": 42
+            },
+            "distance": 23
+          },
+          {
+            "x": 42,
+            "y": 33,
+            "front": {
+              "x": 42,
+              "y": 34
+            },
+            "distance": 43
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        2112
+      ],
+      "stairPlacement": {
+        "entry": [
+          7,
+          62
+        ],
+        "before": {
+          "entryMinSteps": 51,
+          "entryMinGridDistance": 24,
+          "downstairsMinSteps": 11,
+          "downstairsMinGridDistance": 10
+        },
+        "after": {
+          "entryMinSteps": 47,
+          "entryMinGridDistance": 24,
+          "downstairsMinSteps": 15,
+          "downstairsMinGridDistance": 14
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              32,
+              6
+            ],
+            "new": [
+              32,
+              6
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              27,
+              16
+            ],
+            "new": [
+              28,
+              20
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              31,
+              57
+            ],
+            "new": [
+              31,
+              57
+            ]
+          }
+        ],
+        "moved": 1,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 3,
+      "seed": "20261105203",
+      "layout": "layout_loops_ring",
+      "doors": 4,
+      "originalDoors": 0,
+      "addedDoors": 4,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 985,
+        "reachable": 978,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 13,
+            "y": 36,
+            "front": {
+              "x": 13,
+              "y": 37
+            },
+            "distance": 25
+          },
+          {
+            "x": 38,
+            "y": 56,
+            "front": {
+              "x": 38,
+              "y": 57
+            },
+            "distance": 25
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        1792
+      ],
+      "stairPlacement": {
+        "entry": [
+          38,
+          41
+        ],
+        "before": {
+          "entryMinSteps": 24,
+          "entryMinGridDistance": 17,
+          "downstairsMinSteps": 3,
+          "downstairsMinGridDistance": 3
+        },
+        "after": {
+          "entryMinSteps": 24,
+          "entryMinGridDistance": 15,
+          "downstairsMinSteps": 19,
+          "downstairsMinGridDistance": 19
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              62,
+              17
+            ],
+            "new": [
+              62,
+              17
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              21,
+              29
+            ],
+            "new": [
+              21,
+              29
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              21,
+              32
+            ],
+            "new": [
+              40,
+              26
+            ]
+          }
+        ],
+        "moved": 1,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 4,
+      "seed": "20261105210",
+      "layout": "layout_rooms",
+      "doors": 7,
+      "originalDoors": 3,
+      "addedDoors": 4,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 3,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 917,
+        "reachable": 908,
+        "blocked": 9,
+        "props": 10,
+        "fenceTiles": 3,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 65,
+            "y": 51,
+            "front": {
+              "x": 66,
+              "y": 52
+            },
+            "distance": 26
+          },
+          {
+            "x": 43,
+            "y": 34,
+            "front": {
+              "x": 44,
+              "y": 35
+            },
+            "distance": 33
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2080,
+        1568
+      ],
+      "stairPlacement": {
+        "entry": [
+          76,
+          34
+        ],
+        "before": {
+          "entryMinSteps": 39,
+          "entryMinGridDistance": 38,
+          "downstairsMinSteps": 2,
+          "downstairsMinGridDistance": 2
+        },
+        "after": {
+          "entryMinSteps": 36,
+          "entryMinGridDistance": 24,
+          "downstairsMinSteps": 27,
+          "downstairsMinGridDistance": 22
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              30,
+              18
+            ],
+            "new": [
+              30,
+              18
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              36,
+              29
+            ],
+            "new": [
+              47,
+              51
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              38,
+              29
+            ],
+            "new": [
+              52,
+              15
+            ]
+          }
+        ],
+        "moved": 2,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 5,
+      "seed": "20261105209",
+      "layout": "layout_basic",
+      "doors": 15,
+      "originalDoors": 14,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 3,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 681,
+        "reachable": 672,
+        "blocked": 9,
+        "props": 10,
+        "fenceTiles": 3,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 32,
+            "y": 45,
+            "front": {
+              "x": 33,
+              "y": 46
+            },
+            "distance": 17
+          },
+          {
+            "x": 15,
+            "y": 28,
+            "front": {
+              "x": 15,
+              "y": 29
+            },
+            "distance": 21
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2176,
+        1472
+      ],
+      "stairPlacement": {
+        "entry": [
+          26,
+          37
+        ],
+        "before": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 11,
+          "downstairsMinSteps": 37,
+          "downstairsMinGridDistance": 31
+        },
+        "after": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 11,
+          "downstairsMinSteps": 37,
+          "downstairsMinGridDistance": 31
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              21,
+              14
+            ],
+            "new": [
+              21,
+              14
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              65,
+              16
+            ],
+            "new": [
+              65,
+              16
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              37,
+              47
+            ],
+            "new": [
+              37,
+              47
+            ]
+          }
+        ],
+        "moved": 0,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 6,
+      "seed": "20261105222",
+      "layout": "layout_loops_corners",
+      "doors": 19,
+      "originalDoors": 18,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1657,
+        "reachable": 1650,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 18,
+            "y": 23,
+            "front": {
+              "x": 19,
+              "y": 24
+            },
+            "distance": 24
+          },
+          {
+            "x": 8,
+            "y": 55,
+            "front": {
+              "x": 9,
+              "y": 56
+            },
+            "distance": 57
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2400,
+        2176
+      ],
+      "stairPlacement": {
+        "entry": [
+          3,
+          17
+        ],
+        "before": {
+          "entryMinSteps": 31,
+          "entryMinGridDistance": 23,
+          "downstairsMinSteps": 35,
+          "downstairsMinGridDistance": 21
+        },
+        "after": {
+          "entryMinSteps": 31,
+          "entryMinGridDistance": 23,
+          "downstairsMinSteps": 35,
+          "downstairsMinGridDistance": 21
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              26,
+              19
+            ],
+            "new": [
+              26,
+              19
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              66,
+              19
+            ],
+            "new": [
+              66,
+              19
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              67,
+              40
+            ],
+            "new": [
+              67,
+              40
+            ]
+          }
+        ],
+        "moved": 0,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    },
+    {
+      "index": 7,
+      "seed": "20261105297",
+      "layout": "layout_loops_cross",
+      "doors": 13,
+      "originalDoors": 7,
+      "addedDoors": 6,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1272,
+        "reachable": 1264,
+        "blocked": 8,
+        "props": 10,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 47,
+            "y": 20,
+            "front": {
+              "x": 47,
+              "y": 21
+            },
+            "distance": 28
+          },
+          {
+            "x": 34,
+            "y": 4,
+            "front": {
+              "x": 35,
+              "y": 5
+            },
+            "distance": 49
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        2016
+      ],
+      "stairPlacement": {
+        "entry": [
+          54,
+          45
+        ],
+        "before": {
+          "entryMinSteps": 23,
+          "entryMinGridDistance": 17,
+          "downstairsMinSteps": 25,
+          "downstairsMinGridDistance": 24
+        },
+        "after": {
+          "entryMinSteps": 23,
+          "entryMinGridDistance": 17,
+          "downstairsMinSteps": 25,
+          "downstairsMinGridDistance": 24
+        },
+        "stairs": [
+          {
+            "feature": "stone_stairs_down_iii",
+            "old": [
+              58,
+              27
+            ],
+            "new": [
+              58,
+              27
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_ii",
+            "old": [
+              21,
+              30
+            ],
+            "new": [
+              21,
+              30
+            ]
+          },
+          {
+            "feature": "stone_stairs_down_i",
+            "old": [
+              37,
+              54
+            ],
+            "new": [
+              37,
+              54
+            ]
+          }
+        ],
+        "moved": 0,
+        "rules": {
+          "entryMinSteps": 18,
+          "entryMinGridDistance": 9,
+          "downstairsMinSteps": 14,
+          "downstairsMinGridDistance": 8,
+          "stairsCount": "one entry, three downstairs",
+          "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+        }
+      },
+      "stateUnchanged": true
+    }
+  ]
+}

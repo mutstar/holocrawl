@@ -1,0 +1,17 @@
+{
+  "variants": 8,
+  "counts": [
+    2564,
+    260,
+    240,
+    248,
+    242,
+    273,
+    240,
+    206
+  ],
+  "changedPixels": 41378,
+  "connectionEdgesUnchanged": true,
+  "deterministicAfterReload": true,
+  "errors": []
+}

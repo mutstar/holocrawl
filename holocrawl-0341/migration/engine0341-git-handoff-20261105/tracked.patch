@@ -1,0 +1,266 @@
+diff --git a/crawl-ref/source/Makefile.obj b/crawl-ref/source/Makefile.obj
+index 3ea053344f18fc93fc346dbd183ea1d19ae08949..1c01f8da8dca938d93ebe33fb8771f960493811c 100644
+--- a/crawl-ref/source/Makefile.obj
++++ b/crawl-ref/source/Makefile.obj
+@@ -1,4 +1,7 @@
+ OBJECTS = \
++holo34-framework.o \
++holo34-visibility.o \
++holo34-street.o \
+ ability.o \
+ abyss.o \
+ acquire.o \
+diff --git a/crawl-ref/source/ctest.cc b/crawl-ref/source/ctest.cc
+index 1893f8be256faecc43dbd27ce8733c8aa0296d54..749f474dc16a9c872ed89a2790c6fff74aa24c0a 100644
+--- a/crawl-ref/source/ctest.cc
++++ b/crawl-ref/source/ctest.cc
+@@ -14,6 +14,8 @@
+ #include "AppHdr.h"
+ 
+ #include "ctest.h"
++#include "holo34-street.h"
++#include <stdexcept>
+ 
+ #include <algorithm>
+ #include <vector>
+@@ -82,11 +84,23 @@ static int crawl_script_args(lua_State *ls)
+     return clua_stringtable(ls, crawl_state.script_args);
+ }
+ 
++static int crawl_holo_street_test(lua_State *ls)
++{
++    try {
++        const auto result = holo34::street_native_test();
++        std::puts(result.c_str());
++        lua_pushstring(ls,result.c_str());
++        return 1;
++    } catch (const std::exception &e) {
++        return luaL_error(ls,"Native street test: %s",e.what());
++    }
++}
+ static const struct luaL_Reg crawl_test_lib[] =
+ {
+     { "begin_test", crawl_begin_test },
+     { "test_success", crawl_test_success },
+     { "script_args", crawl_script_args },
++    { "holo_street_test", crawl_holo_street_test },
+     { nullptr, nullptr }
+ };
+ 
+diff --git a/crawl-ref/source/dungeon.cc b/crawl-ref/source/dungeon.cc
+index a8fa405af07613e76c4182402e19a7bbe933b003..0d435f68d44fbdc164ec92ca7053791bad6c8b06 100644
+--- a/crawl-ref/source/dungeon.cc
++++ b/crawl-ref/source/dungeon.cc
+@@ -6,6 +6,7 @@
+ #include "AppHdr.h"
+ 
+ #include "dungeon.h"
++#include "holo34-street.h"
+ 
+ #include <algorithm>
+ #include <cmath>
+@@ -464,6 +465,21 @@ static bool _build_level_vetoable(bool enable_random_maps)
+     env.branch_uniq_map_tags = branch_uniq_map_tags[you.where_are_you];
+     dgn_reset_level(enable_random_maps);
+ 
++    // The isolated street prototype reuses the approved procedural layout.
++    // No ordinary vault, creature, item, or trap allocator runs on this floor.
++    try {
++        if (holo34::build_street_floor()) {
++            _dgn_set_floor_colours();
++            _dgn_postprocess_level();
++            _dgn_map_colour_fixup();
++            env.properties[BUILD_METHOD_KEY] = env.level_build_method;
++            env.properties[LAYOUT_TYPE_KEY] = "holocrawl_street01";
++            return true;
++        }
++    } catch (const std::exception &e) {
++        die("Invalid HoloCrawl street export: %s", e.what());
++    }
++
+     if (player_in_branch(BRANCH_TEMPLE))
+         _setup_temple_altars(you.props);
+ 
+diff --git a/crawl-ref/source/main.cc b/crawl-ref/source/main.cc
+index 6ecd2665af39fd70504a66d81e35ea2527b25f44..3e87c2d0a5f82016a08aab04c1d311b1df8eb30c 100644
+--- a/crawl-ref/source/main.cc
++++ b/crawl-ref/source/main.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo34-framework.h"
+ 
+ #include <algorithm>
+ #include <cerrno>
+@@ -238,6 +239,9 @@ __attribute__((externally_visible))
+ #endif
+ int main(int argc, char *argv[])
+ {
++    const int holo_command = holo34::command_line(argc, argv);
++    if (holo_command >= 0)
++        return holo_command;
+ #ifdef DGAMELAUNCH
+     // avoid commas instead of dots, etc, on CDO
+     setlocale(LC_CTYPE, "");
+diff --git a/crawl-ref/source/rltiles/dc-feat.txt b/crawl-ref/source/rltiles/dc-feat.txt
+index edf293b052765ed321dab3402756a2a16a87301d..94def28198d8deebcc6b3c6970364fc4fb0848db 100644
+--- a/crawl-ref/source/rltiles/dc-feat.txt
++++ b/crawl-ref/source/rltiles/dc-feat.txt
+@@ -1089,3 +1089,13 @@ vine_corner_SW VINE_OVERLAY_SW
+ %blank 32 32
+ %finish HIGHLIGHT_BRIGHT_YELLOW
+ %syn RAY_MULTI
++
++# HOLOCRAWL STREET01
++%sdir holocrawl
++%back none
++%rim 0
++%shrink 0
++%weight 10
++holo_street_up12 HOLO_STREET_UP12
++holo_street_down06 HOLO_STREET_DOWN06
++holo_street_fence HOLO_STREET_FENCE
+diff --git a/crawl-ref/source/rltiles/dc-floor.txt b/crawl-ref/source/rltiles/dc-floor.txt
+index 2008f9c59df559f092cefc4221d613fa8b6819b7..07e409cba35fee635e03e84c0a090577b2146096 100644
+--- a/crawl-ref/source/rltiles/dc-floor.txt
++++ b/crawl-ref/source/rltiles/dc-floor.txt
+@@ -1411,3 +1411,14 @@ ink_full WAVE_INK_FULL
+ %shrink 1
+ liquefaction1 LIQUEFACTION
+ liquefaction2
++
++# HOLOCRAWL STREET01
++%sdir holocrawl
++%back none
++%rim 0
++%shrink 0
++%weight 10
++holo_street_floor0 HOLO_STREET_FLOOR0
++holo_street_floor1 HOLO_STREET_FLOOR1
++holo_street_floor2 HOLO_STREET_FLOOR2
++holo_street_floor3 HOLO_STREET_FLOOR3
+diff --git a/crawl-ref/source/rltiles/dc-wall.txt b/crawl-ref/source/rltiles/dc-wall.txt
+index 9beeebb4d28897aefdb2338b411679dd5f20e121..b6e32a1018b7f14cb7dbce7d7b1f2d317f17b258 100644
+--- a/crawl-ref/source/rltiles/dc-wall.txt
++++ b/crawl-ref/source/rltiles/dc-wall.txt
+@@ -2208,3 +2208,98 @@ icy_wall_overlay3
+ 
+ rime_wall0 DNGN_WALL_FRIGID
+ rime_wall1
++
++# HOLOCRAWL STREET01
++%sdir holocrawl
++%back none
++%rim 0
++%shrink 0
++%weight 10
++holo_street_wall0 HOLO_STREET_WALL0
++holo_street_wall1 HOLO_STREET_WALL1
++holo_street_wall2 HOLO_STREET_WALL2
++holo_street_wall3 HOLO_STREET_WALL3
++holo_street_wall4 HOLO_STREET_WALL4
++holo_street_wall5 HOLO_STREET_WALL5
++holo_street_wall6 HOLO_STREET_WALL6
++holo_street_wall7 HOLO_STREET_WALL7
++holo_street_wall8 HOLO_STREET_WALL8
++holo_street_wall9 HOLO_STREET_WALL9
++holo_street_wall10 HOLO_STREET_WALL10
++holo_street_wall11 HOLO_STREET_WALL11
++holo_street_wall12 HOLO_STREET_WALL12
++holo_street_wall13 HOLO_STREET_WALL13
++holo_street_wall14 HOLO_STREET_WALL14
++holo_street_wall15 HOLO_STREET_WALL15
++holo_street_wall16 HOLO_STREET_WALL16
++holo_street_wall17 HOLO_STREET_WALL17
++holo_street_wall18 HOLO_STREET_WALL18
++holo_street_wall19 HOLO_STREET_WALL19
++holo_street_wall20 HOLO_STREET_WALL20
++holo_street_wall21 HOLO_STREET_WALL21
++holo_street_wall22 HOLO_STREET_WALL22
++holo_street_wall23 HOLO_STREET_WALL23
++holo_street_wall24 HOLO_STREET_WALL24
++holo_street_wall25 HOLO_STREET_WALL25
++holo_street_wall26 HOLO_STREET_WALL26
++holo_street_wall27 HOLO_STREET_WALL27
++holo_street_wall28 HOLO_STREET_WALL28
++holo_street_wall29 HOLO_STREET_WALL29
++holo_street_wall30 HOLO_STREET_WALL30
++holo_street_wall31 HOLO_STREET_WALL31
++holo_street_wall32 HOLO_STREET_WALL32
++holo_street_wall33 HOLO_STREET_WALL33
++holo_street_wall34 HOLO_STREET_WALL34
++holo_street_wall35 HOLO_STREET_WALL35
++holo_street_wall36 HOLO_STREET_WALL36
++holo_street_wall37 HOLO_STREET_WALL37
++holo_street_wall38 HOLO_STREET_WALL38
++holo_street_wall39 HOLO_STREET_WALL39
++holo_street_wall40 HOLO_STREET_WALL40
++holo_street_wall41 HOLO_STREET_WALL41
++holo_street_wall42 HOLO_STREET_WALL42
++holo_street_wall43 HOLO_STREET_WALL43
++holo_street_wall44 HOLO_STREET_WALL44
++holo_street_wall45 HOLO_STREET_WALL45
++holo_street_wall46 HOLO_STREET_WALL46
++holo_street_wall47 HOLO_STREET_WALL47
++holo_street_wall48 HOLO_STREET_WALL48
++holo_street_wall49 HOLO_STREET_WALL49
++holo_street_wall50 HOLO_STREET_WALL50
++holo_street_wall51 HOLO_STREET_WALL51
++holo_street_wall52 HOLO_STREET_WALL52
++holo_street_wall53 HOLO_STREET_WALL53
++holo_street_wall54 HOLO_STREET_WALL54
++holo_street_wall55 HOLO_STREET_WALL55
++holo_street_wall56 HOLO_STREET_WALL56
++holo_street_wall57 HOLO_STREET_WALL57
++holo_street_wall58 HOLO_STREET_WALL58
++holo_street_wall59 HOLO_STREET_WALL59
++holo_street_wall60 HOLO_STREET_WALL60
++holo_street_wall61 HOLO_STREET_WALL61
++holo_street_wall62 HOLO_STREET_WALL62
++holo_street_wall63 HOLO_STREET_WALL63
++holo_street_wall64 HOLO_STREET_WALL64
++holo_street_wall65 HOLO_STREET_WALL65
++holo_street_wall66 HOLO_STREET_WALL66
++holo_street_wall67 HOLO_STREET_WALL67
++holo_street_wall68 HOLO_STREET_WALL68
++holo_street_wall69 HOLO_STREET_WALL69
++holo_street_wall70 HOLO_STREET_WALL70
++holo_street_wall71 HOLO_STREET_WALL71
++holo_street_wall72 HOLO_STREET_WALL72
++holo_street_wall73 HOLO_STREET_WALL73
++holo_street_wall74 HOLO_STREET_WALL74
++holo_street_wall75 HOLO_STREET_WALL75
++holo_street_wall76 HOLO_STREET_WALL76
++holo_street_wall77 HOLO_STREET_WALL77
++holo_street_wall78 HOLO_STREET_WALL78
++holo_street_wall79 HOLO_STREET_WALL79
++holo_street_wall80 HOLO_STREET_WALL80
++holo_street_wall81 HOLO_STREET_WALL81
++holo_street_wall82 HOLO_STREET_WALL82
++holo_street_wall83 HOLO_STREET_WALL83
++holo_street_wall84 HOLO_STREET_WALL84
++holo_street_wall85 HOLO_STREET_WALL85
++holo_street_wall86 HOLO_STREET_WALL86
++holo_street_wall87 HOLO_STREET_WALL87
+diff --git a/crawl-ref/source/stairs.cc b/crawl-ref/source/stairs.cc
+index 8f75ef7fe174874e3ce6efdd84b92b9b7e427bb9..bae15b0f3501dd5c8ea301ea792765f71275b5dc 100644
+--- a/crawl-ref/source/stairs.cc
++++ b/crawl-ref/source/stairs.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo34-street.h"
+ 
+ #include "stairs.h"
+ 
+@@ -1145,6 +1146,10 @@ void floor_transition(dungeon_feature_type how,
+ void take_stairs(dungeon_feature_type force_stair, bool going_up,
+                  bool force_known_shaft, bool update_travel_cache)
+ {
++    if (holo34::is_street_floor()) {
++        mpr("Street prototype: floor travel will be connected next. Use Ctrl-S to save.");
++        return;
++    }
+     const dungeon_feature_type old_feat = orig_terrain(you.pos());
+     dungeon_feature_type how = force_stair ? force_stair : old_feat;
+ 

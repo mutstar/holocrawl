@@ -1,0 +1,12 @@
+{
+  "id": "irys",
+  "name": "IRyS",
+  "nameJa": "IRyS",
+  "status": "active",
+  "profile": "https://hololive.hololivepro.com/en/talents/irys/",
+  "image": "assets/members/irys.png",
+  "artSource": "https://hololive.hololivepro.com/wp-content/uploads/2020/07/IRyS_pr-img_01.webp",
+  "color": "#8c1236",
+  "colorSource": "https://vtubernews.com/datalist-0009/",
+  "colorStatus": "representative preview colour; not a claim of official brand hex"
+}

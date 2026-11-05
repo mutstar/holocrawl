@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "ascending staircase only; descending final PNG preserved byte-for-byte from city-floor05",
+  "prompt": "Edit target: first attached ascending concrete staircase tile, already rising to RIGHT. Supporting reference ONLY: second image descending staircase, its thick broad steps are approved and must NOT be changed. Replace the too many skinny stair treads of first image with EXACTLY FOUR broad chunky steps, each about the same apparent tread width and riser thickness as the FOUR steps in the second image. Preserve rightward ascent (highest step upper RIGHT, lowest lower LEFT), diagonal wedge silhouette, compact32x32 footprint, gray concrete palette and dark black one-pixel outer contour, light gray tread edges and dark riser faces. Make each of FOUR treads clearly separate and fat, no intermediate mini treads. Match native pixel chunkiness of second image. Transparent outside stair. No rails, no circle, no pedestal, no extra platform, no background tile, no text, no tiny subdivisions, no more than four steps. True low-resolution pixel art designed for32x32 use. Do NOT mirror: highest on RIGHT exactly as first image.",
+  "referenceApprovedDown": "assets/city-stairs-down-final32.png",
+  "generatedOriginal": "assets/thick-stairs-up-original.png",
+  "tile": "assets/thick-stairs-up32.png",
+  "renderedFinal": "assets/city-stairs-up-thick-final32.png",
+  "direction": "rises right",
+  "treads": 4,
+  "rendering": "30x30 image centered in32 tile plus1px near-black contour. No horizontal mirror; generated image already rises right."
+}

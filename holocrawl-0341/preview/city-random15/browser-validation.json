@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "unexploredHidden": true,
+  "wallCollision": true,
+  "eightWayMovement": true,
+  "closedDoorBlocksLOS": true,
+  "doorOpensBeforeEntering": true,
+  "doorCloses": true,
+  "clickAutoWalkKnownOnly": true,
+  "visitedAreaRemembered": true,
+  "saveReload": true,
+  "miniMapKnownOnly": true,
+  "mobileNoOverflow": true,
+  "stairs": "unchanged DCSS mirrored originals",
+  "cases": [
+    {
+      "seed": "20261105155",
+      "stairsConnected": true,
+      "visible": 144,
+      "props": 10,
+      "rowsUnchanged": true,
+      "allPassable": 819
+    },
+    {
+      "seed": "20261105156",
+      "stairsConnected": true,
+      "visible": 60,
+      "props": 10,
+      "rowsUnchanged": true,
+      "allPassable": 1437
+    },
+    {
+      "seed": "20261105159",
+      "stairsConnected": true,
+      "visible": 20,
+      "props": 10,
+      "rowsUnchanged": true,
+      "allPassable": 1528
+    }
+  ],
+  "doorTest": {
+    "closedVisible": 0,
+    "openVisible": 1,
+    "stayed": true,
+    "openedOK": true,
+    "entered": true,
+    "closedAgain": true
+  },
+  "errors": []
+}

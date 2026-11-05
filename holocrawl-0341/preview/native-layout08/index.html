@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>돌죽 원본 지형 × 잔향도시</title><link rel="stylesheet" href="style.css"></head><body><main>
+<header><div class="eyebrow">HOLOCRAWL / DCSS 0.34.1</div><h1>돌죽 원본 지형에 도시 타일을 입히면</h1><p>원본 생성기로 뽑은 지도 6개입니다. <b>벽·길·문·물·계단 위치를 그대로 두고</b> 시멘트 바닥과 도시 벽을 입혔습니다.<br>아래 지도를 누르면 거리 크기로 볼 수 있어요.</p></header>
+<section id="gallery" class="gallery" aria-label="원본 지도 6개"></section>
+<p class="legend"><span>■ 이동 공간</span><span class="water">■ 물</span><span class="door">■ 문</span><span class="up">■ 위 계단</span><span class="down">■ 아래 계단</span> · 어두운 부분은 벽</p>
+<section class="viewer"><div class="viewer-head"><div><h2 id="mapTitle"></h2><p id="mapInfo"></p></div><div class="buttons"><button id="overview">전체 지도 보기</button><button id="skin">지형 구조로 보기</button><button id="stairs">계단 근처 보기</button></div></div><canvas id="field" width="960" height="576" tabindex="0" aria-label="원본 지형에 도시 타일을 입힌 지도"></canvas><div class="viewer-foot">거리 화면: 방향키·WASD로 화면 이동 · 전체 화면: 원하는 곳을 누르면 확대<div id="focusInfo"></div></div></section>
+<section class="notes"><h2>지금 C와 비교하면?</h2><p>원본에는 작은 방과 좁은 복도가 이어지는 지도도 있고, 공간이 넓게 연결된 지도도 있습니다. 한 가지 형태로 고정되지 않아요.<br>이 예시는 원본 지형 그대로입니다. 우리 C에 넣었던 주요 길 3칸 확보나 짧은 우회 길 추가는 적용하지 않았습니다.</p><p class="subtle">지형 검토용이라 몹·아이템은 표시하지 않습니다. 함정·분수·특수 입구는 간단한 기호로 표시했습니다. 이 페이지는 추출한 지도 6개를 보여주며, 새 원본 지도를 브라우저에서 생성하는 기능은 아직 연결하지 않았습니다.</p></section>
+<footer>원본: <a href="https://github.com/crawl/crawl/tree/0.34.1/crawl-ref/source/dat/des/builder" target="_blank" rel="noreferrer">Dungeon Crawl Stone Soup 0.34.1</a> · <a href="native-maps.json">지형 데이터</a> · <a href="../city-layout07/layouts.html">이전 A·B·C 시안</a></footer>
+</main><script src="native-maps.js"></script><script src="../city-layout07/random-floor.js"></script><script src="app.js"></script></body></html>

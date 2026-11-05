@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "nativeFixtureCases": 76,
+  "comparedCells": 27436,
+  "nativeMaskMatches": true,
+  "range7Square": true,
+  "wallBlocksBehind": true,
+  "wallFaceVisible": true,
+  "diagonalGapVisible": true,
+  "transparentFenceUsesClearOpacity": true,
+  "exploredMemoryPersists": true,
+  "hiddenTerrainNotUpdated": true,
+  "pathCannotUseUnknownCells": true
+}

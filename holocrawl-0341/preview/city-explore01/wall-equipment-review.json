@@ -1,0 +1,32 @@
+{
+  "purpose": "Inspect currently rendered wall equipment only; no art or gameplay change",
+  "date": "2026-11-05",
+  "scale": 3,
+  "samples": [
+    {
+      "name": "실외기",
+      "kind": 0,
+      "x": 34,
+      "y": 18
+    },
+    {
+      "name": "양끝 반대 꺾임 배관",
+      "kind": 1,
+      "x": 45,
+      "y": 8
+    },
+    {
+      "name": "환기구",
+      "kind": 2,
+      "x": 55,
+      "y": 9
+    },
+    {
+      "name": "소형 분전함",
+      "kind": 3,
+      "x": 23,
+      "y": 28
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "nativeMaps": [
+    {
+      "status": "passed",
+      "terrainCells": 5600,
+      "walkable": 2484,
+      "fences": 3,
+      "stairs": 2,
+      "monsters": 0,
+      "groundItems": 0,
+      "nativeCollisionMatches": true,
+      "nativeOpacityMatches": true,
+      "saveTileNamesRegistered": true,
+      "seed": "CITY-NATIVE-001"
+    },
+    {
+      "status": "passed",
+      "terrainCells": 5600,
+      "walkable": 2790,
+      "fences": 3,
+      "stairs": 2,
+      "monsters": 0,
+      "groundItems": 0,
+      "nativeCollisionMatches": true,
+      "nativeOpacityMatches": true,
+      "saveTileNamesRegistered": true,
+      "seed": "CITY-NATIVE-002"
+    },
+    {
+      "status": "passed",
+      "terrainCells": 5600,
+      "walkable": 2767,
+      "fences": 3,
+      "stairs": 2,
+      "monsters": 0,
+      "groundItems": 0,
+      "nativeCollisionMatches": true,
+      "nativeOpacityMatches": true,
+      "saveTileNamesRegistered": true,
+      "seed": "CITY-NATIVE-003"
+    },
+    {
+      "status": "passed",
+      "terrainCells": 5600,
+      "walkable": 2526,
+      "fences": 3,
+      "stairs": 2,
+      "monsters": 0,
+      "groundItems": 0,
+      "nativeCollisionMatches": true,
+      "nativeOpacityMatches": true,
+      "saveTileNamesRegistered": true,
+      "seed": "CITY-NATIVE-004"
+    },
+    {
+      "status": "passed",
+      "terrainCells": 5600,
+      "walkable": 2439,
+      "fences": 3,
+      "stairs": 2,
+      "monsters": 0,
+      "groundItems": 0,
+      "nativeCollisionMatches": true,
+      "nativeOpacityMatches": true,
+      "saveTileNamesRegistered": true,
+      "seed": "CITY-NATIVE-005"
+    }
+  ],
+  "nativeTerrainCellsChecked": 28000,
+  "invalidDimensionsRejected": true,
+  "binarySha256": "867776a4f989bcff783cc04e4417c0d4c756316ebd4faa85f9eb3a29337638f0",
+  "scope": "Native imported D:1 prototype; not multi-floor campaign.",
+  "floorTravelImplemented": false
+}

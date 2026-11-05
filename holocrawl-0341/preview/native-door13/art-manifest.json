@@ -1,0 +1,40 @@
+{
+  "revision": "native-door13",
+  "approved": false,
+  "mode": "built-in image_gen",
+  "request": "DCSS-like arched double steel doors, retaining the narrow proportion from12.",
+  "assetCanvas": [
+    32,
+    32
+  ],
+  "visibleArtBox": [
+    4,
+    1,
+    24,
+    30
+  ],
+  "sameSpriteBothWallAxes": true,
+  "paletteColors": 14,
+  "processing": "New RGBA originals alpha-cropped, area-reduced/normalized to24x30, quantized to14 colors and placed at(4,1) in transparent32x32 canvases. Both wall axes draw the same native sprite without width stretching.",
+  "assets": [
+    {
+      "state": "closed",
+      "original": "assets/steel-arch-closed-original.png",
+      "sprite": "assets/steel-arch-closed32.png",
+      "prompt": "Use case: precise-object-edit. Production asset: one CLOSED double-leaf arched STEEL door sprite for a32x32-tile pixel roguelike. Image1 is the material/style reference and edit target: our slim desaturated blue-gray steel door. Image2 is a STRUCTURE reference only: the original DCSS gray arch and pair of door leaves. Redesign image1 as a narrow ROUND-TOP ARCHED doorway containing TWO matching iron/steel leaves meeting at a strong dark vertical center seam. Preserve the modern muted gray-blue metal material, slight wear, upper-left lighting, near-frontal orthographic viewpoint and coarse pixel art. The arch frame is rough dark warm-gray concrete/stone with a slim steel inner rim, not a rectangular square top. Leaves follow the round arch at the top, each leaf is slim and vertical. Place small paired silver handles near the center seam and discreet hinges on the outer sides. No large horizontal panic bar spanning the whole doorway. Entire visible arch including frame has a slender approximately24x30 logical-pixel silhouette centered within a32x32 canvas:4 logical pixels transparent each side,1 top/bottom. Retain the narrower proportion the user chose; do not broaden back to a square slab or a huge castle gate. Hard square-edged pixels, simple readable arch steps and center seam, roughly14 muted colors, visually hand-pixeled at32px and enlarged with nearest-neighbor, not smooth photorealism. Both leaves fully closed and opaque; alpha transparency outside the curved arch/frame. No black or checkerboard background, no floor, surrounding wall, columns beyond the single-tile frame, text, labels, logos, warning stripes, wood or gold ornaments. Output ONLY ONE isolated closed arched double STEEL door sprite."
+    },
+    {
+      "state": "open",
+      "original": "assets/steel-arch-open-original.png",
+      "sprite": "assets/steel-arch-open32.png",
+      "prompt": "Use case: precise-object-edit. Edit target: this exact narrow arched DOUBLE STEEL door sprite. Create its matching fully OPEN state. Keep the gray curved arch frame and dark inner rim exactly aligned at the same coordinates, identical outer width/height, same pixel style/material/palette/light. BOTH iron leaves must swing open symmetrically, one hinged on the far LEFT and the other on the far RIGHT. The two leaves become slim foreshortened steel strips tucked next to the left and right jambs. Their small silver handles remain foreshortened on the corresponding leaf. The central opening under the arch MUST BE GENUINELY TRANSPARENT ALPHA, including center and bottom center, at least60 percent of the doorway width, so the existing game floor can show through. The background outside the curved arch must also be genuinely transparent. No black fill in the open passage, no floor or background/checkerboard, no extra frames, no furniture. Preserve the exact narrow arch silhouette and frame position from the edit target; do not widen the door, do not make a rectangular top, do not leave one leaf closed. Coarse hard-edged pixel-art clusters, about14 gray/blue-gray shades, native32px roguelike readability. One isolated OPEN arched double steel door sprite only."
+    }
+  ],
+  "design": "Gray concrete/stone arch with a dark inner steel rim, two muted blue-gray steel leaves, central seam and paired silver handles. Open leaves remain symmetrically at both sides; passage is transparent.",
+  "rendering": "Floor is masked by the closed arch silhouette so outer arch corners meet wall shadow while the open doorway reveals the seeded cement floor.",
+  "preservedPrevious": "../native-door12/",
+  "scope": "Browser art review only. Native game runtime/terrain, floor/stair art, monsters and rewards unchanged.",
+  "selected": false,
+  "selectionDate": "2026-11-04",
+  "selectionReason": "User prefers24x30 rectangular steel door12 over arched double door13."
+}

@@ -1,0 +1,22 @@
+{
+  "purpose": "stronger contact and directional cast shadows, remove rectangular floor aprons",
+  "placement": "shop-front clusters, wall-backed deliveries, corner rubbish; open center",
+  "layout": "authored review map, not native procedural output",
+  "dimensions": [
+    42,
+    30
+  ],
+  "tileSize": 32,
+  "props": 20,
+  "terrainSource": "native-water02",
+  "commonArt": "city-layout07",
+  "nativeGameApplied": false,
+  "monsters": false,
+  "items": false,
+  "previous": "city-complete03",
+  "sameLayout": true,
+  "merchandiseSpritesUnchanged": true,
+  "stairArt": "built-in imagegen edits, transparent 32px derivatives",
+  "grounding": "canvas terrain wear, contact shadows and sprite base occlusion",
+  "stairAndPropPNGsUnchangedFrom03": true
+}

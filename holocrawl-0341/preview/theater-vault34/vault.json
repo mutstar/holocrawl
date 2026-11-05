@@ -1,0 +1,86 @@
+{
+  "id": "jp-theater-8x8-01",
+  "name": "2기생 작은 극장",
+  "width": 8,
+  "height": 8,
+  "footprintIncludesWalls": true,
+  "rows": [
+    "########",
+    "#......#",
+    "#......#",
+    "#CC..CC#",
+    "#SS..SS#",
+    "#SS..SS#",
+    "#......#",
+    "###++###"
+  ],
+  "legend": {
+    "#": "opaque_wall",
+    ".": "walkable_floor",
+    "C": "curtain_barrier",
+    "S": "blocked_seat",
+    "+": "closed_door"
+  },
+  "stage": {
+    "x": 1,
+    "y": 1,
+    "w": 6,
+    "h": 2
+  },
+  "connectors": [
+    {
+      "x": 3,
+      "y": 7,
+      "direction": "south"
+    },
+    {
+      "x": 4,
+      "y": 7,
+      "direction": "south"
+    }
+  ],
+  "encounterSlots": [
+    {
+      "x": 3,
+      "y": 2,
+      "role": "elite",
+      "implemented": false
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "role": "support",
+      "implemented": false
+    }
+  ],
+  "rewardOptions": {
+    "weapon": [
+      {
+        "id": "weapon",
+        "x": 4,
+        "y": 1,
+        "label": "+2 숏소드",
+        "quantity": 1,
+        "enchantment": 2
+      }
+    ],
+    "supplies": [
+      {
+        "id": "scroll",
+        "x": 2,
+        "y": 1,
+        "label": "스크롤",
+        "quantity": 2
+      },
+      {
+        "id": "potion",
+        "x": 5,
+        "y": 1,
+        "label": "포션",
+        "quantity": 2
+      }
+    ]
+  },
+  "balanceStatus": "placeholder; no enemy combat or reward balancing yet",
+  "nativeGameIntegrated": false
+}

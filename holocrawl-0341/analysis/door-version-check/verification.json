@@ -1,0 +1,46 @@
+{
+  "versions": [
+    "0.24.0",
+    "0.34.1"
+  ],
+  "source": "Official crawl/crawl release tags",
+  "identicalFiles": {
+    "closed": true,
+    "open": true
+  },
+  "scope": "Default single-cell closed/open door artwork only; does not assert every themed or multi-cell gate sprite is unchanged.",
+  "files": [
+    {
+      "version": "0.24.0",
+      "state": "closed",
+      "source": "https://raw.githubusercontent.com/crawl/crawl/0.24.0/crawl-ref/source/rltiles/dngn/doors/closed_door.png",
+      "bytes": 593,
+      "sha256": "11ffc28cceb44c15aed7f30a8b2878c9ca63259116ee4869d573980f7a440e50",
+      "file": "0.24.0-closed.png"
+    },
+    {
+      "version": "0.24.0",
+      "state": "open",
+      "source": "https://raw.githubusercontent.com/crawl/crawl/0.24.0/crawl-ref/source/rltiles/dngn/doors/open_door.png",
+      "bytes": 477,
+      "sha256": "827937afeecf3de22daa2b3aa6e67d15bbeb6e28061c6094d3e6f6c0d088cd83",
+      "file": "0.24.0-open.png"
+    },
+    {
+      "version": "0.34.1",
+      "state": "closed",
+      "source": "https://raw.githubusercontent.com/crawl/crawl/0.34.1/crawl-ref/source/rltiles/dngn/doors/closed_door.png",
+      "bytes": 593,
+      "sha256": "11ffc28cceb44c15aed7f30a8b2878c9ca63259116ee4869d573980f7a440e50",
+      "file": "0.34.1-closed.png"
+    },
+    {
+      "version": "0.34.1",
+      "state": "open",
+      "source": "https://raw.githubusercontent.com/crawl/crawl/0.34.1/crawl-ref/source/rltiles/dngn/doors/open_door.png",
+      "bytes": 477,
+      "sha256": "827937afeecf3de22daa2b3aa6e67d15bbeb6e28061c6094d3e6f6c0d088cd83",
+      "file": "0.34.1-open.png"
+    }
+  ]
+}

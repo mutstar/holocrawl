@@ -1,0 +1,27 @@
+from pathlib import Path
+import shutil
+
+r=Path(__file__).resolve().parents[1];src=r/'preview/city-market02';dst=r/'preview/city-market03';dst.mkdir(exist_ok=True)
+for name in ['app.js','catalog.html','catalog.js','generator.js','market-generator.js','market-profiles.js','market-stock.js','members.js','members.json','merch-catalog.js','random-floor.js','visibility.js','visibility-paths.js','style.css','art-manifest.json']:
+    shutil.copy2(src/name,dst/name)
+shutil.copytree(src/'assets',dst/'assets',dirs_exist_ok=True)
+html=(src/'index.html').read_text(encoding='utf-8')
+html=html.replace('상점가 소품20종','상점가 · 축소 도트 비교')
+html=html.replace('<div class="toolbar">','<div class="toolbar"><label for="pixelQuality">도트 표시</label><select id="pixelQuality"><option value="clean">축소 정리본</option><option value="original">이전 축소본 · 비교</option></select>')
+html=html.replace('<script src="market-stock.js"></script>','<script src="market-stock.js"></script><script src="pixel-reducer.js"></script><script src="clean-merch.js"></script>')
+html=html.replace('app.js?v=market02','app.js?v=market03')
+(dst/'index.html').write_text(html,encoding='utf-8')
+p=dst/'app.js';s=p.read_text(encoding='utf-8')
+s=s.replace("Object.assign(sources,Object.fromEntries(MerchCatalog.map(p=>[p.id,p.file])),", "Object.assign(sources,Object.fromEntries(MerchCatalog.map(p=>['clean-'+p.id,'assets/props-clean/'+p.id+'.png'])),Object.fromEntries(MerchCatalog.map(p=>[p.id,p.file])),")
+s=s.replace('window.previewApp={showMerchType,',"$('pixelQuality').onchange=()=>{MarketStock.setQuality($('pixelQuality').value);MarketStock.gallery(images);draw();};\nwindow.previewApp={setPixelQuality:value=>{MarketStock.setQuality(value);$('pixelQuality').value=value;MarketStock.gallery(images);draw();},showMerchType,")
+s=s.replace('getState:()=>({stockMix,','getState:()=>({pixelQuality:MarketStock.getQuality(),stockMix,')
+p.write_text(s,encoding='utf-8')
+p=dst/'catalog.html';s=p.read_text(encoding='utf-8')
+s=s.replace('<button id="reroll">','<label for="pixelQuality">도트 표시</label><select id="pixelQuality"><option value="clean">축소 정리본</option><option value="original">이전 축소본 · 비교</option></select><button id="reroll">')
+s=s.replace('<script src="market-stock.js"></script>','<script src="market-stock.js"></script><script src="pixel-reducer.js"></script><script src="clean-merch.js"></script>')
+p.write_text(s,encoding='utf-8')
+p=dst/'catalog.js';s=p.read_text(encoding='utf-8')
+s=s.replace("[...MerchCatalog.map(p=>[p.id,p.file]),", "[...MerchCatalog.map(p=>['clean-'+p.id,'assets/props-clean/'+p.id+'.png']),...MerchCatalog.map(p=>[p.id,p.file]),")
+s=s.replace("document.getElementById('memberFilter').oninput=members;", "document.getElementById('memberFilter').oninput=members;document.getElementById('pixelQuality').onchange=()=>{MarketStock.setQuality(document.getElementById('pixelQuality').value);fixtures();members();};")
+p.write_text(s,encoding='utf-8')
+print('Prepared renderer comparison; original art,32px footprint and map layout retained.')

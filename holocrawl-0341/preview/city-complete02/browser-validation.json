@@ -1,0 +1,18 @@
+{
+  "props": 20,
+  "uniqueProps": 20,
+  "stairsConnected": true,
+  "disconnected": [],
+  "terrain": [
+    0,
+    1,
+    3,
+    2,
+    5,
+    6,
+    4
+  ],
+  "loadedImages": 134,
+  "mobileOverflow": false,
+  "errors": []
+}

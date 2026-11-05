@@ -1,0 +1,12 @@
+{
+  "id": "roboco-san",
+  "name": "Robocosan",
+  "nameJa": "ロボ子さん",
+  "status": "active",
+  "profile": "https://hololive.hololivepro.com/en/talents/roboco-san/",
+  "image": "assets/members/roboco-san.png",
+  "artSource": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Robocosan_pr-img_01.webp",
+  "color": "#D192FE",
+  "colorSource": "https://vtubernews.com/datalist-0009/",
+  "colorStatus": "representative preview colour; not a claim of official brand hex"
+}

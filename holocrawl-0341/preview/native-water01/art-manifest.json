@@ -1,0 +1,34 @@
+{
+  "revision": "native-water01",
+  "approved": false,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "type": "shallow",
+      "prompt": "Production pixel-art terrain material for a32x32-tile roguelike inspired by DCSS, original artwork. ONE opaque seamless square surface texture swatch, designed as128x128 logical pixels, later sampled into32px patches. Shallow still rainwater pooled over a worn modern gray concrete plaza, subdued gray-cyan and slate-teal water with the concrete grain/cracks faintly visible beneath, sparse tiny broken ripple highlights. Looks clearly wet, not a dry floor. Restrained palette about16 colors, crisp chunky hard square pixels, no smooth realistic shading, tiny regular ripple clusters but no repeated stamped icons. Top-down flat orthographic ground texture, consistent density edge to edge, no perspective. For a dark Japanese concert-venue backstage city dungeon, quiet and slightly eerie. No banks, pool outline, border, props, plants, fish, garbage, text, light sources, neon, bubbles, large white foam or waves. Fill entire image with the surface; no margins, black bars, transparency or isolated sample cards. Seamless repeating surface.",
+      "original": "assets/water-shallow-original.png",
+      "surface": "assets/water-shallow128.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "colors": 18,
+      "derived32pxPatches": 16
+    },
+    {
+      "type": "deep",
+      "prompt": "Production pixel-art terrain material for a32x32-tile roguelike inspired by DCSS, original artwork. ONE opaque seamless square surface texture swatch, designed as128x128 logical pixels, later sampled into32px patches. Deep flooded urban canal water, dark desaturated blue-teal with subtle sparse medium teal broken ripple strokes and gently varied broad patches. The bottom is entirely invisible. Clearly darker and deeper than gray-cyan shallow water, but visible against charcoal dungeon walls; not flat black. Restrained palette about16 colors, crisp hard square pixels and coarse clusters as hand-pixeled at native game resolution, no smooth photorealism. Flat top-down orthographic terrain for a modern concrete backstage city dungeon. No shoreline or basin outline, border, concrete visible underneath, props, plants, fish, text, neon, white foam, surf or large ocean waves. Fill the entire image with the surface, no margins, black bars, transparency or sample cards. Seamless repeating surface.",
+      "original": "assets/water-deep-original.png",
+      "surface": "assets/water-deep128.png",
+      "logicalSize": [
+        128,
+        128
+      ],
+      "colors": 18,
+      "derived32pxPatches": 16
+    }
+  ],
+  "processing": "Opaque originals area-reduced to128x128 and18 colors;16 derived32px surface patches each. Shallow surface blended over existing seeded cement at62%, deep opaque. Seed/coordinate choices stable.",
+  "edges": "Cardinal land/wall banks, diagonal concave corners, shallow/deep transitions drawn inside water cells, without terrain changes.",
+  "scope": "Browser-only art. Demo ponds explicitly labelled synthetic; actual maps retain original features. Approved rectangular door12 preserved."
+}

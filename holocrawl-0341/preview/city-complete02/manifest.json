@@ -1,0 +1,16 @@
+{
+  "purpose": "wall-backed clustered city props review",
+  "placement": "shop-front clusters, wall-backed deliveries, corner rubbish; open center",
+  "layout": "authored review map, not native procedural output",
+  "dimensions": [
+    42,
+    30
+  ],
+  "tileSize": 32,
+  "props": 20,
+  "terrainSource": "native-water02",
+  "commonArt": "city-layout07",
+  "nativeGameApplied": false,
+  "monsters": false,
+  "items": false
+}

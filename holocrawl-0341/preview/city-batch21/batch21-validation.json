@@ -1,0 +1,489 @@
+{
+  "status": "passed",
+  "mapCount": 8,
+  "differentFromPriorMaps": true,
+  "eightMapSelectionWorks": true,
+  "errors": [],
+  "maps": [
+    {
+      "index": 0,
+      "seed": "20261105201",
+      "layout": "layout_basic",
+      "doors": 13,
+      "originalDoors": 12,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1469,
+        "reachable": 1462,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 21,
+            "y": 37,
+            "front": {
+              "x": 21,
+              "y": 38
+            },
+            "distance": 21
+          },
+          {
+            "x": 59,
+            "y": 10,
+            "front": {
+              "x": 59,
+              "y": 11
+            },
+            "distance": 47
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2368,
+        2112
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 1,
+      "seed": "20261105220",
+      "layout": "layout_loops_corners",
+      "doors": 21,
+      "originalDoors": 15,
+      "addedDoors": 6,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 3,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1603,
+        "reachable": 1595,
+        "blocked": 8,
+        "props": 9,
+        "fenceTiles": 3,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 33,
+            "y": 7,
+            "front": {
+              "x": 34,
+              "y": 8
+            },
+            "distance": 13
+          },
+          {
+            "x": 12,
+            "y": 59,
+            "front": {
+              "x": 12,
+              "y": 60
+            },
+            "distance": 47
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2240,
+        2176
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 2,
+      "seed": "20261105256",
+      "layout": "layout_loops_cross",
+      "doors": 9,
+      "originalDoors": 2,
+      "addedDoors": 7,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1119,
+        "reachable": 1112,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 19,
+            "y": 40,
+            "front": {
+              "x": 20,
+              "y": 41
+            },
+            "distance": 24
+          },
+          {
+            "x": 51,
+            "y": 15,
+            "front": {
+              "x": 52,
+              "y": 16
+            },
+            "distance": 63
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        2112
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 3,
+      "seed": "20261105203",
+      "layout": "layout_loops_ring",
+      "doors": 4,
+      "originalDoors": 0,
+      "addedDoors": 4,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 985,
+        "reachable": 978,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 41,
+            "y": 26,
+            "front": {
+              "x": 41,
+              "y": 27
+            },
+            "distance": 25
+          },
+          {
+            "x": 29,
+            "y": 53,
+            "front": {
+              "x": 29,
+              "y": 54
+            },
+            "distance": 32
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        1792
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 4,
+      "seed": "20261105210",
+      "layout": "layout_rooms",
+      "doors": 7,
+      "originalDoors": 3,
+      "addedDoors": 4,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 917,
+        "reachable": 910,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 65,
+            "y": 51,
+            "front": {
+              "x": 66,
+              "y": 52
+            },
+            "distance": 26
+          },
+          {
+            "x": 45,
+            "y": 15,
+            "front": {
+              "x": 45,
+              "y": 16
+            },
+            "distance": 41
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2080,
+        1568
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 5,
+      "seed": "20261105209",
+      "layout": "layout_basic",
+      "doors": 15,
+      "originalDoors": 14,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 3,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 681,
+        "reachable": 672,
+        "blocked": 9,
+        "props": 10,
+        "fenceTiles": 3,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 32,
+            "y": 45,
+            "front": {
+              "x": 33,
+              "y": 46
+            },
+            "distance": 17
+          },
+          {
+            "x": 15,
+            "y": 28,
+            "front": {
+              "x": 15,
+              "y": 29
+            },
+            "distance": 21
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2176,
+        1472
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 6,
+      "seed": "20261105222",
+      "layout": "layout_loops_corners",
+      "doors": 19,
+      "originalDoors": 18,
+      "addedDoors": 1,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 2,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1657,
+        "reachable": 1650,
+        "blocked": 7,
+        "props": 9,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 18,
+            "y": 23,
+            "front": {
+              "x": 19,
+              "y": 24
+            },
+            "distance": 24
+          },
+          {
+            "x": 8,
+            "y": 55,
+            "front": {
+              "x": 9,
+              "y": 56
+            },
+            "distance": 57
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 2,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2400,
+        2176
+      ],
+      "stateUnchanged": true
+    },
+    {
+      "index": 7,
+      "seed": "20261105297",
+      "layout": "layout_loops_cross",
+      "doors": 13,
+      "originalDoors": 7,
+      "addedDoors": 6,
+      "counts": {
+        "acrylic-window": 1,
+        "shirt-window": 1,
+        "closed-shutter": 1,
+        "half-shutter": 1,
+        "delivery-boxes": 3,
+        "trash-bags": 1
+      },
+      "fenceTiles": 2,
+      "validation": {
+        "stairsConnected": true,
+        "baselineReachable": 1272,
+        "reachable": 1264,
+        "blocked": 8,
+        "props": 10,
+        "fenceTiles": 2,
+        "terrainRowsUnchanged": true,
+        "mainRoutesClear": true,
+        "shops": [
+          {
+            "x": 47,
+            "y": 20,
+            "front": {
+              "x": 47,
+              "y": 21
+            },
+            "distance": 28
+          },
+          {
+            "x": 34,
+            "y": 4,
+            "front": {
+              "x": 35,
+              "y": 5
+            },
+            "distance": 49
+          }
+        ],
+        "byType": {
+          "acrylic-window": 1,
+          "shirt-window": 1,
+          "closed-shutter": 1,
+          "half-shutter": 1,
+          "delivery-boxes": 3,
+          "trash-bags": 1
+        }
+      },
+      "dimensions": [
+        2112,
+        2016
+      ],
+      "stateUnchanged": true
+    }
+  ]
+}

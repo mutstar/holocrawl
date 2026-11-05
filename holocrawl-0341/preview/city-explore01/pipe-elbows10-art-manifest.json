@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit attached96x32 horizontal metal pipe sprite strip, keeping its weathered brown-gray steel, couplings, wall brackets, near-black outline and low-resolution DCSS pixel style. PRIMARY CORRECTION: the terminal directions MUST BE OPPOSITE. LEFTMOST END turns90degrees UPWARD, RIGHTMOST END turns90degrees DOWNWARD. Not both up and not both down. Long straight horizontal middle connects between them, like a broad shallow offset/S-shaped plumbing route. Left terminal vertical stub reaches top of the32px wall tile, right terminal vertical stub reaches bottom of the32px wall tile. The main horizontal pipe stays at a constant vertical centerline near native y16 across all three32px sections. Middle32px section remains straight and reusable to extend to4-5tiles. A small thinner parallel conduit can follow underneath but must join neatly, no confusing vertical bundle. Produce a production transparent96x32 native pixel-art sprite strip, visible96x30, with crisp coarse pixels and restrained rust/highlights matching source. No background wall/floor, no text, no checkerboard, no rails. Clear UP elbow at LEFT end and clear DOWN elbow at RIGHT end are mandatory.",
+  "userCorrection": "ends bend in opposite directions: left up, right down; previous both-up interpretation discarded",
+  "original": "assets/wall-pipe-elbows10-original.png",
+  "strip": "assets/wall-pipe-elbows10-96.png",
+  "nativeSize": [
+    96,
+    32
+  ],
+  "visibleSize": [
+    96,
+    30
+  ],
+  "length": "deterministic seeded3–5 wall tiles, middle segment repeated",
+  "validation": [
+    "pipe-elbows10-direction.json",
+    "pipe-elbows10-validation.json"
+  ],
+  "unchanged": [
+    "AC",
+    "vent",
+    "small electrical cabinet08",
+    "stairs",
+    "terrain",
+    "gameplay and saved state"
+  ],
+  "userApproved": true,
+  "approvedDate": "2026-11-05"
+}

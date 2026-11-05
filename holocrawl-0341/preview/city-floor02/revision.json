@@ -1,0 +1,25 @@
+{
+  "previous": "city-floor01",
+  "change": "code-native stair display sizing only, unchanged PNGs and terrain/prop logic",
+  "upVisibleBefore": [
+    24,
+    30
+  ],
+  "upVisibleAfter": [
+    30,
+    32
+  ],
+  "downVisibleBefore": [
+    29,
+    29
+  ],
+  "downVisibleAfter": [
+    32,
+    32
+  ],
+  "logicalFootprint": [
+    1,
+    1
+  ],
+  "nativeGameApplied": false
+}

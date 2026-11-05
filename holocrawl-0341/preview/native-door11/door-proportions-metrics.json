@@ -1,0 +1,14 @@
+{
+  "crawl": {
+    "w": 32,
+    "h": 32,
+    "opaquePixels": 1024,
+    "totalPixels": 1024
+  },
+  "ours": {
+    "w": 32,
+    "h": 32,
+    "opaquePixels": 1024,
+    "totalPixels": 1024
+  }
+}

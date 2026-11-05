@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-05",
+  "nativeSeed": "20261105155",
+  "placementSeed": 5110515,
+  "geometryChoice": 0,
+  "crateCount": 3,
+  "fixtureCount": 10,
+  "shutterCount": 2,
+  "crateDrawSize": [
+    32,
+    32
+  ],
+  "mountedCount": 10,
+  "mountedTypes": 4,
+  "source": "one of three exported native D:1 geometries, explicit additional door placement and deterministic prop placement seed",
+  "explorationURL": "http://127.0.0.1:8798/city-doors16/?map=0&placement=5110515",
+  "reviewURL": "http://127.0.0.1:8798/city-doors16/layout-review.html",
+  "wallGeometryUnchanged": true,
+  "doorPlacementPass": true,
+  "stairsConnected": true,
+  "explorationMemoryUnchangedByReview": true,
+  "errors": []
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-05",
+  "status": "final floor layout candidate for user review",
+  "nativeGeometry": "three existing native DCSS0.34.1 D:1 exports; terrain rows unchanged",
+  "shops": "one acrylic wall showcase + shirt front; one shirt wall showcase + other goods front",
+  "shutters": [
+    "closed",
+    "half-open"
+  ],
+  "crates": [
+    2,
+    3
+  ],
+  "rubbish": 1,
+  "fence": "one2–3tile short section, does not disconnect map",
+  "walls": "approved AC, vent, small cabinet08, opposite-elbow horizontal pipes10 random3–5tiles",
+  "stairs": "approved unaltered DCSS original horizontal reflection",
+  "saveNamespace": "separate from city-explore01",
+  "enemies": false,
+  "nativeIntegration": false,
+  "trashBagsVisibleSize": [
+    30,
+    30
+  ],
+  "wallStyle": "User-approved original large walls + dark upper mass and brown exposed faces on thin walls (revision13)",
+  "wallStyleApproved": true
+}

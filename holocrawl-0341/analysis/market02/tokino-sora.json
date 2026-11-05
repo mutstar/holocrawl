@@ -1,0 +1,12 @@
+{
+  "id": "tokino-sora",
+  "name": "Tokino Sora",
+  "nameJa": "ときのそら",
+  "status": "active",
+  "profile": "https://hololive.hololivepro.com/en/talents/tokino-sora/",
+  "image": "assets/members/tokino-sora.png",
+  "artSource": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Tokino-Sora_pr-img_01.webp",
+  "color": "#266AFF",
+  "colorSource": "https://vtubernews.com/datalist-0009/",
+  "colorStatus": "representative preview colour; not a claim of official brand hex"
+}

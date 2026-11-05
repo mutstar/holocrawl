@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "assets": [
+    {
+      "file": "assets/gamers-native.png",
+      "width": 96,
+      "height": 64,
+      "expected": [
+        96,
+        64
+      ]
+    },
+    {
+      "file": "assets/fantasy-native.png",
+      "width": 96,
+      "height": 96,
+      "expected": [
+        96,
+        96
+      ]
+    },
+    {
+      "file": "assets/holox-native.png",
+      "width": 96,
+      "height": 64,
+      "expected": [
+        96,
+        64
+      ]
+    },
+    {
+      "file": "assets/cinema-native.png",
+      "width": 128,
+      "height": 96,
+      "expected": [
+        128,
+        96
+      ]
+    },
+    {
+      "file": "assets/wheel-native.png",
+      "width": 128,
+      "height": 128,
+      "expected": [
+        128,
+        128
+      ]
+    },
+    {
+      "file": "assets/clock-native.png",
+      "width": 64,
+      "height": 128,
+      "expected": [
+        64,
+        128
+      ]
+    }
+  ],
+  "mobileNoOverflow": true,
+  "errors": []
+}

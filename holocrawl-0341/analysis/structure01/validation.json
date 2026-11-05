@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "gods": 22,
+  "slots": 110,
+  "checks": 582,
+  "combatHandlersEnabled": 0,
+  "liveGameHooksConnected": false,
+  "catalogMatchesEditableSource": true,
+  "nativePropertySerialization": true,
+  "freshProcessRestore": true,
+  "trailingDataRejected": true,
+  "fixtureSha256": "5ed7df6c8a8f3114f2aad73666497889f26d45bd80cfc7262665f66870efcda7",
+  "binarySha256": "68e4aa89d0246c04be269691f4663d05395a0e70841d103ccc310f4d6a1b364e",
+  "scope": "Structure and native property adapter only; ordinary game worship/altar/menu/full-player-save hooks and combat effects are NOT connected."
+}

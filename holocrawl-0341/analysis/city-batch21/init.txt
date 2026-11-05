@@ -1,0 +1,5 @@
+name = CityBatchTerrainExport
+save_dir = C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/analysis/city-batch21/saves/
+morgue_dir = C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/analysis/city-batch21/morgue/
+remember_name = false
+show_more = false

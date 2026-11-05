@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "nativeVersion": "0.34.1",
+  "maps": 6,
+  "terrainCells": 33600,
+  "browserRowsMatchNativeExport": true,
+  "allSixMapsRender": true,
+  "modeSwitchAndClickZoom": true,
+  "mobileNoOverflow": true,
+  "pageErrors": [],
+  "failedAssets": [],
+  "nativeGameWindowOpened": false,
+  "headlessNativeBuilderUsed": true
+}

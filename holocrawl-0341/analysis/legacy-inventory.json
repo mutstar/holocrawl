@@ -1,0 +1,1603 @@
+{
+  "legacyRoot": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\company-polka-20261022",
+  "authoritativeSource": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\company-polka-20261022\\engine\\campaign-crawl\\crawl-ref\\source",
+  "upstreamTag": "0.34.1",
+  "upstreamCommit": "1eebc1a2892e1c89776a0d7a10691f8dac8d9796",
+  "customSourceFiles": [
+    {
+      "file": "holo-batch-experiments.cc",
+      "bytes": 23377,
+      "sha256": "f4a6f2253fe5efc509f5744263470f743737f0f926130887583495fa77d6b608"
+    },
+    {
+      "file": "holo-batch-internal.h",
+      "bytes": 5403,
+      "sha256": "7286cfff75993c12e73f3523376d6198897758d962f2f37a23db24c459b10390"
+    },
+    {
+      "file": "holo-batch-martial.cc",
+      "bytes": 17779,
+      "sha256": "dff3795154f9400cf334882d4aaa9e662740776ae40df80fd45e2465808cee08"
+    },
+    {
+      "file": "holo-batch-resources.cc",
+      "bytes": 16249,
+      "sha256": "08f3bdc8af6d38b456bf8d998d13d9445557366c53b68ca44c959f7cfc16edb3"
+    },
+    {
+      "file": "holo-batch-space.cc",
+      "bytes": 17796,
+      "sha256": "5cd51c6378de25abcbd45ade00b2fd8d24d3ad022a28a50606ab6ec4669aee0c"
+    },
+    {
+      "file": "holo-batch-summons.cc",
+      "bytes": 24491,
+      "sha256": "88bed38fd170a3283109b988604b4c7d3b4313beac503f82290bd53c3956bfae"
+    },
+    {
+      "file": "holo-batch.cc",
+      "bytes": 47166,
+      "sha256": "93176bc27baf13b37b2edc626325b629840c7dead5beff039031605a899999e8"
+    },
+    {
+      "file": "holo-batch.h",
+      "bytes": 3627,
+      "sha256": "517e4208cdaca8ddafd93c5d7f3aa117cd5012c9b81475e1dbdde08a133b42df"
+    },
+    {
+      "file": "holo-campaign-test.cc",
+      "bytes": 203677,
+      "sha256": "6c5d9b1401d0fa13b4c50a3748833f6b0528ef4f0071e5c95c045ca733b8ef65"
+    },
+    {
+      "file": "holo-campaign.cc",
+      "bytes": 53902,
+      "sha256": "b7079353c074ead726941919d172effb2c7c3220d2c372a802a65d2be94be266"
+    },
+    {
+      "file": "holo-campaign.h",
+      "bytes": 2154,
+      "sha256": "9919ae80db72deacb2085683e8f7e2abef70e8b74204cb7089a366b244c3e768"
+    },
+    {
+      "file": "holo-dungeon-test.cc",
+      "bytes": 33673,
+      "sha256": "4560988a598e74adff3ec4bfc4575c7e37db3468e1fa8d09d61ee8918694766b"
+    },
+    {
+      "file": "holo-dungeon-test.h",
+      "bytes": 367,
+      "sha256": "b25516d08a36432470c41f5bf913a0b9217f013e7883d3200e03e4d0103c8841"
+    },
+    {
+      "file": "holo-koyori.cc",
+      "bytes": 7581,
+      "sha256": "81c0cf18dd4cc9eba2d8889e48b29546f782487486479ebb00344cbab5879328"
+    },
+    {
+      "file": "holo-koyori.h",
+      "bytes": 804,
+      "sha256": "9867472c4d72fb336dc926a8061048285fab859271281f6cf750825065da0ab4"
+    },
+    {
+      "file": "holo-lamy.cc",
+      "bytes": 7896,
+      "sha256": "4f84f3c2eea2384247099054425e876367e7ca4e5a77de12bb99eed367e10b68"
+    },
+    {
+      "file": "holo-lamy.h",
+      "bytes": 853,
+      "sha256": "4e4e289de9abb8d496c952b3c7c93d5beaff06a36d6ab8f205369a46209e1dc1"
+    },
+    {
+      "file": "holo-sopia.cc",
+      "bytes": 15978,
+      "sha256": "f683fae78a1591a83de31c756cc4cbfbda1dda594ce2cb46d71264982f2a99d8"
+    },
+    {
+      "file": "holo-sopia.h",
+      "bytes": 1124,
+      "sha256": "bad0dd88139c4199f3e96234d3b4b462d6f4b1813462e3f54a63dc40c88d2f82"
+    },
+    {
+      "file": "holo-visual.cc",
+      "bytes": 77902,
+      "sha256": "a601ac297f84be706f26578bea0c021acdc7d2637ce6ae4ac5e1c03d6396e75a"
+    },
+    {
+      "file": "holo-visual.h",
+      "bytes": 5010,
+      "sha256": "52b8c0f37b198b774b1aa926bf3eeb84447b411daa5e362ce08c654c7dcf8aca"
+    },
+    {
+      "file": "holo-worship.cc",
+      "bytes": 19193,
+      "sha256": "42070c5b556f11b73bb73e98fecefe4e4bb1cb9d83df16dfe36e577572e70b1c"
+    },
+    {
+      "file": "holo-worship.h",
+      "bytes": 654,
+      "sha256": "727421fb555e0d72bd6f704bf70730d8de7a20a535a9c015b3806be16ac7707f"
+    },
+    {
+      "file": "holo-wrath.cc",
+      "bytes": 31312,
+      "sha256": "d8f1ff7ac125f5871436be3ad4e603579c1f31ce0fb5d508a92601cad212b8f7"
+    },
+    {
+      "file": "holo-wrath.h",
+      "bytes": 1108,
+      "sha256": "b9a657a966f112029a64f951053932350b340c8e6f35814132e8035950260aff"
+    },
+    {
+      "file": "holocrawl.cc",
+      "bytes": 33803,
+      "sha256": "968cb21c3c21aded677376a482d0e9d8c45628c3f142741f1dc16ecd41e5ceb4"
+    },
+    {
+      "file": "holocrawl.h",
+      "bytes": 778,
+      "sha256": "d73fbbf3656deb6a0acba2494d4a6d77b1ef358a47b71f3cdfa3be5a339afda0"
+    }
+  ],
+  "coreHookFiles": [
+    {
+      "file": "ability.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 3303,
+          "text": "if(hp_cost>0)holo_campaign::voluntary_hp_cost();"
+        }
+      ]
+    },
+    {
+      "file": "attack.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 10,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 16,
+          "text": "namespace holo_batch { void ward_fixture_damage(const actor *,beam_type,int); }"
+        },
+        {
+          "line": 89,
+          "text": "if(attacker->is_player()) holo_batch::note_primary_hit(defender);"
+        },
+        {
+          "line": 90,
+          "text": "else if(defender->is_player() && holo_preac_damage>0)"
+        },
+        {
+          "line": 91,
+          "text": "holo_batch::contact(attacker,damage_brand==SPWPN_FLAMING || attk_flavour==AF_FIRE?BEAM_FIRE:BEAM_MISSILE);"
+        },
+        {
+          "line": 92,
+          "text": "holo_batch::summon_hit(attacker,defender);"
+        },
+        {
+          "line": 93,
+          "text": "holo_wrath::contact(attacker,defender);"
+        },
+        {
+          "line": 97,
+          "text": "if(attacker->is_monster() && defender->is_player() && holo_can_damage && attk_damage>0)"
+        },
+        {
+          "line": 98,
+          "text": "holo_batch::contact(attacker,damage_brand==SPWPN_FLAMING || attk_flavour==AF_FIRE?BEAM_FIRE:BEAM_MISSILE);"
+        },
+        {
+          "line": 125,
+          "text": "if(attacker->is_player()) holo_batch::note_primary_damage(defender,damage_done);"
+        },
+        {
+          "line": 126,
+          "text": "else holo_batch::companion_damage(attacker,damage_done);"
+        },
+        {
+          "line": 185,
+          "text": "mhit += maybe_random_div(holo_fighting_skill(100), 100, random);"
+        },
+        {
+          "line": 243,
+          "text": "mhit+=holo_batch::to_hit(attacker,defender)+holo_wrath::accuracy(!holo_ranged);"
+        },
+        {
+          "line": 300,
+          "text": "mhit = random2(mhit + holo_batch::to_hit(attacker,defender) + 1);"
+        },
+        {
+          "line": 375,
+          "text": "holo_preac_damage=0;"
+        },
+        {
+          "line": 411,
+          "text": "int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;"
+        },
+        {
+          "line": 412,
+          "text": "if(holo_batch::custom_monster(*attacker->as_monster(),holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) {"
+        },
+        {
+          "line": 413,
+          "text": "mon_attk.damage=holo_damage;attk_type=attack_number==0 && holo_damage>0?AT_HIT:AT_NONE;attk_flavour=AF_PLAIN;"
+        },
+        {
+          "line": 994,
+          "text": "dam = holo_batch::fire_protection(*defender,dam,flavour);"
+        },
+        {
+          "line": 1007,
+          "text": "holo_batch::ward_fixture_damage(defender,flavour,dealt);"
+        },
+        {
+          "line": 1190,
+          "text": "damage *= base * 100 + (random2(holo_fighting_skill(100) + 1));"
+        },
+        {
+          "line": 1230,
+          "text": "damage_plus += holo_batch::slaying(defender,aux);"
+        },
+        {
+          "line": 1319,
+          "text": "holo_preac_damage=damage;"
+        },
+        {
+          "line": 1349,
+          "text": "damage += holo_batch::raw_bonus(defender);"
+        },
+        {
+          "line": 1350,
+          "text": "damage = holo_batch::multiplier(damage);"
+        }
+      ]
+    },
+    {
+      "file": "attack.h",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 37,
+          "text": "int     holo_preac_damage=0;"
+        },
+        {
+          "line": 38,
+          "text": "bool    holo_ranged=false;"
+        },
+        {
+          "line": 39,
+          "text": "bool    holo_can_damage=true;"
+        }
+      ]
+    },
+    {
+      "file": "beam.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 10,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1061,
+          "text": "holo_campaign::beam_target(monster_at(target),origin_spell!=SPELL_NO_SPELL);"
+        },
+        {
+          "line": 1275,
+          "text": "holo_visual::rose_thorn_cell(source, target, pos());"
+        },
+        {
+          "line": 3142,
+          "text": "if(damage.num>0 && damage.size>0 && !is_enchantment()) holo_batch::contact(agent(),flavour);"
+        },
+        {
+          "line": 3758,
+          "text": "if(!is_enchantment() && damage.num>0 && damage.size>0) holo_batch::attack_attempt(agent(),&you);"
+        },
+        {
+          "line": 3786,
+          "text": "if(pre_ac_dam>0) holo_batch::contact(agent(),flavour);"
+        },
+        {
+          "line": 3889,
+          "text": "if(napalm_player(random2avg(7, 3) + 1, get_source_name(), aux_source) && holo_batch::active())"
+        },
+        {
+          "line": 3890,
+          "text": "you.props[\"holo_sticky_source\"]=int(source_id);"
+        },
+        {
+          "line": 4116,
+          "text": "preac = origin_spell!=SPELL_NO_SPELL ? holo_batch::spell_damage(damage.roll(),source_id):damage.roll();"
+        },
+        {
+          "line": 4135,
+          "text": "final = holo_batch::fire_protection(*mon,mons_adjust_flavoured(mon, *this, postac, false),flavour);"
+        },
+        {
+          "line": 4869,
+          "text": "beam_hit+=holo_batch::suisei_focus_accuracy(mon);"
+        },
+        {
+          "line": 4998,
+          "text": "holo_batch::note_spell_damage(mon,actual,flavour,source_id);"
+        },
+        {
+          "line": 6576,
+          "text": "if (act.is_player() && holo_force_immune())"
+        },
+        {
+          "line": 6599,
+          "text": "if (act.is_player() && holo_force_immune())"
+        }
+      ]
+    },
+    {
+      "file": "chardump.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 687,
+          "text": "if (holo_worship::active())"
+        },
+        {
+          "line": 690,
+          "text": "text += holo_worship::display_name() + \".\\n\";"
+        }
+      ]
+    },
+    {
+      "file": "cloud.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 408,
+          "text": "holo_lamy::cloud_copy(cloud.pos,*ai);"
+        },
+        {
+          "line": 436,
+          "text": "holo_lamy::cloud_copy(cloud.pos,*ai);"
+        },
+        {
+          "line": 454,
+          "text": "holo_lamy::cloud_copy(cloud.pos,*ai);"
+        },
+        {
+          "line": 483,
+          "text": "holo_lamy::cloud_copy(cloud.pos,p);"
+        },
+        {
+          "line": 651,
+          "text": "holo_lamy::cloud_clear(p);"
+        },
+        {
+          "line": 680,
+          "text": "holo_lamy::cloud_copy(src,newpos);"
+        },
+        {
+          "line": 681,
+          "text": "holo_lamy::cloud_clear(src);"
+        },
+        {
+          "line": 704,
+          "text": "holo_lamy::cloud_swap(p1,p2);"
+        },
+        {
+          "line": 781,
+          "text": "holo_lamy::cloud_created(ctarget,agent);"
+        },
+        {
+          "line": 1284,
+          "text": "if(player && cloud.type==CLOUD_FIRE) holo_batch::fire_contact(cloud.source);"
+        },
+        {
+          "line": 1291,
+          "text": "const int final_damage = holo_batch::fire_protection(*act,_actor_cloud_damage(act, cloud, false),cloud_flavour);"
+        },
+        {
+          "line": 1327,
+          "text": "holo_lamy::spell_scope lamy_cloud(SPELL_NO_SPELL,false,false,holo_lamy::cloud_use(act->pos()));"
+        }
+      ]
+    },
+    {
+      "file": "directn.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 2875,
+          "text": "const auto holo_altar=holo_visual::altar(where);"
+        },
+        {
+          "line": 2876,
+          "text": "if(!holo_altar.empty())return thing_do_grammar(dtype,add_stop,false,\"altar of \"+holo_altar);"
+        }
+      ]
+    },
+    {
+      "file": "evoke.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 1538,
+          "text": "holo_lamy::spell_scope lamy_tool(SPELL_NO_SPELL,false,"
+        }
+      ]
+    },
+    {
+      "file": "fight.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 174,
+          "text": "holo_campaign::attack_scope campaign_attack(attacker,defender,holo_batch::attack_kind::melee,simu);"
+        }
+      ]
+    },
+    {
+      "file": "files.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 1724,
+          "text": "holo_campaign::leave_level();"
+        },
+        {
+          "line": 2139,
+          "text": "void holo_dungeon_save_level()"
+        }
+      ]
+    },
+    {
+      "file": "food.cc",
+      "existsIn0341": false,
+      "references": [
+        {
+          "line": 636,
+          "text": "holo_campaign::ate_food(food.sub_type);"
+        }
+      ]
+    },
+    {
+      "file": "god-prayer.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 129,
+          "text": "if (holo_worship::altar_menu())"
+        }
+      ]
+    },
+    {
+      "file": "libw32c.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 7,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 90,
+          "text": "static bool holo_virtual_console = false;"
+        },
+        {
+          "line": 351,
+          "text": "if (holo_engine_benchmark_requested())"
+        },
+        {
+          "line": 355,
+          "text": "holo_virtual_console = true;"
+        },
+        {
+          "line": 427,
+          "text": "if (holo_virtual_console)"
+        },
+        {
+          "line": 431,
+          "text": "holo_virtual_console = false;"
+        },
+        {
+          "line": 598,
+          "text": "if (outbuf == nullptr && !holo_virtual_console)"
+        }
+      ]
+    },
+    {
+      "file": "main.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 12,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1701,
+          "text": "holo_campaign::command_scope campaign_command;"
+        },
+        {
+          "line": 1897,
+          "text": "if (!holo_campaign::ability_menu() && !activate_ability())"
+        },
+        {
+          "line": 1922,
+          "text": "if (holo_worship::active() || (you.religion==GOD_NO_GOD && !holo_wrath::status().empty()))"
+        },
+        {
+          "line": 1923,
+          "text": "holo_worship::religion_menu();"
+        },
+        {
+          "line": 2108,
+          "text": "void holo_dungeon_prep_input()"
+        },
+        {
+          "line": 2110,
+          "text": "ASSERT(holo_dungeon::active());"
+        },
+        {
+          "line": 2122,
+          "text": "if (holo_record_benchmark_banishment())"
+        },
+        {
+          "line": 2193,
+          "text": "holo_wrath::charge_action(you.duration[DUR_SLOW] || have_stat_zero());"
+        },
+        {
+          "line": 2242,
+          "text": "holo_wrath::advance();"
+        },
+        {
+          "line": 2243,
+          "text": "holo_campaign::advance();"
+        },
+        {
+          "line": 2244,
+          "text": "holo_sopia::advance(you.elapsed_time);"
+        },
+        {
+          "line": 2245,
+          "text": "holo_batch::advance(you.elapsed_time);"
+        }
+      ]
+    },
+    {
+      "file": "melee-attack.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 7,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 101,
+          "text": "holo_batch::attack_attempt(attacker,defender);"
+        },
+        {
+          "line": 601,
+          "text": "if(attacker->is_player() && holo_batch::suppress_aux()) return true;"
+        },
+        {
+          "line": 848,
+          "text": "+ (defender->is_player()?holo_batch::evasion(attacker):0);"
+        },
+        {
+          "line": 852,
+          "text": "holo_visual::hawk_attack(*attacker->as_monster(),defender->pos(),ev_margin>=0 && !shield_blocked);"
+        },
+        {
+          "line": 900,
+          "text": "holo_batch::defended(attacker,true);"
+        },
+        {
+          "line": 934,
+          "text": "if(defender->is_player()) holo_batch::defended(attacker,false);"
+        },
+        {
+          "line": 1582,
+          "text": "return holo_melee_damage(damage);"
+        },
+        {
+          "line": 3345,
+          "text": "if (defender->is_player() && holo_force_immune())"
+        },
+        {
+          "line": 3573,
+          "text": "if(attacker->is_monster() && holo_batch::custom_monster(*attacker->as_monster(),hp,ac,ev,hit,damage)) return hit;"
+        }
+      ]
+    },
+    {
+      "file": "mon-act.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 7,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1912,
+          "text": "if(targ && holo_batch::passable_companion(targ) && mons->foe!=targ->mindex()) {"
+        },
+        {
+          "line": 1913,
+          "text": "holo_batch::expire_passable_at(targ->pos());targ=nullptr;"
+        },
+        {
+          "line": 2346,
+          "text": "if (holo_benchmark_finished())"
+        },
+        {
+          "line": 2376,
+          "text": "const coord_def holo_old_position=mon->pos();"
+        },
+        {
+          "line": 2377,
+          "text": "if(holo_batch::before_monster(*mon)) handle_monster_move(mon);"
+        },
+        {
+          "line": 2378,
+          "text": "if(mon->alive()) holo_batch::after_monster(*mon,holo_old_position);"
+        },
+        {
+          "line": 2389,
+          "text": "if (holo_benchmark_active())"
+        },
+        {
+          "line": 2936,
+          "text": "if(holo_batch::passable_companion(targmonster) && mons->foe!=targmonster->mindex()) return true;"
+        }
+      ]
+    },
+    {
+      "file": "mon-death.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 1881,
+          "text": "holo_campaign::kill(mons,killer,killer_index,pet_kill,gives_player_xp && !summoned && !timeout && !mons_reset && !was_banished && !fake);"
+        }
+      ]
+    },
+    {
+      "file": "mon-info.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 443,
+          "text": "const auto holo_sprite=holo_visual::appearance(*m);"
+        },
+        {
+          "line": 444,
+          "text": "if(holo_sprite!=holo_visual::sprite::none)props[\"holo_sprite\"]=int(holo_sprite);"
+        }
+      ]
+    },
+    {
+      "file": "mon-project.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 102,
+          "text": "if(caster->is_player() && holo_koyori::direct_cast())mon->props[\"holo_koyori_direct_orb\"]=true;"
+        },
+        {
+          "line": 333,
+          "text": "const bool reagent_orb=caster->is_player() && mon.props.exists(\"holo_koyori_direct_orb\");"
+        },
+        {
+          "line": 335,
+          "text": "holo_koyori::spell_scope reagent_hit(SPELL_IOOD,reagent_orb,pos);"
+        }
+      ]
+    },
+    {
+      "file": "monster.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 3018,
+          "text": "if(holo_batch::rooted(*this)) return true;"
+        },
+        {
+          "line": 3268,
+          "text": "int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;"
+        },
+        {
+          "line": 3269,
+          "text": "if(holo_batch::custom_monster(*this,holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) return holo_ac;"
+        },
+        {
+          "line": 3365,
+          "text": "return holo_batch::monster_armour(*this,max(ac,0));"
+        },
+        {
+          "line": 3400,
+          "text": "int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;"
+        },
+        {
+          "line": 3401,
+          "text": "if(holo_batch::custom_monster(*this,holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) return holo_ev;"
+        },
+        {
+          "line": 4394,
+          "text": "if(amount!=INSTANT_DEATH) amount=holo_batch::companion_hurt(*this,agent,amount);"
+        },
+        {
+          "line": 4471,
+          "text": "amount=holo_batch::waking_damage(*this,agent,amount,kill_type);"
+        },
+        {
+          "line": 4474,
+          "text": "holo_lamy::damage(*this,agent,amount,flavour,kill_type);"
+        },
+        {
+          "line": 4475,
+          "text": "holo_koyori::damage(*this,agent,amount,flavour,kill_type);"
+        },
+        {
+          "line": 5284,
+          "text": "return holo_batch::summon_stationary(*this) || mons_class_is_stationary(type);"
+        },
+        {
+          "line": 5706,
+          "text": "case EUT_MISSILE: return holo_batch::monster_energy(*this,et,mu.missile);"
+        },
+        {
+          "line": 5709,
+          "text": "case EUT_SPELL:   return holo_batch::monster_energy(*this,et,mu.spell);"
+        },
+        {
+          "line": 5710,
+          "text": "case EUT_ATTACK:  return holo_batch::monster_energy(*this,et,mu.attack);"
+        },
+        {
+          "line": 5735,
+          "text": "return holo_batch::monster_energy(*this,et,max(move_cost, 1));"
+        }
+      ]
+    },
+    {
+      "file": "movement.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 464,
+          "text": "holo_campaign::move_scope campaign_movement;"
+        },
+        {
+          "line": 567,
+          "text": "holo_wrath::expire_at(targ);"
+        }
+      ]
+    },
+    {
+      "file": "nearby-danger.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 133,
+          "text": "if(holo_wrath::decoy(mon))return true;"
+        }
+      ]
+    },
+    {
+      "file": "ng-setup.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 2,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 594,
+          "text": "if (holo_benchmark_active())"
+        }
+      ]
+    },
+    {
+      "file": "ouch.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 9,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 288,
+          "text": "return apply_holo_damage ? holo_batch::elemental_damage(hurted,flavour,nullptr):hurted;"
+        },
+        {
+          "line": 793,
+          "text": "if(holo_dungeon::finished())"
+        },
+        {
+          "line": 913,
+          "text": "dam=holo_batch::incoming(dam,death_type,source);"
+        },
+        {
+          "line": 914,
+          "text": "dam=holo_wrath::incoming(dam,death_type,source);"
+        },
+        {
+          "line": 924,
+          "text": "holo_batch::post_damage();"
+        },
+        {
+          "line": 925,
+          "text": "if (holo_dungeon::record_death(death_type, aux, source))"
+        },
+        {
+          "line": 927,
+          "text": "if (holo_record_benchmark_death())"
+        }
+      ]
+    },
+    {
+      "file": "output.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 1246,
+          "text": "if (holo_worship::active())"
+        },
+        {
+          "line": 1248,
+          "text": "NOWRAP_EOL_CPRINTF(\" of %s %s [%d]\", holo_worship::display_name().c_str(), std::string(holo_worship::rank(),'*').c_str(), int(you.piety));"
+        }
+      ]
+    },
+    {
+      "file": "player-act.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 140,
+          "text": "&& holo_worship::current() == \"su\");"
+        },
+        {
+          "line": 725,
+          "text": "if(intentional)holo_campaign::voluntary_berserk();"
+        }
+      ]
+    },
+    {
+      "file": "player.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 9,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1092,
+          "text": "return holo_wrath::regen(rr);"
+        },
+        {
+          "line": 1131,
+          "text": "rr = holo_batch::natural_regen(max(1, rr));"
+        },
+        {
+          "line": 1361,
+          "text": "rf += holo_batch::resistance(BEAM_FIRE);"
+        },
+        {
+          "line": 1452,
+          "text": "rc += holo_batch::resistance(BEAM_COLD);"
+        },
+        {
+          "line": 1453,
+          "text": "if(temp)rc=holo_wrath::cold(rc);"
+        },
+        {
+          "line": 1888,
+          "text": "&& holo_worship::current() == \"su\"))"
+        },
+        {
+          "line": 1943,
+          "text": "return holo_wrath::movement(holo_batch::movement_cost(mv));"
+        },
+        {
+          "line": 2285,
+          "text": "return max(0,(shield + 50) / 100 + 2*holo_shield_bonus()+2*holo_wrath::shield());"
+        },
+        {
+          "line": 2571,
+          "text": "if (holo_benchmark_active())"
+        },
+        {
+          "line": 2581,
+          "text": "holo_wrath::gain_xp(exp_gained);"
+        },
+        {
+          "line": 2680,
+          "text": "if (holo_benchmark_finished())"
+        },
+        {
+          "line": 3219,
+          "text": "if(holo_wrath::revealing())return 0;"
+        },
+        {
+          "line": 3220,
+          "text": "return holo_batch::revealing() ? stealth/2:stealth;"
+        },
+        {
+          "line": 3587,
+          "text": "if (!fatal && holo_benchmark_finished())"
+        },
+        {
+          "line": 3741,
+          "text": "if (holo_benchmark_finished())"
+        },
+        {
+          "line": 3747,
+          "text": "you.hp += holo_wrath::healing(hp_gain);"
+        },
+        {
+          "line": 3833,
+          "text": "if (holo_benchmark_finished())"
+        },
+        {
+          "line": 4194,
+          "text": "const int holo_percent=holo_batch::status_percent(DUR_POISONING);"
+        },
+        {
+          "line": 4195,
+          "text": "if(holo_percent<100) {"
+        },
+        {
+          "line": 4198,
+          "text": "+(_poison_dur_to_aut(you.duration[DUR_POISONING])-old_aut)*holo_percent/100));"
+        },
+        {
+          "line": 4269,
+          "text": "void holo_reduce_poison_time(int percent)"
+        },
+        {
+          "line": 4467,
+          "text": "if(holo_batch::active()) you.props.erase(\"holo_sticky_source\");"
+        },
+        {
+          "line": 4503,
+          "text": "if(holo_batch::active() && you.props.exists(\"holo_sticky_source\"))"
+        },
+        {
+          "line": 4504,
+          "text": "holo_batch::fire_contact(you.props[\"holo_sticky_source\"].get_int());"
+        },
+        {
+          "line": 4505,
+          "text": "const int hurted = holo_batch::fire_protection(you,resist_adjust_damage(&you, BEAM_FIRE,"
+        },
+        {
+          "line": 5541,
+          "text": "return holo_batch::player_rooted() || paralysed() || petrified();"
+        },
+        {
+          "line": 5764,
+          "text": "const int holo_bonus = temp ? holo_skill_bonus(sk,scale) : 0;"
+        },
+        {
+          "line": 5765,
+          "text": "if (holo_bonus)"
+        },
+        {
+          "line": 5766,
+          "text": "level = min(level + holo_bonus, MAX_SKILL_LEVEL*scale);"
+        },
+        {
+          "line": 5767,
+          "text": "if(temp && holo_wrath::effect(\"noel\") && ((sk>=SK_FIRST_WEAPON && sk<=SK_LAST_WEAPON) || sk==SK_THROWING || sk==SK_UNARMED_COMBAT))level=max(0,level-holo_wrath::skill_penalty()*scale);"
+        },
+        {
+          "line": 5960,
+          "text": "return max(0,AC / scale + holo_armour_bonus() + holo_batch::armour()+holo_wrath::armour());"
+        },
+        {
+          "line": 6021,
+          "text": "return max(0,base_evasion - constrict_penalty - invis_penalty+holo_wrath::evasion()-holo_lamy::evasion_penalty());"
+        },
+        {
+          "line": 6981,
+          "text": "if(holo_batch::revealing() || holo_wrath::revealing() || holo_wrath::effect(\"polka\")) return false;"
+        },
+        {
+          "line": 7386,
+          "text": "duration[dur] += holo_batch::status_duration(dur,turns*BASELINE_DELAY);"
+        }
+      ]
+    },
+    {
+      "file": "ranged-attack.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 36,
+          "text": "holo_can_damage=!proj->is_type(OBJ_MISSILES,MI_DART) && !proj->is_type(OBJ_MISSILES,MI_THROWING_NET);"
+        },
+        {
+          "line": 71,
+          "text": "holo_ranged=true;"
+        },
+        {
+          "line": 169,
+          "text": "holo_batch::attack_attempt(attacker,defender);"
+        }
+      ]
+    },
+    {
+      "file": "religion.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 3624,
+          "text": "holo_worship::renounce(false);"
+        },
+        {
+          "line": 3822,
+          "text": "int count = holo_worship::history_count();"
+        }
+      ]
+    },
+    {
+      "file": "skills.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 469,
+          "text": "if(holo_worship::active())you.stop_train.erase(SK_INVOCATIONS);"
+        }
+      ]
+    },
+    {
+      "file": "spl-cast.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 490,
+          "text": "if(!fail_rate_check)power=holo_lamy::power(spell,power);"
+        },
+        {
+          "line": 957,
+          "text": "if(!fake_spell)holo_campaign::voluntary_hp_cost();"
+        },
+        {
+          "line": 1489,
+          "text": "const int spfail_chance = holo_batch::spell_failure(raw_spell_fail(spell));"
+        },
+        {
+          "line": 1504,
+          "text": "holo_campaign::beam_target(monster_at(beam.target),true);"
+        },
+        {
+          "line": 1506,
+          "text": "holo_batch::waking_spell_scope waking_spell(allow_fail && fail==0 && !evoked_item);"
+        },
+        {
+          "line": 1507,
+          "text": "holo_lamy::spell_scope lamy_cast(spell,allow_fail && fail==0 && !evoked_item,evoked_item && fail==0);"
+        },
+        {
+          "line": 1508,
+          "text": "holo_koyori::spell_scope koyori_cast(spell,allow_fail && fail==0 && !evoked_item,beam.target);"
+        }
+      ]
+    },
+    {
+      "file": "spl-other.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 66,
+          "text": "holo_campaign::voluntary_hp_cost();"
+        }
+      ]
+    },
+    {
+      "file": "spl-transloc.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 7,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1035,
+          "text": "if (victim && victim->is_player() && holo_force_immune())"
+        },
+        {
+          "line": 1148,
+          "text": "if (beckoned.is_player() && holo_force_immune())"
+        }
+      ]
+    },
+    {
+      "file": "spl-util.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 8,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 755,
+          "text": "if(holo_benchmark_active()) return holo_spell_target(spelld,pbolt,args?args->range:pbolt.range);"
+        },
+        {
+          "line": 970,
+          "text": "if(allow_bonus && holo_koyori::range_bonus(spell,maxrange)){++minrange;++maxrange;}"
+        }
+      ]
+    },
+    {
+      "file": "startup.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 12,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 178,
+          "text": "if (holo_dungeon::requested())"
+        },
+        {
+          "line": 181,
+          "text": "end(holo_dungeon::run(), false);"
+        },
+        {
+          "line": 184,
+          "text": "if (holo_campaign::test_requested())"
+        },
+        {
+          "line": 187,
+          "text": "end(holo_campaign::run_tests(), false);"
+        },
+        {
+          "line": 190,
+          "text": "if (holo_worship::test_requested())"
+        },
+        {
+          "line": 193,
+          "text": "end(holo_worship::run_tests(), false);"
+        },
+        {
+          "line": 196,
+          "text": "if (holo_engine_benchmark_requested())"
+        },
+        {
+          "line": 199,
+          "text": "end(holo_run_engine_benchmark(), false);"
+        },
+        {
+          "line": 397,
+          "text": "void holo_dungeon_post_init(bool new_character)"
+        },
+        {
+          "line": 399,
+          "text": "ASSERT(holo_dungeon::active());"
+        }
+      ]
+    },
+    {
+      "file": "status.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 198,
+          "text": "if(!holo_koyori::enabled() || you.piety<30)return false;"
+        },
+        {
+          "line": 199,
+          "text": "const int type=holo_koyori::next_type();"
+        },
+        {
+          "line": 201,
+          "text": "inf.light_text=holo_koyori::status();"
+        },
+        {
+          "line": 206,
+          "text": "if (!holo_campaign::active() || holo_worship::current()!=\"lamy\")"
+        },
+        {
+          "line": 208,
+          "text": "const auto &ls=holo_batch::s;"
+        },
+        {
+          "line": 215,
+          "text": "const int bonus=holo_lamy::power_bonus();"
+        },
+        {
+          "line": 217,
+          "text": "if(holo_lamy::evasion_penalty())inf.light_text+=\" EV-3\";"
+        }
+      ]
+    },
+    {
+      "file": "tags.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 1371,
+          "text": "marshallString2(th, holo_worship::active() ? holo_worship::display_name()"
+        },
+        {
+          "line": 1698,
+          "text": "holo_worship::validate_save();"
+        },
+        {
+          "line": 1699,
+          "text": "holo_campaign::save();"
+        },
+        {
+          "line": 3752,
+          "text": "holo_worship::validate_save();"
+        },
+        {
+          "line": 3753,
+          "text": "holo_campaign::load();"
+        }
+      ]
+    },
+    {
+      "file": "tilecell.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 512,
+          "text": "for(auto kind:holo_visual::at(world))if(cell.num_dngn_overlay<packed_cell::MAX_DNGN_OVERLAY)_add_overlay(holo_visual::effect_tile(kind),cell);"
+        }
+      ]
+    },
+    {
+      "file": "tiledgnbuf.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 101,
+          "text": "if(crawl_state.test && you.props.exists(\"holo_sopia_bigbang_preview\")) {"
+        },
+        {
+          "line": 102,
+          "text": "const int charge=you.props[\"holo_sopia_bigbang_preview\"].get_int();"
+        },
+        {
+          "line": 225,
+          "text": "if(crawl_state.test && you.props.exists(\"holo_sopia_bigbang_preview\")) {"
+        },
+        {
+          "line": 226,
+          "text": "const int stage=you.props[\"holo_sopia_bigbang_preview\"].get_int();"
+        },
+        {
+          "line": 233,
+          "text": "if(!nova && crawl_state.test && you.props.exists(\"holo_sopia_bigbang_preview\")) {"
+        },
+        {
+          "line": 234,
+          "text": "const int charge=you.props[\"holo_sopia_bigbang_preview\"].get_int();"
+        },
+        {
+          "line": 256,
+          "text": "const int f=holo_visual::miko_recovery_frame();"
+        },
+        {
+          "line": 257,
+          "text": "const auto delta=holo_visual::miko_recovery_delta();"
+        },
+        {
+          "line": 280,
+          "text": "const bool polka_hat=tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,0)"
+        },
+        {
+          "line": 281,
+          "text": "|| tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,1);"
+        },
+        {
+          "line": 282,
+          "text": "const bool lui_wings=tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,0)"
+        },
+        {
+          "line": 283,
+          "text": "|| tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,1);"
+        },
+        {
+          "line": 284,
+          "text": "const bool raden_screen=tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,0)"
+        },
+        {
+          "line": 285,
+          "text": "|| tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,1)"
+        },
+        {
+          "line": 286,
+          "text": "|| tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,2);"
+        },
+        {
+          "line": 289,
+          "text": "const bool hajime_notes=tileidx==holo_visual::effect_tile(holo_visual::effect::night_hajime1,0);"
+        },
+        {
+          "line": 300,
+          "text": "if(under_actors && (tileidx==holo_visual::effect_tile(holo_visual::effect::night_korone5,0)"
+        },
+        {
+          "line": 301,
+          "text": "|| tileidx==holo_visual::effect_tile(holo_visual::effect::night_korone5,1))) {"
+        },
+        {
+          "line": 307,
+          "text": "const bool expanded=tileidx==holo_visual::effect_tile(holo_visual::effect::night_korone5,1);"
+        },
+        {
+          "line": 929,
+          "text": "holo_visual::style_player(result);"
+        }
+      ]
+    },
+    {
+      "file": "tilepick.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 499,
+          "text": "const auto holo_altar = holo_visual::altar(gc);"
+        },
+        {
+          "line": 500,
+          "text": "if (!holo_altar.empty())"
+        },
+        {
+          "line": 501,
+          "text": "if (const int tile = holo_visual::altar_tile(holo_altar))"
+        },
+        {
+          "line": 1882,
+          "text": "if(mons.props.exists(\"holo_sprite\")){const int idx=holo_visual::sprite_tile(holo_visual::sprite(mons.props[\"holo_sprite\"].get_int()));if(idx)ch=idx;}"
+        }
+      ]
+    },
+    {
+      "file": "tilereg-dgn.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 132,
+          "text": "if(map_bounds(gc) && holo_visual::mask_fox_at(gc))display_cell.fg=0;"
+        },
+        {
+          "line": 135,
+          "text": "if(map_bounds(gc) && holo_visual::mask_hawk_at(gc))display_cell.fg &= ~TILE_FLAG_MASK;"
+        },
+        {
+          "line": 137,
+          "text": "if(map_bounds(gc) && holo_visual::mela_dispatch_preview_cell(gc)) {"
+        },
+        {
+          "line": 141,
+          "text": "if(map_bounds(gc) && holo_visual::mela_breath_preview_cell(gc,mela_frame,mela_distance)) {"
+        },
+        {
+          "line": 143,
+          "text": "m_buf_dngn.add_mela_beam_tile(holo_visual::effect_tile(holo_visual::effect::night_mela3,mela_frame),x,y,mela_distance);"
+        },
+        {
+          "line": 146,
+          "text": "if(map_bounds(gc) && holo_visual::sopia_gravity_preview_cell(gc,sopia_delta,sopia_radius,sopia_frame))"
+        },
+        {
+          "line": 148,
+          "text": "if(map_bounds(gc) && holo_visual::vivi_finale_cell(gc))"
+        },
+        {
+          "line": 150,
+          "text": "if(map_bounds(gc) && holo_visual::lamy_banquet_cell(gc))"
+        },
+        {
+          "line": 152,
+          "text": "!holo_visual::lamy_banquet_cell(gc+coord_def(-1,0)),"
+        },
+        {
+          "line": 153,
+          "text": "!holo_visual::lamy_banquet_cell(gc+coord_def(0,-1)),"
+        },
+        {
+          "line": 154,
+          "text": "!holo_visual::lamy_banquet_cell(gc+coord_def(1,0)),"
+        },
+        {
+          "line": 155,
+          "text": "!holo_visual::lamy_banquet_cell(gc+coord_def(0,1)));"
+        },
+        {
+          "line": 158,
+          "text": "const auto cue=holo_visual::invocation_sprite_at(gc,span_x,span_y);"
+        },
+        {
+          "line": 159,
+          "text": "if(cue>=holo_visual::effect::suiseistars1 && cue<=holo_visual::effect::suiseistars3)"
+        },
+        {
+          "line": 160,
+          "text": "m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(holo_visual::effect::starmark),x,y,1,1,false);"
+        },
+        {
+          "line": 161,
+          "text": "m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(cue),x,y,span_x,span_y,"
+        },
+        {
+          "line": 162,
+          "text": "(cue>=holo_visual::effect::night_korone1 && cue<=holo_visual::effect::night_mela5"
+        },
+        {
+          "line": 163,
+          "text": "&& (int(cue)-int(holo_visual::effect::night_korone1))%3!=0"
+        },
+        {
+          "line": 164,
+          "text": "&& cue!=holo_visual::effect::night_korone3"
+        },
+        {
+          "line": 165,
+          "text": "&& cue!=holo_visual::effect::night_okayu5"
+        },
+        {
+          "line": 166,
+          "text": "&& cue!=holo_visual::effect::night_noel5"
+        },
+        {
+          "line": 167,
+          "text": "&& cue!=holo_visual::effect::night_watame5"
+        },
+        {
+          "line": 168,
+          "text": "&& cue!=holo_visual::effect::night_su3"
+        },
+        {
+          "line": 169,
+          "text": "&& !(cue==holo_visual::effect::night_vivi3 && crawl_state.test && you.props.exists(\"holo_vivi_encore_preview\"))"
+        },
+        {
+          "line": 170,
+          "text": "&& !(cue==holo_visual::effect::night_vivi5 && crawl_state.test && you.props.exists(\"holo_vivi_finale_preview\"))"
+        },
+        {
+          "line": 171,
+          "text": "&& cue!=holo_visual::effect::night_raden3"
+        },
+        {
+          "line": 172,
+          "text": "&& cue!=holo_visual::effect::night_koyori5)"
+        },
+        {
+          "line": 173,
+          "text": "|| (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft"
+        },
+        {
+          "line": 174,
+          "text": "&& cue!=holo_visual::effect::night_radenstone && cue!=holo_visual::effect::night_radencraft)"
+        },
+        {
+          "line": 175,
+          "text": "|| cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond"
+        },
+        {
+          "line": 176,
+          "text": "|| cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift"
+        },
+        {
+          "line": 177,
+          "text": "|| cue==holo_visual::effect::foxcircle || cue==holo_visual::effect::foxflame"
+        },
+        {
+          "line": 178,
+          "text": "|| cue==holo_visual::effect::lamybanquetcast0 || cue==holo_visual::effect::lamybanquetactive);"
+        },
+        {
+          "line": 180,
+          "text": "if(gc==you.pos())for(auto badge:holo_visual::badges())"
+        },
+        {
+          "line": 181,
+          "text": "m_buf_dngn.add_main_tile(holo_visual::badge_tile(badge),x,y);"
+        }
+      ]
+    },
+    {
+      "file": "traps.cc",
+      "existsIn0341": true,
+      "references": [
+        {
+          "line": 7,
+          "text": "#include \"holocrawl.h\""
+        },
+        {
+          "line": 1360,
+          "text": "if (holo_benchmark_active())"
+        }
+      ]
+    }
+  ],
+  "gods": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame",
+    "choco",
+    "korone",
+    "okayu",
+    "pekora",
+    "noel",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "sopia",
+    "mela"
+  ],
+  "godCount": 22,
+  "previewAssets": [
+    {
+      "file": "armour.png",
+      "sha256": "62dd16cc02820238b136030e293396274408cbad5aafc62224471403e2a41d90"
+    },
+    {
+      "file": "body.png",
+      "sha256": "4eb4821e71ffc7fe2e080cf3af7a5cde4009f11e87b833b377f13e9fe3004562"
+    },
+    {
+      "file": "boots.png",
+      "sha256": "17980d65f80082971eabe1e069ebc2b2a10226e87ce1dce5319b8e5b47b349e9"
+    },
+    {
+      "file": "cement-reference.png",
+      "sha256": "b5ec52295016eb3b3b70903802e8e22d8f5af99e406d8a733ec3a9dc475072ad"
+    },
+    {
+      "file": "fence-cutout32.png",
+      "sha256": "584ada7eb0eab1fe1c54c0ba73bd13c89ce96cc058a9f7e8e943b35190c28b78"
+    },
+    {
+      "file": "helmet.png",
+      "sha256": "28051bdef0984b5f8efd2b8545dbac4ab2e27de2432a0ecb83370595646a20e0"
+    },
+    {
+      "file": "rat.png",
+      "sha256": "5066ca8630196cb6407ea1197ee19da9e62da191fa1878f3ffb42230a8fddf81"
+    },
+    {
+      "file": "scene-reference.png",
+      "sha256": "0afdf9ba5ae38eadc6c30ad9cee9aa295f5457f4103b587bbd492c35619224ea"
+    },
+    {
+      "file": "stairs-down06-32.png",
+      "sha256": "a2422297ee73330d28faafae9ce58e30f7c05c74d2088fc1a00a70accf40740c"
+    },
+    {
+      "file": "stairs-up08-32.png",
+      "sha256": "2d57c3a6a6991f2e6a120d4b4679cfbf9a5dbf8e128c2463a9dcd3d5019fb3eb"
+    },
+    {
+      "file": "stairs.png",
+      "sha256": "461d685b4bc64fa2f6c7d122bd5efa5203739253e5f166ce2fd784c048bf3d80"
+    },
+    {
+      "file": "sword.png",
+      "sha256": "607905d92bf03f2d7370f611f7ec3e22d4e5db3f2cb7cd83360c7ee8be9bdd3e"
+    }
+  ],
+  "legacyRuntimeSha256": "902c7a6c5590c7947c4391022203d0be1f750a4a9b794cebfff80bbdbc99e901",
+  "legacyCodeIntegratedInto0341": false,
+  "previewNativeIntegrated": false
+}

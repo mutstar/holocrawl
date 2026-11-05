@@ -1,0 +1,16 @@
+{
+  "revision": "street-stairs06",
+  "preview": "preview/street-vision01/index.html",
+  "engineIntegrated": false,
+  "runtimeChanged": false,
+  "floorTravelImplemented": false,
+  "assets": [
+    "assets/stairs-up12-32.png",
+    "assets/stairs-down06-32.png"
+  ],
+  "browserValidation": "analysis/previews/street-stairs06/browser-validation.json",
+  "artDirection": "Circular stairs, no handrails; raised up and recessed down, one tile",
+  "upstairsRevision": "upstairs12",
+  "approved": true,
+  "approvedDate": "2026-11-04"
+}

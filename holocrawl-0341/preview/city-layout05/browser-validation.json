@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "newMapsChecked": 80,
+  "oldComparisonMapsChecked": 80,
+  "allFloorsAndStairsConnected": true,
+  "reservedStairRoute3WideAfterProps": true,
+  "minimumWideCoreConnectedFraction": 0.92,
+  "meanWideCoreConnectedFraction": 0.9544518268982551,
+  "oldMeanSingleFileCells": 106.575,
+  "newMeanSingleFileCells": 24.3375,
+  "singleFileCellsReducedMoreThanHalf": true,
+  "deterministicBySeed": true,
+  "walkedRouteSteps": 49,
+  "wideRouteOverlayWorks": true,
+  "responsiveNoOverflow": true,
+  "nativeGameLaunched": false,
+  "errors": []
+}

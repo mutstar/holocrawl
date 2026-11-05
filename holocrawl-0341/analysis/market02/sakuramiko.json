@@ -1,0 +1,12 @@
+{
+  "id": "sakuramiko",
+  "name": "Sakura Miko",
+  "nameJa": "さくらみこ",
+  "status": "active",
+  "profile": "https://hololive.hololivepro.com/en/talents/sakuramiko/",
+  "image": "assets/members/sakuramiko.png",
+  "artSource": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Sakura-Miko_pr-img_01.webp",
+  "color": "#FF8FDF",
+  "colorSource": "https://vtubernews.com/datalist-0009/",
+  "colorStatus": "representative preview colour; not a claim of official brand hex"
+}

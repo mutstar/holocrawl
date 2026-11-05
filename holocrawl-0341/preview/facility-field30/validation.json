@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "buildings": 6,
+  "allEntrancesReachable": true,
+  "blockedWall": true,
+  "allBuildingRectanglesBlocked": true,
+  "walkableTiles": 338,
+  "keyboardMovement": true,
+  "mobileNoOverflow": true,
+  "errors": []
+}

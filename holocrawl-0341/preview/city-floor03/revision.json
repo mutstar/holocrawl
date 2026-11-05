@@ -1,0 +1,19 @@
+{
+  "previous": "city-floor02",
+  "change": "unaltered upstream DCSS0.34.1 stairs shown on same city map",
+  "source": "engine/upstream/crawl-ref/source/rltiles/dngn/gateways/stone_stairs_{up,down}.png",
+  "sha256": {
+    "up": "73f729a9bb313d0ca24d66b62d4cd890a529595d3431b81634aae07e5eae6dd6",
+    "down": "461d685b4bc64fa2f6c7d122bd5efa5203739253e5f166ce2fd784c048bf3d80"
+  },
+  "rawPNGSize": [
+    32,
+    32
+  ],
+  "extraShadowOnOriginalStairs": false,
+  "logicalFootprint": [
+    1,
+    1
+  ],
+  "nativeGameApplied": false
+}

@@ -1,0 +1,144 @@
+{
+  "scope": "Current Git-eligible active project plus root source launchers; text <=8MiB; no archive contents",
+  "eligibleFiles": 10368,
+  "scannedTextFiles": 4837,
+  "skipped": {
+    "binary": 5524,
+    "over8MiB": 6
+  },
+  "groups": {
+    ".gitignore": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "CONTINUE_HERE.md": {
+      "files": 1,
+      "MiB": 0.09
+    },
+    "HOLOCRAWL_DESIGN.md": {
+      "files": 1,
+      "MiB": 0.12
+    },
+    "OPEN_HOME_EXPLORER.cmd": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "OPEN_HOME_EXPLORER.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/BUILD_BASE.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/BUILD_STREET.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/BUILD_STRUCTURE.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/BUILD_VISIBILITY.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/CONTINUE_HERE.md": {
+      "files": 1,
+      "MiB": 0.07
+    },
+    "holocrawl-0341/OPEN_GOD_STRUCTURE.cmd": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/OPEN_STREET_PREVIEW.cmd": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/PLAY_BASE_0341.cmd": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/PLAY_STREET.cmd": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/PLAY_STREET.ps1": {
+      "files": 1,
+      "MiB": 0.0
+    },
+    "holocrawl-0341/README.md": {
+      "files": 1,
+      "MiB": 0.02
+    },
+    "holocrawl-0341/analysis": {
+      "files": 3007,
+      "MiB": 62.75
+    },
+    "holocrawl-0341/design": {
+      "files": 52,
+      "MiB": 0.23
+    },
+    "holocrawl-0341/migration-status.json": {
+      "files": 1,
+      "MiB": 0.01
+    },
+    "holocrawl-0341/migration": {
+      "files": 582,
+      "MiB": 2.29
+    },
+    "holocrawl-0341/preview": {
+      "files": 2292,
+      "MiB": 461.57
+    },
+    "holocrawl-0341/runtime": {
+      "files": 4186,
+      "MiB": 230.78
+    },
+    "holocrawl-0341/scripts": {
+      "files": 220,
+      "MiB": 0.67
+    },
+    "scripts": {
+      "files": 11,
+      "MiB": 0.04
+    }
+  },
+  "largeFiles": [],
+  "signatureMatches": [],
+  "assignmentCandidates": [],
+  "scopeNote": "Active upload scope reviewed separately. Full workspace text scan also completed: no secret signatures; two password assignment hits are the same upstream SSH setup documentation text. Archives, binaries, >8MiB files, dependencies and Git metadata were not content-cleared.",
+  "engineDelta": {
+    "modified": 8,
+    "untracked": 102,
+    "base": "0.34.1",
+    "commit": "1eebc1a2892e1c89776a0d7a10691f8dac8d9796",
+    "signatureMatches": 0,
+    "restoreCheck": "passed; 3 tracked files normalize CRLF/LF only",
+    "path": "migration/engine0341-git-handoff-20261105"
+  },
+  "fullHistoricalWorkspaceScan": {
+    "status": "completed",
+    "textFiles": 239746,
+    "signatureMatches": 0,
+    "assignmentCandidates": [
+      {
+        "path": "engine/crawl/crawl-ref/docs/ssh_guide.txt",
+        "line": 121,
+        "kind": "password",
+        "value_length": 25
+      },
+      {
+        "path": "holocrawl-0341/engine/upstream/crawl-ref/docs/ssh_guide.txt",
+        "line": 121,
+        "kind": "password",
+        "value_length": 25
+      }
+    ],
+    "sensitiveFilenames": [],
+    "readErrors": 0,
+    "limitations": "Workspace files excluding .git, dependency/toolchain/venv directories; archives not unpacked; text files <=8MiB, NUL binary detection"
+  },
+  "gitActions": "No staging, commit, remote creation or push performed.",
+  "passwordCandidateTriage": "Both hits are duplicate upstream SSH connection documentation, excluded from upload; not a personal API token finding."
+}

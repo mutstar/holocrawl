@@ -1,0 +1,8 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');
+const{chromium,executablePath,previewURL}=require('./portable-browser-tools.cjs');
+(async()=>{const b=await chromium.launch({headless:true,executablePath});try{const p=await b.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(previewURL+'/city-floor-final01/?map=0&placement=5110501');await p.waitForFunction(()=>window.ready);
+const atlas=await p.evaluate(()=>{const sheet=document.createElement('canvas');sheet.width=640;sheet.height=720;const c=sheet.getContext('2d');c.imageSmoothingEnabled=false;c.fillStyle='#101716';c.fillRect(0,0,640,720);
+for(let mask=0;mask<16;mask++){const ox=mask%4*160,oy=Math.floor(mask/4)*180,shape={n:!!(mask&1),e:!!(mask&2),s:!!(mask&4),w:!!(mask&8)},sample={seed:'connection03',w:5,h:5,palette:['floor','rock_wall'],rows:Array.from({length:5},()=>Array(5).fill(0))};sample.rows[2][2]=1;for(const[bit,x,y]of[[1,2,1],[2,3,2],[4,2,3],[8,1,2]])if(mask&bit)sample.rows[y][x]=1;
+for(let y=0;y<5;y++)for(let x=0;x<5;x++){if(sample.rows[y][x])connectedConcreteWall(c,sample,x,y,ox+x*32,oy+y*32,32,thinWallShape(sample,x,y),false);else c.drawImage(tiles[0],ox+x*32,oy+y*32,32,32);}
+c.fillStyle='#dbe4de';c.font='12px system-ui';c.fillText(mask===0?'한 칸':mask===15?'십자':(shape.n?'↑':'')+(shape.e?'→':'')+(shape.s?'↓':'')+(shape.w?'←':''),ox+5,oy+175);}
+return sheet.toDataURL().split(',')[1];});assert.deepStrictEqual(errors,[]);const out=path.resolve(__dirname,'../preview/city-floor-final01');fs.writeFileSync(path.join(out,'wall-connections03.png'),Buffer.from(atlas,'base64'));console.log('Exported 16 native 32px wall connection combinations.');}finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});

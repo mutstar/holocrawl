@@ -1,0 +1,21 @@
+{
+  "acceptedACAndVentPixelsUnchanged": true,
+  "nativeTileSize": [
+    32,
+    32
+  ],
+  "pipeBundleVisibleSize": [
+    24,
+    28
+  ],
+  "cabinetWithCableVisibleSize": [
+    24,
+    20
+  ],
+  "doorSilhouetteUnchanged": [
+    24,
+    30
+  ],
+  "transparent": true,
+  "mapAndGameplayCodeUnchanged": true
+}

@@ -1,0 +1,85 @@
+{
+  "status": "draft for user review",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "gamers-station",
+      "bounds": {
+        "x": 68,
+        "y": 109,
+        "w": 1400,
+        "h": 829
+      },
+      "visibleSize": [
+        96,
+        57
+      ],
+      "palette": 28,
+      "canvas": [
+        96,
+        64
+      ],
+      "alphaSource": true
+    },
+    {
+      "name": "fantasy-ground",
+      "bounds": {
+        "x": 68,
+        "y": 91,
+        "w": 1400,
+        "h": 837
+      },
+      "visibleSize": [
+        96,
+        57
+      ],
+      "palette": 28,
+      "canvas": [
+        96,
+        64
+      ],
+      "alphaSource": true
+    },
+    {
+      "name": "holox-base",
+      "bounds": {
+        "x": 68,
+        "y": 108,
+        "w": 1401,
+        "h": 833
+      },
+      "visibleSize": [
+        96,
+        57
+      ],
+      "palette": 28,
+      "canvas": [
+        96,
+        64
+      ],
+      "alphaSource": true
+    }
+  ],
+  "prompts": [
+    {
+      "name": "gamers-station",
+      "label": "게이머즈 역",
+      "extra": "A playful game-themed station entrance inspired by a virtual idol gaming group. Central metal double entrance, wide sign above with a simple gamepad silhouette, subtle small white fox ears on left sign end and brown dog ears on right end, muted forest green accents, two small ticket machines inset beside doors. Clean compact industrial transit architecture, clearly a station not a merchandise shop.",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon environment game sprite, pristine base version before an aging pass. One isolated frontal orthographic building facade, straight-on, 3 tiles wide and 2 tiles tall, intended native resolution 96x64 pixels. Coarse authentic low-resolution pixel-art clusters and limited 24-color palette, crisp charcoal outlines, muted brown-gray concrete walls and dark metal trim to match Dungeon Crawl Stone Soup tiles. Flat rectangular outer boundary, no protruding tall roof or tower. Bottom edge flat, no floor or platform, no perspective ground, no surrounding scene. True transparent background. Clean intact materials, readable themed silhouette, small colored accents but no huge glowing windows or neon bloom. NOT a photorealistic illustration or smooth vector icon. No text, letters, watermark, people. A playful game-themed station entrance inspired by a virtual idol gaming group. Central metal double entrance, wide sign above with a simple gamepad silhouette, subtle small white fox ears on left sign end and brown dog ears on right end, muted forest green accents, two small ticket machines inset beside doors. Clean compact industrial transit architecture, clearly a station not a merchandise shop."
+    },
+    {
+      "name": "fantasy-ground",
+      "label": "3기생 운동시설",
+      "extra": "A fantasy-themed athletic club entrance inspired by a virtual idol fantasy generation. Central open dark entrance with small metal gate, compact crossed pennant sign in muted red and teal, silver shield medallion and small trophy as sports emblems, one inset equipment alcove showing balls and jump ropes. Solid squat building facade, restrained navy and brass highlights. Clearly a sports facility not a retail shop.",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon environment game sprite, pristine base version before an aging pass. One isolated frontal orthographic building facade, straight-on, 3 tiles wide and 2 tiles tall, intended native resolution 96x64 pixels. Coarse authentic low-resolution pixel-art clusters and limited 24-color palette, crisp charcoal outlines, muted brown-gray concrete walls and dark metal trim to match Dungeon Crawl Stone Soup tiles. Flat rectangular outer boundary, no protruding tall roof or tower. Bottom edge flat, no floor or platform, no perspective ground, no surrounding scene. True transparent background. Clean intact materials, readable themed silhouette, small colored accents but no huge glowing windows or neon bloom. NOT a photorealistic illustration or smooth vector icon. No text, letters, watermark, people. A fantasy-themed athletic club entrance inspired by a virtual idol fantasy generation. Central open dark entrance with small metal gate, compact crossed pennant sign in muted red and teal, silver shield medallion and small trophy as sports emblems, one inset equipment alcove showing balls and jump ropes. Solid squat building facade, restrained navy and brass highlights. Clearly a sports facility not a retail shop."
+    },
+    {
+      "name": "holox-base",
+      "label": "holoX 비밀기지 · 독자 각색",
+      "extra": "An original secret society research-base entrance inspired by holoX virtual idols, not a claimed official game building. Strong compact sealed metal double door, dark graphite canopy, restrained violet and muted mint accents, angular abstract secret-society insignia above door, two narrow green monitor panels recessed beside entrance, small horizontal ventilation grille. Clearly a mysterious headquarters, no shop display or awning.",
+      "prompt": "Use case: stylized-concept. Asset: HoloCrawl dungeon environment game sprite, pristine base version before an aging pass. One isolated frontal orthographic building facade, straight-on, 3 tiles wide and 2 tiles tall, intended native resolution 96x64 pixels. Coarse authentic low-resolution pixel-art clusters and limited 24-color palette, crisp charcoal outlines, muted brown-gray concrete walls and dark metal trim to match Dungeon Crawl Stone Soup tiles. Flat rectangular outer boundary, no protruding tall roof or tower. Bottom edge flat, no floor or platform, no perspective ground, no surrounding scene. True transparent background. Clean intact materials, readable themed silhouette, small colored accents but no huge glowing windows or neon bloom. NOT a photorealistic illustration or smooth vector icon. No text, letters, watermark, people. An original secret society research-base entrance inspired by holoX virtual idols, not a claimed official game building. Strong compact sealed metal double door, dark graphite canopy, restrained violet and muted mint accents, angular abstract secret-society insignia above door, two narrow green monitor panels recessed beside entrance, small horizontal ventilation grille. Clearly a mysterious headquarters, no shop display or awning."
+    }
+  ],
+  "production": "Alpha crop, area reduction and 28-colour export with existing project PixelReducer; crisp 96x64 PNG. Originals retained.",
+  "nativeIntegrated": false
+}

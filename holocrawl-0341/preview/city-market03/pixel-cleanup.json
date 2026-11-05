@@ -1,0 +1,10 @@
+{
+  "status": "prepared",
+  "assets": 20,
+  "sourceArtUnchanged": true,
+  "logicalTileSize": 32,
+  "wallWidth": 64,
+  "method": "alpha-weighted area reduction,18-colour palette, hard alpha, no dithering; final display uses nearest-neighbour",
+  "memberMethod": "direct per-display-size reduction from64x112 source; no bright dilation outline; separate8x13/12x18/16x24 caches",
+  "nativeGameLaunched": false
+}

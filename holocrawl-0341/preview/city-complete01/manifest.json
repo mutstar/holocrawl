@@ -1,0 +1,15 @@
+{
+  "purpose": "complete existing city art review",
+  "layout": "authored review map, not native procedural output",
+  "dimensions": [
+    42,
+    30
+  ],
+  "tileSize": 32,
+  "props": 20,
+  "terrainSource": "native-water02",
+  "commonArt": "city-layout07",
+  "nativeGameApplied": false,
+  "monsters": false,
+  "items": false
+}

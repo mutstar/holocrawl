@@ -1,0 +1,22 @@
+{
+  "bounds": {
+    "x": 308,
+    "y": 124,
+    "w": 640,
+    "h": 1004
+  },
+  "sourceWidth": 1254,
+  "sourceHeight": 1254,
+  "transparentSourcePixels": 920724,
+  "nativeCanvas": [
+    32,
+    32
+  ],
+  "visibleArtBox": [
+    4,
+    1,
+    24,
+    30
+  ],
+  "colors": 14
+}

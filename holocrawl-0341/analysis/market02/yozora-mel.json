@@ -1,0 +1,14 @@
+{
+  "id": "yozora-mel",
+  "name": "Yozora Mel",
+  "nameJa": "夜空メル",
+  "status": "former",
+  "profile": "https://hololive.hololivepro.com/en/talents/yozora-mel/",
+  "image": "assets/members/yozora-mel.png",
+  "artSource": "file:///C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/analysis/market02/mel-cutout.png",
+  "color": "#FED62A",
+  "colorSource": "https://vtubernews.com/datalist-0009/",
+  "colorStatus": "representative preview colour; not a claim of official brand hex",
+  "originalArtSource": "https://hololive.wiki/wiki/Yozora_Mel",
+  "processing": "Background extracted with built-in image_gen, then nearest resize"
+}

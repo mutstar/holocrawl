@@ -1,0 +1,154 @@
+{
+  "status": "approved-structure-planning-only",
+  "engineImplemented": false,
+  "story": "A fan travels to Japan for their oshi's3D live; the world distorts into JP,ID,EN dungeon regions.",
+  "difficultyAndUnlockOrder": [
+    "JP",
+    "ID",
+    "EN"
+  ],
+  "floorCap": 60,
+  "runeTotal": 15,
+  "jp": {
+    "main": {
+      "name": "잔향도시",
+      "floors": 14,
+      "themes": [
+        {
+          "floors": [
+            1,
+            3
+          ],
+          "name": "공연장 앞 거리"
+        },
+        {
+          "floors": [
+            4,
+            7
+          ],
+          "name": "굿즈 상점가"
+        },
+        {
+          "floors": [
+            8,
+            10
+          ],
+          "name": "끝나지 않는 축제"
+        },
+        {
+          "floors": [
+            11,
+            14
+          ],
+          "name": "뒤틀린 방송 거리"
+        }
+      ]
+    },
+    "depths": {
+      "name": "커튼콜",
+      "floors": 7,
+      "themes": [
+        {
+          "floors": [
+            1,
+            2
+          ],
+          "name": "끝없는 대기실"
+        },
+        {
+          "floors": [
+            3,
+            5
+          ],
+          "name": "뒤섞인 리허설 구역"
+        },
+        {
+          "floors": [
+            6,
+            7
+          ],
+          "name": "무대 뒤편"
+        }
+      ],
+      "bossRune": 1
+    },
+    "dangerBranches": {
+      "candidates": 4,
+      "generated": 2,
+      "selection": "One fromA/B and one fromC/D per run",
+      "floorsEach": 3,
+      "oneRequired": true,
+      "runesEach": 1,
+      "provisionalNames": [
+        "백귀야시장",
+        "태엽극장",
+        "수몰신사",
+        "폭죽유원지"
+      ]
+    },
+    "optionalChallenge": {
+      "provisionalName": "금지된 굿즈 창고",
+      "floors": 3,
+      "runes": 1
+    },
+    "regionalFinale": {
+      "provisionalName": "끝나지 않는 앙코르",
+      "floors": 3,
+      "runes": 1,
+      "entry": "CurtainCall boss rune plus one danger branch rune"
+    },
+    "runes": 5,
+    "requiredFloorsBeforeSharedFinal": 27,
+    "allFloorsBeforeSharedFinal": 33,
+    "events": "Rescue,temple,shop events placed inside main floors; no extra floor count."
+  },
+  "id": {
+    "entryFloors": 1,
+    "branches": 3,
+    "branchFloorsEach": 2,
+    "branchRunesEach": 1,
+    "finalFloors": 1,
+    "floorsTotal": 8,
+    "runesTotal": 3,
+    "completion": "All3runes plus ID boss unlock EN"
+  },
+  "en": {
+    "entryFloors": 1,
+    "worldsPerRun": 6,
+    "floorsEach": 2,
+    "runesEach": 1,
+    "finalFloors": 3,
+    "finalRunes": 1,
+    "floorsTotal": 16,
+    "runesTotal": 7
+  },
+  "sharedFinal": {
+    "floors": 3,
+    "name": "未定",
+    "endingDependsOnCompletedRegions": true
+  },
+  "routes": [
+    {
+      "ending": "JP",
+      "minimumFloors": 30,
+      "allOptionalFloors": 36,
+      "minimumRunes": 3,
+      "allRunes": 5
+    },
+    {
+      "ending": "JP+ID",
+      "minimumFloors": 38,
+      "allOptionalFloors": 44,
+      "minimumRunes": 6,
+      "allRunes": 8
+    },
+    {
+      "ending": "JP+ID+EN",
+      "minimumFloors": 54,
+      "allOptionalFloors": 60,
+      "minimumRunes": 13,
+      "allRunes": 15
+    }
+  ],
+  "currentArtTask": "잔향도시4~7층 굿즈 상점가: browser-only art/layout draft. Street1~3 common baseline approved; festival8~10 and broadcast11~14 not started."
+}

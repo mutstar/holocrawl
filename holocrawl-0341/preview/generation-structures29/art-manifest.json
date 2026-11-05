@@ -1,0 +1,171 @@
+{
+  "mode": "built-in image_gen",
+  "status": "base design review; not aged; not game integrated",
+  "export": "alpha crop, area reduction, 24-color palette; integer CSS enlargement",
+  "assets": [
+    {
+      "name": "gamers",
+      "label": "게이머즈 역",
+      "bounds": {
+        "x": 15,
+        "y": 54,
+        "w": 1507,
+        "h": 943
+      },
+      "visibleSize": [
+        96,
+        60
+      ],
+      "canvas": [
+        96,
+        64
+      ],
+      "palette": 24
+    },
+    {
+      "name": "fantasy",
+      "label": "3기생 판타지 회관 · 각색",
+      "bounds": {
+        "x": 17,
+        "y": 8,
+        "w": 1220,
+        "h": 1230
+      },
+      "visibleSize": [
+        95,
+        96
+      ],
+      "canvas": [
+        96,
+        96
+      ],
+      "palette": 24
+    },
+    {
+      "name": "holox",
+      "label": "holoX 아지트",
+      "bounds": {
+        "x": 5,
+        "y": 6,
+        "w": 1527,
+        "h": 1011
+      },
+      "visibleSize": [
+        96,
+        64
+      ],
+      "canvas": [
+        96,
+        64
+      ],
+      "palette": 24
+    },
+    {
+      "name": "cinema",
+      "label": "2기생 극장",
+      "bounds": {
+        "x": 16,
+        "y": 12,
+        "w": 1417,
+        "h": 1068
+      },
+      "visibleSize": [
+        127,
+        96
+      ],
+      "canvas": [
+        128,
+        96
+      ],
+      "palette": 24
+    },
+    {
+      "name": "wheel",
+      "label": "4기생 기적의 고리 · 관람차",
+      "bounds": {
+        "x": 48,
+        "y": 15,
+        "w": 1138,
+        "h": 1230
+      },
+      "visibleSize": [
+        118,
+        128
+      ],
+      "canvas": [
+        128,
+        128
+      ],
+      "palette": 24
+    },
+    {
+      "name": "clock",
+      "label": "Promise 시계탑",
+      "bounds": {
+        "x": 131,
+        "y": 9,
+        "w": 625,
+        "h": 1756
+      },
+      "visibleSize": [
+        46,
+        128
+      ],
+      "canvas": [
+        64,
+        128
+      ],
+      "palette": 24
+    }
+  ],
+  "prompts": [
+    {
+      "name": "gamers",
+      "label": "게이머즈 역",
+      "w": 96,
+      "h": 64,
+      "desc": "Native 96x64, broad 3:2 low rectangular station facade. Above central station entrance a single big connected sign composed of FOUR LARGE readable mascot silhouettes: white fox head, black-and-red wolf head, purple cat head, brown floppy-eared dog head, left to right, no faces. These four color blocks are the primary identity, NOT a generic gamepad logo. Station door below, only two simple ticket slots, muted green band. Mascot sign occupies top third.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 96x64, broad 3:2 low rectangular station facade. Above central station entrance a single big connected sign composed of FOUR LARGE readable mascot silhouettes: white fox head, black-and-red wolf head, purple cat head, brown floppy-eared dog head, left to right, no faces. These four color blocks are the primary identity, NOT a generic gamepad logo. Station door below, only two simple ticket slots, muted green band. Mascot sign occupies top third."
+    },
+    {
+      "name": "fantasy",
+      "label": "3기생 판타지 회관 · 각색",
+      "w": 96,
+      "h": 96,
+      "desc": "Native 96x96 square fantasy guild hall facade, not sports center. Central broad doorway surmounted by large silver knight shield bearing blue rabbit-ear crest, one bold pirate skull pennant in burgundy on right, one orange flame pennant on left. Main identity: rabbit, knight, pirate, elf flame, readable as 4 large simplified features, not tiny icons. Slate blue angular roof and muted brass trim. Clear original Hololive Fantasy-inspired guild silhouette.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 96x96 square fantasy guild hall facade, not sports center. Central broad doorway surmounted by large silver knight shield bearing blue rabbit-ear crest, one bold pirate skull pennant in burgundy on right, one orange flame pennant on left. Main identity: rabbit, knight, pirate, elf flame, readable as 4 large simplified features, not tiny icons. Slate blue angular roof and muted brass trim. Clear original Hololive Fantasy-inspired guild silhouette."
+    },
+    {
+      "name": "holox",
+      "label": "holoX 아지트",
+      "w": 96,
+      "h": 64,
+      "desc": "Native 96x64 broad 3:2 secret society headquarters facade. Huge purple horned X crest with long paired curved dark horns forming the roof silhouette, white angular hawk wings flanking crest. Central armored door with bold black-white orca zigzag pattern, one large pink test tube inset left and one teal katana panel right. Each motif should be coarse and readable, no extra icon clutter. Purple, pink, teal restrained accents on charcoal and brown concrete.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 96x64 broad 3:2 secret society headquarters facade. Huge purple horned X crest with long paired curved dark horns forming the roof silhouette, white angular hawk wings flanking crest. Central armored door with bold black-white orca zigzag pattern, one large pink test tube inset left and one teal katana panel right. Each motif should be coarse and readable, no extra icon clutter. Purple, pink, teal restrained accents on charcoal and brown concrete."
+    },
+    {
+      "name": "cinema",
+      "label": "2기생 극장",
+      "w": 128,
+      "h": 96,
+      "desc": "Native 128x96 broad theatre facade. Recognizable tiered theatre marquee and paired burgundy curtains framing entrance. Three large marquee emblems: red oni horn mask, pink heart with small dark devil wings, yellow duck silhouette. These identify Ayame Choco Subaru, use clear big flat shapes, no faces or portraits. Dark violet-blue roof, muted brass border with just six large lamp dots, no text. Broad recognizable cinema silhouette different from station.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 128x96 broad theatre facade. Recognizable tiered theatre marquee and paired burgundy curtains framing entrance. Three large marquee emblems: red oni horn mask, pink heart with small dark devil wings, yellow duck silhouette. These identify Ayame Choco Subaru, use clear big flat shapes, no faces or portraits. Dark violet-blue roof, muted brass border with just six large lamp dots, no text. Broad recognizable cinema silhouette different from station."
+    },
+    {
+      "name": "wheel",
+      "label": "4기생 기적의 고리 · 관람차",
+      "w": 128,
+      "h": 128,
+      "desc": "Native 128x128 square freestanding small Ferris wheel attraction, front view, whole wheel and triangular support base visible. Eight thick spokes maximum, 5 LARGE simplified themed gondolas: pale-blue angel wing, orange dragon horn, cream curled sheep horn, bright violet devil wing, pink crown; all integrated as gondola silhouettes rather than tiny pasted logos. Navy and muted brass wheel frame with thick outlines. Pale pink-purple accents. Do not draw a shop facade, do not make intricately thin spokes, no platform floor.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 128x128 square freestanding small Ferris wheel attraction, front view, whole wheel and triangular support base visible. Eight thick spokes maximum, 5 LARGE simplified themed gondolas: pale-blue angel wing, orange dragon horn, cream curled sheep horn, bright violet devil wing, pink crown; all integrated as gondola silhouettes rather than tiny pasted logos. Navy and muted brass wheel frame with thick outlines. Pale pink-purple accents. Do not draw a shop facade, do not make intricately thin spokes, no platform floor."
+    },
+    {
+      "name": "clock",
+      "label": "Promise 시계탑",
+      "w": 64,
+      "h": 128,
+      "desc": "Native 64x128 narrow freestanding clock tower. BIG cream clock face with navy hands near top, short dark blue roof with golden crescent. Thick blue-and-brass angular tower shape. Beneath clock three large bold vertically arranged panels: a green leaf, tan feather, red-black diamond; one small rose crystal at base arch. Promise-inspired time/nature/civilization/chaos/hope motifs, clock dominant and readable from far away. No tiny carvings, no text or numbers, simple four clock ticks. No floor.",
+      "prompt": "Use case: stylized-concept. Asset: one isolated game environment sprite for HoloCrawl, BEFORE aging. Original redesign inspired by Hololive group motifs, not a literal reproduction of official game architecture. Strict low-resolution pixel art: large deliberate square pixel clusters, 20-24 flat colors, thick charcoal contour, minimal interior detail. Designed to be legible at the specified native size. No photorealism, no antialias, no blur, no gradients, no bloom, no tiny writing, no lettering. Front-facing orthographic RPG architecture compatible with Dungeon Crawl Stone Soup tiles, muted brown-gray masonry, restrained group colors. Clean intact materials for base design review, not decayed yet. True transparent background, no ground, no backdrop, no characters. Show full isolated structure with small margin. Do not add random minuscule decorative symbols. Native 64x128 narrow freestanding clock tower. BIG cream clock face with navy hands near top, short dark blue roof with golden crescent. Thick blue-and-brass angular tower shape. Beneath clock three large bold vertically arranged panels: a green leaf, tan feather, red-black diamond; one small rose crystal at base arch. Promise-inspired time/nature/civilization/chaos/hope motifs, clock dominant and readable from far away. No tiny carvings, no text or numbers, simple four clock ticks. No floor."
+    }
+  ]
+}

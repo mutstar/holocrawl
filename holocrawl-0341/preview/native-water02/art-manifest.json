@@ -1,0 +1,25 @@
+{
+  "revision": "native-water02",
+  "approved": false,
+  "mode": "built-in image_gen (shallow only)",
+  "shallow": {
+    "original": "assets/water-shallow-original.png",
+    "surface": "assets/water-shallow128.png",
+    "prompt": "Edit target: attached shallow-water pixel-art surface. Redraw it so it immediately reads as WATER rather than wet pavement. Retain flat top-down seamless surface texture for a32px-tile urban roguelike, later reduced to128x128 logical pixels. Make the entire continuous surface medium muted CYAN-TEAL water, visibly brighter and shallower than a dark teal deep canal. Replace the broad gray concrete patches and prominent cracks with continuous liquid. Concrete bottom may be faintly sensed as subtle submerged mottling, never as dry gray islands or clearly drawn cracks. Add clearly readable sparse short pale aqua ripple arcs and broken horizontal reflection strokes across the water; moderately stronger than before, but no white surf or large waves. A quiet flooded backstage-city floor, original DCSS-like low-resolution pixel style, hard square pixel clusters, about16 colors. Preserve even top-down density and edge-to-edge repeating material. No shoreline outlines, pool border, rocks, vegetation, props, text, frames, margins, perspective or black bars. Entire image opaque. One water surface only.",
+    "logicalSize": [
+      128,
+      128
+    ],
+    "colors": 18,
+    "blendOpacity": 0.9
+  },
+  "deep": {
+    "original": "assets/water-deep-original.png",
+    "surface": "assets/water-deep128.png",
+    "reusedFrom": "../native-water01/",
+    "unchanged": true,
+    "userFeedback": "Positive; retained."
+  },
+  "change": "Remove dry concrete islands/prominent cracks, strengthen cyan-teal water and pale short ripple reflections. Surface opacity raised from.62 to.90.",
+  "scope": "Browser-only art. Native geometry, banks, deep surface and approved door12 retained."
+}

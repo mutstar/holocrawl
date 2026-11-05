@@ -1,0 +1,42 @@
+{
+  "revision": "native-door12",
+  "approved": true,
+  "mode": "built-in image_gen",
+  "request": "Redraw a less wide door following the third/rightmost reference, not simply resize the previous sprite.",
+  "assetCanvas": [
+    32,
+    32
+  ],
+  "visibleArtBox": [
+    4,
+    1,
+    24,
+    30
+  ],
+  "sameSpriteBothWallAxes": true,
+  "paletteColors": 14,
+  "processing": "New generated RGBA originals alpha-cropped, area-reduced/normalized to24x30, quantized to14 colors, then placed at(4,1) on transparent32x32 canvases. The map renderer draws the complete32px asset at tile size with no axis-dependent width stretch.",
+  "assets": [
+    {
+      "state": "closed",
+      "original": "assets/fire-door-closed-original.png",
+      "sprite": "assets/fire-door-closed32.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production pixel-art CLOSED door sprite for a 32x32-grid roguelike, transparent PNG. Image 1 is the edit target: our gray-blue steel fire door. Image 2 is a proportions reference: use ONLY the THIRD/rightmost door as the target silhouette ratio. Redraw the target with a naturally NARROWER, more upright door shape, not the almost-square original. Within a square 32x32 logical canvas, the ENTIRE visible door including thin frame occupies approximately 24 pixels in width and 30 pixels in height, centered with 4 transparent logical pixels on either side and 1 pixel above/below. True sprite shape ratio 24:30; do not stretch a square door to fit. Recompose and redraw the pixel clusters for this slender silhouette. Preserve a SINGLE gray-blue steel door leaf, modest weathering, thin dark-gray steel frame, upper-left lighting, near-frontal orthographic DCSS-like viewpoint. Keep one modest silver horizontal push bar; make it thinner and shorter, roughly 14 logical pixels long and 1-2 pixels thick, so it does not dominate the width. Restrained 12-14 color palette, hard square pixel edges, coherent small chunky pixel clusters at a TRUE 32-pixel game scale, not a smooth realistic painting. The thin frame and hinges should remain readable. Fully transparent outside the sprite, no black background rectangle, no checkerboard, no floor or surrounding masonry. No text, logo, warning stripes, bright white outline, neon, arch, wood, double-door split, oversized hardware, extra objects or comparison labels. Output ONLY ONE centered CLOSED sprite. Maintain the shorter width as real transparent padding inside the square output canvas."
+    },
+    {
+      "state": "open",
+      "original": "assets/fire-door-open-original.png",
+      "sprite": "assets/fire-door-open32.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached newly redrawn slim gray-blue fire door sprite. Create the matching OPEN state for this exact door. Keep the narrow U-shaped steel frame in exactly the same position, outer shape, proportions, material, lighting and pixel-grid scale. Preserve the much shorter door width and tall silhouette. Right-hand hinges stay on the right. Swing the SINGLE door leaf approximately85 degrees open toward the back/right, appearing as a narrow foreshortened strip next to the right jamb, with a small foreshortened silver push bar. At least two-thirds of the doorway opening should be genuinely transparent alpha, including the center and bottom center, so the game floor can show through. Background outside the frame must also be genuinely transparent. Do not fill the doorway with black, gray, scenery, floor or checkerboard. Preserve dark hard pixel outlines and broad coarse32-pixel-game clusters, restrained gray-blue/gray palette, no smooth gradients or realistic high-resolution details. Keep all canvas/frame coordinate alignment and outer dimensions from the reference, no widening, no squat square door, no double door, no text, no labels, no extra frames or props. Output ONLY ONE open-door sprite."
+    }
+  ],
+  "preservedPreviousSprites": [
+    "assets/previous-fire-door-closed32.png",
+    "assets/previous-fire-door-open32.png"
+  ],
+  "design": "Single-leaf gray-blue steel door with a shorter/slimmer silver push bar, matching narrow frame and alpha-clear open passage. No double-door conversion.",
+  "scope": "Browser-only art review. Native terrain, game runtime, monsters and items unchanged.",
+  "selected": true,
+  "selectionDate": "2026-11-04",
+  "selectionReason": "User prefers24x30 rectangular steel door12 over arched double door13."
+}

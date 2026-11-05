@@ -1,0 +1,20 @@
+{
+  "previous": "city-floor07",
+  "selected": "DCSS0.34.1 original stairs with horizontal reflection only",
+  "sourceSha256": {
+    "up": "73f729a9bb313d0ca24d66b62d4cd890a529595d3431b81634aae07e5eae6dd6",
+    "down": "461d685b4bc64fa2f6c7d122bd5efa5203739253e5f166ce2fd784c048bf3d80"
+  },
+  "sourceSize": [
+    32,
+    32
+  ],
+  "recolor": false,
+  "extraOutline": false,
+  "extraShadow": false,
+  "resample": false,
+  "ascent": "right",
+  "descent": "left",
+  "terrainAndPlacementUnchanged": true,
+  "nativeGameApplied": false
+}

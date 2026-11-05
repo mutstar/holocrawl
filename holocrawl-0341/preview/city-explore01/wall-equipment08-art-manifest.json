@@ -1,0 +1,26 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "pipe bundle and smaller horizontal electrical cabinet only; accepted AC and vent unchanged",
+  "pipe": {
+    "prompt": "Edit attached small weathered pipe game sprite into a coherent wall-mounted BUNDLE OF THREE utility pipes. Keep subdued brown-gray metal, rusty joint grime and dark outline style. A wide pipe grouping for one32x32 native tile: one main pipe about3native pixels thick and two thinner pipes about2pixels thick, spaced by1-2pixels, running vertically side by side at different top/bottom heights with short upper bends left/right. Two horizontal wall mounting straps tie the bundle together with tiny bolts; clear coupling sleeves on main pipe. It must look like connected urban plumbing infrastructure rather than three isolated floating sticks or a ladder. Compact visible footprint about24x27 pixels within32x32. Front-facing wall sprite, hard coarse DCSS-style pixel clusters, low detail, muted metal highlights, no bright green/white lines. Transparent outside the pipe bundle and straps. No wall/ground backdrop, no label, no text, no cabinet. Exact final use32px; prioritize a readable clustered silhouette.",
+    "original": "assets/wall-pipe08-original.png",
+    "tile": "assets/wall-pipe08-32.png",
+    "visibleSize": [
+      24,
+      28
+    ],
+    "pipes": 3
+  },
+  "cabinet": {
+    "prompt": "Edit attached gray electrical cabinet game sprite so it CANNOT be confused with a walk-through door. Retain weathered gray metal, tiny dull yellow electrical warning triangle and near-black outline. Change shape from tall door to SMALL HORIZONTAL WALL-MOUNTED JUNCTION BOX, visible body about22native pixels wide by12pixels high within32x32. Two small horizontal cover sections, tiny central latch (NOT a full height door handle), one small hinge; no human-sized tall panel. Add TWO short dark insulated cable/conduit tails emerging downward about5pixels, with subtle clamps, visibly ending well ABOVE floor level. Mount as a compact raised wall appliance. Hard chunky low-resolution DCSS urban pixel art, final32x32 tile. Gray concrete-compatible muted palette, short top-left highlights, no glowing screen, no legs, no threshold, no doorway frame. Transparent outside the box and short cables; no wall/floor/background, no lettering. It should clearly read as a low electrical box with wires, not an entrance door or horizontal stereo speaker.",
+    "original": "assets/wall-cabinet08-original.png",
+    "tile": "assets/wall-cabinet08-32.png",
+    "visibleSize": [
+      24,
+      20
+    ],
+    "shape": "small horizontal wall box with two short hanging conduits"
+  },
+  "processing": "install-wall-equipment08.py: alpha-bounds crop; fit target silhouette;20colors and binary alpha; center in32px canvas",
+  "validation": "wall-equipment08-validation.json"
+}

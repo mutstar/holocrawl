@@ -1,0 +1,27 @@
+{
+  "bounds": {
+    "x": 49,
+    "y": 35,
+    "w": 2074,
+    "h": 649
+  },
+  "visible": [
+    96,
+    30
+  ],
+  "native": [
+    96,
+    32
+  ],
+  "colors": 20,
+  "mode": "built-in image_gen",
+  "prompt": {
+    "mode": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Redesign the referenced Hololive Gen2 theatre as ONLY a wall-mounted entrance trim overlay for the provided HoloCrawl concrete wall setting. The huge freestanding toy palace is rejected. Asset native logical size exactly 96 pixels wide x32 pixels tall, aspect 3:1. Strict front orthographic coarse low-res pixel art, approximately 18 flat colors and 1pixel dark outline. ALL components within a flat 3:1 rectangle. NO roof, tower, gable, building silhouette, masonry wall block, base platform, floor or scene. True transparent background in gaps so original wall shows through. Center third is a full-height nearly 28pixel dark steel double door with burgundy theatre curtain sides, dark steel straight lintel, subtle brass handles. Left third has two bold integrated motifs in a narrow poster panel: a red oni mask at top and a yellow duck below; right third one bold pink heart with dark devil wings, framed like a theatre poster. These three emblems should use coarse simple shapes, not smooth illustrations, and identify Ayame Subaru Choco. Emblems large enough to read at native size, 10-14px each, subdued rich red, mustard yellow, muted pink. A thin straight burgundy marquee line connects the door and poster panels, no cream glowing billboard, no broad gold border. Weathered dark metal framing matches existing wall, lightly scuffed but no decay pass yet. No text, no letters, no people, no light bloom, no antialias or gradients. Preserve the three group motifs but completely change architecture to fit ONE existing 32px-high wall face, width3tiles. Input1 setting reference for colors and wall scale only, input2 old theatre for group symbols only.",
+    "native": [
+      96,
+      32
+    ],
+    "status": "review"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "revision": "native-door09",
+  "approved": false,
+  "mode": "built-in image_gen",
+  "size": [
+    32,
+    32
+  ],
+  "paletteColors": 14,
+  "processing": "Generated transparent raster art; alpha-aware area reduction to 32x32, palette reduction to 14 opaque colors; no smooth browser scaling.",
+  "assets": [
+    {
+      "state": "closed",
+      "source": "assets/fire-door-closed-original.png",
+      "sprite": "assets/fire-door-closed32.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production pixel-art terrain sprite for a 32x32 tile Dungeon Crawl Stone Soup-like roguelike. Primary request: a CLOSED industrial steel fire door for a gritty modern Japanese concert venue backstage/cement city dungeon. Single isolated door including narrow steel doorframe, no surrounding scene or floor. Viewed from the same slightly elevated near-frontal orthographic angle as traditional DCSS door tiles, NOT isometric. The frame is square, width and height nearly equal within the square tile; no tall realistic 2:1 door proportions. Entire frame occupies about 29x29 logical pixels. The leaf is muted desaturated gray-blue steel, with one clear horizontal silver panic push bar, dark hinge seams and subtle blocky edge wear, dull warm concrete-gray outer jamb. Coherent broad pixel clusters, hard square pixel edges, restrained palette of approximately 12 shades, as if hand-pixeled at TRUE 32x32 and enlarged using nearest-neighbor. Strong readable closed-door silhouette at 32 pixels. Light upper-left, dark jamb interior. Keep edges dark so it sits naturally within charcoal dungeon walls. Transparent background, full alpha outside sprite, absolutely no opaque background rectangle or checkerboard. No arch, wood, bars, tiny vents, glass window, signage, text, logo, yellow hazard stripes, neon, glow, decorative ornaments, surrounding masonry, ground shadow or elaborate fine texture. Output one closed-door sprite only centered with small transparent padding, no contact sheet."
+    },
+    {
+      "state": "open",
+      "source": "assets/fire-door-open-original.png",
+      "sprite": "assets/fire-door-open32.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached CLOSED pixel-art steel fire door sprite. Produce its OPEN state, one single isolated sprite only. Preserve the outer concrete-gray/steel U-shaped doorframe in exactly the same position, dimensions, square footprint, upper-left lighting, muted palette and coarse 32x32 logical-pixel art style. Right-hand hinges remain in the right jamb. Swing the steel leaf approximately 85 degrees open toward the back/right so it appears as a thin foreshortened dark gray-blue leaf next to the right jamb, occupying no more than the rightmost quarter of the opening. Its silver push bar is foreshortened. The rest of the opening MUST BE GENUINELY TRANSPARENT ALPHA so the existing game floor shows through it. Outer sprite background also fully transparent. Do NOT paint a black/dark rectangle, scene, floor, wall, or checkerboard in the open passage. Doorway center and bottom must be open transparency, not a filled void. Preserve the frame silhouette, top lintel, material, straight edges, original perspective and coordinate alignment; do not add a rounded arch, windows, text, signage, warning stripes, extra panels or objects. Clear readable open door at true 32x32 game size, hard squared pixel clusters, not a smooth high-resolution illustration."
+    }
+  ],
+  "scope": "Browser-only art review. Native terrain data unchanged; opening a door is a local display toggle."
+}

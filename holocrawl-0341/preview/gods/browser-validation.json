@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "gods": 22,
+  "slotsPerGod": 5,
+  "allProfilesSelectable": true,
+  "latestViviDesignVisible": true,
+  "errors": [],
+  "noOverflow": true
+}

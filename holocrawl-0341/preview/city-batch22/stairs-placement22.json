@@ -1,0 +1,506 @@
+[
+  {
+    "seed": "20261105201",
+    "entry": [
+      38,
+      45
+    ],
+    "before": {
+      "entryMinSteps": 27,
+      "entryMinGridDistance": 24,
+      "downstairsMinSteps": 1,
+      "downstairsMinGridDistance": 1
+    },
+    "after": {
+      "entryMinSteps": 27,
+      "entryMinGridDistance": 13,
+      "downstairsMinSteps": 22,
+      "downstairsMinGridDistance": 21
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          44,
+          15
+        ],
+        "new": [
+          44,
+          15
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          23,
+          21
+        ],
+        "new": [
+          23,
+          21
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          24,
+          21
+        ],
+        "new": [
+          25,
+          49
+        ]
+      }
+    ],
+    "moved": 1,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105220",
+    "entry": [
+      39,
+      21
+    ],
+    "before": {
+      "entryMinSteps": 14,
+      "entryMinGridDistance": 14,
+      "downstairsMinSteps": 9,
+      "downstairsMinGridDistance": 9
+    },
+    "after": {
+      "entryMinSteps": 36,
+      "entryMinGridDistance": 32,
+      "downstairsMinSteps": 19,
+      "downstairsMinGridDistance": 14
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          25,
+          12
+        ],
+        "new": [
+          57,
+          62
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          25,
+          21
+        ],
+        "new": [
+          24,
+          53
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          14,
+          67
+        ],
+        "new": [
+          14,
+          67
+        ]
+      }
+    ],
+    "moved": 2,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105256",
+    "entry": [
+      7,
+      62
+    ],
+    "before": {
+      "entryMinSteps": 51,
+      "entryMinGridDistance": 24,
+      "downstairsMinSteps": 11,
+      "downstairsMinGridDistance": 10
+    },
+    "after": {
+      "entryMinSteps": 47,
+      "entryMinGridDistance": 24,
+      "downstairsMinSteps": 15,
+      "downstairsMinGridDistance": 14
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          32,
+          6
+        ],
+        "new": [
+          32,
+          6
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          27,
+          16
+        ],
+        "new": [
+          28,
+          20
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          31,
+          57
+        ],
+        "new": [
+          31,
+          57
+        ]
+      }
+    ],
+    "moved": 1,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105203",
+    "entry": [
+      38,
+      41
+    ],
+    "before": {
+      "entryMinSteps": 24,
+      "entryMinGridDistance": 17,
+      "downstairsMinSteps": 3,
+      "downstairsMinGridDistance": 3
+    },
+    "after": {
+      "entryMinSteps": 24,
+      "entryMinGridDistance": 15,
+      "downstairsMinSteps": 19,
+      "downstairsMinGridDistance": 19
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          62,
+          17
+        ],
+        "new": [
+          62,
+          17
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          21,
+          29
+        ],
+        "new": [
+          21,
+          29
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          21,
+          32
+        ],
+        "new": [
+          40,
+          26
+        ]
+      }
+    ],
+    "moved": 1,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105210",
+    "entry": [
+      76,
+      34
+    ],
+    "before": {
+      "entryMinSteps": 39,
+      "entryMinGridDistance": 38,
+      "downstairsMinSteps": 2,
+      "downstairsMinGridDistance": 2
+    },
+    "after": {
+      "entryMinSteps": 36,
+      "entryMinGridDistance": 24,
+      "downstairsMinSteps": 27,
+      "downstairsMinGridDistance": 22
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          30,
+          18
+        ],
+        "new": [
+          30,
+          18
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          36,
+          29
+        ],
+        "new": [
+          47,
+          51
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          38,
+          29
+        ],
+        "new": [
+          52,
+          15
+        ]
+      }
+    ],
+    "moved": 2,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105209",
+    "entry": [
+      26,
+      37
+    ],
+    "before": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 11,
+      "downstairsMinSteps": 37,
+      "downstairsMinGridDistance": 31
+    },
+    "after": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 11,
+      "downstairsMinSteps": 37,
+      "downstairsMinGridDistance": 31
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          21,
+          14
+        ],
+        "new": [
+          21,
+          14
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          65,
+          16
+        ],
+        "new": [
+          65,
+          16
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          37,
+          47
+        ],
+        "new": [
+          37,
+          47
+        ]
+      }
+    ],
+    "moved": 0,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105222",
+    "entry": [
+      3,
+      17
+    ],
+    "before": {
+      "entryMinSteps": 31,
+      "entryMinGridDistance": 23,
+      "downstairsMinSteps": 35,
+      "downstairsMinGridDistance": 21
+    },
+    "after": {
+      "entryMinSteps": 31,
+      "entryMinGridDistance": 23,
+      "downstairsMinSteps": 35,
+      "downstairsMinGridDistance": 21
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          26,
+          19
+        ],
+        "new": [
+          26,
+          19
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          66,
+          19
+        ],
+        "new": [
+          66,
+          19
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          67,
+          40
+        ],
+        "new": [
+          67,
+          40
+        ]
+      }
+    ],
+    "moved": 0,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  },
+  {
+    "seed": "20261105297",
+    "entry": [
+      54,
+      45
+    ],
+    "before": {
+      "entryMinSteps": 23,
+      "entryMinGridDistance": 17,
+      "downstairsMinSteps": 25,
+      "downstairsMinGridDistance": 24
+    },
+    "after": {
+      "entryMinSteps": 23,
+      "entryMinGridDistance": 17,
+      "downstairsMinSteps": 25,
+      "downstairsMinGridDistance": 24
+    },
+    "stairs": [
+      {
+        "feature": "stone_stairs_down_iii",
+        "old": [
+          58,
+          27
+        ],
+        "new": [
+          58,
+          27
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_ii",
+        "old": [
+          21,
+          30
+        ],
+        "new": [
+          21,
+          30
+        ]
+      },
+      {
+        "feature": "stone_stairs_down_i",
+        "old": [
+          37,
+          54
+        ],
+        "new": [
+          37,
+          54
+        ]
+      }
+    ],
+    "moved": 0,
+    "rules": {
+      "entryMinSteps": 18,
+      "entryMinGridDistance": 9,
+      "downstairsMinSteps": 14,
+      "downstairsMinGridDistance": 8,
+      "stairsCount": "one entry, three downstairs",
+      "note": "HoloCrawl anti-clustering policy; not a claimed universal vanilla Crawl minimum distance."
+    }
+  }
+]

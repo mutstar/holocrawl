@@ -1,0 +1,7 @@
+{
+  "glassCells": 8,
+  "blocksMovement": true,
+  "transmitsLOS": true,
+  "stateUnchanged": true,
+  "errors": []
+}

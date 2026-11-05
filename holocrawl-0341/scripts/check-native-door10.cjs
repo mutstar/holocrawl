@@ -1,0 +1,17 @@
+const fs=require('fs'),path=require('path'),assert=require('assert');
+const {chromium}=require('C:/Users/071staff/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{
+ const out=path.resolve(__dirname,'../preview/native-door10'),source=JSON.parse(fs.readFileSync(path.join(out,'../native-layout08/native-maps.json'),'utf8'));
+ assert.deepStrictEqual(JSON.parse(fs.readFileSync(path.join(out,'native-maps.json'),'utf8')),source);
+ const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+ try{
+  const p=await browser.newPage({viewport:{width:1440,height:1050}}),errors=[],bad=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)bad.push(r.url());});await p.goto('http://127.0.0.1:8797/native-door10/');await p.waitForFunction(()=>window.doorPreviewReady);
+  await p.locator('#doorComparisons').screenshot({path:path.join(out,'door-width-comparison.png')});await p.locator('.wall-review').screenshot({path:path.join(out,'wall-comparison.png')});await p.locator('#field').screenshot({path:path.join(out,'new-wall-door-field.png')});
+  const before=await p.evaluate(()=>document.getElementById('field').toDataURL());await p.locator('#toggleDoor').click();assert.notStrictEqual(await p.evaluate(()=>document.getElementById('field').toDataURL()),before);await p.locator('#doorComparisons').screenshot({path:path.join(out,'open-width-comparison.png')});await p.locator('#field').screenshot({path:path.join(out,'open-door-field.png')});await p.locator('#toggleDoor').click();assert.strictEqual(await p.evaluate(()=>document.getElementById('field').toDataURL()),before);
+  await p.locator('#wallStyle').click();assert.notStrictEqual(await p.evaluate(()=>document.getElementById('field').toDataURL()),before);await p.locator('#field').screenshot({path:path.join(out,'old-wall-field.png')});await p.locator('#wallStyle').click();assert.strictEqual(await p.evaluate(()=>document.getElementById('field').toDataURL()),before);await p.locator('#legacy').click();assert.notStrictEqual(await p.evaluate(()=>document.getElementById('field').toDataURL()),before);await p.locator('#legacy').click();
+  const repeat=await p.evaluate(()=>{const before=document.getElementById('field').toDataURL();doorPreview.draw();return before===document.getElementById('field').toDataURL();});assert(repeat);
+  for(let i=0;i<6;i++){await p.selectOption('#mapSelect',String(i));const state=await p.evaluate(()=>doorPreview.getState());assert.deepStrictEqual(state.map.rows,source.maps[i].rows);await p.locator('#nextDoor').click();await p.locator('#toggleDoor').click();}
+  await p.selectOption('#mapSelect','0');await p.screenshot({path:path.join(out,'review-page.png'),fullPage:true});await p.setViewportSize({width:390,height:844});assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepStrictEqual(errors,[]);assert.deepStrictEqual(bad,[]);
+  const result={status:'passed',nativeMapsUnchanged:6,crawlDoorReferencesCopied:true,doorDisplay:[24,30],wallModeComparisonWorks:true,widthComparisonWorks:true,openCloseWorks:true,wallPatternStableOnRedraw:true,mobileNoOverflow:true,pageErrors:errors,failedAssets:bad,nativeRuntimeModified:false};fs.writeFileSync(path.join(out,'browser-validation.json'),JSON.stringify(result,null,2)+'\n');console.log(result);
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

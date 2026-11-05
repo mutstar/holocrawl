@@ -1,0 +1,313 @@
+{
+  "status": "passed",
+  "maps": 3,
+  "placementCases": 30,
+  "allStairsConnected": true,
+  "nativeTerrainRowsUnchanged": true,
+  "maximumFixtures": 4,
+  "monstersAndItems": false,
+  "mobileNoOverflow": true,
+  "errors": [],
+  "checks": [
+    {
+      "i": 0,
+      "n": 0,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 1,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 2,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 3,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 4,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 5,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 6,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 7,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 8,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 0,
+      "n": 9,
+      "stairsConnected": true,
+      "baselineReachable": 1682,
+      "reachable": 1679,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 0,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 1,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 2,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 3,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 4,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 5,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 6,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 7,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 8,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 1,
+      "n": 9,
+      "stairsConnected": true,
+      "baselineReachable": 1075,
+      "reachable": 1072,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 0,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 1,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 2,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 3,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 4,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 5,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 6,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 7,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 8,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    },
+    {
+      "i": 2,
+      "n": 9,
+      "stairsConnected": true,
+      "baselineReachable": 901,
+      "reachable": 898,
+      "blocked": 3,
+      "props": 4,
+      "terrainRowsUnchanged": true
+    }
+  ]
+}

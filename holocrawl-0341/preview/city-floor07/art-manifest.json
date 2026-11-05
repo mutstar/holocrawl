@@ -1,0 +1,13 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "ascending staircase only; approved descent PNG unchanged byte-for-byte",
+  "prompt": "Edit target first image: right-rising four-step gray game staircase. Supporting STYLE reference second image: original DCSS staircase (opposite direction). Modify ONLY first image into EXACTLY FIVE modest-width treads, intermediate between the first image's too-broad flat four blocks and original DCSS finer staircase. Preserve first image RIGHTWARD ascent: low left, high upper right. Do NOT copy reference orientation. Match DCSS reference coarse gray pixel texture, rough stone/concrete face, thin light gray step noses, darker vertical riser faces, clear dark outline. Steps should read as compact dungeon stairs, not polished modern floating shelves or stacked broad slabs. Slightly narrower tread top surfaces than first image, five readable risers, restrained rough mottling. Same compact diagonal wedge and native32x32 footprint, near-black1pixel outside contour. Transparent outside sprite; no text, no rails, no extra landing, no circle, no platform, no shiny metal. Very low-resolution pixel art for32px final use; avoid illustration detail. Five steps exactly, right-rising orientation required. Do not generate descending stair.",
+  "referencePreviousUp": "assets/city-stairs-up-thick-final32.png",
+  "referenceDCSS": "assets/crawl-stairs-up.png",
+  "generatedOriginal": "assets/five-stairs-up-original.png",
+  "tile": "assets/five-stairs-up32.png",
+  "renderedFinal": "assets/city-stairs-up-five-final32.png",
+  "treads": 5,
+  "direction": "rightward ascent",
+  "processing": "crop actual alpha bounds, 32px/20colors; native1pixel contour in canvas; no rotation or mirroring"
+}

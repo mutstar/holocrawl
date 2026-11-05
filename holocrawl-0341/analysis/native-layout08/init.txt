@@ -1,0 +1,5 @@
+name = TerrainExport
+save_dir = C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/analysis/native-layout08/saves/
+morgue_dir = C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/analysis/native-layout08/morgue/
+remember_name = false
+show_more = false

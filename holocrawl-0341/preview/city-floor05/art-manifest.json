@@ -1,0 +1,22 @@
+{
+  "mode": "built-in image_gen",
+  "up": {
+    "prompt": "Edit attached gray concrete ascending stair sprite for native32x32 game use. Preserve exactly the existing diagonal wedge shape, number of steps, original orientation high on LEFT low on RIGHT, same compact near-square footprint. DO NOT mirror or rotate: runtime will mirror after import. Add a crisp nearly-black one-native-pixel outer contour around all the stair silhouette, including the left vertical face, bottom edge and stair-stepped top edge. Improve internal separation with very dark riser gaps and light gray tread lips. Keep concrete gray, slightly worn, simple hard pixel clusters. Outer contour must remain visibly black on medium gray pavement at32px; avoid soft charcoal anti-aliased edges. Truly transparent outside the black outline. No floor tile, no background square, no text, no rail, no extra steps or objects, no freestanding curved staircase. This is an outline/contrast edit only, not redesign.",
+    "source": "../city-floor04/assets/city-stairs-up32.png",
+    "original": "assets/outlined-stairs-up-original.png",
+    "imported": "assets/outlined-stairs-up32.png",
+    "final": "assets/city-stairs-up-final32.png"
+  },
+  "down": {
+    "prompt": "Edit attached gray concrete square descending staircase sprite for native32x32 game use. Preserve exact original square silhouette, stair count and placement, original orientation with high tread at LEFT and dark deep area on RIGHT. DO NOT mirror or rotate: runtime will mirror after import. Add one-native-pixel crisp nearly-black OUTER contour around outside of gray square rim. Keep a lighter gray one-native-pixel inset rim and deep nearly-black interior, clearly separated concrete tread edges. Keep current gray concrete and dull gray metal rim, original perspective, simple chunky pixel clusters. At32px must be as immediately readable as DCSS original. True transparent outside the black square outline, opaque hole inside. No white halo, no floor backdrop, no text, no circle, no rails, no redesign. Strict material contour/contrast edit only; unchanged orientation and square frame.",
+    "source": "../city-floor04/assets/city-stairs-down32.png",
+    "original": "assets/outlined-stairs-down-original.png",
+    "imported": "assets/outlined-stairs-down32.png",
+    "final": "assets/city-stairs-down-final32.png"
+  },
+  "rendering": "grounding.js: 30x30 image centered in32x32; 1 native pixel near-black contour; horizontal mirror. Final rendered PNGs exported for handoff.",
+  "direction": {
+    "up": "rises right",
+    "down": "descends left"
+  }
+}

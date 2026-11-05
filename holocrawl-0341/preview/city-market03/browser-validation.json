@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "alphaReductionAvoidsBlackFringe": true,
+  "subpixelLineContributesToReducedPixel": true,
+  "qualityToggleChangesPixels": true,
+  "qualityTogglePreservesMapAndStock": true,
+  "qualityToggleRoundtripIdentical": true,
+  "all20SpritesNative32px": true,
+  "paletteMax18": true,
+  "hardAlpha": true,
+  "memberCount": 84,
+  "responsiveNoOverflow": true,
+  "nativeGameLaunched": false,
+  "errors": [],
+  "palette": [
+    {
+      "id": "acrylic-window",
+      "width": 64,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "closed-shutter",
+      "width": 64,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "half-shutter",
+      "width": 64,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "shirt-window",
+      "width": 64,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "poster-wall",
+      "width": 64,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "acrylic-rack",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "shirt-stack",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "hoodie-rack",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "plush-basket",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "poster-rolls",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "keychain-hooks",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "badge-trays",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "shopping-bags",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "delivery-boxes",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "open-carton",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "delivery-cart",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "folding-crates",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "trash-bags",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "paper-rubbish",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    },
+    {
+      "id": "recycling-bins",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "hardAlpha": true
+    }
+  ]
+}

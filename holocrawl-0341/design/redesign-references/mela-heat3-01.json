@@ -1,0 +1,41 @@
+{
+  "status": "approved-design-not-implemented",
+  "revision": "mela-heat3-01",
+  "date": "2026-10-30",
+  "principle": "One new ember represents two old heat units; max3 instead6",
+  "tier1": {
+    "maxHeat": 3,
+    "normalContact": "Two qualifying non-fire contacts award one ember; one pending half-charge tracked internally, no extra pip",
+    "fireContact": "One qualifying fire contact/tick awards one ember",
+    "sourceCapPer10Aut": 1,
+    "counterCost": 1,
+    "counterFireDamage": "2d(3+floor(I/6))",
+    "keepAfterGainAut": 30,
+    "decayEveryAut": 40,
+    "partialCharge": "A pending normal-contact half-charge expires after30aut without qualifying gain/contact and clears on level change or renunciation; counts toward per10aut source allowance so mixed normal/fire cannot exceed one ember equivalent"
+  },
+  "tier3": {
+    "heatBonusPerEmber": 8,
+    "damage": "2d(6+floor(I/3))+8*H",
+    "cloudAbsorptionReward": 1,
+    "shape": "piercing straight line",
+    "width": 1,
+    "range": 5,
+    "normalFireCloudRemoval": "same line",
+    "changeApproved": "오키좋다 고고고"
+  },
+  "tier5": {
+    "initialHeat": 3,
+    "automaticChargeEveryAut": 40,
+    "automaticGain": 1,
+    "breathDamage": "3d(6+floor(I/3))+8*H",
+    "enhancedBreathGeometry": {
+      "width": 1,
+      "range": 6,
+      "status": "approved-design-not-implemented"
+    }
+  },
+  "unchanged": "rF, MP/piety costs, action times, range, duration, cooldowns, visual counterburst",
+  "scope": "3-ember native visual prototype implemented; live gameplay remains old6-heat rules until numerical approval and implementation",
+  "approval": "오케이 다음과정으로"
+}

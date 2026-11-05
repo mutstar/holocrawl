@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "tileCombinations": 16,
+  "baseArtTiles": 4,
+  "rotationsPerTile": 4,
+  "independentRandomSelection": true,
+  "deterministicBySeedAndCoordinates": true,
+  "patternToggleRestoresSameImage": true,
+  "shuffleLeavesLayoutAndStairsUnchanged": true,
+  "noMonstersOrRewards": true,
+  "responsiveNoOverflow": true,
+  "nativeGameLaunched": false,
+  "errors": []
+}

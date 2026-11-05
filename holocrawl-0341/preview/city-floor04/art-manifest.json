@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "up": {
+    "prompt": "Precise-object-edit of attached original 32x32 Dungeon Crawl ascending staircase tile. This is a very subtle MATERIAL RESKIN, not a redesign. Absolutely preserve the exact original silhouette, stair count, camera/projection, right-descending diagonal profile, placement and grayscale brightness separation. It is a compact low stair wedge running diagonally from high upper-left to low lower-right, NOT a freestanding spiral or tall staircase. Change only medieval stone surface to worn gray poured concrete appropriate for a rainy urban backstage street. Tiny concrete chips and at most two fine seams, darker plain gray side faces, slightly brighter gray step noses. No rails, no round stair, no pedestal, no landing, no gold, no border, no extra objects. Strict readable coarse pixel art for final 32x32 tile. Do not add fine detail or glossy highlights. Keep ascending stair immediately recognizable. Transparent outside the original stair shape, same footprint. Do not rotate or mirror.",
+    "source": "assets/crawl-stairs-up.png",
+    "original": "assets/city-stairs-up-original.png",
+    "tile": "assets/city-stairs-up32.png"
+  },
+  "down": {
+    "prompt": "Precise-object-edit of attached original 32x32 Dungeon Crawl descending staircase tile. Very subtle urban MATERIAL RESKIN only, absolutely preserve the original square 32x32 silhouette and top-down oblique camera, all stair tread positions and their count, original dark hole area on upper-right, bottom-left descending diagonal treads, border thickness and original brightness contrast. Change medieval stone frame to a restrained worn gray concrete square lip with a narrow dull dark gray steel inset edge (same border thickness, no added frame). Maintain medium-light gray outline, slightly lighter concrete stair noses and deep dark interior. Strict chunky pixel art for32x32 native use, no fine illustration details, no gradients, no rails, no spiral, no circle, no extra objects, no protruding pedestal, no surrounding floor square. Transparent only where original is transparent; keep dark hole interior opaque. Do not rotate or mirror. Preserve original stair outline extremely closely.",
+    "source": "assets/crawl-stairs-down.png",
+    "original": "assets/city-stairs-down-original.png",
+    "tile": "assets/city-stairs-down32.png"
+  },
+  "processing": "install-city-stairs04.py: generated output crop, reduce to32x32/20colors/binary alpha. Original DCSS files and previous variants retained."
+}

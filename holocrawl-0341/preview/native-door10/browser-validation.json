@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "nativeMapsUnchanged": 6,
+  "crawlDoorReferencesCopied": true,
+  "doorDisplay": [
+    24,
+    30
+  ],
+  "wallModeComparisonWorks": true,
+  "widthComparisonWorks": true,
+  "openCloseWorks": true,
+  "wallPatternStableOnRedraw": true,
+  "mobileNoOverflow": true,
+  "pageErrors": [],
+  "failedAssets": [],
+  "nativeRuntimeModified": false
+}

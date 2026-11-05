@@ -1,0 +1,18 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset: ONE terrain sprite for a DCSS-style32x32 pixel-art roguelike set in a weathered grey concrete street. Attached original DCSS stair tile is ONLY a style, scale and directional-readability reference. Design a subtly different ROUND SPIRAL STAIRCASE, NOT a copy of straight original. Compact one-tile footprint, flat overhead with small traditional Crawl elevation cues, not isometric, not tall perspective. NO handrails whatsoever. NO fence, no fancy balustrade, no roof, no sign, no surrounding paving square, no arrows/text. Neutral rough concrete grey #505151 midtones, light edges #90918a, shadows #25272a, 7-10 restrained grey shades, crisp chunky pixel clusters, no smooth render or blur. Four or five LARGE clearly separated fan/wedge-shaped concrete treads wrap around a very short small center stub; simple readable at actual32px. Do not make a perfect concentric ring, bullseye, drain, well, tower, or elaborate architecture. Outside object is TRUE TRANSPARENT, opaque dark interior only inside a stair opening. Silhouette tightly centered with minimal transparent margin on square canvas. ",
+  "upDirection": "Raised fan-shaped steps rise lower-right to upper-left; no central hole.",
+  "downDirection": "Fan-shaped treads sink lower-left toward dark upper-right/center opening.",
+  "references": [
+    "assets/crawl-up32.png",
+    "assets/crawl-down32.png"
+  ],
+  "assets": [
+    "assets/stairs-up06-32.png",
+    "assets/stairs-down06-32.png"
+  ],
+  "size": 32,
+  "transparentBackground": true,
+  "handrails": false,
+  "engineIntegrated": false
+}

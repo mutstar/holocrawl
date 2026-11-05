@@ -1,0 +1,3 @@
+const path=require('path');
+const {chromium}=require('C:/Users/071staff/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const b=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});try{const p=await b.newPage({viewport:{width:1100,height:600}});await p.goto('http://127.0.0.1:8797/native-door11/crawl-original-doors.html');await p.waitForFunction(()=>window.ready);await p.locator('#originalDoors').screenshot({path:path.resolve(__dirname,'../preview/native-door11/crawl-original-open-closed.png')});console.log('Captured unmodified upstream32px door sprites at8x.');}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

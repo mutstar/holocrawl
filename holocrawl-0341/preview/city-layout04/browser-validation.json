@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "mapCases": 180,
+  "autoLayoutCases": 30,
+  "threeLayoutFamilies": true,
+  "connectedWalkableAndStairs": true,
+  "deterministicBySeed": true,
+  "differentGeometryMetrics": [
+    {
+      "layout": "plaza",
+      "cases": 60,
+      "meanWalkable": 1853.4,
+      "meanOpenNine": 1322.8333333333333,
+      "meanDeadEnds": 0.8
+    },
+    {
+      "layout": "rooms",
+      "cases": 60,
+      "meanWalkable": 2252.8166666666666,
+      "meanOpenNine": 1179.1,
+      "meanDeadEnds": 1.5666666666666667
+    },
+    {
+      "layout": "alleys",
+      "cases": 60,
+      "meanWalkable": 1308.95,
+      "meanOpenNine": 593.0666666666667,
+      "meanDeadEnds": 10.866666666666667
+    }
+  ],
+  "allFamiliesSelectedByAuto": true,
+  "playerFocusOnWalkableTile": true,
+  "stockShufflePreservesLayout": true,
+  "noMonstersOrRewards": true,
+  "nativeGameLaunched": false,
+  "officialDCSSGeneratorExecuted": false,
+  "responsiveNoOverflow": true,
+  "errors": []
+}

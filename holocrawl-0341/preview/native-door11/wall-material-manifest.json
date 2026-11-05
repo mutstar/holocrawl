@@ -1,0 +1,14 @@
+{
+  "mode": "built-in image_gen",
+  "original": "assets/concrete-wall-surface-original.png",
+  "surface": "assets/concrete-wall-surface256.png",
+  "reference": "assets/wall-before-reference.png",
+  "size": [
+    256,
+    32
+  ],
+  "colors": 18,
+  "prompt": "Use case: precise-object-edit. Edit target: the attached long narrow strip of a repeating dungeon wall face. Replace its repeated framed metallic panels with one continuous rough cast-concrete wall surface band for a modern backstage/cement city roguelike. Preserve the low-resolution pixel-art feel, dark warm-gray/brown concrete palette, flat frontal wall-face view and long thin horizontal strip composition. Wall material only, entire image opaque and filled edge-to-edge. No individual framed boxes or repeating panels. No regular 32-pixel vertical dividers, no matching identical stains, no repeated bright screws. Use broad restrained pixel clusters: worn cement, subtly varied warm-gray plaster tones, sparse chips and a few irregular short hairline cracks spread asymmetrically across the entire length. Most of the surface is plain enough for a 32-pixel game. No pipes, air conditioners, signs, windows, doors, props or typography; these will be separate decorations. No perspective building, no ground, no background, no border, no floating sample cards. Aim for a single unbroken horizontal surface swatch about 8 game tiles long, suitable to be reduced to 256x32 logical pixels, with soft tonal variation but hard square pixel edges; readable texture without noisy fine detail. Keep brightness similar to the reference wall face, not bright white, not pitch black, not blue.",
+  "processing": "Crop generated black letterbox around material band; area reduction and18-color palette. Eight32px sections derived from one continuous surface strip.",
+  "placement": "Continuous per-run texture phase; seeded joints3–6 cells apart after first2–4; at most one pipe/AC in runs of7+ cells; low contrast roof texture."
+}

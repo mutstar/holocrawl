@@ -1,0 +1,9 @@
+{
+  "previous": "city-floor06",
+  "change": "ascending stair only; five narrower rough treads and clearer riser contrast",
+  "ascent": "right",
+  "descent": "left",
+  "approvedDownSha256": "e13c479d3e31d348d6d13be7b5c5fa45a95ab24a9484aae04828e4706d9a75c9",
+  "terrainAndPlacementUnchanged": true,
+  "nativeGameApplied": false
+}

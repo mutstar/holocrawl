@@ -1,0 +1,10 @@
+{
+  "previous": "city-floor05",
+  "change": "ascending stair only, four thicker treads matching approved descending style",
+  "ascent": "right",
+  "descent": "left",
+  "approvedDownFile": "assets/city-stairs-down-final32.png",
+  "approvedDownSha256": "e13c479d3e31d348d6d13be7b5c5fa45a95ab24a9484aae04828e4706d9a75c9",
+  "terrainAndPlacementUnchanged": true,
+  "nativeGameApplied": false
+}

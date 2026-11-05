@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "spriteStates": [
+    {
+      "state": "closed",
+      "w": 32,
+      "h": 32,
+      "clear": 0,
+      "opaque": 1024,
+      "colors": 14,
+      "centerAlpha": 255
+    },
+    {
+      "state": "open",
+      "w": 32,
+      "h": 32,
+      "clear": 564,
+      "opaque": 460,
+      "colors": 14,
+      "centerAlpha": 0
+    }
+  ],
+  "allSixMapsRender": true,
+  "doorOpenCloseVisible": true,
+  "terrainUnchanged": true,
+  "previousReviewPreserved": true,
+  "mobileNoOverflow": true,
+  "errors": [],
+  "bad": [],
+  "nativeGameWindowOpened": false,
+  "nativeRuntimeModified": false
+}

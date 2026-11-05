@@ -1,0 +1,35 @@
+[
+  {
+    "name": "shopfront",
+    "file": "market-shopfront64.png",
+    "size": [
+      64,
+      32
+    ],
+    "original": "market-shopfront-original.png",
+    "mode": "built-in image_gen",
+    "processing": "alpha crop, nearest resize, transparent padding"
+  },
+  {
+    "name": "merch-rack",
+    "file": "market-merch-rack32.png",
+    "size": [
+      32,
+      32
+    ],
+    "original": "market-merch-rack-original.png",
+    "mode": "built-in image_gen",
+    "processing": "alpha crop, nearest resize, transparent padding"
+  },
+  {
+    "name": "delivery-boxes",
+    "file": "market-delivery-boxes32.png",
+    "size": [
+      32,
+      32
+    ],
+    "original": "market-delivery-boxes-original.png",
+    "mode": "built-in image_gen",
+    "processing": "alpha crop, nearest resize, transparent padding"
+  }
+]

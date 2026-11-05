@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "sprites": [
+    {
+      "state": "closed",
+      "size": [
+        32,
+        32
+      ],
+      "bounds": [
+        4,
+        1,
+        24,
+        30
+      ],
+      "clear": 355,
+      "colors": 14,
+      "centerAlpha": 255
+    },
+    {
+      "state": "open",
+      "size": [
+        32,
+        32
+      ],
+      "bounds": [
+        4,
+        1,
+        24,
+        30
+      ],
+      "clear": 707,
+      "colors": 14,
+      "centerAlpha": 0
+    }
+  ],
+  "newSpritesDifferFromPrevious": true,
+  "sameNativeSpriteBothAxes": true,
+  "nativeMapsUnchanged": 6,
+  "mapAxisCases": 12,
+  "openCloseWorks": true,
+  "mobileNoOverflow": true,
+  "pageErrors": [],
+  "failedAssets": [],
+  "nativeRuntimeModified": false
+}

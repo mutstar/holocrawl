@@ -1,0 +1,26 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "replace only pipe and utility cabinet; accepted air conditioner and vent renderings unchanged",
+  "pipe": {
+    "prompt": "Game asset generation using attached image ONLY as wall color, scale and pixel-art context reference. Produce a NEW transparent sprite of a short wall-mounted old industrial metal pipe assembly to replace the flat pale green line in reference. Sprite only, no wall or ground backdrop. A compact upside-down L pipe: short horizontal upper section bending 90 degrees into a longer vertical pipe, 2 convincing coupling sleeves and 2 dark metal wall straps with tiny bolt heads. Pipe is thick enough to read as an actual tube (about3-4 native pixels diameter) in a32x32 final tile. Matte weathered warm dark gray iron with subdued silver edge highlights, a little brown grime around joints, near-black 1native-pixel outline. Avoid green paint, bright white strokes, geometric UI lines, smooth vector appearance. True chunky low-resolution pixel art matching DCSS environment tiles. Designed for at most20x28 opaque pixels within32x32, flat front face with just subtle left-top light and wall contact shadow. No perspective depth extending beyond tile, no text, no floor, no loose components, no extra cabinet. Genuinely transparent surroundings.",
+    "reference": "wall-equipment-before07-1.png",
+    "original": "assets/wall-pipe07-original.png",
+    "tile": "assets/wall-pipe07-32.png",
+    "visibleSize": [
+      15,
+      28
+    ]
+  },
+  "cabinet": {
+    "prompt": "Generate a NEW transparent wall-mounted electrical distribution cabinet sprite for a DCSS-style urban dungeon. Attached image is ONLY wall palette/lighting/scale reference; replace the unclear little horizontal black panel with a clearly recognizable compact vertical gray metal junction cabinet. No wall or floor in output, sprite only. A rectangular slightly tall weathered steel box, width about18-20 native pixels and height24-26 inside32x32 tile. Readable door panel inset, two tiny hinges on LEFT, a small latch/handle on RIGHT, one very small dull yellow electrical warning triangle on upper-middle door with a black mark; no lettering or text. Matte gray body, subdued bright gray top/left rim, dark gray right/bottom edges, crisp near-black 1pixel silhouette outline, tiny bottom contact shadow. Hard chunky pixel art built for native32x32 use, very restrained detail, coarse 12-16 color palette. Keep warning small, not a giant glowing hazard icon. No glowing lights, no control screen, no green circuit board, no horizontal stereo/speaker look, no standing pedestal, no wall backdrop, no checkerboard background. True transparency around cabinet.",
+    "reference": "wall-equipment-before07-3.png",
+    "original": "assets/wall-cabinet07-original.png",
+    "tile": "assets/wall-cabinet07-32.png",
+    "visibleSize": [
+      18,
+      26
+    ]
+  },
+  "processing": "install-wall-equipment07.py: crop alpha density bounds; fit native tile; 20 colors, binary alpha. Transparent originals preserved.",
+  "validation": "wall-equipment07-validation.json"
+}

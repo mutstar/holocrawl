@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen",
+  "up": {
+    "prompt": "Edit target: first attached local 32x32 PNG, an approved small clockwise ascending spiral stair sprite. Supporting style reference: second image cement city scene. Create a production transparent pixel-art terrain sprite, not a concept illustration. Preserve the ascending winding stone staircase shape, orientation, compact footprint and muted gray palette. Improve ONLY integration with cement terrain: the lowest step should broaden slightly into a rough, worn cement footing, tiny dark contact occlusion directly beneath lowest step, subtle 1-2 pixel broken gray mortar seams at footing. No floating round pedestal, no complete circular badge outline, no drop-shadow halo, no solid square backdrop. Stair rises visibly with readable step faces. True hard chunky pixel art authored for 32x32 final native use, clean nearest-neighbor aesthetic; no smoothing, no painterly detail, no text, no border. Transparent surroundings; only stair and very short rough footing/shadow. Keep size similar to original.",
+    "original": "assets/stairs-up-grounded-original.png",
+    "tile": "assets/stairs-up-grounded32.png"
+  },
+  "down": {
+    "prompt": "Edit target first image: approved descending spiral stair PNG. Second image city cement terrain style reference. Production game terrain sprite on transparent background. Preserve the compact clockwise descending stone steps, orientation and circular hole. Improve integration: remove any neat bright circular badge/medallion outer outline; make a low, irregular worn cement lip with a few broken mortar pixels, hole sits excavated INTO pavement, dark inner left wall occlusion and clearly descending stone tread faces. No raised pedestal, no protruding large platform. Restrained gray stone matches dusty city cement. Hard chunky pixel art designed to reduce cleanly to native32x32, very simple readable shapes, no smooth gradients, no illustration, no text. Surrounding outside footing is genuinely transparent. Keep silhouette/size similar to original, stair occupies about26x27 pixels of a32x32 tile, irregular flat masonry lip at ground level rather than a circle logo.",
+    "original": "assets/stairs-down-grounded-original.png",
+    "tile": "assets/stairs-down-grounded32.png"
+  },
+  "processing": "install-grounded-stairs03.py, crop alpha density bounds; fit 32x32, 20 color palette; binary alpha; original files preserved",
+  "grounding": "grounding.js code-native map rendering; merchandise PNGs unchanged"
+}

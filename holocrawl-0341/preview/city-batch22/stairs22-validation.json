@@ -1,0 +1,186 @@
+{
+  "status": "passed",
+  "cases": 16,
+  "movedStairs": 7,
+  "wallDoorsEntryUnchanged": true,
+  "measure": "eight-direction walk distance after prop placement, plus grid separation",
+  "details": [
+    {
+      "map": 1,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 27,
+      "entryMinGrid": 13,
+      "pairMinSteps": 22,
+      "pairMinGrid": 21,
+      "routesConnected": true
+    },
+    {
+      "map": 1,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 27,
+      "entryMinGrid": 13,
+      "pairMinSteps": 22,
+      "pairMinGrid": 21,
+      "routesConnected": true
+    },
+    {
+      "map": 2,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 36,
+      "entryMinGrid": 32,
+      "pairMinSteps": 19,
+      "pairMinGrid": 14,
+      "routesConnected": true
+    },
+    {
+      "map": 2,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 36,
+      "entryMinGrid": 32,
+      "pairMinSteps": 19,
+      "pairMinGrid": 14,
+      "routesConnected": true
+    },
+    {
+      "map": 3,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 47,
+      "entryMinGrid": 24,
+      "pairMinSteps": 15,
+      "pairMinGrid": 14,
+      "routesConnected": true
+    },
+    {
+      "map": 3,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 47,
+      "entryMinGrid": 24,
+      "pairMinSteps": 15,
+      "pairMinGrid": 14,
+      "routesConnected": true
+    },
+    {
+      "map": 4,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 24,
+      "entryMinGrid": 15,
+      "pairMinSteps": 19,
+      "pairMinGrid": 19,
+      "routesConnected": true
+    },
+    {
+      "map": 4,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 24,
+      "entryMinGrid": 15,
+      "pairMinSteps": 19,
+      "pairMinGrid": 19,
+      "routesConnected": true
+    },
+    {
+      "map": 5,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 36,
+      "entryMinGrid": 24,
+      "pairMinSteps": 27,
+      "pairMinGrid": 22,
+      "routesConnected": true
+    },
+    {
+      "map": 5,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 36,
+      "entryMinGrid": 24,
+      "pairMinSteps": 27,
+      "pairMinGrid": 22,
+      "routesConnected": true
+    },
+    {
+      "map": 6,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 18,
+      "entryMinGrid": 11,
+      "pairMinSteps": 37,
+      "pairMinGrid": 31,
+      "routesConnected": true
+    },
+    {
+      "map": 6,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 18,
+      "entryMinGrid": 11,
+      "pairMinSteps": 37,
+      "pairMinGrid": 31,
+      "routesConnected": true
+    },
+    {
+      "map": 7,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 31,
+      "entryMinGrid": 23,
+      "pairMinSteps": 35,
+      "pairMinGrid": 21,
+      "routesConnected": true
+    },
+    {
+      "map": 7,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 31,
+      "entryMinGrid": 23,
+      "pairMinSteps": 35,
+      "pairMinGrid": 21,
+      "routesConnected": true
+    },
+    {
+      "map": 8,
+      "placement": 5110521,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 23,
+      "entryMinGrid": 17,
+      "pairMinSteps": 25,
+      "pairMinGrid": 24,
+      "routesConnected": true
+    },
+    {
+      "map": 8,
+      "placement": 5110522,
+      "up": 1,
+      "down": 3,
+      "entryMinSteps": 23,
+      "entryMinGrid": 17,
+      "pairMinSteps": 25,
+      "pairMinGrid": 24,
+      "routesConnected": true
+    }
+  ],
+  "errors": []
+}

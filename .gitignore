@@ -1,0 +1,56 @@
+/.toolchain/
+/engine/crawl/
+/runtime/
+__pycache__/
+*.pyc
+
+# Local credentials / environment (never commit real secrets)
+.env
+.env.*
+.envrc
+.npmrc
+.pypirc
+.netrc
+credentials.json
+credentials.*.json
+service-account*.json
+service_account*.json
+secrets.json
+secrets.yaml
+secrets.yml
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.kdbx
+id_rsa
+id_ed25519
+id_ecdsa
+.ssh/
+.aws/
+.config/gh/
+storage-state*.json
+storageState*.json
+playwright/.auth/
+
+# Machine-specific preview state / dependencies / logs
+/.home-preview/
+node_modules/
+.venv/
+venv/
+.cache/
+.toolchain/
+*.log
+
+# Handoff archives: keep on disk; do not duplicate inside Git history
+*.zip
+*.7z
+
+# The engine is an independent repository. Preserve our changes as the
+# reviewed patch + overlay in holocrawl-0341/migration, not an accidental gitlink.
+/holocrawl-0341/engine/upstream/
+
+# Rebuildable game binaries, generated caches and machine-specific saves.
+# Browser previews do not require this directory.
+/holocrawl-0341/runtime/

@@ -1,0 +1,11 @@
+{
+  "engine": "0.34.1",
+  "radius": 7,
+  "maxRadius": 8,
+  "quadrantTargets": 80,
+  "pathVariants": 428,
+  "oracleFixtures": 76,
+  "nativeLosSourceSha256": "3fa0eac27440065ba95a69c1c5e809fdd65872abeb46d9dd9b371fc01b9f8252",
+  "binarySha256": "a9ded6ad3d5760d0d9cd433b482e239fb4693cb605e7143598ff58cae5fa0875",
+  "mechanism": "Native find_ray footprint export; fixtures from native losight. Native LOS algorithm unchanged."
+}

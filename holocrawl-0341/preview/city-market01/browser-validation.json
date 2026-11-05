@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "mapCases": 120,
+  "connectedWithSolidProps": true,
+  "deterministicSeed": true,
+  "floorProfiles": [
+    {
+      "floor": 4,
+      "maps": 30,
+      "meanShops": 71.66666666666667,
+      "meanBoxes": 8.433333333333334,
+      "meanRacks": 17.433333333333334
+    },
+    {
+      "floor": 5,
+      "maps": 30,
+      "meanShops": 113.63333333333334,
+      "meanBoxes": 10.633333333333333,
+      "meanRacks": 24.333333333333332
+    },
+    {
+      "floor": 6,
+      "maps": 30,
+      "meanShops": 67.36666666666666,
+      "meanBoxes": 47.7,
+      "meanRacks": 4.133333333333334
+    },
+    {
+      "floor": 7,
+      "maps": 30,
+      "meanShops": 125.96666666666667,
+      "meanBoxes": 19.633333333333333,
+      "meanRacks": 6.3
+    }
+  ],
+  "nativeGameLaunched": false,
+  "noMonstersOrRewards": true,
+  "floorShufflePreservesLayout": true,
+  "responsiveNoOverflow": true,
+  "errors": []
+}
