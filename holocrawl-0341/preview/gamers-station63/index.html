@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>게이머즈 폐역 · 잔향도시 4~7층 고정 지형 63</title>
+  <style>*{box-sizing:border-box}body{margin:0;background:#14171c;color:#dde1e7;font:15px/1.7 system-ui}main{max-width:1300px;margin:auto;padding:22px}h1{font-size:25px}h2{font-size:19px}p{color:#b4bbc6}nav,#members{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}button,select,a{background:#2b303d;color:#e0dfe8;border:1px solid #677083;padding:8px 12px;cursor:pointer}canvas{image-rendering:pixelated;display:block;max-width:100%;height:auto;outline:none;border:1px solid #526072}.layout{display:grid;grid-template-columns:minmax(0,768px) 1fr;gap:20px}aside{background:#20252f;padding:16px;min-width:0}#info{padding:10px;background:#252c37;min-height:48px}#inventory{color:#dec99b}.pad{display:grid;grid-template-columns:repeat(3,42px);gap:4px;margin:12px 0}.hint{font-size:13px;color:#a7b2c3}#closeup{width:576px}footer{font-size:13px;color:#9ca9bc;margin-top:24px}#members{flex-direction:column}#members button{text-align:left}@media(max-width:950px){.layout{grid-template-columns:1fr}aside{max-width:768px}}</style>
+</head>
+<body>
+<main>
+  <h1>게이머즈 폐역</h1>
+  <p>잔향도시 4~7층용 고정 지형 초안. 청록색 미닫이문과 개찰구를 지나면, 운행이 멈춘 선로와 역무실이 나옵니다.</p>
+  <p id="placementInfo" class="hint"></p>
+  <nav>
+    <label>층 지형 <select id="mapSelect"><option value="0">1 · 서쪽</option><option value="1">2 · 중앙</option><option value="2">3 · 북쪽</option></select></label>
+    <button id="overview">전체 층 보기</button><button id="labView">폐역 주변 보기</button><button id="stairsStart">계단부터 탐험</button>
+    <label>시험 보상 <select id="reward"><option value="weapon">+2 숏소드 1개</option><option value="supplies">스크롤 2장＋포션 2개</option></select></label>
+    <button id="reset">처음부터</button><button id="labels">구역 표시</button><button id="markers">적 배치 예정 표시</button><button id="fog">시야·탐험 안개 켜기</button><button id="stop">이동 중지</button>
+  </nav>
+  <div class="layout">
+    <section><canvas id="field" width="768" height="640" tabindex="0" aria-label="게이머즈 폐역 탐험"></canvas><div id="info"></div></section>
+    <aside>
+      <h2>전체 층 · 폐역 위치</h2><canvas id="floorMini" width="240" height="210"></canvas>
+      <p class="hint">밝은 테두리: 폐역 / 노란 점: 플레이어</p>
+      <h2>폐역 구역</h2><div id="members"></div>
+      <p class="hint">개찰구 옆 표 발매기는 남아 있지만, 선로에는 내려갈 수 없습니다. 승강장 끝 역무실에 분실물 보상이 있습니다.</p>
+      <div id="inventory"></div>
+      <div class="pad"><button data-d="-1,-1">↖</button><button data-d="0,-1">↑</button><button data-d="1,-1">↗</button><button data-d="-1,0">←</button><button disabled>·</button><button data-d="1,0">→</button><button data-d="-1,1">↙</button><button data-d="0,1">↓</button><button data-d="1,1">↘</button></div>
+      <p class="hint">방향키·WASD / Q E Z C: 대각선<br>문 방향으로 한 번 이동하면 열리고 다음 이동에 통과<br>발견한 바닥 클릭: 자동 이동 / Esc: 이동 중지<br>보상은 밟아서 획득</p>
+      <p class="hint">강화 적과 경비 적은 예정 위치만 표시합니다.</p>
+      <a href="../theater-vault57/">2기생 극장</a> · <a href="../holox-floor62/?map=2#closeup">holoX 연구소</a>
+    </aside>
+  </div>
+  <h2>폐역 내부 확대</h2><canvas id="closeup" width="576" height="576"></canvas>
+  <footer>외벽 포함 9×9. 기존 잔향도시 층 스냅샷 세 곳에 배치한 브라우저 시안. <a href="vault.json">지형·보상 데이터</a></footer>
+</main>
+<script src="../city-layout07/visibility-paths.js"></script>
+<script src="../city-layout07/visibility.js"></script>
+<script src="station.js?v=63"></script>
+<script src="../holox-floor55/vault.js?v=63"></script>
+</body>
+</html>

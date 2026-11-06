@@ -1,0 +1,46 @@
+{
+  "id": "jp-wheel-plaza-71",
+  "name": "4기생 기적의 바퀴",
+  "width": 9,
+  "height": 9,
+  "rows": [
+    "#########",
+    "#.......#",
+    "#.GGGG..#",
+    "#.GGGG..#",
+    "#.GGGG.F#",
+    "#GGGGG+G#",
+    "#.......#",
+    "#FFFF..F#",
+    "######.##"
+  ],
+  "legend": {
+    "#": "plaza_wall",
+    ".": "walkable",
+    "F": "plaza_fixture",
+    "G": "transparent_safety_fence",
+    "+": "boarding_gate"
+  },
+  "connectors": [
+    {"x": 6, "y": 8, "direction": "south", "type": "open_gate"},
+    {"x": 6, "y": 5, "direction": "internal", "type": "boarding_gate"}
+  ],
+  "stations": [
+    {"id": "wheel", "member": "4기생", "name": "기적의 바퀴", "motif": "카나타, 루나, 토와, 와타메 곤돌라가 매달린 관람차. 펜스를 따라 오른쪽으로 돌아갈 수 있다.", "x": 2, "y": 2, "w": 4, "h": 4, "color": "#d9b6dd", "sprite": false},
+    {"id": "booth", "member": "광장", "name": "매표소", "motif": "입구 옆 작은 매표 창구. 창구 앞에 오래된 표지판이 서 있다.", "x": 7, "y": 7, "w": 1, "h": 1, "color": "#e1bd8a", "sprite": false},
+    {"id": "gate", "member": "광장", "name": "탑승구", "motif": "금속 탑승구는 한 턴에 열린다. 오른쪽 길로 돌아 관람차 뒤편에 갈 수 있다.", "x": 6, "y": 5, "w": 1, "h": 1, "color": "#a9b9b2", "sprite": false},
+    {"id": "bench-west", "member": "광장", "name": "왼쪽 대기 벤치", "motif": "탑승 차례를 기다리는 사람들을 위한 두 칸짜리 나무 벤치.", "x": 1, "y": 7, "w": 2, "h": 1, "color": "#c4a488", "sprite": false},
+    {"id": "bench-east", "member": "광장", "name": "오른쪽 대기 벤치", "motif": "화분 옆에 나란히 놓인 두 칸짜리 나무 벤치.", "x": 3, "y": 7, "w": 2, "h": 1, "color": "#c4a488", "sprite": false},
+    {"id": "control", "member": "광장", "name": "운행 조작대", "motif": "관람차 옆의 낡은 조작대. 유리 아래 표시등과 레버가 남아 있다.", "x": 7, "y": 4, "w": 1, "h": 1, "color": "#9eb9b4", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [{"x": 6, "y": 3, "role": "elite", "implemented": false}],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 2, "y": 1, "label": "+2 숏소드", "quantity": 1, "enchantment": 2}],
+    "supplies": [
+      {"id": "scroll", "x": 1, "y": 2, "label": "스크롤", "quantity": 2},
+      {"id": "potion", "x": 2, "y": 1, "label": "포션", "quantity": 2}
+    ]
+  },
+  "nativeGameIntegrated": false
+}

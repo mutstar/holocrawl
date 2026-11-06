@@ -1,0 +1,50 @@
+{
+  "id": "jp-gamers-abandoned-station-64",
+  "name": "게이머즈 폐역",
+  "width": 9,
+  "height": 9,
+  "rows": [
+    "#########",
+    "#TTTT#..#",
+    "#TTTT#..#",
+    "#....+..#",
+    "#F...####",
+    "#......F#",
+    "##..##+##",
+    "#...#...#",
+    "######+##"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "floor",
+    "T": "impassable_track_transparent",
+    "F": "impassable_fixture",
+    "+": "openable_gate"
+  },
+  "connectors": [
+    {"x": 6, "y": 8, "direction": "south", "type": "sliding_door"},
+    {"x": 6, "y": 6, "direction": "internal", "type": "ticket_gate"},
+    {"x": 5, "y": 3, "direction": "internal", "type": "staff_door"}
+  ],
+  "stations": [
+    {"id": "tracks", "member": "승강장", "name": "끊긴 선로", "motif": "노란 안전선 너머의 선로는 내려갈 수 없지만 시야는 가리지 않는다.", "x": 1, "y": 1, "w": 4, "h": 2, "color": "#d0ba7c", "sprite": false},
+    {"id": "fubuki", "member": "후부키", "name": "흰여우 신호등", "motif": "선로 위 벽에 붙은 흰여우 신호등. 귀와 눈에 엷은 민트색이 남아 있다.", "x": 1, "y": 0, "w": 1, "h": 1, "color": "#b9ded3", "sprite": false},
+    {"id": "mio", "member": "미오", "name": "벽걸이 타로함", "motif": "역무실 붉은 타로함에 카드 세 장이 꽂혀 있다.", "x": 6, "y": 0, "w": 1, "h": 1, "color": "#d3958c", "sprite": false},
+    {"id": "okayu", "member": "오카유", "name": "주먹밥 자판기", "motif": "개찰구 옆 보라색 자판기. 화면에 밥과 김으로 그린 주먹밥이 보인다.", "x": 7, "y": 5, "w": 1, "h": 1, "color": "#b59bc5", "sprite": false},
+    {"id": "korone", "member": "코로네", "name": "코로네스키 벤치", "motif": "둥근 크림색 옆얼굴에 반달 눈 하나. 왼쪽으로 크게 벌린 입의 아랫부분이 좌판이다.", "x": 1, "y": 4, "w": 1, "h": 1, "color": "#d6bb7f", "sprite": false},
+    {"id": "staff", "member": "역무실", "name": "분실물 보관소", "motif": "승강장 옆 역무실 문을 열고 안쪽으로 들어가면 시험 보상을 주울 수 있다.", "x": 6, "y": 1, "w": 2, "h": 3, "color": "#b9a08d", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [
+    {"x": 4, "y": 3, "role": "elite", "implemented": false},
+    {"x": 3, "y": 5, "role": "guard", "implemented": false}
+  ],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 7, "y": 1, "label": "+2 숏소드", "quantity": 1, "enchantment": 2}],
+    "supplies": [
+      {"id": "scroll", "x": 6, "y": 1, "label": "스크롤", "quantity": 2},
+      {"id": "potion", "x": 7, "y": 1, "label": "포션", "quantity": 2}
+    ]
+  },
+  "nativeGameIntegrated": false
+}

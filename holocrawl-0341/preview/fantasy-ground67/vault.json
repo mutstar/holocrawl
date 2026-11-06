@@ -1,0 +1,44 @@
+{
+  "id": "jp-fantasy-ground-67",
+  "name": "3기생 도타바타 그라운드",
+  "width": 9,
+  "height": 9,
+  "rows": [
+    "GGGGGGGGG",
+    "G.......G",
+    "G.......G",
+    "G..F.F..G",
+    "GF.....FG",
+    "G.......G",
+    "GF.....FG",
+    "G.......G",
+    "GGGGGG.GG"
+  ],
+  "legend": {
+    ".": "walkable",
+    "F": "equipment",
+    "G": "transparent_fence"
+  },
+  "connectors": [
+    {"x": 6, "y": 8, "direction": "south", "type": "open_gate"}
+  ],
+  "stations": [
+    {"id": "rope", "member": "운동장", "name": "대형 줄넘기", "motif": "푸른 아치 아래로 긴 줄이 늘어져 있다. 아치 기둥 사이로 걸어갈 수 있다.", "x": 3, "y": 2, "w": 3, "h": 2, "color": "#a2bbdf", "sprite": false},
+    {"id": "noel", "member": "노엘", "name": "방패 타격 연습대", "motif": "금색 문장이 박힌 은빛 방패를 고정해 타격을 연습하는 장비.", "x": 1, "y": 4, "w": 1, "h": 1, "color": "#c1c8d0", "sprite": false},
+    {"id": "marine", "member": "마린", "name": "해적기 결승 표지", "motif": "트랙에 그려진 체크무늬 결승선 옆에 세운 해골 해적기.", "x": 7, "y": 4, "w": 1, "h": 1, "color": "#d59b88", "sprite": false},
+    {"id": "pekora", "member": "페코라", "name": "노우사기 훈련 표적", "motif": "하얀 노우사기 얼굴을 운동장 받침대에 세운 연습용 표적.", "x": 1, "y": 6, "w": 1, "h": 1, "color": "#e0ac78", "sprite": false},
+    {"id": "flare", "member": "후레아", "name": "궁술 연습대", "motif": "주황색 깃발 아래 나무 활과 화살을 꽂아둔 연습대.", "x": 7, "y": 6, "w": 1, "h": 1, "color": "#db9f70", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [
+    {"x": 4, "y": 5, "role": "elite", "implemented": false}
+  ],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 4, "y": 1, "label": "+2 숏소드", "quantity": 1, "enchantment": 2}],
+    "supplies": [
+      {"id": "scroll", "x": 3, "y": 1, "label": "스크롤", "quantity": 2},
+      {"id": "potion", "x": 5, "y": 1, "label": "포션", "quantity": 2}
+    ]
+  },
+  "nativeGameIntegrated": false
+}

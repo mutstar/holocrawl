@@ -1,0 +1,17 @@
+{
+  "id": "jp-face-mountain",
+  "name": "0기생 페이스 마운틴",
+  "width": 9, "height": 9,
+  "rows": ["#########", "#.#####.#", "#.......#", "#.......#", "######.##", "#.......#", "#.......#", "#..F....#", "######.##"],
+  "stations": [
+    {"id": "faces", "member": "0기생", "name": "북쪽 암벽의 다섯 부조", "motif": "왼쪽부터 토키노 소라, 로보코, AZKi, 사쿠라 미코, 호시마치 스이세이.", "x": 2, "y": 0, "w": 5, "h": 2, "color": "#d6c2a2", "sprite": false},
+    {"id": "sign", "member": "전망대", "name": "등산로 표지", "motif": "암벽 앞까지 걸어 올라갈 수 있다. 선물은 암벽 왼쪽에 있다.", "x": 3, "y": 7, "w": 1, "h": 1, "color": "#c6ae89", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [{"x": 3, "y": 3, "role": "elite", "implemented": false}],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 1, "y": 1, "label": "+2 숏소드", "quantity": 1}],
+    "supplies": [{"id": "scroll", "x": 1, "y": 2, "label": "스크롤", "quantity": 2}, {"id": "potion", "x": 1, "y": 1, "label": "포션", "quantity": 2}]
+  },
+  "nativeGameIntegrated": false
+}

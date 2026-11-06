@@ -1,0 +1,21 @@
+{
+  "id": "jp-tarafuku-journey",
+  "name": "1기생 타라후쿠 저니",
+  "width": 9, "height": 9,
+  "rows": ["#########", "#F..FF..#", "#F......#", "#FFF+FFF#", "#.......#", "#.F..F..#", "#.F..F..#", "#.......#", "######.##"],
+  "stations": [
+    {"id": "counter", "member": "식당", "name": "배식대", "motif": "붉은 천이 걸린 배식대. 가운데 주방문으로 들어갈 수 있다.", "x": 1, "y": 3, "w": 7, "h": 1, "color": "#c8917f", "sprite": false},
+    {"id": "tables", "member": "식당", "name": "홀의 식탁", "motif": "식기와 긴 테이블보가 남아 있는 식탁 사이로 걸어갈 수 있다.", "x": 2, "y": 5, "w": 4, "h": 2, "color": "#d8ab83", "sprite": false},
+    {"id": "aki", "member": "아키로제", "name": "장미 꽃병", "motif": "왼쪽 식탁의 꽃병에 붉은 장미 세 송이가 꽂혀 있다.", "x": 2, "y": 5, "w": 1, "h": 2, "color": "#d8707d", "sprite": false},
+    {"id": "haato", "member": "하쨔마", "name": "거미 라면", "motif": "배식대 왼편의 라면 그릇에 면발과 큼직한 거미가 보인다.", "x": 3, "y": 3, "w": 1, "h": 1, "color": "#d6787b", "sprite": false},
+    {"id": "fubuki", "member": "후부키", "name": "흰 여우 찻주전자", "motif": "오른쪽 식탁에 파란 뚜껑을 얹은 여우 찻주전자가 놓여 있다.", "x": 5, "y": 5, "w": 1, "h": 2, "color": "#a4c3bc", "sprite": false},
+    {"id": "matsuri", "member": "마츠리", "name": "에비프라이온 접시", "motif": "배식대 오른편에 사자 갈기와 새우 꼬리를 닮은 튀김이 놓여 있다.", "x": 6, "y": 3, "w": 1, "h": 1, "color": "#e89f48", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [{"x": 4, "y": 2, "role": "elite", "implemented": false}],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 7, "y": 1, "label": "+2 숏소드", "quantity": 1}],
+    "supplies": [{"id": "scroll", "x": 6, "y": 2, "label": "스크롤", "quantity": 2}, {"id": "potion", "x": 7, "y": 1, "label": "포션", "quantity": 2}]
+  },
+  "nativeGameIntegrated": false
+}

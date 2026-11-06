@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>잔향도시 JP·DEV_IS 시설</title>
+  <style>*{box-sizing:border-box}body{margin:0;background:#14171c;color:#dde1e7;font:15px/1.7 system-ui}main{max-width:1300px;margin:auto;padding:22px}h1{font-size:25px}h2{font-size:19px}p{color:#b4bbc6}nav,#members{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}button,select,a{background:#2b303d;color:#e0dfe8;border:1px solid #677083;padding:8px 12px;cursor:pointer}canvas{image-rendering:pixelated;display:block;max-width:100%;height:auto;outline:none;border:1px solid #526072}.layout{display:grid;grid-template-columns:minmax(0,768px) 1fr;gap:20px}aside{background:#20252f;padding:16px;min-width:0}#info{padding:10px;background:#252c37;min-height:48px}#inventory{color:#dec99b}.pad{display:grid;grid-template-columns:repeat(3,42px);gap:4px;margin:12px 0}.hint{font-size:13px;color:#a7b2c3}#closeup{width:576px}footer{font-size:13px;color:#9ca9bc;margin-top:24px}#members{flex-direction:column}#members button{text-align:left}@media(max-width:950px){.layout{grid-template-columns:1fr}aside{max-width:768px}}.facility-tabs a{text-decoration:none}.facility-tabs a[aria-current=page]{border-color:#cfba90;color:#ffe5ad}</style>
+</head>
+<body>
+<main>
+  <h1 id="siteTitle">잔향도시 JP·DEV_IS 시설</h1>
+  <p id="siteHint"></p>
+    <nav aria-label="JP·DEV_IS 시설" class="facility-tabs">
+    <a data-site="mountain" href="?site=mountain&amp;map=2">0기생 페이스 마운틴</a>
+    <a data-site="dining" href="?site=dining&amp;map=2">1기생 타라후쿠 저니</a>
+    <a data-site="market" href="?site=market&amp;map=2">5기생 네포라보 마트</a>
+    <a data-site="dev" href="?site=dev&amp;map=2">DEV_IS 쵸베리바 출장소</a>
+  </nav>
+  <p id="placementInfo" class="hint"></p>
+  <nav>
+    <label>층 지형 <select id="mapSelect"><option value="0">1 · 서쪽</option><option value="1">2 · 중앙</option><option value="2">3 · 북쪽</option></select></label>
+    <button id="overview">전체 층 보기</button><button id="labView">시설 주변 보기</button><button id="stairsStart">계단부터 탐험</button>
+    <label>시험 보상 <select id="reward"><option value="weapon">+2 숏소드 1개</option><option value="supplies">스크롤 2장＋포션 2개</option></select></label>
+    <button id="reset">처음부터</button><button id="labels">구역 표시</button><button id="markers">적 배치 예정 표시</button><button id="fog">시야·탐험 안개 켜기</button><button id="stop">이동 중지</button>
+  </nav>
+  <div class="layout">
+    <section><canvas id="field" width="768" height="640" tabindex="0" aria-label="잔향도시 시설 탐험"></canvas><div id="info"></div></section>
+    <aside>
+      <h2>전체 층 · 시설 위치</h2><canvas id="floorMini" width="240" height="210"></canvas>
+      <p class="hint">밝은 테두리는 시설, 노란 점은 플레이어입니다.</p>
+      <h2>시설 안내</h2><div id="members"></div>
+      <p class="hint">이름을 누르면 지도에 시설 위치가 표시됩니다.</p>
+      <div id="inventory"></div>
+      <div class="pad"><button data-d="-1,-1">↖</button><button data-d="0,-1">↑</button><button data-d="1,-1">↗</button><button data-d="-1,0">←</button><button disabled>·</button><button data-d="1,0">→</button><button data-d="-1,1">↙</button><button data-d="0,1">↓</button><button data-d="1,1">↘</button></div>
+      <p class="hint">방향키·WASD / Q E Z C: 대각선<br>닫힌 문 쪽으로 이동하면 한 턴을 써서 열립니다.<br>발견한 바닥 클릭: 자동 이동 / Esc: 이동 중지<br>보상은 밟아서 획득</p>
+      <p class="hint">정예 적은 예정 위치만 표시합니다.</p>
+      <a href="../theater-vault57/">2기생 극장</a> · <a href="../holox-floor62/?map=2#closeup">holoX 연구소</a> · <a href="../gamers-station64/?map=2&amp;v=66#closeup">게이머즈 폐역</a> · <a href="../fantasy-ground67/?map=2#field">3기생 운동장</a> · <a href="../wheel-plaza71/?map=2#field">4기생 관람차</a>
+    </aside>
+  </div>
+  <h2>시설 확대</h2><canvas id="closeup" width="576" height="576"></canvas>
+  <footer>외벽 포함 9×9. 기존 잔향도시 층 스냅샷 세 곳에 배치한 브라우저 시안. <a id="dataLink" href="mountain.json">지형·보상 데이터</a></footer>
+</main>
+<script src="../city-layout07/visibility-paths.js"></script>
+<script src="../city-layout07/visibility.js"></script>
+<script src="entrances.js?v=87"></script>
+<script src="facilities.js?v=91"></script>
+
+<script src="../holox-floor55/vault.js?v=76"></script>
+</body>
+</html>

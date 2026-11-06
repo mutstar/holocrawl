@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "map": 0,
+      "footprint": true,
+      "outside": true,
+      "stairs": true,
+      "zones": true,
+      "stations": true,
+      "fixtures": true,
+      "rewards": true,
+      "encounters": true,
+      "autoWalkAndPickup": true,
+      "fog": true,
+      "mobile": true
+    },
+    {
+      "map": 1,
+      "footprint": true,
+      "outside": true,
+      "stairs": true,
+      "zones": true,
+      "stations": true,
+      "fixtures": true,
+      "rewards": true,
+      "encounters": true,
+      "autoWalkAndPickup": true,
+      "fog": true,
+      "mobile": true
+    },
+    {
+      "map": 2,
+      "footprint": true,
+      "outside": true,
+      "stairs": true,
+      "zones": true,
+      "stations": true,
+      "fixtures": true,
+      "rewards": true,
+      "encounters": true,
+      "autoWalkAndPickup": true,
+      "fog": true,
+      "mobile": true
+    }
+  ]
+}

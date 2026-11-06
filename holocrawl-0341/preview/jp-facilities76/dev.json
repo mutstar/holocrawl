@@ -1,0 +1,17 @@
+{
+  "id": "jp-dev-is-branch",
+  "name": "DEV_IS 쵸베리바 출장소",
+  "width": 9, "height": 9,
+  "rows": ["#########", "#..FFF..#", "#..FFF..#", "#.......#", "#.F...F.#", "#.......#", "#GGG+GGG#", "#.......#", "######.##"],
+  "stations": [
+    {"id": "stage", "member": "출장소", "name": "미니 스테이지", "motif": "다섯 색 조명이 들어오는 작은 무대. 무대 오른쪽 통로에서 보상에 닿을 수 있다.", "x": 3, "y": 1, "w": 3, "h": 2, "color": "#c1a7d7", "sprite": false},
+    {"id": "desk", "member": "출장소", "name": "방송 조작대", "motif": "무대 앞의 작은 카메라와 방송 조작대.", "x": 6, "y": 4, "w": 1, "h": 1, "color": "#c4a9c9", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [{"x": 4, "y": 4, "role": "elite", "implemented": false}],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 7, "y": 2, "label": "+2 숏소드", "quantity": 1}],
+    "supplies": [{"id": "scroll", "x": 1, "y": 2, "label": "스크롤", "quantity": 2}, {"id": "potion", "x": 7, "y": 2, "label": "포션", "quantity": 2}]
+  },
+  "nativeGameIntegrated": false
+}

@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "map": 0,
+      "singleChangedTile": true,
+      "approach": true,
+      "closedBlocksVision": true,
+      "opensInOneTurn": true,
+      "openRestoresVision": true,
+      "enterable": true,
+      "rewardRoutes": true,
+      "resetCloses": true,
+      "autoWalkAndPickup": true,
+      "mobile": true
+    },
+    {
+      "map": 1,
+      "singleChangedTile": true,
+      "approach": true,
+      "closedBlocksVision": true,
+      "opensInOneTurn": true,
+      "openRestoresVision": true,
+      "enterable": true,
+      "rewardRoutes": true,
+      "resetCloses": true,
+      "autoWalkAndPickup": true,
+      "mobile": true
+    },
+    {
+      "map": 2,
+      "singleChangedTile": true,
+      "approach": true,
+      "closedBlocksVision": true,
+      "opensInOneTurn": true,
+      "openRestoresVision": true,
+      "enterable": true,
+      "rewardRoutes": true,
+      "resetCloses": true,
+      "autoWalkAndPickup": true,
+      "mobile": true
+    }
+  ],
+  "revision55Loads": true
+}

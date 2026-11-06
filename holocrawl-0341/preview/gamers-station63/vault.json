@@ -1,0 +1,47 @@
+{
+  "id": "jp-gamers-abandoned-station-63",
+  "name": "게이머즈 폐역",
+  "width": 9,
+  "height": 9,
+  "rows": [
+    "#########",
+    "#TTTT#..#",
+    "#TTTT#..#",
+    "#....+..#",
+    "#F...####",
+    "#......F#",
+    "##..##+##",
+    "#...#...#",
+    "######+##"
+  ],
+  "legend": {
+    "#": "wall",
+    ".": "floor",
+    "T": "impassable_track_transparent",
+    "F": "impassable_fixture",
+    "+": "openable_gate"
+  },
+  "connectors": [
+    {"x": 6, "y": 8, "direction": "south", "type": "sliding_door"},
+    {"x": 6, "y": 6, "direction": "internal", "type": "ticket_gate"},
+    {"x": 5, "y": 3, "direction": "internal", "type": "staff_door"}
+  ],
+  "stations": [
+    {"id": "tracks", "member": "승강장", "name": "끊긴 선로", "motif": "노란 안전선 너머의 선로는 내려갈 수 없지만 시야는 가리지 않는다.", "x": 1, "y": 1, "w": 4, "h": 2, "color": "#d0ba7c", "sprite": false},
+    {"id": "ticket", "member": "대합실", "name": "표 발매기", "motif": "청록색 화면에 불이 남은 낡은 발매기. 옆 개찰구는 한 턴에 열린다.", "x": 7, "y": 5, "w": 1, "h": 1, "color": "#90b9a9", "sprite": false},
+    {"id": "staff", "member": "역무실", "name": "분실물 보관소", "motif": "승강장 옆 역무실 문을 열고 안쪽으로 들어가면 시험 보상을 주울 수 있다.", "x": 6, "y": 1, "w": 2, "h": 3, "color": "#b9a08d", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [
+    {"x": 4, "y": 3, "role": "elite", "implemented": false},
+    {"x": 3, "y": 5, "role": "guard", "implemented": false}
+  ],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 7, "y": 1, "label": "+2 숏소드", "quantity": 1, "enchantment": 2}],
+    "supplies": [
+      {"id": "scroll", "x": 6, "y": 1, "label": "스크롤", "quantity": 2},
+      {"id": "potion", "x": 7, "y": 1, "label": "포션", "quantity": 2}
+    ]
+  },
+  "nativeGameIntegrated": false
+}

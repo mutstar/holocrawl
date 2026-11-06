@@ -1,0 +1,20 @@
+{
+  "id": "jp-nepolabo-mart",
+  "name": "5기생 네포라보 마트",
+  "width": 9, "height": 9,
+  "rows": ["#########", "#F..F...#", "#F..F.F.#", "#...F.F.#", "#...F...#", "#FF.....#", "#FFF....#", "#FFF....#", "######.##"],
+  "stations": [
+    {"id": "lamy", "member": "라미", "name": "설야월", "motif": "왼쪽 냉장고에 눈꽃 라벨이 붙은 파란 술병이 서 있다.", "x": 1, "y": 1, "w": 1, "h": 2, "color": "#a5c9d8", "sprite": false},
+    {"id": "nene", "member": "네네", "name": "복숭아 젤리", "motif": "왼쪽 나무 진열 상자에 복숭아 그림이 붙은 젤리 컵이 놓여 있다.", "x": 1, "y": 5, "w": 2, "h": 1, "color": "#e8a16e", "sprite": false},
+    {"id": "botan", "member": "보탄", "name": "흰 사자 컵라면", "motif": "오른쪽 초록 선반에 흰 사자 얼굴을 그린 컵라면이 놓여 있다.", "x": 6, "y": 2, "w": 1, "h": 2, "color": "#a6b493", "sprite": false},
+    {"id": "polka", "member": "폴카", "name": "서커스 팝콘", "motif": "중앙 진열대 끝에 붉은 줄무늬 통에 담긴 팝콘이 놓여 있다.", "x": 4, "y": 4, "w": 1, "h": 1, "color": "#e3ab85", "sprite": false},
+    {"id": "register", "member": "마트", "name": "계산대", "motif": "왼쪽 하단의 ㄱ자 계산대. 가로 쪽에는 상품 벨트와 스캐너가 있고, 꺾인 쪽에는 봉투가 놓여 있다.", "x": 1, "y": 6, "w": 3, "h": 2, "color": "#a0b8aa", "sprite": false}
+  ],
+  "interiorFeatures": [],
+  "encounterSlots": [{"x": 5, "y": 3, "role": "elite", "implemented": false}],
+  "rewardOptions": {
+    "weapon": [{"id": "weapon", "x": 7, "y": 1, "label": "+2 숏소드", "quantity": 1}],
+    "supplies": [{"id": "scroll", "x": 2, "y": 1, "label": "스크롤", "quantity": 2}, {"id": "potion", "x": 7, "y": 1, "label": "포션", "quantity": 2}]
+  },
+  "nativeGameIntegrated": false
+}
