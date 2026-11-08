@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "auditedMembers": 30,
+  "auditedFacilities": 7,
+  "improved": 4,
+  "checks": [
+    {
+      "facility": "holox",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "theater",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "dev",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "dining",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "gamers",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "fantasy",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "wheel",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "market",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    },
+    {
+      "facility": "mountain",
+      "fullMap": true,
+      "detail": true,
+      "entrance": true,
+      "beforeAfter": true,
+      "doorState": true
+    }
+  ],
+  "mobileOverflow": false,
+  "pageErrors": []
+}

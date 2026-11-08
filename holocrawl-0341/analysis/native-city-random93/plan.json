@@ -1,0 +1,14 @@
+{
+  "seed": 1179432666,
+  "depth": 1,
+  "facility": false,
+  "nativeBuilder": true,
+  "nativeArtRevision": 84,
+  "previewWallRevision": 92,
+  "inputSha256": {
+    "binary": "2ac32df1d925b258522fa8d986d50b143d1f74d3ccedf9f7cac9497d89c0754c",
+    "wallAtlas": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+    "renderer": "15f64776961cbd405c4f5dc8eb1b42d6c0be013949c44b74f309a4e11191557a"
+  },
+  "scope": "One fresh native geometry with the already reviewed92 wall material."
+}

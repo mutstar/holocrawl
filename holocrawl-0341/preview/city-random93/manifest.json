@@ -1,0 +1,32 @@
+{
+  "title": "잔향도시 새 랜덤 지도 · 접합 수정92",
+  "revision": 93,
+  "tileSize": 32,
+  "maps": [
+    {
+      "seed": 1179432666,
+      "width": 80,
+      "height": 70,
+      "focus": {
+        "x": 36.5,
+        "y": 35.5
+      },
+      "images": {
+        "concrete92": "1179432666-concrete92.png",
+        "original84": "1179432666-original84.png"
+      }
+    }
+  ],
+  "styles": [
+    {
+      "id": "concrete92",
+      "label": "접합 채운 최신 벽92"
+    },
+    {
+      "id": "original84",
+      "label": "기존 도시벽84"
+    }
+  ],
+  "nativeMapSha256": "ad2eda0dc57f8bceba625da1201bb6a0bcd1db2d7def5507511be427c7e99e87",
+  "scope": "One fresh native geometry with the already reviewed92 wall material."
+}

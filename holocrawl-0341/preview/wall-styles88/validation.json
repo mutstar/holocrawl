@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "sourceMapSha256": "c309cdd05cc6dd2012ed377e57c64ad2288383e27e211771264f888d6da3b054",
+  "auditedWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+  "sourceMapUnchanged": true,
+  "checks": [
+    {
+      "style": "ours",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "style": "dcss",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "style": "pixel",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "style": "gungeon",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    }
+  ],
+  "scope": "Art comparison, no engine or gameplay changes.",
+  "ownBaselineMatchesRelief87": true
+}

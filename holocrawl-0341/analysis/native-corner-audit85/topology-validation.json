@@ -1,0 +1,137 @@
+{
+  "status": "passed",
+  "neighbourMasks": 256,
+  "assertions": 28224,
+  "rules": {
+    "east_face_not_truncated_by_diagonal": 16384,
+    "interior_cap_height_retained": 256,
+    "front_height_retained": 128,
+    "west_face_reaches_upper_join": 5184,
+    "front_reaches_inside_turn": 3584,
+    "west_face_reaches_lower_join": 2688
+  },
+  "violations": [],
+  "baseline79Violations": 13248,
+  "baselineExamples": [
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        0,
+        0
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        1,
+        0
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        2,
+        0
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        0,
+        1
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        1,
+        1
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        2,
+        1
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        0,
+        2
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        1,
+        2
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        2,
+        2
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        0,
+        3
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        1,
+        3
+      ],
+      "expected": "west",
+      "actual": "cap"
+    },
+    {
+      "rule": "west_face_reaches_upper_join",
+      "mask": 1,
+      "pixel": [
+        2,
+        3
+      ],
+      "expected": "west",
+      "actual": "cap"
+    }
+  ]
+}

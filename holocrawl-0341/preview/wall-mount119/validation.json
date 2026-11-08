@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": 119,
+  "nativeIntegrated": false,
+  "sourceVersionsPreserved": [
+    117,
+    118
+  ],
+  "nativeMaps": 36,
+  "marketMaps": 80,
+  "marketFixtures": 303,
+  "counts": {
+    "wallFixtures": 144,
+    "utilities": 324,
+    "alphaPixels": 189037,
+    "nativeFrames": 1081
+  },
+  "neighbourMaskCases": 1280,
+  "roofCopingSideFloorLeakPixels": 0,
+  "actualStreetChangedFrontPixels": 7392,
+  "actualMarketChangedFrontPixels": 25056,
+  "floorSpritesPixelIdentical": 15,
+  "geometryAndCollisionIdentical": true,
+  "nativeLOSUnchanged": true,
+  "errors": []
+}

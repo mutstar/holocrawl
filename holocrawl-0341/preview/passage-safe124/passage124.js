@@ -1,0 +1,47 @@
+(function(root){
+ 'use strict';
+ const cardinal=[[1,0],[-1,0],[0,1],[0,-1]],diagonal=[...cardinal,[1,1],[1,-1],[-1,1],[-1,-1]];
+ const flatTypes=new Set(['paper-rubbish']);
+ function distances(open,w,h,start,mode=4){const d=new Int32Array(w*h).fill(-1),q=new Int32Array(w*h),dirs=mode===8?diagonal:cardinal;let head=0,end=0;if(start<0||!open[start])return d;d[start]=0;q[end++]=start;while(head<end){const i=q[head++],x=i%w,y=(i/w)|0;for(const[dx,dy]of dirs){const xx=x+dx,yy=y+dy,j=yy*w+xx;if(xx<0||yy<0||xx>=w||yy>=h||!open[j]||d[j]>=0)continue;d[j]=d[i]+1;q[end++]=j;}}return d;}
+ function widths(open,w,h){const horizontal=new Uint16Array(w*h),vertical=new Uint16Array(w*h);for(let y=0;y<h;y++){let x=0;while(x<w){if(!open[y*w+x]){x++;continue;}const s=x;while(x<w&&open[y*w+x])x++;for(let xx=s;xx<x;xx++)horizontal[y*w+xx]=x-s;}}for(let x=0;x<w;x++){let y=0;while(y<h){if(!open[y*w+x]){y++;continue;}const s=y;while(y<h&&open[y*w+x])y++;for(let yy=s;yy<y;yy++)vertical[yy*w+x]=y-s;}}return{horizontal,vertical};}
+ function wideGraph(open,w,h){const mask=new Uint8Array(w*h);for(let y=0;y<h-1;y++)for(let x=0;x<w-1;x++){const i=y*w+x;mask[i]=open[i]&&open[i+1]&&open[i+w]&&open[i+w+1]?1:0;}const labels=new Int32Array(w*h),sizes=[0],q=new Int32Array(w*h);let label=0;for(let i=0;i<mask.length;i++)if(mask[i]&&!labels[i]){label++;let head=0,end=0;q[end++]=i;labels[i]=label;while(head<end){const n=q[head++],x=n%w,y=(n/w)|0;for(const[dx,dy]of cardinal){const xx=x+dx,yy=y+dy,j=yy*w+xx;if(xx<0||yy<0||xx>=w||yy>=h||!mask[j]||labels[j])continue;labels[j]=label;q[end++]=j;}}sizes[label]=end;}return{mask,labels,sizes};}
+ function hash(text){let h=2166136261;for(const c of String(text))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
+ function cells(f,w){const out=[];for(let dy=0;dy<(f.footH||1);dy++)for(let dx=0;dx<(f.footW||1);dx++)out.push((f.y+dy)*w+f.x+dx);return out;}
+ function groupFences(items){const sorted=[...items].sort((a,b)=>a.y-b.y||a.x-b.x),out=[];for(const f of sorted){const last=out.at(-1);if(last&&last.y===f.y&&last.x+last.footW===f.x)last.footW++;else out.push({...f,type:'fence',footW:1,footH:1,fenceGroup:true});}return out;}
+ function ungroupFences(items){return items.flatMap(f=>Array.from({length:f.footW||1},(_,dx)=>({x:f.x+dx,y:f.y,type:'fence'})));}
+ function create({w,h,open,specials=[],sources=[],excluded=[],seed='124',mode=4}){
+  open=new Uint8Array(open);const N=w*h,shape=widths(open,w,h),protectedCells=new Uint8Array(N),narrow=new Uint8Array(N),corners=new Uint8Array(N),blocked=new Set(),occupied=new Set(),placed=[],omitted=[],reasons={},baseWide=wideGraph(open,w,h);
+  const inside=(x,y)=>x>=0&&y>=0&&x<w&&y<h,free=(x,y)=>inside(x,y)&&open[y*w+x];
+  function protect(x,y,r,flag){for(let yy=Math.max(0,y-r);yy<=Math.min(h-1,y+r);yy++)for(let xx=Math.max(0,x-r);xx<=Math.min(w-1,x+r);xx++)protectedCells[yy*w+xx]|=flag;}
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=y*w+x;if(!open[i])continue;if(Math.min(shape.horizontal[i],shape.vertical[i])<=2){narrow[i]=1;protect(x,y,1,1);}const n=free(x,y-1),s=free(x,y+1),e=free(x+1,y),west=free(x-1,y);if((!n&&!west)||(!n&&!e)||(!s&&!west)||(!s&&!e)||(n&&west&&!free(x-1,y-1))||(n&&e&&!free(x+1,y-1))||(s&&west&&!free(x-1,y+1))||(s&&e&&!free(x+1,y+1))){corners[i]=1;protect(x,y,1,2);}}
+  for(const p of specials)protect(p.x,p.y,p.radius??3,4);
+  for(const r of excluded)for(let y=Math.max(0,r.y);y<Math.min(h,r.y+r.h);y++)for(let x=Math.max(0,r.x);x<Math.min(w,r.x+r.w);x++)protectedCells[y*w+x]|=8;
+  const anchors=[];for(const p of [...sources,...specials]){const i=p.y*w+p.x;if(open[i]&&!anchors.includes(i))anchors.push(i);if(anchors.length===6)break;}if(!anchors.length)anchors.push(open.findIndex(Boolean));
+  const critical=[...anchors],baseFields=anchors.map(i=>distances(open,w,h,i,mode));
+  // Preserve an actual shortest stair/access route, not merely reachability.
+  const rootD=baseFields[0],dirs=mode===8?diagonal:cardinal;for(const target of critical.slice(1)){let i=target;while(rootD[i]>0){protectedCells[i]|=16;const x=i%w,y=(i/w)|0,next=dirs.map(([dx,dy])=>(y+dy)*w+x+dx).find(j=>j>=0&&j<N&&Math.abs(j%w-x)<=1&&rootD[j]===rootD[i]-1);if(next===undefined)break;i=next;}protectedCells[i]|=16;}
+  // Farthest floor anchors cover rooms beyond the stair-to-stair corridor.
+  while(anchors.length<6){let best=-1,score=-1;for(let i=0;i<N;i++)if(open[i]&&rootD[i]>=0){const d=Math.min(...baseFields.map(f=>f[i]));if(d>score){score=d;best=i;}}if(best<0||score<8)break;anchors.push(best);baseFields.push(distances(open,w,h,best,mode));}
+  for(const i of anchors)protect(i%w,(i/w)|0,1,32);
+  const baseCache=new Map(),candidatePool=[];for(let i=0;i<N;i++)if(open[i]&&!protectedCells[i]&&Math.min(shape.horizontal[i],shape.vertical[i])>=3){const x=i%w,y=(i/w)|0;if(cardinal.some(([dx,dy])=>!free(x+dx,y+dy)))candidatePool.push({x,y});}
+  let maxDetour=0,maxLocalDetour=0;
+  function reject(reason){reasons[reason]=(reasons[reason]||0)+1;return false;}
+  function fit(f){const points=cells(f,w);for(const i of points){const x=i%w,y=(i/w)|0;if(f.x<0||f.y<0||f.x+(f.footW||1)>w||f.y+(f.footH||1)>h||!open[i]||protectedCells[i]||occupied.has(i))return reject('protected-or-occupied');for(const[dx,dy]of diagonal)if(inside(x+dx,y+dy)&&occupied.has((y+dy)*w+x+dx))return reject('object-spacing');}
+   if(flatTypes.has(f.type))return{points,after:null,global:0,local:0,passable:true};
+   const after=open.slice();for(const i of blocked)after[i]=0;for(const i of points)after[i]=0;
+   const afterWidths=widths(after,w,h);for(let i=0;i<N;i++)if(after[i]&&Math.min(shape.horizontal[i],shape.vertical[i])>=2&&Math.min(afterWidths.horizontal[i],afterWidths.vertical[i])<2)return reject('new-one-cell-width');
+   const wide=wideGraph(after,w,h),seenLabel=new Map(),remaining=new Set();for(let i=0;i<N;i++)if(wide.mask[i]){const old=baseWide.labels[i],now=wide.labels[i];remaining.add(old);if(seenLabel.has(old)&&seenLabel.get(old)!==now)return reject('two-cell-lane-split');seenLabel.set(old,now);}for(let label=1;label<baseWide.sizes.length;label++)if(!remaining.has(label))return reject('two-cell-space-lost');
+   let global=0;for(let n=0;n<anchors.length;n++){const field=distances(after,w,h,anchors[n],mode),base=baseFields[n];for(let i=0;i<N;i++)if(after[i]&&base[i]>=0){if(field[i]<0)return reject('disconnected');const delta=field[i]-base[i];if(delta>2)return reject('global-detour');global=Math.max(global,delta);}}
+   const fw=f.footW||1,fh=f.footH||1,ring=[];for(let y=f.y-1;y<=f.y+fh;y++)for(let x=f.x-1;x<=f.x+fw;x++)if(inside(x,y)&&(x===f.x-1||x===f.x+fw||y===f.y-1||y===f.y+fh)&&after[y*w+x])ring.push(y*w+x);
+   const targets=[[f.x-1,f.y+fh/2],[f.x+fw,f.y+fh/2],[f.x+fw/2,f.y-1],[f.x+fw/2,f.y+fh]],portals=[...new Set(targets.map(([x,y])=>ring.toSorted((a,b)=>Math.hypot(a%w-x,((a/w)|0)-y)-Math.hypot(b%w-x,((b/w)|0)-y))[0]).filter(i=>i!==undefined))];
+   let local=0;for(const start of portals){if(!baseCache.has(start))baseCache.set(start,distances(open,w,h,start,mode));const base=baseCache.get(start),field=distances(after,w,h,start,mode);for(const end of portals)if(base[end]>=0){if(field[end]<0||field[end]-base[end]>2)return reject('local-detour');local=Math.max(local,field[end]-base[end]);}}if(baseCache.size>256)baseCache.clear();
+   return{points,after,global,local,passable:false};
+  }
+  function place(items){for(let n=0;n<items.length;n++){const original=items[n],pool=[{x:original.x,y:original.y},...candidatePool.map(p=>({...p,rank:hash(`${seed}:${n}:${p.x},${p.y}`)})).sort((a,b)=>(Math.abs(a.x-original.x)+Math.abs(a.y-original.y))-(Math.abs(b.x-original.x)+Math.abs(b.y-original.y))||a.rank-b.rank)];let done=false,attempts=0;const tried=new Set();for(const p of pool){const key=`${p.x},${p.y}`;if(tried.has(key))continue;tried.add(key);if(attempts++>=64)break;const f={...original,x:p.x,y:p.y},result=fit(f);if(!result)continue;for(const i of result.points){occupied.add(i);if(!result.passable)blocked.add(i);}const item={...f,passable:result.passable,relocated124:f.x!==original.x||f.y!==original.y,origin124:{x:original.x,y:original.y}};placed.push(item);maxDetour=Math.max(maxDetour,result.global);maxLocalDetour=Math.max(maxLocalDetour,result.local);done=true;break;}if(!done)omitted.push({...original,reason:'no-safe-bay'});}
+   return{placed,omitted,blocked:[...blocked],audit:{requested:items.length,placed:placed.length,relocated:placed.filter(p=>p.relocated124).length,omitted:omitted.length,passable:placed.filter(p=>p.passable).length,protectedCells:protectedCells.reduce((a,b)=>a+Boolean(b),0),narrowCells:narrow.reduce((a,b)=>a+b,0),maxAnchorDetour:maxDetour,maxLocalDetour,rejections:reasons},protectedCells,narrow,anchors,baseFields};
+  }
+  return{place,open,protectedCells,narrow,corners,anchors,baseFields,baseWide,shape,mode,w,h};
+ }
+ function drawFloor(ctx,f,m,images,t,mix=0){if(!f.passable)return Scene117.draw(ctx,f,m,images,t,mix);const c=document.createElement('canvas');c.width=(f.footW||1)*32;c.height=(f.footH||1)*32;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.translate(-f.x*32,-f.y*32);Scene117.draw(g,f,m,images,32,mix);ctx.save();ctx.globalAlpha=.8;ctx.drawImage(c,f.x*t,f.y*t+t*.47,(f.footW||1)*t,(f.footH||1)*t*.48);ctx.restore();}
+ const api={create,distances,widths,wideGraph,cells,groupFences,ungroupFences,flatTypes,drawFloor};root.Passage124=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(globalThis);

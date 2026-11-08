@@ -1,0 +1,127 @@
+{
+  "revision": 122,
+  "wallBaseline": 121,
+  "frontHeight": 22,
+  "mountY": [
+    11,
+    30
+  ],
+  "nativeIntegrated": false,
+  "types": {
+    "acrylic-window": {
+      "cells": [
+        2,
+        1
+      ],
+      "figurePixels": [
+        10,
+        15
+      ],
+      "features": [
+        "recessed-frame",
+        "glass-dividers",
+        "shelf",
+        "acrylic-bases"
+      ]
+    },
+    "shirt-window": {
+      "cells": [
+        2,
+        1
+      ],
+      "shirtPixels": [
+        14,
+        14
+      ],
+      "features": [
+        "rail",
+        "hangers",
+        "glass-dividers"
+      ]
+    },
+    "closed-shutter": {
+      "cells": [
+        2,
+        1
+      ],
+      "features": [
+        "guides",
+        "slats",
+        "bottom-bar",
+        "lock"
+      ]
+    },
+    "half-shutter": {
+      "cells": [
+        2,
+        1
+      ],
+      "features": [
+        "rolled-shutter",
+        "original-stock-detail"
+      ]
+    },
+    "poster-wall": {
+      "cells": [
+        2,
+        1
+      ],
+      "features": [
+        "three-separate-original-posters",
+        "late-floor-torn-corners"
+      ]
+    },
+    "pipe": {
+      "cells": "3-5x1 street / 3-4x1 market",
+      "features": [
+        "original-metal-pipe",
+        "elbows",
+        "contact-shadow",
+        "seeded-valve"
+      ]
+    },
+    "air": {
+      "cells": [
+        1,
+        1
+      ],
+      "features": [
+        "original-fan-body",
+        "brackets",
+        "contact-shadow"
+      ]
+    },
+    "vent": {
+      "cells": [
+        1,
+        1
+      ],
+      "features": [
+        "original-louvers",
+        "recessed-flange"
+      ]
+    },
+    "cabinet": {
+      "cells": [
+        1,
+        1
+      ],
+      "features": [
+        "original-body",
+        "hinges",
+        "short-conduits",
+        "contact-shadow"
+      ]
+    }
+  },
+  "marketInfrastructureTargets": {
+    "4": 3,
+    "5": 4,
+    "6": 6,
+    "7": 6
+  },
+  "insufficientWallRun": "omit unit; never overlap existing shop or occupy floor",
+  "age": "seeded nicks after3F; stronger at6-7F",
+  "floorProps": "unchanged117",
+  "layoutAndCollision": "unchanged121"
+}

@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "revision": 123,
+  "nativeIntegrated": false,
+  "wallAndStructureArtPreserved": true,
+  "streetMaps": 36,
+  "streetProfiles": {
+    "1": {
+      "windows": [
+        "acrylic-window"
+      ],
+      "stands": 0,
+      "units": [
+        "air",
+        "vent"
+      ]
+    },
+    "2": {
+      "windows": [
+        "shirt-window"
+      ],
+      "stands": 0,
+      "units": [
+        "vent",
+        "cabinet"
+      ]
+    },
+    "3": {
+      "windows": [
+        "acrylic-window",
+        "shirt-window"
+      ],
+      "stands": 1,
+      "units": [
+        "air",
+        "vent",
+        "cabinet"
+      ]
+    }
+  },
+  "streetUnits": 132,
+  "streetRawTerrainUnchanged": true,
+  "streetOnlyRemovedFloorObstacles": true,
+  "marketMaps": 80,
+  "marketTerrainAndFloorCollisionUnchanged": true,
+  "marketServiceUnitsPreserved": true,
+  "addedFacades": 3739,
+  "matchedAdjacentPairs": 4445,
+  "marketSummary": {
+    "4": {
+      "beforeMean": 61.75,
+      "afterMean": 114.75,
+      "minAdded": 37,
+      "maxAdded": 71,
+      "windowMean": 79.95,
+      "shutterMean": 27.8,
+      "adjacentPairMean": 56.35
+    },
+    "5": {
+      "beforeMean": 87.9,
+      "afterMean": 128.95,
+      "minAdded": 32,
+      "maxAdded": 56,
+      "windowMean": 74.85,
+      "shutterMean": 49.6,
+      "adjacentPairMean": 56.45
+    },
+    "6": {
+      "beforeMean": 55.95,
+      "afterMean": 112.5,
+      "minAdded": 44,
+      "maxAdded": 75,
+      "windowMean": 23.85,
+      "shutterMean": 82.35,
+      "adjacentPairMean": 50.95
+    },
+    "7": {
+      "beforeMean": 95.6,
+      "afterMean": 131.95,
+      "minAdded": 23,
+      "maxAdded": 47,
+      "windowMean": 12.35,
+      "shutterMean": 115.35,
+      "adjacentPairMean": 58.5
+    }
+  },
+  "representativeSamples": [
+    {
+      "floor": 4,
+      "theme": "shopping-street",
+      "oldFacades": 61,
+      "addedFacades": 51,
+      "facades": 112,
+      "eligibleFrontCells": 281,
+      "coveredFrontCells": 220,
+      "targetCoverage": 0.78,
+      "actualCoverage": 0.7829181494661922,
+      "openDisplays": 68,
+      "shutters": 38
+    },
+    {
+      "floor": 5,
+      "theme": "shopping-street",
+      "oldFacades": 87,
+      "addedFacades": 38,
+      "facades": 125,
+      "eligibleFrontCells": 273,
+      "coveredFrontCells": 241,
+      "targetCoverage": 0.88,
+      "actualCoverage": 0.8827838827838828,
+      "openDisplays": 64,
+      "shutters": 58
+    },
+    {
+      "floor": 6,
+      "theme": "shopping-street",
+      "oldFacades": 47,
+      "addedFacades": 53,
+      "facades": 100,
+      "eligibleFrontCells": 244,
+      "coveredFrontCells": 192,
+      "targetCoverage": 0.82,
+      "actualCoverage": 0.7868852459016393,
+      "openDisplays": 15,
+      "shutters": 80
+    },
+    {
+      "floor": 7,
+      "theme": "shopping-street",
+      "oldFacades": 108,
+      "addedFacades": 37,
+      "facades": 145,
+      "eligibleFrontCells": 329,
+      "coveredFrontCells": 283,
+      "targetCoverage": 0.92,
+      "actualCoverage": 0.8601823708206687,
+      "openDisplays": 11,
+      "shutters": 128
+    }
+  ],
+  "mountOnCopingSideFloorPixels": 0,
+  "errors": []
+}

@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "1-cell straight corridor",
+      "passed": true
+    },
+    {
+      "name": "2-cell straight corridor",
+      "passed": true
+    },
+    {
+      "name": "door/stair buffer3",
+      "passed": true
+    },
+    {
+      "name": "paper debris walkable footprint",
+      "passed": true
+    },
+    {
+      "name": "concave L-corner clearance",
+      "passed": true
+    },
+    {
+      "name": "native placement deterministic replay",
+      "passed": true
+    }
+  ]
+}

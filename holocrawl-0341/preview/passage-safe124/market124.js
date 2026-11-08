@@ -1,0 +1,7 @@
+(function(root){const native=typeof module!=='undefined'&&module.exports,base=native?require('../district-contrast123/market123.js'):root.MarketGen,P=native?require('./passage124.js'):root.Passage124,G=native?require('../city-market123/generator.js'):root.StreetGen;
+ function generate(...args){const m=base.generate(...args),w=m.w,h=m.h,cells=m.cells.slice();for(const p of m.marketProps)for(const i of P.cells(p,w))if(cells[i]===2)cells[i]=1;for(const p of m.props.filter(p=>p.type==='fence'))if(cells[p.y*w+p.x]===2)cells[p.y*w+p.x]=1;
+  const open=Uint8Array.from(cells,v=>v===1?1:0),specials=[m.start,m.upstairs,m.exit],excluded=[];for(const p of [m.prefab,m.exitDoor])if(p)excluded.push({x:p.x-2,y:p.y-2,w:p.w+4,h:p.h+4});
+  const policy=P.create({w,h,open,specials,sources:[m.start,m.exit],excluded,seed:`${m.seed}:${m.floorNumber}:safe124`,mode:4}),result=policy.place([...m.marketProps,...P.groupFences(m.props.filter(p=>p.type==='fence'))]);
+  m.cells=cells;for(const i of result.blocked)m.cells[i]=2;m.marketProps=result.placed.filter(p=>p.type!=='fence');m.props=[...m.props.filter(p=>p.type!=='fence'),...P.ungroupFences(result.placed.filter(p=>p.type==='fence'))];m.decoratedCells=m.cells.slice();m.path=G.route(m,m.start,m.exit);m.validation=G.validate(m);if(!m.validation.ok)throw Error('Safe124 market disconnected');m.passage124=result.audit;return m;}
+ const api={...base,generate};root.MarketGen=api;if(native)module.exports=api;
+})(globalThis);

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "maps": 2,
+  "styles": 3,
+  "zoom": true,
+  "positionPreserved": true,
+  "mobileOverflow": false,
+  "prior89AndNative84Unchanged": true,
+  "pageErrors": []
+}

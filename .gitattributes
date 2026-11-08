@@ -7,3 +7,9 @@
 *.jpg binary
 *.jpeg binary
 *.webp binary
+
+# Generated previews, audit records and engine overlays have byte-level hashes.
+# Preserve mixed source line endings on every platform; retain normal text diffs.
+/holocrawl-0341/preview/** -text
+/holocrawl-0341/analysis/** -text
+/holocrawl-0341/migration/** -text

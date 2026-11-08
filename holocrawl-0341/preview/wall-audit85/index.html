@@ -1,0 +1,17 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>잔향도시 · 랜덤 128맵 ㄱ자 점검</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#14181c;color:#dfe6e9;font:15px/1.65 system-ui}main{max-width:1300px;margin:auto;padding:20px}h1{font-size:25px;margin:0 0 6px}h2{font-size:20px}p{color:#aebdc3}.stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.stats span{padding:10px 14px;background:#20352f;border:1px solid #5a7c6c}.stats b{color:#c5e5d3}nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:13px 0}button,select,a{font:inherit;color:#e3e9ec;background:#2b353e;border:1px solid #677780;padding:8px 12px;cursor:pointer;text-decoration:none}button[aria-pressed=true]{background:#3c554b;border-color:#97b7a6}canvas{display:block;width:100%;height:auto;image-rendering:pixelated;outline:none;background:#10161a;border:1px solid #59696f}#status{padding:7px 0;color:#c7d7cb}.gallery{display:block;max-width:100%;height:auto;image-rendering:pixelated}.links{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}footer{font-size:13px;color:#a5b6bd;margin:22px 0}
+</style><main>
+<h1>잔향도시 · 새 랜덤 128맵 ㄱ자 점검</h1>
+<div class="stats"><span>새 지도 <b>128개</b></span><span>모서리 <b>55,185곳</b></span><span>이웃 배치 <b>256가지 검사</b></span><span>추가 규칙 위반 <b>0건</b></span></div>
+<p>실제 생성된 모든 벽을 게임용 타일과 대조했습니다. 아래에서 각 지도를 확대하거나 방향별 모서리와 실제 이웃 배치를 확인할 수 있어요.</p>
+<p id="summary">지도 불러오는 중…</p>
+<nav><label>새 지도 <select id="sample" aria-label="검사한 랜덤 지도"></select></label><button id="fit" aria-pressed="true">지도 전체</button><button id="actual" aria-pressed="false">도트 원본 크기</button><button id="double" aria-pressed="false">2배 확대</button></nav>
+<canvas id="map" tabindex="0" aria-label="검사한 잔향도시 랜덤 지도"></canvas>
+<div id="status" role="status">벽을 누르면 해당 위치를 확대합니다. 방향키로 시점을 이동할 수 있어요.</div>
+<h2>방향별 모서리 · 실제 지도 24개 사례</h2><img class="gallery" src="corner-gallery.png" alt="바깥·안쪽 모서리의 8방향 실제 사례 24개">
+<h2>실제 맵에 등장한 이웃 배치 241종</h2><p>중앙 벽의 주변 8칸 모양별로 한 사례씩 모았습니다.</p>
+<div class="links"><a href="pattern-page01.png" target="_blank">1~64</a><a href="pattern-page02.png" target="_blank">65~128</a><a href="pattern-page03.png" target="_blank">129~192</a><a href="pattern-page04.png" target="_blank">193~241</a></div>
+<footer>기존 벽 84를 고정한 검사입니다. 전체 128개 지도·벽 565,237칸·모서리 55,185곳을 대조하고, 별도로 256개 이웃 배치에 연결 규칙 28,224건과 게임용 도트 2,048개를 검사했습니다. 이 검사 범위에서 추가 위반을 발견하지 않았습니다.</footer>
+</main><script src="../city-random82/map-review82.js?v=audit85"></script></html>

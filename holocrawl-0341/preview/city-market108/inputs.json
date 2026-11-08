@@ -1,0 +1,30 @@
+{
+  "revision": 108,
+  "wallRevision": 92,
+  "doorRevision": 101,
+  "oldFiles": {
+    "app.js": "86b4f3ae5cbdc7f1f053ec83643d47c248d295f5894e24e12ccb38d97d9aee3c",
+    "art-manifest.json": "ab2f23b7918c7c0c9e963ac86ca0eb0464a76b336115c32ed47e153ce993edcc",
+    "catalog.html": "b1c3477382e9fed1634dc0cb1554ba5fcaf3c224f75929ebe580a00fbe409ffa",
+    "catalog.js": "9554b9aa2777c21270bd2e489841d1638ecbe703d0bf8e9323a400a2b8a57dc6",
+    "generator.js": "4c0a41f91ab81bce4af846597855f819d05c8bad02f7eb287376d640390edf09",
+    "index.html": "369f2ba5b52fd7c28fc05e18cb812694a617aaf46ff8ea726543d4eec43157b6",
+    "market-generator.js": "d93d38dc78f587ce73ab0de789190f0166dd5b1bae825f8e677c12d1605a8f7d",
+    "market-profiles.js": "9675abbd9a42a051e269b3712183367a0e3112791d9adab34060f4c41639953f",
+    "market-stock.js": "9123370c7cdf57fd44c852b08151abfc7ce3c89075f76f6b218cbbd9ba7dd7f0",
+    "members.js": "369bc961bb7ba8a4b7386aaf4d44704d08603d21353db40036883d79627e7d6d",
+    "members.json": "d932e9e624eb873d7d2affe2f6fc47ca28eff0454cbbce781b6ce406637c064b",
+    "merch-catalog.js": "a942fd4ee372554001f89f980b11bcc6d571420c3f25701e9582cc8e8934f81d",
+    "random-floor.js": "e651bbbe4415d66984d0ce90d18ab28d3866ad6cc3102ad06c9f0b9fd004a6bf",
+    "style.css": "0ca9bff4d457c463a131f71b649004b5fbfda7d8f57b699ed42ccb779a3ac224",
+    "visibility-paths.js": "423392f4462c6031a39397d1acbb4aa6bf5c3d4c68aae11a61bc1464d9f9c5bf",
+    "visibility.js": "b0401059be21b8e6bcd07d3b320a0cdc3865c274ffb44871def6286ffd63c880"
+  },
+  "oldMap": "city-market02",
+  "sourceGeometryChanged": false,
+  "nativeIntegrated": false,
+  "sharedAssets": {
+    "preview\\native-play107\\assets\\wall.png": "860d6648792c886877e93d90a6b27d31cbafa71860332171a81fe76865122db8",
+    "preview\\basic-doors101\\glass-double-closed32.png": "494d7f9b850d91ba74b8b5378096108267395d866dd76e43bf93aa06626c797a"
+  }
+}

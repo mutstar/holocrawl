@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "maps": 2,
+  "checks": [
+    {
+      "seed": 802302584,
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true,
+      "prior91Unchanged": true,
+      "convexSideTaperChecked": true,
+      "onlyConcaveJoinPixelsChanged": true,
+      "changedPixels": 1520,
+      "outsideJoinChanges": 0
+    },
+    {
+      "seed": 920819314,
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true,
+      "prior91Unchanged": true,
+      "convexSideTaperChecked": true,
+      "onlyConcaveJoinPixelsChanged": true,
+      "changedPixels": 2656,
+      "outsideJoinChanges": 0
+    }
+  ],
+  "nativeIntegration": false,
+  "scope": "Two existing maps; visual preference still for user review.",
+  "sourceScreenshotMatch": {
+    "seed": 802302584,
+    "scale": 2,
+    "origin": [
+      2003,
+      2426
+    ],
+    "pixelError": 0
+  }
+}

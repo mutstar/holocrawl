@@ -1,0 +1,156 @@
+{
+  "status": "passed",
+  "revision": 110,
+  "source109Preserved": true,
+  "cleanModePixelIdenticalTo108": true,
+  "geometryUnchanged": true,
+  "floorPixelsChanged": 0,
+  "levels": [
+    {
+      "floor": 4,
+      "cracks": 95,
+      "chips": 0,
+      "paintedPixels": 2713,
+      "rejectedFloorCandidates": 3471,
+      "width": 2560,
+      "height": 2240,
+      "styles": {
+        "hairline": 33,
+        "wandering": 24,
+        "branching": 29,
+        "split": 9
+      },
+      "orientationBins": [
+        3,
+        12,
+        8,
+        7,
+        7,
+        7,
+        10,
+        10,
+        4,
+        9,
+        11,
+        7
+      ],
+      "mainLengthRange": [
+        3.7601487929147033,
+        44.03430718651358
+      ],
+      "floorPixels": 0
+    },
+    {
+      "floor": 5,
+      "cracks": 138,
+      "chips": 0,
+      "paintedPixels": 5536,
+      "rejectedFloorCandidates": 6714,
+      "width": 2560,
+      "height": 2240,
+      "styles": {
+        "hairline": 44,
+        "wandering": 39,
+        "branching": 40,
+        "split": 15
+      },
+      "orientationBins": [
+        6,
+        17,
+        9,
+        11,
+        9,
+        11,
+        15,
+        15,
+        8,
+        13,
+        15,
+        9
+      ],
+      "mainLengthRange": [
+        5.147826939618114,
+        61.68859377045353
+      ],
+      "floorPixels": 0
+    },
+    {
+      "floor": 6,
+      "cracks": 191,
+      "chips": 38,
+      "paintedPixels": 12343,
+      "rejectedFloorCandidates": 14614,
+      "width": 2560,
+      "height": 2240,
+      "styles": {
+        "hairline": 51,
+        "wandering": 58,
+        "branching": 58,
+        "split": 24
+      },
+      "orientationBins": [
+        8,
+        21,
+        14,
+        13,
+        15,
+        18,
+        17,
+        19,
+        11,
+        18,
+        24,
+        13
+      ],
+      "mainLengthRange": [
+        7.417739334485807,
+        96.38815026139547
+      ],
+      "floorPixels": 0
+    },
+    {
+      "floor": 7,
+      "cracks": 247,
+      "chips": 72,
+      "paintedPixels": 21160,
+      "rejectedFloorCandidates": 26112,
+      "width": 2560,
+      "height": 2240,
+      "styles": {
+        "hairline": 63,
+        "wandering": 76,
+        "branching": 74,
+        "split": 34
+      },
+      "orientationBins": [
+        17,
+        25,
+        21,
+        18,
+        18,
+        20,
+        21,
+        26,
+        13,
+        21,
+        31,
+        16
+      ],
+      "mainLengthRange": [
+        9.445476597524152,
+        118.81932463443705
+      ],
+      "floorPixels": 0
+    }
+  ],
+  "deterministic": true,
+  "floorsTested": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "pageErrors": [],
+  "mobileOverflow": false,
+  "nativeIntegrated": false
+}

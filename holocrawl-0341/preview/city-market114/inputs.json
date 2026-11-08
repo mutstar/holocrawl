@@ -1,0 +1,25 @@
+{
+  "revision": 114,
+  "previous": 112,
+  "sourceFiles": {
+    "index.html": "7b1db7ad59b8b1820052aee4fb89c96c390def58e95f24290a19ffa37e205a3e",
+    "app.js": "f9e5a6ac5612b33e9b95020f8d9e7e6917f26cb894a85e29843df7f420ecbf38",
+    "style.css": "866b921f065eb42fd181f9283d7acc6ebc3f253307cb845e4cb543453ad4324d",
+    "material108.js": "8d792b2ac8b71de2a8d5c6330fb5abc1d75bd12456263714ca4dd1423b8862b8",
+    "wall92.json": "cbb174b44e1bdffeb645c1f14c4286f33f7df514ed4ea2670d92006fc84d6e1c",
+    "wear109.js": "d2ce8a31276b65f49eef0acfa04409d22a2205a062db8d7ecd8c240406efff1f",
+    "wear110.js": "f3614f9b67420d78f2019db36057fe129b2145e972940bb77df561a7217f2e5e",
+    "scene112.js": "ebd8b84e22ae001ed8e572a8cbb1c8edc131136bbba3527b624c0109ed5d562a",
+    "generator.js": "4c0a41f91ab81bce4af846597855f819d05c8bad02f7eb287376d640390edf09",
+    "market-profiles.js": "9675abbd9a42a051e269b3712183367a0e3112791d9adab34060f4c41639953f",
+    "members.js": "f6103972af831e1c79046aa77f787459e8fb41d0a500ca86f1a5290524abb476",
+    "merch-catalog.js": "c64e42ba15b50b7fe59faa81f96764dd1c54f41153683dfafaf1087a77d98285",
+    "market-stock.js": "1aa0d61856f8233ec78881ed9c237ea178eb653fb29db432169baf4619c6ee5f",
+    "market-generator.js": "d93d38dc78f587ce73ab0de789190f0166dd5b1bae825f8e677c12d1605a8f7d",
+    "visibility-paths.js": "423392f4462c6031a39397d1acbb4aa6bf5c3d4c68aae11a61bc1464d9f9c5bf",
+    "visibility.js": "b0401059be21b8e6bcd07d3b320a0cdc3865c274ffb44871def6286ffd63c880",
+    "random-floor.js": "e651bbbe4415d66984d0ce90d18ab28d3866ad6cc3102ad06c9f0b9fd004a6bf"
+  },
+  "geometryChange": "Floor prop occupancy grows; walls/stairs stay fixed",
+  "nativeIntegrated": false
+}

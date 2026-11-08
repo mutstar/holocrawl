@@ -1,0 +1,3 @@
+(function(root){const assets=new Map();async function load(){const manifest=await fetch('../facility-exteriors124/manifest.json').then(r=>r.json());await Promise.all(manifest.maps.map(async m=>{const im=await new Promise((r,j)=>{const a=new Image();a.onload=()=>r(a);a.onerror=j;a.src='../facility-exteriors124/'+m.decal;});assets.set(m.facility,{im});}));}
+ function drawOverlay(ctx,m,x,y,dx,dy,s){const o=m.origin,a=assets.get(m.facility);if(!o||!a)return false;const lx=x-o.x,ly=y-o.y;if(lx<0||ly<0||lx>=o.width||ly>=o.height||m.rows[y][x]!=='#'||(lx!==0&&ly!==0&&lx!==o.width-1&&ly!==o.height-1))return false;ctx.drawImage(a.im,lx*32,ly*32,32,32,dx,dy,32*s,32*s);return true;}
+ root.Facility124={load,drawOverlay};})(globalThis);

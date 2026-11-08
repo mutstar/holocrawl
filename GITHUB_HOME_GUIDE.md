@@ -1,4 +1,12 @@
-# 2026-11-06 최신 재개 안내
+# 2026-11-09 최신 재개 안내
+
+회사·집 모두 `mutstar/holocrawl`의 `main`에서 이어갑니다. 로컬 수정을 먼저 보관한 뒤 `git pull --ff-only`, `OPEN_LATEST_PREVIEW.cmd`를 실행하세요. 최신은 `city-street124`(1~3층 실제 지도 위 배치), `city-market124`(4~7층 브라우저 랜덤 생성), `facility-exteriors124`(시설9곳 외벽)입니다. `CONTINUE_HERE.md` 상단을 먼저 읽으세요.
+
+이번 동기화에는 이전 커밋 이후124번까지의 설계·소스·도트·미리보기·검증 자료와 최신 네이티브107 patch/overlay가 포함됩니다. 승인한 벽121과 구조물122는 유지했습니다. 네이티브107 실행본과 브라우저124 변경을 혼동하지 않도록 구분합니다. 브라우저 검토는 별도 컴파일 없이 가능합니다.
+
+컴파일 결과, 중첩 엔진 checkout, runtime/세이브, 인증정보와 로그·ZIP은 기존 제외 규칙을 유지합니다. 아래 최초 업로드·옛 버전 안내는 당시 기록이므로 반복 실행하지 않습니다.
+
+# 2026-11-06 재개 안내 기록
 
 회사·집 모두 기존 `mutstar/holocrawl`의 `main`에서 이어갑니다. 로컬 수정이 없음을 확인한 뒤 `git pull --ff-only`, `OPEN_LATEST_PREVIEW.cmd`를 실행하세요. 최신은 `holox-floor54`, 승인된 극장은 `theater-vault36`입니다. 가장 먼저 `CONTINUE_HERE.md` 상단을 읽으세요.
 

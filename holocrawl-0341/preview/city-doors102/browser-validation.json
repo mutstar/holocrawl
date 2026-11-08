@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "maps": 9,
+  "doorCells": 82,
+  "defaultFacility": "dev",
+  "closedOpen": true,
+  "comparison": true,
+  "focus": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "nativeFloors": 128,
+  "uniqueSeeds": 128,
+  "uniqueMaps": 128,
+  "allConnected": true,
+  "allFacilityFree": true,
+  "frozenInputsUnchanged": true,
+  "elapsedSeconds": 51.81,
+  "wallArtRevision": 84,
+  "uniqueMapGeometries": 128,
+  "wallCellsChecked": 565237,
+  "cornersChecked": 55185,
+  "orientationsCovered": 8,
+  "cornerCounts": {
+    "1": 9249,
+    "2": 9375,
+    "4": 9376,
+    "7": 4410,
+    "8": 9274,
+    "11": 4533,
+    "13": 4533,
+    "14": 4435
+  },
+  "observedNeighbourMasks": 241,
+  "observedTextureCases": 1531,
+  "atlasSpritesChecked": 2048,
+  "exhaustiveNeighbourMasks": 256,
+  "topologyAssertions": 28224,
+  "topologyViolations": 0,
+  "realMapVisualSamples": 24,
+  "visualPatternRepresentatives": 241,
+  "patternPages": [
+    "pattern-page01.png",
+    "pattern-page02.png",
+    "pattern-page03.png",
+    "pattern-page04.png"
+  ],
+  "unobservedMasksTestedSynthetically": [
+    34,
+    41,
+    42,
+    45,
+    75,
+    86,
+    91,
+    105,
+    109,
+    146,
+    181,
+    182,
+    210,
+    214,
+    237
+  ],
+  "scope": "All generated wall cells/corners checked against the native atlas; exhaustive surface invariants and 24 visual samples. Not a claim about every possible future visual case.",
+  "visualReview": {
+    "observedPatternContactSheetsReviewed": 241,
+    "orientationExamplesReviewed": 24,
+    "additionalFindings": []
+  },
+  "browserValidation": {
+    "status": "passed",
+    "mapOptions": 128,
+    "samplesChecked": [
+      0,
+      1,
+      63,
+      127
+    ],
+    "nativeSnapshotsMatch": true,
+    "zoom1and2": true,
+    "mobileOverflow": false,
+    "pageErrors": []
+  },
+  "decision": "Keep art84 unchanged; no additional corner defect identified in this audit scope."
+}

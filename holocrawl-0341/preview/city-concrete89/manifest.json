@@ -1,0 +1,58 @@
+{
+  "title": "잔향도시 · 건전식 콘크리트 벽89",
+  "revision": 89,
+  "tileSize": 32,
+  "scope": "Complete-map browser material study only.",
+  "styles": [
+    {
+      "id": "concrete89",
+      "label": "콘크리트89"
+    },
+    {
+      "id": "stone88",
+      "label": "앞선 건전식88"
+    },
+    {
+      "id": "original84",
+      "label": "기존 도시벽84"
+    }
+  ],
+  "maps": [
+    {
+      "seed": 802302584,
+      "width": 80,
+      "height": 70,
+      "sourceMap": "preview/wall-audit85/maps/map-802302584-1.json",
+      "sourceMapSha256": "c309cdd05cc6dd2012ed377e57c64ad2288383e27e211771264f888d6da3b054",
+      "auditedWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+      "images": {
+        "original84": "802302584-original84.png",
+        "stone88": "802302584-stone88.png",
+        "concrete89": "802302584-concrete89.png"
+      }
+    },
+    {
+      "seed": 920819314,
+      "width": 80,
+      "height": 70,
+      "sourceMap": "preview/city-random82/map.json",
+      "sourceMapSha256": "c10b6ba0a03abcaffb3267599d559a28e32c9f237a8a918e0f129df7b631c96e",
+      "auditedWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+      "images": {
+        "original84": "920819314-original84.png",
+        "stone88": "920819314-stone88.png",
+        "concrete89": "920819314-concrete89.png"
+      }
+    }
+  ],
+  "material": {
+    "frontHeight": 14,
+    "eastSideWidth": 4,
+    "copingWidth": [
+      4,
+      5
+    ],
+    "slabJointPeriod": 48,
+    "brickCourses": false
+  }
+}

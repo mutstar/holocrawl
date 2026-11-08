@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "simultaneousViews": 20,
+  "states": 2,
+  "beforeAfter": true,
+  "singleUnchanged": true,
+  "centerLines": true,
+  "zoom123": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

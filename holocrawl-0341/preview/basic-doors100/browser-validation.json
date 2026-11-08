@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "simultaneousViews": 20,
+  "states": 2,
+  "centerLines": true,
+  "zoom123": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

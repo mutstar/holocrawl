@@ -1,0 +1,26 @@
+{
+  "seed": "MARKET114-SCENE-18",
+  "exitMode": "floor",
+  "a": {
+    "x": 60,
+    "y": 60,
+    "type": "acrylic-rack",
+    "footW": 2,
+    "footH": 2
+  },
+  "b": {
+    "x": 56,
+    "y": 61,
+    "type": "delivery-boxes",
+    "footW": 2,
+    "footH": 2
+  },
+  "validation": {
+    "ok": true,
+    "walkable": 2743,
+    "reached": 2743,
+    "exitDistance": 108,
+    "border": true,
+    "prefab": true
+  }
+}

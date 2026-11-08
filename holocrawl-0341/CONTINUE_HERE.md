@@ -1,3 +1,318 @@
+# 2026-11-09 · 1~7층 통로 보호·고정지형 외벽124
+
+- 뭇별 요청: 승인한 벽121(22px)·벽 구조물122 유지. 바닥 소품은1~2칸 통로+인접1칸/ㄱ자 코너/문·계단 주변3칸/시설 경계에서 제외. 안전한 벽 옆으로 이동, 자리 없으면 생략. 종이 잔해는 통과 가능한 낮은 바닥 장식. 2칸 공간 연결/새1칸 병목/연결성/누적 우회 거리 검사.
+-236개 지도 구조 /416회 배치 검증 passed: 기존 네이티브 랜덤36지도×배치6변형216 + 새 브라우저 시장50시드×4층200. 새로운 네이티브 생성236회라는 뜻이 아님.6694개 요청→6621개 배치(5786이동/73생략/352통과장식). 최종 배치 전체 재검사: 좁은 길 침범0·새 병목0·단절0·6기준점→전체 잔여 바닥 및 소품4방향 국소 경로의 추가 우회 최대2칸. 모든 가능한 점 쌍 전수검사는 아님.
+-고정지형9곳 외벽: 승인한22px 재질/테두리를 공통 적용하고 간판·원형등·입구표지를 전면 안에 배치. 내부 장식·문 픽셀/방향·기하 불변.0기생2줄 암벽 부조는 원본 크기 보존. 브라우저 실제 생성 지도 연결/시설9곳·문10곳 열고 진입/시야 기준 프레임9개 일치/종이 잔해 실제 이동/4층별 동일시드 재생성 passed, JS오류0.6개 표적 회귀 passed. 코너 회귀의 최초 좌표는 코너 옆 직선칸을 잘못 가리켰으므로(8,9)→실제 오목코너(7,9)로 시험 좌표만 수정. 실행 정책 변경이나 실패 우회 없음.
+-preview/city-street124 (1~3층 실제 지도+강제 시설9표본), city-market124 (4~7 브라우저 생성), passage-safe124, facility-exteriors124. final-validation.json / narrow-before-after124.png / 시설별 *-native124.png / actual-facilities-1124.png /2124.png /3124.png. 이전123 및 원본121/122/106/107 보존.
+-scripts: prepare-passage124.py → verify-passage124.cjs; prepare-facility-exteriors124.py → check-passage124-regressions.cjs → export-passage124.cjs → export-passage124-comparison.cjs → finalize-passage124.py. 엔진107 실행파일·실제 세이브·사운드 불변. 배치·외벽은 브라우저 검토본이며 네이티브 이식 별도. 적/보상 보류. 미커밋·미푸시.124 결과 피드백 대기.
+
+# 2026-11-08 · 깔끔한 거리와 밀집 상점가 구분123
+
+-1~3층 설비9→2/2/3·진열창1/1/2·바닥매대0/0/1, 셔터/긴배관/쓰레기봉투0. 택배2~3·울타리 유지. 기존 장애물만 제거하고 연결성 재계산. 벽121(22px)·구조물122 아트 불변.
+-4~7 기존 전면 위치를 유지하고 빈 안전 벽에 진열/셔터 전면 추가.4~5 창 중심/6~7 셔터 중심. 서비스 공간 예약/지형·바닥충돌·계단·설비 보존.80지도 전면3739곳 추가, 층별 평균62→115/88→129/56→113/96→132.
+- preview/district-contrast123/clean123.js·market123.js, city-street123/city-market123. scripts/prepare-district123.py → check-district123.cjs → export-district123.cjs.36초반 원본/계단 연결·장애물감소/80시장 기하·설비 동일/비중복/벽면침범0/오류0 passed. design/CITY_DISTRICTS123.md.
+- district-pair123.png / before-after123.png / floors1-7-123.png.123피드백대기/122보존/브라우저만/엔진·실제세이브불변/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 채택한22px 벽 기준1~7층 구조물 재구성122
+
+- 사용자121 벽을 기준 채택.122는9종 벽 부착물의 유리/선반/걸이/셔터 가이드·잠금부/낱장 포스터/설비 고정부·그림자 재구성. 전시품 크기·원화 디테일·멤버 선택 유지. 벽121·바닥117·시설모티프 불변.
+- preview/wall-structures122/structures122.js, infra122.js, market122.js. city-street122(1~3) 배치 유지, city-market122(4~7) 기존 배치+벽설비3/4/6/최대6곳. 후반 시드별 마모, 부족한 벽은 생략. scripts/prepare-structures122.py → check-structures122.cjs → export-structures122.cjs.
+-36거리468벽요소/80시장368새설비·기하동일/기본4~7층322벽요소/2304이웃경우 침범0/15바닥소품 동일/오류0 passed. design/CITY_STRUCTURES122.md / validation.json. wall-structures122.png, floors1-7-122.png, street-shutters122.png.
+-121벽 기준 승인,122 구조물 피드백대기. 브라우저 검토만/실제 엔진·세이브 불변/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 전체 일반 벽의 세로 면22px 통일121
+
+- 사용자120국소높임도어색/전체벽높임 선택.121 기본전면14→22px(y10~31),4px테두리/3px옆면·안쪽모서리보완유지/사선기울기새높이에맞춤. 국소돌출제거, 진열장20px/전시품큰크기유지. 바닥·길·문·시설모티프유지.
+- scripts/prepare-wallheight121.py → check-wallheight121.cjs → export-wallheight121.cjs. preview/wall-height121/2048타일/공통벽+소품, city-street121(1~3)/city-market121(4~7). 일반벽만새아틀라스, 시설전용내부아트유지. design/CITY_WALLHEIGHT121.md.
+-256마스크262144px면판정일치/36거리156764일반벽셀/소품468+시장303개침범0/전체1층비벽변화0/80시장기하·15바닥소품동일/시야36프레임일치/오류0 passed. street-comparison121.png, actual-maps121.png, floor1-full121.png.
+-121 피드백대기/브라우저만/엔진·실행파일·실제세이브불변/119·120보존/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 소품 뒤의 벽 전면을 높인 크기 비교120
+
+-119 너무 작다는 피드백.120: 소품 뒤만 세로전면24px로높이고 위쪽마감도동반이동/양끝기존14px와연결. 진열장12→20px/인형5×8→10×15/티셔츠8→14px, 비율유지. 일반벽/바닥117/배치/충돌/고정지형/엔진유지.119크기는미승인.
+- preview/wall-bay120/bay120.js, city-street120(1~3),city-market120(4~7). scripts/prepare-wallbay120.py → check-wallbay120.cjs → export-wallbay120.cjs.36거리468벽요소/새테두리침범0/바닥벽외부누출0/80시장기하동일/오류0 passed. design/CITY_WALLBAY120.md.
+- size-comparison120.png 왼119/오른120, actual-maps120.png.120비교시안피드백대기(크기+국소높은벽자연스러움).미술확정아님/브라우저만/실제세이브불변/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 1~7층 벽 부착물 세로 면 정렬119
+
+- 새 벽92의 세로 면14px(y18~31)에 기존24~32px 진열장·배관이 넘어가는 문제. 공통 preview/wall-mount119/mount119.js로9종을 y19~30에 제한/윗면·테두리·남동쪽 옆면 보존. 인형·티셔츠 비율/멤버 선택 유지, 배관 단자 단축, 다른 설비 비율 축소.
+- preview/city-street119 1~3층, city-market119 4~7층. 바닥117 15종·배치·충돌·계단·기존 벽/문/시설 유지.117/118 원본 보존. scripts/prepare-wallmount119.py → check-wallmount119.cjs → export-wallmount119.cjs.
+- 36거리/80시장지도, 1280마스크경우, 실제 벽진열447/설비324개 검사, 윗면·옆면·바닥누출0px, 시야1081프레임0불일치/15종 바닥픽셀동일/오류0 passed. design/CITY_WALLMOUNT119.md / preview/wall-mount119/validation.json, all-nine-before-after.png, actual-maps119.png.
+-119 피드백대기. 브라우저 검토본만 변경, 엔진·실행파일·세이브 불변/일반 소품 네이티브 이식 별도/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 초반1~3층 거리 소품 재연결118
+
+- 최신 엔진107 추출36지도(12시드×1~3층)에 희소 거리 소품 재연결. 벽92/문101/시설106 원본 보존. 매립 진열창112/크기115/접지·의류117 재사용. 상점가4~7층보다 드문 배치.
+- scripts/prepare-street118.py → check-street118.cjs → export-street118.cjs. 원본해시/시드재현/계단·문3칸/시설2칸/통로연결/비중복, 시야1081프레임0불일치/329점유칸차단/175문그룹 열기→통과/모바일·에러0 passed.
+- preview/city-street118/street118-review.png, floor1-overview.png, validation.json과 design/CITY_STREET118.md. 실제 생성 지도 위 브라우저 검토판이며 실행파일·소스·실제 세이브 불변.118 네이티브 이식은 피드백 뒤 별도. 적·보상 보류/117 승인/118 피드백대기/미커밋·미푸시.
+
+# 2026-11-08 · 쇼핑백 접지/티셔츠 배치/후드색117
+
+- 사용자115/116 다른그림자는괜찮음, 쇼핑백뜸/티셔츠배치이상/후드색전부같음 지적.117은3종만수정. 쇼핑백 하단바로다음픽셀접지, 티셔츠추가아이콘제거+실제접힌더미염색, 후드천부분3멤버색/골조유지/비슷한색회피.115크기/112매립/다른12종유지.
+- prepare-market117.py/scene117.js/check-market117.cjs.115입력해시/12종픽셀동일/지도동일/쇼핑백20접촉열연결/티셔츠추가알파0/후드4샘플3색구분/4층프로필연결/에러0 passed. design/CITY_MARKET117.md. three-fixes.png 위115/아래117 3종비교 대화직접제공.
+-117피드백대기, 원본115/116/엔진107보존, 엔진미적용/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 캐릭터 기준 소품 축소115
+
+- 뭇별114가 캐릭보다 너무큼 지적/축소요청. 115: 아크릴/후드 진열대 낮은2×1, 배송상자더미/카트1×1. 아크릴 실제그림58×48→33×27px, 상자58×47→26×21. 캐릭32px/원화디테일/매립벽112 유지.
+- prepare-market115.py/layout115.js/scene115.js/check-market115.cjs.114해시보존/80지도연결·충돌·비중복·계단3칸보호·벽계단불변·시드재현·112한칸비교픽셀동일·4층프로필·모바일·오류0 passed. design/CITY_MARKET115.md.
+- size-reference115.png 캐릭과같은화면3배, group115.png 동일검토시드/카메라. 대화에직접제공.115크기 피드백대기, 엔진미적용/원본보존/적보상보류/미커밋·미푸시.
+
+# 2026-11-08 · 원래 디자인·다칸 바닥 소품114
+
+- 사용자113 단순화가 너무 심하다고 거절. 원래 디테일 유지+다칸 허용 요청.114는112 기반, 원래15종 큰 원화에서 새 크기로 재샘플/종횡비 보존.113기하도형 대체디자인 사용 안함. 승인한 벽 매립112 유지.
+-1×1/2×1/2×2 가구·상자 혼합, 실제점유칸전체 차단/서로안겹침/계단3칸피함/매배치연결검사/큰사이즈안되면축소또는생략. 벽·계단·벽진열장은112와동일, 바닥장애물 배치는새로움.112비교모드는원래맵재생성+시작점리셋.
+- prepare-market114.py/layout114.js/scene114.js/check-market114.cjs.80지도 연결·시드·충돌·비중복·계단버퍼/벽계단동일/한칸비교112픽셀동일/모바일/오류0 passed. design/CITY_MARKET114.md, source-designs.json.
+- group114.png 실제생성4층 MARKET114-SCENE-18 아크릴+상자더미2×2, original-designs114.png 대표4종. 직접 대화에 제공.114는피드백대기/엔진미적용/적보상보류/미커밋·미푸시.113은거절된비교시안으로보존.
+
+# 2026-11-08 · 벽 매립 유지·바닥 소품 입체/접지113
+
+- 사용자112벽매립은괜찮음 승인, 바닥이질감/그림자약함 지적. 벽 Scene112 그대로 유지, 바닥15종만 공통시점/윗면·앞면·옆면/제한팔레트의 코드32px 시안으로 새로 정리. 원본112 비트맵/110/107보존, 새113은 사용자 피드백 대기.
+- 아래접지48%/남동투영10~32% 감쇠, 기존32px칸 안. 아크릴원본/티셔츠멤버대표색/선택/지형·배치·충돌·보상 불변. 더 단순한 그림체이므로 확정 전 사용자 확인 필요.
+- prepare-market113.py/floor113.js/check-market113.cjs/export-floor113-focus.cjs.112입력해시/비교픽셀동일/변경영역 바닥소품칸에만(벽0)/15종/4~7연결/에러0 passed. design/CITY_MARKET113.md. close-after.png 실제배치2배, floor-focus.png 이전/새4종6배 비교. 대화에 직접 제공. 엔진미적용/미커밋·미푸시.
+
+# 2026-11-08 · 맵과 소품 연결 시안112
+
+- 사용자: 디자인은 좋지만 맵에서 이질적. 독립 프레임/시점/접지 차이라는 가설로 비교샘플 제작. 원본110/111 보존.
+-112: 진열장/셔터 기존 상품 영역을 콘크리트 매립홈에 연결, 과한 바깥 금속프레임 크롭, 바닥 소품은 원본32px 유지+접지 그림자. 상품색/선택/지형·좌표·시야·보상 불변. 브라우저 실험, 엔진 미적용/아직 사용자 승인 아님.
+- prepare-market112.py/scene112.js/check-market112.cjs.110입력해시/비교110픽셀동일/지형동일/4~7연결/에러0 passed. design/CITY_MARKET112.md. close-before.png/close-after.png 같은 구역2배 확대를 대화에 직접 제공. 기존 OPEN_LATEST_PREVIEW110 유지, 이번112는 비교실험. 미커밋·미푸시.
+
+# 2026-11-08 · 균열 형태 랜덤 혼합110
+
+- 뭇별109의 동일 대각선/Y자 반복 지적. 110은 실금/불규칙 긴금/가지형/좁은틈4형태,360도 방향, 길이·분기수/시작점/각도/굴곡/일부굵기 다양화. 동일스텐실 회전 아님.4~7층 점진노후화/시드고정 유지.
+- 결과는 대화에 직접 이미지로 제시. 필요 시 /city-market110/?floor=7#acrylic . 수정 전109 패턴 비교/균열끔108 비교. 원본109/108/네이티브107보존, 엔진 미적용.
+- prepare-market110.py/wear110.js/check-market110.cjs.109입력해시/균열끔108픽셀동일/지형불변/바닥변경0/4형태/12방향/길이다양/시드재현/강도증가/4층프로필/모바일/오류0 passed. design/CITY_MARKET110.md. 미커밋·미푸시.
+
+# 2026-11-08 · 상점가 벽 점진적 노후화109
+
+- 최신 http://127.0.0.1:8797/city-market109/?floor=7#acrylic . 4층잔균열→7층긴균열/작은코핑마모. 108/92/101 및 소품·멤버색·바닥 보존. 브라우저 시안, 엔진107 미변경.
+- 균열 전108 비교/같은지형4~7강도선택, 현재층자동. 벽에만 마스킹/외곽코핑선 보호/소품아래/안개아래 렌더, 지형·충돌 불변. 원본PNG 수정 없음.
+- prepare-market109.py/wear109.js/check-market109.cjs. 입력108해시/균열끔108픽셀동일/벽외변경0/강도단조증가/재현/4층프로필/모바일/에러0 passed. design/CITY_MARKET109.md, preview/city-market109/validation.json. 미커밋·미푸시, 사용자 피드백 대기.
+
+# 2026-11-08 · 4~7층 굿즈 상점가 새 벽·색상108
+
+- 최신 http://127.0.0.1:8797/city-market108/#acrylic . 기존02/27 보존한 브라우저 시안. 벽92 컴파일 아틀라스 직접 사용, 바닥 그대로. 소품20종의 골조 청회색/종이상자 크라프트/멤버 아크릴·대표색 유지. 벽 출구 그림은101 정면문. 새 문 생성·충돌 추가 아님.
+- 비교 체크박스 수정 전02, 외관3종 buildings.html, 소품 catalog.html. 라이브숍/굿즈숍/카페는 새 색상 별도 배치 비교이며 아직 랜덤맵에 대형 외관 추가하지 않음. 적/보상 보류.
+- prepare-market108.py/material108.js/buildings108.js, check-market108.cjs. 80지도02완전동일/연결/계단/배치보존,20소품 alpha동일,84멤버/층4종/비교/시야/모바일/에러0 passed. design/CITY_MARKET108.md 및 preview/city-market108/validation.json.
+-108은 사용자 검토 대기, 실제 엔진107 미변경. 확정1~3층 네이티브107은 이전 인계 그대로. 미커밋·미푸시.
+
+# 2026-11-08 · 실제 생성·플레이 점검107 완료
+
+- 최신 http://127.0.0.1:8797/native-play107/ . 벽92/기본문101/시설106을 별도 실제0.34.1 엔진에 컴파일. 원본84 엔진/기존 세이브 보존.
+- 새168정상층+9시설 강제층=177층, 동일시드 재현177층 JSON 일치. 시야5,276프레임/29,545,600칸 불일치0. 실제 이동885/차단885, 문 열기→진입948쌍·닫기, 문시야903쌍. 플레이어/오크/포션27배치.
+- report: holocrawl-0341/design/NATIVE_PLAY107_REVIEW.md. final suite-10/replay suite-09, material-validation 및 browser-validation passed. 출현50%/층1/한판중복없음 유지.
+- PLAY_CITY.cmd는 검증107 엔진 선택, runtime/city107 별도 저장. -Legacy로 원본84 선택. BUILD_CITY107.ps1 + migration/engine0341-play107 복원패치/overlay/manifest. 적/보상·캠페인 통합검증 아님.
+- 시설 장식 버퍼·인접 외벽·문그룹/대각선일치 수정. 검사에서만 생성시각/애니메이션 고정. 실제 게임 애니메이션 유지. 실패/중간자료 보존. 시설문 개별 피드백 대기는 유지. 미커밋·미푸시.
+
+# 2026-11-08 · 나머지7시설30명 멤버 요소 점검106
+
+- 뭇별 요청:105 극장/폐역 내부화가 나아졌다고 한 뒤 나머지 고정지형의 멤버 누락·가시성 확인. 기존 프로젝트 명단과 원안 모티프 기준으로 나머지7시설30개 요소 전부 존재 확인. 0기5/1기4/3기4/4기4/5기4/holoX5/DEV4. 외부 현재 멤버 명단으로 임의 변경하지 않음.
+- 26개 요소는105 대비 픽셀 동일 유지. 가시성이 작은4곳만 내부 원래 소품에서 개선: 하쨔마 라면의 거미 몸통/8다리, 라미 술병 눈꽃라벨(단순십자→8방향), 네네 젤리상품 복숭아열매/잎, 보탄 컵라면 흰사자 갈기/얼굴. 극장/폐역105·외벽103·정면문104·충돌지형/문위치 모두 유지. 새 외벽포스터 없음. 0기 암벽 부조는 원안 핵심구조 유지.
+- 최신 http://127.0.0.1:8797/city-facilities106/audit.html (시설7필터,멤버30카드). 전체맵 /city-facilities106/?sample=3&focus=facility. 시설7전체 seven-facilities.png, 확대30개 all-member-crops.png, 보완4개 four-details-before-after.png. design/FACILITY_MEMBER_AUDIT106.md 및 member-audit.json에30명 근거/판단.
+- scripts/prepare-facility-audit106.py 및 check-facility-audit106.cjs. validation/browser-validation passed: 지도9해시동일, 보완4영역 외픽셀동일, 모두기존내부차단칸, 일반벽/문/통로보존, 26요소동일,30카드/시설7필터/9지도전후·상태·확대·모바일확인. 원본크기/3배확대에서 시각검토한 아트 판단이며 실제사용자인지실험은 아님.
+-106 검토시안, 네이티브아틀라스미적용.105/104/103및원본보존. 미커밋·미푸시. 추후멤버특징은 내부기능성소품으로, 외벽포스터로붙이지말것.
+
+# 2026-11-08 · 멤버 특징은 외벽 포스터가 아닌 내부 소품105
+
+- 뭇별104 정정: “그렇게 외벽에 특징을 넣지 말고 다른 지형들처럼 안에 넣던가”. 외벽에 멤버 포스터/간판을 붙이는104 접근은 거절됨. 앞으로 멤버 특징은 시설 내부의 자연스러운 기능성 소품에 통합할 것. 외벽103으로 복원,104의 문 정면 통일은 유지.
+- scripts/prepare-facility-interiors105.py. 극장: 아야메 오니가면+검 소품 거치대(1,3), 초코 날개하트 분장대(6,3), 스바루 오리 등받이 감독의자(1,5 기존객석교체). 폐역: 후부키 여우 신호등(4,1부터1×2 선로G칸), 미오 늑대문장 타로보관대(6,4부터2×1 역무실기존#설비칸). 코로네스키/오카유 자판기는 유지. 외벽/보행 바닥에 신규소품 없음.
+- http://127.0.0.1:8797/city-facilities105/?sample=1&focus=facility (극장), ?sample=4&focus=facility (폐역). 이전104 비교·기본문/시설문 열림·전체맵·확대. member-comparison.png, theater-overview.png, gamers-overview.png.
+- validation/browser-validation passed, scripts/check-facility-interiors105.cjs. 9개지도해시동일, 모든소품기존내부 #/G 장애물칸 한정, 외벽103픽셀동일,104정면문/장식칸외불변, 상태/전후/확대/모바일 확인. 중앙통로/문위치 불변.104는거절된외벽포스터기록으로보존.
+-105검토시안, 네이티브아틀라스미적용. 미커밋·미푸시. 다른 시설 요소를 외벽 포스터로 자동변경하지 말 것.
+
+# 2026-11-08 · 극장/폐역 멤버 장식 + 시설문 방향 수정104
+
+- 뭇별: 극장2기 특징 부족, 폐역은 코로네/오카유밖에 안 보임. 추가로 폐역 세로문도 정면으로 통일 요청. 극장36/31 원본의 아야메 오니가면·스바루 오리·초코 날개하트가 외벽 교체에서 소실됐고, 폐역64 후부키 신호함·미오 타로함은 작거나103 패널 크롭에서 잘림. 이를 단순 generic장식 추가와 구분.
+- scripts/prepare-facility-members104.py. 극장 원본31 도트 모티프를 벽 매립 포스터3장으로 복원 확대. 폐역 후부키 흰여우 신호함/미오 늑대 문장+적색 타로함 확장, 기존 코로네스키/오카유 자판기는 픽셀 유지. 모두 기존 # 벽 셀 위이며 통로에 새 장애물 없음.
+- 95의 시설문 vertical 회전이 남은 것이 원인. 9시설 전체를 확인하고 세로 배치의95 스프라이트 회전을 복구해 동일 정면으로 통일. 같은 시설 가로/세로 문 RGBA 동일 검증. 닫힘/열림 모두 정면. 승인 기본문101은 그대로.104 문 열기는 기본문+시설문 모두 함께 전환.
+- 최신 http://127.0.0.1:8797/city-facilities104/?sample=1&focus=facility (극장), ?sample=4&focus=facility (폐역). 수정전103 비교·시설선택9종·전체맵·입구·기본문 확대. member-comparison.png, theater-overview.png, gamers-overview.png 및 gamers-open.png.
+- validation.json/browser-validation.json passed, scripts/check-facility-members104.cjs. 9개 지도해시 동일/신규 장식 # 셀 한정/장식·시설문 외 픽셀 동일/외벽103·기본문101 보존/정면방향·문상태·전후·확대·모바일 확인.103/95 원본 유지. 검토안, 네이티브 미적용, 시설문 디자인 개별 승인 대기는 유지. 미커밋·미푸시.
+
+# 2026-11-08 · 고정지형9종 외벽 전면 연결 수정103
+
+- 뭇별 지적: 모든 시설 외벽이 확정 일반벽과 맞지 않음. 원인:95의 밝기 기반 장식 보존 마스크가 예전 회색/보라 외곽선까지 복원. 또한 네이티브 충돌상 #인 내부 가구/무대를 벽 덩어리로 해석해 외벽 앞면 명암이 끊김.
+- scripts/prepare-facility-walls103.py: 시설 외곽 # 전체를 공통92 재질로 교체. 외벽 명암 계산에만 내부 가구 #/G를 비벽으로 취급(실제 지형/충돌 미변경). 간판/부조는 명시된 패널 범위만 보존, 외곽 긴 선 복원 금지. DEV 분홍/청록 조명은 벽 앞면에 매립. 열린 입구도 콘크리트 문틀로 연결, 3기 야외 울타리는 유지+낮은 콘크리트 받침.
+- http://127.0.0.1:8797/city-facilities103/?focus=facility 탭12. 기본 DEV 확대. 수정 전102 비교·전체맵·시설/입구/기본문 확대·9종 한눈에·기본문 열림/닫힘. 기본문은 승인101 그대로, 내부 가구/멤버 장식은 픽셀 동일. 기존 시설 전용문 개별 검토(첫holoX97)는 별도 대기.
+- validation.json/browser-validation.json passed, scripts/check-facility-walls103.cjs. 9종 외곽 재질92 동일(명시된 장식 제외), 내부/일반벽/기본문 불변, 지형 원본해시 일치, 상태/비교/확대/모바일 검증. preview/city-facilities103/all-facilities.png, dev-overview.png, fullmap.png, 시설별 browser-detail.png.
+- 102와95 원본 보존.103은 외벽 수정 검토안이며 사용자 승인 전, 네이티브 아틀라스 미적용. 미커밋·미푸시.
+
+# 2026-11-08 · 확정 세로창 양개문 + 고정지형 전체맵102
+
+- 뭇별 요청으로 실제95 시설 지도9개의 기존 일반문82칸에 승인 glass-double101 적용. 새 문 배치/지형 변경 없음. 기본 화면은 일반문20개인 DEV_IS 층. http://127.0.0.1:8797/city-doors102/ 탭12.
+- 전체/원본/2배·드래그·시설/입구/기본문 확대·기존문 비교·일반문 열림/닫힘. 시설 전용문과 장식은95 시안 그대로, 개별 holoX97 승인 대기 유지. 시설별 한개 강제생성된 기존 검토층9개이며 확률 표본/여러 시설 동시배치 아님.
+- scripts/prepare-city-doors102.py 및 check-city-doors102.cjs. preview/city-doors102/validation.json 및 browser-validation.json passed. 지도 해시 동일/일반문칸 외 픽셀 동일/시설 도트 동일/9지도·상태·비교·확대·모바일 확인. overview.png 및 door-detail.png. Codex 브라우저 확인 완료.
+- 네이티브 아틀라스 통합 전인 아트 미리보기. 미커밋·미푸시.
+
+# 2026-11-08 · 잔향도시 기본문 확정 — 세로창 양개문101
+
+- 뭇별 승인: “2번 세로창 양개문으로 갑시다”. 최신 확대101의 glass + double을 잔향도시 기본문으로 확정. 32×32 한 칸 안 두 문짝, 양축 같은 정면, 닫힘/열림 세트. 다른 4종 및 단일문은 기본문으로 선택되지 않음.
+- design/dungeon-route01.json의 approvedNormalDoor 및 basicDoorPreview 선택 상태에 기록. 도트: preview/basic-doors101/glass-double-closed32.png, glass-double-open32.png. 검증된101 원본은 그대로 사용. 네이티브 아틀라스 통합은 아직 미완료이며 이 선택 저장과 구분.
+- 일반벽92 승인 유지. 시설별 전용문은 별개이며 첫 holoX97 개별 검토 대기 유지. 미커밋·미푸시.
+
+# 2026-11-08 · 양개문 문짝 확대 · doors101
+
+- 뭇별 요청으로 양개문 5종 문틀을 4→2px로 줄이고 문짝을 각각 11×22→13×26px로 확대. 32×32 한 칸, 중심 15.5px와 좌우 RGBA 대칭 유지. 단일문은 100과 픽셀 동일.
+- 최신 미리보기: http://127.0.0.1:8797/basic-doors101/ (탭12). 이전 크기/확대 수정안 전환, 닫힘/열림, 20배치 동시 표시, 확대/중심선 제공.
+- scripts/prepare-basic-doors101.py 및 check-basic-doors101.cjs. preview/basic-doors101의 validation/browser-validation passed; 문칸 밖 변경0, 양축 동일, 단일문 불변, 대칭, 전후/상태/확대/모바일 확인. overview-closed/open.png 저장. Codex 브라우저 결과 확인 완료.
+- 100 원본 보존. 검토 초안이며 네이티브 미적용. 시설문은 첫 holoX97 사용자 피드백 대기 유지. 미커밋·미푸시.
+
+# 2026-11-08 · 문 중심 수정 + 양축 동시 비교 · doors100
+
+- 사용자가로세로전부보기요청후중심비대칭지적.99좌4/우3문틀·개구25px중심16·양개11/12폭을100좌우4·개구24중심15.5·양개11/11(틈15..16)로수정. 양개닫힘/열림RGBA정확미러. 단일부품한쪽유지,몸체/창중앙정렬.
+- `http://127.0.0.1:8797/basic-doors100/` 탭12.5행×단일가로/세로·양개가로/세로4열20배치동시표시,상태·확대·중심선옵션. `scripts/prepare-basic-doors100.py`, `scripts/check-basic-doors100.cjs`;preview100의manifest/validation/browser-validation.json,comparison-closed/open.png,overview-closed/open.png,32px도트.
+- 중앙/미러/문밖0/양축동일·화면·상태·중심선·확대·모바일통과.99보존,미승인·네이티브미적용·holoX97순차검토대기유지.미커밋·미푸시.
+
+# 2026-11-08 · 기본문5종×단일/양개10종 · doors99
+
+- 최신`http://127.0.0.1:8797/basic-doors99/` 탭12. 사용자5종기본문단일/양쪽각각+가로세로같은도트요청. 평판/세로창/방화문/보강/환기구×단일/양개10종.32×32한칸,양개는좌우2문짝.양축동일정면도트·회전없음,주변벽만방향변경. 검토시안이며미승인·네이티브미적용.
+- `scripts/prepare-basic-doors99.py`, `scripts/check-basic-doors99.cjs`;preview폴더manifest/validation/browser-validation.json,comparison-closed/open.png,overview/open.png,20개32px스프라이트.문칸밖0/양축도트동일/중앙닫힘불투명·열림투명/10종·방향·상태·확대·개별확대·모바일통과.96/98/95유지,holoX97순차검토대기유지.미커밋·미푸시.
+
+# 2026-11-08 · 기본문 B98 바리에이션
+
+- `http://127.0.0.1:8797/basic-door98/` 탭12. 사용자다른변형요청으로A96확인창철문/B98무창방화문비교. B중성회색철판·가로푸시바·마모·오른쪽접힘. 가로/세로·닫힘/열림·1/2/4배. 일반벽92·바닥·A96원본불변. 기본문선택피드백대기,시설문은여전히첫holoX개별검토대기.
+- `scripts/prepare-basic-door98.py`, `scripts/check-basic-door98.cjs`; `preview/basic-door98/{manifest,validation,browser-validation}.json`,overview.png,overview-open.png,comparison-closed.png,comparison-open.png,B32px도트.문칸밖변경0/열림투명/상태·방향·확대·모바일통과. 미커밋·미푸시·네이티브미적용.
+
+# 2026-11-08 · 기본 던전문96 + 첫시설문holoX97
+
+- 사용자정정:기본던전문을말한것,별도제작+시설문은하나씩본인검토요청.95전체자동확정금지.현재첫시설holoX피드백대기,다른시설은추후차례로.
+- 기본문`http://127.0.0.1:8797/basic-door96/` 탭12.문양없는콘크리트문틀·회청색철문·작은확인창.32px닫힘/열림·가로/세로·원본돌죽문비교·1/2/3배.93에일반문0이어서7×7배치시안이며실제맵문추가/네이티브통합아님.
+- 첫시설문`http://127.0.0.1:8797/holox-door97/` 탭14.95의holoX입구/내부만동일크롭닫힘/열림.보라X·경고무늬.다른시설자동진행없음.
+- `scripts/prepare-basic-door96.py`, `scripts/check-basic-door96.cjs`;각preview폴더manifest/validation/browser-validation.json,comparison.png,overview.png.열림중앙투명/닫힘불투명·문칸밖상태차이0·방향/비교/확대/모바일통과.이전자료/게임소스불변.미커밋·미푸시.
+
+# 2026-11-08 · 시설 전용벽 + 신규 문 초안 · facilities95
+
+- 최신`http://127.0.0.1:8797/city-facilities95/?focus=facility` 탭12.사용자시설벽92연결/테마장식보존/신규문요청.9종외벽공통92평면+테마색혼합·원본장식추출합성,스크린/극장간판/마운틴부조보존,실내짙은바탕선택톤변경.시설바깥일반벽92전체94와픽셀동일. 야외난간유지+하단받침.94동일9지도사용/원본보존.
+- `scripts/prepare-facility-walls95.py`, `scripts/check-facility-walls95.cjs`. 기존10문칸9그룹에새금속프레임·시설문양/창,열림/닫힘. 기존열린입구6칸은열린문틀,충돌변경없음.극장2칸문64×24+원간판유지,세로문회전.문상태는문칸밖0변경.9시설전후/문토글/입구/전체/모바일통과.
+- `preview/city-facilities95/{manifest,validation,browser-validation}.json`,`all-facilities.png`,`doors.png`,`holox-detail.png`,`holox-open.png`,`theater-detail.png`,개별문PNG.95사용자검토초안이며네이티브미적용.일반벽92확정,엔진아틀라스84유지.미커밋·미푸시.
+
+# 2026-11-07 · 일반벽92 확정 + 시설9종 새 전체 지도 · facilities94
+
+- 사용자92벽확정·시설포함전체지도요청. `http://127.0.0.1:8797/city-facilities94/` 탭12.9시설각1개명시지정한새네이티브D:1지도9장/각지도연결성통과. 일반50%·최대1·중복없음정책불변,강제검토표본임화면명시.
+- 일반벽92유지/시설사각형보호,출입구·내부보존. 주변암벽과닿는시설외벽어두운4px접촉대만톤혼합. 비벽0·접촉대밖내부동일. `preview/city-facilities94/{manifest,validation,browser-validation}.json`, `overview.png`, `all-facilities.png`, 각시설detail.9지도표시·확대·비교·모바일통과.
+- `scripts/build-facility-review94.ps1`격리시설지정exporter작성·컴파일후원소스/원실행파일해시복원,원래맵DB도복원. `scripts/generate-facilities94.py`, `scripts/check-facilities94.cjs`. `analysis/native-facilities94`계획/소스전후/원시/로그보존. 최초DB미준비실패로그raw/holox-failed01보존,DB준비후같은계획9시드성공. 큰검토exe는Git제외. 게임아틀라스84/브라우저92승인상태를design에명시. 미커밋·미푸시.
+
+# 2026-11-07 · 접합 채운 벽으로 새 전체 지도 · random93
+
+- 실제새시드1179432666·80×70D:1·시설제외·연결성passed·이전두지도와다른지형. 검토한92벽그대로전체표현. `http://127.0.0.1:8797/city-random93/` 탭12전체보기. `analysis/native-city-random93` 계획/원시지도/로그/감사보존. `scripts/generate-city-random93.py`, `city_concrete_material92.py`, `check-city-random93.cjs`.
+- 기존92렌더픽셀동일·실행파일/아틀라스불변·비벽0·화면/확대/모바일통과. `preview/city-random93/{manifest,validation,browser-validation}.json`, `overview.png`, `detail.png`. 기존지도/92시안유지. 네이티브아트84,92는브라우저적용. 미커밋·미푸시.
+
+# 2026-11-07 · ㄱ자 안쪽 마감의 작은 틈 수정 · concrete92
+
+- 캡처f1590151은시드802302584의91전체2배원점2003,2426과픽셀오차0일치. 가로/세로4px테두리만그려안쪽코너사각패치누락.92에서대각4px범위·1px꼭짓점연결,색·기하90·바닥유지. 두지도변경1520/2656픽셀모두안쪽접합패치한정,나머지0·비벽0·91/84보존.
+- `http://127.0.0.1:8797/city-concrete92/?cx=33&cy=39&zoom=2` 탭12. `scripts/prepare-city-concrete92.py`, `scripts/check-city-concrete92.cjs`; `preview/city-concrete92/{validation,browser-validation}.json`, `join-comparison.png`, `detail-1.png`. 화면·확대·모바일확인. 미커밋·미푸시·네이티브미적용.
+
+# 2026-11-07 · 바닥과 벽 색 분리 · concrete91
+
+- 사용자90모양은괜찮으나바닥과색비슷피드백.90기하그대로팔레트만91로조정: 윗마감밝은회청색116/125/129,앞면어두운청회색52/62/67,옆면48/58/64. 바닥·비벽0·90/89/네이티브84유지.
+- `http://127.0.0.1:8797/city-concrete91/?cx=33&cy=39&zoom=2` 탭12. 두지도/91·90·84전환. `scripts/prepare-city-concrete91.py`, `scripts/check-city-concrete91.cjs`; `preview/city-concrete91/{validation,browser-validation}.json`, `material-comparison.png`, `detail-1.png`. 입력보존/기하설정동일/화면·확대·모바일통과. 취향피드백대기,미커밋·미푸시·네이티브미적용.
+
+# 2026-11-07 · 진한 옆면·테두리 마감 정리 · concrete90
+
+- 사용자89오른쪽진한띠/마감피드백. 동향4px별도옆면이남쪽14px앞면끝까지직각으로내려오고윗마감진한윤곽이겹친것.90에서동향3px·대비완화·볼록SE모서리3→0사선접합,별도서쪽띠를윗면에합침,겹친검은밑선제거·직선구간에만이음새배치.
+- `http://127.0.0.1:8797/city-concrete90/?cx=33&cy=39&zoom=2` 탭12. 두전체지도·89/90/84비교. `scripts/prepare-city-concrete90.py`, `scripts/check-city-concrete90.cjs`; `preview/city-concrete90/{validation,browser-validation}.json`, `material-comparison.png`, `detail-1.png`. 비벽0/알파동일/89·84입력불변/볼록SE폭감소·화면/확대/모바일통과. 시각선호는피드백대기. 미커밋·미푸시·네이티브적용아님.
+
+# 2026-11-07 · 건전식 콘크리트 전체 지도 · concrete89
+
+- 뭇별의 건전식 선호/콘크리트 재질로 전체 지도 요청. `http://127.0.0.1:8797/city-concrete89/` (탭12). 기존 콘크리트 질감+4~5px윗마감·14px앞면, 작은 벽돌 대신 긴 덮개/성긴 시공 이음새·거푸집 자국·찍힘. 재질 비교 초안이며 네이티브84는 유지.
+- 기존 실제 지도802302584/920819314 전체를 콘크리트89/이전건전식88/기본84로 전환. 전체/원본/2배·클릭확대·드래그/방향키·꺾인벽 확대. `scripts/prepare-city-concrete89.py`, `scripts/check-city-concrete89.cjs`; `preview/city-concrete89/{manifest,validation,browser-validation}.json`, `full-map-1.png`, `detail-2.png`, `material-comparison.png`.
+- 두 지도×세 재질 비벽 변경0/알파 동일, 기존 지도·감사 아틀라스 해시 불변, 앞선88 픽셀 일치, 화면·확대·이동·모바일 통과. CUA 전체 지도 표시 확인. 미커밋·미푸시.
+
+# 2026-11-07 · 세 게임 참고 벽 비교 시안 · styles88
+
+- 최신 비교 `http://127.0.0.1:8797/wall-styles88/` (코덱스 브라우저 탭12). 같은 실제 시드802302584에 우리 기준(코너87/나머지84), 돌죽식 석재 채움, 픽셀 던전식 면 분리, 건전식 두꺼운 덮개 돌을 나란히 배치. 표현 원리를 재해석한 초안이며 각 게임 렌더러 그대로는 아님.
+- 실제 코너/주변/전체 지도 및 합성 형태 모음, 원본/2배·동기화 스크롤. 합성 모음의 우리 기준은84. `scripts/prepare-wall-styles88.py`, `scripts/check-wall-styles88.cjs`; `preview/wall-styles88/{manifest,validation,browser-validation}.json`, `comparison.png`, `overview.png`. 네 화면/네 스타일·확대·스크롤·모바일·기존 감사 입력 불변 통과. 첫 검사 스크롤 목표50px가 높이 한도를 넘어 실패, 유효한20px 목표로 수정 후 정상 통과.
+- 네이티브84·지도·바닥·게임 수치 유지. 선택 전 비교 초안으로 전역 적용하지 말 것. 미커밋·미푸시.
+
+# 2026-11-07 · 자연스러운 돌 면 명암 · relief87
+
+- 사용자86어색피드백으로좁고밝은프레임을제거.84기존돌픽셀에넓고약한조명을곱하고좌표연속요철변화를줘87시안작성. 서향기존3px/남쪽14px앞면/동쪽4px측면/알파보존.
+- 동일뒤집힌ㄴ자12칸에만적용,밖0픽셀·변경2194픽셀. 네이티브84·검사85·다른벽불변. 왼쪽86/오른쪽87,기본84는base.png에보존. `preview/wall-relief87/comparison.png`,`validation.json`,`browser-validation.json`.
+- 기존브라우저탭9를 `http://127.0.0.1:8797/wall-relief87/`로갱신. `prepare-wall-relief87.py`,`check-wall-relief87.cjs` 검사통과.86원본보존. **국소시안이며아직전체벽·엔진적용아님.** 미커밋·미푸시.
+
+# 2026-11-07 · 뒤집힌 ㄴ자 국소 입체감 시안 · relief86
+
+- 시드802302584,anchor33,36의독립뒤집힌ㄴ자12칸명암보강요청. 긴오른쪽줄기+넓은아래몸통. 사용자가보던36,42주변과형태확인. 스크린샷픽셀정확매칭주장은하지않는다.
+- **국소브라우저시안만작성**,현재네이티브84/검사85/다른벽유지. 북쪽5px·서쪽6px명암으로경사면추가,남쪽14px앞면·동쪽4px측면·알파보존. 변경1468픽셀모두선택벽안,밖0픽셀.
+- 최신탭9 `http://127.0.0.1:8797/wall-relief86/`. `preview/wall-relief86/comparison.png`,`overview.png`,`validation.json`. 원본/2배전후비교. `prepare-wall-relief86.py`와`check-wall-relief86.cjs`로생성·확대·모바일·검사아틀라스불변통과. 사용자스타일피드백대기,전체벽일괄적용금지. 미커밋·미푸시.
+
+# 2026-11-07 · 새 랜덤128맵 ㄱ자 전체 점검 · audit85
+
+- art84·네이티브실행파일·아틀라스·렌더러해시고정,새128시드를먼저저장하고실제D:1생성. 기존지도920819314/벽설정유지. `analysis/native-corner-audit85/validation.json` passed.
+- 서로다른128지형/모두연결/시설제외. 벽565,237칸의실제아틀라스·이웃마스크·텍스처매핑대조, 2×2모서리55,185곳(`corners.jsonl`). 실제이웃241패턴및바깥4+안쪽4방향모두포함.
+- 256마스크연결규칙28,224건 위반0. 이전79대조군은13,248픽셀단위규칙위반으로회귀검사효용확인. 실제게임도트2048개와원본PNG일치/불투명성통과. 미출현15패턴합성검사포함. 실제241패턴4장과8방향24사례시각검토,추가단절·돌출발견없어84유지. 전부미래상황의시각보증으로과장하지말것.
+- 최신탭8 `http://127.0.0.1:8797/wall-audit85/`.128지도선택·확대와`corner-gallery.png`,`pattern-page01~04.png` 제공. 브라우저4표본/확대/모바일,기존지도82회귀통과.
+- `scripts/generate-corner-audit85.py`, `check-corner-topology85.cjs`, `analyze-corner-audit85.py`, `check-wall-audit85.cjs`가흐름. 이번추가벽수정·엔진빌드는없음. 미커밋·미푸시.
+
+# 2026-11-07 · ㄱ자 벽 접합 수정 · art84
+
+- 사용자2스크린샷을새지도920819314원본에서오차0으로매칭. 대각선벽때문에돌출된4px윗면/끊긴측면을 `preview/city-batch22/wall-corners84.js`로수정. 앞면·E측면연속우선, SW판정으로ㄱ자안쪽서향3px측면연결. 기존18/14높이·재질유지.
+- native벽2048갱신, 타일ID/좌표표3파일/실행파일 내용불변. 고립기둥·가로직선·내부의24개대조도트바이트동일. 비벽픽셀변경0. 이전81선택명암은84접합픽셀을덮지않게병합. `analysis/city-corners84/validation.json`, `before-after.png`와사용자두구간전후그림보존.
+- 최근지도탭7 `http://127.0.0.1:8797/city-random82/?cx=46&cy=25&zoom=2`로두곳확대. `preview/city-random82/corner-focus84.png`. 도트1,245건·42층·문·저장·새지도·모바일검사및소스snapshot10+2,880복원통과.
+- 벽비교목록은이전79보존+최신84로총14종. 기본벽native84, 네이티브코드검증82·벽그림검증84분리. 미커밋·미푸시.
+
+# 2026-11-07 · 벽 이전 버전 + 최신 비교 · history83
+
+- 사용자는 시설버전이 아니라 잔향도시벽만 요청. 최신 `http://127.0.0.1:8797/wall-history83/`를 코덱스브라우저 새탭에 열었다. 이전12종+현재기본벽79, 모두같은새지도920819314·같은바닥·시점.
+- 보존JS로초기/01/02/03/04/05/06/국소10·11/13/20/되돌린80을 재현했다. 예전캡처그대로가아닌동일현재지도재현임을UI에명시. 비벽 픽셀변경0, 지형·계단·통로불변. 게임벽설정·네이티브코드 변경없음.
+- 왼쪽이전12종·오른쪽최신고정, 카드클릭나란히확대, 전체지도전환. `preview/wall-history83/all-walls.png`는최신첫칸의13종한장비교, `overview.png`는화면.
+- `scripts/prepare-wall-history83.cjs` 생성, `check-wall-history83.cjs`에서13종·소스/이미지해시·비교·전체전환·모바일통과. 시설모음은 만들지 않음. 미커밋·미푸시.
+
+# 2026-11-07 · 시설 없는 새 랜덤 전체 지도 · review82
+
+- 사용자 요청: 시설말고 초반부 랜덤 전체 지도에서 벽 확인. 무작위 새시드920819314의 실제 네이티브1층80×70 생성. 검토 프로세스의 시설계획만 제외했고 일반 플레이50%정책은 유지한다. 벽79유지,81지역선택시안 적용 안 함.
+- 최신 탭 `http://127.0.0.1:8797/city-random82/`. 전체·원본32px·2배·클릭 중심 확대·방향키 시점 이동. `preview/city-random82/overview.png`, `full-map.png`(2560×2240). 원본을 먼저 합성 후 축소해 타일 사이 격자 틈이 생기지 않게 했다.
+- 원시 `analysis/native-city-random82-920819314-attempt2` passed. 첫캐시준비누락 실패는 보존, builddb추가 후 같은시드로 성공. `scripts/generate-city-review82.py` + `scripts/check-city-review82.cjs`가 생성/전체이미지/확대/모바일검사 흐름.
+- `analysis/native-city82-final01/validation.json` passed(168층·9종·문90건·저장복원). 이전42층JSON과 바이트 동일. 기본미리보기준비 스크립트 검증경로82로 갱신.81화면·저장상태 유지. source snapshot10+2,880파일 복원 통과. 미커밋·미푸시.
+
+# 2026-11-07 · 우측 아래 선택 벽만 명암 적용 · art81
+
+- 사용자 정정으로 전역80을 철회했다. 일반 벽2,048개·추출 렌더러·네이티브 아틀라스는79로 복원. 추가 경사면은 `preview/native-city77/wall-selection81.json`의 현재 검토 벽에만 적용하는 브라우저 시안으로 분리했다.
+- 77001·3층 (41,42)에서 x≥28,y≥42의 연결 벽1,297칸만 선택. 별도검토아틀라스`assets/wall-depth81.png` 사용. 독립 기둥·좌측 벽·다른41층은 기본79. **네이티브 게임은79, 선택시안81은 브라우저 전용이며 엔진 적용 완료가 아님.**
+- 기본벽1,245건·42층 지형·문·상태복원 통과. 실제 화면5,920변경픽셀 모두 선택 안, 밖0픽셀. 다른41층 효과 on/off 동일(`wall-selection81-validation.json`). 소스 snapshot 복원10+2,880파일 통과.
+- 코덱스 브라우저120턴·31,45 유지해 갱신. 최신 `preview/native-city77/wall-joins81.png`, `wall-joins81-field.png`. 이전79/80자료 보존. 미커밋·미푸시.
+
+# 2026-11-07 · 큰 벽체 경계의 입체감 보강 · art80
+
+- 77001·3층31,45의 우측 아래 큰 벽체가 평평해 보인다는 피드백 반영. 북쪽6px·서쪽8px 돌 경사면과 윗면으로 이어지는 명암을 추가했다. art79 모서리 연결·시설·지형·이동 판정 유지.
+- `preview/city-batch22/wall-joins79.js`에 현재 art80 표현 포함. wall78 타일 이름·순서 유지. `analysis/city-wall80/`에 변경 전 도트·소스와 비교 이미지를 보존.
+- 아틀라스 재생성 후 generated tile tables·실행파일 내용 동일 확인. 최신 `analysis/native-city80-final01/validation.json` passed(168층·9종·문90건·저장복원), 42층·타일1,245건·브라우저 검사 재통과. 소스 snapshot 복원10+2,880파일 통과.
+- 코덱스 브라우저 기존 탭의120턴·31,45를 유지해 갱신했다. 결과 `preview/native-city77/wall-joins80.png`, `wall-joins80-field.png`. 미커밋·미푸시.
+
+# 2026-11-07 · 벽 두께 전환과 모서리 연결 수정 · art79
+
+- 77001·3층 25,30 주변에서 벽 두께가 달라질 때 앞면·윗면 높이가 어긋나는 문제 수정. 모든 일반 벽에 동일한 표면 규칙을 적용하고 대각 모서리와 연결된 칸의 외곽선을 정리했다. 원본 재질·시설 입구·지형·이동 판정 유지.
+- 추출 코드: `preview/city-batch22/wall-joins79.js`와 `scripts/export-city-walls78.cjs`. 타일 이름·순서는 wall78을 유지한다. 이전 도트와 비교 이미지는 `analysis/city-wall79/`.
+- 빌드 성공. 최종 `analysis/native-city79-final01/validation.json` passed: 168층·9종·문90건·저장복원. 기존42층 지형·시설·문 좌표 및 아틀라스1,245건 비교 통과. 브라우저42층·문9건·새로고침·모바일 검사, source snapshot 복원10파일+overlay2,880파일 통과.
+- 코덱스 브라우저의 기존 탭을 갱신하고 사용자 위치71턴·25,30을 보존해 주변을 열었다. `preview/native-city77/wall-joins79.png`와 `wall-joins79-field.png`에 결과 화면 저장. 미커밋·미푸시.
+
+# 2026-11-07 · 벽 개선 복원과 시설 입구 보강 · art78
+
+- 사용자 지적. native-city77에 시설 검토용 보라 사각 테두리가 남았고, 예전 네이티브 벽 타일이 연결되어 승인된 한 칸·1×1 벽 표현이 빠져 있었다. 테두리를 제거하고 `city-batch22`의 승인 렌더러로 일반 벽을 교체했다.
+- 원본 렌더러를 재사용해 8이웃 256형태 × 8표면의 네이티브 타일 2,048개를 추출했다. 불투명한 일반 벽 재질 전체에 적용하며 시설 전용 벽은 전용 도트를 쓴다.
+- 9종 입구를 출입 칸과 양옆 벽에 걸쳐 보강. holoX 원형 보라 창·경고띠, 게이머즈 청록 창·차양, 식당 장막·등, 마트 줄무늬 차양 등 시설별 표현을 추가했다. 문 열림·닫힘 그림에 같은 문틀을 반영했다.
+- 최신 URL은 동일한 `/native-city77/?seed=77001&floor=3`. 코덱스 브라우저의 기존 탭을 갱신하고 시설 확대 화면을 열어두었다. 데스크톱 앱 UI를 사용하지 않았다.
+- 최종 네이티브 결과 `analysis/native-city78-final01/validation.json` passed. 168층·9종·문 90건 및 저장 복원 검사 통과. `preview/native-city77/art78-validation.json`에서 기존 42층의 지형·시설 위치·문 좌표 일치와 벽·입구 도트 1,245건의 아틀라스 픽셀 일치 확인. 브라우저 42층·문 통과·상태 복원·모바일 검사도 통과.
+- 소스 snapshot은 `migration/engine0341-city77`에 갱신. tracked10파일과 overlay2,880파일 복원 검사 통과. 이전 native-city77-final07은 비교 기준으로 보존. 미커밋·미푸시 상태.
+
+# 2026-11-07 · 실제 층 생성에 시설 배치 연결 · city77
+
+- 최신 사용자 요청은 실제 층 생성기 연결과 코덱스 브라우저에서 검토하기. 최신 주소는 `http://127.0.0.1:8797/native-city77/?seed=77001&floor=1`. 최상위 `OPEN_LATEST_PREVIEW.cmd`도 이 주소를 연다.
+- DCSS 0.34.1 실제 엔진에서 1~14층마다 50%, 층당 시설 하나, 한 판 내 9종 중복 금지를 구현했다. 출현표는 게임 시드로 결정하고 플레이어 속성에 저장한다. 배치 실패·불러오기·생성 순서가 바뀌어도 재추첨하지 않는다.
+- 최종 네이티브 검사 `analysis/native-city77-final07/validation.json` passed. 실제 생성·층 저장/불러오기 168층, 9종 전부, 문 그림 90건. 출현표 20,000시드·280,000층, 첫 층 등장 9,999회. 이전 실패·중간 시도는 보존하고 07을 최종으로 사용한다.
+- 브라우저에는 실제 네이티브 출력 3시드·42층과 같은 빌드의 아틀라스를 연결했다. 임의 시드 생성 웹 포트는 아니다. 브라우저 검사 42층 일치, 문 통과·상태 복원, 모바일·오류 0 통과. 세 샘플 판에는 자연스럽게 8종이 등장한다.
+- 적·보상·분기는 후속. 기본 맵은 승인된 원본 5계열, 일반 도시 타일은 이전 네이티브 시제품 공통 타일을 사용한다. 구간별 전용 도트는 후속. 데스크톱 UI 검사는 사용자 요청으로 중단하고 코덱스 브라우저에서 확인했다.
+- 소스 및 복원 자료 `migration/engine0341-city77/`, 상세 `design/CITY_NATIVE77.md`. 네이티브 실행은 최상위 `PLAY_CITY.cmd`, 빌드는 `BUILD_CITY.ps1`. 아직 커밋·푸시하지 않은 로컬 작업이다.
+
+# 2026-11-07 · DEV_IS 출장소 외관 승인
+
+- 후속 사용자 승인. 잔향도시 1~14층의 각 층 최초 생성 때 50%로 최대 시설 1개를 선정한다. 같은 시설은 한 판에 한 번만 등장한다. 후보 9종을 모두 사용하면 이후 층은 시설 없이 생성한다. 기록은 `design/dungeon-route01.json`의 `jp.main.facilityPlacement`.
+- 미등장 시설 중 균등 선택을 기본으로 기록했다. 층 재방문·불러오기·배치 재시도에서 다시 추첨하지 않는다. 선정된 시설은 통로와 계단 연결을 보존하는 위치에 배치 재시도하고 성공한 뒤 사용 처리한다. 현재 승인된 기획이며 실제 생성기 적용은 후속 작업이다.
+- 고유지형의 적·보상 설계와 연결은 아이템 등 관련 구현 뒤로 미룬다. 출현 방식의 비교 기준은 원본 DCSS 0.34.1이다.
+- 사용자 승인. `jp-facilities76/?site=dev&map=2#closeup`의 현재 외관을 채택한다. 아오는 제외하고 카나데 건반, 리리카 CEO 접수대, 라덴 노멘 전시대, 하지메 반펜 연습 코너를 반영했다.
+- 라덴 노멘은 공식 hololive friends to Go 정면 사진을 참고해 가운데 갈라진 머리선, 높은 회색 눈썹, 휜 눈매, 붉은 입을 표현했다. `facilities.js?v=95`, `dev.png`가 최신이다.
+- JP·DEV_IS 시설 시안은 9종 존재한다. 0기 페이스 마운틴, 1기 타라후쿠 저니, 2기 극장, 게이머즈 폐역, 3기 도타바타 그라운드, 4기 관람차 광장, 5기 네포라보 마트, holoX 연구소, DEV_IS 출장소. 추가 시설 제작 목록은 현재 기록에 없다.
+- 브라우저 외관·배치 검토 단계. 네이티브 자동 생성 및 적·전투 통합은 후속 작업이다. 사용자에게 다음 작업을 안내할 때 외관 시안과 게임 통합의 완료 여부를 구분한다.
+
 # 2026-11-06 · JP·DEV_IS 고정 지형 미리보기
 
 - [3기생 도타바타 그라운드](http://127.0.0.1:8798/fantasy-ground67/?map=2)와 [4기생 관람차 광장](http://127.0.0.1:8798/wheel-plaza71/?map=2)을 추가했다.

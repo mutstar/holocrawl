@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    }
+  ],
+  "original96Unchanged": true,
+  "openCenterTransparent": true,
+  "closedCenterOpaque": true,
+  "normalWallRevision": 92,
+  "nativeIntegration": false
+}

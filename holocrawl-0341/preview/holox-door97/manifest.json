@@ -1,0 +1,39 @@
+{
+  "title": "시설문1 · holoX 연구소",
+  "kind": "facility",
+  "defaultZoom": 3,
+  "styles": [
+    {
+      "id": "new",
+      "label": "holoX 문 시안"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "entry",
+      "label": "입구 문",
+      "width": 160,
+      "height": 128,
+      "images": {
+        "new": {
+          "closed": "holox-entry-closed.png",
+          "open": "holox-entry-open.png"
+        }
+      }
+    },
+    {
+      "id": "inside",
+      "label": "내부 문",
+      "width": 160,
+      "height": 128,
+      "images": {
+        "new": {
+          "closed": "holox-inside-closed.png",
+          "open": "holox-inside-open.png"
+        }
+      }
+    }
+  ],
+  "reviewOrder": 1,
+  "reviewStatus": "awaiting-user-feedback"
+}

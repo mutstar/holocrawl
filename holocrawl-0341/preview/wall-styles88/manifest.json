@@ -1,0 +1,78 @@
+{
+  "seed": 802302584,
+  "tileSize": 32,
+  "scope": "preview only",
+  "views": {
+    "corner": {
+      "width": 224,
+      "height": 288,
+      "crop": [
+        29,
+        35,
+        7,
+        9
+      ]
+    },
+    "scene": {
+      "width": 576,
+      "height": 480,
+      "crop": [
+        25,
+        31,
+        18,
+        15
+      ]
+    },
+    "map": {
+      "width": 2560,
+      "height": 2240,
+      "crop": [
+        0,
+        0,
+        80,
+        70
+      ]
+    },
+    "shapes": {
+      "width": 832,
+      "height": 352,
+      "synthetic": true
+    }
+  },
+  "styles": [
+    {
+      "id": "ours",
+      "title": "우리 벽 · 직전87"
+    },
+    {
+      "id": "dcss",
+      "title": "돌죽식 · 석재로 채움"
+    },
+    {
+      "id": "pixel",
+      "title": "픽셀 던전식 · 층 분리"
+    },
+    {
+      "id": "gungeon",
+      "title": "건전식 · 두꺼운 윗마감"
+    }
+  ],
+  "baseline": "Audited native84, with only the previously shown12-cell relief87 overlay.",
+  "references": [
+    {
+      "name": "DCSS0.34.1",
+      "url": "https://github.com/crawl/crawl/blob/0.34.1/crawl-ref/docs/develop/tiles_creation.txt",
+      "method": "Full-cell stone texture, stepped values. Recoloured original DCSS brick shapes."
+    },
+    {
+      "name": "Shattered Pixel Dungeon",
+      "url": "https://github.com/00-Evan/shattered-pixel-dungeon/blob/master/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/tiles/DungeonTileSheet.java",
+      "method": "Separate cap, front and corner stitching; custom city artwork."
+    },
+    {
+      "name": "Enter the Gungeon",
+      "url": "https://store.steampowered.com/app/311690/Enter_the_Gungeon/",
+      "method": "Visual study of official screenshot; coping stones and recessed brick front, custom artwork."
+    }
+  ]
+}

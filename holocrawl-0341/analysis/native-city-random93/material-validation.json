@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "seed": 1179432666,
+  "nativeValidation": {
+    "status": "passed",
+    "seed": 1179432666,
+    "nativeFloors": 1,
+    "depth": 1,
+    "facility": false,
+    "connected": true
+  },
+  "newGeometry": true,
+  "connected": true,
+  "facility": false,
+  "reviewed92RendererPixelMatch": true,
+  "frozenInputsUnchanged": true,
+  "nonWallPixelsChanged": 0,
+  "alphaUnchanged": true,
+  "repairedJoinPixels": 1888,
+  "nativeMapSha256": "ad2eda0dc57f8bceba625da1201bb6a0bcd1db2d7def5507511be427c7e99e87",
+  "nativeIntegration": false,
+  "scope": "One fresh native geometry with the already reviewed92 wall material."
+}

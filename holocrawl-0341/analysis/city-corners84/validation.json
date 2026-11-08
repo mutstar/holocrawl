@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "artRevision": 84,
+  "seed": 920819314,
+  "geometryUnchanged": true,
+  "nonWallPixelsChanged": 0,
+  "changedWallPixels": 25204,
+  "unchangedControlMasks": [
+    0,
+    68,
+    255
+  ],
+  "unchangedControlVariants": 8,
+  "bothUserScreenshotsMatchedExactly": true,
+  "tileTablesByteIdentical": true,
+  "localLightingPreservesCorrectedJoinPixels": true
+}

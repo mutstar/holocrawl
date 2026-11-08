@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "seed": 920819314,
+  "nativeSnapshotMatches": true,
+  "facility": false,
+  "fullMapPixels": [
+    2560,
+    2240
+  ],
+  "zoom1and2": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

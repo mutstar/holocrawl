@@ -1,0 +1,841 @@
+{
+  "title": "잔향도시 · 시설 외벽 연결 수정",
+  "revision": 103,
+  "tileSize": 32,
+  "styles": [
+    {
+      "id": "new103",
+      "label": "새 벽에 맞춘 시설 외벽"
+    },
+    {
+      "id": "previous102",
+      "label": "수정 전 외벽"
+    }
+  ],
+  "maps": [
+    {
+      "seed": 1889185305,
+      "depth": 1,
+      "facility": "holox",
+      "name": "holoX 비밀 연구소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 22,
+        "y": 5,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 28,
+          "y": 13
+        }
+      ],
+      "focus": {
+        "x": 26.5,
+        "y": 9.5
+      },
+      "images": {
+        "new103": "holox-closed103.png",
+        "previous102": "holox-previous102.png"
+      },
+      "map": "holox-map.json",
+      "mapSha256": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b",
+      "openImage": "holox-open103.png",
+      "doors": [],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 25,
+          "y": 7,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 28,
+          "y": 13,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 26.5,
+        "y": 9.5
+      }
+    },
+    {
+      "seed": 737511672,
+      "depth": 1,
+      "facility": "theater",
+      "name": "2기생 작은 극장",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 63,
+        "y": 2,
+        "width": 8,
+        "height": 8
+      },
+      "entrances": [
+        {
+          "x": 66,
+          "y": 9
+        }
+      ],
+      "focus": {
+        "x": 67.0,
+        "y": 6.0
+      },
+      "images": {
+        "new103": "theater-closed103.png",
+        "previous102": "theater-previous102.png"
+      },
+      "map": "theater-map.json",
+      "mapSha256": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7",
+      "openImage": "theater-open103.png",
+      "doors": [
+        {
+          "x": 30,
+          "y": 22,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "width": 1
+        }
+      ],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 66,
+          "y": 9,
+          "width": 2,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 30.5,
+        "y": 22.5
+      }
+    },
+    {
+      "seed": 1457612763,
+      "depth": 1,
+      "facility": "dev",
+      "name": "DEV_IS 쵸베리바 출장소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 57,
+        "y": 11,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 63,
+          "y": 19
+        }
+      ],
+      "focus": {
+        "x": 61.5,
+        "y": 15.5
+      },
+      "images": {
+        "new103": "dev-closed103.png",
+        "previous102": "dev-previous102.png"
+      },
+      "map": "dev-map.json",
+      "mapSha256": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed",
+      "openImage": "dev-open103.png",
+      "doors": [
+        {
+          "x": 24,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 38,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 16,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 26,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 56,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 28,
+          "width": 1
+        },
+        {
+          "x": 12,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 31,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 39,
+          "width": 1
+        },
+        {
+          "x": 14,
+          "y": 49,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 62,
+          "y": 17,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 24.5,
+        "y": 9.5
+      }
+    },
+    {
+      "seed": 1019072782,
+      "depth": 1,
+      "facility": "dining",
+      "name": "1기생 타라후쿠 저니",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 17,
+        "y": 9,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 23,
+          "y": 17
+        }
+      ],
+      "focus": {
+        "x": 21.5,
+        "y": 13.5
+      },
+      "images": {
+        "new103": "dining-closed103.png",
+        "previous102": "dining-previous102.png"
+      },
+      "map": "dining-map.json",
+      "mapSha256": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19",
+      "openImage": "dining-open103.png",
+      "doors": [],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 21,
+          "y": 12,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 21.5,
+        "y": 13.5
+      }
+    },
+    {
+      "seed": 121319900,
+      "depth": 1,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 2,
+        "y": 28,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 8,
+          "y": 36
+        }
+      ],
+      "focus": {
+        "x": 6.5,
+        "y": 32.5
+      },
+      "images": {
+        "new103": "gamers-closed103.png",
+        "previous102": "gamers-previous102.png"
+      },
+      "map": "gamers-map.json",
+      "mapSha256": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d",
+      "openImage": "gamers-open103.png",
+      "doors": [
+        {
+          "x": 31,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 11,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 12,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 33,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 34,
+          "width": 1
+        }
+      ],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 7,
+          "y": 31,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 8,
+          "y": 34,
+          "width": 1,
+          "vertical": false
+        },
+        {
+          "x": 8,
+          "y": 36,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 31.5,
+        "y": 9.5
+      }
+    },
+    {
+      "seed": 480427526,
+      "depth": 1,
+      "facility": "fantasy",
+      "name": "3기생 도타바타 그라운드",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 29,
+        "y": 56,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 35,
+          "y": 64
+        }
+      ],
+      "focus": {
+        "x": 33.5,
+        "y": 60.5
+      },
+      "images": {
+        "new103": "fantasy-closed103.png",
+        "previous102": "fantasy-previous102.png"
+      },
+      "map": "fantasy-map.json",
+      "mapSha256": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d",
+      "openImage": "fantasy-open103.png",
+      "doors": [
+        {
+          "x": 21,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 19,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 44,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 60,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 41,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 45,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 9,
+          "y": 49,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 49,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 21.5,
+        "y": 14.5
+      }
+    },
+    {
+      "seed": 1189374571,
+      "depth": 1,
+      "facility": "wheel",
+      "name": "4기생 기적의 바퀴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 34,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 40,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 38.5,
+        "y": 6.5
+      },
+      "images": {
+        "new103": "wheel-closed103.png",
+        "previous102": "wheel-previous102.png"
+      },
+      "map": "wheel-map.json",
+      "mapSha256": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4",
+      "openImage": "wheel-open103.png",
+      "doors": [],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 40,
+          "y": 7,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 38.5,
+        "y": 6.5
+      }
+    },
+    {
+      "seed": 535482548,
+      "depth": 1,
+      "facility": "market",
+      "name": "5기생 네포라보 마트",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 5,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 11,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 9.5,
+        "y": 6.5
+      },
+      "images": {
+        "new103": "market-closed103.png",
+        "previous102": "market-previous102.png"
+      },
+      "map": "market-map.json",
+      "mapSha256": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613",
+      "openImage": "market-open103.png",
+      "doors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 23.5,
+        "y": 13.5
+      }
+    },
+    {
+      "seed": 1750758918,
+      "depth": 1,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 3,
+        "y": 8,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 9,
+          "y": 16
+        }
+      ],
+      "focus": {
+        "x": 7.5,
+        "y": 12.5
+      },
+      "images": {
+        "new103": "mountain-closed103.png",
+        "previous102": "mountain-previous102.png"
+      },
+      "map": "mountain-map.json",
+      "mapSha256": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664",
+      "openImage": "mountain-open103.png",
+      "doors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 23.5,
+        "y": 13.5
+      }
+    }
+  ],
+  "normalWallRevision": 92,
+  "nativeIntegration": false,
+  "defaultSample": 2,
+  "approvedDoorRevision": 101,
+  "scope": "Existing native door cells only; one forced facility per review floor. Facility doors remain draft95.",
+  "facilityWallRevision": 103
+}

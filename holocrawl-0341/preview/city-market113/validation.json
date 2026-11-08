@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "revision": 113,
+  "source112Preserved": true,
+  "comparisonPixelIdenticalTo112": true,
+  "geometryUnchanged": true,
+  "layoutsChecked": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "samplePair": {
+    "a": {
+      "x": 32,
+      "y": 3,
+      "type": "acrylic-window",
+      "closed": false
+    },
+    "b": {
+      "x": 37,
+      "y": 4,
+      "type": "open-carton"
+    },
+    "d": 5
+  },
+  "floorRenderScope": {
+    "changed": 1204,
+    "outside": 0
+  },
+  "floorFixtures": [
+    {
+      "id": "acrylic-rack",
+      "pixels": 374
+    },
+    {
+      "id": "shirt-stack",
+      "pixels": 326
+    },
+    {
+      "id": "hoodie-rack",
+      "pixels": 410
+    },
+    {
+      "id": "plush-basket",
+      "pixels": 380
+    },
+    {
+      "id": "poster-rolls",
+      "pixels": 289
+    },
+    {
+      "id": "keychain-hooks",
+      "pixels": 322
+    },
+    {
+      "id": "badge-trays",
+      "pixels": 346
+    },
+    {
+      "id": "shopping-bags",
+      "pixels": 367
+    },
+    {
+      "id": "delivery-boxes",
+      "pixels": 472
+    },
+    {
+      "id": "open-carton",
+      "pixels": 422
+    },
+    {
+      "id": "delivery-cart",
+      "pixels": 315
+    },
+    {
+      "id": "folding-crates",
+      "pixels": 372
+    },
+    {
+      "id": "trash-bags",
+      "pixels": 281
+    },
+    {
+      "id": "paper-rubbish",
+      "pixels": 115
+    },
+    {
+      "id": "recycling-bins",
+      "pixels": 391
+    }
+  ],
+  "wallInsetsPixelUnchanged": true,
+  "errors": [],
+  "nativeIntegrated": false
+}

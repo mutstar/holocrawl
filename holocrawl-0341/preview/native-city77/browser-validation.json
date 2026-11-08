@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "nativeSnapshotsChecked": 42,
+  "facilitiesCovered": 8,
+  "doorChecks": 9,
+  "browserReloadKeepsState": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

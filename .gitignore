@@ -54,3 +54,41 @@ venv/
 # Rebuildable game binaries, generated caches and machine-specific saves.
 # Browser previews do not require this directory.
 /holocrawl-0341/runtime/
+
+# Native city validation keeps reports separate from generated save caches.
+/holocrawl-0341/analysis/native-city77*/saves/
+/holocrawl-0341/analysis/native-city77*/morgue/
+/holocrawl-0341/analysis/native-city77*/test-init.txt
+/holocrawl-0341/analysis/native-city78*/saves/
+/holocrawl-0341/analysis/native-city78*/morgue/
+/holocrawl-0341/analysis/native-city78*/test-init.txt
+/holocrawl-0341/analysis/native-city79*/saves/
+/holocrawl-0341/analysis/native-city79*/morgue/
+/holocrawl-0341/analysis/native-city79*/test-init.txt
+/holocrawl-0341/analysis/native-city80*/saves/
+/holocrawl-0341/analysis/native-city80*/morgue/
+/holocrawl-0341/analysis/native-city80*/test-init.txt
+/holocrawl-0341/analysis/native-city82*/saves/
+/holocrawl-0341/analysis/native-city82*/morgue/
+/holocrawl-0341/analysis/native-city82*/test-init.txt
+/holocrawl-0341/analysis/native-city-random82*/saves/
+/holocrawl-0341/analysis/native-city-random82*/morgue/
+/holocrawl-0341/analysis/native-city-random82*/test-init.txt
+/holocrawl-0341/analysis/native-corner-audit85/saves/
+/holocrawl-0341/analysis/native-corner-audit85/morgue/
+/holocrawl-0341/analysis/native-corner-audit85/test-init.txt
+
+# Rebuildable isolated artwork exporter and generated native review saves.
+/holocrawl-0341/analysis/native-facilities94/*.exe
+/holocrawl-0341/analysis/native-facilities94/saves/
+/holocrawl-0341/analysis/native-facilities94/morgue/
+/holocrawl-0341/analysis/native-facilities94/test-init.txt
+/holocrawl-0341/analysis/native-city-random93/saves/
+/holocrawl-0341/analysis/native-city-random93/morgue/
+/holocrawl-0341/analysis/native-city-random93/test-init.txt
+
+# Isolated native107 build and disposable validation save data.
+/holocrawl-0341/analysis/native-play107-01/engine/
+/holocrawl-0341/analysis/native-play107-01/*/saves/
+/holocrawl-0341/analysis/native-play107-01/*/morgue/
+/holocrawl-0341/analysis/native-play107-01/*/test-init.txt

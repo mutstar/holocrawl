@@ -1,0 +1,62 @@
+{
+  "version": 107,
+  "status": "passed",
+  "baseline": {
+    "engine\\upstream\\crawl-ref\\source\\holo34-city.cc": "fbba27c2d53afa1566935c8bad51a4d901424e21a4469dbf403ca314d97baf37",
+    "engine\\upstream\\crawl-ref\\source\\holo34-city.h": "68614f36b034135a33ff29507e763612d63cc7eb29d18555ec02b7ec792be517",
+    "engine\\upstream\\crawl-ref\\source\\crawl.exe": "2ac32df1d925b258522fa8d986d50b143d1f74d3ccedf9f7cac9497d89c0754c",
+    "engine\\upstream\\crawl-ref\\source\\dat\\tiles\\floor.png": "119e71b05605903c44633412ca5a4b242d5e5fd4c3ad9ce07ae27bfa6bb26e34",
+    "engine\\upstream\\crawl-ref\\source\\dat\\tiles\\wall.png": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+    "engine\\upstream\\crawl-ref\\source\\dat\\tiles\\feat.png": "791cfc3014d0d1d554b5d036471c76bc379c19df73847ba2636439722462bbf0",
+    "preview\\city-facilities106\\manifest.json": "ebaab2a26718c75db1d43adb93aff3bb0ec10b5a06ccbdb22239045f1234f2a3"
+  },
+  "candidate": "C:\\Users\\IN\\Documents\\ChatGPT\\Game\\HoloCrawl\\holocrawl-0341\\analysis\\native-play107-01\\engine",
+  "generationSeeds": [
+    10786001,
+    10786002,
+    10786003,
+    10786004,
+    10786005,
+    10786006,
+    10786007,
+    10786008,
+    10786009,
+    10786010,
+    10786011,
+    10786012
+  ],
+  "floorsPerSeed": 14,
+  "forcedFacilities": [
+    "mountain",
+    "dining",
+    "theater",
+    "gamers",
+    "fantasy",
+    "wheel",
+    "market",
+    "holox",
+    "dev"
+  ],
+  "forcedSeeds": [
+    10787001,
+    10787002,
+    10787003,
+    10787004,
+    10787005,
+    10787006,
+    10787007,
+    10787008,
+    10787009
+  ],
+  "scope": [
+    "native LOS/fog",
+    "movement/collision",
+    "actor/item layering",
+    "fresh native random generation/entrances",
+    "compiled latest artwork"
+  ],
+  "userSavesTouched": false,
+  "scriptedReplayAnimations": "Animation disabled and cosmetic birth/frame clock fixed before generation only in script; actual game unchanged",
+  "finalSuite": "suite-10",
+  "replaySuite": "suite-09"
+}

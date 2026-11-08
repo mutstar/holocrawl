@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "revision": 112,
+  "source110Preserved": true,
+  "comparisonPixelIdenticalTo110": true,
+  "geometryUnchanged": true,
+  "layoutsChecked": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "samplePair": {
+    "a": {
+      "x": 32,
+      "y": 3,
+      "type": "acrylic-window",
+      "closed": false
+    },
+    "b": {
+      "x": 37,
+      "y": 4,
+      "type": "open-carton"
+    },
+    "d": 5
+  },
+  "errors": [],
+  "nativeIntegrated": false
+}

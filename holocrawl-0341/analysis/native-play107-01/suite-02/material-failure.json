@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "check": "native atlas adjacency vs exported geometry",
+  "seed": 10786001,
+  "depth": 9,
+  "cell": [
+    46,
+    16
+  ],
+  "reason": "Native open command links adjacent door cells; probe restored only one cell, leaving a linked door open in export. Prior outputs preserved; probe and browser must follow native groups."
+}

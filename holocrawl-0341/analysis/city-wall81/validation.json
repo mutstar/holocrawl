@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "otherFloorsUnchanged": 41,
+  "changedPixels": 5920,
+  "outsideSelectionChangedPixels": 0,
+  "restoredNativeSpritesByteIdentical": 2048,
+  "scope": "Native wall art restored to79; browser preview depth only on selected lower-right wall mass."
+}

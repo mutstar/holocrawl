@@ -1,0 +1,304 @@
+{
+  "status": "passed",
+  "designs": 5,
+  "kinds": 2,
+  "doorDesigns": 10,
+  "checks": [
+    {
+      "design": "plate",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "single",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "double",
+      "orientation": "horizontal",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "closed",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "plate",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "glass",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "fire",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "reinforced",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "single",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    },
+    {
+      "design": "vent",
+      "kind": "double",
+      "orientation": "vertical",
+      "state": "open",
+      "outsideDoorPixelsChanged": 0
+    }
+  ],
+  "spritesIdenticalAcrossOrientations": true,
+  "openCentersTransparent": true,
+  "closedCentersOpaque": true,
+  "footprint": [
+    32,
+    32
+  ],
+  "normalWallRevision": 92,
+  "nativeIntegration": false,
+  "jambsEqualWidth": true,
+  "openingCenterX": 15.5,
+  "doubleLeafWidths": [
+    11,
+    11
+  ],
+  "doubleSpriteMirrorExact": true
+}

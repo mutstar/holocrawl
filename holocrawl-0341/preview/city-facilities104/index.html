@@ -1,0 +1,13 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>잔향도시 · 멤버 장식과 문 방향 수정</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#141b1f;color:#e0e8e3;font:15px/1.6 system-ui}main{max-width:1480px;margin:auto;padding:20px}h1{font-size:25px;margin:0 0 5px}p{color:#b2c0b8;margin:5px 0 10px}nav{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}button,a,select{font:inherit;background:#273a34;color:#e1e9e1;border:1px solid #61786b;padding:7px 12px;text-decoration:none;cursor:pointer}button[aria-pressed=true]{background:#4c6755;border-color:#c0cba6}button:disabled{opacity:.55;cursor:default}select{max-width:100%}.split{margin-left:auto}canvas{display:block;width:100%;background:#101719;border:1px solid #52625a;outline:none;image-rendering:pixelated;touch-action:none;cursor:grab}canvas:active{cursor:grabbing}#status{padding-top:8px;color:#d0d3b6;font-size:14px}.meta{font-size:13px;color:#9fb0a4}footer{margin-top:16px;font-size:13px;color:#aab9ae}@media(max-width:650px){main{padding:13px}h1{font-size:22px}.split{margin-left:0}button,a,select{padding:7px 9px;font-size:14px}}
+</style><main>
+<h1>잔향도시 · 멤버 장식과 문 방향 수정</h1>
+<p>극장 2기생과 폐역 게이머즈 모티프를 보완했습니다. 시설 전용문도 가로·세로 모두 같은 정면 도트를 사용합니다.</p>
+<nav aria-label="시설 비교"><button data-style="new104" aria-pressed="true">멤버 장식·문 방향 수정</button><button data-style="previous103" aria-pressed="false">수정 전103</button><button id="doors" aria-pressed="false">문 열기</button><span class="split"><label for="sample">시설 </label><select id="sample" aria-label="시설 선택"><option>불러오는 중…</option></select></span></nav>
+<nav aria-label="지도 확대"><button data-mode="fit" aria-pressed="true">전체 지도</button><button data-mode="actual" aria-pressed="false">원본 크기</button><button data-mode="double" aria-pressed="false">2배 확대</button><button id="facility">시설 확대</button><button id="entrance">시설 입구 확대</button><button id="basicDoor">기본문 확대</button><a href="member-comparison.png" target="_blank">극장·폐역 비교</a><a id="fullImage" href="#" target="_blank">전체 이미지</a></nav>
+<canvas id="map" tabindex="0" aria-label="새 전용벽과 문을 적용한 시설 지도"></canvas>
+<div id="status" role="status">시설을 불러오는 중…</div><p class="meta" id="meta"></p><p id="members" class="meta"></p>
+<footer>시설별 검토를 위해 시설 하나씩 지정 생성한 실제 지형 9개입니다. 한 층에 모든 시설을 넣은 지도는 아닙니다. 기본문101·외벽103·통행 지형은 유지했습니다. 극장과 폐역의 벽 장식, 시설 문 방향만 수정했습니다. 엔진 아틀라스 적용 전 미리보기입니다.</footer>
+</main><script src="viewer104.js"></script></html>

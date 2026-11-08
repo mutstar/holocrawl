@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "revision": 114,
+  "source112Preserved": true,
+  "wallAndStairGeometryUnchanged": true,
+  "wallFixturesUnchanged": true,
+  "footprints": {
+    "2x1": 1018,
+    "2x2": 659,
+    "1x1": 576
+  },
+  "connectedMaps": 80,
+  "nonOverlappingActualCollision": true,
+  "stairsBuffer": 3,
+  "deterministic": true,
+  "compactComparisonPixelIdenticalTo112": true,
+  "preservedOriginalSources": true,
+  "representativeArt": [
+    {
+      "type": "acrylic-rack",
+      "footprint": [
+        2,
+        2
+      ],
+      "art": [
+        58,
+        48
+      ]
+    },
+    {
+      "type": "shirt-stack",
+      "footprint": [
+        2,
+        1
+      ],
+      "art": [
+        45,
+        24
+      ]
+    },
+    {
+      "type": "delivery-boxes",
+      "footprint": [
+        2,
+        2
+      ],
+      "art": [
+        58,
+        47
+      ]
+    },
+    {
+      "type": "open-carton",
+      "footprint": [
+        2,
+        1
+      ],
+      "art": [
+        31,
+        24
+      ]
+    }
+  ],
+  "focus": {
+    "x": 10,
+    "y": 64,
+    "type": "shirt-stack",
+    "footW": 2,
+    "footH": 1
+  },
+  "errors": [],
+  "nativeIntegrated": false
+}

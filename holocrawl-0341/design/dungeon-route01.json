@@ -13,6 +13,142 @@
     "main": {
       "name": "잔향도시",
       "floors": 14,
+      "facilityPlacement": {
+        "status": "native-city77-prototype-validated",
+        "engineImplemented": true,
+        "nativeActivation": "HOLOCRAWL_CITY77=1 or saved holocrawl_city77_enabled property",
+        "browserPreview": "preview/native-play107/index.html",
+        "validation": "analysis/native-play107-01/material-validation.json",
+        "artRevision": 107,
+        "nativeArtRevision": 107,
+        "wallArtValidation": "analysis/city-corners84/validation.json",
+        "localWallArtPreview": "preview/native-city77/wall-selection81.json",
+        "approvedNormalWall": {
+          "revision": 92,
+          "status": "user-approved-2026-11-07",
+          "renderer": "scripts/city_concrete_material92.py",
+          "facilityReview": "preview/city-facilities94/index.html",
+          "validation": "preview/city-facilities94/validation.json",
+          "nativeAtlasIntegration": true,
+          "integrationScope": "Isolated native107 engine; original84 preserved"
+        },
+        "facilityWallDoorPreview": {
+          "revision": 106,
+          "memberAudit": "preview/city-facilities106/member-audit.json",
+          "memberAuditReport": "design/FACILITY_MEMBER_AUDIT106.md",
+          "auditedRemainingMembers": 30,
+          "memberFeaturePlacement": "interior-functional-scenery",
+          "exteriorMemberPosters": false,
+          "sameFacingForBothAxes": true,
+          "memberReviewFacilities": [
+            "theater",
+            "gamers"
+          ],
+          "status": "draft-user-review",
+          "browserPreview": "preview/city-facilities106/index.html",
+          "validation": "preview/city-facilities106/validation.json",
+          "normalWallRevision": 92,
+          "nativeIntegration": true,
+          "integrationScope": "Isolated native107 engine; design approval remains separate"
+        },
+        "basicDoorPreview": {
+          "revision": 101,
+          "baseRevision": 96,
+          "status": "selected-design-user-approved-2026-11-08",
+          "selectedDesign": "glass",
+          "selectedLeafType": "double",
+          "browserPreview": "preview/basic-doors101/index.html",
+          "centering": {
+            "axisX": 15.5,
+            "singleJambWidthEach": 4,
+            "doubleJambWidthEach": 2,
+            "doubleLeafWidths": [
+              13,
+              13
+            ],
+            "doubleLeafHeight": 26
+          },
+          "designCount": 5,
+          "leafTypes": [
+            "single",
+            "double"
+          ],
+          "sameFacingForBothAxes": true,
+          "footprint": [
+            32,
+            32
+          ],
+          "normalWallRevision": 92,
+          "nativeIntegration": true,
+          "integrationScope": "Isolated native107 engine; design approval remains separate"
+        },
+        "approvedNormalDoor": {
+          "revision": 101,
+          "status": "user-approved-2026-11-08",
+          "design": "glass",
+          "name": "세로창 양개문",
+          "fullMapPreview": "preview/city-facilities106/index.html",
+          "leafType": "double",
+          "footprint": [
+            32,
+            32
+          ],
+          "sameFacingForBothAxes": true,
+          "closedSprite": "preview/basic-doors101/glass-double-closed32.png",
+          "openSprite": "preview/basic-doors101/glass-double-open32.png",
+          "validation": "preview/basic-doors101/validation.json",
+          "normalWallRevision": 92,
+          "nativeAtlasIntegration": true,
+          "integrationScope": "Isolated native107 engine; original84 preserved"
+        },
+        "facilityDoorReview": {
+          "mode": "one-facility-at-a-time",
+          "currentFacility": "holox",
+          "status": "awaiting-user-feedback",
+          "browserPreview": "preview/holox-door97/index.html"
+        },
+        "floorRange": [
+          1,
+          14
+        ],
+        "chancePerFloor": 0.5,
+        "maxPerFloor": 1,
+        "selection": "uniform-without-replacement",
+        "uniquenessScope": "entire-run",
+        "facilities": [
+          "0기생 페이스 마운틴",
+          "1기생 타라후쿠 저니",
+          "2기생 극장",
+          "게이머즈 폐역",
+          "3기생 도타바타 그라운드",
+          "4기생 관람차 광장",
+          "5기생 네포라보 마트",
+          "holoX 연구소",
+          "DEV_IS 쵸베리바 출장소"
+        ],
+        "onPoolExhausted": "no-facility",
+        "persistFloorDecision": true,
+        "rerollOnRevisitOrReload": false,
+        "placementRequirement": "선정된 시설의 배치는 입구와 계단의 연결성을 만족하도록 재시도한다. 배치 재시도 중 출현 여부와 시설 종류를 다시 추첨하지 않는다.",
+        "markUsedAfter": "successful-placement",
+        "encountersAndRewards": "deferred-until-related-item-and-combat-implementation",
+        "legacyEngineArtRevision": 84,
+        "nativeIntegration107": {
+          "status": "passed",
+          "version": 107,
+          "source": "holocrawl-0341/analysis/native-play107-01/engine/crawl-ref/source",
+          "binarySha256": "c697897f3ca30c0bf32aedd197a4c4397a0edf7c3a002254412c5c24b3171324",
+          "validation": "holocrawl-0341/analysis/native-play107-01/material-validation.json",
+          "saveIsolation": "holocrawl-0341/runtime/city107",
+          "originalEngineUnchanged": true,
+          "normalWall": 92,
+          "basicDoor": 101,
+          "facilityArt": 106,
+          "report": "design/NATIVE_PLAY107_REVIEW.md",
+          "browserValidation": "preview/native-play107/browser-validation.json",
+          "fullCampaignVerified": false
+        }
+      },
       "themes": [
         {
           "floors": [
@@ -42,7 +178,92 @@
           ],
           "name": "뒤틀린 방송 거리"
         }
-      ]
+      ],
+      "marketArtPreview": {
+        "revision": 110,
+        "floorRange": [
+          4,
+          7
+        ],
+        "status": "draft-user-review",
+        "preview": "preview/city-market110/index.html",
+        "report": "design/CITY_MARKET110.md",
+        "validation": "preview/city-market110/validation.json",
+        "nativeIntegrated": false,
+        "progressiveWallWear": true,
+        "variedFracturePatterns": true
+      },
+      "streetArtPreview": {
+        "revision": 123,
+        "floors": [
+          1,
+          3
+        ],
+        "status": "draft-user-review",
+        "preview": "preview/city-street123/index.html",
+        "report": "design/CITY_DISTRICTS123.md",
+        "validation": "preview/city-street123/validation.json",
+        "nativeBackgroundSource": 107,
+        "nativeIntegrated": false,
+        "wallMountRevision": 122,
+        "uniformFrontHeight": 22,
+        "floorPropRevision": 117,
+        "wallArtBaseline": 121,
+        "districtPlacementRevision": 123
+      },
+      "marketSceneStudy": {
+        "revision": 123,
+        "status": "draft-user-review",
+        "preview": "preview/city-market123/index.html",
+        "report": "design/CITY_DISTRICTS123.md",
+        "validation": "preview/city-market123/validation.json",
+        "nativeIntegrated": false,
+        "wallMountRevision": 122,
+        "uniformFrontHeight": 22,
+        "floorPropRevision": 117,
+        "rejectedSimplificationRevision": 113,
+        "multiCellFloorProps": true,
+        "playerRelativeSizeReview": true,
+        "preservedFloorPropFixes117": [
+          "shopping-bags",
+          "shirt-stack",
+          "hoodie-rack"
+        ],
+        "wallArtBaseline": 121,
+        "wallInfrastructureEnabled": true,
+        "districtPlacementRevision": 123
+      },
+      "wallHeightBaseline": {
+        "revision": 121,
+        "frontHeight": 22,
+        "status": "user-approved-preview",
+        "nativeIntegrated": false,
+        "report": "design/CITY_WALLHEIGHT121.md"
+      },
+      "districtContrast123": {
+        "streetServiceCounts": [
+          2,
+          2,
+          3
+        ],
+        "streetWindowCounts": [
+          1,
+          1,
+          2
+        ],
+        "streetStandCounts": [
+          0,
+          0,
+          1
+        ],
+        "streetShutters": 0,
+        "streetLooseTrash": 0,
+        "streetPipes": 0,
+        "preservedParcels": "2-3 per floor",
+        "market": "denser contiguous windows/shutters; original service positions reserved",
+        "wallAndStructureArtUnchanged": true,
+        "nativeIntegrated": false
+      }
     },
     "depths": {
       "name": "커튼콜",
@@ -150,5 +371,5 @@
       "allRunes": 15
     }
   ],
-  "currentArtTask": "잔향도시4~7층 굿즈 상점가: browser-only art/layout draft. Street1~3 common baseline approved; festival8~10 and broadcast11~14 not started."
+  "currentArtTask": "잔향도시124: 벽121/벽 구조물122 유지,1~7층 바닥 소품 통로 보호·236구조416배치 검증 passed.고정지형9외벽22px 정렬/멤버 장식·문 보존, 실제 지도 이미지 각각 출력.브라우저만·피드백 대기."
 }

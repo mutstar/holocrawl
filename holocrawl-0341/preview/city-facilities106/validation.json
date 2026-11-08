@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "facilities": 9,
+  "auditedFacilities": 7,
+  "auditedMembers": 30,
+  "improved": 4,
+  "checks": [
+    {
+      "facility": "holox",
+      "auditedMembers": 5,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b"
+    },
+    {
+      "facility": "theater",
+      "auditedMembers": 0,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7"
+    },
+    {
+      "facility": "dev",
+      "auditedMembers": 4,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed"
+    },
+    {
+      "facility": "dining",
+      "auditedMembers": 4,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19"
+    },
+    {
+      "facility": "gamers",
+      "auditedMembers": 0,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d"
+    },
+    {
+      "facility": "fantasy",
+      "auditedMembers": 4,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d"
+    },
+    {
+      "facility": "wheel",
+      "auditedMembers": 4,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4"
+    },
+    {
+      "facility": "market",
+      "auditedMembers": 4,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613"
+    },
+    {
+      "facility": "mountain",
+      "auditedMembers": 5,
+      "geometryUnchanged": true,
+      "editsOnlyOnExistingInteriorBlockedCells": true,
+      "outsideFourDetailBoxesUnchanged": true,
+      "walls105AndDoors105Unchanged": true,
+      "mapSha256": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664"
+    }
+  ],
+  "nativeIntegration": false
+}

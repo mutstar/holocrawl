@@ -3,7 +3,7 @@
     mountain: { title: '0기생 페이스 마운틴', hint: '북쪽 암벽에 새겨진 다섯 부조를 보러 올라가세요.', floor: ['#4a5340', '#4e5844', '#505945', '#48523f'], wall: ['#343631', '#555449', '#7c7563'] },
     dining: { title: '1기생 타라후쿠 저니', hint: '식탁 사이를 지나 배식대 가운데 주방문을 여세요.', floor: ['#5b4942', '#4d403b', '#594740', '#4b3f3a'], wall: ['#342c2c', '#68473e', '#9e7255'], door: [4, 3], doorLabel: '주방문' },
     market: { title: '5기생 네포라보 마트', hint: '계산대 옆으로 들어가 진열대 뒤편을 둘러보세요.', floor: ['#47524d', '#515d54', '#4b5650', '#546057'], wall: ['#2d3534', '#465b50', '#7a9180'] },
-    dev: { title: 'DEV_IS 쵸베리바 출장소', hint: '출입 게이트를 열고 미니 스테이지 오른쪽으로 가 보세요.', floor: ['#433f4c', '#494454', '#463f50', '#484354'], wall: ['#2e2b35', '#51445b', '#8a6989'], door: [4, 6], doorLabel: '출입 게이트' },
+    dev: { title: 'DEV_IS 쵸베리바 출장소', hint: '출입 게이트를 열고 라이브 스테이지와 양옆 설비를 둘러보세요.', floor: ['#333541', '#393b49', '#353748', '#3c3b4a'], wall: ['#20232f', '#40374e', '#8c6792'], door: [5, 6], doorLabel: '출입 게이트' },
   };
   const requested = new URLSearchParams(location.search).get('site');
   const key = Object.hasOwn(sites, requested) ? requested : 'mountain';
@@ -723,46 +723,238 @@
     }
   }
 
-  function broadcast() {
-    plaque(100, 18, 88, '#6f4d75', '#daa1b4');
-    rect('#2d2a37', 96, 34, 96, 62);
-    rect('#5a4464', 98, 36, 92, 47);
-    rect('#3b304b', 104, 40, 80, 25);
-    rect('#8c628f', 105, 40, 78);
-    const colors = ['#a7b3d0', '#c4a57c', '#bc89a6', '#8ab3a1', '#d69aa0'];
-    for (const [i, color] of colors.entries()) {
-      const x = 111 + i * 15;
-      rect(color, x, 46, 9, 3);
-      rect(color, x + 2, 51, 5, 6);
-      rect('#a989a9', x + 4, 59, 1, 4);
+  function liveStage(x, y) {
+    const paint = (color, dx, dy, w, h = 1) => rect(color, x + dx, y + dy, w, h);
+    paint('#20222d', 0, 1, 128, 63);
+    paint('#373242', 3, 5, 122, 52);
+    paint('#494052', 3, 32, 122, 23);
+    for (const offset of [10, 34, 58, 82, 106]) {
+      paint('#403747', offset, 34, 1, 20);
     }
-    rect('#6c526f', 101, 68, 86, 12);
-    rect('#8c6883', 101, 68, 86, 2);
-    for (const x of [101, 177]) {
-      rect('#282733', x, 60, 10, 18);
-      rect('#84748a', x + 1, 61, 8, 2);
-      rect('#494452', x + 2, 65, 6, 9);
-      rect('#6b6875', x + 3, 66, 4, 3);
-      rect('#625970', x + 3, 71, 4, 2);
+    paint('#242732', 3, 54, 122, 8);
+    paint('#716078', 3, 54, 122);
+    paint('#aa5786', 12, 57, 104, 2);
+    paint('#de91ba', 15, 57, 98);
+
+    paint('#70617b', 5, 5, 118, 2);
+    for (const offset of [20, 46, 75, 101]) {
+      paint('#24242f', offset, 7, 7, 5);
+      paint(offset < 64 ? '#ce83ac' : '#88bac5', offset + 1, 9, 5, 2);
     }
-    rect('#3b3145', 143, 66, 2, 10);
-    rect('#c9b4bd', 142, 64, 4, 3);
-    rect('#49374a', 141, 75, 6);
-    rect('#7e6d81', 129, 84, 30, 3);
-    rect('#a48d98', 124, 89, 40, 2);
-    rect('#a48d98', 117, 94, 54, 2);
-    for (const x of [72, 200]) {
-      rect('#2b2b34', x, 135, 21, 20);
-      rect('#67576c', x + 1, 139, 19, 14);
-      rect('#3c394e', x + 3, 132, 14, 8);
-      rect('#8ba6ae', x + 5, 133, 10, 4);
-      rect('#c394ac', x + 15, 144, 3, 2);
+    paint('#161d29', 19, 13, 90, 24);
+    paint('#6d5374', 20, 13, 88);
+    paint('#262e42', 21, 15, 86, 19);
+    paint('#43415a', 24, 24, 80);
+    const signal = [2, 3, 2, 6, 11, 7, 3, 8, 5, 10, 6, 3, 6, 4, 2, 3];
+    for (const [index, height] of signal.entries()) {
+      const color = index < 8 ? '#bb648f' : '#6ba4b7';
+      paint(color, 26 + index * 5, 25 - Math.floor(height / 2), 3, height);
     }
-    for (const column of [1, 2, 3, 5, 6, 7]) {
-      const x = column * 32;
-      rect('#34303e', x, 207, 32, 4);
-      rect('#8e748c', x, 207, 32);
-      rect('#b199a7', x + 6, 203, 3, 9);
+
+    for (const offset of [5, 110]) {
+      paint('#20222e', offset, 24, 13, 27);
+      paint('#5d586c', offset + 1, 25, 11, 2);
+      paint('#3d3c50', offset + 2, 29, 9, 18);
+      paint('#1d212d', offset + 3, 30, 7, 6);
+      paint('#1d212d', offset + 3, 39, 7, 6);
+      paint('#716a83', offset + 5, 32, 3, 2);
+      paint('#716a83', offset + 5, 41, 3, 2);
+    }
+    for (const offset of [52, 74]) {
+      paint('#25252f', offset - 4, 48, 9, 2);
+      paint('#b7a5b6', offset, 40, 1, 9);
+      paint('#cbbcce', offset - 1, 39, 3, 2);
+    }
+  }
+
+  function recordingDesk(x, y) {
+    const paint = (color, dx, dy, w, h = 1) => rect(color, x + dx, y + dy, w, h);
+    paint('#20232e', 1, 4, 62, 27);
+    paint('#545267', 3, 5, 58, 20);
+    paint('#7c7790', 3, 5, 58);
+    for (const offset of [7, 25]) {
+      paint('#202734', offset, 2, 14, 11);
+      paint('#426071', offset + 2, 4, 10, 6);
+      paint('#94bec9', offset + 3, 7, 8);
+    }
+    paint('#292b38', 6, 15, 35, 8);
+    for (const offset of [9, 15, 21, 27, 33]) {
+      paint('#77778a', offset, 16, 1, 6);
+      paint('#d5bfce', offset - 1, 17 + (offset % 4), 3);
+    }
+    paint('#2a2c3a', 45, 8, 12, 15);
+    paint('#87af9f', 47, 14, 2, 6);
+    paint('#c18aa7', 51, 11, 2, 9);
+    paint('#353645', 4, 25, 56, 3);
+  }
+
+  function ventRig(x, y) {
+    const paint = (color, dx, dy, w, h = 1) => rect(color, x + dx, y + dy, w, h);
+    paint('#20232f', 2, 4, 60, 26);
+    paint('#36374b', 4, 5, 56, 22);
+    paint('#61546f', 4, 5, 56);
+    paint('#1f2230', 39, 8, 17, 15);
+    for (const row of [10, 13, 16, 19]) paint('#665c77', 41, row, 13);
+    for (const offset of [6, 20]) {
+      paint('#282739', offset, 7, 8, 17);
+      paint('#4e4667', offset + 1, 7, 6, 16);
+      paint('#71618d', offset + 2, 8, 1, 13);
+      paint('#4e4667', offset + 5, 19, 11, 5);
+      paint('#847397', offset, 11, 8, 2);
+      paint('#686282', offset + 7, 19, 8);
+    }
+    paint('#be779e', 35, 11, 2, 2);
+    paint('#7daab9', 35, 17, 2, 2);
+  }
+
+  const reglossProps = {
+    kanade(paint) {
+      paint('#252631', 3, 23, 26, 4);
+      paint('#646474', 7, 17, 3, 8);
+      paint('#646474', 22, 17, 3, 8);
+      paint('#38343c', 2, 9, 28, 13);
+      paint('#b99747', 3, 10, 26, 10);
+      paint('#e1c778', 3, 10, 26);
+      paint('#f0e4ce', 4, 13, 24, 6);
+      for (const x of [7, 11, 15, 19, 23, 27]) paint('#8b8276', x, 14, 1, 5);
+      for (const x of [6, 10, 14, 18, 22, 26]) paint('#343039', x, 13, 2, 3);
+      paint('#4d463f', 11, 4, 10, 6);
+      paint('#e4d7b5', 12, 4, 8, 5);
+      paint('#a39476', 16, 4, 1, 5);
+      paint('#fae4a2', 25, 5, 3);
+      paint('#fae4a2', 26, 4, 1, 3);
+    },
+
+    ririka(paint) {
+      paint('#29202d', 2, 11, 28, 20);
+      paint('#713a57', 3, 15, 26, 14);
+      paint('#bd6388', 3, 13, 26, 5);
+      paint('#f2adca', 4, 13, 24);
+      paint('#4b314d', 5, 2, 22, 11);
+      paint('#92608c', 6, 3, 20);
+      paint('#322743', 7, 4, 18, 8);
+      for (const [x, y, width] of [[8, 8, 4], [13, 6, 5], [19, 7, 4]]) {
+        paint('#64446d', x, y, width, 12 - y);
+        paint('#f0bfac', x + 1, y + 1, 2);
+      }
+      paint('#dc96c0', 21, 5, 2);
+      paint('#f7dbbd', 6, 14, 7, 3);
+      paint('#5a2d48', 22, 14, 4, 3);
+      paint('#2b2130', 4, 18, 24, 11);
+      paint('#eb96bc', 4, 18, 24);
+      const letters = ['111/100/100/100/111', '111/100/110/100/111', '111/101/101/101/111'];
+      for (const [index, letter] of letters.entries()) {
+        for (const [y, row] of letter.split('/').entries()) {
+          for (const [x, pixel] of [...row].entries()) {
+            if (pixel === '1') paint('#ffdf9e', 5 + index * 8 + x * 2, 19 + y * 2, 2, 2);
+          }
+        }
+      }
+    },
+
+    raden(paint) {
+      paint('#192926', 3, 8, 26, 22);
+      paint('#356f5e', 4, 6, 24, 20);
+      paint('#5da78e', 6, 5, 20, 2);
+      paint('#24483e', 6, 8, 20, 16);
+      paint('#234035', 5, 25, 22, 4);
+      paint('#79b6a1', 6, 25, 20);
+      paint('#a7d1b5', 7, 10, 2, 2);
+      paint('#b894bd', 23, 14, 2, 2);
+      paint('#d1c493', 7, 21, 2, 2);
+
+      // Raden's mask as shown on the official hololive friends to Go product.
+      const hair = '#292933';
+      const porcelain = '#e7e0d4';
+      paint(hair, 12, 1, 8, 1);
+      paint(hair, 9, 2, 14, 2);
+      paint(hair, 7, 4, 18, 3);
+      paint(hair, 6, 7, 20, 13);
+      paint('#d1c6b9', 8, 18, 16, 4);
+      paint('#d1c6b9', 10, 22, 12, 2);
+      paint('#d1c6b9', 12, 24, 8, 1);
+      paint('#bdb2a9', 14, 25, 4, 1);
+
+      // A center part and two curved hair lines hug the high forehead.
+      paint('#676571', 10, 3, 5, 1);
+      paint('#676571', 17, 3, 5, 1);
+      paint('#676571', 8, 5, 3, 2);
+      paint('#676571', 21, 5, 3, 2);
+      paint('#676571', 7, 7, 1, 8);
+      paint('#676571', 24, 7, 1, 8);
+      paint(porcelain, 15, 3, 2, 1);
+      paint(porcelain, 12, 4, 8, 1);
+      paint(porcelain, 10, 5, 12, 2);
+      paint(porcelain, 8, 7, 16, 12);
+      paint(porcelain, 9, 19, 14, 2);
+      paint(porcelain, 11, 21, 10, 2);
+      paint('#d9cfc3', 13, 23, 6, 1);
+
+      // Small high brows, curved upper lids, and fastening cords at eye level.
+      paint('#96938c', 10, 7, 4, 1);
+      paint('#96938c', 11, 6, 3, 1);
+      paint('#96938c', 18, 7, 4, 1);
+      paint('#96938c', 18, 6, 3, 1);
+      for (const x of [10, 18]) {
+        paint('#5d5760', x + 1, 12, 3, 1);
+        paint(hair, x, 13, 5, 1);
+        paint(hair, x + 2, 14, 1, 1);
+      }
+      paint(hair, 4, 14, 4, 1);
+      paint(hair, 24, 14, 4, 1);
+      paint('#b1a699', 14, 17, 1, 1);
+      paint('#b1a699', 17, 17, 1, 1);
+      paint('#963f48', 13, 19, 6, 1);
+      paint('#582d38', 14, 20, 4, 1);
+      paint('#963f48', 15, 21, 2, 1);
+    },
+
+    hajime(paint) {
+      paint('#282736', 3, 16, 26, 13);
+      paint('#514769', 4, 17, 24, 10);
+      paint('#9380b5', 4, 17, 24);
+      paint('#c4b1e4', 8, 21, 4, 2);
+      paint('#c4b1e4', 7, 23, 4, 2);
+      paint('#d7b777', 22, 19, 3, 2);
+      paint('#d7b777', 21, 21, 4, 2);
+      paint('#d7b777', 22, 23, 1, 2);
+
+      paint('#242531', 12, 6, 9, 2);
+      paint('#242531', 10, 8, 13, 11);
+      paint('#242531', 8, 13, 17, 3);
+      paint('#4d455c', 12, 7, 8, 2);
+      paint('#e7dfd4', 12, 11, 9, 8);
+      paint('#e7dfd4', 12, 10, 3, 1);
+      paint('#e7dfd4', 18, 10, 3, 1);
+      paint('#302c38', 13, 12, 1, 2);
+      paint('#302c38', 19, 12, 1, 2);
+      paint('#d39cae', 12, 15, 2);
+      paint('#d39cae', 19, 15, 2);
+      paint('#dfb273', 15, 14, 3, 2);
+      paint('#bc9369', 11, 19, 4, 2);
+      paint('#bc9369', 18, 19, 4, 2);
+    },
+  };
+
+  function broadcast(rows, stations) {
+    const furniture = { stage: liveStage, desk: recordingDesk, pipes: ventRig };
+    for (const { id, x, y } of stations) {
+      if (furniture[id]) {
+        furniture[id](x * tile, y * tile);
+      } else {
+        reglossProps[id]?.((color, dx, dy, width, height = 1) => {
+          rect(color, x * tile + dx, y * tile + dy, width, height);
+        });
+      }
+    }
+
+    for (const [column, cell] of [...rows[6]].entries()) {
+      if (cell !== 'G') continue;
+      const x = column * tile;
+      rect('#262832', x, 206, 32, 7);
+      rect('#645971', x, 206, 32, 2);
+      rect('#4c4459', x + 6, 203, 3, 10);
+      rect('#ab849f', x + 6, 203, 3, 2);
     }
   }
 

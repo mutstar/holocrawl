@@ -1,0 +1,52 @@
+{
+  "scope": "Nine forced single-facility art samples, not a frequency sample.",
+  "samples": [
+    {
+      "facility": "holox",
+      "seed": 1889185305
+    },
+    {
+      "facility": "theater",
+      "seed": 737511672
+    },
+    {
+      "facility": "dev",
+      "seed": 1457612763
+    },
+    {
+      "facility": "dining",
+      "seed": 1019072782
+    },
+    {
+      "facility": "gamers",
+      "seed": 121319900
+    },
+    {
+      "facility": "fantasy",
+      "seed": 480427526
+    },
+    {
+      "facility": "wheel",
+      "seed": 1189374571
+    },
+    {
+      "facility": "market",
+      "seed": 535482548
+    },
+    {
+      "facility": "mountain",
+      "seed": 1750758918
+    }
+  ],
+  "inputSha256": {
+    "originalExecutable": "2ac32df1d925b258522fa8d986d50b143d1f74d3ccedf9f7cac9497d89c0754c",
+    "originalSource": "fbba27c2d53afa1566935c8bad51a4d901424e21a4469dbf403ca314d97baf37",
+    "reviewExecutable": "dc20a7da5649449903ab5c0915ff53be6c85faef1a16bb8b6bd9862883ef10cc",
+    "floorAtlas": "119e71b05605903c44633412ca5a4b242d5e5fd4c3ad9ce07ae27bfa6bb26e34",
+    "wallAtlas": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+    "featAtlas": "791cfc3014d0d1d554b5d036471c76bc379c19df73847ba2636439722462bbf0",
+    "renderer92": "15f64776961cbd405c4f5dc8eb1b42d6c0be013949c44b74f309a4e11191557a"
+  },
+  "normalPlayPolicy": "Unchanged50% per floor, maximum1, no duplicates per run.",
+  "normalWallApprovedRevision": 92
+}

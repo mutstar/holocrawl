@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "maps": 2,
+  "checks": [
+    {
+      "seed": 802302584,
+      "style": "original84",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "seed": 802302584,
+      "style": "stone88",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "seed": 802302584,
+      "style": "concrete89",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "seed": 920819314,
+      "style": "original84",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "seed": 920819314,
+      "style": "stone88",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    },
+    {
+      "seed": 920819314,
+      "style": "concrete89",
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true
+    }
+  ],
+  "auditedSourcesUnchanged": true,
+  "geometryUnchanged": true,
+  "priorGungeon88PixelMatch": true,
+  "sourceConcreteTextureSha256": "8be0a04374cb5e9e9ec49727d48b9013c3123d958642b5e1443bf3ea96c24128",
+  "nativeIntegration": false,
+  "scope": "Visual material study, not new level generation."
+}

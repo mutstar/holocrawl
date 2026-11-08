@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "views": [
+    "corner",
+    "scene",
+    "map",
+    "shapes"
+  ],
+  "styles": 4,
+  "allImagesLoaded": true,
+  "zoom1and2": true,
+  "synchronizedScrolling": true,
+  "mobileOverflow": false,
+  "auditedInputsUnchanged": true,
+  "pageErrors": []
+}

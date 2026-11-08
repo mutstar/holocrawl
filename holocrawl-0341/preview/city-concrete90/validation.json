@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "maps": 2,
+  "checks": [
+    {
+      "seed": 802302584,
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true,
+      "prior89Unchanged": true,
+      "convexSideTaperChecked": true
+    },
+    {
+      "seed": 920819314,
+      "nonWallPixelsChanged": 0,
+      "alphaUnchanged": true,
+      "prior89Unchanged": true,
+      "convexSideTaperChecked": true
+    }
+  ],
+  "nativeIntegration": false,
+  "scope": "Two existing maps; visual preference still for user review."
+}

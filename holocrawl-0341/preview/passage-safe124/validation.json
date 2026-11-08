@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "revision": 124,
+  "layouts": 416,
+  "expectedLayouts": 416,
+  "distinctGeometries": 236,
+  "existingNativeGeometries": 36,
+  "nativePlacementVariants": 216,
+  "freshBrowserMaps": 200,
+  "unchangedWallsAndFixtures": 416,
+  "previousObjectsInNarrowCells": 543,
+  "totals": {
+    "requested": 6694,
+    "placed": 6621,
+    "relocated": 5786,
+    "omitted": 73,
+    "passable": 352
+  },
+  "maxAnchorDetour": 2,
+  "maxFinalLocalDetour": 2,
+  "failures": [],
+  "scope": "Browser placement. Native36 existing random geometries, six placement variations each; browser market50 new seeds x4 floors. No native engine/save changes. Distances: six anchors to all remaining cells and four local portals, not every possible pair."
+}

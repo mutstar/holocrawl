@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "seed": 10786005,
+  "depth": 12,
+  "sameGeometry": true,
+  "sameFacilityAndHumanArt": true,
+  "reason": "31 native water cells changed animation phase during real move/view updates. Freeze visual-only animation in test-script entry before generation and rerun exact replay."
+}

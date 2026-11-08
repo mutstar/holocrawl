@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "randomFloors": 168,
+  "forcedFloors": 9,
+  "totalFloors": 177,
+  "binarySha256": "df2eea81360499fdf19056e47177e6b3c2e53d8c97f029ff83f2a3cf77677cba",
+  "forcedSamplesAreFrequencyTests": false
+}

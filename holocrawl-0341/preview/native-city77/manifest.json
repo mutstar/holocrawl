@@ -1,0 +1,15 @@
+{
+  "engine": "DCSS 0.34.1",
+  "seeds": [
+    77001,
+    77002,
+    77003
+  ],
+  "floorsPerSeed": 14,
+  "artRevision": 84,
+  "nativeArtRevision": 84,
+  "localArtPreview": "wall-selection81.json",
+  "source": "Actual native builder and native level save/load snapshots",
+  "binarySha256": "2ac32df1d925b258522fa8d986d50b143d1f74d3ccedf9f7cac9497d89c0754c",
+  "nativeValidation": "analysis\\native-city82-final01\\validation.json"
+}

@@ -1,0 +1,412 @@
+{
+  "revision": 123,
+  "engine": "DCSS0.34.1",
+  "maps": [
+    {
+      "file": "../native-play107/maps/map-10786001-1.json",
+      "probe": "../native-play107/maps/probe-10786001-1.json",
+      "seed": 10786001,
+      "depth": 1,
+      "facility": "dining",
+      "name": "1기생 타라후쿠 저니",
+      "forced": false,
+      "sha256": "e2c42e30e7e2fb8320fbfdb0ce07d3dd7b948da76ead24d3c1283f48b21920d0"
+    },
+    {
+      "file": "../native-play107/maps/map-10786001-2.json",
+      "probe": "../native-play107/maps/probe-10786001-2.json",
+      "seed": 10786001,
+      "depth": 2,
+      "facility": "wheel",
+      "name": "4기생 관람차",
+      "forced": false,
+      "sha256": "ec62e64010e9bee48ac7a79203ad77d59b4c43effbda67f88178ebd24495eeb5"
+    },
+    {
+      "file": "../native-play107/maps/map-10786001-3.json",
+      "probe": "../native-play107/maps/probe-10786001-3.json",
+      "seed": 10786001,
+      "depth": 3,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "forced": false,
+      "sha256": "9b8be0afb438f8b972859ded401c53cf6b8fb11ef132f700cb6a76e142ca56f9"
+    },
+    {
+      "file": "../native-play107/maps/map-10786002-1.json",
+      "probe": "../native-play107/maps/probe-10786002-1.json",
+      "seed": 10786002,
+      "depth": 1,
+      "facility": "market",
+      "name": "5기생 마트",
+      "forced": false,
+      "sha256": "c6264c76538c7e5ff6feed8dcb61d4505d48227016d9c388be86ebc0c9a19275"
+    },
+    {
+      "file": "../native-play107/maps/map-10786002-2.json",
+      "probe": "../native-play107/maps/probe-10786002-2.json",
+      "seed": 10786002,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "1eb79d2d89c1bb510551ddf4c49e22b784da7eeff6c80bf5fa666a4b15555359"
+    },
+    {
+      "file": "../native-play107/maps/map-10786002-3.json",
+      "probe": "../native-play107/maps/probe-10786002-3.json",
+      "seed": 10786002,
+      "depth": 3,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "a88f4a8038af49747468eedfb49b1551e8d1b4ffdd65f8d1d7a23ba330bdd9e5"
+    },
+    {
+      "file": "../native-play107/maps/map-10786003-1.json",
+      "probe": "../native-play107/maps/probe-10786003-1.json",
+      "seed": 10786003,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "48662edba675e5eac572f058ed00b14b27ab11df1ac3dbbe140cb8f9d8e2e7ef"
+    },
+    {
+      "file": "../native-play107/maps/map-10786003-2.json",
+      "probe": "../native-play107/maps/probe-10786003-2.json",
+      "seed": 10786003,
+      "depth": 2,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "forced": false,
+      "sha256": "86560eb75db1c60ab4a890672b48e0987a367bfc0189a1edb48551234df4dffd"
+    },
+    {
+      "file": "../native-play107/maps/map-10786003-3.json",
+      "probe": "../native-play107/maps/probe-10786003-3.json",
+      "seed": 10786003,
+      "depth": 3,
+      "facility": "wheel",
+      "name": "4기생 관람차",
+      "forced": false,
+      "sha256": "5644fa2ff8ba2335c3b35a1a4e3c8d9ea1b2dc51267e458e9d126cf36d5f8448"
+    },
+    {
+      "file": "../native-play107/maps/map-10786004-1.json",
+      "probe": "../native-play107/maps/probe-10786004-1.json",
+      "seed": 10786004,
+      "depth": 1,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "forced": false,
+      "sha256": "fbad1fc91957255bfdf1ec1faa08b9eddd28e8163afb2c54a2fd814593fcd51a"
+    },
+    {
+      "file": "../native-play107/maps/map-10786004-2.json",
+      "probe": "../native-play107/maps/probe-10786004-2.json",
+      "seed": 10786004,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "fd986faff68dfaa3a49f5c0bb96ef705e1f2a5732275b8a5381d1c03688fa7f7"
+    },
+    {
+      "file": "../native-play107/maps/map-10786004-3.json",
+      "probe": "../native-play107/maps/probe-10786004-3.json",
+      "seed": 10786004,
+      "depth": 3,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "forced": false,
+      "sha256": "f244f9fa9c1b6657057df20c371ff4437afcf1e64916c37a8446e65ebc24bc79"
+    },
+    {
+      "file": "../native-play107/maps/map-10786005-1.json",
+      "probe": "../native-play107/maps/probe-10786005-1.json",
+      "seed": 10786005,
+      "depth": 1,
+      "facility": "dev",
+      "name": "DEV_IS 출장소",
+      "forced": false,
+      "sha256": "25a93da91f96d0ccb70f6703cca44f98e6e3b0999757d46ed29c13dcb1dc30b4"
+    },
+    {
+      "file": "../native-play107/maps/map-10786005-2.json",
+      "probe": "../native-play107/maps/probe-10786005-2.json",
+      "seed": 10786005,
+      "depth": 2,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "forced": false,
+      "sha256": "16a4b8cd0ee6cbbd9ac1cf1085931140ccf955ac1f8cc93d376d589b47fc3a5f"
+    },
+    {
+      "file": "../native-play107/maps/map-10786005-3.json",
+      "probe": "../native-play107/maps/probe-10786005-3.json",
+      "seed": 10786005,
+      "depth": 3,
+      "facility": "market",
+      "name": "5기생 마트",
+      "forced": false,
+      "sha256": "f6bfdd60cc34e055cc65242d67d984d528ad39c1785a0fa9a56c6e3e63316c34"
+    },
+    {
+      "file": "../native-play107/maps/map-10786006-1.json",
+      "probe": "../native-play107/maps/probe-10786006-1.json",
+      "seed": 10786006,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "ccab3ab6d406222f77aa5363825d389a277fb5294ef1a0629d5684069b4ccf65"
+    },
+    {
+      "file": "../native-play107/maps/map-10786006-2.json",
+      "probe": "../native-play107/maps/probe-10786006-2.json",
+      "seed": 10786006,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "378c383cd2acd08e302d89023b2d7b2f9f49821758200a68115354f3de28591f"
+    },
+    {
+      "file": "../native-play107/maps/map-10786006-3.json",
+      "probe": "../native-play107/maps/probe-10786006-3.json",
+      "seed": 10786006,
+      "depth": 3,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "forced": false,
+      "sha256": "db60133f26ec843ffaca8a516dc8c715595dc705736c7887afff41a0958c38ba"
+    },
+    {
+      "file": "../native-play107/maps/map-10786007-1.json",
+      "probe": "../native-play107/maps/probe-10786007-1.json",
+      "seed": 10786007,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "058bb2ff0dea499c6cce26886300c55cdf563998726d10d5149a28ee145f53b0"
+    },
+    {
+      "file": "../native-play107/maps/map-10786007-2.json",
+      "probe": "../native-play107/maps/probe-10786007-2.json",
+      "seed": 10786007,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "592c79a1e02503b674e6b1dc639f0c0cfd560f0cdbdffa756e7efbd33be982a2"
+    },
+    {
+      "file": "../native-play107/maps/map-10786007-3.json",
+      "probe": "../native-play107/maps/probe-10786007-3.json",
+      "seed": 10786007,
+      "depth": 3,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "e383afcffbf6e536b5ef46d66dc5d70a6c3b2158f5689ad222365b247eb53838"
+    },
+    {
+      "file": "../native-play107/maps/map-10786008-1.json",
+      "probe": "../native-play107/maps/probe-10786008-1.json",
+      "seed": 10786008,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "045adeccdb426f6372c7890c948583141a5bf1e94d2d80170d3a3afd494bffec"
+    },
+    {
+      "file": "../native-play107/maps/map-10786008-2.json",
+      "probe": "../native-play107/maps/probe-10786008-2.json",
+      "seed": 10786008,
+      "depth": 2,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "forced": false,
+      "sha256": "8853a64bb248aef3d14ccae2f67d1853c92704c28af08d4eb0056e4dbac567c3"
+    },
+    {
+      "file": "../native-play107/maps/map-10786008-3.json",
+      "probe": "../native-play107/maps/probe-10786008-3.json",
+      "seed": 10786008,
+      "depth": 3,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "8720cded4e810b5e83cfdd8303cc688aa191b78ffa9ec9c5248fefdd68fa202d"
+    },
+    {
+      "file": "../native-play107/maps/map-10786009-1.json",
+      "probe": "../native-play107/maps/probe-10786009-1.json",
+      "seed": 10786009,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "76707528c014bb55b338544a68e755b65895e945ef63fecd12c4b6f7e6efbd2e"
+    },
+    {
+      "file": "../native-play107/maps/map-10786009-2.json",
+      "probe": "../native-play107/maps/probe-10786009-2.json",
+      "seed": 10786009,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "baf6c0838672d13f99894e8c0574600655aae6de641b39f0e8c7c2e54ec48600"
+    },
+    {
+      "file": "../native-play107/maps/map-10786009-3.json",
+      "probe": "../native-play107/maps/probe-10786009-3.json",
+      "seed": 10786009,
+      "depth": 3,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "4c6736141deec3c642d0c3519e59667bea99b4a9352d3d9d4f2c65f68b08d85c"
+    },
+    {
+      "file": "../native-play107/maps/map-10786010-1.json",
+      "probe": "../native-play107/maps/probe-10786010-1.json",
+      "seed": 10786010,
+      "depth": 1,
+      "facility": "fantasy",
+      "name": "3기생 운동장",
+      "forced": false,
+      "sha256": "3cc0402e5e2527e0c5115ba9db210f3c6ecd008f4f1837088a3d68452e67ebe4"
+    },
+    {
+      "file": "../native-play107/maps/map-10786010-2.json",
+      "probe": "../native-play107/maps/probe-10786010-2.json",
+      "seed": 10786010,
+      "depth": 2,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "forced": false,
+      "sha256": "dffbb7f67ad5585b3cc132194c35b8c71d1629c43010398f6d0441b2b5d1ed7e"
+    },
+    {
+      "file": "../native-play107/maps/map-10786010-3.json",
+      "probe": "../native-play107/maps/probe-10786010-3.json",
+      "seed": 10786010,
+      "depth": 3,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "forced": false,
+      "sha256": "cc8c8346ae02a430cc5c78769402e12bbb13d92b80e7c404debe5116dd9db337"
+    },
+    {
+      "file": "../native-play107/maps/map-10786011-1.json",
+      "probe": "../native-play107/maps/probe-10786011-1.json",
+      "seed": 10786011,
+      "depth": 1,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "881d98f28381f81c8b0713d4d5de594997c2a9b5c4a7ebb96b59a57dacd57cfc"
+    },
+    {
+      "file": "../native-play107/maps/map-10786011-2.json",
+      "probe": "../native-play107/maps/probe-10786011-2.json",
+      "seed": 10786011,
+      "depth": 2,
+      "facility": null,
+      "name": "일반 구역",
+      "forced": false,
+      "sha256": "9355fc1d11ebbb54c33ec6d9c723f7d82245030eeb1145fa37462c368232bcec"
+    },
+    {
+      "file": "../native-play107/maps/map-10786011-3.json",
+      "probe": "../native-play107/maps/probe-10786011-3.json",
+      "seed": 10786011,
+      "depth": 3,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "forced": false,
+      "sha256": "e385914b43b72cfc2daecbf76e961dd72d38fd4790f3666b5dee40ac2b34242b"
+    },
+    {
+      "file": "../native-play107/maps/map-10786012-1.json",
+      "probe": "../native-play107/maps/probe-10786012-1.json",
+      "seed": 10786012,
+      "depth": 1,
+      "facility": "fantasy",
+      "name": "3기생 운동장",
+      "forced": false,
+      "sha256": "d517bd6dec589d955006d5cf97c771b182b4ced4cd6fec026ae05267639a5a54"
+    },
+    {
+      "file": "../native-play107/maps/map-10786012-2.json",
+      "probe": "../native-play107/maps/probe-10786012-2.json",
+      "seed": 10786012,
+      "depth": 2,
+      "facility": "dev",
+      "name": "DEV_IS 출장소",
+      "forced": false,
+      "sha256": "4adcaf91dd3547e5a8ce333426c8e15345b8d1cfa74bb577de2869181c115f98"
+    },
+    {
+      "file": "../native-play107/maps/map-10786012-3.json",
+      "probe": "../native-play107/maps/probe-10786012-3.json",
+      "seed": 10786012,
+      "depth": 3,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "forced": false,
+      "sha256": "8b63ec76091770415525a1c8afb0c5f071ba022cf0efd9ffa520dde4b3854669"
+    }
+  ],
+  "playerTiles": [
+    {
+      "atlas": "player",
+      "sx": 985,
+      "sy": 2168,
+      "width": 15,
+      "height": 9,
+      "dx": 13,
+      "dy": 23
+    },
+    {
+      "atlas": "player",
+      "sx": 157,
+      "sy": 2054,
+      "width": 22,
+      "height": 30,
+      "dx": 5,
+      "dy": 2
+    },
+    {
+      "atlas": "player",
+      "sx": 703,
+      "sy": 2179,
+      "width": 16,
+      "height": 16,
+      "dx": 8,
+      "dy": 16
+    },
+    {
+      "atlas": "player",
+      "sx": 503,
+      "sy": 2422,
+      "width": 6,
+      "height": 5,
+      "dx": 13,
+      "dy": 2
+    }
+  ],
+  "nativeDiagonalCornerAllowed": true,
+  "source": "Native107 map/physics; browser-only wall22px121 material replacement.",
+  "validation": "validation.json",
+  "backgroundSource": 107,
+  "nativeAmbientIntegration": false,
+  "browserWallMaterial": 121,
+  "frontHeight": 22,
+  "ambientRevision": 123
+}

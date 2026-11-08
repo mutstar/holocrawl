@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "reason": "same-seed repeat difference",
+  "map": "map-10786005-12.json",
+  "differentKeys": [
+    "features"
+  ]
+}

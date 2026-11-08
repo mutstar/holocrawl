@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "revision": 117,
+  "source115Preserved": true,
+  "targets": [
+    "shopping-bags",
+    "shirt-stack",
+    "hoodie-rack"
+  ],
+  "otherFloorFixturesPixelIdentical": 12,
+  "geometryIdentical": true,
+  "checks": {
+    "contactPoints": 20,
+    "contactConnected": true,
+    "hoodies": [
+      {
+        "ids": [
+          "mori-calliope",
+          "yukihana-lamy",
+          "gigi-murin"
+        ],
+        "minDistance": 174.9085475327035
+      },
+      {
+        "ids": [
+          "nerissa-ravencroft",
+          "minato-aqua",
+          "koseki-bijou"
+        ],
+        "minDistance": 86.16843969807043
+      },
+      {
+        "ids": [
+          "ichijou-ririka",
+          "tokino-sora",
+          "shishiro-botan"
+        ],
+        "minDistance": 123.27611285240948
+      },
+      {
+        "ids": [
+          "roboco-san",
+          "akai-haato",
+          "watson-amelia"
+        ],
+        "minDistance": 136.06616037795732
+      }
+    ],
+    "shirtFloatingOverlayPixels": 0
+  },
+  "garmentSamples": [
+    {
+      "id": "shirt-stack",
+      "name": "멤버색 티셔츠 더미",
+      "fw": 2,
+      "fh": 1,
+      "clothing": [
+        "roboco-san",
+        "cecilia-immergreen",
+        "watson-amelia"
+      ],
+      "colors": [
+        "#D192FE",
+        "#119a5c",
+        "#F8DB92"
+      ]
+    },
+    {
+      "id": "hoodie-rack",
+      "name": "후드 상품 랙",
+      "fw": 2,
+      "fh": 1,
+      "clothing": [
+        "mori-calliope",
+        "yukihana-lamy",
+        "gigi-murin"
+      ],
+      "colors": [
+        "#C90D40",
+        "#6ABADF",
+        "#fdb440"
+      ]
+    }
+  ],
+  "errors": [],
+  "nativeIntegrated": false
+}

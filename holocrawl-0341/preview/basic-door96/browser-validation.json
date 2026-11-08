@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "page": "basic-door96",
+      "scenes": 2,
+      "styles": 2,
+      "statesLoaded": true,
+      "zoom123": true,
+      "mobileOverflow": false
+    },
+    {
+      "page": "holox-door97",
+      "scenes": 2,
+      "styles": 1,
+      "statesLoaded": true,
+      "zoom123": true,
+      "mobileOverflow": false
+    }
+  ],
+  "pageErrors": []
+}

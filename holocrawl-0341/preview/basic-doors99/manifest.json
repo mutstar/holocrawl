@@ -1,0 +1,169 @@
+{
+  "title": "기본문5종 · 단일문/양개문",
+  "revision": 99,
+  "normalWallRevision": 92,
+  "sceneSize": 64,
+  "designs": [
+    {
+      "id": "plate",
+      "name": "1 · 평판 철문",
+      "note": "푸른 철판 · 얕은 눌림",
+      "body": [
+        67,
+        86,
+        97
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "2 · 세로창 철문",
+      "note": "긴 확인창 · 밝은 문짝",
+      "body": [
+        83,
+        105,
+        109
+      ]
+    },
+    {
+      "id": "fire",
+      "name": "3 · 무창 방화문",
+      "note": "회색 철판 · 가로 푸시바",
+      "body": [
+        104,
+        111,
+        106
+      ]
+    },
+    {
+      "id": "reinforced",
+      "name": "4 · 보강 철문",
+      "note": "짙은 강판 · 가로 보강대",
+      "body": [
+        51,
+        66,
+        78
+      ]
+    },
+    {
+      "id": "vent",
+      "name": "5 · 환기구 철문",
+      "note": "탁한 녹회색 · 환기 슬롯",
+      "body": [
+        85,
+        100,
+        88
+      ]
+    }
+  ],
+  "kinds": [
+    {
+      "id": "single",
+      "label": "단일문"
+    },
+    {
+      "id": "double",
+      "label": "양개문"
+    }
+  ],
+  "sameFacingForBothAxes": true,
+  "footprint": [
+    32,
+    32
+  ],
+  "images": {
+    "horizontal": {
+      "closed": {
+        "plate": {
+          "single": "plate-single-horizontal-closed.png",
+          "double": "plate-double-horizontal-closed.png"
+        },
+        "glass": {
+          "single": "glass-single-horizontal-closed.png",
+          "double": "glass-double-horizontal-closed.png"
+        },
+        "fire": {
+          "single": "fire-single-horizontal-closed.png",
+          "double": "fire-double-horizontal-closed.png"
+        },
+        "reinforced": {
+          "single": "reinforced-single-horizontal-closed.png",
+          "double": "reinforced-double-horizontal-closed.png"
+        },
+        "vent": {
+          "single": "vent-single-horizontal-closed.png",
+          "double": "vent-double-horizontal-closed.png"
+        }
+      },
+      "open": {
+        "plate": {
+          "single": "plate-single-horizontal-open.png",
+          "double": "plate-double-horizontal-open.png"
+        },
+        "glass": {
+          "single": "glass-single-horizontal-open.png",
+          "double": "glass-double-horizontal-open.png"
+        },
+        "fire": {
+          "single": "fire-single-horizontal-open.png",
+          "double": "fire-double-horizontal-open.png"
+        },
+        "reinforced": {
+          "single": "reinforced-single-horizontal-open.png",
+          "double": "reinforced-double-horizontal-open.png"
+        },
+        "vent": {
+          "single": "vent-single-horizontal-open.png",
+          "double": "vent-double-horizontal-open.png"
+        }
+      }
+    },
+    "vertical": {
+      "closed": {
+        "plate": {
+          "single": "plate-single-vertical-closed.png",
+          "double": "plate-double-vertical-closed.png"
+        },
+        "glass": {
+          "single": "glass-single-vertical-closed.png",
+          "double": "glass-double-vertical-closed.png"
+        },
+        "fire": {
+          "single": "fire-single-vertical-closed.png",
+          "double": "fire-double-vertical-closed.png"
+        },
+        "reinforced": {
+          "single": "reinforced-single-vertical-closed.png",
+          "double": "reinforced-double-vertical-closed.png"
+        },
+        "vent": {
+          "single": "vent-single-vertical-closed.png",
+          "double": "vent-double-vertical-closed.png"
+        }
+      },
+      "open": {
+        "plate": {
+          "single": "plate-single-vertical-open.png",
+          "double": "plate-double-vertical-open.png"
+        },
+        "glass": {
+          "single": "glass-single-vertical-open.png",
+          "double": "glass-double-vertical-open.png"
+        },
+        "fire": {
+          "single": "fire-single-vertical-open.png",
+          "double": "fire-double-vertical-open.png"
+        },
+        "reinforced": {
+          "single": "reinforced-single-vertical-open.png",
+          "double": "reinforced-double-vertical-open.png"
+        },
+        "vent": {
+          "single": "vent-single-vertical-open.png",
+          "double": "vent-double-vertical-open.png"
+        }
+      }
+    }
+  },
+  "nativeIntegration": false,
+  "reviewStatus": "draft-user-feedback"
+}

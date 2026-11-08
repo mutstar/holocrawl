@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "nativeFloors": 9,
+  "facilitiesCovered": 9,
+  "uniqueGeometries": 9,
+  "checks": [
+    {
+      "facility": "holox",
+      "seed": 1889185305,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 2003,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "theater",
+      "seed": 737511672,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 2311,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "dev",
+      "seed": 1457612763,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 3520,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "dining",
+      "seed": 1019072782,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 3332,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "gamers",
+      "seed": 121319900,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 3642,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "fantasy",
+      "seed": 480427526,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 0,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "wheel",
+      "seed": 1189374571,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 3408,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "market",
+      "seed": 535482548,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 4154,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    },
+    {
+      "facility": "mountain",
+      "seed": 1750758918,
+      "nativeConnected": true,
+      "entrancePreserved": true,
+      "interiorPreservedOutsideContactBand": true,
+      "contactBandPixels": 3122,
+      "nonWallPixelsChanged": 0,
+      "normal92RetainedOutsideFacility": true
+    }
+  ],
+  "frozenInputsUnchanged": true,
+  "originalEngineRestored": true,
+  "normalWallApprovedRevision": 92,
+  "nativeIntegration": false,
+  "scope": "Nine forced single-facility art samples, not a frequency sample.",
+  "normalPlayFrequencyUnchanged": true
+}

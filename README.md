@@ -1,6 +1,8 @@
 # 홀로돌죽 · HoloCrawl
 
-Hololive를 주제로 만드는 턴제 던전 프로젝트. 기반 엔진은 DCSS0.34.1이며, 현재는 브라우저에서 도시 타일·고정 지형·시야·이동을 검토하고 있습니다.
+Hololive를 주제로 만드는 턴제 던전 프로젝트. 기반 엔진은 DCSS0.34.1입니다. 최신 브라우저 검토본은 **124번**이며, 승인한22px 벽과1~7층 거리·상점가 소품, 통로 보호 배치, JP 고정지형9곳의 외벽을 포함합니다. 소품 배치는236개 지도 구조에서416회 검사했고, 시설 문10곳의 열기·진입을 확인했습니다. 실제 네이티브 실행본107과 이후 브라우저 아트·배치 검토본124는 구분합니다.
+
+회사·집에서 이어갈 때는 로컬 수정을 먼저 보관한 뒤 `git pull --ff-only`하고 `OPEN_LATEST_PREVIEW.cmd`를 실행하세요. 다음 작업과 검증 범위는 `CONTINUE_HERE.md` 상단에 있습니다. 브라우저 검토에는 엔진 빌드가 필요하지 않습니다.
 
 잔향도시 4~7층의 고정 지형 미리보기로 [2기생 극장](http://127.0.0.1:8798/theater-vault57/), [holoX 연구소](http://127.0.0.1:8798/holox-floor62/?map=2), [게이머즈 폐역](http://127.0.0.1:8798/gamers-station64/?map=2), [3기생 도타바타 그라운드](http://127.0.0.1:8798/fantasy-ground67/?map=2), [4기생 관람차 광장](http://127.0.0.1:8798/wheel-plaza71/?map=2)이 있습니다. 최신 미리보기에는 페이스 마운틴, 타라후쿠 저니, 네포라보 마트와 DEV_IS 출장소가 추가됐습니다.
 
@@ -17,7 +19,7 @@ Windows에서 `OPEN_LATEST_PREVIEW.cmd`를 실행합니다. Python3가 필요하
 py -3 -m http.server 8798 --bind 127.0.0.1 --directory holocrawl-0341/preview
 ```
 
-[잔향도시 JP·DEV_IS 시설 미리보기](http://127.0.0.1:8798/jp-facilities76/?site=mountain&map=2)를 엽니다.
+[1~3층 실제 지도 위 최신 배치](http://127.0.0.1:8798/city-street124/), [4~7층 랜덤 상점가](http://127.0.0.1:8798/city-market124/), [고정지형9곳 외벽](http://127.0.0.1:8798/facility-exteriors124/)을 엽니다.
 
 다음 작업부터는 이 폴더에서 `git pull --ff-only`로 최신 변경을 받으면 됩니다. 로컬 수정이 남아 있다면 먼저 커밋하거나 별도로 보관합니다.
 
@@ -33,7 +35,7 @@ py -3 -m http.server 8798 --bind 127.0.0.1 --directory holocrawl-0341/preview
 
 최신 설계·미리보기·도트 원화·검증 스크립트, 일부0.24 이관 자료, 수정한0.34.1 엔진의 patch와 추가 파일을 포함합니다. 과거 회사 작업본 전체, ZIP, 로컬 인증정보, 컴파일 결과와 runtime은 포함하지 않습니다.
 
-엔진 원본 저장소는 `holocrawl-0341/engine/upstream`에 복원합니다. 현재 변경분은 `holocrawl-0341/migration/engine0341-git-handoff-20261105`에 있으며, 순정0.34.1에 복원 검증했습니다. 이 스냅샷은 자동 갱신되지 않습니다. 엔진 수정 후에는 push전에 새 patch/overlay도 저장해야 합니다.
+최신 네이티브107 소스 변경분은 `holocrawl-0341/migration/engine0341-play107`의 patch·overlay·해시 목록에 보존되어 있습니다. `BUILD_CITY107.ps1`로 별도 엔진을 복원·빌드하며, 실행·검증·설치 절차는 `holocrawl-0341/design/NATIVE_PLAY107_REVIEW.md`를 확인하세요. `BUILD_CITY.ps1`과 `migration/engine0341-city77`은 이전 엔진 복원용입니다. 실제 실행파일·컴파일 도구·개인 세이브는 Git에 포함하지 않습니다.
 
 브라우저 미리보기는 엔진 빌드 없이 실행됩니다. 실제 게임 빌드는 집PC의 컴파일러·MSYS2환경을 별도로 맞춰야 합니다.
 

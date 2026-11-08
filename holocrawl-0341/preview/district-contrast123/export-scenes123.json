@@ -1,0 +1,31 @@
+{
+  "representativeMarketFocus": {
+    "x": 56,
+    "y": 41,
+    "wallY": 39,
+    "wallX": 55
+  },
+  "earlyCounts": {
+    "theme": "clean-street",
+    "windows": 1,
+    "stands": 0,
+    "serviceUnits": 2,
+    "shutters": 0,
+    "looseTrash": 0,
+    "pipes": 0,
+    "onlyRemovedFloorObstacles": true
+  },
+  "marketCounts": {
+    "theme": "shopping-street",
+    "oldFacades": 87,
+    "addedFacades": 38,
+    "facades": 125,
+    "eligibleFrontCells": 273,
+    "coveredFrontCells": 241,
+    "targetCoverage": 0.88,
+    "actualCoverage": 0.8827838827838828,
+    "openDisplays": 64,
+    "shutters": 58
+  },
+  "comparison": "same seed, terrain, actor position and zoom within each before/after pair"
+}

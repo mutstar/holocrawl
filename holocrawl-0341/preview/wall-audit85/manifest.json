@@ -1,0 +1,708 @@
+{
+  "maps": [
+    {
+      "seed": 802302584,
+      "file": "maps/map-802302584-1.json",
+      "sha256": "c309cdd05cc6dd2012ed377e57c64ad2288383e27e211771264f888d6da3b054"
+    },
+    {
+      "seed": 1179612735,
+      "file": "maps/map-1179612735-1.json",
+      "sha256": "52ec19fe9e12bbcf8fc6272fba7edd330a95c2454a59557135840ece1403e505"
+    },
+    {
+      "seed": 1825433730,
+      "file": "maps/map-1825433730-1.json",
+      "sha256": "a3933d714b6b07d045d114af12f0de48d4c5bfa060ecac3eb96ad4db0e456e2d"
+    },
+    {
+      "seed": 176837577,
+      "file": "maps/map-176837577-1.json",
+      "sha256": "abf548e4a8e3f1e245975d31a634ed085164cf416342f7fb7e1abfdd015ce22e"
+    },
+    {
+      "seed": 242667099,
+      "file": "maps/map-242667099-1.json",
+      "sha256": "77615c15ac87a6a606ec3fdd1fd65396d9575a0e77aa5115dc50ef0defc2fad9"
+    },
+    {
+      "seed": 1829756640,
+      "file": "maps/map-1829756640-1.json",
+      "sha256": "b148154a1e8f2386f84189089d0c77a43c85c81dc45b96fc89f6e54e634aaaa9"
+    },
+    {
+      "seed": 1080306633,
+      "file": "maps/map-1080306633-1.json",
+      "sha256": "a5bc156b318f6ed837d601ce16cf5209666723a8f874ed7a79d860320a33115d"
+    },
+    {
+      "seed": 1266727075,
+      "file": "maps/map-1266727075-1.json",
+      "sha256": "8ad560b6a889bdb34c94df2e2773efe3536482b052fc367ba41cbcf3efbd2cef"
+    },
+    {
+      "seed": 1554810112,
+      "file": "maps/map-1554810112-1.json",
+      "sha256": "cdad0f1191b048991b743f43cd3ab05b9b0c618d82abb01302f79383db6d3031"
+    },
+    {
+      "seed": 475064593,
+      "file": "maps/map-475064593-1.json",
+      "sha256": "c2a684bd7ef0f32d781f0945893aa40e3a092eede1a7acbdd6944d2ca08d82c1"
+    },
+    {
+      "seed": 658813082,
+      "file": "maps/map-658813082-1.json",
+      "sha256": "bf4938050eb102819dc5a658d2ddb4b8e81ee352b72b0c3dec0fca666000980e"
+    },
+    {
+      "seed": 505519033,
+      "file": "maps/map-505519033-1.json",
+      "sha256": "945f3515ff2d221d6613806d3ead93570976f7b3a2542c80277e8eb4bcc83575"
+    },
+    {
+      "seed": 423274459,
+      "file": "maps/map-423274459-1.json",
+      "sha256": "33de696c5b1643ee9248870a8aae1ba05d153398618a5ffbc5b8fb60aaba8c95"
+    },
+    {
+      "seed": 1715885515,
+      "file": "maps/map-1715885515-1.json",
+      "sha256": "d19ee10706f918be7b2a6986ec7a04d4258029d2c874314aca0c35a31dfd1718"
+    },
+    {
+      "seed": 1902911293,
+      "file": "maps/map-1902911293-1.json",
+      "sha256": "9304668e9c3e91d7e3968d332a2f8d3b70d45b37406c5682ca0fe3f36be18bc0"
+    },
+    {
+      "seed": 130864391,
+      "file": "maps/map-130864391-1.json",
+      "sha256": "94baa5d24de7dc77c4183a71ae8b58aa903bfb5e3f07e72a7f5985f04991ae73"
+    },
+    {
+      "seed": 1014792326,
+      "file": "maps/map-1014792326-1.json",
+      "sha256": "6232229edcc7e3bd4b4e2419b9ebda44eca30251300558a0a6f4e9c9bb030943"
+    },
+    {
+      "seed": 1326855241,
+      "file": "maps/map-1326855241-1.json",
+      "sha256": "20b5806b318b6b7d5486bb1cac066f7c486cb59b9b57072ae515ca66dc8f8e20"
+    },
+    {
+      "seed": 1430477342,
+      "file": "maps/map-1430477342-1.json",
+      "sha256": "1232d8f178942147030fd904b07505b2a132b70d0c0fbd72a0a1400965774742"
+    },
+    {
+      "seed": 1666573615,
+      "file": "maps/map-1666573615-1.json",
+      "sha256": "b14f8fec7826b9250a916fe734e6d7ebc445b5938a71c520214f6dac563e5459"
+    },
+    {
+      "seed": 1912394991,
+      "file": "maps/map-1912394991-1.json",
+      "sha256": "42223432c8e1dafecd6a0860e60f0874c04fa0f981fd8b30e8dc41a261d16c0f"
+    },
+    {
+      "seed": 1140305623,
+      "file": "maps/map-1140305623-1.json",
+      "sha256": "65156450b712c04dc66f0a28bb2a99f42ddc0f2f4e786ced0f59df23c1e1c099"
+    },
+    {
+      "seed": 1922039880,
+      "file": "maps/map-1922039880-1.json",
+      "sha256": "e593bc2343a9e14e7d168f1089ac80c338fbdd547eabb8566cef976504cd21fd"
+    },
+    {
+      "seed": 1521591442,
+      "file": "maps/map-1521591442-1.json",
+      "sha256": "d02acb5de8f0f12ca00a022facb7c10b49ae59dc9baea6edc1127e0dd8b99fe9"
+    },
+    {
+      "seed": 1417385941,
+      "file": "maps/map-1417385941-1.json",
+      "sha256": "0372ead0cf7f70fb1c1cfb7479f6fbfff783e1e69b721a5ef974777342d2d2bf"
+    },
+    {
+      "seed": 1907133422,
+      "file": "maps/map-1907133422-1.json",
+      "sha256": "bdbd7cb2f829ee4110c7387976590f8f638793a50289f93a6d05cced686318ae"
+    },
+    {
+      "seed": 701838632,
+      "file": "maps/map-701838632-1.json",
+      "sha256": "309fe57d30f47a2b854d67a67b38e71cbeec33a260ebaff639227885b40498c8"
+    },
+    {
+      "seed": 1659536094,
+      "file": "maps/map-1659536094-1.json",
+      "sha256": "c81a5e15cbdd5f2565f08918010f88ef929b6e2aab2019ebd57b5dab0953fb72"
+    },
+    {
+      "seed": 1443394827,
+      "file": "maps/map-1443394827-1.json",
+      "sha256": "3eff9edfce75f5e125bb62ef9766c89729b2301fa75589dab6e7df302e542a0e"
+    },
+    {
+      "seed": 1693019247,
+      "file": "maps/map-1693019247-1.json",
+      "sha256": "6e3857ef4912e9f6c42821c0323a1586ed34eb09cbd1a93601d45c982b526fdb"
+    },
+    {
+      "seed": 1474858023,
+      "file": "maps/map-1474858023-1.json",
+      "sha256": "0762ae261968757366aecb62d0c8c504764b844c956ef2a1c1351932f151a4cb"
+    },
+    {
+      "seed": 694874516,
+      "file": "maps/map-694874516-1.json",
+      "sha256": "f21d012d5a99098c7b09b2fe14fad97e3ebeb9a2707fd6447096a53ca07b80b0"
+    },
+    {
+      "seed": 1485975082,
+      "file": "maps/map-1485975082-1.json",
+      "sha256": "6e95f2333a931d1c2f6c2608016774b951cec529e0fe13adead5025550bfdf5d"
+    },
+    {
+      "seed": 568073285,
+      "file": "maps/map-568073285-1.json",
+      "sha256": "2b8ab5133aafcb00478dc1dc7f9ff63e10a04bc8c0c1feabe356624982908b93"
+    },
+    {
+      "seed": 745709541,
+      "file": "maps/map-745709541-1.json",
+      "sha256": "b78d33b9a794271e5597e75dba059afd55a0e4dbd4fca50cef66d77c150d54d9"
+    },
+    {
+      "seed": 467043633,
+      "file": "maps/map-467043633-1.json",
+      "sha256": "82ef0839c2bd48dc7d8d07f42757dbe750d924ea46c3f098a7dbe7b0bb90db8f"
+    },
+    {
+      "seed": 980369818,
+      "file": "maps/map-980369818-1.json",
+      "sha256": "ec903f411de27e4a8ec82539e28f9abc8cbcbd28aee63adb4a137c28eb6e6ca0"
+    },
+    {
+      "seed": 1334237818,
+      "file": "maps/map-1334237818-1.json",
+      "sha256": "60da0ce3ed6a9d1442905aa7459e94b11c6b45cb66fbbde33b7ffabd2790055f"
+    },
+    {
+      "seed": 937334087,
+      "file": "maps/map-937334087-1.json",
+      "sha256": "c3587c181fe1301168baeb0096db6cb69ea4b1f2752c98525c3e11855841579d"
+    },
+    {
+      "seed": 308419530,
+      "file": "maps/map-308419530-1.json",
+      "sha256": "87025f3e6096e4c4789b248302c1125a1013718eca3afa1b70ff5c209dc797a5"
+    },
+    {
+      "seed": 494007204,
+      "file": "maps/map-494007204-1.json",
+      "sha256": "aee283d69126e38cfcdcda219ce06a2397ae1325297ebcc5e6021c92753ef39c"
+    },
+    {
+      "seed": 302467216,
+      "file": "maps/map-302467216-1.json",
+      "sha256": "20f9ced9474a61bdf85f09b6b40e23a742e6a7a24c9f56bdf510a1b75812f00b"
+    },
+    {
+      "seed": 1227652132,
+      "file": "maps/map-1227652132-1.json",
+      "sha256": "31a459ff07118809374429e363a80a6bd9c0daed7b5f00b82d4cb34383585208"
+    },
+    {
+      "seed": 1156210961,
+      "file": "maps/map-1156210961-1.json",
+      "sha256": "d56525943b259c28b8e2dfd6ff3b86df5a2690c34414a246477573fb04d0d4e6"
+    },
+    {
+      "seed": 1315705986,
+      "file": "maps/map-1315705986-1.json",
+      "sha256": "e89e6537f6135a634aeece014c1a321e76922f29c4fb328283a8ba67501dbe24"
+    },
+    {
+      "seed": 107910875,
+      "file": "maps/map-107910875-1.json",
+      "sha256": "67386c56c797bfbe70c6e4af55f7b9938d2dd78f504f67a9ccbe39c3bba13f26"
+    },
+    {
+      "seed": 1576624988,
+      "file": "maps/map-1576624988-1.json",
+      "sha256": "46982e41368c20df3629a952128dc3a788445cb981fd2146b2020cee2ec86df9"
+    },
+    {
+      "seed": 410386209,
+      "file": "maps/map-410386209-1.json",
+      "sha256": "db000bfc825bff394b802a549acce32f9af1a94e33a3379bb1396adbce2eb870"
+    },
+    {
+      "seed": 1720555663,
+      "file": "maps/map-1720555663-1.json",
+      "sha256": "60b15e7a9d10baccca28856145e33c509ad248ba4267640f82be4489d3bddad1"
+    },
+    {
+      "seed": 1623849174,
+      "file": "maps/map-1623849174-1.json",
+      "sha256": "9e58df4bd3dea5183291f119251ec1b9718791fabe049e246decc6cac7bca594"
+    },
+    {
+      "seed": 1712001357,
+      "file": "maps/map-1712001357-1.json",
+      "sha256": "51df7ea47645e230d68fd20e058f5de21b18a5af7726c1c4355736a0eabfbb42"
+    },
+    {
+      "seed": 143354339,
+      "file": "maps/map-143354339-1.json",
+      "sha256": "26314457bab269510da90a6c5ff6ccfc53bb5b05706adbf76e5efbf675c6eb4b"
+    },
+    {
+      "seed": 1881767177,
+      "file": "maps/map-1881767177-1.json",
+      "sha256": "503e8169a6dd4f7e47fa58ea808a811b49ed50598b177cfbe75ef9d5ad3fbb40"
+    },
+    {
+      "seed": 386286434,
+      "file": "maps/map-386286434-1.json",
+      "sha256": "59eb0559021f6a3f92bf28108e55fa19a56e24735158e093d124eebe585d1512"
+    },
+    {
+      "seed": 584125811,
+      "file": "maps/map-584125811-1.json",
+      "sha256": "d5a56e4bf4f4dd6b378db343998554e6040ba82b867bca60ecc705ad9358281c"
+    },
+    {
+      "seed": 271664327,
+      "file": "maps/map-271664327-1.json",
+      "sha256": "3590b90f3e25a88706e064c0fcc40a431d66a0501aac24c05a7dc355ced77a52"
+    },
+    {
+      "seed": 880915390,
+      "file": "maps/map-880915390-1.json",
+      "sha256": "7de1facf522080eccfe588cdc97caa1e20758b0a38f6ec1f53e720427d421fa4"
+    },
+    {
+      "seed": 1593983389,
+      "file": "maps/map-1593983389-1.json",
+      "sha256": "efec144cb9987b4656fce8abebad9a845e63b3046aa66890700da4a737e6d5d0"
+    },
+    {
+      "seed": 439514993,
+      "file": "maps/map-439514993-1.json",
+      "sha256": "5770318e90973bc410b12148f8b6a3e01b3e84a2b04b5c5c8e16715d9985dc1a"
+    },
+    {
+      "seed": 1571159222,
+      "file": "maps/map-1571159222-1.json",
+      "sha256": "81cffdacec1eaf049f436dd8ec1c3b856004d019538a70c172cb5e58d8918642"
+    },
+    {
+      "seed": 1704484800,
+      "file": "maps/map-1704484800-1.json",
+      "sha256": "4e8a75d7da393795dc04b1a8ad7b5ff20f2c5e5e548be6c776c2ddb43715206e"
+    },
+    {
+      "seed": 832659690,
+      "file": "maps/map-832659690-1.json",
+      "sha256": "509d8c9ec78f8e750431dd694018191e7d8f58feb13632606327b92c141058a8"
+    },
+    {
+      "seed": 1510675669,
+      "file": "maps/map-1510675669-1.json",
+      "sha256": "9f86437f2f7f23f1cd3fee242db4bee8d535b7491bdcbafc2190eeb40b6376eb"
+    },
+    {
+      "seed": 1266273766,
+      "file": "maps/map-1266273766-1.json",
+      "sha256": "f9dee59926a1b82665c9a75372e4bdc171b93b369aceab25dfc265c0459296c8"
+    },
+    {
+      "seed": 565851735,
+      "file": "maps/map-565851735-1.json",
+      "sha256": "f3fcbf845c24c765091d5755b059fdb4695d5d8a97611e4cbf69b1426559fad8"
+    },
+    {
+      "seed": 777373103,
+      "file": "maps/map-777373103-1.json",
+      "sha256": "deea71410abe7abcd369bc3663fabbf01389939c6552364536cc22633037815b"
+    },
+    {
+      "seed": 1063302407,
+      "file": "maps/map-1063302407-1.json",
+      "sha256": "08e9c81508d82fdb095ce699aec6731c40dd57d0c0e6b8690adc7319cab9764a"
+    },
+    {
+      "seed": 1367395403,
+      "file": "maps/map-1367395403-1.json",
+      "sha256": "106cdfe78bdd09c9d41b6aea4d3febd2d398c72451586c9c9dbe4e61e4d31d6c"
+    },
+    {
+      "seed": 1249360767,
+      "file": "maps/map-1249360767-1.json",
+      "sha256": "4c0b36efba39e6e304ec41f1e2e695fa895274900e2decf14515efb244a066b2"
+    },
+    {
+      "seed": 1319235304,
+      "file": "maps/map-1319235304-1.json",
+      "sha256": "b7072df00fd12589d8b8f4183192d9c24ba2286517a1f52f513a1ab40aa2b423"
+    },
+    {
+      "seed": 1376664529,
+      "file": "maps/map-1376664529-1.json",
+      "sha256": "776e104b01ba5ca5d22c4bec94132997223073937c7eb521112b7cd9ad3a6c71"
+    },
+    {
+      "seed": 454095621,
+      "file": "maps/map-454095621-1.json",
+      "sha256": "66c22b2b22110421da13e2f154062d79c186778c3985e020824f820b3c73a17d"
+    },
+    {
+      "seed": 1312171104,
+      "file": "maps/map-1312171104-1.json",
+      "sha256": "81f6b120f3ad7775edbd7318b5a305dc492abecd2a6f77b1fbfbfdb725aef77f"
+    },
+    {
+      "seed": 1284900638,
+      "file": "maps/map-1284900638-1.json",
+      "sha256": "67d87d2ba41fa599190e623f59bafcba072bd6d02de07122792b34c6de94e0b2"
+    },
+    {
+      "seed": 1403113122,
+      "file": "maps/map-1403113122-1.json",
+      "sha256": "8f6393492441a717384433b1d54013e4f9b03599e67d921d31187b2692f1d59e"
+    },
+    {
+      "seed": 1067413233,
+      "file": "maps/map-1067413233-1.json",
+      "sha256": "35daf28121fd495b734a5229802d910d7e7f6e318c737db85b8e516cca75b05e"
+    },
+    {
+      "seed": 120133791,
+      "file": "maps/map-120133791-1.json",
+      "sha256": "6ba93f2bc5e32ab01f9d3bb800acc0db524a460e68cb453375687f3a2360d0bb"
+    },
+    {
+      "seed": 1888935457,
+      "file": "maps/map-1888935457-1.json",
+      "sha256": "37afcb4fc79804f716c47a0b6995fd5abe407594bf451d75eb09d7eee288f739"
+    },
+    {
+      "seed": 874926033,
+      "file": "maps/map-874926033-1.json",
+      "sha256": "b7d51a0855fb1b8c6f7519cc1807e3f523da8b23aef7f489258d911f440b8858"
+    },
+    {
+      "seed": 422165783,
+      "file": "maps/map-422165783-1.json",
+      "sha256": "623d7d058625c256b26c691067f050fe607de99c9343f6a53a7ac0b5faaad048"
+    },
+    {
+      "seed": 1354453776,
+      "file": "maps/map-1354453776-1.json",
+      "sha256": "df442aab4cfe3d2e9e674c01c4ba8e1f5132b9572de259784fd1e385f3e678ce"
+    },
+    {
+      "seed": 717605327,
+      "file": "maps/map-717605327-1.json",
+      "sha256": "8bb25f2242b54622d72fb885fd693472dabb6030b7749da404f14353787f373c"
+    },
+    {
+      "seed": 723647937,
+      "file": "maps/map-723647937-1.json",
+      "sha256": "9935541efdab9f427897b9ed73542ae1a2da29a19edd6f814f09e3541fb96ed4"
+    },
+    {
+      "seed": 1000754445,
+      "file": "maps/map-1000754445-1.json",
+      "sha256": "69867faa89c6ef270aa9552b6ba9056fd549883ab74ddd30716f2f4d25e72777"
+    },
+    {
+      "seed": 1144467755,
+      "file": "maps/map-1144467755-1.json",
+      "sha256": "d08de2bb1112cc38eb6defd60c8f3401ea3d0a04deb5c5b0f2512c6647abe963"
+    },
+    {
+      "seed": 349152352,
+      "file": "maps/map-349152352-1.json",
+      "sha256": "fb28d1850cea98b5a069eaf401c411ee67f6be04f6e5332390d9b537fc04b75f"
+    },
+    {
+      "seed": 259420348,
+      "file": "maps/map-259420348-1.json",
+      "sha256": "069768514f7ffeb0fc1f95de7780fa140b3484c443a96838e4ab41ec41b457eb"
+    },
+    {
+      "seed": 1983854755,
+      "file": "maps/map-1983854755-1.json",
+      "sha256": "7d9dcf015c0e8c437d773d40e045113b7b652d3035a0b16dfe7485494c6285c2"
+    },
+    {
+      "seed": 1703374669,
+      "file": "maps/map-1703374669-1.json",
+      "sha256": "1b3dab3b95cf706a773a44add49a40614e639f271c7bf3c5d3f2522d6c1c605b"
+    },
+    {
+      "seed": 1268813378,
+      "file": "maps/map-1268813378-1.json",
+      "sha256": "4c19158235ae0ae606a838ec780ef16b4010116e414c7dd2d951e466a8b40dcc"
+    },
+    {
+      "seed": 772554676,
+      "file": "maps/map-772554676-1.json",
+      "sha256": "8631c6b70d1c657f6a5bb9acf0c6e817e69c5bc84c48067b621505b7286b175b"
+    },
+    {
+      "seed": 1784255397,
+      "file": "maps/map-1784255397-1.json",
+      "sha256": "703fa3cd4fdcf67fe6822970b2bdaef25e123b7fb477e933bd3147e7dfaea0a1"
+    },
+    {
+      "seed": 272489605,
+      "file": "maps/map-272489605-1.json",
+      "sha256": "6751051f95f72d453fb0a842f378c3492cb18c7f06b502b64f30a51c9218fdad"
+    },
+    {
+      "seed": 1227422559,
+      "file": "maps/map-1227422559-1.json",
+      "sha256": "351fb49d3b7eef7273b7280d463877f584036d797fb107f4be9581d969d81e20"
+    },
+    {
+      "seed": 927308873,
+      "file": "maps/map-927308873-1.json",
+      "sha256": "0b779eb8e735d4f7bfda1f909cd16a8c3a334b22a909c3b75e0ba030192ec5db"
+    },
+    {
+      "seed": 135815308,
+      "file": "maps/map-135815308-1.json",
+      "sha256": "a00be00bab2c06490b7f281367622db412e778ef9c1f6a8a7d2e797a8af9bec4"
+    },
+    {
+      "seed": 273550569,
+      "file": "maps/map-273550569-1.json",
+      "sha256": "bbe7c988a3def34012903ca12b58d919d79e37b2d85f56b791ca93a53f4e847c"
+    },
+    {
+      "seed": 1790706520,
+      "file": "maps/map-1790706520-1.json",
+      "sha256": "abc3837cfce05724e2ba1ac9e23e0ce34b2802592818260dcb166d7939f6ea09"
+    },
+    {
+      "seed": 381307285,
+      "file": "maps/map-381307285-1.json",
+      "sha256": "8b2d4efff5f4a31b42b5981bd75665019b3c51f9f14c7b05753c12f71fcf2d19"
+    },
+    {
+      "seed": 710047314,
+      "file": "maps/map-710047314-1.json",
+      "sha256": "aa7fabea66a5fe0b2c24326b0bb8099c8b90ea69d5713c79b8579ac5af079957"
+    },
+    {
+      "seed": 178358853,
+      "file": "maps/map-178358853-1.json",
+      "sha256": "ea003a183e1237cbd2a9fee694aef0de389683bf22f9c8f39550ccc07ef798b9"
+    },
+    {
+      "seed": 1579382910,
+      "file": "maps/map-1579382910-1.json",
+      "sha256": "584b3c1d7f09d5ae8fc8b31750ddc515bbbeb1fce924c593d9ccafd0bd2740af"
+    },
+    {
+      "seed": 564940367,
+      "file": "maps/map-564940367-1.json",
+      "sha256": "78a15f2c3025164d2611175b97add3b239456a70679e47c6baa72e9a8d578515"
+    },
+    {
+      "seed": 1554905582,
+      "file": "maps/map-1554905582-1.json",
+      "sha256": "235f2606745f72cb2413c238f2c9fa422dbafddc9bc7813a3da6c486e73a6cda"
+    },
+    {
+      "seed": 458968350,
+      "file": "maps/map-458968350-1.json",
+      "sha256": "3ced65786baaa0bf9d25baaeff4be77bbdee04f0c2f704eb7b812aa05dfb11a9"
+    },
+    {
+      "seed": 305229338,
+      "file": "maps/map-305229338-1.json",
+      "sha256": "d3dd3c5fc5d4d15aa8283ca6b87558fe0ce7e1e53752ebea9f59797d08046cc6"
+    },
+    {
+      "seed": 1050280892,
+      "file": "maps/map-1050280892-1.json",
+      "sha256": "1022a390bd84f7130c7eef54b548c896965dbb8ce46c3cf170016b040bcf8edf"
+    },
+    {
+      "seed": 1664722872,
+      "file": "maps/map-1664722872-1.json",
+      "sha256": "cb7edd5ebbdae6f0b21ea6a536910cb94d82b27a969938d41ec227ec5450bfb6"
+    },
+    {
+      "seed": 269369836,
+      "file": "maps/map-269369836-1.json",
+      "sha256": "af6cd20ffae456bec73a6e3039b3e1fbeeb60a68eb2845d04aa5397e03618bf4"
+    },
+    {
+      "seed": 1574438993,
+      "file": "maps/map-1574438993-1.json",
+      "sha256": "c35b5a5caab464a5b6705cfaf87332baecd9aa7412845fbdeb42a9d7664bec49"
+    },
+    {
+      "seed": 1508266119,
+      "file": "maps/map-1508266119-1.json",
+      "sha256": "e078e53afc17294f1392236e242d68481bd1f818d5eb542035276de472cbaca4"
+    },
+    {
+      "seed": 1116711673,
+      "file": "maps/map-1116711673-1.json",
+      "sha256": "4d61ed95f9e49b2957798e2dcf01e40d10c88b2597483b3d71d1d9089760d179"
+    },
+    {
+      "seed": 926918915,
+      "file": "maps/map-926918915-1.json",
+      "sha256": "b6387b2b001a190e8c745ab27d15f53999dca05b30d0a53f91b3222e38fd65a5"
+    },
+    {
+      "seed": 548613735,
+      "file": "maps/map-548613735-1.json",
+      "sha256": "76db8ce02638737b36f31835224064bc92a5cfa1832c23aa22a68f2438127491"
+    },
+    {
+      "seed": 1490327418,
+      "file": "maps/map-1490327418-1.json",
+      "sha256": "45b5fe2df78d15d8de4722491fc6ea7bd80e640cea5c2e704c3b00f1fc64e2cf"
+    },
+    {
+      "seed": 1684532684,
+      "file": "maps/map-1684532684-1.json",
+      "sha256": "928d0430409b1e28dc2e6716209bd8617ad5078ac546a348c1c3f6765d9cc531"
+    },
+    {
+      "seed": 321748951,
+      "file": "maps/map-321748951-1.json",
+      "sha256": "d522b95249532ab82fef67b7ce0f5b50c91b9f14c5d91a7b0703a3b28e6ba7f1"
+    },
+    {
+      "seed": 1026839173,
+      "file": "maps/map-1026839173-1.json",
+      "sha256": "bef8571a6f03a9e9ebb67f33f634466c6d98beb85bb9c1b234a6189925b84c04"
+    },
+    {
+      "seed": 933412816,
+      "file": "maps/map-933412816-1.json",
+      "sha256": "b85ffaca4c1f3097ff6c6a44cbd6d7b33dc5b28da532e4a581c36bd6496602ec"
+    },
+    {
+      "seed": 813745221,
+      "file": "maps/map-813745221-1.json",
+      "sha256": "e3836a6f8d6a9f4944205bb086878ad4efd77318204348194ea4a4847a101bf0"
+    },
+    {
+      "seed": 1147732713,
+      "file": "maps/map-1147732713-1.json",
+      "sha256": "a980f545d2b46aec304f00eb0101caf2aa486ce68c4754e3f233cfa054c22d16"
+    },
+    {
+      "seed": 1586299466,
+      "file": "maps/map-1586299466-1.json",
+      "sha256": "0e3ee8f7ef9f8986f93c4f62cd0f06b61aa2c4e17f5379d12c51db5fbde388b5"
+    },
+    {
+      "seed": 1190601557,
+      "file": "maps/map-1190601557-1.json",
+      "sha256": "4962b09fac2191ba48ece2eb4b1ec00432021f1faa1432ebd5fb57861fd614c1"
+    },
+    {
+      "seed": 474180507,
+      "file": "maps/map-474180507-1.json",
+      "sha256": "f8b30f35edcc6c39294f125987f15a274070eec9a716a8fd014a900a5c56d628"
+    },
+    {
+      "seed": 1302002330,
+      "file": "maps/map-1302002330-1.json",
+      "sha256": "3372b01c484e9ab742f322e1fc16eccd694962142737676e315697fc056db929"
+    },
+    {
+      "seed": 380188501,
+      "file": "maps/map-380188501-1.json",
+      "sha256": "c9aa9782c69efbeab68e9be383fd73c913e2df0b3223d7067abefac8abecb8b6"
+    },
+    {
+      "seed": 710487017,
+      "file": "maps/map-710487017-1.json",
+      "sha256": "e3a889ef1b010410f4d8ea17545fe114748ecba64375a194cc03b026a02be85d"
+    },
+    {
+      "seed": 168347179,
+      "file": "maps/map-168347179-1.json",
+      "sha256": "5fc01d13d032c21b106e58180948194ae6078cef0f644c2632112062837aa5a8"
+    }
+  ],
+  "wallArtRevision": 84,
+  "inputSha256": {
+    "executable": "2ac32df1d925b258522fa8d986d50b143d1f74d3ccedf9f7cac9497d89c0754c",
+    "atlas": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+    "renderer": "910038449cc92ec6393e3cc4f2bfe9fa93c674dc975e8441e521297224bad1b2"
+  },
+  "source": "128 newly generated native city D:1 floors, facilities excluded for wall review.",
+  "auditSummary": {
+    "status": "passed",
+    "nativeFloors": 128,
+    "uniqueSeeds": 128,
+    "uniqueMaps": 128,
+    "allConnected": true,
+    "allFacilityFree": true,
+    "frozenInputsUnchanged": true,
+    "elapsedSeconds": 51.81,
+    "wallArtRevision": 84,
+    "uniqueMapGeometries": 128,
+    "wallCellsChecked": 565237,
+    "cornersChecked": 55185,
+    "orientationsCovered": 8,
+    "cornerCounts": {
+      "1": 9249,
+      "2": 9375,
+      "4": 9376,
+      "7": 4410,
+      "8": 9274,
+      "11": 4533,
+      "13": 4533,
+      "14": 4435
+    },
+    "observedNeighbourMasks": 241,
+    "observedTextureCases": 1531,
+    "atlasSpritesChecked": 2048,
+    "exhaustiveNeighbourMasks": 256,
+    "topologyAssertions": 28224,
+    "topologyViolations": 0,
+    "realMapVisualSamples": 24,
+    "visualPatternRepresentatives": 241,
+    "patternPages": [
+      "pattern-page01.png",
+      "pattern-page02.png",
+      "pattern-page03.png",
+      "pattern-page04.png"
+    ],
+    "unobservedMasksTestedSynthetically": [
+      34,
+      41,
+      42,
+      45,
+      75,
+      86,
+      91,
+      105,
+      109,
+      146,
+      181,
+      182,
+      210,
+      214,
+      237
+    ],
+    "scope": "All generated wall cells/corners checked against the native atlas; exhaustive surface invariants and 24 visual samples. Not a claim about every possible future visual case."
+  }
+}

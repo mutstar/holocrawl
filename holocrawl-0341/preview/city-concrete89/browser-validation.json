@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "seed": 802302584,
+      "styles": 3,
+      "fullMapFits": true,
+      "zoomAndPan": true,
+      "positionPreservedOnStyleChange": true
+    },
+    {
+      "seed": 920819314,
+      "styles": 3,
+      "fullMapFits": true,
+      "zoomAndPan": true,
+      "positionPreservedOnStyleChange": true
+    }
+  ],
+  "clickToZoom": true,
+  "mobileOverflow": false,
+  "auditedInputsUnchanged": true,
+  "pageErrors": []
+}

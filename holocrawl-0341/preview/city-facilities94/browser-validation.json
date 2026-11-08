@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "facility": "holox",
+      "seed": 1889185305,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "theater",
+      "seed": 737511672,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "dev",
+      "seed": 1457612763,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "dining",
+      "seed": 1019072782,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "gamers",
+      "seed": 121319900,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "fantasy",
+      "seed": 480427526,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "wheel",
+      "seed": 1189374571,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "market",
+      "seed": 535482548,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    },
+    {
+      "facility": "mountain",
+      "seed": 1750758918,
+      "fullMapFits": true,
+      "facilityFocus": true,
+      "samePositionComparison": true
+    }
+  ],
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "originalEnginePreserved": true
+}

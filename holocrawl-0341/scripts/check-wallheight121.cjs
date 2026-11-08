@@ -1,0 +1,35 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),crypto=require('crypto');const{chromium,executablePath,previewURL}=require('./portable-browser-tools.cjs'),R=path.resolve(__dirname,'..'),O=path.join(R,'preview/wall-height121');
+const inputs=JSON.parse(fs.readFileSync(path.join(O,'inputs.json')));function sourceCheck(){for(const[n,h]of Object.entries(inputs.sourceFiles))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(R,n))).digest('hex'),h,n);}sourceCheck();
+const aGen=require('../preview/city-market120/layout115.js'),bGen=require('../preview/city-market121/layout115.js');for(let f=4;f<=7;f++)for(let i=0;i<20;i++)assert.deepEqual(aGen.generate('HEIGHT121-'+i,f,'floor'),bGen.generate('HEIGHT121-'+i,f,'floor'));
+assert.deepEqual(JSON.parse(fs.readFileSync(path.join(R,'preview/city-street121/manifest.json'))).maps,JSON.parse(fs.readFileSync(path.join(R,'preview/city-street120/manifest.json'))).maps);
+(async()=>{const b=await chromium.launch({executablePath,headless:true});try{
+ const p=await b.newPage({viewport:{width:1280,height:1000}}),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.url());});await p.goto(`${previewURL}/city-street121/`);await p.waitForFunction(()=>window.ready,null,{timeout:60000});
+ const planes=await p.evaluate(async()=>{
+  const planes=await(await fetch('../wall-height121/planes121.json')).json(),dirs=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];let pixels=0;
+  for(let mask=0;mask<256;mask++){const cells=Array(25).fill(1);cells[12]=0;dirs.forEach(([dx,dy],bit)=>{if(mask&(1<<bit))cells[(2+dy)*5+2+dx]=0;});const m={w:5,h:5,cells};for(let y=0;y<32;y++)for(let x=0;x<32;x++){if(Number(planes[mask][y*32+x])!==Number(WallHeight121.frontPixel(m,2,2,x,y)))throw Error('Baked front/runtime mount-plane mismatch');pixels++;}}
+  return{masks:256,pixels};
+ });assert.equal(planes.pixels,262144);
+ let units=0,nativeNormalWalls=0,losFrames=0;for(let n=0;n<36;n++){
+  await p.locator('#sample').selectOption(String(n));await p.waitForFunction(n=>window.ready&&play121.getMap().seed===play121.manifest.maps[n].seed&&play121.getMap().depth===play121.manifest.maps[n].depth,n);
+  const a=await p.evaluate(async()=>{
+   const api=play121,m=api.getMap(),plan=api.getAmbience(),images=api.getPropImages(),sprites=api.getWallUnits(),lookup=await(await fetch('../wall-height121/native-lookup121.json')).json();let count=0;
+   for(const f of [...plan.walls,...plan.infra]){const c=f.length?WallMount121.utilitySprite(f,m,sprites):WallMount121.fixtureSprite(f,{...m,seed:String(m.seed),floorNumber:m.depth},images),a=c.getContext('2d').getImageData(0,0,c.width,32).data;let opaque=0;
+    for(let y=0;y<32;y++)for(let x=0;x<c.width;x++)if(a[(y*c.width+x)*4+3]){if(!WallHeight121.allowed(m,f,x,y))throw Error('Prop on coping/side/floor');opaque++;}if(!opaque)throw Error('Missing fixture');count++;
+   }
+   let walls=0;for(const i of m.features){const t=m.palette[i];if(t.atlas==='wall'&&lookup[`${t.sx},${t.sy}`])walls++;}
+   if(api.oracleFrame(0)!==0)throw Error('LOS changed');return{count,walls};
+  });units+=a.count;nativeNormalWalls+=a.walls;losFrames++;
+ }
+ // Compare entire actual native floor at1:1 pixels with localized-height120.
+ const old=await b.newPage({viewport:{width:1280,height:1000}});await old.goto(`${previewURL}/city-street120/`);await old.waitForFunction(()=>window.ready);
+ async function full(page,version){await page.locator('#sample').selectOption('0');await page.waitForFunction(v=>window.ready&&window['play'+v].getMap().depth===1,version);await page.locator('#fog').uncheck();return page.evaluate(v=>{const api=window['play'+v],m=api.getMap(),c=document.getElementById('field');api.focusAmbient('shops');c.width=m.width*32;c.height=m.height*32;document.querySelector('[data-zoom="fit"]').click();return c.toDataURL();},version);}
+ const oldFull=await full(old,120);await full(p,121);
+ const scope=await p.evaluate(async png=>{const c=document.getElementById('field'),m=play121.getMap(),a=c.getContext('2d').getImageData(0,0,c.width,c.height).data,im=await new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.src=png;}),d=document.createElement('canvas');d.width=c.width;d.height=c.height;const q=d.getContext('2d');q.drawImage(im,0,0);const old=q.getImageData(0,0,c.width,c.height).data;let changed=0;for(let y=0;y<c.height;y++)for(let x=0;x<c.width;x++){const i=(y*c.width+x)*4;if(a[i]===old[i]&&a[i+1]===old[i+1]&&a[i+2]===old[i+2])continue;if(m.rows[Math.floor(y/32)][Math.floor(x/32)]!=='#')throw Error('Non-wall native pixel changed');changed++;}return{pixels:c.width*c.height,changed,nonWallChanges:0};},oldFull);assert.ok(scope.changed>0);await old.close();
+ const market=await b.newPage({viewport:{width:1440,height:1100}});market.on('pageerror',e=>errors.push(e.message));await market.goto(`${previewURL}/city-market121/#acrylic`);await market.waitForFunction(()=>window.previewReady);
+ let marketWallFixtures=0;
+ for(let floor=4;floor<=7;floor++){await market.locator(`[data-floor="${floor}"]`).click();assert.ok(await market.evaluate(()=>previewApp.getState().validation.ok));marketWallFixtures+=await market.evaluate(()=>{const m=previewApp.getMap();for(const f of m.marketWalls){const c=WallMount121.fixtureSprite(f,m,images,0),a=c.getContext('2d').getImageData(0,0,c.width,32).data;for(let y=0;y<32;y++)for(let x=0;x<c.width;x++)if(a[(y*c.width+x)*4+3]&&!WallHeight121.allowed(m,f,x,y))throw Error('Market fixture crossed wall planes');}return m.marketWalls.length;});}
+ const oldMarket=await b.newPage({viewport:{width:1440,height:1100}});await oldMarket.goto(`${previewURL}/city-market120/#acrylic`);await oldMarket.waitForFunction(()=>window.previewReady);
+ const floorSprites=page=>page.evaluate(()=>MerchCatalog.filter(m=>m.kind==='floor').map(m=>{const[footW,footH]=MarketGen.footprints[m.id],f={x:0,y:0,type:m.id,footW,footH},c=document.createElement('canvas');c.width=footW*32;c.height=footH*32;Scene117.draw(c.getContext('2d'),f,{seed:'121-PRESERVE',floorNumber:4},images,32,0);return[m.id,c.toDataURL()];}));assert.deepEqual(await floorSprites(market),await floorSprites(oldMarket));await oldMarket.close();
+ await market.setViewportSize({width:390,height:844});assert.ok(await market.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(errors,[]);sourceCheck();
+ const result={status:'passed',revision:121,studyOnly:true,nativeIntegrated:false,frontHeight:22,atlasTiles:2048,planeChecks:planes,streetMaps:36,nativeNormalWallCells:nativeNormalWalls,wallPropsChecked:units,marketWallFixtures,mountOnCapSideFloorPixels:0,fullFloorPixelScope:scope,marketGeometryMaps:80,floorSpritesPixelIdentical:15,firstNativeLOSFrames:losFrames,errors};for(const dir of ['wall-height121','city-street121','city-market121'])fs.writeFileSync(path.join(R,'preview',dir,'validation.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

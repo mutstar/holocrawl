@@ -1,0 +1,144 @@
+{
+  "seed": 920819314,
+  "mapWidth": 80,
+  "mapHeight": 70,
+  "crop": {
+    "x": 45,
+    "y": 24,
+    "width": 22,
+    "height": 16
+  },
+  "sourceMapSha256": "c10b6ba0a03abcaffb3267599d559a28e32c9f237a8a918e0f129df7b631c96e",
+  "description": "Preserved wall renderers reconstructed on the same current native map. Floor and non-wall features are identical.",
+  "stages": [
+    {
+      "id": "original",
+      "title": "초기 · 갈색 전면",
+      "file": "scripts/wall-volume01-before02.js",
+      "original": true,
+      "note": "얇은 벽 입체감 수정 전",
+      "sourceSha256": "01a8097df1986fc8432497098ad15955cdb4e1d15f079a159ff2a5be0d9841e9",
+      "image": "assets/original.png",
+      "sha256": "e3c36484ab5a00e70126d515b65e3ddb4abd426081d75193dc53a3d76d837bdf"
+    },
+    {
+      "id": "volume01",
+      "title": "입체감 01",
+      "file": "scripts/wall-volume01-before02.js",
+      "note": "한 줄 벽의 윗면·옆면 추가",
+      "sourceSha256": "01a8097df1986fc8432497098ad15955cdb4e1d15f079a159ff2a5be0d9841e9",
+      "image": "assets/volume01.png",
+      "sha256": "1342f8b61eda7c1c988e62b4d05dfebb74c966c2131cd3988369b68b81cafd7c"
+    },
+    {
+      "id": "gray02",
+      "title": "회색 콘크리트 02",
+      "file": "scripts/wall-volume02-before03.js",
+      "note": "갈색 정면 대신 회색 재질",
+      "sourceSha256": "c6eb6ae61072bd0f3d5650a16dc9b2ec29ee5ad38c7cfaec6da313cdc6797c35",
+      "image": "assets/gray02.png",
+      "sha256": "26886e386f2288870fb0163c913398427b8061191095c5d8b273b0942b1b14ef"
+    },
+    {
+      "id": "connected03",
+      "title": "연결 벽 통일 03",
+      "file": "scripts/wall-volume03-before04.js",
+      "note": "모서리·갈림길을 같은 재질로 통일",
+      "sourceSha256": "1cc4bb88f575e2ce61a6545271a1e2914f839a6568b88c93a1ca56f671580206",
+      "image": "assets/connected03.png",
+      "sha256": "b7438d5770dc48bdd9f5a0d9d21713e2e6dcbcd24cd4931d3ea3f7d428a334b0"
+    },
+    {
+      "id": "corner04",
+      "title": "모서리 정렬 04",
+      "file": "scripts/wall-volume04-before05.js",
+      "note": "대각 모서리와 옆면 명암 수정",
+      "sourceSha256": "e2da437ba8b4119423cad38c148ca6880bbc9987566f5bc0ed6308391909ea54",
+      "image": "assets/corner04.png",
+      "sha256": "687485175a0adb2a119272f02bb98e99241275d9887342f6d99f864ceb940383"
+    },
+    {
+      "id": "wear05",
+      "title": "균열 추가 05",
+      "file": "scripts/wall-wear05-before06.js",
+      "note": "초기 균열·마모 변형",
+      "sourceSha256": "f091cdba99a4c7bc3ed4dbebab77d210078874848a5c23e3c69c972ca6384bfd",
+      "image": "assets/wear05.png",
+      "sha256": "d8be1efbab048d5281e533bdaa2afa5a3bb8077541707d5632ac9a003f6b4186"
+    },
+    {
+      "id": "wear06",
+      "title": "자연스러운 잔금 06",
+      "file": "scripts/wall-palette-gray-before08.js",
+      "note": "균열의 모양과 대비를 자연스럽게 수정",
+      "sourceSha256": "54e6107526729f6fa7e1365b499598350652ca5158cab85529862443e98795af",
+      "image": "assets/wear06.png",
+      "sha256": "4190270472190b71f65465105e9e5149a8f3f273f28b452e7ce1cfad7c916845"
+    },
+    {
+      "id": "local10",
+      "title": "갈색 복원 · 국소 벽 10",
+      "file": "scripts/wall-local10-before11.js",
+      "note": "기존 큰 벽을 유지하고 얇은 벽만 수정",
+      "sourceSha256": "9ee6b9be528c4c075e02886d93bf1d77b0cbc9b1ca8bd7f54c7ebba6d96b0511",
+      "image": "assets/local10.png",
+      "sha256": "7ded06c11346d16592426e1f4c978aea8fbacc75fa9a99c6b22d7b59831ac038"
+    },
+    {
+      "id": "local11",
+      "title": "국소 벽 11",
+      "file": "scripts/wall-local11-before13.js",
+      "note": "상하로 이어지는 얇은 벽의 연결 수정",
+      "sourceSha256": "087dc0eb415946c4f2fd021895b83202063f4f0373e6470093db15b2c7750022",
+      "image": "assets/local11.png",
+      "sha256": "f8ce33697002dd42ebb151697a7ab383ff78b1333e28b3df3bf230855d7bd509"
+    },
+    {
+      "id": "cap13",
+      "title": "어두운 윗면 13",
+      "file": "scripts/wall-local13-before20.js",
+      "note": "한 칸 벽도 큰 벽과 같은 어두운 윗면",
+      "sourceSha256": "d248c7d5162a5419110490c2beb5c8caefe309d5989479f63b54d1ed06e18395",
+      "image": "assets/cap13.png",
+      "sha256": "4b1bc7fd813dcb2930b317b2465fb8a1b3bf222263dfe91f4467db159cd00ce8"
+    },
+    {
+      "id": "shade20",
+      "title": "ㄱ자 명암 20",
+      "file": "preview/city-batch22/wall-volume.js",
+      "note": "동쪽 옆면 명암을 조정한 기존 도시 벽",
+      "sourceSha256": "1939fb7152764d4b239c4a5bafe2f8eb96cc5d2d14454c0c27c40ca44fd9efe4",
+      "image": "assets/shade20.png",
+      "sha256": "d07a309cd85f258f125617446829f2986b6959d8c4cf767c58d4bc3214bfeaf9"
+    },
+    {
+      "id": "depth80",
+      "title": "전역 명암 80 · 되돌린 안",
+      "file": "preview/city-batch22/wall-volume.js",
+      "extra": "analysis/city-wall81/edge-preview80.js",
+      "note": "모든 벽의 위·왼쪽에 추가 명암을 넣었던 시안",
+      "sourceSha256": "1939fb7152764d4b239c4a5bafe2f8eb96cc5d2d14454c0c27c40ca44fd9efe4",
+      "image": "assets/depth80.png",
+      "sha256": "70eef568d6053240d9d3c1e5f3219b0db9a6b364b18ef715cfdbc384e8a1451d",
+      "extraSha256": "3e3dd1fbe4f5be647da8fe38e663cddd3db517d9bf7186291d0d1f88c4a27bcb"
+    },
+    {
+      "id": "join79",
+      "title": "연결 수정 79 · 이전 기본 벽",
+      "note": "접합부 재수정 전 기본 벽",
+      "image": "assets/join79.png",
+      "sha256": "938ada88e04cd3a74f2573f3017d017d42f39ae567137c336b8f1e44b2f3aa02",
+      "saved": "preview/wall-history83/assets/join79.png",
+      "file": "preview/city-batch22/wall-joins79.js"
+    },
+    {
+      "id": "latest",
+      "title": "최신 · 접합부 수정 84",
+      "note": "윗면 돌출 제거 · 안쪽 측면 연결",
+      "latest": true,
+      "image": "assets/latest.png",
+      "sha256": "1fbf2ead6bc255c8b70d580baee2a239e9df725f457a519be9c90ab280e54b13"
+    }
+  ],
+  "artRevision": 84
+}

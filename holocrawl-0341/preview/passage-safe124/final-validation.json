@@ -1,0 +1,458 @@
+{
+  "status": "passed",
+  "revision": 124,
+  "navigation": {
+    "status": "passed",
+    "revision": 124,
+    "layouts": 416,
+    "expectedLayouts": 416,
+    "distinctGeometries": 236,
+    "existingNativeGeometries": 36,
+    "nativePlacementVariants": 216,
+    "freshBrowserMaps": 200,
+    "unchangedWallsAndFixtures": 416,
+    "previousObjectsInNarrowCells": 543,
+    "totals": {
+      "requested": 6694,
+      "placed": 6621,
+      "relocated": 5786,
+      "omitted": 73,
+      "passable": 352
+    },
+    "maxAnchorDetour": 2,
+    "maxFinalLocalDetour": 2,
+    "failures": [],
+    "scope": "Browser placement. Native36 existing random geometries, six placement variations each; browser market50 new seeds x4 floors. No native engine/save changes. Distances: six anchors to all remaining cells and four local portals, not every possible pair."
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      {
+        "facility": "theater",
+        "doors": [
+          {
+            "x": 45,
+            "y": 43,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          },
+          {
+            "x": 46,
+            "y": 43,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "gamers",
+        "doors": [
+          {
+            "x": 63,
+            "y": 9,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          },
+          {
+            "x": 64,
+            "y": 12,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          },
+          {
+            "x": 64,
+            "y": 14,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "holox",
+        "doors": [
+          {
+            "x": 14,
+            "y": 34,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          },
+          {
+            "x": 17,
+            "y": 40,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "dev",
+        "doors": [
+          {
+            "x": 31,
+            "y": 8,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "dining",
+        "doors": [
+          {
+            "x": 31,
+            "y": 9,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "fantasy",
+        "doors": [],
+        "oracle": 0
+      },
+      {
+        "facility": "wheel",
+        "doors": [
+          {
+            "x": 65,
+            "y": 9,
+            "opened": true,
+            "entered": true,
+            "reached": true
+          }
+        ],
+        "oracle": 0
+      },
+      {
+        "facility": "market",
+        "doors": [],
+        "oracle": 0
+      },
+      {
+        "facility": "mountain",
+        "doors": [],
+        "oracle": 0
+      },
+      {
+        "paper": {
+          "found": true,
+          "type": "paper-rubbish",
+          "moved": true,
+          "walkable": true,
+          "entered": true
+        }
+      },
+      {
+        "floor": 4,
+        "deterministic": true,
+        "route": 128,
+        "passage": {
+          "requested": 25,
+          "placed": 25,
+          "relocated": 18,
+          "omitted": 0,
+          "passable": 0,
+          "protectedCells": 1914,
+          "narrowCells": 44,
+          "maxAnchorDetour": 2,
+          "maxLocalDetour": 2,
+          "rejections": {
+            "new-one-cell-width": 8,
+            "protected-or-occupied": 28,
+            "global-detour": 10,
+            "object-spacing": 5
+          }
+        }
+      },
+      {
+        "floor": 5,
+        "deterministic": true,
+        "route": 125,
+        "passage": {
+          "requested": 31,
+          "placed": 31,
+          "relocated": 27,
+          "omitted": 0,
+          "passable": 1,
+          "protectedCells": 2116,
+          "narrowCells": 134,
+          "maxAnchorDetour": 2,
+          "maxLocalDetour": 2,
+          "rejections": {
+            "protected-or-occupied": 42,
+            "new-one-cell-width": 10,
+            "two-cell-lane-split": 1,
+            "object-spacing": 7,
+            "global-detour": 8
+          }
+        }
+      },
+      {
+        "floor": 6,
+        "deterministic": true,
+        "route": 126,
+        "passage": {
+          "requested": 31,
+          "placed": 31,
+          "relocated": 25,
+          "omitted": 0,
+          "passable": 2,
+          "protectedCells": 1992,
+          "narrowCells": 112,
+          "maxAnchorDetour": 2,
+          "maxLocalDetour": 2,
+          "rejections": {
+            "protected-or-occupied": 106,
+            "new-one-cell-width": 12,
+            "global-detour": 45,
+            "object-spacing": 22,
+            "two-cell-lane-split": 1,
+            "local-detour": 1
+          }
+        }
+      },
+      {
+        "floor": 7,
+        "deterministic": true,
+        "route": 120,
+        "passage": {
+          "requested": 25,
+          "placed": 25,
+          "relocated": 23,
+          "omitted": 0,
+          "passable": 5,
+          "protectedCells": 2537,
+          "narrowCells": 180,
+          "maxAnchorDetour": 2,
+          "maxLocalDetour": 2,
+          "rejections": {
+            "protected-or-occupied": 71,
+            "new-one-cell-width": 3,
+            "object-spacing": 11,
+            "global-detour": 8,
+            "two-cell-lane-split": 4,
+            "local-detour": 9
+          }
+        }
+      }
+    ],
+    "errors": [],
+    "scope": "Browser9 facilities door use / native FOV first frame each;4 floor deterministic replay / route / passable paper actual movement."
+  },
+  "regressions": {
+    "status": "passed",
+    "checks": [
+      {
+        "name": "1-cell straight corridor",
+        "passed": true
+      },
+      {
+        "name": "2-cell straight corridor",
+        "passed": true
+      },
+      {
+        "name": "door/stair buffer3",
+        "passed": true
+      },
+      {
+        "name": "paper debris walkable footprint",
+        "passed": true
+      },
+      {
+        "name": "concave L-corner clearance",
+        "passed": true
+      },
+      {
+        "name": "native placement deterministic replay",
+        "passed": true
+      }
+    ]
+  },
+  "facilityExteriors": {
+    "status": "passed",
+    "revision": 124,
+    "facilities": 9,
+    "checks": [
+      {
+        "facility": "holox",
+        "mapSha256": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b",
+        "perimeterPixels": 31744,
+        "decalPixels": 1456,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "laplus",
+          "lui",
+          "koyori",
+          "chloe",
+          "iroha"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "theater",
+        "mapSha256": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7",
+        "perimeterPixels": 26624,
+        "decalPixels": 2712,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "ayame",
+          "choco",
+          "subaru"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "dev",
+        "mapSha256": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed",
+        "perimeterPixels": 31744,
+        "decalPixels": 1194,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "kanade",
+          "ririka",
+          "raden",
+          "hajime"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "dining",
+        "mapSha256": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19",
+        "perimeterPixels": 31744,
+        "decalPixels": 977,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "aki",
+          "haato",
+          "fubuki",
+          "matsuri"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "gamers",
+        "mapSha256": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d",
+        "perimeterPixels": 31744,
+        "decalPixels": 2072,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "fubuki",
+          "mio"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "fantasy",
+        "mapSha256": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d",
+        "perimeterPixels": 0,
+        "decalPixels": 0,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "noel",
+          "marine",
+          "pekora",
+          "flare"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "wheel",
+        "mapSha256": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4",
+        "perimeterPixels": 31744,
+        "decalPixels": 600,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "kanata",
+          "luna",
+          "watame",
+          "towa"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "market",
+        "mapSha256": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613",
+        "perimeterPixels": 31744,
+        "decalPixels": 1000,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "lamy",
+          "nene",
+          "botan",
+          "polka"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      },
+      {
+        "facility": "mountain",
+        "mapSha256": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664",
+        "perimeterPixels": 31744,
+        "decalPixels": 5360,
+        "allInteriorAndDoorPixelsPreserved": true,
+        "memberBoxesExact": [
+          "sora",
+          "roboco",
+          "azki",
+          "miko",
+          "suisei"
+        ],
+        "ordinaryWall121OutsideExplicitInsets": true,
+        "geometryUnchanged": true
+      }
+    ],
+    "scope": "Explicit exterior decals only; interior/doors/geometry frozen; browser hook uses approved wall121."
+  },
+  "frozenInputsUnchanged": true,
+  "nativeIntegrated": false,
+  "saveFilesTouched": false,
+  "finalTooltipCheck": "passed: paper debris hover identifies passability",
+  "implementationHashes": {
+    "preview\\passage-safe124\\market124.js": "b7a591da5495053a49279da7f56982e0197c156f33889d246f9aced55ce2ce87",
+    "preview\\passage-safe124\\passage124.js": "349b43b349b3fcbb2c2af6dc9c5d8f42c2bdbe632614b7553bd58295ad9f32ea",
+    "preview\\passage-safe124\\street124.js": "f36bdc6e52c46d3435194182cff7512f66b12cc2d7a9bcaa2071e73869575019",
+    "preview\\facility-exteriors124\\facility124.js": "c45c62ed441022df9d561cb8e9161cf664512283c66c4d395f0bbc88f41ef8c4",
+    "preview\\city-street124\\ambient118.js": "75c6d6fea2a379c747e34a340d6aaed1af042b75bb133ff12c6354235eeebce1",
+    "preview\\city-street124\\review124.js": "502fb901180beedcd7de8b09415a5fae81240741e46c2a51ffb8166a2b1a962e",
+    "preview\\city-market124\\app.js": "10fb4900f2423886650b00e1f04a438b9ab02080dc4a68853fd0afc2cbcfc4d3",
+    "preview\\city-market124\\generator.js": "4c0a41f91ab81bce4af846597855f819d05c8bad02f7eb287376d640390edf09",
+    "preview\\city-market124\\layout115.js": "21d4f59579823bd2231d20363422c8f6e83bd53cb2a40e9d3ec29fe9fd391e41",
+    "preview\\city-market124\\market-generator.js": "d93d38dc78f587ce73ab0de789190f0166dd5b1bae825f8e677c12d1605a8f7d",
+    "preview\\city-market124\\market-profiles.js": "9675abbd9a42a051e269b3712183367a0e3112791d9adab34060f4c41639953f",
+    "preview\\city-market124\\market-stock.js": "1aa0d61856f8233ec78881ed9c237ea178eb653fb29db432169baf4619c6ee5f",
+    "preview\\city-market124\\material108.js": "8d792b2ac8b71de2a8d5c6330fb5abc1d75bd12456263714ca4dd1423b8862b8",
+    "preview\\city-market124\\members.js": "f6103972af831e1c79046aa77f787459e8fb41d0a500ca86f1a5290524abb476",
+    "preview\\city-market124\\merch-catalog.js": "c64e42ba15b50b7fe59faa81f96764dd1c54f41153683dfafaf1087a77d98285",
+    "preview\\city-market124\\pixel-reducer.js": "a12bdf145180e4c10d7b43fc190f47b0b1117c84e80f5a44ddbc4a91a7a9438b",
+    "preview\\city-market124\\random-floor.js": "e651bbbe4415d66984d0ce90d18ab28d3866ad6cc3102ad06c9f0b9fd004a6bf",
+    "preview\\city-market124\\scene112.js": "ebd8b84e22ae001ed8e572a8cbb1c8edc131136bbba3527b624c0109ed5d562a",
+    "preview\\city-market124\\scene115.js": "84a3e40fdfc2ce0fdbaa25ade5fb65b5ce260c75a8fbe6cccab1761b90a80982",
+    "preview\\city-market124\\scene117.js": "7331afe3391db2753fca7e21d77b1a8b0a92236ce53faffe817696b1d3a889ca",
+    "preview\\city-market124\\visibility-paths.js": "423392f4462c6031a39397d1acbb4aa6bf5c3d4c68aae11a61bc1464d9f9c5bf",
+    "preview\\city-market124\\visibility.js": "b0401059be21b8e6bcd07d3b320a0cdc3865c274ffb44871def6286ffd63c880",
+    "preview\\city-market124\\wear109.js": "d2ce8a31276b65f49eef0acfa04409d22a2205a062db8d7ecd8c240406efff1f",
+    "preview\\city-market124\\wear110.js": "f3614f9b67420d78f2019db36057fe129b2145e972940bb77df561a7217f2e5e"
+  }
+}

@@ -2,10 +2,15 @@
   "id": "jp-dev-is-branch",
   "name": "DEV_IS 쵸베리바 출장소",
   "width": 9, "height": 9,
-  "rows": ["#########", "#..FFF..#", "#..FFF..#", "#.......#", "#.F...F.#", "#.......#", "#GGG+GGG#", "#.......#", "######.##"],
+  "rows": ["#########", "#.FFFF..#", "#.FFFF..#", "#......F#", "#FF...FF#", "#F.....F#", "#GGGG+GG#", "#F......#", "######.##"],
   "stations": [
-    {"id": "stage", "member": "출장소", "name": "미니 스테이지", "motif": "다섯 색 조명이 들어오는 작은 무대. 무대 오른쪽 통로에서 보상에 닿을 수 있다.", "x": 3, "y": 1, "w": 3, "h": 2, "color": "#c1a7d7", "sprite": false},
-    {"id": "desk", "member": "출장소", "name": "방송 조작대", "motif": "무대 앞의 작은 카메라와 방송 조작대.", "x": 6, "y": 4, "w": 1, "h": 1, "color": "#c4a9c9", "sprite": false}
+    {"id": "stage", "member": "출장소", "name": "라이브 스테이지", "motif": "분홍과 청록 파형이 켜진 LED 스크린. 스피커 사이에 마이크 두 대가 서 있다.", "x": 2, "y": 1, "w": 4, "h": 2, "color": "#d286b4", "sprite": false},
+    {"id": "desk", "member": "출장소", "name": "녹음 조작대", "motif": "무대 왼쪽의 믹서, 레벨 미터와 모니터 두 대.", "x": 1, "y": 4, "w": 2, "h": 1, "color": "#87bbc5", "sprite": false},
+    {"id": "pipes", "member": "출장소", "name": "환기 배관", "motif": "홀로도리 출장소의 측면 배관을 참고한 설비. 굽은 청보라색 관이 환기구에 이어진다.", "x": 6, "y": 4, "w": 2, "h": 1, "color": "#a699c1", "sprite": false},
+    {"id": "kanade", "member": "카나데", "name": "연주용 건반", "motif": "녹음 조작대 아래에 노란 테두리의 전자 건반과 펼친 악보가 있다.", "x": 1, "y": 5, "w": 1, "h": 1, "color": "#dfc376", "sprite": false},
+    {"id": "ririka", "member": "리리카", "name": "CEO 접수대", "motif": "로비의 분홍 접수대에 큼직한 CEO 명패와 빌딩 야경 액자가 있다.", "x": 1, "y": 7, "w": 1, "h": 1, "color": "#ed9bbd", "sprite": false},
+    {"id": "raden", "member": "라덴", "name": "노멘 전시대", "motif": "청록색 전시대에 라덴의 노멘이 놓여 있다. 가운데로 갈라진 머리선과 높은 회색 눈썹, 붉은 입이 보인다.", "x": 7, "y": 3, "w": 1, "h": 1, "color": "#8fd1b0", "sprite": false},
+    {"id": "hajime", "member": "하지메", "name": "반펜 연습 코너", "motif": "번개가 그려진 보라색 연습 매트 위에 반펜 인형이 앉아 있다.", "x": 7, "y": 5, "w": 1, "h": 1, "color": "#b0a1d8", "sprite": false}
   ],
   "interiorFeatures": [],
   "encounterSlots": [{"x": 4, "y": 4, "role": "elite", "implemented": false}],

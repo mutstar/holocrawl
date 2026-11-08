@@ -1,0 +1,559 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "facility": "theater",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -2114,
+          "oy": -1982
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 44,
+            "y": 37,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 45,
+            "y": 37,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "gamers",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -3458,
+          "oy": -62
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 65,
+            "y": 7,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 64,
+            "y": 8,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "holox",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -322,
+          "oy": -1726
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 17,
+            "y": 33,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 18,
+            "y": 33,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "dev",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -1090,
+          "oy": 194
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 32,
+            "y": 3,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 33,
+            "y": 3,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "dining",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -1218,
+          "oy": -62
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 30,
+            "y": 7,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 33,
+            "y": 7,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "fantasy",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": 190,
+          "oy": -1662
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 8,
+            "y": 32,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 9,
+            "y": 32,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "wheel",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -3202,
+          "oy": 66
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 61,
+            "y": 5,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 62,
+            "y": 5,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "market",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -1090,
+          "oy": 194
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 28,
+            "y": 3,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 30,
+            "y": 3,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    },
+    {
+      "facility": "mountain",
+      "nativeGeometryExact": true,
+      "losMatches": true,
+      "doorGroups": true,
+      "actorLayerScope": {
+        "changed": 3884,
+        "outside": 0,
+        "box": [
+          1000000000,
+          1000000000,
+          0,
+          0
+        ],
+        "examples": [],
+        "view": {
+          "s": 2,
+          "ox": -258,
+          "oy": 194
+        },
+        "actors": [
+          {
+            "kind": "monster",
+            "x": 20,
+            "y": 3,
+            "tiles": [
+              {
+                "atlas": "player",
+                "sx": 31,
+                "sy": 1734,
+                "width": 31,
+                "height": 32,
+                "dx": 1,
+                "dy": 0
+              }
+            ]
+          },
+          {
+            "kind": "item",
+            "x": 14,
+            "y": 4,
+            "tiles": [
+              {
+                "atlas": "main",
+                "sx": 234,
+                "sy": 602,
+                "width": 25,
+                "height": 27,
+                "dx": 7,
+                "dy": 2
+              }
+            ]
+          }
+        ],
+        "canvas": [
+          1340,
+          835
+        ]
+      },
+      "fullMap": true
+    }
+  ],
+  "browserNativeLosComparisons": 37,
+  "facilityDoorGroupsTested": 10,
+  "actorLayerCases": 9,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

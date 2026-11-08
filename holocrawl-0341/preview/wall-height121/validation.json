@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": 121,
+  "studyOnly": true,
+  "nativeIntegrated": false,
+  "frontHeight": 22,
+  "atlasTiles": 2048,
+  "planeChecks": {
+    "masks": 256,
+    "pixels": 262144
+  },
+  "streetMaps": 36,
+  "nativeNormalWallCells": 156764,
+  "wallPropsChecked": 468,
+  "marketWallFixtures": 303,
+  "mountOnCapSideFloorPixels": 0,
+  "fullFloorPixelScope": {
+    "pixels": 5734400,
+    "changed": 155405,
+    "nonWallChanges": 0
+  },
+  "marketGeometryMaps": 80,
+  "floorSpritesPixelIdentical": 15,
+  "firstNativeLOSFrames": 36,
+  "errors": []
+}

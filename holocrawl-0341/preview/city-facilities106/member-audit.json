@@ -1,0 +1,520 @@
+{
+  "facilities": 7,
+  "members": 30,
+  "missing": 0,
+  "retained": 26,
+  "improved": 4,
+  "checks": [
+    {
+      "facility": "holox",
+      "id": "laplus",
+      "name": "라플라스",
+      "motif": "뿔·사슬 봉인 격납고",
+      "box": [
+        32,
+        32,
+        96,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "holox-laplus-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "holox",
+      "id": "lui",
+      "name": "루이",
+      "motif": "붉은 매 관제 단말",
+      "box": [
+        160,
+        32,
+        192,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "holox-lui-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "holox",
+      "id": "koyori",
+      "name": "코요리",
+      "motif": "분홍 시약 연구대",
+      "box": [
+        128,
+        128,
+        192,
+        160
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "holox-koyori-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "holox",
+      "id": "chloe",
+      "name": "클로에",
+      "motif": "잠수 장비 거치대",
+      "box": [
+        32,
+        160,
+        64,
+        224
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "holox-chloe-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "holox",
+      "id": "iroha",
+      "name": "이로하",
+      "motif": "카타나·검문기",
+      "box": [
+        160,
+        224,
+        192,
+        256
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "holox-iroha-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dev",
+      "id": "kanade",
+      "name": "카나데",
+      "motif": "연주용 건반",
+      "box": [
+        32,
+        160,
+        64,
+        192
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dev-kanade-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dev",
+      "id": "ririka",
+      "name": "리리카",
+      "motif": "CEO 접수대",
+      "box": [
+        32,
+        224,
+        64,
+        256
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dev-ririka-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dev",
+      "id": "raden",
+      "name": "라덴",
+      "motif": "노멘 전시대",
+      "box": [
+        224,
+        96,
+        256,
+        128
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dev-raden-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dev",
+      "id": "hajime",
+      "name": "하지메",
+      "motif": "반펜 연습 코너",
+      "box": [
+        224,
+        160,
+        256,
+        192
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dev-hajime-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dining",
+      "id": "aki",
+      "name": "아키로제",
+      "motif": "장미 꽃병",
+      "box": [
+        64,
+        160,
+        96,
+        224
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dining-aki-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dining",
+      "id": "haato",
+      "name": "하쨔마",
+      "motif": "거미 라면",
+      "box": [
+        96,
+        80,
+        128,
+        128
+      ],
+      "present": true,
+      "decision": "visibility-improved",
+      "detailImage": "dining-haato-detail.png",
+      "unchangedFrom105": false,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dining",
+      "id": "fubuki",
+      "name": "후부키",
+      "motif": "흰여우 찻주전자",
+      "box": [
+        160,
+        160,
+        192,
+        224
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dining-fubuki-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "dining",
+      "id": "matsuri",
+      "name": "마츠리",
+      "motif": "에비프라이온 접시",
+      "box": [
+        192,
+        80,
+        224,
+        128
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "dining-matsuri-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "fantasy",
+      "id": "noel",
+      "name": "노엘",
+      "motif": "방패 타격 연습대",
+      "box": [
+        32,
+        128,
+        64,
+        160
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "fantasy-noel-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "fantasy",
+      "id": "marine",
+      "name": "마린",
+      "motif": "해적기 결승 표지",
+      "box": [
+        224,
+        128,
+        256,
+        160
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "fantasy-marine-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "fantasy",
+      "id": "pekora",
+      "name": "페코라",
+      "motif": "노우사기 훈련 표적",
+      "box": [
+        32,
+        192,
+        64,
+        224
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "fantasy-pekora-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "fantasy",
+      "id": "flare",
+      "name": "후레아",
+      "motif": "궁술 연습대",
+      "box": [
+        224,
+        192,
+        256,
+        224
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "fantasy-flare-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "wheel",
+      "id": "kanata",
+      "name": "카나타",
+      "motif": "천사 날개·고리 곤돌라",
+      "box": [
+        77,
+        70,
+        124,
+        112
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "wheel-kanata-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "wheel",
+      "id": "luna",
+      "name": "루나",
+      "motif": "왕관 곤돌라",
+      "box": [
+        139,
+        70,
+        171,
+        112
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "wheel-luna-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "wheel",
+      "id": "watame",
+      "name": "와타메",
+      "motif": "양뿔·양 귀 곤돌라",
+      "box": [
+        79,
+        136,
+        123,
+        170
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "wheel-watame-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "wheel",
+      "id": "towa",
+      "name": "토와",
+      "motif": "악마 귀·날개 곤돌라",
+      "box": [
+        136,
+        136,
+        180,
+        170
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "wheel-towa-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "market",
+      "id": "lamy",
+      "name": "라미",
+      "motif": "설야월 술병·눈꽃 라벨",
+      "box": [
+        32,
+        32,
+        64,
+        96
+      ],
+      "present": true,
+      "decision": "visibility-improved",
+      "detailImage": "market-lamy-detail.png",
+      "unchangedFrom105": false,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "market",
+      "id": "nene",
+      "name": "네네",
+      "motif": "복숭아 젤리",
+      "box": [
+        32,
+        160,
+        96,
+        192
+      ],
+      "present": true,
+      "decision": "visibility-improved",
+      "detailImage": "market-nene-detail.png",
+      "unchangedFrom105": false,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "market",
+      "id": "botan",
+      "name": "보탄",
+      "motif": "흰 사자 컵라면",
+      "box": [
+        192,
+        64,
+        224,
+        128
+      ],
+      "present": true,
+      "decision": "visibility-improved",
+      "detailImage": "market-botan-detail.png",
+      "unchangedFrom105": false,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "market",
+      "id": "polka",
+      "name": "폴카",
+      "motif": "서커스 팝콘",
+      "box": [
+        128,
+        128,
+        160,
+        160
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "market-polka-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "mountain",
+      "id": "sora",
+      "name": "소라",
+      "motif": "암벽 부조 · 긴 머리와 별 장식",
+      "box": [
+        64,
+        0,
+        96,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "mountain-sora-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "mountain",
+      "id": "roboco",
+      "name": "로보코",
+      "motif": "암벽 부조 · 단발과 안경",
+      "box": [
+        96,
+        0,
+        128,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "mountain-roboco-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "mountain",
+      "id": "azki",
+      "name": "AZKi",
+      "motif": "암벽 부조 · 긴 생머리",
+      "box": [
+        128,
+        0,
+        160,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "mountain-azki-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "mountain",
+      "id": "miko",
+      "name": "미코",
+      "motif": "암벽 부조 · 분홍 머리와 무녀 옷",
+      "box": [
+        160,
+        0,
+        192,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "mountain-miko-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    },
+    {
+      "facility": "mountain",
+      "id": "suisei",
+      "name": "스이세이",
+      "motif": "암벽 부조 · 푸른 머리와 체크 의상",
+      "box": [
+        192,
+        0,
+        224,
+        64
+      ],
+      "present": true,
+      "decision": "retained",
+      "detailImage": "mountain-suisei-detail.png",
+      "unchangedFrom105": true,
+      "evidence": "Visual review at native scale and3x crop against original facility motif data."
+    }
+  ],
+  "scope": "Existing project roster only. Artistic visibility review, not user recognition testing or campaign validation."
+}

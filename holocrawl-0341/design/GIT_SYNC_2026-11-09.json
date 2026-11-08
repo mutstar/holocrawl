@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-09",
+  "branch": "main",
+  "remote": "https://github.com/mutstar/holocrawl.git",
+  "latestBrowserRevision": 124,
+  "nativeSourceSnapshotRevision": 107,
+  "newAndModifiedFilesBeforeAudit": 12360,
+  "rawMiB": 1239.99,
+  "maxSingleFileMiB": 3.83,
+  "textFilesScanned": 5583,
+  "secretSignatureFindings": [],
+  "textOver8MiBSkipped": [],
+  "scope": "Known token/private-key/authenticated-URL signatures in candidate text files. Not an exhaustive proof of absence. Images and binary data excluded.",
+  "snapshotPatchHashMatches": true,
+  "snapshotOverlayAndCurrentEngineFilesMatch": 2884,
+  "placementValidation": "passed /416 placements /236 geometries",
+  "nativeRuntimeAndPrivateSavesExcluded": true,
+  "hashSensitiveStagedFilesMatchWorkingBytes": 2926,
+  "stagedFiles": 12362,
+  "embeddedGitRepositories": 0,
+  "excludedPathViolations": 0,
+  "whitespaceReview": {
+    "fullDiffExit": 2,
+    "findings": 103,
+    "details": "Preserved original patch context marker spaces and historical/generated preview whitespace; not changed to retain recorded hashes. No source validation failure."
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "revision": 116,
+  "sourceArtRevision": 115,
+  "objects": 13,
+  "scale": 3,
+  "playerAndPropsSameScale": true,
+  "originalAssetsModified": false,
+  "groups": [
+    {
+      "id": "merchandise",
+      "ids": [
+        "shirt-stack",
+        "hoodie-rack",
+        "plush-basket",
+        "poster-rolls",
+        "keychain-hooks",
+        "badge-trays",
+        "shopping-bags"
+      ],
+      "export": {
+        "rows": [
+          {
+            "id": "shirt-stack",
+            "name": "멤버색 티셔츠 더미",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              38,
+              20
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "hoodie-rack",
+            "name": "후드 상품 랙",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              40,
+              22
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "plush-basket",
+            "name": "봉제인형 바구니",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              20,
+              23
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "poster-rolls",
+            "name": "포스터 묶음",
+            "footprint": [
+              1,
+              1
+            ],
+            "art": [
+              21,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "keychain-hooks",
+            "name": "키링 걸이",
+            "footprint": [
+              1,
+              1
+            ],
+            "art": [
+              20,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "badge-trays",
+            "name": "캔배지 진열판",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              38,
+              18
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "shopping-bags",
+            "name": "굿즈 쇼핑백",
+            "footprint": [
+              1,
+              1
+            ],
+            "art": [
+              21,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          }
+        ],
+        "width": 960,
+        "height": 864
+      }
+    },
+    {
+      "id": "delivery-street",
+      "ids": [
+        "open-carton",
+        "delivery-cart",
+        "folding-crates",
+        "trash-bags",
+        "paper-rubbish",
+        "recycling-bins"
+      ],
+      "export": {
+        "rows": [
+          {
+            "id": "open-carton",
+            "name": "개봉한 상품 상자",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              29,
+              23
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "delivery-cart",
+            "name": "배송 카트",
+            "footprint": [
+              1,
+              1
+            ],
+            "art": [
+              18,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "folding-crates",
+            "name": "접이식 물류 상자",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              25,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "trash-bags",
+            "name": "쓰레기봉투 더미",
+            "footprint": [
+              1,
+              1
+            ],
+            "art": [
+              26,
+              23
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "paper-rubbish",
+            "name": "포장지·종이 쓰레기",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              44,
+              24
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          },
+          {
+            "id": "recycling-bins",
+            "name": "분리수거함",
+            "footprint": [
+              2,
+              1
+            ],
+            "art": [
+              24,
+              25
+            ],
+            "playerTile": [
+              32,
+              32
+            ]
+          }
+        ],
+        "width": 960,
+        "height": 648
+      }
+    }
+  ]
+}

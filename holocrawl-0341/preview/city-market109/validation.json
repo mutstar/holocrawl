@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "revision": 109,
+  "source108Preserved": true,
+  "cleanModePixelIdenticalTo108": true,
+  "geometryUnchanged": true,
+  "floorPixelsChanged": 0,
+  "levels": [
+    {
+      "floor": 4,
+      "cracks": 85,
+      "chips": 0,
+      "paintedPixels": 1894,
+      "rejectedFloorCandidates": 2542,
+      "width": 2560,
+      "height": 2240,
+      "floorPixels": 0
+    },
+    {
+      "floor": 5,
+      "cracks": 126,
+      "chips": 0,
+      "paintedPixels": 4336,
+      "rejectedFloorCandidates": 5409,
+      "width": 2560,
+      "height": 2240,
+      "floorPixels": 0
+    },
+    {
+      "floor": 6,
+      "cracks": 185,
+      "chips": 38,
+      "paintedPixels": 9342,
+      "rejectedFloorCandidates": 12636,
+      "width": 2560,
+      "height": 2240,
+      "floorPixels": 0
+    },
+    {
+      "floor": 7,
+      "cracks": 243,
+      "chips": 72,
+      "paintedPixels": 17552,
+      "rejectedFloorCandidates": 24402,
+      "width": 2560,
+      "height": 2240,
+      "floorPixels": 0
+    }
+  ],
+  "deterministic": true,
+  "floorsTested": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "pageErrors": [],
+  "mobileOverflow": false,
+  "nativeIntegrated": false
+}

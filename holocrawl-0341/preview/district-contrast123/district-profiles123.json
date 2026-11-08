@@ -1,0 +1,101 @@
+{
+  "revision": 123,
+  "wallBaseline": 121,
+  "structureArt": 122,
+  "nativeIntegrated": false,
+  "street": {
+    "1": {
+      "windows": [
+        "acrylic-window"
+      ],
+      "stands": 0,
+      "units": [
+        "air",
+        "vent"
+      ]
+    },
+    "2": {
+      "windows": [
+        "shirt-window"
+      ],
+      "stands": 0,
+      "units": [
+        "vent",
+        "cabinet"
+      ]
+    },
+    "3": {
+      "windows": [
+        "acrylic-window",
+        "shirt-window"
+      ],
+      "stands": 1,
+      "units": [
+        "air",
+        "vent",
+        "cabinet"
+      ]
+    },
+    "common": {
+      "shutters": 0,
+      "longPipes": 0,
+      "trashBags": 0,
+      "parcels": "retain existing2-3",
+      "fences": "retain existing2cells",
+      "floorObstacles": "only remove"
+    }
+  },
+  "market": {
+    "4": {
+      "coverageTarget": 0.78,
+      "typeWeights": [
+        4,
+        3,
+        1.5,
+        1,
+        0.5
+      ]
+    },
+    "5": {
+      "coverageTarget": 0.88,
+      "typeWeights": [
+        3,
+        3,
+        2,
+        2,
+        0.4
+      ]
+    },
+    "6": {
+      "coverageTarget": 0.82,
+      "typeWeights": [
+        1.2,
+        0.8,
+        4,
+        3,
+        0.5
+      ]
+    },
+    "7": {
+      "coverageTarget": 0.92,
+      "typeWeights": [
+        0.6,
+        0.5,
+        7,
+        4,
+        0.4
+      ]
+    },
+    "weightOrder": [
+      "acrylic-window",
+      "shirt-window",
+      "closed-shutter",
+      "half-shutter",
+      "poster-wall"
+    ],
+    "coverageScope": "eligible exposed wall cells, excluding access/protected/service space; not a spawn probability",
+    "existingPositionsPreserved": true,
+    "floorCollisionUnchanged": true,
+    "serviceSpaceReserved": true
+  }
+}

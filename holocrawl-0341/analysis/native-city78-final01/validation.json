@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "nativeFloors": 168,
+  "facilitiesCovered": 9,
+  "doorChecks": 90,
+  "scheduleSeeds": 20000,
+  "scheduledFloors": 280000,
+  "scheduledFacilities": 137318,
+  "firstFloorPlacements": 9999,
+  "savePlanRoundtrip": true,
+  "nativeLevelSaveRoundtrip": true,
+  "forwardAndReverseGeneration": true,
+  "placementFailureKeepsPlan": true,
+  "layoutRngUnchanged": true,
+  "binarySha256": "e4938c7aff3dfd40c4d6dd42218db8da175ac237afc042ba0643392cb58c5dae",
+  "elapsedSeconds": 9.937,
+  "scope": "Native 0.34.1 city prototype generation; combat, loot and campaign progression deferred."
+}

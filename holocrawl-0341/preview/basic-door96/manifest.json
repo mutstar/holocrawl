@@ -1,0 +1,50 @@
+{
+  "title": "기본 던전문 · 콘크리트 벽용",
+  "kind": "basic",
+  "defaultZoom": 2,
+  "styles": [
+    {
+      "id": "new",
+      "label": "새 기본문"
+    },
+    {
+      "id": "old",
+      "label": "돌죽 기존 기본문"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "horizontal",
+      "label": "가로 벽",
+      "width": 224,
+      "height": 224,
+      "images": {
+        "new": {
+          "closed": "new-horizontal-closed.png",
+          "open": "new-horizontal-open.png"
+        },
+        "old": {
+          "closed": "old-horizontal-closed.png",
+          "open": "old-horizontal-open.png"
+        }
+      }
+    },
+    {
+      "id": "vertical",
+      "label": "세로 벽",
+      "width": 224,
+      "height": 224,
+      "images": {
+        "new": {
+          "closed": "new-vertical-closed.png",
+          "open": "new-vertical-open.png"
+        },
+        "old": {
+          "closed": "old-vertical-closed.png",
+          "open": "old-vertical-open.png"
+        }
+      }
+    }
+  ],
+  "nativeIntegration": false
+}

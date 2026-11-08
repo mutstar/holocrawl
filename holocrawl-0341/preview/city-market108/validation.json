@@ -1,0 +1,115 @@
+{
+  "status": "passed",
+  "revision": 108,
+  "unchangedGeometryMaps": 80,
+  "originalInputsPreserved": true,
+  "normalWall": 92,
+  "basicDoor": 101,
+  "fixturePalette": [
+    {
+      "id": "acrylic-window",
+      "changed": 2048,
+      "alphaChanges": 0
+    },
+    {
+      "id": "closed-shutter",
+      "changed": 2004,
+      "alphaChanges": 0
+    },
+    {
+      "id": "half-shutter",
+      "changed": 2045,
+      "alphaChanges": 0
+    },
+    {
+      "id": "shirt-window",
+      "changed": 2045,
+      "alphaChanges": 0
+    },
+    {
+      "id": "poster-wall",
+      "changed": 1994,
+      "alphaChanges": 0
+    },
+    {
+      "id": "acrylic-rack",
+      "changed": 738,
+      "alphaChanges": 0
+    },
+    {
+      "id": "shirt-stack",
+      "changed": 657,
+      "alphaChanges": 0
+    },
+    {
+      "id": "hoodie-rack",
+      "changed": 459,
+      "alphaChanges": 0
+    },
+    {
+      "id": "plush-basket",
+      "changed": 549,
+      "alphaChanges": 0
+    },
+    {
+      "id": "poster-rolls",
+      "changed": 505,
+      "alphaChanges": 0
+    },
+    {
+      "id": "keychain-hooks",
+      "changed": 614,
+      "alphaChanges": 0
+    },
+    {
+      "id": "badge-trays",
+      "changed": 604,
+      "alphaChanges": 0
+    },
+    {
+      "id": "shopping-bags",
+      "changed": 484,
+      "alphaChanges": 0
+    },
+    {
+      "id": "delivery-boxes",
+      "changed": 486,
+      "alphaChanges": 0
+    },
+    {
+      "id": "open-carton",
+      "changed": 506,
+      "alphaChanges": 0
+    },
+    {
+      "id": "delivery-cart",
+      "changed": 376,
+      "alphaChanges": 0
+    },
+    {
+      "id": "folding-crates",
+      "changed": 619,
+      "alphaChanges": 0
+    },
+    {
+      "id": "trash-bags",
+      "changed": 381,
+      "alphaChanges": 0
+    },
+    {
+      "id": "paper-rubbish",
+      "changed": 288,
+      "alphaChanges": 0
+    },
+    {
+      "id": "recycling-bins",
+      "changed": 652,
+      "alphaChanges": 0
+    }
+  ],
+  "membersUnchanged": 84,
+  "comparisonPreservesMapAndStock": true,
+  "responsiveOverflow": false,
+  "nativeIntegrated": false,
+  "errors": []
+}

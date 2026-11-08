@@ -1,0 +1,230 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "facility": "theater",
+      "doors": [
+        {
+          "x": 45,
+          "y": 43,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        },
+        {
+          "x": 46,
+          "y": 43,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "gamers",
+      "doors": [
+        {
+          "x": 63,
+          "y": 9,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        },
+        {
+          "x": 64,
+          "y": 12,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        },
+        {
+          "x": 64,
+          "y": 14,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "holox",
+      "doors": [
+        {
+          "x": 14,
+          "y": 34,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        },
+        {
+          "x": 17,
+          "y": 40,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "dev",
+      "doors": [
+        {
+          "x": 31,
+          "y": 8,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "dining",
+      "doors": [
+        {
+          "x": 31,
+          "y": 9,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "fantasy",
+      "doors": [],
+      "oracle": 0
+    },
+    {
+      "facility": "wheel",
+      "doors": [
+        {
+          "x": 65,
+          "y": 9,
+          "opened": true,
+          "entered": true,
+          "reached": true
+        }
+      ],
+      "oracle": 0
+    },
+    {
+      "facility": "market",
+      "doors": [],
+      "oracle": 0
+    },
+    {
+      "facility": "mountain",
+      "doors": [],
+      "oracle": 0
+    },
+    {
+      "paper": {
+        "found": true,
+        "type": "paper-rubbish",
+        "moved": true,
+        "walkable": true,
+        "entered": true
+      }
+    },
+    {
+      "floor": 4,
+      "deterministic": true,
+      "route": 128,
+      "passage": {
+        "requested": 25,
+        "placed": 25,
+        "relocated": 18,
+        "omitted": 0,
+        "passable": 0,
+        "protectedCells": 1914,
+        "narrowCells": 44,
+        "maxAnchorDetour": 2,
+        "maxLocalDetour": 2,
+        "rejections": {
+          "new-one-cell-width": 8,
+          "protected-or-occupied": 28,
+          "global-detour": 10,
+          "object-spacing": 5
+        }
+      }
+    },
+    {
+      "floor": 5,
+      "deterministic": true,
+      "route": 125,
+      "passage": {
+        "requested": 31,
+        "placed": 31,
+        "relocated": 27,
+        "omitted": 0,
+        "passable": 1,
+        "protectedCells": 2116,
+        "narrowCells": 134,
+        "maxAnchorDetour": 2,
+        "maxLocalDetour": 2,
+        "rejections": {
+          "protected-or-occupied": 42,
+          "new-one-cell-width": 10,
+          "two-cell-lane-split": 1,
+          "object-spacing": 7,
+          "global-detour": 8
+        }
+      }
+    },
+    {
+      "floor": 6,
+      "deterministic": true,
+      "route": 126,
+      "passage": {
+        "requested": 31,
+        "placed": 31,
+        "relocated": 25,
+        "omitted": 0,
+        "passable": 2,
+        "protectedCells": 1992,
+        "narrowCells": 112,
+        "maxAnchorDetour": 2,
+        "maxLocalDetour": 2,
+        "rejections": {
+          "protected-or-occupied": 106,
+          "new-one-cell-width": 12,
+          "global-detour": 45,
+          "object-spacing": 22,
+          "two-cell-lane-split": 1,
+          "local-detour": 1
+        }
+      }
+    },
+    {
+      "floor": 7,
+      "deterministic": true,
+      "route": 120,
+      "passage": {
+        "requested": 25,
+        "placed": 25,
+        "relocated": 23,
+        "omitted": 0,
+        "passable": 5,
+        "protectedCells": 2537,
+        "narrowCells": 180,
+        "maxAnchorDetour": 2,
+        "maxLocalDetour": 2,
+        "rejections": {
+          "protected-or-occupied": 71,
+          "new-one-cell-width": 3,
+          "object-spacing": 11,
+          "global-detour": 8,
+          "two-cell-lane-split": 4,
+          "local-detour": 9
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "scope": "Browser9 facilities door use / native FOV first frame each;4 floor deterministic replay / route / passable paper actual movement."
+}

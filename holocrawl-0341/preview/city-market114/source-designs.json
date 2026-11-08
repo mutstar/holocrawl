@@ -1,0 +1,77 @@
+[
+  {
+    "id": "acrylic-rack",
+    "path": "preview/city-market02/assets/props/originals/acrylic-rack.png",
+    "sha256": "8dd95d5361344fa1ced317daf31effc102c3223bf31acbd7098fa1c1e52ce155"
+  },
+  {
+    "id": "shirt-stack",
+    "path": "preview/city-market02/assets/props/originals/shirt-stack.png",
+    "sha256": "fa3297b6b9477355cfb698c4031158f7c1c6076b906856aab69fd5e460668942"
+  },
+  {
+    "id": "hoodie-rack",
+    "path": "preview/city-market02/assets/props/originals/hoodie-rack.png",
+    "sha256": "f8dd1f37cfe64eabac12a5e89d6f5d3d9dde2ac32a22cf1aad5a83627dc176c8"
+  },
+  {
+    "id": "plush-basket",
+    "path": "preview/city-market02/assets/props/originals/plush-basket.png",
+    "sha256": "13ae6685434064588bdd354024e344f24a570e9e4ba363afd34cfc21773c95f7"
+  },
+  {
+    "id": "poster-rolls",
+    "path": "preview/city-market02/assets/props/originals/poster-rolls.png",
+    "sha256": "c3005750bc75be16b40f93da5ab574b3bdf28cedfb3345ee48f47d30f86183be"
+  },
+  {
+    "id": "keychain-hooks",
+    "path": "preview/city-market02/assets/props/originals/keychain-hooks.png",
+    "sha256": "1953fbef7dbcc860f9377c050af4b2334c01b4db4d28b9881b2abf1937e4d1cb"
+  },
+  {
+    "id": "badge-trays",
+    "path": "preview/city-market02/assets/props/originals/badge-trays.png",
+    "sha256": "2f5fc7895d954c81f5beb9ec37f23cdc79e6929081466b7712fba2e9bca03362"
+  },
+  {
+    "id": "shopping-bags",
+    "path": "preview/city-market02/assets/props/originals/shopping-bags.png",
+    "sha256": "203517a73e804af62e93085e568df2d1d1469c11b4095a218c2b1c70243f99b5"
+  },
+  {
+    "id": "delivery-boxes",
+    "path": "preview/city-market01/assets/market-delivery-boxes-original.png",
+    "sha256": "e712b05a025091425c8b4172e63bdb2c0c4ff51e0446f0e299b7698b82bcb30a"
+  },
+  {
+    "id": "open-carton",
+    "path": "preview/city-market02/assets/props/originals/open-carton.png",
+    "sha256": "c99be6ea3207f7e7ce91f9120340b1cc0f162a925797a08412731648e96132ab"
+  },
+  {
+    "id": "delivery-cart",
+    "path": "preview/city-market02/assets/props/originals/delivery-cart.png",
+    "sha256": "db9a4316adfc7d922a93f888fade0a38956c2937598b31bfff08bd7f9fc7cde3"
+  },
+  {
+    "id": "folding-crates",
+    "path": "preview/city-market02/assets/props/originals/folding-crates.png",
+    "sha256": "ab613c17114d51bc3bd75eb99951f2a7ff108fb91b2f8f21869c3997a0fc80c7"
+  },
+  {
+    "id": "trash-bags",
+    "path": "preview/city-market02/assets/props/originals/trash-bags.png",
+    "sha256": "f7e366b792824ef6f8dafb35f1162c6384893c0002fd41df0572dbb81a39c999"
+  },
+  {
+    "id": "paper-rubbish",
+    "path": "preview/city-market02/assets/props/originals/paper-rubbish.png",
+    "sha256": "a7fbfdef9566e6a2a244a53259bb1b2e8be06b0dd5f06e7bc5e7bd95e5f1ce05"
+  },
+  {
+    "id": "recycling-bins",
+    "path": "preview/city-market02/assets/props/originals/recycling-bins.png",
+    "sha256": "8cee5e254ac775b0d58903b52156224805aa10affff2bc8c82ab126bce68bc50"
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "scope": "Local browser art proposal only; audited native art84 is unchanged.",
+  "seed": 802302584,
+  "anchor": [
+    33,
+    36
+  ],
+  "selectedWallCells": 12,
+  "cells": [
+    [
+      31,
+      39
+    ],
+    [
+      31,
+      40
+    ],
+    [
+      31,
+      41
+    ],
+    [
+      32,
+      39
+    ],
+    [
+      32,
+      40
+    ],
+    [
+      32,
+      41
+    ],
+    [
+      33,
+      36
+    ],
+    [
+      33,
+      37
+    ],
+    [
+      33,
+      38
+    ],
+    [
+      33,
+      39
+    ],
+    [
+      33,
+      40
+    ],
+    [
+      33,
+      41
+    ]
+  ],
+  "changedPixels": 2194,
+  "outsideSelectionChangedPixels": 0,
+  "alphaUnchanged": true,
+  "nativeMapSha256": "c309cdd05cc6dd2012ed377e57c64ad2288383e27e211771264f888d6da3b054",
+  "baseWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+  "baseFrontAndEastSidePreserved": true,
+  "style": "Existing stone grain with broad low-contrast directional light; no additional rim."
+}

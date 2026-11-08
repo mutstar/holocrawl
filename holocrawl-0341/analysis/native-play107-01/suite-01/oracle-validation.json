@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "maps": 177,
+  "nativeLosFrames": 5258,
+  "comparedCells": 29444800,
+  "mismatches": 0,
+  "nativeWalkCommands": 885,
+  "nativeBlockedCommands": 885,
+  "nativeDoorOpenStepPairs": 921,
+  "nativeDoorLosPairs": 894,
+  "diagonalCornerCases": 137,
+  "diagonalCornerAllowed": 137
+}

@@ -1,0 +1,55 @@
+{
+  "title": "잔향도시 · 콘크리트 모서리 정리90",
+  "revision": 90,
+  "tileSize": 32,
+  "scope": "Material and corner preview only.",
+  "styles": [
+    {
+      "id": "concrete90",
+      "label": "마감 수정90"
+    },
+    {
+      "id": "concrete89",
+      "label": "수정 전89"
+    },
+    {
+      "id": "original84",
+      "label": "기존 도시벽84"
+    }
+  ],
+  "maps": [
+    {
+      "seed": 802302584,
+      "width": 80,
+      "height": 70,
+      "sourceMap": "preview/wall-audit85/maps/map-802302584-1.json",
+      "sourceMapSha256": "c309cdd05cc6dd2012ed377e57c64ad2288383e27e211771264f888d6da3b054",
+      "auditedWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+      "images": {
+        "original84": "802302584-original84.png",
+        "concrete89": "802302584-concrete89.png",
+        "concrete90": "802302584-concrete90.png"
+      }
+    },
+    {
+      "seed": 920819314,
+      "width": 80,
+      "height": 70,
+      "sourceMap": "preview/city-random82/map.json",
+      "sourceMapSha256": "c10b6ba0a03abcaffb3267599d559a28e32c9f237a8a918e0f129df7b631c96e",
+      "auditedWallAtlasSha256": "5f30c676927ee53612a9388a83c0750b90f7d9b56705a05766598f343fc05d61",
+      "images": {
+        "original84": "920819314-original84.png",
+        "concrete89": "920819314-concrete89.png",
+        "concrete90": "920819314-concrete90.png"
+      }
+    }
+  ],
+  "material": {
+    "frontHeight": 14,
+    "eastSideWidth": 3,
+    "sideFrontCorner": "tapered mitre",
+    "separateWestStripe": false,
+    "doubleDarkOutline": false
+  }
+}

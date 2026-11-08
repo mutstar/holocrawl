@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "version": 107,
+  "nativeFloors": 177,
+  "normalScheduleFloors": 168,
+  "forcedFacilityFloors": 9,
+  "facilitiesCovered": 9,
+  "compiledArtTilesCompared": 2867,
+  "nativeWallTilesCompared": 773642,
+  "dynamicFacilityPerimeterCells": 2239,
+  "nativeActorItemPlacements": 27,
+  "nativeReplayIdenticalMaps": 177,
+  "originalEngineInputsUnchanged": true,
+  "foregroundDrawOrderChecked": true,
+  "atlasSha256": {
+    "floor": "40068bfa38d6f66f96493ad111d85741d706274d88eb0dcd1bf2e06c02c33832",
+    "wall": "860d6648792c886877e93d90a6b27d31cbafa71860332171a81fe76865122db8",
+    "feat": "37ebf72be8e658e50355ca500f7e419166ed9e307cd4ee1b0f75c49af081aa1c",
+    "main": "5af7ec063e691004f76eefa7564345fce47e49bfe8a556b226e51db2aa724b25",
+    "player": "5c607bad00369e0d0327c7c0f82c172508ee130e89276e25f3efd12d59723763"
+  },
+  "binarySha256": "c697897f3ca30c0bf32aedd197a4c4397a0edf7c3a002254412c5c24b3171324",
+  "nativeOracle": {
+    "status": "passed",
+    "maps": 177,
+    "nativeLosFrames": 5276,
+    "comparedCells": 29545600,
+    "mismatches": 0,
+    "nativeWalkCommands": 885,
+    "nativeBlockedCommands": 885,
+    "nativeDoorOpenStepPairs": 948,
+    "nativeDoorLosPairs": 903,
+    "diagonalCornerCases": 137,
+    "diagonalCornerAllowed": 137
+  },
+  "nativeGeneration": {
+    "status": "passed",
+    "nativeFloors": 168,
+    "facilitiesCovered": 9,
+    "doorChecks": 92,
+    "scheduleSeeds": 20000,
+    "scheduledFloors": 280000,
+    "scheduledFacilities": 137318,
+    "firstFloorPlacements": 9999,
+    "savePlanRoundtrip": true,
+    "nativeLevelSaveRoundtrip": true,
+    "forwardAndReverseGeneration": true,
+    "placementFailureKeepsPlan": true,
+    "layoutRngUnchanged": true
+  },
+  "scope": "Generation, native movement/door/LOS, compiled art and controlled actor/item layering. Combat/reward/campaign design excluded."
+}

@@ -1,0 +1,51 @@
+{
+  "title": "기본 던전문 · A/B 비교",
+  "defaultZoom": 4,
+  "variants": [
+    {
+      "id": "a",
+      "label": "A · 확인창 철문96",
+      "note": "작은 확인창 · 왼쪽으로 접히는 문짝"
+    },
+    {
+      "id": "b",
+      "label": "B · 무창 방화문98",
+      "note": "막힌 철판 · 가로 푸시바 · 오른쪽으로 접히는 문짝"
+    }
+  ],
+  "orientations": [
+    {
+      "id": "horizontal",
+      "label": "가로 벽"
+    },
+    {
+      "id": "vertical",
+      "label": "세로 벽"
+    }
+  ],
+  "images": {
+    "horizontal": {
+      "closed": {
+        "a": "a-horizontal-closed.png",
+        "b": "b-horizontal-closed.png"
+      },
+      "open": {
+        "a": "a-horizontal-open.png",
+        "b": "b-horizontal-open.png"
+      }
+    },
+    "vertical": {
+      "closed": {
+        "a": "a-vertical-closed.png",
+        "b": "b-vertical-closed.png"
+      },
+      "open": {
+        "a": "a-vertical-open.png",
+        "b": "b-vertical-open.png"
+      }
+    }
+  },
+  "sceneSize": 96,
+  "nativeIntegration": false,
+  "reviewStatus": "draft-user-feedback"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "mapOptions": 128,
+  "samplesChecked": [
+    0,
+    1,
+    63,
+    127
+  ],
+  "nativeSnapshotsMatch": true,
+  "zoom1and2": true,
+  "mobileOverflow": false,
+  "pageErrors": []
+}

@@ -1,0 +1,68 @@
+{
+  "revision": 111,
+  "source": "city-market108 palette used by city-market110",
+  "scale": 6,
+  "renderedFixtureCount": 20,
+  "memberStock": "Same existing catalog samples, unchanged member colours",
+  "groups": [
+    {
+      "id": "wall-displays",
+      "start": 0,
+      "end": 5,
+      "cols": 2,
+      "cell": 448,
+      "export": {
+        "ids": [
+          "acrylic-window",
+          "closed-shutter",
+          "half-shutter",
+          "shirt-window",
+          "poster-wall"
+        ],
+        "width": 896,
+        "height": 768
+      }
+    },
+    {
+      "id": "merch-displays",
+      "start": 5,
+      "end": 13,
+      "cols": 4,
+      "cell": 224,
+      "export": {
+        "ids": [
+          "acrylic-rack",
+          "shirt-stack",
+          "hoodie-rack",
+          "plush-basket",
+          "poster-rolls",
+          "keychain-hooks",
+          "badge-trays",
+          "shopping-bags"
+        ],
+        "width": 896,
+        "height": 512
+      }
+    },
+    {
+      "id": "delivery-details",
+      "start": 13,
+      "end": 20,
+      "cols": 4,
+      "cell": 224,
+      "export": {
+        "ids": [
+          "delivery-boxes",
+          "open-carton",
+          "delivery-cart",
+          "folding-crates",
+          "trash-bags",
+          "paper-rubbish",
+          "recycling-bins"
+        ],
+        "width": 896,
+        "height": 512
+      }
+    }
+  ]
+}

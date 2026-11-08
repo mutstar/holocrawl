@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "basicDoorStyles": 2,
+  "orientations": 2,
+  "openCenterTransparent": true,
+  "stateChangesOnlyDoorCell": true,
+  "hostMapUnchanged": true,
+  "normalWallRevision": 92,
+  "facilityReview": "holoX only",
+  "nativeIntegration": false
+}

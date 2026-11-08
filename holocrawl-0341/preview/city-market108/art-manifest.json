@@ -1,0 +1,240 @@
+[
+  {
+    "id": "acrylic-window",
+    "size": [
+      64,
+      32
+    ],
+    "kind": "wall",
+    "source": "originals/acrylic-window.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A wide glass merchandise display cabinet BUILT INTO a concrete wall, logical64x32. Grey-brown concrete frame, narrow fascia, dark back, THREE empty horizontal display bays on the middle shelf. Shelves and glass highlights visible but the central display area is empty so character standees can be added later. Straight rectangular wall facade filling canvas. No closed shutter.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "closed-shutter",
+    "size": [
+      64,
+      32
+    ],
+    "kind": "wall",
+    "source": "originals/closed-shutter.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A wide fully closed metal roller shutter facade built into concrete wall, logical64x32. Corrugated faded grey shutter with scuffs, stout charcoal lintel, small central locking plate, narrow concrete sides. No glass window or merchandise. Tight rectangular facade.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "half-shutter",
+    "size": [
+      64,
+      32
+    ],
+    "kind": "wall",
+    "source": "originals/half-shutter.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A wide half-lowered grey roller shutter facade built into concrete wall, logical64x32. Shutter covers top half, bottom reveals a dark shop interior with one cardboard shipping carton and a low steel counter. A distinct horizontal gap and worn bottom rail. Tight rectangular facade.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "shirt-window",
+    "size": [
+      64,
+      32
+    ],
+    "kind": "wall",
+    "source": "originals/shirt-window.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A wide apparel store display window built into the same grey concrete wall, logical64x32. Dark glass cabinet, one rail with THREE empty little hooks with enough empty space under each for shirts to be added later, folded monochrome clothing on a bottom shelf. Thin dusty steel frame, dim warm overhead strip. No colored shirts baked in.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "poster-wall",
+    "size": [
+      64,
+      32
+    ],
+    "kind": "wall",
+    "source": "originals/poster-wall.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A wide worn concrete storefront panel with three framed concert poster panels in dusty blue, violet and faded red and a small closed service panel, logical64x32. Posters use tiny abstract stars and geometric silhouettes, no text or faces. Modern city wall facade, no fantasy carvings.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "acrylic-rack",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/acrylic-rack.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A low three-tier steel merchandise display rack. Logical32x32 terrain sprite, slightly from above. The upper display shelf has THREE empty small bays, a dark blank backing, and a narrow silver front edge; bottom shelf has small grey boxes. No character silhouettes or colored objects on upper shelf; it will receive standees programmatically. Footprint26x18 and totalheight25logicalpixels.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "shirt-stack",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/shirt-stack.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. Three neat piles of folded merchandise T-shirts on a low wooden pallet, one pile left, one middle, one right. Base garments in neutral charcoal/offwhite, colored shirt tops will be composited later. Three distinct top surfaces, visible folded shirt sleeves, no hanger. Low32px prop.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "hoodie-rack",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/hoodie-rack.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A compact low steel clothing rail with three hanging hoodies in dusty cyan, muted violet, faded peach, sleeves and hoods distinguishable at32px. Dark metal legs, merchandise street scale, no floor.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "plush-basket",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/plush-basket.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A square wire bargain bin packed with small round mascot plush toys, pale cream, dusty aqua and light brown, ears and simple faces suggested with few pixels. A low crowded irregular silhouette clearly different from cartons. Logical32px prop.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "poster-rolls",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/poster-rolls.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A short open square carton with several rolled concert posters protruding at varying heights, grey-white paper tubes with muted dusty blue and pink edges. One loose roll leaning against box. Logical32px prop.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "keychain-hooks",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/keychain-hooks.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A small tabletop pegboard keychain display on a black wire foot, six simple hanging star/heart/charm shapes in dusty aqua, lilac and brass. Compact rectangular pegboard and hanging hooks readable with few pixels. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "badge-trays",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/badge-trays.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. Two shallow open wooden trays filled with round pin badges on a low table, small muted round dots blue pink yellow and charcoal, simple separated compartments. Broad low flat profile. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "shopping-bags",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/shopping-bags.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A small stack of three paper merchandise shopping bags with distinct loop handles, offwhite and charcoal bags with tiny muted aqua/pink squares, one folded bag on floor. No text or logos. Compact32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "open-carton",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/open-carton.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. One open shipping carton with four splayed cardboard flaps and small packed goods in grey paper sleeves inside, a loose piece of packing tape. Worn muted brown-grey cardboard. Distinct open top silhouette. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "delivery-cart",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/delivery-cart.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A small four-wheel steel delivery trolley carrying two taped shipping cartons, rear vertical push handle, tiny black casters visible. Subdued grey metal and dusty brown boxes. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "folding-crates",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/folding-crates.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. Two stacked collapsible dark plastic delivery crates, one dull navy and one charcoal, open lattice sides and recessed hand holes. Low blocky rectangular silhouette, not cardboard. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "trash-bags",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/trash-bags.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A compact pile of three tied black rubbish bags against an invisible wall, one tall bag behind two squat bags, gathered tied necks and restrained dark-grey folds. Clear irregular silhouettes, small scrap of pale paper. Logical32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "paper-rubbish",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/paper-rubbish.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. A small loose pile of torn cardboard, crumpled white packing paper and two empty paper cups, scattered in one compact32px ground footprint. Low irregular litter silhouette with many transparent spaces, no floor square.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "recycling-bins",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "originals/recycling-bins.png",
+    "prompt": "Create ONE production pixel-art terrain sprite for a32px Dungeon Crawl-like modern Japanese merchandise street. Reference image sets style only: grey-brown worn concrete/steel, compact chunky low-resolution pixels, restrained contrast and dusty accents, shallow overhead camera with visible front faces. No polished3D, smooth illustration, bloom, people, text, readable labels, logos, surrounding floor square or cast shadow outside object. True transparent background, single centered object. Crisp limited-palette chunky pixels, readable after nearest32px downsampling. Two slim urban waste sorting bins side by side, charcoal bins with a dusty teal lid and a muted yellow lid, tiny rectangular sorting slots, no labels or text. Modern merchandise delivery alley prop,32px.",
+    "mode": "built-in image_gen",
+    "processing": "alpha bounds / nearest resize / transparent padding"
+  },
+  {
+    "id": "delivery-boxes",
+    "size": [
+      32,
+      32
+    ],
+    "kind": "floor",
+    "source": "../market-delivery-boxes-original.png",
+    "mode": "reuse existing approved-style generated art"
+  }
+]

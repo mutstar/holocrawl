@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잔향도시 · 실제 층 생성 검토</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#14171c;color:#dfe4eb;font:15px/1.7 system-ui}main{max-width:1260px;margin:auto;padding:22px}h1{font-size:24px}p{color:#b0bbc9}nav{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0}button,select,a{background:#2b3341;color:#e4e9ef;border:1px solid #66758a;padding:8px 12px}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}canvas{image-rendering:pixelated;max-width:100%;height:auto;display:block;outline:none;border:1px solid #526072}.layout{display:grid;grid-template-columns:minmax(0,768px) minmax(220px,1fr);gap:20px}aside{background:#202631;padding:15px}#info{padding:10px;background:#252d3a;min-height:50px}#schedule{padding-left:25px}#schedule li[aria-current=true]{color:#ffdf8a;font-weight:700}.pad{display:grid;grid-template-columns:repeat(3,42px);gap:4px;margin:14px 0}footer{color:#a5afbc;font-size:13px;margin:20px 0}@media(max-width:960px){.layout{grid-template-columns:1fr}}
+</style>
+<main>
+  <h1>잔향도시 · 실제 층 생성 검토</h1>
+  <p>DCSS 0.34.1 엔진에서 생성한 3개 시드의 1~14층입니다. 층마다 시설 50% 추첨, 같은 시설은 한 판에 한 번 등장합니다.</p>
+  <nav>
+    <label>시드 <select id="seed"><option>77001</option><option>77002</option><option>77003</option></select></label>
+    <label>층 <select id="floor"></select></label>
+    <button id="overview">전체 층 보기</button>
+    <button id="facility">시설 주변 보기</button>
+    <button id="player">플레이어 주변 보기</button>
+    <button id="fog">탐험 안개 켜기</button>
+    <a href="../jp-facilities76/?site=dev&amp;map=2#closeup">시설별 확대 시안</a>
+  </nav>
+  <div class="layout">
+    <section><canvas id="field" width="768" height="640" tabindex="0" aria-label="실제 생성된 잔향도시 탐험"></canvas><div id="info" role="status"></div></section>
+    <aside>
+      <strong id="current"></strong>
+      <p>방향키·WASD로 이동합니다. Q E Z C는 대각선 이동입니다. 닫힌 문은 한 번에 열고 다음 이동에 통과합니다.</p>
+      <p>발견한 바닥을 누르면 자동으로 이동합니다. Esc로 중지합니다. 층 선택으로 다른 층을 검토할 수 있습니다.</p>
+      <div class="pad"><button data-d="-1,-1">↖</button><button data-d="0,-1">↑</button><button data-d="1,-1">↗</button><button data-d="-1,0">←</button><button disabled>·</button><button data-d="1,0">→</button><button data-d="-1,1">↙</button><button data-d="0,1">↓</button><button data-d="1,1">↘</button></div>
+      <strong>이번 판 시설 배치</strong><ol id="schedule"></ol>
+    </aside>
+  </div>
+  <footer>실제 엔진의 지형·충돌 자료와 게임용 타일 아틀라스를 불러온 검토 화면입니다. 이동·문·탐험 기록은 이 브라우저에 저장됩니다. 적·보상과 구간별 전용 도트는 후속 작업입니다.</footer>
+</main>
+<script src="../city-layout07/visibility-paths.js"></script>
+<script src="../city-layout07/visibility.js"></script>
+<script src="city.js?v=81"></script>
+</html>

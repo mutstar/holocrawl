@@ -1,0 +1,12 @@
+{
+  "sample": 1,
+  "item": {
+    "x": 58,
+    "y": 28,
+    "type": "delivery-boxes",
+    "footW": 1,
+    "footH": 1
+  },
+  "seed": 10786001,
+  "depth": 2
+}

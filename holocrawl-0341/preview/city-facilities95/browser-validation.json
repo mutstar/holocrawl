@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "facility": "holox",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "theater",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "dev",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "dining",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "gamers",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "fantasy",
+      "wallComparison": true,
+      "doorStates": "open-portal",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "wheel",
+      "wallComparison": true,
+      "doorStates": "opened-and-closed",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "market",
+      "wallComparison": true,
+      "doorStates": "open-portal",
+      "entranceFocus": true,
+      "fullMap": true
+    },
+    {
+      "facility": "mountain",
+      "wallComparison": true,
+      "doorStates": "open-portal",
+      "entranceFocus": true,
+      "fullMap": true
+    }
+  ],
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "native94GeometryUnchanged": true
+}

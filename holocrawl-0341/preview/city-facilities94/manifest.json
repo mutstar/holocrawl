@@ -1,0 +1,289 @@
+{
+  "title": "잔향도시 · 확정 일반벽92와 JP 시설",
+  "revision": 94,
+  "tileSize": 32,
+  "styles": [
+    {
+      "id": "integrated92",
+      "label": "확정 벽92 + 시설"
+    },
+    {
+      "id": "original84",
+      "label": "기존 일반벽과 비교"
+    }
+  ],
+  "maps": [
+    {
+      "seed": 1889185305,
+      "depth": 1,
+      "facility": "holox",
+      "name": "holoX 비밀 연구소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 22,
+        "y": 5,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 28,
+          "y": 13
+        }
+      ],
+      "focus": {
+        "x": 26.5,
+        "y": 9.5
+      },
+      "images": {
+        "integrated92": "holox-integrated92.png",
+        "original84": "holox-original84.png"
+      },
+      "map": "holox-map.json",
+      "mapSha256": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b"
+    },
+    {
+      "seed": 737511672,
+      "depth": 1,
+      "facility": "theater",
+      "name": "2기생 작은 극장",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 63,
+        "y": 2,
+        "width": 8,
+        "height": 8
+      },
+      "entrances": [
+        {
+          "x": 66,
+          "y": 9
+        }
+      ],
+      "focus": {
+        "x": 67.0,
+        "y": 6.0
+      },
+      "images": {
+        "integrated92": "theater-integrated92.png",
+        "original84": "theater-original84.png"
+      },
+      "map": "theater-map.json",
+      "mapSha256": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7"
+    },
+    {
+      "seed": 1457612763,
+      "depth": 1,
+      "facility": "dev",
+      "name": "DEV_IS 쵸베리바 출장소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 57,
+        "y": 11,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 63,
+          "y": 19
+        }
+      ],
+      "focus": {
+        "x": 61.5,
+        "y": 15.5
+      },
+      "images": {
+        "integrated92": "dev-integrated92.png",
+        "original84": "dev-original84.png"
+      },
+      "map": "dev-map.json",
+      "mapSha256": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed"
+    },
+    {
+      "seed": 1019072782,
+      "depth": 1,
+      "facility": "dining",
+      "name": "1기생 타라후쿠 저니",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 17,
+        "y": 9,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 23,
+          "y": 17
+        }
+      ],
+      "focus": {
+        "x": 21.5,
+        "y": 13.5
+      },
+      "images": {
+        "integrated92": "dining-integrated92.png",
+        "original84": "dining-original84.png"
+      },
+      "map": "dining-map.json",
+      "mapSha256": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19"
+    },
+    {
+      "seed": 121319900,
+      "depth": 1,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 2,
+        "y": 28,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 8,
+          "y": 36
+        }
+      ],
+      "focus": {
+        "x": 6.5,
+        "y": 32.5
+      },
+      "images": {
+        "integrated92": "gamers-integrated92.png",
+        "original84": "gamers-original84.png"
+      },
+      "map": "gamers-map.json",
+      "mapSha256": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d"
+    },
+    {
+      "seed": 480427526,
+      "depth": 1,
+      "facility": "fantasy",
+      "name": "3기생 도타바타 그라운드",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 29,
+        "y": 56,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 35,
+          "y": 64
+        }
+      ],
+      "focus": {
+        "x": 33.5,
+        "y": 60.5
+      },
+      "images": {
+        "integrated92": "fantasy-integrated92.png",
+        "original84": "fantasy-original84.png"
+      },
+      "map": "fantasy-map.json",
+      "mapSha256": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d"
+    },
+    {
+      "seed": 1189374571,
+      "depth": 1,
+      "facility": "wheel",
+      "name": "4기생 기적의 바퀴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 34,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 40,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 38.5,
+        "y": 6.5
+      },
+      "images": {
+        "integrated92": "wheel-integrated92.png",
+        "original84": "wheel-original84.png"
+      },
+      "map": "wheel-map.json",
+      "mapSha256": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4"
+    },
+    {
+      "seed": 535482548,
+      "depth": 1,
+      "facility": "market",
+      "name": "5기생 네포라보 마트",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 5,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 11,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 9.5,
+        "y": 6.5
+      },
+      "images": {
+        "integrated92": "market-integrated92.png",
+        "original84": "market-original84.png"
+      },
+      "map": "market-map.json",
+      "mapSha256": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613"
+    },
+    {
+      "seed": 1750758918,
+      "depth": 1,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 3,
+        "y": 8,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 9,
+          "y": 16
+        }
+      ],
+      "focus": {
+        "x": 7.5,
+        "y": 12.5
+      },
+      "images": {
+        "integrated92": "mountain-integrated92.png",
+        "original84": "mountain-original84.png"
+      },
+      "map": "mountain-map.json",
+      "mapSha256": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664"
+    }
+  ],
+  "scope": "Nine forced single-facility art samples, not a frequency sample.",
+  "ordinaryFacilityPolicyUnchanged": true
+}

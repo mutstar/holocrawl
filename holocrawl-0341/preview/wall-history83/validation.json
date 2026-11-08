@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "stages": 14,
+  "reconstructed": 12,
+  "nonWallPixelsChanged": 0,
+  "checks": [
+    {
+      "id": "volume01",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "original",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "connected03",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "gray02",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "corner04",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "wear05",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "wear06",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "local10",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "local11",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "cap13",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "shade20",
+      "nonWallPixelsChanged": 0
+    },
+    {
+      "id": "depth80",
+      "nonWallPixelsChanged": 0
+    }
+  ],
+  "preservedPreviousNativeVersion": 1,
+  "latestArtRevision": 84,
+  "latestGeometryAndNonWallValidation": "analysis/city-corners84/validation.json"
+}

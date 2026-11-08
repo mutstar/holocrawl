@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "revision": 122,
+  "nativeIntegrated": false,
+  "approvedWall121Preserved": true,
+  "sourceHashesPreserved": true,
+  "redesignedWallTypes": [
+    "acrylic-window",
+    "closed-shutter",
+    "half-shutter",
+    "shirt-window",
+    "poster-wall",
+    "air",
+    "vent",
+    "cabinet",
+    "pipe"
+  ],
+  "streetMaps": 36,
+  "streetUnits": 468,
+  "cornerCases": 2304,
+  "marketGeometryMaps": 80,
+  "marketInfrastructureUnits": 368,
+  "marketInfrastructurePerFloor": {
+    "4": {
+      "min": 3,
+      "max": 3
+    },
+    "5": {
+      "min": 4,
+      "max": 4
+    },
+    "6": {
+      "min": 6,
+      "max": 6
+    },
+    "7": {
+      "min": 5,
+      "max": 6
+    }
+  },
+  "defaultMarketUnits": 322,
+  "geometryAndCollisionUnchanged": true,
+  "floorSpritesPixelIdentical": 15,
+  "mountOnCapSideFloorPixels": 0,
+  "errors": []
+}
