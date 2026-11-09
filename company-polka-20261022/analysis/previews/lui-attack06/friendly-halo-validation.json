@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "greenPixelsByFrame": [
+    449,
+    295,
+    295,
+    449,
+    453
+  ],
+  "region": [
+    418,
+    322,
+    453,
+    358
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "revision": "street-generator02",
+  "preview": "analysis/previews/street-generator02/index.html",
+  "generatorImplemented": true,
+  "scope": "independent browser prototype",
+  "engineIntegrated": false,
+  "runtimeChanged": false,
+  "movementAndCollision": true,
+  "combatImplemented": false,
+  "art": "Approved venue-street03 concept sampled for rendering; not final tile atlas",
+  "validation": "analysis/previews/street-generator02/generator-validation.json",
+  "browserValidation": "analysis/previews/street-generator02/browser-validation.json"
+}

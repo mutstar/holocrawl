@@ -1,0 +1,13 @@
+{
+  "revision": "street-stairs03",
+  "preview": "analysis/previews/street-stairs03/index.html",
+  "scope": "independent browser prototype",
+  "engineIntegrated": false,
+  "runtimeChanged": false,
+  "upstairs": "assets/stairs-up03-28.png",
+  "approvedDownstairs": "assets/stairs-flat02-28.png",
+  "arrival": "Upstairs on an open 3x3 patch near the former start; player starts one cell south",
+  "validation": "analysis/previews/street-stairs03/generator-validation.json",
+  "browserValidation": "analysis/previews/street-stairs03/browser-validation.json",
+  "floorTravelImplemented": false
+}

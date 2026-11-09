@@ -1,0 +1,67 @@
+{
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "seedStart": 1000,
+  "trialsPerCase": 1000,
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "randomSpawns": false,
+  "explorationTraps": false,
+  "reverseVariants": false,
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression; other 21 gods not implemented.",
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "sourcePatchSha256": "C299B78AC1D2B44CE493EE836C0E80CB85B1849B8011CAD416B4133A473E0F17",
+  "designSha256": "156E21052328252D43D0F5E0CA7A53714F05C47B8EF8190462DA5C9EF548A36B",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "buildBinarySha256": "EBFFB9F4F2546DBA7554E5E62E7C18399BBB9446DF4F4562AA51E5BAD93EC9F0",
+  "results": "runtime\\results\\final-noel-1000.jsonl",
+  "sourceRuns": [
+    {
+      "file": "final-noel-shard-a.jsonl",
+      "records": 6000,
+      "resultsSha256": "804ED0DD1C3CEE6D35AFEF03944781D2B31DCD104734E26D40170E89D8982D93",
+      "manifestSha256": "C43626C34EAF1197B27B718884A92F2FF89464BA224134FF65182B11A437E84A",
+      "binarySha256": "84477B72B5E64426CADBAA09E45FB0456A30C87310C1914FABBD1AEEC2314333",
+      "seedStart": 1000,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-noel-shard-b.jsonl",
+      "records": 6000,
+      "resultsSha256": "C73C7B6B072E25E6DFA789760B0B4C36DF9328E7B7CBAAE2C946AA1711C52F9B",
+      "manifestSha256": "B28322D57A19662F5CDFCFADF6A745D6783B0A6F49A74713F567D506E1EA6A75",
+      "binarySha256": "2D306950B4D2594044B91915B9B610ADFABFFCFB0E802FF6A2A85671C03EFA21",
+      "seedStart": 1250,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-noel-shard-c.jsonl",
+      "records": 6000,
+      "resultsSha256": "E184D697441B725CC98A4D5DDE806E80857F452F712185418BC924EF05824029",
+      "manifestSha256": "807575CB328AA86710961D710B7AE0C7C388A9CC2CBB5A2884A8A7FA747C8E95",
+      "binarySha256": "CC533C6DC9DACA9F97D98DAF9D8DF23F85EE860C3655617CD9BF3887EECA1B68",
+      "seedStart": 1500,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-noel-shard-d.jsonl",
+      "records": 6000,
+      "resultsSha256": "11F3665756993E9C2CADDAB2A6AD00A62E92DE53CF5A63676A61E65712535E2C",
+      "manifestSha256": "F2030274BBBA3F3DB692B7A755CE2BDCC53C28C1BD5E3C11AA0CCFCE21185162",
+      "binarySha256": "9F79CF087F755F546119107C23C41D2A57F738E5ACDDFE4FAB2D28440DD2D8CE",
+      "seedStart": 1750,
+      "trialsPerCase": 250
+    }
+  ]
+}

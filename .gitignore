@@ -92,3 +92,39 @@ venv/
 /holocrawl-0341/analysis/native-play107-01/*/saves/
 /holocrawl-0341/analysis/native-play107-01/*/morgue/
 /holocrawl-0341/analysis/native-play107-01/*/test-init.txt
+
+# Preserve legacy god source, artwork, previews and evidence without duplicate
+# transfer bundles, executable builds or generated game/save databases.
+/company-*/exports/*
+!/company-vfx-20261021/exports/gallery-temple/
+/company-*/runtime/
+/company-*/engine/*-crawl/**/.git/
+/company-*/engine/*-crawl/**/saves/
+/company-*/engine/*-crawl/**/morgue/
+/company-*/engine/*-crawl/**/cache/
+/company-*/analysis/native/**/saves/
+/company-*/analysis/native/**/morgue/
+/company-*/analysis/native/**/cache/
+/analysis/native/**/saves/
+/analysis/native/**/morgue/
+/analysis/native/**/cache/
+/company-*/**/*.exe
+/company-*/**/*.dll
+/company-*/**/*.o
+/company-*/**/*.obj
+/company-*/**/*.a
+/company-*/**/*.lib
+/company-*/**/*.pdb
+/company-*/**/*.ilk
+/company-*/**/*.dsc
+/company-*/**/*.idx
+/company-*/**/*.db
+/company-*/**/*.lux
+/company-*/engine/*-crawl/**/*.d
+/analysis/native/**/*.exe
+/analysis/native/**/*.dll
+
+# DCSS temporary save files left directly in the legacy source root.
+# Audited as empty files or binary save data, not source modules.
+/company-*/engine/*-crawl/crawl-ref/source/[0-9A-Za-z][0-9A-Za-z][0-9A-Za-z][0-9A-Za-z][0-9A-Za-z][0-9A-Za-z]
+!/company-*/engine/*-crawl/crawl-ref/source/README

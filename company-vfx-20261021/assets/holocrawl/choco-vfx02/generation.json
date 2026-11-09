@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "edit",
+  "input": "assets/holocrawl/choco-vfx01/originals/heart.png",
+  "output": "originals/heart-solid.png",
+  "prompt": "Edit target: the supplied pink pixel-art heart outline sprite. Change ONLY the hollow/transparent interior of the heart into a completely solid opaque saturated warm pink fill. Keep the outer pixel-stepped heart silhouette and magenta edge and tiny light pink highlight, same orientation, proportions, centered single-heart composition. The heart interior must have NO transparent hole, NO hollow center. Simple bold retro game pixel art readable after shrinking to only 8-12 pixels wide, broad flat pink interior, very few colors, sharp pixel-stepped edge, no smooth blur or intricate decoration. Single isolated heart on genuinely transparent background outside its silhouette. No shadow, no glow, no text, no additional objects. This is for a monster status marker in a 32-pixel game tile. Preserve the transparency outside the heart.",
+  "placement": "Native 96px overlay anchored 1 tile up/left: centre 57,33, six pixels above previous 57,39. Nearest-neighbor fitting and placement only."
+}

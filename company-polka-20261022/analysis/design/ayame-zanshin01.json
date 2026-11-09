@@ -1,0 +1,18 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-03",
+  "revision": "ayame-zanshin02",
+  "review": "analysis/previews/ayame-zanshin02/index.html",
+  "tier": 2,
+  "type": "passive",
+  "name": "귀인의 잔심",
+  "unlockPiety": 50,
+  "durationAfterCompletedKillAut": 30,
+  "accuracy": "3+floor(Inv/6)",
+  "slaying": "2+floor(Inv/9)",
+  "trigger": "Direct adjacent ordinary melee kill of marked XP foe; next new adjacent XP foe first melee swing gains1star hit/slaying and consumes on attempt,even miss.",
+  "save": "Existing saved tertiary expiry; action-only eligibility/snapshot fields are transient. No serializer layout changes.",
+  "newVfxAdded": false,
+  "runtimeDeployed": true,
+  "binarySha256": "902c7a6c5590c7947c4391022203d0be1f750a4a9b794cebfff80bbdbc99e901"
+}

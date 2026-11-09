@@ -1,0 +1,12 @@
+{
+  "seedStart": 1661,
+  "trialsPerCase": 3,
+  "build": "melee",
+  "buildBinarySha256": "205217FDA7FB6808E6A02588B530EDA1C27C3014359C0B8EA63DAB05401DD72E",
+  "sourcePatchSha256": "588D019745201A6422499AF46A51AE6F2D8847A3F9A16CB70C928E2F0E4CB925",
+  "comparison": "552 overlapping trials match exactly, including HP, resources and elapsed aut.",
+  "reverseResultsSha256": "1FC38CE737661C386B66EFAD2A9CDC02D899970DB0D89F02A531423A87FBC113",
+  "forwardResultsSha256": "E5EB92D26A3A15F317DC0E5077A3F18EABEE20D132FA516933DE73209C56CA84",
+  "comparedEncounters": 552,
+  "status": "passed"
+}

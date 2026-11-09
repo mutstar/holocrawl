@@ -1,0 +1,55 @@
+{
+  "version": "miko-vfx02",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_0.png",
+      "sha256": "26A1F3FBB7A09684C33DC8E601C7F67E82174BEF49455341C3368AE7797A075D",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_1.png",
+      "sha256": "2CFF4AAA81816E235BE30ED0F079A20EFCC9A626485D4F28ADCF93C02F2801EF",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoexpand_0.png",
+      "sha256": "3B6751468FDE2D97C3200B0A4D93D4BEB62B45DBD9D257C9D07FE097500326E4",
+      "size": [
+        224,
+        224
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoexpand_1.png",
+      "sha256": "E8E44A647179694FDD6A9A272992AD5314E2E06A3EFDEF3D4F80945F4CBDCD7C",
+      "size": [
+        224,
+        224
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_0.png",
+      "sha256": "B2264DFD150397C8AF9C8F20FAED648D3D0D5781A429D8E9204913AE85D6A747",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_1.png",
+      "sha256": "6E4D898F74A8E8914462772D8828F45C73815B5E47FADC39913DF1135B6028C2",
+      "size": [
+        32,
+        32
+      ]
+    }
+  ],
+  "originalsAndPrompts": "assets/holocrawl/miko-vfx01",
+  "processing": "Built-in image_gen followed by alpha crop and nearest fit. 32px boundary effects;224px ceremonial sprite at native maximum7x7 size."
+}

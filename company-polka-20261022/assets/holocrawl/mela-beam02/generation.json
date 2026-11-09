@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-c9987830-48af-40b6-8f0c-911e30609388.png",
+  "alphaCrop": [
+    11,
+    69,
+    2171,
+    666
+  ],
+  "canvas": [
+    160,
+    32
+  ],
+  "integration": "New dense rolling blue ghost-flame art without continuous white filament. Original alpha retained, nearest resize160px width; prefix32/96/160/160px. Strong thickness24/28/30/24px,base16/20/22/16. Native UV slicing unchanged, below actors.",
+  "shape": "1cell wide,5cells long, east visual prototype",
+  "combatChanged": false
+}

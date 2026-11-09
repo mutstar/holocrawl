@@ -1,0 +1,1037 @@
+{
+  "tileSize": 32,
+  "source": "shipped PNG tiles; original pixels preserved",
+  "individualTileSamples": true,
+  "nativeCrops": [
+    "sanctuary",
+    "orbit-gravity",
+    "garden-roses",
+    "water-field",
+    "ghostfire",
+    "bombs-urgent"
+  ],
+  "godCount": 22,
+  "sharedImpactGods": [],
+  "rows": [
+    {
+      "god": "suisei",
+      "name": "스이세이",
+      "invocation": "comet",
+      "extra": [
+        "fx_warning",
+        "fx_urgent"
+      ],
+      "note": "혜성 낙하 · 고정 위치 경고"
+    },
+    {
+      "god": "miko",
+      "name": "미코",
+      "invocation": "shrine",
+      "extra": [
+        "fx_shrine"
+      ],
+      "note": "유지: 성역 범위"
+    },
+    {
+      "god": "aki",
+      "name": "아키",
+      "invocation": "garden",
+      "extra": [
+        "fx_garden",
+        "rose"
+      ],
+      "note": "유지: 정원 · 소환: 장미"
+    },
+    {
+      "god": "fubuki",
+      "name": "후부키",
+      "invocation": "foxflame",
+      "extra": [
+        "fox"
+      ],
+      "note": "소환: 여우"
+    },
+    {
+      "god": "ayame",
+      "name": "아야메",
+      "invocation": "oni",
+      "extra": [
+        "swordsman"
+      ],
+      "note": "검사는 배교 징벌용"
+    },
+    {
+      "god": "choco",
+      "name": "초코",
+      "invocation": "charm",
+      "extra": [],
+      "note": "별도 지속 장판 없음"
+    },
+    {
+      "god": "korone",
+      "name": "코로네",
+      "invocation": "punch",
+      "extra": [
+        "hound"
+      ],
+      "note": "사냥개는 배교 징벌용"
+    },
+    {
+      "god": "okayu",
+      "name": "오카유",
+      "invocation": "sleep",
+      "extra": [],
+      "note": "별도 지속 장판 없음"
+    },
+    {
+      "god": "pekora",
+      "name": "페코라",
+      "invocation": "carrotburst",
+      "extra": [
+        "carrot",
+        "fx_warning"
+      ],
+      "note": "폭탄 설치 · 노랑→빨강 경고"
+    },
+    {
+      "god": "noel",
+      "name": "노엘",
+      "invocation": "shield",
+      "extra": [
+        "fx_shield"
+      ],
+      "note": "유지: 은빛 지휘 활성 시 보호 표시"
+    },
+    {
+      "god": "watame",
+      "name": "와타메",
+      "invocation": "shield",
+      "extra": [
+        "fx_shield"
+      ],
+      "note": "유지: 3성 보호 효과"
+    },
+    {
+      "god": "towa",
+      "name": "토와",
+      "invocation": "devil",
+      "extra": [
+        "fx_spotlight"
+      ],
+      "note": "유지: 스포트라이트 범위"
+    },
+    {
+      "god": "lamy",
+      "name": "라미",
+      "invocation": "frost",
+      "extra": [
+        "fx_frost"
+      ],
+      "note": "유지: 5성 활성 시 본인 칸"
+    },
+    {
+      "god": "polka",
+      "name": "폴카",
+      "invocation": "circus",
+      "extra": [],
+      "note": "별도 지속 장판 없음"
+    },
+    {
+      "god": "koyori",
+      "name": "코요리",
+      "invocation": "reagent",
+      "extra": [
+        "fx_slime"
+      ],
+      "note": "유지: 점액 범위"
+    },
+    {
+      "god": "lui",
+      "name": "루이",
+      "invocation": "ravenflight",
+      "extra": [
+        "raven"
+      ],
+      "note": "소환: 까마귀"
+    },
+    {
+      "god": "raden",
+      "name": "라덴",
+      "invocation": "exhibit",
+      "extra": [
+        "fx_exhibit"
+      ],
+      "note": "탈 제단 · 5성 활성 시 본인 칸"
+    },
+    {
+      "god": "hajime",
+      "name": "하지메",
+      "invocation": "rhythm",
+      "extra": [
+        "fx_rhythm"
+      ],
+      "note": "유지: 5성 활성 시 주변 1칸"
+    },
+    {
+      "god": "su",
+      "name": "스우",
+      "invocation": "water",
+      "extra": [
+        "fx_water"
+      ],
+      "note": "유지: 물길 · 5성 주변 수역"
+    },
+    {
+      "god": "vivi",
+      "name": "비비",
+      "invocation": "spotlight",
+      "extra": [
+        "fx_spotlight"
+      ],
+      "note": "유지: 5성 활성 시 본인 칸"
+    },
+    {
+      "god": "sopia",
+      "name": "소피아",
+      "invocation": "gravity",
+      "extra": [
+        "fx_orbit",
+        "fx_gravity"
+      ],
+      "note": "유지: 주변 고리 · 중력장"
+    },
+    {
+      "god": "mela",
+      "name": "메라",
+      "invocation": "fire",
+      "extra": [
+        "fx_fire"
+      ],
+      "note": "유지: 5성 활성 시 본인 칸"
+    }
+  ],
+  "abilities": {
+    "suisei": [
+      [
+        "별자리 표식",
+        "지정·자동",
+        "한 적을 공격해 별 축적; 처치 후 다음 공격 강화",
+        "표적 지정 때 혜성빛 · 별은 전용 자원"
+      ],
+      [
+        "궤도 절단",
+        "사용",
+        "직선 관통 공격; 표적의 별을 소모해 추가 피해",
+        "혜성빛 권능 사용 시 효과"
+      ],
+      [
+        "혜성 낙하",
+        "사용",
+        "고정 3×3에 지연 낙하; 별을 소모해 표적 피해 강화",
+        "노랑→빨강 경고 뒤 혜성 낙하"
+      ]
+    ],
+    "miko": [
+      [
+        "벚꽃 신사",
+        "사용",
+        "제자리에 회복·상태 방어 성역 설치",
+        "분홍 성역 장판"
+      ],
+      [
+        "액막이 불꽃 / 벚꽃 결계",
+        "사용·자동",
+        "성역 테두리 화염; 외부 원거리 공격 피해 완화",
+        "현재 별도 불꽃 도트 없이 성역 표시 공유"
+      ],
+      [
+        "신역 전개",
+        "사용",
+        "성역 확대·피해 감소·해로운 상태 하나 정화",
+        "넓어진 성역 장판"
+      ]
+    ],
+    "aki": [
+      [
+        "장미의 씨앗",
+        "사용",
+        "정원 설치; 가시가 쌓인 적의 이동 방해",
+        "초록 정원 장판"
+      ],
+      [
+        "가시 장미",
+        "사용",
+        "정원 안에 원거리 공격 장미 2개 배치",
+        "정원 장판 + 장미 소환물"
+      ],
+      [
+        "붉은 정원의 만개",
+        "사용",
+        "정원 확대·가시 소모 폭발·장미 공격 강화",
+        "확대된 정원 · 정원빛 권능 사용 시 효과"
+      ]
+    ],
+    "fubuki": [
+      [
+        "흰 여우의 분신",
+        "사용",
+        "고정 분신으로 적을 속이고 자신의 공격에 협공",
+        "흰 여우 분신 + 여우불 권능 사용 시 효과"
+      ],
+      [
+        "여우 바꿔치기",
+        "사용",
+        "분신과 자리 교환; 떠난 자리 주변 여우불 공격",
+        "여우 위치 교환 · 여우불 권능 사용 시 효과"
+      ],
+      [
+        "백여우 행렬",
+        "사용",
+        "분신을 최대 4개로 늘려 기만·협공 강화",
+        "여우 분신 여러 개"
+      ]
+    ],
+    "ayame": [
+      [
+        "귀인의 간격",
+        "자동",
+        "같은 적과 근접전을 이어가면 명중·살육·회피 강화",
+        "전용 지속 장판 없음"
+      ],
+      [
+        "쌍섬",
+        "사용",
+        "일반 근접 공격 한 번의 시간으로 두 번 공격",
+        "공통 타격 효과"
+      ],
+      [
+        "백귀의 결투장",
+        "사용",
+        "지정 상대와 결투 강화; 처치 시 MP·재사용 보상",
+        "현재 결투장 경계 전용 도트 없음 · 붉은 쌍검 권능 사용 시 효과"
+      ]
+    ],
+    "choco": [
+      [
+        "달콤한 시선",
+        "사용",
+        "유혹 표식; 직접 공격으로 중첩해 대상 약화",
+        "유혹 권능 사용 시 효과 · 표식 전용 도트 없음"
+      ],
+      [
+        "위험한 입맞춤",
+        "사용",
+        "인접 표적의 유혹을 소모해 피해·HP 회복",
+        "공통 타격 효과"
+      ],
+      [
+        "서큐버스의 밤",
+        "사용",
+        "유혹을 소모해 확률로 적 하나를 잠시 아군화",
+        "원래 몬스터의 아군 표시 · 유혹 권능 사용 시 효과"
+      ]
+    ],
+    "korone": [
+      [
+        "꺾이지 않는 근성",
+        "자동",
+        "근접 공격·피격으로 근성 축적; 명중·살육 증가",
+        "전용 지속 장판 없음"
+      ],
+      [
+        "놓치지 않아",
+        "사용",
+        "근성 소모 강타; 붙잡은 상대를 추격 가능",
+        "공통 타격 효과"
+      ],
+      [
+        "끝나지 않는 내구전",
+        "사용",
+        "추가 주먹·근성 유지; 받은 피해 일부를 나중에 지불",
+        "연속 주먹 권능 사용 시 효과 · 사냥개는 징벌 전용"
+      ]
+    ],
+    "okayu": [
+      [
+        "모구모구",
+        "식사·자동",
+        "음식·직접 처치로 만복 축적; 만복으로 보호막 유지",
+        "일반 식사 처리 · 별도 장판 없음"
+      ],
+      [
+        "같이 낮잠 잘래",
+        "사용",
+        "대상에게 졸음 축적; 감속·수면 판정",
+        "수면 권능 사용 시 효과 + 원래 수면 상태 표시"
+      ],
+      [
+        "꿈까지 먹어줄게",
+        "사용",
+        "만복·졸음 소모 강타; 잠든 적에게 강화",
+        "공통 타격 효과"
+      ]
+    ],
+    "pekora": [
+      [
+        "수상한 당근",
+        "사용",
+        "밟으면 폭발하는 당근 설치; 연쇄 폭발 가능",
+        "당근 폭탄 타일"
+      ],
+      [
+        "도화선 조작",
+        "사용",
+        "설치 폭탄 즉시 기폭 또는 지연 기폭 예약",
+        "예약 폭발 노랑→빨강 경고"
+      ],
+      [
+        "페코랜드 개장",
+        "사용",
+        "구역 안 세 지점을 지정해 순차 폭격",
+        "순차 범위 경고 · 폭발 때 화염 효과"
+      ]
+    ],
+    "noel": [
+      [
+        "기사의 기량",
+        "사용",
+        "전투·현재 무기/맨손·갑옷·방패 유효 스킬 증가",
+        "발동 시 보호빛 · 일반 활성 아이콘"
+      ],
+      [
+        "기사단의 보급",
+        "자동",
+        "처치로 보급 진척을 쌓아 사용 가능한 장비 선물",
+        "실제 장비 아이템 · 전용 장판 없음"
+      ],
+      [
+        "백은의 기사단장",
+        "사용",
+        "근접 물리 피해·AC·SH 강화",
+        "본인 칸 보호 표시"
+      ]
+    ],
+    "watame": [
+      [
+        "포근한 양털",
+        "자동",
+        "전투·이동 중에도 추가 HP 재생",
+        "전용 지속 장판 없음"
+      ],
+      [
+        "양털 방벽 / 반격박치기",
+        "사용·자동",
+        "직접 피격 3회 완화; 회피·방패 차단 시 반격 판정",
+        "방벽 유지 중 본인 칸 보호 표시"
+      ],
+      [
+        "끝나지 않은 노래",
+        "사용",
+        "양털 재생 강화; 치명상을 한 번 버티고 회복",
+        "권능 사용 시 보호빛 · 5성 활성 아이콘"
+      ]
+    ],
+    "towa": [
+      [
+        "악마의 조준",
+        "자동",
+        "일반 원거리 공격의 명중·피해 강화",
+        "전용 지속 장판 없음"
+      ],
+      [
+        "엄호사격",
+        "사용",
+        "지정 구역의 적을 사격하면 추가 지원사격",
+        "분홍·금색 엄호 구역 장판"
+      ],
+      [
+        "악마의 교차포화",
+        "사용",
+        "기존 엄호 구역의 지원사격·화력 강화",
+        "엄호 구역 장판 공유"
+      ]
+    ],
+    "lamy": [
+      [
+        "설국의 잔",
+        "사용",
+        "술로 취기 축적; 적정 취기에서 냉기 공격 보너스",
+        "서리 권능 사용 시 효과"
+      ],
+      [
+        "서리의 숨결",
+        "사용",
+        "전방 부채꼴 냉기 공격·냉각 축적",
+        "서리 권능 사용 시 효과 · 전용 부채꼴 애니메이션 없음"
+      ],
+      [
+        "눈의 연회",
+        "사용",
+        "취기 소모; 주변 적에게 주기적 냉기 피해·냉각",
+        "본인 칸 서리 표시"
+      ]
+    ],
+    "polka": [
+      [
+        "오늘의 공연",
+        "사용",
+        "일점집중·외줄타기·저글링 과제를 완수해 박수 획득",
+        "서커스 권능 사용 시 효과 · 공연 전용 장판 없음"
+      ],
+      [
+        "공중곡예",
+        "사용",
+        "인접 적을 넘어 도약; 다음 공격 강화",
+        "서커스 권능 사용 시 효과"
+      ],
+      [
+        "대단원",
+        "선택 사용",
+        "박수 소모: 불꽃 피날레 / 커튼콜 회복 / 대혼란",
+        "현재 셋 모두 서커스 권능 사용 시 효과를 공유"
+      ]
+    ],
+    "koyori": [
+      [
+        "조수의 실험대",
+        "선택 사용",
+        "독성·발열·냉각 시약 제조 후 투척 또는 무기 도포",
+        "시약 반응 권능 사용 시 효과 · 별도 시약 도트 없음"
+      ],
+      [
+        "촉매 투입",
+        "켜기/끄기",
+        "시약 조합으로 연소폭발·열충격·응고점액 반응",
+        "응고 반응에 초록 점액 장판"
+      ],
+      [
+        "임계 실험",
+        "선택 사용",
+        "다음 연소·점액·열충격 반응 중 하나 강화",
+        "점액은 넓어진 장판 · 나머지는 시약 반응 권능 사용 시 효과"
+      ]
+    ],
+    "lui": [
+      [
+        "검은 날개의 권속",
+        "사용",
+        "아군 까마귀를 불러 공격·추격",
+        "까마귀 소환물"
+      ],
+      [
+        "사냥 지휘",
+        "사용",
+        "지정 적에게 까마귀들의 집중 공격 유도",
+        "까마귀 행동 · 까마귀 지휘 권능 사용 시 효과"
+      ],
+      [
+        "흑익의 군세",
+        "사용",
+        "까마귀를 최대 6마리로 늘리고 강화",
+        "강화된 까마귀 무리"
+      ]
+    ],
+    "raden": [
+      [
+        "이동 박물관",
+        "선택 사용",
+        "회화: 공격 / 조각: AC / 공예: 처치 회복 중 전시",
+        "전시 교체 시 초록·금색 효과"
+      ],
+      [
+        "소장품 발동",
+        "선택 사용",
+        "전시 작품에 따라: 채색 폭발 / 조각의 파동 / 옻칠의 가호",
+        "셋 모두 전시 권능 사용 시 효과 공유"
+      ],
+      [
+        "특별전 개막",
+        "사용",
+        "세 작품의 가호를 함께 받고 각 발동 권능 강화",
+        "본인 칸 전시 표시"
+      ]
+    ],
+    "hajime": [
+      [
+        "반쵸의 스텝",
+        "자동",
+        "적 근처 이동으로 박자 축적; 다음 근접 공격 강화",
+        "전용 지속 장판 없음"
+      ],
+      [
+        "파고들기",
+        "사용",
+        "적 옆으로 이동하며 박자를 소모해 타격",
+        "리듬 권능 사용 시 효과"
+      ],
+      [
+        "반쵸 타임",
+        "사용",
+        "일반 이동 후 도착 지점 주변 1칸의 적을 공격",
+        "본인을 따라오는 보라 리듬 테두리"
+      ]
+    ],
+    "su": [
+      [
+        "물결의 흔적",
+        "자동",
+        "직접 공격한 적 발밑에 이동을 방해하는 웅덩이",
+        "적 발밑 물결 한 칸"
+      ],
+      [
+        "밀려오는 파도",
+        "사용",
+        "직선 수압 공격·밀침; 웅덩이를 지나면 폭 확대",
+        "물결 권능 사용 시 효과"
+      ],
+      [
+        "만조",
+        "사용",
+        "이동을 따라오는 물 구역; 주기적 파동·파도 강화",
+        "본인 주변 5×5 물 장판"
+      ]
+    ],
+    "vivi": [
+      [
+        "전투 메이크업",
+        "사용",
+        "직접 공격 피해 강화; 은신·투명 유지에는 불리",
+        "분홍 스포트라이트 권능 사용 시 효과"
+      ],
+      [
+        "눈부신 등장",
+        "사용",
+        "주변 적에 마법 피해·실명 판정",
+        "권능 사용 시 스포트라이트 + 원래 실명 상태"
+      ],
+      [
+        "런웨이의 주인공",
+        "사용",
+        "적의 주목을 모아 공격 강화·등장 범위 확대",
+        "본인 칸 스포트라이트 표시"
+      ]
+    ],
+    "sopia": [
+      [
+        "행성의 고리",
+        "사용",
+        "자신 인접 8칸의 적에게 주기적 물리 피해",
+        "본인을 따라오는 금색 고리"
+      ],
+      [
+        "중력장",
+        "사용",
+        "고정 구역의 적에게 지속 피해·중심 끌기 판정",
+        "고정 보라 중력장"
+      ],
+      [
+        "빅뱅 실험",
+        "사용·기폭",
+        "중력장을 확대·응축한 뒤 별도 기폭으로 폭발·밀침",
+        "확대된 중력장 · 기폭 전용 새 도트 없음"
+      ]
+    ],
+    "mela": [
+      [
+        "불조심의 가호",
+        "자동·설정",
+        "rF+·피격으로 열기 축적; 열기로 불씨 반격",
+        "반격 켜기/끄기 가능 · 별도 장판 없음"
+      ],
+      [
+        "화염 역분사",
+        "사용",
+        "열기를 소모해 전방 화염 공격·일반 불구름 소화",
+        "청록·보라 도깨비불 권능 사용 시 효과"
+      ],
+      [
+        "메라조 출동!",
+        "사용",
+        "열기 충전·화염 보호·자동 소화·역분사 강화",
+        "본인 칸 도깨비불 표시"
+      ]
+    ]
+  },
+  "nativeMenuChoices": {
+    "noel": [
+      {
+        "name": "Knight's skill (MP2, piety2)",
+        "tier": 1
+      },
+      {
+        "name": "Silver commander (MP5, piety10)",
+        "tier": 5
+      }
+    ],
+    "suisei": [
+      {
+        "name": "Select constellation target",
+        "tier": 1
+      },
+      {
+        "name": "Orbital cut (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Comet (MP6, piety10)",
+        "tier": 5
+      }
+    ],
+    "miko": [
+      {
+        "name": "Place sanctuary (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Sacred boundary (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Great sanctuary (MP6, piety10)",
+        "tier": 5
+      }
+    ],
+    "aki": [
+      {
+        "name": "Place garden (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Place two roses (MP4, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Full bloom (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "fubuki": [
+      {
+        "name": "Place fox image (MP3, piety1)",
+        "tier": 1
+      },
+      {
+        "name": "Swap with image (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Fox gathering (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "ayame": [
+      {
+        "name": "Twin strike (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Duel (MP5, piety10)",
+        "tier": 5
+      }
+    ],
+    "choco": [
+      {
+        "name": "Temptation (MP2)",
+        "tier": 1
+      },
+      {
+        "name": "Kiss (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Charm (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "korone": [
+      {
+        "name": "Pursuing punch (MP2, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Endurance (MP5, piety12)",
+        "tier": 5
+      }
+    ],
+    "okayu": [
+      {
+        "name": "Eat food",
+        "tier": 1
+      },
+      {
+        "name": "Nap mark (MP3, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Dream eater (MP5, piety8)",
+        "tier": 5
+      }
+    ],
+    "pekora": [
+      {
+        "name": "Plant carrot (MP2, piety1)",
+        "tier": 1
+      },
+      {
+        "name": "Detonate carrot (MP2, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Delayed fuse (MP2, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Pekoland: select three strikes (MP7, piety14)",
+        "tier": 5
+      },
+      {
+        "name": "Dismantle carrot",
+        "tier": -1
+      }
+    ],
+    "watame": [
+      {
+        "name": "Wool barrier (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Won't die (MP6, piety15)",
+        "tier": 5
+      }
+    ],
+    "towa": [
+      {
+        "name": "Covering fire zone (MP4, piety4)",
+        "tier": 3
+      },
+      {
+        "name": "Crossfire (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "lamy": [
+      {
+        "name": "Drink (MP2, piety1)",
+        "tier": 1
+      },
+      {
+        "name": "Cold breath (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Banquet (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "polka": [
+      {
+        "name": "Performance: strong target (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Performance: tightrope (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Performance: juggling (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Acrobatics (MP3, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Acrobatics + 1 applause (MP3, piety2)",
+        "tier": 3
+      },
+      {
+        "name": "Firework finale (MP6, piety10)",
+        "tier": 5
+      },
+      {
+        "name": "Curtain call (MP6, piety10)",
+        "tier": 5
+      },
+      {
+        "name": "Confusion finale (MP6, piety10)",
+        "tier": 5
+      },
+      {
+        "name": "Abandon performance",
+        "tier": -1
+      }
+    ],
+    "koyori": [
+      {
+        "name": "Prepare poison (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Prepare heat (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Prepare cold (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Throw poison",
+        "tier": 1
+      },
+      {
+        "name": "Throw heat",
+        "tier": 1
+      },
+      {
+        "name": "Throw cold",
+        "tier": 1
+      },
+      {
+        "name": "Coat poison",
+        "tier": 1
+      },
+      {
+        "name": "Coat heat",
+        "tier": 1
+      },
+      {
+        "name": "Coat cold",
+        "tier": 1
+      },
+      {
+        "name": "Toggle automatic reactions",
+        "tier": 3
+      },
+      {
+        "name": "Critical combustion (MP5, piety8)",
+        "tier": 5
+      },
+      {
+        "name": "Critical slime (MP5, piety8)",
+        "tier": 5
+      },
+      {
+        "name": "Critical thermal shock (MP5, piety8)",
+        "tier": 5
+      }
+    ],
+    "lui": [
+      {
+        "name": "Summon raven (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Hunting command (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Raven host (MP7, piety14)",
+        "tier": 5
+      }
+    ],
+    "raden": [
+      {
+        "name": "Exhibit painting (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Exhibit sculpture (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Exhibit craft (MP1)",
+        "tier": 1
+      },
+      {
+        "name": "Painting burst (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Sculpture wave (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Craft shield (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Special exhibition (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "hajime": [
+      {
+        "name": "Dive in (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Bancho time (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "su": [
+      {
+        "name": "Wave (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "High tide (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "vivi": [
+      {
+        "name": "Makeup (MP2)",
+        "tier": 1
+      },
+      {
+        "name": "Dazzling entrance (MP3, piety4)",
+        "tier": 3
+      },
+      {
+        "name": "Runway (MP6, piety12)",
+        "tier": 5
+      }
+    ],
+    "sopia": [
+      {
+        "name": "Orbit ring (MP3)",
+        "tier": 1
+      },
+      {
+        "name": "Gravity field (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Big Bang (MP7, piety14)",
+        "tier": 5
+      },
+      {
+        "name": "Detonate Big Bang",
+        "tier": 6
+      },
+      {
+        "name": "Dismiss ring",
+        "tier": -1
+      },
+      {
+        "name": "Dismiss field",
+        "tier": -1
+      }
+    ],
+    "mela": [
+      {
+        "name": "Toggle ember counter",
+        "tier": -1
+      },
+      {
+        "name": "Reverse jet (MP3, piety3)",
+        "tier": 3
+      },
+      {
+        "name": "Fire brigade (MP6, piety12)",
+        "tier": 5
+      }
+    ]
+  }
+}

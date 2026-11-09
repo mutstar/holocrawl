@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One single pixel-art magic barrier sprite for Dungeon Crawl Stone Soup. A PERFECT CIRCLE, equal width and height, NOT an oval, NOT an ellipse. Logical40x40pixel canvas enlarged nearest-neighbor, thin2pixel pale blush pink circular outline about36pixels diameter. Empty completely TRANSPARENT center and transparent outside. Small pale pink highlight on upper left curve. Soft light pastel pink, not magenta. Crisp stepped square pixel edges, limited palette. No character,no shield symbol,no flowers,no background,no text,no glow,no gradients,no haze,no blur. Single circular ring only. The circle must have exactly1:1aspect ratio.",
+  "processing": "Generated transparent original preserved. Alpha-bound crop normalized to equal36x36 dimensions with nearest-neighbor and placed at center of48x48 transparent game canvas. Renderer centers the circular barrier on character body. Visual draft only."
+}

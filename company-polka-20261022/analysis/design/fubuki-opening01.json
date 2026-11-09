@@ -1,0 +1,17 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-03",
+  "revision": "fubuki-opening01",
+  "review": "analysis/previews/fubuki-opening01/index.html",
+  "tier": 2,
+  "type": "passive",
+  "name": "여우의 빈틈",
+  "unlockPiety": 50,
+  "extraFoxfire": 1,
+  "trigger": "First successful ordinary direct hit on living deceived foe; only its deceiving image fires extra, once per successful deception.",
+  "cost": "No extra MP/piety/action. Same native hit/resistance/time-scaling as ordinary foxfire.",
+  "save": "Existing Fubuki target.kind:0unspent/1spent. Reset on successful deception. Existing raven_hits stores deceiving image and expiry. No serializer layout changes.",
+  "newVfxAdded": false,
+  "runtimeDeployed": true,
+  "binarySha256": "74128a5c233a16df61f3d46aeaeecb7d8982657a2a9658aacfbc2b8a19bb9812"
+}

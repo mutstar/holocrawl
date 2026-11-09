@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit target: supplied two-cell horizontal thorn projectile sprite strip. Preserve TWO equal square cells, RIGHTWARD orientation, transparent background and same green organic thorn identity. Change only readability: make the whole projectile much brighter, with a continuous bright ivory/gold needle core along the RIGHT HALF, large sharp ivory arrow tip with crimson/red border, bright emerald barb highlights. Replace dark green trailing wisps with a short bright rose-pink and gold flight streak and two vivid pink petals. It must be VERY visible against dark green patterned grass at 32x32; current dark green body vanishes. Keep thin fast projectile silhouette but broad enough (roughly8px high at32px scale) to read as moving spear. Frame0 compact bright trail, frame1 brighter scattered pink petal trail. Crisp chunky game pixel art, no gradients, no background, no text, no glow fog. Two equal square cells side by side, 2:1 transparent strip.",
+  "originalPromptSet": "assets/holocrawl/aki-vfx01/inputs.json"
+}

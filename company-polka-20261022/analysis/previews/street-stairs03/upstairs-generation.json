@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit target: attached approved 28px flat concrete DOWN stairs game tile. Create its matching UPSTAIRS counterpart. Preserve exactly the subdued grey cement palette, tiny thin side handrails, narrow edge rim, axis-aligned flat overhead appearance, simple low resolution pixel clusters and square one-tile silhouette. Reverse stair depth: 4 shallow horizontal steps ascending away toward the TOP, top landing lighter grey #666866 and lowest/front step dark grey #323536. This must read as stairs UP, not a deep dark hole at the top. No large wall, no trapezoid, no doorway, no roof, no building, no perspective monument, no white highlights, no arrow symbol or text. Only a few pixel-high relief, deliberately flat classic DCSS 32x32 terrain tile. One compact staircase and two very short thin dull silver side handrail strokes. No surrounding paving square. True transparent background outside the sprite. Centered tightly with minimal transparent margins. Designed to be used at 28x28 pixels inside a32x32 game tile; no extra small detail.",
+  "original": "assets/stairs-up03-original.png",
+  "asset": "assets/stairs-up03-28.png",
+  "logicalTileSize": 32,
+  "renderSize": 28,
+  "sourceRect": [
+    254,
+    278,
+    1000,
+    990
+  ],
+  "transparentBackground": true
+}

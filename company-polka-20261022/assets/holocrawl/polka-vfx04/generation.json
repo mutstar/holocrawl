@@ -1,0 +1,5 @@
+{
+  "tool": "built-in imagegen",
+  "prompt": "Edit the provided jester hat image. Keep the red, blue, black curved two-point hat silhouette, tip bells, pink accent, and retro pixel-art style. Fix ONLY the bottom hem: replace the projecting yellow ornamental band at the bottom with a plain thin gold rim directly attached to the red/blue/black fabric. The bottom silhouette must be one solid continuous compact connected edge. Remove the dangling gold flourish, the star-like bottom highlight, all hanging pixels, and any detached dots underneath. No stars, sparkles, pendants, or ornaments below the hat. Large connected solid color regions readable at 16x16 native game pixels. Very little white. Transparent background. Hat only.",
+  "target": "assets/holocrawl/polka-vfx02/reference-hat.png"
+}

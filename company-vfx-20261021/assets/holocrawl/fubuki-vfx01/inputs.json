@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": {
+    "foxshift": "Use case: stylized-concept. Asset: Fubuki fox substitution magical SMOKE pixel VFX, TWO equal square cells side by side, transparent horizontal2:1 strip. A burst of WHITE wispy smoke swirling in a loose circle around a large EMPTY TRANSPARENT CENTRE, with pale cyan ribbon edges and tiny icy-blue foxfire sparks. Frame0 compact curling puff at four sides, frame1 smoke unfurls outward into slender curling tails and breaks into small wisps. Crisp chunky pixel art readable at32x32. Strong white silhouette with blue highlights. Empty central50% width, keep creature readable. No fox body, no faces, no people, no background floor, no text labels. Single-cell magical teleport/substitution puff; sparse clouds rather than solid disk. Input reference is white fox summon for palette only.",
+    "foxcircle": "Use case: stylized-concept. Asset: Fubuki summoning arrival ring pixel VFX, TWO equal square cells side by side horizontal2:1 transparent strip. A small BLUE-WHITE magical circle at the base with three curling kitsune fire wisps rising from its rim, leaving the centre EMPTY for an actual fox sprite drawn on top. Frame0 faint thin cyan ring and rising white sparks, frame1 brighter ivory-blue opening flare around the outer rim with curling tiny tail-like wisps, transparent centre. Crisp chunky pixel art legible32x32. Limited ivory white, cyan, bright blue. No animal body or animal head, no letters, no runes/text, no grids, no background, no opaque fog. Bright enough for dark dungeon floor while not hiding summon. Original white fox is style/palette reference only."
+  },
+  "existingDepartureFire": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxflame_0.png"
+}

@@ -1,0 +1,37 @@
+{
+  "tool": "built-in image_gen",
+  "bookSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-f583e95d-4f26-43f6-816b-9893f96bac1b.png",
+  "alphaCrop": [
+    245,
+    300,
+    1118,
+    869
+  ],
+  "bookSizes": [
+    [
+      14,
+      10
+    ],
+    [
+      20,
+      14
+    ],
+    [
+      24,
+      16
+    ],
+    [
+      22,
+      15
+    ]
+  ],
+  "manaSource": "../sopia-bigbang01/nova2.png",
+  "manaCrop": [
+    11,
+    11,
+    21,
+    21
+  ],
+  "integration": "Nearest resize/canvas placement only; original alpha preserved. Native offset(+14,-24), one player anchor. Mana star10/10/8/6px approaches head diagonally; book pop14x10\u219224x16px.",
+  "gameplayChanged": false
+}

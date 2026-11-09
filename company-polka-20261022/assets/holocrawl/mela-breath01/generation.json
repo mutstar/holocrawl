@@ -1,0 +1,50 @@
+{
+  "tool": "built-in image_gen",
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-230982e5-34b6-4570-ba0b-30ba90365cf7.png",
+  "alphaCrop": [
+    201,
+    244,
+    1321,
+    830
+  ],
+  "integration": "Original alpha retained, nearest resizing and native32px canvas placement. Eastward jet tiles below actors, progressive1/4/9cells, widths1/3/5. Occupied tiles get existing counterflash at peak. No gameplay changes.",
+  "sizes": {
+    "base": [
+      [
+        14,
+        7
+      ],
+      [
+        18,
+        9
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        14,
+        7
+      ]
+    ],
+    "strong": [
+      [
+        18,
+        9
+      ],
+      [
+        24,
+        13
+      ],
+      [
+        28,
+        15
+      ],
+      [
+        18,
+        9
+      ]
+    ]
+  },
+  "scope": "East-direction visual prototype; diagonal cone mapping requires separate review when implementing combat."
+}

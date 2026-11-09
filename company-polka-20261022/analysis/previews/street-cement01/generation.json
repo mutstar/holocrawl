@@ -1,0 +1,7 @@
+{
+  "sampling": "512x384 nearest-neighbor reference; four clean 32px floor regions",
+  "source": "assets/scene-reference.png",
+  "prompt": "Change only walkable asphalt into modestly brighter dark-mid neutral cool-grey weathered cement, target midtones #505151. Restrained grain, small irregular stains and occasional fine cracks. Preserve low-resolution Crawl-like sharp pixel art, exact layout and all walls, props, character and rat. No new objects, text, grid, gloss or gradients.",
+  "output": "assets/cement-original.png",
+  "mode": "built-in image_gen"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "status": "development-native-validation-pending",
+  "variants": [
+    "no_god",
+    "noel_v2",
+    "sopia_full",
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame",
+    "choco",
+    "korone",
+    "okayu",
+    "pekora",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "mela"
+  ],
+  "checkpoint_status": "saved; large all-god validation incomplete"
+}

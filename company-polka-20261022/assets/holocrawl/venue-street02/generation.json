@@ -1,0 +1,6 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Edit target: supplied32x32 Dungeon Crawl Stone Soup dark stone wall tile. Preserve its dark olive-charcoal palette, irregular stone outlines, dense low-resolution stone texture, native lighting, camera and edges as closely as possible. Add ONLY ONE tiny worn paper concert poster stuck flat to one stone near center-right; poster around8x11logicalpixels, muted cream paper, two muted cyan/pink pixels as a music pictogram, NO readable text. Poster modest and dirty, no glow. This is a dark dungeon tile with a subtle concert-world detail, not a flat modern concrete cube or bright sidewalk. Exact32x32logicalpixel style enlarged nearest-neighbor hard square pixel blocks. Preserve full square opaque wall background, no margins, no transparency, no new object outside wall, no anti-aliasing, no gradients, no glossy surfaces. Single tile, not scene or sheet.",
+  "editTarget": "engine/campaign-crawl/crawl-ref/source/rltiles/dngn/wall/brick_dark_1_0.png",
+  "processing": "Edited wall normalized to32x32 with nearest-neighbor. All other terrain uses original DCSS raster files without art changes. Fixed room/corridor tile renderer only; no native game integration."
+}

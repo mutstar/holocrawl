@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-02",
+  "status": "implemented-native-validated",
+  "userDirection": "Reduce maximum stars from 5 to 3 and retune related effects because targets often die before five stacks.",
+  "maxStars": 3,
+  "tier1": {
+    "type": "passive-with-manual-retarget",
+    "killRewardDamage": "1d(3+4*S)",
+    "meanAtStars1To3": [
+      4,
+      6,
+      8
+    ],
+    "rewardWindowAut": 30,
+    "markExpirySinceLastDirectDamageAut": 100,
+    "ordinaryHitsReceiveDamageBonusFromStars": false
+  },
+  "tier3": {
+    "type": "active",
+    "damage": "2d(8+floor(I/2))+5*S against marked target; base damage only against other targets",
+    "mp": 3,
+    "piety": 3,
+    "range": 5,
+    "meanAtI12Stars0To3BeforeAC": [
+      15,
+      20,
+      25,
+      30
+    ]
+  },
+  "tier5": {
+    "type": "active",
+    "damage": "3d(10+floor(I/2))+8*S against snapshotted marked target; base damage only against other targets",
+    "mp": 6,
+    "piety": 10,
+    "range": 6,
+    "radius": 1,
+    "landingDelayAfterCastAut": 20,
+    "meanAtI12Stars0To3BeforeAC": [
+      25.5,
+      33.5,
+      41.5,
+      49.5
+    ]
+  },
+  "pietyMarkedKillBonus": "Keep existing threshold S>=3: now requires full stacks. Other eligibility rules unchanged.",
+  "visualProposal": "Approved indicator now connected to ordinary gameplay: cyan1/2 and gold3 above marked enemy.",
+  "unapprovedPassiveCandidates": {
+    "focusedObservation": "Implemented: piety50, +3 ordinary accuracy at2+stars.",
+    "starInheritance": "Implemented: piety100, banked reward hit on a surviving fresh marked foe starts at2stars."
+  },
+  "constraints": [
+    "Faster full stacks are a real buff; maximum damage preserved approximately, not a balance-equivalence claim.",
+    "Keep original one-stack-per-damaging-action, exclusion, consumption, miss, expiry, friendly-fire and reward anti-recursion rules unless separately changed."
+  ],
+  "visualReview": "analysis/previews/suisei-stars01/index.html",
+  "visualStatus": "approved-and-live",
+  "implementationRevision": "suisei-three03",
+  "ordinaryRuntime": "runtime/tiles01/HoloCrawl.exe",
+  "saveMigration": "Legacy v1 Suisei stars ceil(3*S/5), cap3; keep already-rolled reward and preserve +5/old-star bonus of already queued comets. New Suisei payload v2. Other gods remain v1."
+}

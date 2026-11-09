@@ -1,0 +1,16 @@
+{
+  "tool": "built-in image_gen",
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-ff4a367c-e4f9-4bac-a455-e3b6bdc1880b.png",
+  "auraAlphaCrop": [
+    198,
+    65,
+    1065,
+    1115
+  ],
+  "aura": "Generated56/60/64/60pxwreath in96canvas, native span3 anchored player(-1,-1), opacity125/255 below actors",
+  "protection": "Read-only prepared5x5outline, not an enemy damage floor",
+  "beamSource": "../mela-beam02/generation.json",
+  "beam": "Existing approved thick flame source resized192x24/28/30/24px, prefix32/96/192/192px. One6cell line, per-cell native UV slicing.",
+  "combatChanged": false,
+  "enhancedRangeStatus": "6cell visual proposal, pending user review"
+}

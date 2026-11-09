@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "nativeDatabaseRebuiltWithSameRcAndSaveDir": true,
+  "bundledDependenciesOnly": true,
+  "gods": 22,
+  "freshProcessReload": true,
+  "binarySha256": "15d3a01945105a55dbe70e5b0052cba305455074288e09b2c8d9c6aa17c7d8af",
+  "originalFailedStartup": [
+    "runtime/portable-smoke",
+    "runtime/portable-smoke02"
+  ],
+  "reasonFixed": "Build map database before test mode using the same rc/save_dir as the game; no engine rule change."
+}

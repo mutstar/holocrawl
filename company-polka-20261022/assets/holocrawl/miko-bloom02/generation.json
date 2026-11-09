@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": {
+    "bubble": "Use case: stylized-concept. Asset: ONE transparent pixel-art magic barrier overlay for a32px Dungeon Crawl Stone Soup character, entire logical canvas48x48pixels enlarged nearest-neighbor. Thin upright elliptical bubble, outer width38pixels,height43pixels. Pale soft blush pink outline2pixels thick, brighter pale pink small highlights at upper left and lower right. Completely TRANSPARENT empty center large enough to see the character, genuinely transparent outside too. No fill or haze over the interior. Muted pale pink, not magenta. Hard square pixel edges, limited palette, no blur,no gradients,no glow. No character,no shield emblem,no flowers,no floor,no text,no background. One ring-like oval barrier only, not spritesheet.",
+    "cross": "Use case: stylized-concept. Asset: ONE tiny bright green healing plus sign for retro pixel-art game status effect,16x16logicalpixels enlarged nearest-neighbor. Clear upright equal-arm green cross, solid mint-green body, pale green central highlight, dark green1pixeloutline, bold3pixelthick arms. Transparent background, no other objects,no letters,no text,no flowers,no border box,no blur,no glow,no gradients. Readable at10x10pixels. Single plus sign only."
+  },
+  "processing": "Transparent originals preserved. Alpha-bound crop and nearest-neighbor fit: barrier44px within48px canvas, cross11px within32px canvas. Existing generated blossom reused five times. Native renderer positions assets around player; visual draft only."
+}

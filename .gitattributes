@@ -13,3 +13,9 @@
 /holocrawl-0341/preview/** -text
 /holocrawl-0341/analysis/** -text
 /holocrawl-0341/migration/** -text
+
+# Legacy capture manifests and patches use byte hashes of the original files.
+/company-polka-20261022/** -text
+/company-vfx-20261021/** -text
+/analysis/** -text
+/engine/** -text

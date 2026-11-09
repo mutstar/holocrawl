@@ -1,0 +1,70 @@
+{
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_e_0.png",
+      "sha256": "3a145a11109f5d328b57ed14addf1db5bb9a0a5e978fefc281d0eed1d97992bb"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_se_0.png",
+      "sha256": "6dbe4ad12e4377bff8897eee71d7748b2fc8489c6e6ce60fe195105e2fa4d1e6"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_s_0.png",
+      "sha256": "4b08a9d6d582fe2621ee200f8a7ca00fb098d4db77a75a1bc6cb9ab2229cc078"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_sw_0.png",
+      "sha256": "068287d784eb491308621342a42260f7b34e749cf1f97347a3669a63004d9a71"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_w_0.png",
+      "sha256": "c73a496ea98e7c1c903d9e07f26b9ac49045abc41f87e92a065ef445ea7ca9da"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_nw_0.png",
+      "sha256": "5d9aeb4dcfa562188cc56d5eec3b1dc1ac9d69ea6eabd39377a02e2d7764e0ac"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_n_0.png",
+      "sha256": "7ec91f45e5d8f7ce6993596183ec722b70c002f5d33376cf0d001c0feb540097"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_ne_0.png",
+      "sha256": "3a2f96dda55ca7cea12cef6fa31dbb2c1463f4cb335f377e6e4bbb364916dcff"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_e_1.png",
+      "sha256": "bf6731cb710d4facfd8e55a3540580edd1798988dcc052be2bacbd2b3b76db1a"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_se_1.png",
+      "sha256": "959f8bde8cc1b9a07c178258bdbd92ac0f12ae62cc3dd8a7db10bfa7b75effe1"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_s_1.png",
+      "sha256": "b30e984a33b5d3796d9e160a7f972847fdd5029326c94632d8a3367b60bf5296"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_sw_1.png",
+      "sha256": "09dfcaeeeaa7c004d77687439027f58551940a0567a5b7003ecb136349ea2d3b"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_w_1.png",
+      "sha256": "47fe3e8d2fa815e17affca52c4f71b759410e1039ccbeea4770986d72c7d1992"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_nw_1.png",
+      "sha256": "ae783b1be988eadd663c533c925f6c979c6bdb9d43c5e219d3252499ab09f1e8"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_n_1.png",
+      "sha256": "7d09cd34018fcb36c4eebe0012732fb752fdc9bdce7d02878d9db5de484670da"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_ne_1.png",
+      "sha256": "ab9c6260aeb84f230e757789ac22b9f6fb78548a6f074f5befd72734226180e3"
+    }
+  ],
+  "bloom": "assets/holocrawl/aki-vfx01/originals/bloom.png",
+  "reason": "Brighter ivory/gold projectile core against green garden"
+}

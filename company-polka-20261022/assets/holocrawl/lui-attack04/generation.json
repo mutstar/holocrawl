@@ -1,0 +1,11 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit. Edit this approved slim Ganmo hawk game sprite into ONE striking attack animation key pose. Preserve exact identity: sharp gold eyes, pointed white feather collar, brown plumage, cream narrow body, tiny red tie, burgundy cape hanging close. Facing right. Lean torso and head FORWARD to the right, beak thrust toward target, one claw extended forward, compact wings lifted backward preparing a peck/claw strike. Clearly different from standing upright but do not enlarge the bird or make it round. Whole bird fits approximately30x30 logical pixels inside32x32 tile, no detached parts. Authentic tiny Dungeon Crawl Stone Soup chunky pixel clusters, readable simple silhouette. Transparent background, no target, no impact particles, no ground, no text.",
+  "target": "B slim Ganmo standing sprite",
+  "nativeMax": [
+    30,
+    30
+  ],
+  "crop": "alpha >32 bounds",
+  "integration": "nearest-neighbor; left facing via horizontal mirror"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-02",
+  "name": "집중 관측",
+  "tier": 2,
+  "type": "passive",
+  "proposedUnlockPiety": 50,
+  "minimumInvocations": 0,
+  "condition": "Current marked target alive, mark unexpired, at least2of3 stars.",
+  "effect": "Accuracy +3 on attacks with ordinary hit checks, including melee/ranged and eligible attack spells. No damage bonus. Auto-hit attacks and MR checks unaffected.",
+  "cost": "No activation, MP, piety consumption, extra action or star consumption.",
+  "scaling": "Fixed +3; does not scale with Invocations or increase hit chance by a flat3 percentage points.",
+  "visualDirection": "Use the approved 2/3-star indicator to recognize eligibility; no new large effect required.",
+  "unlockPiety": 50,
+  "implementationRevision": "suisei-focus02",
+  "review": "analysis/previews/suisei-focus01/index.html"
+}

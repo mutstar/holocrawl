@@ -1,0 +1,23 @@
+{
+  "version": "aki-vfx04",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_akibloom_0.png",
+      "sha256": "18fd57f7d5dd1c82f756215a3c6b9484a4298b0eeebb2aea4f1dd34b900aebc2",
+      "size": [
+        224,
+        224
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_akibloom_1.png",
+      "sha256": "1db54f15a4239ee7e9f2644fbaf671455d3f4dc9b3c29dc5cd9a284d4ea68d06",
+      "size": [
+        224,
+        224
+      ]
+    }
+  ],
+  "processing": "Built-in image_gen edit, alpha crop and nearest fit only",
+  "invariant": "One central flower with outward vines. No projectile/source/numerical changes."
+}

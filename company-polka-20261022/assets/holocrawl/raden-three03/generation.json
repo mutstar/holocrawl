@@ -1,0 +1,42 @@
+{
+  "prompts": [
+    "One small retro pixel art game spell impact on transparent background: a compact EXPLOSION OF PAINT from a central enemy body, irregular thick splashes shooting radially outward in vivid red, cyan, golden yellow, violet, ivory. Solid chunky color droplets with black one-pixel borders, limited flat colors, angular pixels. No circular ring, no wreath, no gold frame, no glyph, no character, no scene. Transparent small central gap to allow enemy to remain readable. Native target 28x28 pixel silhouette for Dungeon Crawl Stone Soup 0.24. Pixel art not illustration; no gradients, blur or glow. One burst only centered.",
+    "One small retro pixel art game spell impact on transparent background: silver STONE SHARDS AND ROCK WAVE, 4 large chunky angular silver ivory rocks and short horizontal pale blue motion streaks suggesting left-to-right push. Compact silhouette, native target 22x18 pixels for Dungeon Crawl Stone Soup 0.24. Strong ivory lit facets, steel blue shadows, near-black one pixel borders. No circle, no ring, no rune, no character, no floor, no scene, no blurry glow, no gradient. One compact cluster centered, easy to read on dark dungeon.",
+    "One small retro pixel art game spell shield on transparent background: bright jade turquoise JAPANESE LACQUER SHIELD with thick warm gold rim, ivory highlight, tiny vermilion accent. Simple solid compact heater shield silhouette, no symbols except one simple ivory lacquer streak, dark one pixel outline. Native target 14x18 pixels for Dungeon Crawl Stone Soup 0.24. Very few flat colors and chunky pixels, no ring, no huge aura, no character, no scene, no blur, no glow or gradients. One shield centered, clearly readable."
+  ],
+  "transparent": true,
+  "canvas": [
+    32,
+    32
+  ],
+  "painting": [
+    [
+      18,
+      18
+    ],
+    [
+      30,
+      30
+    ]
+  ],
+  "sculpture": [
+    [
+      20,
+      16
+    ],
+    [
+      24,
+      20
+    ]
+  ],
+  "craft": [
+    [
+      12,
+      16
+    ],
+    [
+      14,
+      20
+    ]
+  ]
+}

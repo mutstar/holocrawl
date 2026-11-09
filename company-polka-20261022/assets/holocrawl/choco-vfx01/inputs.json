@@ -1,0 +1,8 @@
+{
+  "mode": "built-in imagegen",
+  "prompts": {
+    "heart": "One isolated hollow pink heart outline status marker for a low-resolution dungeon game. Genuine pixel art, transparent background. Rose pink and fuchsia outer edge, a few tiny pale highlights, large fully transparent hollow heart centre occupying most of the icon. No solid fill. No character, text, background, halo blur, shadows or UI card. Square centered composition. Readable when reduced to 32x32 pixels. Fine outline, minimal pixels.",
+    "kiss": "One isolated magical lipstick kiss VFX sprite for a pixel-art dungeon game. Stylized pink parted lip print with two tiny heart sparks at the sides. Crisp low-resolution pixel art, limited rose pink, magenta, and ivory palette, transparent background. No face, no character, no text, no decorative frame, no blur. Small centered silhouette, generous transparent surrounding space. Designed to fit a32x32 tile briefly over the target.",
+    "wings": "One isolated succubus charm magic VFX for a low-resolution pixel dungeon game: two elegant small purple-black bat wings edged hot pink, spread to the left and right around a large transparent hollow central heart sigil. Bright pink heart outline, transparent heart interior. Crisp pixel art, limited purple magenta rose ivory palette, no blur, no shadows, no character, no text. Transparent background. Centre and lower centre mostly empty so the target monster stays readable. Symmetric square composition, intended96x96 overlay, wings on outer edges. This is a single emblem, not a spritesheet."
+  }
+}

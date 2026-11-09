@@ -1,0 +1,19 @@
+{
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-8f7a299f-fcf5-4817-9787-caeefac4211d.png",
+  "nativeTile": [
+    32,
+    32
+  ],
+  "gemSize": [
+    8,
+    10
+  ],
+  "stages": [
+    1,
+    2,
+    3
+  ],
+  "integration": "Transparent alpha crop, nearest-neighbor resize, repetition of same generated sprite. No manual drawing.",
+  "prompt": "Single glamorous magenta faceted diamond with attached white glint; tiny chunky pixel-art status sprite on transparent background.",
+  "scope": "Staged visual preview only; combat not implemented."
+}

@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen",
+  "prompts": {
+    "body0": "Use case: stylized-concept. Create ONE tiny pixel-art game monster sprite of Ganmo, Takane Lui's bird companion, using the supplied official plush illustration strictly as character reference. Not a plush or realistic hawk: a round squat hawk mascot, sharp GOLD eyes, dark brown head, large creamy white eyebrow tufts, thick WHITE feather collar, cream belly, brown folded wings, vivid burgundy magenta cape behind shoulders and tiny red tie. Front three-quarter facing slightly right. Dungeon Crawl Stone Soup 0.24 32x32 monster sprite aesthetic, chunky discrete pixels, approx 26x26 logical pixels enlarged nearest-neighbor, very limited palette, clear dark outline, no fine detail. Whole character feet visible. One sprite centered on genuinely transparent background, no pedestal, no shadows on ground, no lettering, no grid, no icon border. Prioritize eyes, white collar and magenta cape so readable at 26px.",
+    "body1": "Keep Ganmo design, raise both short wings slightly for idle flap, transparent low-resolution sprite.",
+    "altar": "Replace hawk altar sculpture with Ganmo, preserve stone plinth and red cloth, transparent low-resolution sprite."
+  },
+  "reference": "https://shop.hololivepro.com/products/takanelui_bd2022",
+  "reusedGeneratedArtwork": true,
+  "integrationChange": "Crop alpha>32 silhouette instead of alpha>0 noise bounds; preserve original alpha; nearest-neighbor native tile placement",
+  "bodyMax": [
+    30,
+    30
+  ],
+  "oldVisibleBodyBounds": [
+    6,
+    9,
+    25,
+    30
+  ],
+  "newVisibleBodyBounds": [
+    1,
+    1,
+    31,
+    31
+  ]
+}

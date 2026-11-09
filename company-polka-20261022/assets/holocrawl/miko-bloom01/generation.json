@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": {
+    "shield": "Use case: stylized-concept. One isolated tiny pixel art status icon for a Dungeon Crawl Stone Soup32x32 game. A small solid pink sakura-petal SHIELD: unmistakable shield silhouette with pointed bottom, bright pale pink center and magenta rim, a simple five-petal cherry blossom embossed in center, tiny golden center. Strict16x16 logical pixel design, enlarged nearest-neighbor, hard pixel edges, limited palette, dark purple outline. Readable at16pixels. No characters,no background,no floor,no text,no sparkles,no gradients,no blur,no antialiasing. Genuine transparent background. ONE shield only, not spritesheet.",
+    "blossom": "Use case: stylized-concept. One isolated tiny pixel art sprite: a single bright pink five-petalled sakura cherry blossom with gold center. Dungeon Crawl Stone Soup retro game16x16 logical pixels, enlarged nearest-neighbor hard square pixels, limited pink/pale-pink/darkmagenta/gold palette, dark purple outline. No stems,no leaves,no extra flowers,no characters,no background,no text,no glow,no gradients,no blur,no antialiasing. Genuine transparent background, ONE small blossom only."
+  },
+  "processing": "Generated transparent originals preserved. Alpha-bound crop and nearest-neighbor fit into32px game tile; shield16px, blossom12px. No combat mechanics implemented.",
+  "scope": "Native visual draft"
+}

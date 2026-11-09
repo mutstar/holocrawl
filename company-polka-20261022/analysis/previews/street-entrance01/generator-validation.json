@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "seeds": 500,
+  "uniqueMaps": 500,
+  "sameSeedDeterministic": true,
+  "allWalkableConnected": true,
+  "allExitsReachable": true,
+  "solidOuterBoundary": true,
+  "validPrefabFootprints": true,
+  "enemyStartSafetyDistance": 8,
+  "shortestExitDistanceRange": [
+    86,
+    193
+  ],
+  "scope": "Independent JS prototype; not Crawl native dungeon generator."
+}

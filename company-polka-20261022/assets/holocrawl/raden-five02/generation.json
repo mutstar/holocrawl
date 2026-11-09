@@ -1,0 +1,20 @@
+{
+  "prompt": "Create ONE compact retro pixel art museum exhibition status crest on transparent background for Dungeon Crawl Stone Soup 0.24, Raden special exhibition. Combine THREE immediately readable small objects into a SINGLE cohesive miniature display: central silver/ivory sculpture bust on a short warm gold plinth; a diagonal red-handled paintbrush with ivory bristles on LEFT; small jade turquoise gold-rimmed lacquer medallion on RIGHT. Equal visual weight, only three chunky simple objects, joined at their bases by one low golden display shelf. Wide compact triangular arrangement, conceptual native silhouette 24 pixels wide by 20 high. Flat bright limited palette, dark one-pixel outline, nearest neighbor coarse pixel art. NOT a large aura, no circular ring, no decorative wreath, no huge magic circle, no frame, no background, no letters, no human character, no extra floating particles, no gradients, no blur/glow. Tiny readable game status icon. Objects must be simple broad shapes that survive downscaling, not elaborate miniature detail.",
+  "nativeSizes": [
+    [
+      18,
+      16
+    ],
+    [
+      24,
+      20
+    ]
+  ],
+  "canvas": [
+    32,
+    32
+  ],
+  "anchor": "upper right",
+  "verticalRenderOffset": -8,
+  "transparent": true
+}

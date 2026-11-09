@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-09",
+  "upstream_received": {
+    "commit": "a627fdc6",
+    "authored_at": "2026-11-09T08:38:16+09:00",
+    "subject": "Save city walls, JP facilities and safe prop placement through revision 124",
+    "integration": "fast-forward"
+  },
+  "scope": "Legacy 22-god source, artwork, previews, combat evidence and historical company workspaces; current 0.34.1 project retained at revision 124.",
+  "initial_candidate_audit": {
+    "file_count": 95113,
+    "raw_bytes": 5276963971,
+    "unique_content_count": 34665,
+    "unique_content_bytes": 4334402090,
+    "text_files_scanned": 40603,
+    "binary_files": 54510,
+    "groups": {
+      "CHECKPOINT_MANIFEST.json": [
+        1,
+        151081
+      ],
+      "HOLOCRAWL_ALL_GODS_CHECKPOINT_2026-10-19.verification.json": [
+        1,
+        304
+      ],
+      "HOME_RESUME.md": [
+        1,
+        5891
+      ],
+      "analysis": [
+        118,
+        39908706
+      ],
+      "company-polka-20261022": [
+        50123,
+        2637300350
+      ],
+      "company-vfx-20261021": [
+        44861,
+        2599280504
+      ],
+      "engine": [
+        7,
+        219392
+      ],
+      "review-company-20261021": [
+        1,
+        97743
+      ]
+    },
+    "over_100MiB": []
+  },
+  "secret_scan": {
+    "strong_patterns_and_assignments": [],
+    "suspicious_filenames": [],
+    "additional_unique_text_files": 4785,
+    "additional_google_url_json_patterns": [],
+    "limitations": "Pattern scan is not a proof of absence. Binary media contents, ignored archives/build outputs and Git metadata were not scanned as plaintext. New handoff documentation was reviewed separately."
+  },
+  "god_registry_proof": {
+    "company-polka-20261022/engine/campaign-crawl/crawl-ref/source/holo-worship.cc": {
+      "god_count": 22,
+      "sha256": "42070c5b556f11b73bb73e98fecefe4e4bb1cb9d83df16dfe36e577572e70b1c"
+    },
+    "company-polka-20261022/engine/tiles-crawl/crawl-ref/source/holo-worship.cc": {
+      "god_count": 22,
+      "sha256": "42070c5b556f11b73bb73e98fecefe4e4bb1cb9d83df16dfe36e577572e70b1c"
+    },
+    "company-vfx-20261021/engine/campaign-crawl/crawl-ref/source/holo-worship.cc": {
+      "god_count": 22,
+      "sha256": "5d67b7949517ad822bf158083f111f3f237f51b1aadcfa0cbbe503e8e4555375"
+    },
+    "company-vfx-20261021/engine/tiles-crawl/crawl-ref/source/holo-worship.cc": {
+      "god_count": 22,
+      "sha256": "5d67b7949517ad822bf158083f111f3f237f51b1aadcfa0cbbe503e8e4555375"
+    }
+  },
+  "god_ids": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame",
+    "choco",
+    "korone",
+    "okayu",
+    "pekora",
+    "noel",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "sopia",
+    "mela"
+  ],
+  "legacy_patch": {
+    "path": "engine/patches/holocrawl-engine.patch",
+    "base_commit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+    "sha256": "19d47e5c764f8e5247484b55d55a2e36945e85be6fcc5ae3d4d2f9ddc87f018a",
+    "validation": "git apply --reverse --check against current engine/crawl checkout passed"
+  },
+  "included_gallery_exports": "company-vfx-20261021/exports/gallery-temple/",
+  "excluded_categories": [
+    "credentials/environment files/private keys",
+    "duplicate handoff ZIPs and exported workspace copies",
+    "runtime executables/DLLs/compiler outputs/toolchains",
+    "generated game databases/caches/temporary saves",
+    "local logs/browser state"
+  ],
+  "upload_strategy": "Sequential commits and pushes with each new batch <=900 MiB of raw files. No single candidate >=100 MiB.",
+  "gameplay_validation": "No new game build or combat test performed for this archive sync.",
+  "company_0341_checkout_preservation": {
+    "existing_snapshot": "holocrawl-0341/migration/engine0341-git-handoff-20261105",
+    "tracked_patch_sha256": "561122099c5b77bdb675161cb2cc9aba99ca5e3b6522f7fb5395134e55d7d906",
+    "tracked_patch_matches_current_checkout": true,
+    "all_untracked_overlay_files_byte_identical": 102
+  }
+}

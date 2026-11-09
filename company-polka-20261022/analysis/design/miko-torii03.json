@@ -1,0 +1,14 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-03",
+  "revision": "miko-torii03",
+  "widths": [
+    5,
+    5,
+    7
+  ],
+  "art": "Four generated32px torii rendered at4/3 scale,raised,corner floor glyph suppressed; with golden shimenawa and white shide at7x7 corners. Visual only; expire with tier5. Existing shrine,flame,expansion retained.",
+  "review": "analysis/previews/miko-torii03/index.html",
+  "tier2Passive": "Proposal only: heal2+Inv/6, overflow shield cap4+Inv/3. Not implemented.",
+  "binarySha256": "2131c0f024366eff854203712c15ed047e5123b79494a561c03dfc9a448f6b50"
+}

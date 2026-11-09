@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "kind": "existing-native-capture-review",
+  "source": "analysis/native/god-vfx-capture05/gallery-validation.json",
+  "noDedicatedTier1Effect": true,
+  "tier1ImageIsReferenceOnly": true,
+  "files": {
+    "ayame-tier3-option0-13-frame0.png": "5cef390941c6dd7f046cc4369f4726ae783215eac7b0da2cb92e1b1398091e88",
+    "ayame-tier3-option0-13-frame1.png": "9c24b17beb5b239a4193fcd4d29019534a2ee47a2c670ee6dd8d0182d92ce668",
+    "ayame-tier3-option0-13-state.png": "e8c1478e4a40416204e924bf41cb29cf2b74db2400ef6be24a8fdeb16150e66a",
+    "ayame-tier5-option0-14-frame0.png": "4dc118df0989518982f6befe5b181966b5ce62ab8e83a9aa29bb353375d16288",
+    "ayame-tier5-option0-14-frame1.png": "7abc5b968be715f080334c07f0e7c3b8b6940f28c50f235f45b58edebe9f83c0",
+    "ayame-tier5-option0-14-state.png": "e2d5b308a3070a83d42db2ca280fe3252d6776aba5f3ec7c05ce1cc6c8f0c65b",
+    "tier1-no-dedicated-effect.png": "e8c1478e4a40416204e924bf41cb29cf2b74db2400ef6be24a8fdeb16150e66a"
+  }
+}

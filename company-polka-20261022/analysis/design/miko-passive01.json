@@ -1,0 +1,19 @@
+{
+  "status": "implemented-native-validated",
+  "revision": "miko-passive01",
+  "date": "2026-11-03",
+  "name": "봉납의 벚꽃",
+  "tier": 2,
+  "type": "passive",
+  "unlockPiety": 50,
+  "heal": "2+floor(Inv/6)",
+  "shieldCap": "4+floor(Inv/3)",
+  "procIntervalAut": 20,
+  "shieldDurationAut": 50,
+  "save": "Existing saved shield/defence/proc_ready fields; no new serializer layout. Fresh-process absorption/state/RNG verified.",
+  "visual": "Approved green cross,five blossoms,pale circular barrier now connected to actual kills and shield.",
+  "review": "analysis/previews/miko-passive01/index.html",
+  "combatImplemented": true,
+  "runtimeDeployed": true,
+  "binarySha256": "bb8d3c0f0cb15a915c33672292a8c60b21cd10053f22cfa6fc609fb3d457639c"
+}

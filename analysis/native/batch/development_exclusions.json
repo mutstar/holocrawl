@@ -1,0 +1,16 @@
+{
+  "status": "excluded_from_final_balance_conclusions",
+  "reason": "Development smoke runs before the final source freeze. All native-all-v1-* and native-tail-v1-* cohorts were intentionally stopped and excluded after identifying missing zero-damage hit events and an overwritten Ayame kill cooldown reset. All 04 samples are also excluded from final balance data: queued native noise from manual fixture combat contaminated the first encounter; 05 adds explicit noise-queue isolation and passes all order replays. Partial or crashed outputs never enter final cohorts.",
+  "runs": {
+    "batch-integration-01": "Six-module integration smoke only.",
+    "batch-all-dev-01": "Early 20-module melee smoke; before later fixes.",
+    "batch-range-dev-01": "Stopped after a native bow-melee confirmation menu blocked headless execution.",
+    "batch-magic-dev-01": "Early magic smoke; before turn initialization fixes.",
+    "batch-core-check-02": "Pre-freeze validation sample, not final balance data.",
+    "batch-range-check-02": "Pre-freeze validation sample, not final balance data.",
+    "batch-magic-check-02": "Pre-freeze validation sample, not final balance data.",
+    "batch-melee-reverse-02": "Pre-freeze replay sample.",
+    "batch-range-reverse-02": "Pre-freeze replay sample.",
+    "batch-magic-reverse-02": "Partial: native zero_turns_taken assertion exposed stale turn_is_over state in the harness. Fixed by resetting native turn state per action and per character."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "prompt": "Create ONE tiny retro pixel-art paintbrush status icon for Dungeon Crawl Stone Soup 0.24, Raden painting exhibit. This replaces a framed painting icon with a PAINTBRUSH ONLY. Single short thick diagonal artist brush angled lower-left to upper-right, vermilion red lacquer handle with gold ferrule and bright ivory bristles dipped at tip in vivid red paint. Readable solid chunky silhouette within conceptual 14x14 native pixels, 2-3 pixel thick handle, dark one pixel outline, limited 6-color palette, nearest neighbor pixel art. Transparent background, centered sole brush with generous margin. No frame, no picture, no circular badge, no text, no hand, no scene, no sparkles, no blur/glow/gradient. Must read instantly as brush at tiny scale. Keep a balanced compact diagonal shape, not thin long needle.",
+  "transparent": true,
+  "nativeSize": [
+    14,
+    14
+  ],
+  "position": [
+    18,
+    0
+  ]
+}

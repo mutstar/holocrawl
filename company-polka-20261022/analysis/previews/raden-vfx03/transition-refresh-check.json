@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "frames": 4,
+  "sequence": [
+    "painting-brush",
+    "sculpture",
+    "craft",
+    "painting-brush"
+  ],
+  "sha256": "e373e16a8b104fa12e3681914ed0ea1686d910a151325a3cb98da203cf22b131",
+  "review": "analysis/previews/raden-review01/brush03.html#tier1",
+  "browserReload": "blocked by local file protocol policy; not attempted through alternate surface"
+}

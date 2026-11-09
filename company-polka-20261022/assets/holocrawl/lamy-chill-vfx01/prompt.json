@@ -1,0 +1,6 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Create one production pixel-art VFX sprite sheet on genuine transparent background, 6 equal square cells laid out in one horizontal row, no text or numbers or border. Each cell has generous transparent margins. Hard crisp pixel edges, icy cyan pale blue white and dark navy outline readable on dark dungeon floor, retro 32px roguelike. Cell 1: one tiny six-point ice snowflake used as a debuff badge. Cell 2: a pair of tiny six-point ice snowflakes used as two-stack badge. Cells 3-6: four successive animation frames of a compact ice crystal shatter burst around an EMPTY CENTRAL HOLE where an enemy body remains readable. Frame3 small ice spikes forming at ankles, frame4 crystalline spikes opening outward around body, frame5 ice shards scattering outward, frame6 sparse fading shards. Burst ring is compact, not a floor area hazard, not an ice breath, no character, no creature, no ground, no UI. Clean limited-color hand-pixeled game sprite look. Keep the six cells isolated and aligned with equal spacing. Real alpha transparency.",
+  "processing": "Alpha bounding crops, nearest-neighbor fitting and rigid placement only. Markers within target tile; burst on transparent 3x3 canvas, no added damage radius."
+}

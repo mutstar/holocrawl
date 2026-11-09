@@ -1,0 +1,36 @@
+{
+  "records": 87137,
+  "target": 552000,
+  "runs": [
+    {
+      "run": "native-head-v2-magic-01",
+      "records": 13570,
+      "complete": false
+    },
+    {
+      "run": "native-head-v2-melee-01",
+      "records": 17273,
+      "complete": false
+    },
+    {
+      "run": "native-head-v2-ranged-01",
+      "records": 12512,
+      "complete": false
+    },
+    {
+      "run": "native-tail-v2-magic-01",
+      "records": 13445,
+      "complete": false
+    },
+    {
+      "run": "native-tail-v2-melee-01",
+      "records": 17325,
+      "complete": false
+    },
+    {
+      "run": "native-tail-v2-ranged-01",
+      "records": 13012,
+      "complete": false
+    }
+  ]
+}

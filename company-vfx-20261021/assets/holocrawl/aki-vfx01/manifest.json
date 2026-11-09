@@ -1,0 +1,77 @@
+{
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_e_0.png",
+      "sha256": "e347e798696ceef1a3e39c4a41515359c6b357989de4d5ed87f44e919da61c7b"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_se_0.png",
+      "sha256": "b01a07c85b65a786bb2c01e16b7968396f6bf74e9078afda783ac4d8d5562ffb"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_s_0.png",
+      "sha256": "39ac72bb1558a4814e12d05581a5f2213c606e525ca99017df512e374030fbf7"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_sw_0.png",
+      "sha256": "4e8e64bfae039d22866540b04e15ebbe139fab6243c011963d62fdfd060e19a5"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_w_0.png",
+      "sha256": "712258c28913a35c6bda89b9cd0577a4f6039a7fe252c6fb180564701d93894b"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_nw_0.png",
+      "sha256": "0802844b484211d475d81c3105873eadd62df1f06de83d81f411442c2ec9bd80"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_n_0.png",
+      "sha256": "761cbf2a3e84dd9519cc576a0d50e0c1c231c2b66066b9d74f70d7360237e3dd"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_ne_0.png",
+      "sha256": "b3e86c164a5a3d25aa7d20e7623b2f02bc19a3886945fad142fe9a1280811684"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_e_1.png",
+      "sha256": "bedd37c4a3dc4afb0bdea072b8a5a64d0f261ab1d52c0b202edb517b59ff14db"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_se_1.png",
+      "sha256": "2f4449cd8677e07c1dfaa6adcbe8b7498b90020c33f5ab4749241a7cf16472ed"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_s_1.png",
+      "sha256": "d1838f8ffdf7b270715ab6012e267b85f059135b751b73c44508cf1a15708415"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_sw_1.png",
+      "sha256": "92fe029a4eef5fab835c9f0e91c3f5aed58cd032b8115ddc19f10cbc15b12265"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_w_1.png",
+      "sha256": "c76ff93e741d26de6af5e1a397dbbaac06781d46be44573dfdb444d8bebf163f"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_nw_1.png",
+      "sha256": "f607823d1a40be897a2299566b39fa7fba4977160c185d43db617b92e47fdecb"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_n_1.png",
+      "sha256": "93824b59cfe87cc65a7502655017170939d2c49327796545c7fe5b2592c94495"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_thorn_ne_1.png",
+      "sha256": "fe7762b949ba3f1d7e924b4f2c6e6c7fc1746c617fc9f1f9764be7454a69c61a"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_akibloom_0.png",
+      "sha256": "0cc01cad95f8f9fa46c32b96d66430b02bc91840d8328668bc9539a40fb0604a"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_akibloom_1.png",
+      "sha256": "60887fae299c6a2702713ca62b8094245dab35df5f147a4d60c6122fd74b92b8"
+    }
+  ],
+  "processing": "Built-in image_gen; alpha crop, nearest fit and rigid rotation. No manual raster drawing."
+}

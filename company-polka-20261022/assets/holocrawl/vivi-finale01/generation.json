@@ -1,0 +1,53 @@
+{
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-81ed0ccd-211f-4314-b60e-e540d163ffb9.png",
+  "references": [
+    "https://hololive.hololivepro.com/talents/kikirara-vivi/"
+  ],
+  "nativeTile": [
+    32,
+    32
+  ],
+  "centreSizes": [
+    [
+      18,
+      18
+    ],
+    [
+      28,
+      28
+    ],
+    [
+      26,
+      26
+    ]
+  ],
+  "edgeSizes": [
+    [
+      10,
+      10
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      14,
+      14
+    ]
+  ],
+  "markSize": [
+    12,
+    12
+  ],
+  "integration": "Generated gold-centred cosmetic finale, transparent crop/nearest resize/opacity. Surrounding pearl puff reuses approved generated Encore art.",
+  "sha256": {
+    "fx_vivifinale_mark.png": "0038aa0eb45b10087e2ebcc0cf902cd84b984bbbfddc2fb4cbe8cf4c6c2fd2f4",
+    "fx_vivifinale_burst0.png": "92240a79b0174098a4285bcba308a4e83c70f301c4986dadf5b885c83a91ef3f",
+    "fx_vivifinale_burst1.png": "ab7ae333d657c29ce8631b9aca0457c00eb0c9b1fd4430626ccc29afc517b163",
+    "fx_vivifinale_burst2.png": "5a81c8bcc84174ea4b3846145698a477b4e7d3bfaa7405c8cdd94a9bc6722384",
+    "fx_vivifinale_edge0.png": "4d14c7d909e04f79f894dd053e4a2b1facf87c40bacca7c726534882b195420c",
+    "fx_vivifinale_edge1.png": "71b2ddd30fe5603a74191fbc3c2707d587d78594c009325c8441601a8141dd67",
+    "fx_vivifinale_edge2.png": "bfc56dd55dc180809dfdecced6da4c71624cd76d9f5b35556ddb7b0a3a7795fb"
+  },
+  "scope": "Staged native VFX only; new caster combat unimplemented."
+}

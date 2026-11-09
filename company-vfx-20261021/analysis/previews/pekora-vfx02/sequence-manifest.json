@@ -1,0 +1,28 @@
+{
+  "revision": "pekora-vfx02",
+  "scope": "Preview sequence correction only; native art, binary and combat unchanged",
+  "sourceDirectory": "analysis/native/pekora-balance01/native-retry06/shots",
+  "sequences": {
+    "immediate": [
+      "pekora-tier1-option0-47-state.png",
+      "pekora-impact-12-frame0.png",
+      "pekora-impact-12-frame1.png",
+      "pekora-tier3-option0-48-state.png"
+    ],
+    "delayed": [
+      "pekora-tier3-option1-24-state.png",
+      "pekora-impact-8-frame0.png",
+      "pekora-impact-8-frame1.png"
+    ],
+    "tier5": [
+      "pekora-tier5-option0-25-state.png",
+      "pekora-impact-9-frame0.png",
+      "pekora-impact-9-frame1.png",
+      "pekora-impact-10-frame0.png",
+      "pekora-impact-10-frame1.png",
+      "pekora-impact-11-frame0.png",
+      "pekora-impact-11-frame1.png"
+    ]
+  },
+  "feedback": "Immediate preview was showing casting cue after explosion, actual impact now included"
+}

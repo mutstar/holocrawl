@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source": "analysis/native/god-vfx-capture05/gallery-validation.json",
+  "tiers": [
+    1,
+    3,
+    5
+  ],
+  "nativeOriginalHashesVerified": true,
+  "historicalCapture": true
+}

@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,shutil,hashlib
+root=Path(__file__).resolve().parents[1];src=root/'engine/campaign-crawl/crawl-ref/source';run=root/'analysis/native/towa-diagonal01';run.mkdir();(run/'before').mkdir()
+p=src/'holo-campaign-test.cc';shutil.copy2(p,run/'before/holo-campaign-test.cc');s=p.read_text(encoding='utf-8');s=s.replace('const auto initial=origin+coord_def(distance==1?0:1,-2),dest=origin+coord_def(0,-distance);','const bool diagonal=getenv("HOLOCRAWL_TOWA_DIAGONAL_REVIEW");\n            const auto initial=origin+coord_def(diagonal?1:(distance==1?0:1),-2),dest=origin+coord_def(diagonal?distance:0,-distance);');p.write_text(s,encoding='utf-8')
+preserved={str(p.relative_to(src)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in list(src.glob('*.cc'))+list(src.glob('*.h'))+list((src/'rltiles/holo').glob('*.png')) if p.name!='holo-campaign-test.cc'}
+(run/'preserved-files.json').write_text(json.dumps(preserved,indent=2),encoding='utf-8')
+s=(root/'scripts/capture-towa-support05.ps1').read_text(encoding='utf-8').replace('towa-support05','towa-diagonal01').replace('$env:HOLOCRAWL_TOWA_SHOT_REVIEW=$shots;','$env:HOLOCRAWL_TOWA_SHOT_REVIEW=$shots;$env:HOLOCRAWL_TOWA_DIAGONAL_REVIEW="1";');(root/'scripts/capture-towa-diagonal01.ps1').write_text(s,encoding='utf-8')
+s=(root/'scripts/publish-towa-support05.py').read_text(encoding='utf-8').replace('towa-support05','towa-diagonal01').replace("changed=['holo-visual.cc','rltiles/dc-holo-main.txt']","changed=['holo-campaign-test.cc']").replace("f'지원사격 시 {distance}칸'","f'대각선 {distance}칸 ↗'").replace('왼쪽1칸 / 오른쪽2칸','왼쪽 대각선1칸 / 오른쪽 대각선2칸').replace('플레이어기준 적1칸/2칸','플레이어기준 적대각선1칸/2칸');(root/'scripts/publish-towa-diagonal01.py').write_text(s,encoding='utf-8')

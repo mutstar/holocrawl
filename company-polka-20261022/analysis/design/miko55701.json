@@ -1,0 +1,14 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-03",
+  "revision": "miko55701",
+  "widths": [
+    5,
+    5,
+    7
+  ],
+  "art": "Reused approved Miko pixel effects; actual SDL capture.",
+  "review": "analysis/previews/miko55701/index.html",
+  "tier2Passive": "Proposal only: heal2+Inv/6, overflow shield cap4+Inv/3. Not implemented.",
+  "binarySha256": "b2d90dc42eb79116ff364d0d2b0a78f483d5c89728d1f14c0ca8af5eb2556e1a"
+}

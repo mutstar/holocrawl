@@ -1,0 +1,119 @@
+{
+  "tool": "built-in image_gen",
+  "nativeSize": [
+    32,
+    32
+  ],
+  "assets": [
+    {
+      "god": "suisei",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_suisei.png",
+      "sha256": "5D012418090D202AC2900BB8B7F8B02289E424275D4FE5BFFE071F7CF37C3EEE"
+    },
+    {
+      "god": "miko",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_miko.png",
+      "sha256": "F309EF640920AC7BD1EC9D76C7B07E8FE88E8224FEA1E41E6379F1593994D607"
+    },
+    {
+      "god": "aki",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_aki.png",
+      "sha256": "F0555B5ABE00EB6072C2593B02FC77702CC88F7CA1D2C9F3CBFF1674BF4A7C5B"
+    },
+    {
+      "god": "fubuki",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_fubuki.png",
+      "sha256": "6B47ABA9919A6FEE87B82D87FD3E11D5379F35C63B9B09BA36B83E22ECEBE764"
+    },
+    {
+      "god": "ayame",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_ayame.png",
+      "sha256": "B6BA6DB9BDA15B7CEE44C1FA56F21988732E76E606DD86F9E49B88448A1C8634"
+    },
+    {
+      "god": "choco",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_choco.png",
+      "sha256": "EDEE1FDFAB662FDC96D8B6FCE09DDEF62F97562C523CAF41D9DE7A9D4B04BC57"
+    },
+    {
+      "god": "korone",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_korone.png",
+      "sha256": "2599B5AC840E3B535C3570ABF82A87C2217D4E762E990181BC964830E3EBC4FC"
+    },
+    {
+      "god": "okayu",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_okayu.png",
+      "sha256": "B58EA506651F655DCF84FEBBFC7132B186C77AD06D76757A6691D9CF52551152"
+    },
+    {
+      "god": "pekora",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_pekora.png",
+      "sha256": "08E1EE9A53738BFE1E041CC738095E5ED9E488FDCED91BB9857A94D05D55B492"
+    },
+    {
+      "god": "noel",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_noel.png",
+      "sha256": "74E7CEE66A4668C1EDB4D9204AD94F22F525E6E02136B763D15D025C38099A98"
+    },
+    {
+      "god": "watame",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_watame.png",
+      "sha256": "9F203A567AC290679CB93370D80B75D7542980DEF89E3247D310EB2AA4B73019"
+    },
+    {
+      "god": "towa",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_towa.png",
+      "sha256": "CE69F4DB4CE6B164EB7157665634DEDC75291D047A3159EFB00242609E250007"
+    },
+    {
+      "god": "lamy",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_lamy.png",
+      "sha256": "BE8F9ABF19339FCD6067CE752FC9C77CF90497C351B7983475F9DC6546FF15D2"
+    },
+    {
+      "god": "polka",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_polka.png",
+      "sha256": "4BD8AFE1C91BF9300BBFBFB1065ED32897EBED8FE48AAD471CEB81ED25752EC6"
+    },
+    {
+      "god": "koyori",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_koyori.png",
+      "sha256": "A65B9CDD112546C46BDEEF15606EC600E1849D6020818C0627BB353CE3A0BE40"
+    },
+    {
+      "god": "lui",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_lui.png",
+      "sha256": "6F7FA6689F510F9119181646DAB9B25C98E598B861EBB1081C62A139BB3A440C"
+    },
+    {
+      "god": "raden",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_raden.png",
+      "sha256": "564ED7711433B5C323CF11B9763D941610C7B527AC2ADDF6BEE3B9D03D5F9FB5"
+    },
+    {
+      "god": "hajime",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_hajime.png",
+      "sha256": "7BCFCFD7502FA3C7250BD7C297DF68252B79A58B523D98E10DF1DF2FFB89F55A"
+    },
+    {
+      "god": "su",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_su.png",
+      "sha256": "A15B921B3FCFF2DD865B2371AE6A46F14F1C994621506147B0ABDDE30C21FC07"
+    },
+    {
+      "god": "vivi",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_vivi.png",
+      "sha256": "E478A516AAAF1D113C0F460EBC2BB58816107B046EA11EBB7C7E0627303157EF"
+    },
+    {
+      "god": "sopia",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_sopia.png",
+      "sha256": "17FC14339E6467BFA961F9847467473D9DBC0EA6B211A4824E39EF71EF8A3C46"
+    },
+    {
+      "god": "mela",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/altar_mela.png",
+      "sha256": "3697CD54FC6FA7F18E86623C119461F6BE689320D58CDFBEECB83A15678648AB"
+    }
+  ]
+}

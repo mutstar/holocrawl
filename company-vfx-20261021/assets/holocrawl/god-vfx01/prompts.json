@@ -1,0 +1,62 @@
+[
+  {
+    "effect": "foxflame",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Fubuki: white foxfire wisps with icy cyan cores, fox ear-shaped arcs and a ghostly duplicated tail. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "oni",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Ayame: two crimson katana slash arcs, small red oni horn silhouette, dark red sparks. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "charm",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Choco: violet pink succubus heart-shaped magic and tiny bat wing flourishes. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "punch",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Korone: orange golden rapid fist impact shapes and white speed streaks. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "sleep",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Okayu: lavender cat-shaped crescent sleep magic, small purple bubbles and soft sleepy star. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "carrotburst",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Pekora: bright orange carrot-shaped explosive sparkle with green sparks and blue blast streaks, not an actual placed bomb. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "devil",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Towa: violet emerald devil-wing arc and green four-point star with purple energy. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "circus",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Polka: colorful circus confetti, red yellow blue juggling diamond arcs, festive small star sparks. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "reagent",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Koyori: hot pink chemical reaction bubbles, tiny glass flask silhouette, cyan and lime molecular sparks. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  },
+  {
+    "effect": "ravenflight",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "prompt": "Create ONE production pixel-art VFX sprite strip, exactly TWO equally sized cells arranged horizontally (2 columns 1 row), transparent background. Each cell is a distinct animation frame of the SAME effect, anticipation left, expansion right. Lui: burgundy black raven wing feathers in a sweeping arc, red-gold command sigil. DCSS roguelike 32x32 aesthetic, hard crisp pixels and limited palette, no smooth gradients, no text or labels, no borders, no ground, no character. Sparse particles around an EMPTY transparent center so a player can remain readable underneath. Identical center and scale in both cells, all pixels confined well inside each cell with wide transparent padding; effect occupies about 65 percent of each cell. This is an actual transparent game overlay, not a showcase illustration."
+  }
+]

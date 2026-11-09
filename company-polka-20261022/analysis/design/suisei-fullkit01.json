@@ -1,0 +1,43 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-10-30",
+  "workflow": "Compare existing 1/3/5 full kit first. Strong kits add 1 passive, unclear kits add 2. Candidate count and unlock tiers are not approved. Confirm per god before actual combat/VFX/save integration.",
+  "firstGod": "suisei",
+  "tier2Candidate": {
+    "name": "집중 관측",
+    "effect": "Piety50: +3 ordinary melee/ranged and eligible attack-spell accuracy versus live marked target at2+stars. Fixed bonus, no cost. Auto-hit/MR/divine unaffected.",
+    "threeStarProposal": "Accuracy +3 threshold at 2 stars if this candidate is retained; not implemented.",
+    "status": "approved-and-implemented",
+    "revision": "suisei-focus02"
+  },
+  "tier4Candidate": {
+    "name": "별의 계승",
+    "effect": "When the existing Next Star kill reward is consumed by a successful damaging direct attack on a new marked target, start the new target at2stars rather than the ordinary first-hit1. No extra mark-target count or max-star increase.",
+    "review": "Actual normal-spell kill -> next target starts at2, validated/deployed.",
+    "status": "approved-and-implemented",
+    "revision": "suisei-inherit08",
+    "unlockPiety": 100
+  },
+  "constraints": [
+    "Do not present VFX staging as actual combat integration",
+    "Track design/visual/combat/save validation status separately",
+    "Passives should reinforce distinct god mechanics, not blanket damage/resistance buffs across all22",
+    "Do not redo approved art without need or request",
+    "Outstanding Vivi/Sopia/Mela conversions stay pending until implemented"
+  ],
+  "scope": "Suisei1/2/3/4/5 combat/VFX/save integration complete; inheritance GIF awaiting feedback.",
+  "passiveExpansionPolicy": {
+    "status": "approved-workflow-only",
+    "strongKitAdditionalPassives": 1,
+    "unclearOrWeakKitAdditionalPassives": 2,
+    "mandatoryTier2And4": false,
+    "assignmentsApproved": false,
+    "nextGod": "suisei",
+    "nextWorkLocation": "home",
+    "inventory": "FULLKIT_CORE_INVENTORY.md"
+  },
+  "threeStarProposal": "analysis/design/suisei-star3-01.json",
+  "coreCombatRevision": "suisei-three03",
+  "coreThreeStarsImplemented": true,
+  "tier2Proposal": "analysis/design/suisei-focus01.json"
+}

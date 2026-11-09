@@ -1,0 +1,11 @@
+{
+  "candidateFiles": 6289,
+  "candidateMiB": 528.2,
+  "largeFilesOver50MiB": [],
+  "unexpectedExcludedPaths": [],
+  "stagedFiles": 0,
+  "branch": "master",
+  "remoteNames": [],
+  "enginePatchIncluded": true,
+  "sourceRepoUnchangedModifiedCount": 8
+}

@@ -1,0 +1,14 @@
+{
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-c5d742ba-601c-41a6-a393-3f9bd14d6742.png",
+  "transparent": true,
+  "nativeTile": [
+    32,
+    32
+  ],
+  "artSize": [
+    20,
+    24
+  ],
+  "integration": "Crop transparent bounds, nearest-neighbor resize, eight 45-degree nearest-neighbor rotations; no painted pixels.",
+  "prompt": "Compact east-moving breaking turquoise wave front, 3 bright foam curls, short dark blue wake; chunky low-resolution pixel art, transparent background, no circle or whirlpool."
+}

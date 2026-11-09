@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: tiny pixel art spell sprite for Dungeon Crawl Stone Soup 32px tiles. Generate ONE standalone compact dream-devouring vortex, transparent background, no text, no letters, no Z sleep symbols, no hearts, no characters. A small asymmetric crescent spiral of lavender and violet curling inward to a dark purple center, with three tiny pale mint dream motes being sucked inward. Open negative-space gaps so a monster beneath remains visible. Strong dark-purple 1px outline, 5 solid color palette, crisp chunky pixel steps, authentic low resolution 20x20 pixel sprite enlarged nearest-neighbor to image canvas. Centered sprite, no glossy rendering, no gradients, no blur, no glow halo, no ring surrounding a whole character, no giant magic circle. Distinct attacking/consuming visual, not sleep cloud. Sprite will be downsampled to 20x20 native pixels. Keep motif extremely simple and readable.",
+  "nativeSizes": [
+    24,
+    18
+  ]
+}

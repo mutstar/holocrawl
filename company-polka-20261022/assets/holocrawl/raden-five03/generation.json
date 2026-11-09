@@ -1,0 +1,22 @@
+{
+  "prompt": "Edit this tiny game status crest into a more celebratory capstone exhibition crest while preserving its three subjects and relative arrangement: left red-handled ivory paintbrush, central silver/ivory sculpture bust, right jade turquoise gold-rimmed lacquer medallion. Preserve a low shared golden display plinth. Add FEW short bright ivory-gold rays ABOVE and two short curved gold strokes at the SIDES, plus exactly a few chunky red and turquoise diamond-shaped glints: a compact ceremonial FLASH, not an enclosing circle. Keep all three objects readable and dominant. Coarse retro pixel art for Dungeon Crawl Stone Soup 0.24 with conceptual native silhouette 30x28 pixels, only chunky pixels, flat limited palette, 1px dark outline. Slightly more ornate than input but absolutely no giant aura or wreath, no full circular frame, no background, no character scene, no letters, no gradients, no blur/glow. Transparent background, sole centered crest. This is one small sprite, not a rendered gameplay mockup.",
+  "transparent": true,
+  "castPeak": [
+    30,
+    28
+  ],
+  "active": [
+    26,
+    24
+  ],
+  "phases": [
+    "gather",
+    "form",
+    "gold flash",
+    "settle"
+  ],
+  "canvas": [
+    32,
+    32
+  ]
+}

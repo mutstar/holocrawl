@@ -1,0 +1,88 @@
+{
+  "phase": "saved_at_user_request",
+  "version": "v2",
+  "nativeSourceFrozen": true,
+  "targetEncounters": 552000,
+  "sourcePatchSha256": "19D47E5C764F8E5247484B55D55A2E36945E85BE6FCC5AE3D4D2F9DDC87F018A",
+  "buildBinarySha256": "B7228258BD6189C11C07BF71D89800B02A17F59E391EA43B69916A40833E455E",
+  "designSha256": "833498060A14DA3DE69B714C78B0C10918B8CB0F026BE9014CABCE50A21E3778",
+  "replayVersion": "05",
+  "replayExactMatches": 1656,
+  "seedStart": 1000,
+  "seedsPerCase": 1000,
+  "scenarios": 8,
+  "variants": 23,
+  "jobs": [
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-head-v2",
+      "build": "melee",
+      "seedStart": 1000,
+      "toolSession": 8595,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    },
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-head-v2",
+      "build": "ranged",
+      "seedStart": 1000,
+      "toolSession": 51405,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    },
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-head-v2",
+      "build": "magic",
+      "seedStart": 1000,
+      "toolSession": 42616,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    },
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-tail-v2",
+      "build": "melee",
+      "seedStart": 1500,
+      "toolSession": 93750,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    },
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-tail-v2",
+      "build": "ranged",
+      "seedStart": 1500,
+      "toolSession": 78115,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    },
+    {
+      "status": "stopped_at_user_request",
+      "prefix": "native-tail-v2",
+      "build": "magic",
+      "seedStart": 1500,
+      "toolSession": 97284,
+      "shards": 2,
+      "exitCode": 1,
+      "nativeExitCode": -1,
+      "intentionalStop": true
+    }
+  ],
+  "savedAtUtc": "2026-10-19T09:50:13.796065+00:00",
+  "retainedPartialRecords": 87137,
+  "finalDatasetComplete": false,
+  "stopReason": "User requested saving all work to continue on home Codex.",
+  "resumePolicy": "Partial shards are preserved, not resumable mid-encounter. Rebuild on home machine, use fresh cohort/replay names, freeze hashes, and rerun incomplete cohorts before finalization."
+}

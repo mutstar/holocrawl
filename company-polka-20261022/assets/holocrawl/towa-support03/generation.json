@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Create a single tiny retro pixel art game projectile sprite on a fully transparent background. Side view of a flying firearm bullet pointing RIGHT: rounded pointed silver-white metal nose, short golden brass cylindrical body, a very short straight magenta and pale lavender tracer extending to the LEFT. Clear elongated bullet silhouette, length about 3 times height; looks like a fired bullet, not a diamond, magic orb, arrow, missile or cartridge casing with a separate bullet. Crisp blocky low resolution pixels suitable for Dungeon Crawl Stone Soup 32x32 tiles; final sprite will be about 16x5 actual pixels, so minimal detail and excellent readability on black. Center the one horizontal sprite with ample transparent margin. No glow cloud, particles, sparkles, text, scenery, border or multiple sprites.",
+  "processing": "Alpha threshold 128, alpha bounding crop, nearest-neighbor 18x5, 8 rotations centered on 32x32 main tiles"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "revised-art-direction-draft",
+  "date": "2026-11-03",
+  "review": "analysis/previews/venue-street02/index.html",
+  "tileSize": [
+    32,
+    32
+  ],
+  "feedback": "Previous modern flat terrain rejected:too unlike DCSS,disconnected block walls,patchwork feel.",
+  "direction": "Keep original DCSS floor/wall texture,palette and variants. Sparse edited concert-poster wall detail. Room/corridor test composition.",
+  "newAsset": "wall-poster32.png",
+  "engineIntegrated": false,
+  "runtimeChanged": false,
+  "generatedLayout": false,
+  "originalTerrainReused": true,
+  "referenceAssets": [
+    "grey_dirt0..7",
+    "brick_dark_1_0..11"
+  ],
+  "notes": "Art style comparison only. Street theme and final new terrain remain unapproved; these are original dungeon textures, not completed city assets."
+}

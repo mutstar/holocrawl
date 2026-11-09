@@ -1,0 +1,14 @@
+{
+  "version": "suisei-vfx04",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometdrop_0.png",
+      "sha256": "d6967d6e2b9bc4a6d648a9e58c1d80cbed75ee22aa6ae96a230c84f7d2ee0a9e"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometdrop_1.png",
+      "sha256": "1b5aef362015161ba651343eb965de8a069bc2934516a94f757e1a961c3d4175"
+    }
+  ],
+  "processing": "Built-in image_gen, alpha crop and nearest fit only. Native renderer handles movement and scaling."
+}

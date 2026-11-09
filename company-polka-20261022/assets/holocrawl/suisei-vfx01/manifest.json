@@ -1,0 +1,54 @@
+{
+  "tool": "built-in image_gen",
+  "processing": "Transparent frame crop, nearest-neighbor fit; cut orientation variants are rigid rotations.",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_starmark_0.png",
+      "sha256": "644A4D92832B81C2410CAFB75FDE57DFCFCF1712BE6A27B74110D148AB2CC7A0"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_starmark_1.png",
+      "sha256": "D20E24A4CC6E06C3CA2FB0BAD75AEBE521E44E15869928D8F02D6DED424B2B11"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_h_0.png",
+      "sha256": "018F10C8E12D593476AF2AC6FEA426A4D082C7AFA536AB36791A79322F24AFDC"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_d_0.png",
+      "sha256": "A551ED46D5F379AD7D9FF68821FB880B0DB5420E6907C728DF8EC4CAD1C35C1D"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_v_0.png",
+      "sha256": "C6B2FF837883BD6DEC2D0AC17ACFD2439AA72151BC3B2BDBA8F27EB10FAEE94A"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_u_0.png",
+      "sha256": "F8A3CF5331F524EE0B26522A659C55F5976E53A4AA97458B98A28ECF9DD6FA01"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_h_1.png",
+      "sha256": "B8D2102279D3CF6884035AA54A672EDCB05D6BF0339FEC7B13B3C3CAE537A099"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_d_1.png",
+      "sha256": "FA3F1AC0DB83C9272B6A1A0412A9678FB721B62546FF35DA3F7D2B0FEEB18D16"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_v_1.png",
+      "sha256": "662ACB5463F58D8C961201261420EF64F1BF718B0ABDC81B43C5D60C698F3920"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_u_1.png",
+      "sha256": "40916BBA26EED364A3F1AAB48E0A442CB87150E376426D8D0563ADB7EA00E7AE"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometfall_0.png",
+      "sha256": "7111D0CE97351E5F4E254A327ACC2BE1403AE1F282A6F83FF58B7656950A3CE2"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometfall_1.png",
+      "sha256": "C3A323963AAF2C3C271E7036FB86BB49FC93F2C28EC36D93CA5D65335DC6881B"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit. Change ONLY leg pose of this slim Ganmo hawk attack sprite: an airborne TWO-FOOT TALON POUNCE toward the right. It has exactly two legs and both legs extend FORWARD toward the right, with both grasping clawed feet visible together in front of the lower chest, separated slightly vertically so they are readable. NO foot on ground, NO foot dangling beneath or behind, NO third leg, NO extra foot. Lift the existing supporting leg forward to join the existing attacking leg. Keep the body slim and leaning right, same sharp gold eyes, white pointed feather collar, brown raised wings, cream belly, red tie, burgundy cape, proportions/palette and chunky DCSS pixel art. Whole sprite within roughly30x30 logical pixels, fits32x32 native tile. Transparent background, no target, particles, ground, shadows, text.",
+  "nativeMax": [
+    30,
+    30
+  ],
+  "integration": "nearest-neighbor; left via horizontal mirror",
+  "pose": "airborne, exactly two legs, both talons extended forward simultaneously",
+  "friendlyHalo": "native status flags retained from lui-attack05"
+}

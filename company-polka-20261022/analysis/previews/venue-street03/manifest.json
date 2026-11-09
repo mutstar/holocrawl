@@ -1,0 +1,15 @@
+{
+  "status": "whole-scene-art-direction-draft",
+  "date": "2026-11-03",
+  "review": "analysis/previews/venue-street03/index.html",
+  "region": "잔향도시1~3층 공연장 앞 거리",
+  "feedback": [
+    "01:flat modern tiles felt disconnected and unlike DCSS",
+    "02:literal original DCSS stone felt too much like DCSS"
+  ],
+  "direction": "Modern urban venue materials with textured,muted low-resolution roguelike rendering. Cohesive full-scene draft before separate tile production.",
+  "newRasterTool": "built-in image_gen",
+  "tileAssetsProduced": false,
+  "engineIntegrated": false,
+  "runtimeChanged": false
+}

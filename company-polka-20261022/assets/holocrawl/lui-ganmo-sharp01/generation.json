@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen edit",
+  "variants": {
+    "a": {
+      "source": "a-source.png",
+      "tile": "a-tile.png",
+      "prompt": "Remove only Ganmo burgundy cape, preserve gold eyes, white collar, red tie and folded wings; natural brown feathers beneath; transparent background."
+    },
+    "b": {
+      "source": "b-source.png",
+      "tile": "b-tile.png",
+      "prompt": "Use case: precise-object-edit. Edit this Ganmo mascot sprite into a sharper leaner hawk version WHILE KEEPING its burgundy magenta cape and tiny red necktie. Keep brown head, creamy white collar and eyebrow tufts, gold eyes, cream chest, recognizable Ganmo identity. Change round chubby silhouette: narrower tapered torso, wings folded close, chest less balloonlike, angular pointed feather collar, more slanted fierce eyebrows, sharper alert gold eyes and hooked beak. Cape hangs close vertically behind, not flared sideways. Taller slender upright proportions approximately width 22 : height30 pixels at native size. Dungeon Crawl Stone Soup 32x32 chunky pixel sprite, clean large color clusters, minimal detail readable at 30px height. Whole bird feet visible, front three quarter facing right, truly transparent background. No pedestal, no added symbols, no text, no particles. One sprite only."
+    }
+  },
+  "integration": {
+    "nativeCanvas": [
+      32,
+      32
+    ],
+    "maxSprite": [
+      30,
+      30
+    ],
+    "crop": "alpha >32 bounds",
+    "resampling": "nearest",
+    "nativeApplied": true
+  },
+  "selectedVariant": "B",
+  "nativeApplied": true
+}

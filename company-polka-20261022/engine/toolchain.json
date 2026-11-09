@@ -1,0 +1,11 @@
+{
+  "distribution": "MSYS2 project-local portable archive",
+  "archive_url": "https://github.com/msys2/msys2-installer/releases/download/2026-09-27/msys2-base-x86_64-20260927.tar.xz",
+  "archive_sha256": "ea2f31a0b6ade63914ce441ffb022f0f6aa96982bfefa2326460a26d5fb01322",
+  "environment": "MINGW64",
+  "gcc": "16.2.0",
+  "python": "3.14.8",
+  "pacman_database": "/var/lib/holocrawl-pacman",
+  "packages": ["make", "perl", "bison", "flex", "diffutils", "git", "mingw-w64-x86_64-gcc", "mingw-w64-x86_64-python-yaml", "mingw-w64-x86_64-pkgconf"],
+  "notes": ["All installation files live under .toolchain; no global PATH changes.", "Portable compiler and dependencies are intentionally excluded from version control."]
+}

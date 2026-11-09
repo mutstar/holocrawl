@@ -1,0 +1,50 @@
+{
+  "source": "assets\\holocrawl\\vivi-encore03\\pearl-pop-source.png",
+  "references": [
+    "https://hololive.hololivepro.com/talents/kikirara-vivi/",
+    "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Kikirara-Vivi_pr-img_03.webp"
+  ],
+  "referenceUsed": "Official character illustration only; no claim of viewing video footage.",
+  "motifs": "Pink/lavender palette, white diamond glints, cosmetic gold highlights.",
+  "nativeTile": [
+    32,
+    32
+  ],
+  "artSizes": [
+    [
+      18,
+      18
+    ],
+    [
+      28,
+      28
+    ],
+    [
+      26,
+      26
+    ]
+  ],
+  "fadeAlpha": 150,
+  "integration": "Nearest-neighbor size adjustment of existing generated pearl burst; same palette and opacity.",
+  "sha256": {
+    "fx_viviencore_echo0.png": "2cb050458d8c8e3975e494cc110146a5436e72b08b2b3de1cca1095ee87e98b8",
+    "fx_viviencore_echo1.png": "490f7916c90ddeb4da53b222e85176e49af6ec8dc40665c8917c5e4878d951be",
+    "fx_viviencore_echo2.png": "fa38bb3df1f909f2f1d4876981d4b75bde2f18b4e964469f04c415cb29d30366"
+  },
+  "scope": "Staged VFX preview; caster combat unimplemented.",
+  "revision": "vivi-encore04",
+  "previousArtSizes": [
+    [
+      16,
+      16
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      22,
+      22
+    ]
+  ]
+}

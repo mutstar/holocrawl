@@ -1,0 +1,26 @@
+[
+  {
+    "id": "starmark",
+    "prompt": "A thin cyan and gold constellation TARGET LOCK RETICLE: a square/diamond bracket enclosing an empty center, four tiny stars at diagonal corners, frame 1 brackets converge, frame 2 stars glow. No comet, no meteor, no blade, no explosion.",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-cbea8281-4128-4975-82d0-65133dd7b5e2.png",
+    "fullPrompt": "Create ONE transparent pixel-art game VFX sprite strip, exactly TWO animation cells in a horizontal row (2 columns, 1 row), same center and scale, equal sized cells with wide transparent padding. A thin cyan and gold constellation TARGET LOCK RETICLE: a square/diamond bracket enclosing an empty center, four tiny stars at diagonal corners, frame 1 brackets converge, frame 2 stars glow. No comet, no meteor, no blade, no explosion. Production 32x32 DCSS roguelike style, sharp discrete square pixels, limited palette, no antialiasing, no smooth gradients, no text, no labels, no ground, no character. Genuine transparent alpha background. All shapes stay inside their own cell, with empty padding separating the two cells.",
+    "tool": "built-in image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "orbitalcut",
+    "prompt": "A straight thin HORIZONTAL cyan-white energy SLASH segment traversing the cell from left edge to right edge with tiny blue star fragments above and below. Frame 1 slender bright cutting edge, frame 2 thin dissipating cyan streak with fragments. Must be horizontal, not circular, no target reticle, no meteor.",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-ad1822a4-44cb-4402-b9be-438009c9a95f.png",
+    "fullPrompt": "Create ONE transparent pixel-art game VFX sprite strip, exactly TWO animation cells in a horizontal row (2 columns, 1 row), same center and scale, equal sized cells with wide transparent padding. A straight thin HORIZONTAL cyan-white energy SLASH segment traversing the cell from left edge to right edge with tiny blue star fragments above and below. Frame 1 slender bright cutting edge, frame 2 thin dissipating cyan streak with fragments. Must be horizontal, not circular, no target reticle, no meteor. Production 32x32 DCSS roguelike style, sharp discrete square pixels, limited palette, no antialiasing, no smooth gradients, no text, no labels, no ground, no character. Genuine transparent alpha background. All shapes stay inside their own cell, with empty padding separating the two cells.",
+    "tool": "built-in image_gen",
+    "transparent_background": true
+  },
+  {
+    "id": "cometfall",
+    "prompt": "A bright white-cyan METEOR IMPACT with a diagonal falling comet tail from upper right into an EMPTY central hole, four blue-white radial impact sparks and a very thin golden shock ring. Frame 1 comet descent just reaching the ring, frame 2 expanded impact debris. No reticle brackets. Sparse transparent effect that keeps a character readable.",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-c26ec99d-8ea6-4b28-9d5a-495a9bcd86f4.png",
+    "fullPrompt": "Create ONE transparent pixel-art game VFX sprite strip, exactly TWO animation cells in a horizontal row (2 columns, 1 row), same center and scale, equal sized cells with wide transparent padding. A bright white-cyan METEOR IMPACT with a diagonal falling comet tail from upper right into an EMPTY central hole, four blue-white radial impact sparks and a very thin golden shock ring. Frame 1 comet descent just reaching the ring, frame 2 expanded impact debris. No reticle brackets. Sparse transparent effect that keeps a character readable. Production 32x32 DCSS roguelike style, sharp discrete square pixels, limited palette, no antialiasing, no smooth gradients, no text, no labels, no ground, no character. Genuine transparent alpha background. All shapes stay inside their own cell, with empty padding separating the two cells.",
+    "tool": "built-in image_gen",
+    "transparent_background": true
+  }
+]

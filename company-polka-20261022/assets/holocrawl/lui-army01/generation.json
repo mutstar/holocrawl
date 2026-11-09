@@ -1,0 +1,24 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Generate ONE compact pixel-art buff emblem for Takane Lui Ganmo hawk army ultimate, to be used as a tiny native16x16 pixel status glyph in Dungeon Crawl Stone Soup. A sharp symmetrical pair of ivory white hawk wings framing a small GOLD crown/chevron and one tiny burgundy red center gem. Wings pointed rather than round. Strong readable angular silhouette, simple chunky discrete pixels and dark outline, very few colors. Native resolution design16x14 pixels enlarged nearest-neighbor, no fine detail, no text. One emblem only, no bird body or face, no circle, no glowing cloud, no large magic ring, no background, truly transparent background. The theme is a white-feather hawk commander with gold and burgundy, not purple magic.",
+  "nativeCanvas": [
+    32,
+    32
+  ],
+  "frameSizes": [
+    [
+      14,
+      12
+    ],
+    [
+      16,
+      14
+    ]
+  ],
+  "placement": [
+    16,
+    0
+  ],
+  "crop": "alpha >32 bounding box",
+  "resampling": "nearest-neighbor"
+}

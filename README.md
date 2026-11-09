@@ -33,7 +33,7 @@ py -3 -m http.server 8798 --bind 127.0.0.1 --directory holocrawl-0341/preview
 
 ## 포함 범위
 
-최신 설계·미리보기·도트 원화·검증 스크립트, 일부0.24 이관 자료, 수정한0.34.1 엔진의 patch와 추가 파일을 포함합니다. 과거 회사 작업본 전체, ZIP, 로컬 인증정보, 컴파일 결과와 runtime은 포함하지 않습니다.
+최신 설계·미리보기·도트 원화·검증 스크립트, 수정한0.34.1 엔진의 patch와 추가 파일에 더해, **22신의0.24 전투 소스·도트·이펙트·검증 기록과 과거 회사 작업본**을 함께 보관합니다. 위치와 복원 범위는 `LEGACY_GODS_ARCHIVE.md`를 확인하세요. ZIP 중복 백업, 로컬 인증정보, 컴파일 결과·runtime·임시 세이브는 제외합니다.
 
 최신 네이티브107 소스 변경분은 `holocrawl-0341/migration/engine0341-play107`의 patch·overlay·해시 목록에 보존되어 있습니다. `BUILD_CITY107.ps1`로 별도 엔진을 복원·빌드하며, 실행·검증·설치 절차는 `holocrawl-0341/design/NATIVE_PLAY107_REVIEW.md`를 확인하세요. `BUILD_CITY.ps1`과 `migration/engine0341-city77`은 이전 엔진 복원용입니다. 실제 실행파일·컴파일 도구·개인 세이브는 Git에 포함하지 않습니다.
 

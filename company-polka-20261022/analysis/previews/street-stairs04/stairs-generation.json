@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit target: attached original DCSS 0.24 32x32 terrain sprite. Preserve the original EXACT composition, orientation, distinctive stepped outline, tread arrangement, strong light/dark contrast and coarse 32px pixel-art density. User specifically wants this DCSS staircase design with SILVER HANDRAILS added, not a new flat overhead rectangular staircase. Add two thin dull silver metal handrails along the two exposed stair edges, following the existing stepped diagonal and with tiny supporting posts. At logical32px size rails should be 1px highlights with 1px grey shadows, not chunky fences. Subtle neutral grey concrete material, restrained original brightness. Keep all geometry inside a single32x32tile silhouette. True transparent background outside staircase and gaps around handrail posts; opaque dark cavity only where it belongs. No paving background square, no text, no arrows, no roof, no building, no smooth illustration, no perspective redesign. Crisp hard pixels, no blur, tightly frame sprite with little transparent margin. ",
+  "upRequest": "Preserve raised stair outline rising upper-left, silver handrails.",
+  "downRequest": "Preserve recessed square dark hole descending upper-right, silver handrails.",
+  "sources": [
+    "assets/crawl-up32.png",
+    "assets/crawl-down32.png"
+  ],
+  "outputs": [
+    "assets/stairs-up04-32.png",
+    "assets/stairs-down04-32.png"
+  ],
+  "size": 32,
+  "transparentBackground": true
+}

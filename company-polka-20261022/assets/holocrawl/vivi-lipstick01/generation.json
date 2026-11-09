@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-3ac23a7e-3723-4c5b-83bf-8f30d5bb9d95.png",
+  "reference": "https://hololive.hololivepro.com/talents/kikirara-vivi/",
+  "referenceImage": "https://hololive.hololivepro.com/wp-content/uploads/2023/09/Kikirara-Vivi_pr-img_01_a.webp",
+  "nativeTile": [
+    32,
+    32
+  ],
+  "lipstickSize": [
+    7,
+    12
+  ],
+  "stages": [
+    1,
+    2,
+    3
+  ],
+  "integration": "Alpha threshold200 to omit soft generated glow, transparent bounding crop, nearest-neighbor resize and repetition. No manual painting.",
+  "prompt": "Single tiny upright lipstick inspired by Vivi belt cosmetics: pink slanted tip, gold sleeve, charcoal base, chunky transparent pixel art.",
+  "sha256": {
+    "fx_viviattention1.png": "b08653fdd7e1448065223f5ebc0397a1b5c0883b7d73273dc2a2aaec36faf7cd",
+    "fx_viviattention2.png": "65bfce6f7379d3d97a2dafb7bbe4b56d5ff0a582d70d667cbed920eaf8d78256",
+    "fx_viviattention3.png": "d3179c89f564af5216299030bd455ced6f8e28b8676e12d54c8b313ceb6b158b"
+  },
+  "scope": "Staged visual preview only; combat unchanged."
+}

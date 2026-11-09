@@ -1,0 +1,259 @@
+{
+  "engine": "DCSS 0.24.0",
+  "upstream_commit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "phase": "balance01-combat-baseline-complete",
+  "current_module": "All22 reviewed;13 retained,7 AI-adjusted,2 minimally tuned.217250 statistical-cohort encounters plus4416 exact composition and322 launcher rows audited. Separate versioned combat preset; original engine preserved.",
+  "current_scope": "Native player equipment/skills, attack rolls, AC/GDR, shields, monster AI and world turns. Fixed kits exclude equipment gifts and campaign progression. No normal worship UI or save integration yet.",
+  "new_combat_cores_under_batch_validation": [
+    "Suisei",
+    "Miko",
+    "Aki",
+    "Fubuki",
+    "Ayame",
+    "Choco",
+    "Korone",
+    "Okayu",
+    "Pekora",
+    "Watame",
+    "Towa",
+    "Lamy",
+    "Polka",
+    "Koyori",
+    "Lui",
+    "Raden",
+    "Hajime",
+    "Su",
+    "Vivi",
+    "Mela"
+  ],
+  "noel_remaining": [
+    "gift progression",
+    "regular gameplay selection and abilities",
+    "piety progression and wrath",
+    "normal save persistence"
+  ],
+  "benchmark_verified": true,
+  "build_verified": true,
+  "native_smoke_observed": true,
+  "final_validation": "v3 passed: 552,000 fixed encounters; complete seeds/hashes, 1,656 unique order samples, legacy overlap 16,000 Noel / 24,000 Sopia. Not campaign clear-rate validation.",
+  "blocking_evidence": "analysis/native/windows_execution_block.json",
+  "full_22_god_win_rates_available": true,
+  "replay_order_verified": true,
+  "replay_order_matching_trials": 1656,
+  "execution_block_resolved": true,
+  "verified_result": "analysis/native/batch/all-gods-summary.json",
+  "verified_encounters": 552000,
+  "verified_build_sha256": "2EADA0F8FFE5FA85B07CC09322ACCFAC8EE029E98533D095BE5AEF731C0B1C88",
+  "verified_patch_sha256": "19D47E5C764F8E5247484B55D55A2E36945E85BE6FCC5AE3D4D2F9DDC87F018A",
+  "sopia_validation": "32,000 final encounters completed; native ability self-checks, 160 order overlaps and 320 independent overlaps passed; all 16,000 shared no-god/current-Noel encounters exactly match the previous verified dataset.",
+  "sopia_remaining": [
+    "normal worship/ability UI",
+    "piety income and wrath",
+    "save/level persistence",
+    "ranged/terrain/position-selection policies",
+    "timing behaviour within long native world actions"
+  ],
+  "noel_regression_after_sopia": "All 16,000 shared no-god/current-Noel combat results exactly match the previous verified dataset.",
+  "verified_datasets": {
+    "noel": "analysis/native/final-noel-1000.summary.json",
+    "sopia": "analysis/native/sopia/final-sopia-1000.summary.json",
+    "all_gods_v3": "analysis/native/batch/all-gods-summary.json"
+  },
+  "batch_validation": {
+    "phase": "v3-final-audit-passed",
+    "native_core_checks": "passed",
+    "builds": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "replay_exact_matches": 1656,
+    "target_retained_encounters": 552000,
+    "target_seeds_per_case": 1000,
+    "superseded_v1_source_patch_sha256": "588D019745201A6422499AF46A51AE6F2D8847A3F9A16CB70C928E2F0E4CB925",
+    "superseded_v1_build_sha256": "205217FDA7FB6808E6A02588B530EDA1C27C3014359C0B8EA63DAB05401DD72E",
+    "retained_inputs": "native-head-v3-{build}-01/02 and native-tail-v3-{build}-01/02",
+    "progress_command": "python analysis/home_batch_progress.py --version v3",
+    "source_patch_sha256": "19D47E5C764F8E5247484B55D55A2E36945E85BE6FCC5AE3D4D2F9DDC87F018A",
+    "build_sha256": "2EADA0F8FFE5FA85B07CC09322ACCFAC8EE029E98533D095BE5AEF731C0B1C88",
+    "replay_version": "home01",
+    "retained_encounters": 552000,
+    "validation": "analysis/native/batch/validation.json",
+    "final_report": "analysis/native/batch/RESULTS_ALL_GODS.md",
+    "balance_review": "analysis/native/batch/BALANCE_REVIEW_V3_KO.md",
+    "recommendation_counts": {
+      "maintain": 12,
+      "further_validation": 8,
+      "adjustment_candidate": 2
+    },
+    "numerical_changes": false,
+    "completed_at_utc": "2026-10-19T14:12:56.3336855Z"
+  },
+  "checkpoint_saved_at_utc": "2026-10-19T14:25:07.519470+00:00",
+  "partial_v2_encounters": 87137,
+  "home_resume_state": "analysis/native/batch/job_state.json",
+  "home_restore_evidence": "analysis/native/batch/home_restore.json",
+  "balance_review": "analysis/native/balance-final01/BALANCE_REVIEW_ALL_22_KO.md",
+  "followup_screen01": {
+    "status": "passed",
+    "encounters": 37200,
+    "seeds_per_case": 50,
+    "seed_start": 1000,
+    "report": "analysis/native/followup-screen01/RESULTS_FOLLOWUP_KO.md",
+    "summary": "analysis/native/followup-screen01/summary.json",
+    "validation": "analysis/native/followup-screen01/validation.json",
+    "scope": "Eight gods; baseline/passive/paced plus prepared sensitivity for Polka/Koyori/Okayu. Exploratory reuse of v3 seeds, not independent confirmation.",
+    "source_changes": "Only holocrawl.cc benchmark driver in isolated engine/followup-crawl. Original engine and design unchanged.",
+    "numerical_changes": false,
+    "completed_at_utc": "2026-10-19T14:45:03.755993+00:00"
+  },
+  "policy_confirmation01": {
+    "status": "passed",
+    "encounters": 43200,
+    "seed_start": 900000,
+    "seeds_per_case": 100,
+    "report": "analysis/native/policy-confirm01/RESULTS_POLICY_KO.md",
+    "summary": "analysis/native/policy-confirm01/summary.json",
+    "recommendation": "analysis/native/policy-confirm01/recommended-policy.json",
+    "recommended_gods_by_build": {
+      "melee": [
+        "polka",
+        "koyori"
+      ],
+      "ranged": [
+        "aki",
+        "koyori",
+        "hajime"
+      ],
+      "magic": [
+        "aki",
+        "okayu",
+        "pekora",
+        "polka",
+        "koyori",
+        "hajime"
+      ]
+    },
+    "numerical_changes": false,
+    "routing_validation": "analysis/native/policy-confirm01/routing-validation.json",
+    "routing_exact_matches": 864,
+    "launcher": "analysis/run_recommended_policy.py",
+    "scope": "Isolated headless action-selection experiment; production engine/UI not replaced.",
+    "completed_at_utc": "2026-10-19T15:14:39.965489+00:00"
+  },
+  "five_god_depth02": {
+    "status": "completed_with_known_mechanics_defect",
+    "data_audit": "passed",
+    "gods": [
+      "mela",
+      "vivi",
+      "miko",
+      "lui",
+      "polka"
+    ],
+    "controller": "analysis/run_five_god_depth.py",
+    "factor_encounters": 52500,
+    "scheduled_series": 3000,
+    "actual_series_encounters": 5842,
+    "total_native_encounters": 58342,
+    "report": "analysis/native/five-god-depth02/BALANCE_REVIEW_FIVE_KO.md",
+    "details": "analysis/native/five-god-depth02/RESULTS_FIVE_GODS_KO.md",
+    "summary": "analysis/native/five-god-depth02/summary.json",
+    "validation": "analysis/native/five-god-depth02/validation.json",
+    "plan": "analysis/native/five-god-depth02/plan.json",
+    "source_patch": "analysis/native/five-god-depth02/diagnostic-source.patch",
+    "failed_attempt": "analysis/native/five-god-depth01/failure.json",
+    "numerical_changes": false,
+    "production_engine_changed": false,
+    "mechanics_audit": "analysis/native/five-god-depth02/mechanics-audit.json",
+    "design_conformance": "not_complete: Mela fire beam extra halving omitted; static audit documented, correction/end-to-end regression deferred to separate frozen version.",
+    "safety_fix": "Isolated AoE null/alive guards for native summoner-linked removal; four real battlesphere regression paths passed.",
+    "baseline_policy": "Original v3; does not combine previous selective policy recommendations.",
+    "scope": "Fixed kits and 14 native monster panels; persistent Polka three-fight series without XP/piety income. Not campaign or normal worship/UI integration.",
+    "decisions": {
+      "mela": {
+        "name": "메라",
+        "recommendation": "additional_validation",
+        "reason": "Strong breath/ember contributions, but actual fire-beam extra ultimate halving is omitted. Correct implementation in a separate version before final numerical judgment.",
+        "implementation_issue": "MECHANICS_AUDIT_KO.md"
+      },
+      "vivi": {
+        "name": "비비",
+        "recommendation": "adjustment_candidate",
+        "reason": "Burst removal harms melee/ranged with family95 intervals below zero; blind-only and ultimate contrasts remain uncertain. Review burst damage/multitarget efficiency before broad control nerfs."
+      },
+      "miko": {
+        "name": "미코",
+        "recommendation": "additional_validation",
+        "reason": "Fire removal harms magic by5.5pp; melee boundary damage is zero under adjacent-start stationary placement. Keep current numbers pending terrain/position testing; paid pre-shrine differences uncertain."
+      },
+      "lui": {
+        "name": "루이",
+        "recommendation": "maintain",
+        "reason": "Paid pre-flock helps melee9.75pp; command removal hurts melee5.5pp but helps magic4pp. Preserve raven coefficients and separate action policy by build; magic still trails no-god."
+      },
+      "polka": {
+        "name": "폴카",
+        "recommendation": "additional_validation",
+        "reason": "Banked AP improves single fights, but persistent initial-zero series does not access finale. Early/mid piety remains below unlock despite some AP banking; late fresh-zero AP stays below3. Test performance targeting and campaign carry before adjusting income/finisher coefficients."
+      }
+    },
+    "completed_at_utc": "2026-10-19T16:40:50.139844+00:00"
+  },
+  "last_updated_at_utc": "2026-10-19T16:40:50.139844+00:00",
+  "balance_current": "analysis/native/balance-current.json",
+  "balance_rules": "HOLOCRAWL_BALANCE_RULES_VNEXT.md",
+  "source_for_latest_balance": "engine/balance-crawl/crawl-ref/source",
+  "production_engine_replaced": false,
+  "balance_final": "analysis/native/balance-final01/settings.json",
+  "normal_worship_save_economy_wrath_gifts_campaign_complete": false,
+  "art_music_created": false,
+  "vfxDraftHandoff": {
+    "revision": "night-vfx04",
+    "approvedGods": [
+      "suisei",
+      "miko",
+      "aki",
+      "fubuki",
+      "ayame"
+    ],
+    "cornerRevision": "choco",
+    "draftGods": [
+      "korone",
+      "okayu",
+      "pekora",
+      "noel",
+      "watame",
+      "towa",
+      "lamy",
+      "polka",
+      "koyori",
+      "lui",
+      "raden",
+      "hajime",
+      "su",
+      "vivi",
+      "sopia",
+      "mela"
+    ],
+    "abilityTiers": 66,
+    "nativeScreenshots": 370,
+    "review": "analysis/previews/all-gods-vfx-draft04/index.html",
+    "next": "Company visual feedback",
+    "numericChanges": false,
+    "archive": "exports/HOLOCRAWL_COMPANY_2026-10-21_VFX_DRAFT.zip"
+  },
+  "combatRevision": "lamy-tools05",
+  "playBinarySha256": "AEC9C5F690BC9775E79C5FC7BA789B464A99E05EDAF1ABE411B3411F1A3E01D1",
+  "lamyToolsValidation": "analysis/native/lamy-tools05/checkpoint-manifest.json",
+  "lamyReviewStatus": "All tiers approved; tier5 lamy-banquet-vfx05",
+  "next": "Continue Polka tier1/3/5 visual feedback. Existing native draft shown; no new Polka art yet.",
+  "visualRevision": "lamy-banquet-vfx05",
+  "currentVisualReviewGod": "polka",
+  "currentVisualReviewTier": 1,
+  "lamyVisualValidation": "analysis/native/lamy-banquet-vfx05/checkpoint-manifest.json",
+  "lamyVisualFeedback": "ㅇㅇ좋다 라미는 이걸로하고 다음 폴카 1성 3성 5성 이펙트 보자",
+  "polkaVisualReview": "analysis/previews/polka-review01/index.html",
+  "savedAtUtc": "2026-10-21T16:21:41.345818+00:00",
+  "currentVisualReview": "analysis/previews/polka-review01/index.html"
+}

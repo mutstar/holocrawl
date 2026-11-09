@@ -1,0 +1,12 @@
+{
+  "seedStart": 1661,
+  "build": "magic",
+  "trialsPerCase": 3,
+  "comparison": "552 overlapping trials match exactly, including HP, resources and elapsed aut.",
+  "reverseResultsSha256": "C2DC2EF61981B17CFA51788DF72BF1B94681354E0F53ADD2F9ECE72CF2C49967",
+  "comparedEncounters": 552,
+  "forwardResultsSha256": "6CC56B47F17208559E373876DC41927482CE06FB272CEB01A688B958F08930FE",
+  "status": "passed",
+  "buildBinarySha256": "B7228258BD6189C11C07BF71D89800B02A17F59E391EA43B69916A40833E455E",
+  "sourcePatchSha256": "19D47E5C764F8E5247484B55D55A2E36945E85BE6FCC5AE3D4D2F9DDC87F018A"
+}

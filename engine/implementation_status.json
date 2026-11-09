@@ -1,0 +1,82 @@
+{
+  "engine": "DCSS 0.24.0",
+  "upstream_commit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "phase": "saved-checkpoint-all-gods-validation-incomplete",
+  "current_module": "All 22 combat cores connected; native fixture checks and 1,656 forward/reverse comparisons passed. Large v2 cohorts intentionally stopped for home handoff.",
+  "current_scope": "Native player equipment/skills, attack rolls, AC/GDR, shields, monster AI and world turns. Fixed kits exclude equipment gifts and campaign progression. No normal worship UI or save integration yet.",
+  "new_combat_cores_under_batch_validation": [
+    "Suisei",
+    "Miko",
+    "Aki",
+    "Fubuki",
+    "Ayame",
+    "Choco",
+    "Korone",
+    "Okayu",
+    "Pekora",
+    "Watame",
+    "Towa",
+    "Lamy",
+    "Polka",
+    "Koyori",
+    "Lui",
+    "Raden",
+    "Hajime",
+    "Su",
+    "Vivi",
+    "Mela"
+  ],
+  "noel_remaining": [
+    "gift progression",
+    "regular gameplay selection and abilities",
+    "piety progression and wrath",
+    "normal save persistence"
+  ],
+  "benchmark_verified": true,
+  "build_verified": true,
+  "native_smoke_observed": true,
+  "final_validation": "Noel 24,000-encounter dataset and Sopia 32,000-encounter dataset are verified within their documented fixed-kit melee scopes. Full 22-god campaign validation is not available.",
+  "blocking_evidence": "analysis/native/windows_execution_block.json",
+  "full_22_god_win_rates_available": false,
+  "replay_order_verified": true,
+  "replay_order_matching_trials": 120,
+  "execution_block_resolved": true,
+  "verified_result": "analysis/native/sopia/final-sopia-1000.summary.json",
+  "verified_encounters": 32000,
+  "verified_build_sha256": "F291885D18508F3E47648A4C6C52FE893AC7F96BAA2ADAEF32110CEFF4162DCD",
+  "verified_patch_sha256": "B3B966FC1C07D5B82B4B627810CEC2B7FACDDBAC8801BE84478E9A8D7599A34B",
+  "sopia_validation": "32,000 final encounters completed; native ability self-checks, 160 order overlaps and 320 independent overlaps passed; all 16,000 shared no-god/current-Noel encounters exactly match the previous verified dataset.",
+  "sopia_remaining": [
+    "normal worship/ability UI",
+    "piety income and wrath",
+    "save/level persistence",
+    "ranged/terrain/position-selection policies",
+    "timing behaviour within long native world actions"
+  ],
+  "noel_regression_after_sopia": "All 16,000 shared no-god/current-Noel combat results exactly match the previous verified dataset.",
+  "verified_datasets": {
+    "noel": "analysis/native/final-noel-1000.summary.json",
+    "sopia": "analysis/native/sopia/final-sopia-1000.summary.json"
+  },
+  "batch_validation": {
+    "phase": "v2-full-cohorts-running",
+    "native_core_checks": "passed",
+    "builds": [
+      "melee",
+      "ranged",
+      "magic"
+    ],
+    "replay_exact_matches": 1656,
+    "target_retained_encounters": 552000,
+    "target_seeds_per_case": 1000,
+    "superseded_v1_source_patch_sha256": "588D019745201A6422499AF46A51AE6F2D8847A3F9A16CB70C928E2F0E4CB925",
+    "superseded_v1_build_sha256": "205217FDA7FB6808E6A02588B530EDA1C27C3014359C0B8EA63DAB05401DD72E",
+    "retained_inputs": "native-head-v2-{build}-01/02 and native-tail-v2-{build}-01/02",
+    "progress_command": ".toolchain/msys64/mingw64/bin/python.exe analysis/batch_progress.py",
+    "source_patch_sha256": "19D47E5C764F8E5247484B55D55A2E36945E85BE6FCC5AE3D4D2F9DDC87F018A",
+    "build_sha256": "B7228258BD6189C11C07BF71D89800B02A17F59E391EA43B69916A40833E455E",
+    "replay_version": "05"
+  },
+  "checkpoint_saved_at_utc": "2026-10-19T09:50:13.796065+00:00",
+  "partial_v2_encounters": 87137
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "effect": "foxflame",
+    "name": "후부키 · 여우불",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-5d03404b-b84e-4b54-bbb0-471af953cb3d.png",
+    "prompt": "Fubuki: white foxfire wisps with icy cyan cores, fox ear-shaped arcs and a ghostly duplicated tail."
+  },
+  {
+    "effect": "oni",
+    "name": "아야메 · 붉은 쌍검",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-9c01b35c-d363-4373-a4f2-8145492cf7ea.png",
+    "prompt": "Ayame: two crimson katana slash arcs, small red oni horn silhouette, dark red sparks."
+  },
+  {
+    "effect": "charm",
+    "name": "초코 · 유혹",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-88896cf7-8665-49a8-ade9-9723155b0d6f.png",
+    "prompt": "Choco: violet pink succubus heart-shaped magic and tiny bat wing flourishes."
+  },
+  {
+    "effect": "punch",
+    "name": "코로네 · 연속 주먹",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-c6699ead-916e-4c71-8261-4ba3d5b5b8a3.png",
+    "prompt": "Korone: orange golden rapid fist impact shapes and white speed streaks."
+  },
+  {
+    "effect": "sleep",
+    "name": "오카유 · 수면",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-604ed186-8f77-45c5-9902-cf672fc3037d.png",
+    "prompt": "Okayu: lavender cat-shaped crescent sleep magic, small purple bubbles and soft sleepy star."
+  },
+  {
+    "effect": "carrotburst",
+    "name": "페코라 · 당근 폭발",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-2559a38d-cd49-4867-9af1-a516cfc8f57d.png",
+    "prompt": "Pekora: bright orange carrot-shaped explosive sparkle with green sparks and blue blast streaks, not an actual placed bomb."
+  },
+  {
+    "effect": "devil",
+    "name": "토와 · 악마 날개",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-b2c6b2da-d65a-48c2-8ebf-d4de08087372.png",
+    "prompt": "Towa: violet emerald devil-wing arc and green four-point star with purple energy."
+  },
+  {
+    "effect": "circus",
+    "name": "폴카 · 서커스",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-c112d548-b2b5-4eba-bb93-7335b04fe57c.png",
+    "prompt": "Polka: colorful circus confetti, red yellow blue juggling diamond arcs, festive small star sparks."
+  },
+  {
+    "effect": "reagent",
+    "name": "코요리 · 시약 반응",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-415158c1-d8de-42c1-b011-a645d75f3c53.png",
+    "prompt": "Koyori: hot pink chemical reaction bubbles, tiny glass flask silhouette, cyan and lime molecular sparks."
+  },
+  {
+    "effect": "ravenflight",
+    "name": "루이 · 까마귀 지휘",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-f15e737c-f7ac-42c3-a995-3bff994d7362.png",
+    "prompt": "Lui: burgundy black raven wing feathers in a sweeping arc, red-gold command sigil."
+  }
+]

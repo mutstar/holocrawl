@@ -1,0 +1,985 @@
+{
+  "revision": "v2-first-balance-adjustments",
+  "scope": "Formula comparison; no engine, AI, win rate, hit chance or real battle simulation.",
+  "formula_source": "Manually transcribed custom formulas from HOLOCRAWL_DESIGN.md. Update this script when formulas change.",
+  "design_sha256_at_run": "189822b1bdb7f762f8a5113b86c565f92c00e50f1d868b59a86d343dcc0df1ad",
+  "skill_samples": {
+    "0": {
+      "스이세이": {
+        "cut_unmarked": 9.0,
+        "cut_stars5": 24.0,
+        "meteor_unmarked": 16.5,
+        "meteor_stars5": 41.5,
+        "next_star_reward_stars1": 4.0,
+        "next_star_reward_stars3": 6.0,
+        "next_star_reward_stars5": 8.0
+      },
+      "미코": {
+        "heal_per_turn": 0.5,
+        "ranged_reduction_pct": 10,
+        "ultimate_reduction_pct": 15,
+        "combined_ranged_reduction_pct": 23.5
+      },
+      "아키": {
+        "thorns3_per_turn": 2.25,
+        "two_plants_per_turn_all_hit": 3.3333333333333335,
+        "bloom_stacks3": 27.0
+      },
+      "후부키": {
+        "two_clones_per_action_all_hit": 7.0,
+        "four_clones_per_action_all_hit": 14.0,
+        "ultimate_duration_turns": 4.0,
+        "attack_time_scaling_below_10aut": true
+      },
+      "아야메": {
+        "passive_accuracy": 3,
+        "passive_slay": 2,
+        "passive_ev": 2,
+        "ultimate_slay": 5,
+        "ultimate_ev": 5,
+        "double_slash_extra_weapon_attacks": 1
+      },
+      "초코": {
+        "kiss_stacks5": 22.0,
+        "kiss_heal_upper_before_floor_overkill": 8.8,
+        "charm_stacks5_hd10_pct": 45,
+        "charm_hd10_duration_turns": 3.0
+      },
+      "코로네": {
+        "passive_max_slay": 3,
+        "ultimate_extra_fist_per_action_all_hit": 3.5,
+        "deferred_damage_fraction": 0.25,
+        "deferred_damage_forgiven": 0
+      },
+      "오카유": {
+        "shield_full_food": 9,
+        "dream_stacks4": 29.0,
+        "dream_sleeping_stacks4": 37.7,
+        "max_slow_time_multiplier": 1.32,
+        "food_cast_cost_low_high": 35,
+        "food_kill_refund": 23
+      },
+      "페코라": {
+        "bomb": 9.0,
+        "five_bombs_same_target": 45.0,
+        "five_bombs_setup_mp": 12,
+        "five_bombs_setup_piety": 7,
+        "five_bombs_setup_actions_turns": 5.5,
+        "ultimate_one_blast": 13.5,
+        "ultimate_three_overlaps": 40.5
+      },
+      "노엘": {
+        "skill_bonus": 5,
+        "ultimate_melee_pct": 30,
+        "ultimate_ac": 4,
+        "ultimate_sh": 3,
+        "skill_duration_turns": 8.0
+      },
+      "와타메": {
+        "passive_heal_per_turn": 0.3,
+        "barrier_max_total": 15,
+        "barrier_three_hits_of_10": 12,
+        "ultimate_regen_total_continuous": 7.2,
+        "ultimate_regen_increment_continuous": 4.8,
+        "lethal_rescue_max_hp_pct": 15
+      },
+      "토와": {
+        "cover_four_shots_all_hit": 24.0,
+        "ultimate_eight_shots_all_hit": 48.0,
+        "full_combo_mp": 10,
+        "full_combo_piety": 16,
+        "ultimate_target_ac_multiplier": 0.7
+      },
+      "라미": {
+        "bonus_cold_per_action": 2.0,
+        "breath": 8.0,
+        "tipsy_breath": 9.2,
+        "banquet_drunk80_per_tick": 7.5,
+        "banquet_base_duration_aut": 60,
+        "banquet_tipsy_duration_aut": 69,
+        "banquet_base_ticks_strict_expiry": 2,
+        "banquet_tipsy_ticks_strict_expiry": 3
+      },
+      "폴카": {
+        "finale_applause6": 33.0,
+        "curtain_heal_applause6": 32,
+        "confuse_hd10_applause6_pct": 33,
+        "confuse_duration_turns": 4.0
+      },
+      "코요리": {
+        "reaction_fire": 7.0,
+        "reaction_shock": 7.5,
+        "critical_fire": 18.0,
+        "critical_shock": 14.0,
+        "critical_fire_text_ignores_rf": false,
+        "critical_shock_ac_reduction": 6,
+        "critical_total_mp_including_two_reagents": 8,
+        "critical_total_piety": 10,
+        "critical_actions_turns_including_manufacture": 3.5
+      },
+      "루이": {
+        "crow_one_hit": 3.0,
+        "three_crows_per_turn_all_hit_in_position": 9.0,
+        "six_crows_per_turn_all_hit_in_position": 18.0,
+        "three_crows_dive_all_hit": 18.0,
+        "six_crows_dive_all_hit": 36.0,
+        "crow_hp": 12,
+        "crow_ev": 14
+      },
+      "라덴": {
+        "painting_extra_per_action": 1.5,
+        "painting_extra_ignores_ac": true,
+        "sculpture_ac": 2,
+        "craft_kill_heal": 2,
+        "explosion_stacks3": 19.0,
+        "wave": 6.0,
+        "shield": 10,
+        "ultimate_explosion_stacks3": 22.5,
+        "ultimate_shield": 16
+      },
+      "하지메": {
+        "beat1_bonus": 3,
+        "beat3_bonus": 9,
+        "charge_beat3": 16.0,
+        "ultimate_move_hit": 5.0,
+        "ultimate_duration_turns": 6.0
+      },
+      "스우": {
+        "wave": 8.0,
+        "ultimate_pulse": 4.0,
+        "ultimate_ticks_strict_expiry": 5,
+        "ultimate_pulse_total_full_residence": 20.0,
+        "ultimate_wave": 11.0
+      },
+      "비비": {
+        "makeup_pct": 10,
+        "ultimate_one_attention_pct": 15,
+        "ultimate_five_attention_pct": 35,
+        "flash_base": 7.0,
+        "flash_makeup": 7.700000000000001,
+        "flash_max_attention": 9.450000000000001
+      },
+      "소피아": {
+        "ring_per_turn": 2.5,
+        "field_per_two_turns": 2.5,
+        "ring_plus_field_per_turn": 3.75,
+        "pull_hd10_pct": 35,
+        "bang_charge1": 19.5,
+        "bang_charge3": 31.5
+      },
+      "메라": {
+        "ember": 2.0,
+        "spray_heat0": 7.0,
+        "spray_heat6": 31.0,
+        "ultimate_spray_heat6": 34.5,
+        "ultimate_self_fire_taken_without_other_rf": 0.16666666666666666
+      }
+    },
+    "6": {
+      "스이세이": {
+        "cut_unmarked": 12.0,
+        "cut_stars5": 27.0,
+        "meteor_unmarked": 21.0,
+        "meteor_stars5": 46.0,
+        "next_star_reward_stars1": 4.0,
+        "next_star_reward_stars3": 6.0,
+        "next_star_reward_stars5": 8.0
+      },
+      "미코": {
+        "heal_per_turn": 0.75,
+        "ranged_reduction_pct": 12,
+        "ultimate_reduction_pct": 17,
+        "combined_ranged_reduction_pct": 26.960000000000008
+      },
+      "아키": {
+        "thorns3_per_turn": 2.5,
+        "two_plants_per_turn_all_hit": 4.666666666666667,
+        "bloom_stacks3": 30.0
+      },
+      "후부키": {
+        "two_clones_per_action_all_hit": 9.0,
+        "four_clones_per_action_all_hit": 18.0,
+        "ultimate_duration_turns": 4.6,
+        "attack_time_scaling_below_10aut": true
+      },
+      "아야메": {
+        "passive_accuracy": 4,
+        "passive_slay": 2,
+        "passive_ev": 2,
+        "ultimate_slay": 5,
+        "ultimate_ev": 5,
+        "double_slash_extra_weapon_attacks": 1
+      },
+      "초코": {
+        "kiss_stacks5": 24.0,
+        "kiss_heal_upper_before_floor_overkill": 9.600000000000001,
+        "charm_stacks5_hd10_pct": 57,
+        "charm_hd10_duration_turns": 4.2
+      },
+      "코로네": {
+        "passive_max_slay": 3,
+        "ultimate_extra_fist_per_action_all_hit": 5.0,
+        "deferred_damage_fraction": 0.25,
+        "deferred_damage_forgiven": 0
+      },
+      "오카유": {
+        "shield_full_food": 11,
+        "dream_stacks4": 32.0,
+        "dream_sleeping_stacks4": 41.6,
+        "max_slow_time_multiplier": 1.32,
+        "food_cast_cost_low_high": 35,
+        "food_kill_refund": 23
+      },
+      "페코라": {
+        "bomb": 11.0,
+        "five_bombs_same_target": 55.0,
+        "five_bombs_setup_mp": 12,
+        "five_bombs_setup_piety": 7,
+        "five_bombs_setup_actions_turns": 5.5,
+        "ultimate_one_blast": 16.5,
+        "ultimate_three_overlaps": 49.5
+      },
+      "노엘": {
+        "skill_bonus": 5,
+        "ultimate_melee_pct": 30,
+        "ultimate_ac": 5,
+        "ultimate_sh": 3,
+        "skill_duration_turns": 10.4
+      },
+      "와타메": {
+        "passive_heal_per_turn": 0.36666666666666664,
+        "barrier_max_total": 21,
+        "barrier_three_hits_of_10": 12,
+        "ultimate_regen_total_continuous": 10.12,
+        "ultimate_regen_increment_continuous": 6.746666666666667,
+        "lethal_rescue_max_hp_pct": 15
+      },
+      "토와": {
+        "cover_four_shots_all_hit": 32.0,
+        "ultimate_eight_shots_all_hit": 64.0,
+        "full_combo_mp": 10,
+        "full_combo_piety": 16,
+        "ultimate_target_ac_multiplier": 0.7
+      },
+      "라미": {
+        "bonus_cold_per_action": 2.5,
+        "breath": 10.0,
+        "tipsy_breath": 11.5,
+        "banquet_drunk80_per_tick": 8.5,
+        "banquet_base_duration_aut": 72,
+        "banquet_tipsy_duration_aut": 82,
+        "banquet_base_ticks_strict_expiry": 3,
+        "banquet_tipsy_ticks_strict_expiry": 4
+      },
+      "폴카": {
+        "finale_applause6": 35.0,
+        "curtain_heal_applause6": 35,
+        "confuse_hd10_applause6_pct": 45,
+        "confuse_duration_turns": 4.2
+      },
+      "코요리": {
+        "reaction_fire": 9.0,
+        "reaction_shock": 10.5,
+        "critical_fire": 22.0,
+        "critical_shock": 18.0,
+        "critical_fire_text_ignores_rf": false,
+        "critical_shock_ac_reduction": 6,
+        "critical_total_mp_including_two_reagents": 8,
+        "critical_total_piety": 10,
+        "critical_actions_turns_including_manufacture": 3.5
+      },
+      "루이": {
+        "crow_one_hit": 4.0,
+        "three_crows_per_turn_all_hit_in_position": 12.0,
+        "six_crows_per_turn_all_hit_in_position": 24.0,
+        "three_crows_dive_all_hit": 24.0,
+        "six_crows_dive_all_hit": 48.0,
+        "crow_hp": 18,
+        "crow_ev": 16
+      },
+      "라덴": {
+        "painting_extra_per_action": 2.0,
+        "painting_extra_ignores_ac": true,
+        "sculpture_ac": 2,
+        "craft_kill_heal": 3,
+        "explosion_stacks3": 21.0,
+        "wave": 8.0,
+        "shield": 14,
+        "ultimate_explosion_stacks3": 25.5,
+        "ultimate_shield": 22
+      },
+      "하지메": {
+        "beat1_bonus": 4,
+        "beat3_bonus": 12,
+        "charge_beat3": 18.0,
+        "ultimate_move_hit": 7.0,
+        "ultimate_duration_turns": 7.2
+      },
+      "스우": {
+        "wave": 10.0,
+        "ultimate_pulse": 5.0,
+        "ultimate_ticks_strict_expiry": 7,
+        "ultimate_pulse_total_full_residence": 35.0,
+        "ultimate_wave": 15.0
+      },
+      "비비": {
+        "makeup_pct": 11,
+        "ultimate_one_attention_pct": 16,
+        "ultimate_five_attention_pct": 36,
+        "flash_base": 9.0,
+        "flash_makeup": 9.99,
+        "flash_max_attention": 12.239999999999998
+      },
+      "소피아": {
+        "ring_per_turn": 3.5,
+        "field_per_two_turns": 3.5,
+        "ring_plus_field_per_turn": 5.25,
+        "pull_hd10_pct": 47,
+        "bang_charge1": 22.5,
+        "bang_charge3": 34.5
+      },
+      "메라": {
+        "ember": 2.5,
+        "spray_heat0": 9.0,
+        "spray_heat6": 33.0,
+        "ultimate_spray_heat6": 37.5,
+        "ultimate_self_fire_taken_without_other_rf": 0.16666666666666666
+      }
+    },
+    "12": {
+      "스이세이": {
+        "cut_unmarked": 15.0,
+        "cut_stars5": 30.0,
+        "meteor_unmarked": 25.5,
+        "meteor_stars5": 50.5,
+        "next_star_reward_stars1": 4.0,
+        "next_star_reward_stars3": 6.0,
+        "next_star_reward_stars5": 8.0
+      },
+      "미코": {
+        "heal_per_turn": 1.0,
+        "ranged_reduction_pct": 14,
+        "ultimate_reduction_pct": 19,
+        "combined_ranged_reduction_pct": 30.34
+      },
+      "아키": {
+        "thorns3_per_turn": 2.75,
+        "two_plants_per_turn_all_hit": 6.0,
+        "bloom_stacks3": 33.0
+      },
+      "후부키": {
+        "two_clones_per_action_all_hit": 11.0,
+        "four_clones_per_action_all_hit": 22.0,
+        "ultimate_duration_turns": 5.2,
+        "attack_time_scaling_below_10aut": true
+      },
+      "아야메": {
+        "passive_accuracy": 5,
+        "passive_slay": 3,
+        "passive_ev": 3,
+        "ultimate_slay": 6,
+        "ultimate_ev": 6,
+        "double_slash_extra_weapon_attacks": 1
+      },
+      "초코": {
+        "kiss_stacks5": 26.0,
+        "kiss_heal_upper_before_floor_overkill": 10.4,
+        "charm_stacks5_hd10_pct": 69,
+        "charm_hd10_duration_turns": 5.4
+      },
+      "코로네": {
+        "passive_max_slay": 3,
+        "ultimate_extra_fist_per_action_all_hit": 6.5,
+        "deferred_damage_fraction": 0.25,
+        "deferred_damage_forgiven": 0
+      },
+      "오카유": {
+        "shield_full_food": 13,
+        "dream_stacks4": 35.0,
+        "dream_sleeping_stacks4": 45.5,
+        "max_slow_time_multiplier": 1.32,
+        "food_cast_cost_low_high": 35,
+        "food_kill_refund": 23
+      },
+      "페코라": {
+        "bomb": 13.0,
+        "five_bombs_same_target": 65.0,
+        "five_bombs_setup_mp": 12,
+        "five_bombs_setup_piety": 7,
+        "five_bombs_setup_actions_turns": 5.5,
+        "ultimate_one_blast": 19.5,
+        "ultimate_three_overlaps": 58.5
+      },
+      "노엘": {
+        "skill_bonus": 6,
+        "ultimate_melee_pct": 30,
+        "ultimate_ac": 6,
+        "ultimate_sh": 4,
+        "skill_duration_turns": 12.8
+      },
+      "와타메": {
+        "passive_heal_per_turn": 0.43333333333333335,
+        "barrier_max_total": 27,
+        "barrier_three_hits_of_10": 12,
+        "ultimate_regen_total_continuous": 13.520000000000001,
+        "ultimate_regen_increment_continuous": 9.013333333333334,
+        "lethal_rescue_max_hp_pct": 15
+      },
+      "토와": {
+        "cover_four_shots_all_hit": 40.0,
+        "ultimate_eight_shots_all_hit": 80.0,
+        "full_combo_mp": 10,
+        "full_combo_piety": 16,
+        "ultimate_target_ac_multiplier": 0.7
+      },
+      "라미": {
+        "bonus_cold_per_action": 3.0,
+        "breath": 12.0,
+        "tipsy_breath": 13.799999999999999,
+        "banquet_drunk80_per_tick": 9.5,
+        "banquet_base_duration_aut": 84,
+        "banquet_tipsy_duration_aut": 96,
+        "banquet_base_ticks_strict_expiry": 4,
+        "banquet_tipsy_ticks_strict_expiry": 4
+      },
+      "폴카": {
+        "finale_applause6": 37.0,
+        "curtain_heal_applause6": 38,
+        "confuse_hd10_applause6_pct": 57,
+        "confuse_duration_turns": 4.4
+      },
+      "코요리": {
+        "reaction_fire": 11.0,
+        "reaction_shock": 13.5,
+        "critical_fire": 26.0,
+        "critical_shock": 22.0,
+        "critical_fire_text_ignores_rf": false,
+        "critical_shock_ac_reduction": 6,
+        "critical_total_mp_including_two_reagents": 8,
+        "critical_total_piety": 10,
+        "critical_actions_turns_including_manufacture": 3.5
+      },
+      "루이": {
+        "crow_one_hit": 5.0,
+        "three_crows_per_turn_all_hit_in_position": 15.0,
+        "six_crows_per_turn_all_hit_in_position": 30.0,
+        "three_crows_dive_all_hit": 30.0,
+        "six_crows_dive_all_hit": 60.0,
+        "crow_hp": 24,
+        "crow_ev": 18
+      },
+      "라덴": {
+        "painting_extra_per_action": 2.5,
+        "painting_extra_ignores_ac": true,
+        "sculpture_ac": 3,
+        "craft_kill_heal": 4,
+        "explosion_stacks3": 23.0,
+        "wave": 10.0,
+        "shield": 18,
+        "ultimate_explosion_stacks3": 28.5,
+        "ultimate_shield": 28
+      },
+      "하지메": {
+        "beat1_bonus": 5,
+        "beat3_bonus": 15,
+        "charge_beat3": 20.0,
+        "ultimate_move_hit": 9.0,
+        "ultimate_duration_turns": 8.4
+      },
+      "스우": {
+        "wave": 12.0,
+        "ultimate_pulse": 6.0,
+        "ultimate_ticks_strict_expiry": 8,
+        "ultimate_pulse_total_full_residence": 48.0,
+        "ultimate_wave": 19.0
+      },
+      "비비": {
+        "makeup_pct": 12,
+        "ultimate_one_attention_pct": 17,
+        "ultimate_five_attention_pct": 37,
+        "flash_base": 11.0,
+        "flash_makeup": 12.32,
+        "flash_max_attention": 15.07
+      },
+      "소피아": {
+        "ring_per_turn": 4.5,
+        "field_per_two_turns": 4.5,
+        "ring_plus_field_per_turn": 6.75,
+        "pull_hd10_pct": 59,
+        "bang_charge1": 25.5,
+        "bang_charge3": 37.5
+      },
+      "메라": {
+        "ember": 3.0,
+        "spray_heat0": 11.0,
+        "spray_heat6": 35.0,
+        "ultimate_spray_heat6": 40.5,
+        "ultimate_self_fire_taken_without_other_rf": 0.16666666666666666
+      }
+    },
+    "18": {
+      "스이세이": {
+        "cut_unmarked": 18.0,
+        "cut_stars5": 33.0,
+        "meteor_unmarked": 30.0,
+        "meteor_stars5": 55.0,
+        "next_star_reward_stars1": 4.0,
+        "next_star_reward_stars3": 6.0,
+        "next_star_reward_stars5": 8.0
+      },
+      "미코": {
+        "heal_per_turn": 1.25,
+        "ranged_reduction_pct": 16,
+        "ultimate_reduction_pct": 21,
+        "combined_ranged_reduction_pct": 33.64
+      },
+      "아키": {
+        "thorns3_per_turn": 3.0,
+        "two_plants_per_turn_all_hit": 7.333333333333333,
+        "bloom_stacks3": 36.0
+      },
+      "후부키": {
+        "two_clones_per_action_all_hit": 13.0,
+        "four_clones_per_action_all_hit": 26.0,
+        "ultimate_duration_turns": 5.8,
+        "attack_time_scaling_below_10aut": true
+      },
+      "아야메": {
+        "passive_accuracy": 6,
+        "passive_slay": 4,
+        "passive_ev": 4,
+        "ultimate_slay": 7,
+        "ultimate_ev": 7,
+        "double_slash_extra_weapon_attacks": 1
+      },
+      "초코": {
+        "kiss_stacks5": 28.0,
+        "kiss_heal_upper_before_floor_overkill": 11.200000000000001,
+        "charm_stacks5_hd10_pct": 81,
+        "charm_hd10_duration_turns": 6.6
+      },
+      "코로네": {
+        "passive_max_slay": 3,
+        "ultimate_extra_fist_per_action_all_hit": 8.0,
+        "deferred_damage_fraction": 0.25,
+        "deferred_damage_forgiven": 0
+      },
+      "오카유": {
+        "shield_full_food": 15,
+        "dream_stacks4": 38.0,
+        "dream_sleeping_stacks4": 49.4,
+        "max_slow_time_multiplier": 1.32,
+        "food_cast_cost_low_high": 35,
+        "food_kill_refund": 23
+      },
+      "페코라": {
+        "bomb": 15.0,
+        "five_bombs_same_target": 75.0,
+        "five_bombs_setup_mp": 12,
+        "five_bombs_setup_piety": 7,
+        "five_bombs_setup_actions_turns": 5.5,
+        "ultimate_one_blast": 22.5,
+        "ultimate_three_overlaps": 67.5
+      },
+      "노엘": {
+        "skill_bonus": 7,
+        "ultimate_melee_pct": 30,
+        "ultimate_ac": 7,
+        "ultimate_sh": 5,
+        "skill_duration_turns": 15.2
+      },
+      "와타메": {
+        "passive_heal_per_turn": 0.5,
+        "barrier_max_total": 33,
+        "barrier_three_hits_of_10": 12,
+        "ultimate_regen_total_continuous": 17.4,
+        "ultimate_regen_increment_continuous": 11.6,
+        "lethal_rescue_max_hp_pct": 15
+      },
+      "토와": {
+        "cover_four_shots_all_hit": 48.0,
+        "ultimate_eight_shots_all_hit": 96.0,
+        "full_combo_mp": 10,
+        "full_combo_piety": 16,
+        "ultimate_target_ac_multiplier": 0.7
+      },
+      "라미": {
+        "bonus_cold_per_action": 3.5,
+        "breath": 14.0,
+        "tipsy_breath": 16.099999999999998,
+        "banquet_drunk80_per_tick": 10.5,
+        "banquet_base_duration_aut": 96,
+        "banquet_tipsy_duration_aut": 110,
+        "banquet_base_ticks_strict_expiry": 4,
+        "banquet_tipsy_ticks_strict_expiry": 5
+      },
+      "폴카": {
+        "finale_applause6": 39.0,
+        "curtain_heal_applause6": 41,
+        "confuse_hd10_applause6_pct": 69,
+        "confuse_duration_turns": 4.6
+      },
+      "코요리": {
+        "reaction_fire": 13.0,
+        "reaction_shock": 16.5,
+        "critical_fire": 30.0,
+        "critical_shock": 26.0,
+        "critical_fire_text_ignores_rf": false,
+        "critical_shock_ac_reduction": 6,
+        "critical_total_mp_including_two_reagents": 8,
+        "critical_total_piety": 10,
+        "critical_actions_turns_including_manufacture": 3.5
+      },
+      "루이": {
+        "crow_one_hit": 6.0,
+        "three_crows_per_turn_all_hit_in_position": 18.0,
+        "six_crows_per_turn_all_hit_in_position": 36.0,
+        "three_crows_dive_all_hit": 36.0,
+        "six_crows_dive_all_hit": 72.0,
+        "crow_hp": 30,
+        "crow_ev": 20
+      },
+      "라덴": {
+        "painting_extra_per_action": 3.0,
+        "painting_extra_ignores_ac": true,
+        "sculpture_ac": 4,
+        "craft_kill_heal": 5,
+        "explosion_stacks3": 25.0,
+        "wave": 12.0,
+        "shield": 22,
+        "ultimate_explosion_stacks3": 31.5,
+        "ultimate_shield": 34
+      },
+      "하지메": {
+        "beat1_bonus": 6,
+        "beat3_bonus": 18,
+        "charge_beat3": 22.0,
+        "ultimate_move_hit": 11.0,
+        "ultimate_duration_turns": 9.6
+      },
+      "스우": {
+        "wave": 14.0,
+        "ultimate_pulse": 7.0,
+        "ultimate_ticks_strict_expiry": 9,
+        "ultimate_pulse_total_full_residence": 63.0,
+        "ultimate_wave": 23.0
+      },
+      "비비": {
+        "makeup_pct": 13,
+        "ultimate_one_attention_pct": 18,
+        "ultimate_five_attention_pct": 38,
+        "flash_base": 13.0,
+        "flash_makeup": 14.689999999999998,
+        "flash_max_attention": 17.939999999999998
+      },
+      "소피아": {
+        "ring_per_turn": 5.5,
+        "field_per_two_turns": 5.5,
+        "ring_plus_field_per_turn": 8.25,
+        "pull_hd10_pct": 71,
+        "bang_charge1": 28.5,
+        "bang_charge3": 40.5
+      },
+      "메라": {
+        "ember": 3.5,
+        "spray_heat0": 13.0,
+        "spray_heat6": 37.0,
+        "ultimate_spray_heat6": 43.5,
+        "ultimate_self_fire_taken_without_other_rf": 0.16666666666666666
+      }
+    },
+    "27": {
+      "스이세이": {
+        "cut_unmarked": 22.0,
+        "cut_stars5": 37.0,
+        "meteor_unmarked": 36.0,
+        "meteor_stars5": 61.0,
+        "next_star_reward_stars1": 4.0,
+        "next_star_reward_stars3": 6.0,
+        "next_star_reward_stars5": 8.0
+      },
+      "미코": {
+        "heal_per_turn": 1.625,
+        "ranged_reduction_pct": 19,
+        "ultimate_reduction_pct": 24,
+        "combined_ranged_reduction_pct": 38.44
+      },
+      "아키": {
+        "thorns3_per_turn": 3.25,
+        "two_plants_per_turn_all_hit": 9.333333333333334,
+        "bloom_stacks3": 40.0
+      },
+      "후부키": {
+        "two_clones_per_action_all_hit": 16.0,
+        "four_clones_per_action_all_hit": 32.0,
+        "ultimate_duration_turns": 6.7,
+        "attack_time_scaling_below_10aut": true
+      },
+      "아야메": {
+        "passive_accuracy": 7,
+        "passive_slay": 5,
+        "passive_ev": 5,
+        "ultimate_slay": 8,
+        "ultimate_ev": 8,
+        "double_slash_extra_weapon_attacks": 1
+      },
+      "초코": {
+        "kiss_stacks5": 31.0,
+        "kiss_heal_upper_before_floor_overkill": 12.4,
+        "charm_stacks5_hd10_pct": 85,
+        "charm_hd10_duration_turns": 8.0
+      },
+      "코로네": {
+        "passive_max_slay": 3,
+        "ultimate_extra_fist_per_action_all_hit": 10.0,
+        "deferred_damage_fraction": 0.25,
+        "deferred_damage_forgiven": 0
+      },
+      "오카유": {
+        "shield_full_food": 18,
+        "dream_stacks4": 42.0,
+        "dream_sleeping_stacks4": 54.6,
+        "max_slow_time_multiplier": 1.32,
+        "food_cast_cost_low_high": 35,
+        "food_kill_refund": 23
+      },
+      "페코라": {
+        "bomb": 18.0,
+        "five_bombs_same_target": 90.0,
+        "five_bombs_setup_mp": 12,
+        "five_bombs_setup_piety": 7,
+        "five_bombs_setup_actions_turns": 5.5,
+        "ultimate_one_blast": 27.0,
+        "ultimate_three_overlaps": 81.0
+      },
+      "노엘": {
+        "skill_bonus": 8,
+        "ultimate_melee_pct": 30,
+        "ultimate_ac": 8,
+        "ultimate_sh": 6,
+        "skill_duration_turns": 18.8
+      },
+      "와타메": {
+        "passive_heal_per_turn": 0.6,
+        "barrier_max_total": 42,
+        "barrier_three_hits_of_10": 12,
+        "ultimate_regen_total_continuous": 24.119999999999997,
+        "ultimate_regen_increment_continuous": 16.08,
+        "lethal_rescue_max_hp_pct": 15
+      },
+      "토와": {
+        "cover_four_shots_all_hit": 60.0,
+        "ultimate_eight_shots_all_hit": 120.0,
+        "full_combo_mp": 10,
+        "full_combo_piety": 16,
+        "ultimate_target_ac_multiplier": 0.7
+      },
+      "라미": {
+        "bonus_cold_per_action": 4.0,
+        "breath": 17.0,
+        "tipsy_breath": 19.549999999999997,
+        "banquet_drunk80_per_tick": 12.0,
+        "banquet_base_duration_aut": 114,
+        "banquet_tipsy_duration_aut": 131,
+        "banquet_base_ticks_strict_expiry": 5,
+        "banquet_tipsy_ticks_strict_expiry": 6
+      },
+      "폴카": {
+        "finale_applause6": 42.0,
+        "curtain_heal_applause6": 45,
+        "confuse_hd10_applause6_pct": 85,
+        "confuse_duration_turns": 4.9
+      },
+      "코요리": {
+        "reaction_fire": 16.0,
+        "reaction_shock": 21.0,
+        "critical_fire": 36.0,
+        "critical_shock": 32.0,
+        "critical_fire_text_ignores_rf": false,
+        "critical_shock_ac_reduction": 6,
+        "critical_total_mp_including_two_reagents": 8,
+        "critical_total_piety": 10,
+        "critical_actions_turns_including_manufacture": 3.5
+      },
+      "루이": {
+        "crow_one_hit": 7.5,
+        "three_crows_per_turn_all_hit_in_position": 22.5,
+        "six_crows_per_turn_all_hit_in_position": 45.0,
+        "three_crows_dive_all_hit": 43.5,
+        "six_crows_dive_all_hit": 87.0,
+        "crow_hp": 39,
+        "crow_ev": 23
+      },
+      "라덴": {
+        "painting_extra_per_action": 3.5,
+        "painting_extra_ignores_ac": true,
+        "sculpture_ac": 5,
+        "craft_kill_heal": 6,
+        "explosion_stacks3": 28.0,
+        "wave": 15.0,
+        "shield": 28,
+        "ultimate_explosion_stacks3": 36.0,
+        "ultimate_shield": 43
+      },
+      "하지메": {
+        "beat1_bonus": 7,
+        "beat3_bonus": 21,
+        "charge_beat3": 25.0,
+        "ultimate_move_hit": 14.0,
+        "ultimate_duration_turns": 11.4
+      },
+      "스우": {
+        "wave": 17.0,
+        "ultimate_pulse": 8.0,
+        "ultimate_ticks_strict_expiry": 11,
+        "ultimate_pulse_total_full_residence": 88.0,
+        "ultimate_wave": 29.0
+      },
+      "비비": {
+        "makeup_pct": 14,
+        "ultimate_one_attention_pct": 19,
+        "ultimate_five_attention_pct": 39,
+        "flash_base": 16.0,
+        "flash_makeup": 18.240000000000002,
+        "flash_max_attention": 22.240000000000002
+      },
+      "소피아": {
+        "ring_per_turn": 7.0,
+        "field_per_two_turns": 7.0,
+        "ring_plus_field_per_turn": 10.5,
+        "pull_hd10_pct": 89,
+        "bang_charge1": 33.0,
+        "bang_charge3": 45.0
+      },
+      "메라": {
+        "ember": 4.0,
+        "spray_heat0": 16.0,
+        "spray_heat6": 40.0,
+        "ultimate_spray_heat6": 48.0,
+        "ultimate_self_fire_taken_without_other_rf": 0.16666666666666666
+      }
+    }
+  },
+  "damage_ac_sensitivity_i12": {
+    "0": {
+      "raden_extra_per_successful_main_hit": 2.5,
+      "raden_v1_extra_per_successful_main_hit": 2.5,
+      "sopia_ring_per_tick": 4.5,
+      "sopia_ring_plus_field_per_turn": 6.75,
+      "su_ultimate_per_tick": 6.0,
+      "hajime_move_per_hit": 9.0,
+      "lui_three_crows_per_turn_before_accuracy": 15.0,
+      "lui_six_crows_per_turn_before_accuracy": 30.0
+    },
+    "10": {
+      "raden_extra_per_successful_main_hit": 2.5,
+      "raden_v1_extra_per_successful_main_hit": 0.45454545454545453,
+      "sopia_ring_per_tick": 1.3636363636363635,
+      "sopia_ring_plus_field_per_turn": 2.0454545454545454,
+      "su_ultimate_per_tick": 2.090909090909091,
+      "hajime_move_per_hit": 4.46875,
+      "lui_three_crows_per_turn_before_accuracy": 5.0,
+      "lui_six_crows_per_turn_before_accuracy": 10.0
+    },
+    "20": {
+      "raden_extra_per_successful_main_hit": 2.5,
+      "raden_v1_extra_per_successful_main_hit": 0.23809523809523808,
+      "sopia_ring_per_tick": 0.7142857142857143,
+      "sopia_ring_plus_field_per_turn": 1.0714285714285714,
+      "su_ultimate_per_tick": 1.0952380952380953,
+      "hajime_move_per_hit": 2.392857142857143,
+      "lui_three_crows_per_turn_before_accuracy": 2.6190476190476186,
+      "lui_six_crows_per_turn_before_accuracy": 5.238095238095237
+    }
+  },
+  "attack_speed_sensitivity_i12": {
+    "0.5": {
+      "fubuki_four_clones_raw_extra_per_turn_all_hit": 22.0,
+      "fubuki_v1_four_clones_raw_extra_per_turn_all_hit": 44.0,
+      "rejected_strict_10aut_cooldown_raw_per_turn": 22.0,
+      "korone_fist_raw_extra_per_turn_all_hit": 13.0,
+      "raden_chip_raw_extra_per_turn_before_main_accuracy": 5.0,
+      "hajime_move_raw_per_turn_if_move_delay": 18.0
+    },
+    "0.7": {
+      "fubuki_four_clones_raw_extra_per_turn_all_hit": 22.0,
+      "fubuki_v1_four_clones_raw_extra_per_turn_all_hit": 31.42857142857143,
+      "rejected_strict_10aut_cooldown_raw_per_turn": 15.714285714285715,
+      "korone_fist_raw_extra_per_turn_all_hit": 9.285714285714286,
+      "raden_chip_raw_extra_per_turn_before_main_accuracy": 3.5714285714285716,
+      "hajime_move_raw_per_turn_if_move_delay": 12.857142857142858
+    },
+    "1.0": {
+      "fubuki_four_clones_raw_extra_per_turn_all_hit": 22.0,
+      "fubuki_v1_four_clones_raw_extra_per_turn_all_hit": 22.0,
+      "rejected_strict_10aut_cooldown_raw_per_turn": 22.0,
+      "korone_fist_raw_extra_per_turn_all_hit": 6.5,
+      "raden_chip_raw_extra_per_turn_before_main_accuracy": 2.5,
+      "hajime_move_raw_per_turn_if_move_delay": 9.0
+    },
+    "1.5": {
+      "fubuki_four_clones_raw_extra_per_turn_all_hit": 14.666666666666666,
+      "fubuki_v1_four_clones_raw_extra_per_turn_all_hit": 14.666666666666666,
+      "rejected_strict_10aut_cooldown_raw_per_turn": 14.666666666666666,
+      "korone_fist_raw_extra_per_turn_all_hit": 4.333333333333333,
+      "raden_chip_raw_extra_per_turn_before_main_accuracy": 1.6666666666666667,
+      "hajime_move_raw_per_turn_if_move_delay": 6.0
+    }
+  },
+  "resistance_sensitivity": {
+    "0": {
+      "mera_spray_heat6": 35,
+      "mera_ultimate_spray_heat6": 40.5,
+      "polka_finale6": 37,
+      "koyori_v1_critical_fire_ignoring_rf": 19.5,
+      "koyori_v2_critical_fire_before_integer_rounding": 26,
+      "koyori_v2_critical_fire_integer_exact": 26.0
+    },
+    "1": {
+      "mera_spray_heat6": 17.5,
+      "mera_ultimate_spray_heat6": 20.25,
+      "polka_finale6": 18.5,
+      "koyori_v1_critical_fire_ignoring_rf": 19.5,
+      "koyori_v2_critical_fire_before_integer_rounding": 13.0,
+      "koyori_v2_critical_fire_integer_exact": 12.75
+    },
+    "2": {
+      "mera_spray_heat6": 7.0,
+      "mera_ultimate_spray_heat6": 8.1,
+      "polka_finale6": 7.4,
+      "koyori_v1_critical_fire_ignoring_rf": 19.5,
+      "koyori_v2_critical_fire_before_integer_rounding": 5.2,
+      "koyori_v2_critical_fire_integer_exact": 4.800106095679013
+    },
+    "3": {
+      "mera_spray_heat6": 0,
+      "mera_ultimate_spray_heat6": 0.0,
+      "polka_finale6": 0,
+      "koyori_v1_critical_fire_ignoring_rf": 19.5,
+      "koyori_v2_critical_fire_before_integer_rounding": 0,
+      "koyori_v2_critical_fire_integer_exact": 0.0
+    }
+  },
+  "percentage_bonus_before_defence": {
+    "12": {
+      "vivi_passive12": 1.44,
+      "vivi_ultimate_max37": 4.4399999999999995,
+      "noel_ultimate30": 3.5999999999999996
+    },
+    "25": {
+      "vivi_passive12": 3.0,
+      "vivi_ultimate_max37": 9.25,
+      "noel_ultimate30": 7.5
+    },
+    "40": {
+      "vivi_passive12": 4.8,
+      "vivi_ultimate_max37": 14.8,
+      "noel_ultimate30": 12.0
+    }
+  },
+  "source_references": {
+    "normal_ac_branch": "https://github.com/crawl/crawl/blob/0.24.0/crawl-ref/source/actor.cc#L319",
+    "resistance": "https://github.com/crawl/crawl/blob/0.24.0/crawl-ref/source/fight.cc#L486",
+    "caveat": "Normal uniform AC subtraction branch only, no guarantee custom effects use this AC rule. GDR/EV/SH/AI absent. Fire resistance figures are pre-integer rounding."
+  }
+}

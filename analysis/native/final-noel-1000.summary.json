@@ -1,0 +1,647 @@
+{
+  "scope": "noel-combat-abilities-fixed-kit-no-gifts",
+  "trials": 24000,
+  "pairing_verified": true,
+  "summary": [
+    {
+      "scenario": "early_ogre",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 858,
+      "losses": 142,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.858,
+      "win_rate_wilson95": [
+        0.8349940829788973,
+        0.8782659579454453
+      ],
+      "mean_survivor_hp": 31.88927738927739,
+      "mean_aut": 77.56,
+      "mean_mp": 12,
+      "mean_piety": 60
+    },
+    {
+      "scenario": "early_ogre",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 979,
+      "losses": 21,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.979,
+      "win_rate_wilson95": [
+        0.9681097049387629,
+        0.9862242604320756
+      ],
+      "mean_survivor_hp": 38.787538304392235,
+      "mean_aut": 60.634,
+      "mean_mp": 10.192,
+      "mean_piety": 57.986
+    },
+    {
+      "scenario": "early_ogre",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 979,
+      "losses": 21,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.979,
+      "win_rate_wilson95": [
+        0.9681097049387629,
+        0.9862242604320756
+      ],
+      "mean_survivor_hp": 38.787538304392235,
+      "mean_aut": 60.634,
+      "mean_mp": 10.192,
+      "mean_piety": 57.986
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 999,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.999,
+      "win_rate_wilson95": [
+        0.9943574414020424,
+        0.999823453629374
+      ],
+      "mean_survivor_hp": 43.95495495495496,
+      "mean_aut": 99.56,
+      "mean_mp": 11.999,
+      "mean_piety": 60
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 47.395,
+      "mean_aut": 74.519,
+      "mean_mp": 10.301,
+      "mean_piety": 57.89
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 47.395,
+      "mean_aut": 74.519,
+      "mean_mp": 10.301,
+      "mean_piety": 57.89
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 942,
+      "losses": 58,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.942,
+      "win_rate_wilson95": [
+        0.925750423733768,
+        0.9548667217650014
+      ],
+      "mean_survivor_hp": 85.04352441613588,
+      "mean_aut": 133.525,
+      "mean_mp": 35,
+      "mean_piety": 180
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 135.223,
+      "mean_aut": 87.308,
+      "mean_mp": 29.627,
+      "mean_piety": 167.974
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 999,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.999,
+      "win_rate_wilson95": [
+        0.9943574414020424,
+        0.999823453629374
+      ],
+      "mean_survivor_hp": 131.57857857857857,
+      "mean_aut": 87.592,
+      "mean_mp": 29.633,
+      "mean_piety": 167.994
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 0,
+      "losses": 999,
+      "banishments": 1,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        0,
+        0.0038267584855549135
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 48.741,
+      "mean_mp": 34.937,
+      "mean_piety": 180
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 36,
+      "losses": 964,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.036,
+      "win_rate_wilson95": [
+        0.026115571407387544,
+        0.049435660467207404
+      ],
+      "mean_survivor_hp": 34.333333333333336,
+      "mean_aut": 78.297,
+      "mean_mp": 29.362,
+      "mean_piety": 167.976
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 19,
+      "losses": 980,
+      "banishments": 1,
+      "timeouts": 0,
+      "win_rate": 0.019,
+      "win_rate_wilson95": [
+        0.012196885750791052,
+        0.029484455912312774
+      ],
+      "mean_survivor_hp": 28.210526315789473,
+      "mean_aut": 67.853,
+      "mean_mp": 29.134,
+      "mean_piety": 168
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 123.562,
+      "mean_aut": 143.893,
+      "mean_mp": 35,
+      "mean_piety": 180
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 144.223,
+      "mean_aut": 101.134,
+      "mean_mp": 29.866,
+      "mean_piety": 167.878
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 1000,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.9961732415144451,
+        1
+      ],
+      "mean_survivor_hp": 142.973,
+      "mean_aut": 100.222,
+      "mean_mp": 29.886,
+      "mean_piety": 167.948
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 69,
+      "losses": 931,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.069,
+      "win_rate_wilson95": [
+        0.054883945585911614,
+        0.08641472022863675
+      ],
+      "mean_survivor_hp": 32.289855072463766,
+      "mean_aut": 135.947,
+      "mean_mp": 35,
+      "mean_piety": 180
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 790,
+      "losses": 210,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.79,
+      "win_rate_wilson95": [
+        0.7636693994520045,
+        0.8141110806263738
+      ],
+      "mean_survivor_hp": 71.63924050632912,
+      "mean_aut": 168.385,
+      "mean_mp": 29.952,
+      "mean_piety": 165.654
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 759,
+      "losses": 241,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.759,
+      "win_rate_wilson95": [
+        0.7315330470912923,
+        0.7844846920131904
+      ],
+      "mean_survivor_hp": 66.32147562582345,
+      "mean_aut": 164.437,
+      "mean_mp": 30.019,
+      "mean_piety": 165.86
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 19,
+      "losses": 981,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.019,
+      "win_rate_wilson95": [
+        0.012196885750791052,
+        0.029484455912312774
+      ],
+      "mean_survivor_hp": 23.42105263157895,
+      "mean_aut": 68.003,
+      "mean_mp": 21.944,
+      "mean_piety": 100
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 184,
+      "losses": 816,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.184,
+      "win_rate_wilson95": [
+        0.16120869057645834,
+        0.2092098207864124
+      ],
+      "mean_survivor_hp": 34.35326086956522,
+      "mean_aut": 74.284,
+      "mean_mp": 20.87,
+      "mean_piety": 97.998
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 184,
+      "losses": 816,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.184,
+      "win_rate_wilson95": [
+        0.16120869057645834,
+        0.2092098207864124
+      ],
+      "mean_survivor_hp": 34.35326086956522,
+      "mean_aut": 74.284,
+      "mean_mp": 20.87,
+      "mean_piety": 97.998
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "no_god",
+      "trials": 1000,
+      "wins": 251,
+      "losses": 749,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.251,
+      "win_rate_wilson95": [
+        0.22511381079019874,
+        0.2787919149356075
+      ],
+      "mean_survivor_hp": 25.183266932270918,
+      "mean_aut": 155.927,
+      "mean_mp": 22,
+      "mean_piety": 100
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "noel_v1",
+      "trials": 1000,
+      "wins": 745,
+      "losses": 254,
+      "banishments": 1,
+      "timeouts": 0,
+      "win_rate": 0.745,
+      "win_rate_wilson95": [
+        0.7170834253930013,
+        0.7710414629490768
+      ],
+      "mean_survivor_hp": 40.84563758389262,
+      "mean_aut": 162.732,
+      "mean_mp": 20.941,
+      "mean_piety": 96.796
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "noel_v2",
+      "trials": 1000,
+      "wins": 745,
+      "losses": 254,
+      "banishments": 1,
+      "timeouts": 0,
+      "win_rate": 0.745,
+      "win_rate_wilson95": [
+        0.7170834253930013,
+        0.7710414629490768
+      ],
+      "mean_survivor_hp": 40.84563758389262,
+      "mean_aut": 162.732,
+      "mean_mp": 20.941,
+      "mean_piety": 96.796
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "scenario": "early_ogre",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 16,
+      "after_only_wins": 137,
+      "both_win": 842,
+      "win_rate_difference": 0.121,
+      "paired_difference_95_normal": [
+        0.09793417173813619,
+        0.14406582826186382
+      ]
+    },
+    {
+      "scenario": "early_ogre",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 979,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 1,
+      "both_win": 999,
+      "win_rate_difference": 0.001,
+      "paired_difference_95_normal": [
+        -0.0009599639845400002,
+        0.0029599639845400002
+      ]
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 1000,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 1,
+      "after_only_wins": 58,
+      "both_win": 941,
+      "win_rate_difference": 0.057,
+      "paired_difference_95_normal": [
+        0.04235829414778561,
+        0.0716417058522144
+      ]
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 1,
+      "after_only_wins": 0,
+      "both_win": 999,
+      "win_rate_difference": -0.001,
+      "paired_difference_95_normal": [
+        -0.0029599639845400002,
+        0.0009599639845400002
+      ]
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 19,
+      "both_win": 0,
+      "win_rate_difference": 0.019,
+      "paired_difference_95_normal": [
+        0.010534031444512898,
+        0.0274659685554871
+      ]
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 32,
+      "after_only_wins": 15,
+      "both_win": 4,
+      "win_rate_difference": -0.017,
+      "paired_difference_95_normal": [
+        -0.030402164040721477,
+        -0.0035978359592785236
+      ]
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 1000,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 1000,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 16,
+      "after_only_wins": 706,
+      "both_win": 53,
+      "win_rate_difference": 0.69,
+      "paired_difference_95_normal": [
+        0.6592500360277783,
+        0.7207499639722216
+      ]
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 123,
+      "after_only_wins": 92,
+      "both_win": 667,
+      "win_rate_difference": -0.031,
+      "paired_difference_95_normal": [
+        -0.05968876172950092,
+        -0.0023112382704990816
+      ]
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 14,
+      "after_only_wins": 179,
+      "both_win": 5,
+      "win_rate_difference": 0.165,
+      "paired_difference_95_normal": [
+        0.13975212303396928,
+        0.19024787696603074
+      ]
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 184,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 58,
+      "after_only_wins": 552,
+      "both_win": 193,
+      "win_rate_difference": 0.494,
+      "paired_difference_95_normal": [
+        0.45648676395277044,
+        0.5315132360472296
+      ]
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "noel_v1",
+      "after": "noel_v2",
+      "paired_seeds": 1000,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 745,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    }
+  ]
+}

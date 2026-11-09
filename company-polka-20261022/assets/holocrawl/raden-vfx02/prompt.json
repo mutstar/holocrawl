@@ -1,0 +1,15 @@
+{
+  "prompts": [
+    "ONE tiny retro pixel art status icon for Dungeon Crawl Stone Soup 0.24 Raden museum blessing, PAINTING exhibit. A square warm gold picture frame enclosing a very simple bright vermilion red painting with one ivory brushstroke. Filled red center, thick readable gold edges, near-black 1px silhouette edge. Conceptual native size 14x14 pixels. Chunky nearest-neighbor pixels, few colors, strong solid silhouette. Transparent background around one centered icon. No letters, no character, no floor, no effects, no scattered particles, no gradients or glow. Must remain instantly recognizable as a framed red painting when reduced to 14 pixels.",
+    "ONE tiny retro pixel art status icon for Dungeon Crawl Stone Soup 0.24 Raden museum blessing, SCULPTURE exhibit. A simple upright silver and ivory museum bust on a short silver plinth, compact angular head and shoulders, steel blue shadows and bright ivory highlights, near-black 1px silhouette edge. Conceptual native size 14x14 pixels. Chunky nearest-neighbor pixels, few colors, strong solid silhouette. Transparent background around one centered icon. No letters, no frame, no character scene, no floor, no particles, no gradients or glow. Must remain instantly recognizable as a small silver statue when reduced to 14 pixels."
+  ],
+  "nativeSize": [
+    14,
+    14
+  ],
+  "position": [
+    18,
+    0
+  ],
+  "craftSource": "../raden-vfx01/badge-source.png"
+}

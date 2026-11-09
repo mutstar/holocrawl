@@ -1,0 +1,22 @@
+{
+  "prompt": "Create a SINGLE game VFX sprite, transparent background, not an icon: an elegant supernatural Japanese THREE-PANEL FOLDING EXHIBITION SCREEN opening behind a character, for Raden wandering museum capstone in Dungeon Crawl Stone Soup 0.24. Black lacquer panels, restrained thick bright gold borders and hinges. LEFT panel has one bold vermilion red sweeping ink/brush painting integrated into its surface. CENTER taller panel has an angular ivory-silver carved Noh-mask relief integrated into it. RIGHT panel has bold jade turquoise mother-of-pearl floral inlay integrated into its surface. All motifs part of the screen, NOT three separate objects on a shelf. Slight zigzag folding perspective, strong geometric stepped silhouette, lower center area dark and simple so the game actor in front stays readable. Few short gold shine accents at top corners, no giant circle, no halo, no wreath, no floating badge, no letters, no rendered character, no floor or scene. Coarse sharp pixel art with chunky 1px borders, conceptual native size 52x42 pixels, few flat bright colors, high contrast on dark dungeon, no antialias, blur or gradients. This must look like a compact but impressive spell backdrop about one and a half game tiles wide, not a huge detailed illustration. Center this single sprite with transparent margins.",
+  "transparent": true,
+  "canvas": [
+    64,
+    64
+  ],
+  "folded": [
+    16,
+    38
+  ],
+  "active": [
+    48,
+    38
+  ],
+  "peak": [
+    52,
+    42
+  ],
+  "nativeDivisor": 32,
+  "anchor": "player centered, art bottom y56, below actors"
+}

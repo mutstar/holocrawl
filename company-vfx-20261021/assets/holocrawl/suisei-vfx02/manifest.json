@@ -1,0 +1,64 @@
+{
+  "version": "suisei-vfx02",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_starmark_0.png",
+      "sha256": "534D424CC9F77EDDBB3502DF31DD44BBEB635972611758E7DA8361413287C73C",
+      "opaquePixels": 54
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_starmark_1.png",
+      "sha256": "FD2754A48000E9DCFB1139807F61E6FEB64361714771B8BE76BF8E9D3F3E8CCC",
+      "opaquePixels": 57
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_h_0.png",
+      "sha256": "728605F2C7DEB92293EB59D5BA486665EB4D23C27E13C0424EC47B966B84C8BC",
+      "opaquePixels": 89
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_d_0.png",
+      "sha256": "D9DF4BC69AF6080C5E71054C01FA54EEE41339AA36294933C38FBA6A169E197E",
+      "opaquePixels": 93
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_v_0.png",
+      "sha256": "92F512E3FB3627E5B5812544CADA59EFCFE9E8CE8AE6C822EE74567721AB0D70",
+      "opaquePixels": 89
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_u_0.png",
+      "sha256": "5897732B8E0A5F7997379F470532EC33146548EE7B43B2411D9F0A8FF8D72A58",
+      "opaquePixels": 93
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_h_1.png",
+      "sha256": "264907D93DDF10DBB1E91B1519F7991C668CD7F5D1833A2F8C920F4BA8AFA24B",
+      "opaquePixels": 46
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_d_1.png",
+      "sha256": "5E9058F01CC94F5B48A94220C90290209C943CB5D59A31131B97DED86D9D2F61",
+      "opaquePixels": 46
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_v_1.png",
+      "sha256": "17073AFAA48B3CBAFD2FA737A74CFC6D65247E3C004195B75E94F384C7A8DC33",
+      "opaquePixels": 46
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cut_u_1.png",
+      "sha256": "E8E1B38E61A0CC5225570D8F70C39162E2FBE97DE629F4727CF86FD1821972B4",
+      "opaquePixels": 46
+    }
+  ],
+  "previousMarkerOpaquePixels": {
+    "0": 156,
+    "1": 175
+  },
+  "retainedCometHashes": {
+    "fx_cometfall_0.png": "7111D0CE97351E5F4E254A327ACC2BE1403AE1F282A6F83FF58B7656950A3CE2",
+    "fx_cometfall_1.png": "C3A323963AAF2C3C271E7036FB86BB49FC93F2C28EC36D93CA5D65335DC6881B"
+  },
+  "processing": "Built-in image_gen edit; alpha-preserving crop/fit and rigid direction rotations."
+}

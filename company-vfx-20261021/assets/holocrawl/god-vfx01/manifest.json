@@ -1,0 +1,166 @@
+{
+  "version": "god-vfx01",
+  "mode": "built-in image_gen; crop, alpha-preserving fit and nearest-neighbor only",
+  "assets": [
+    {
+      "id": "fx_foxflame_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxflame_0.png",
+      "sha256": "6E4161B7BDC6C2E22EF3A608D58CF9503A6C2C4C3177C73E1E11ED9972A5CF69",
+      "original": "assets/holocrawl/god-vfx01/originals/foxflame.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.0625
+    },
+    {
+      "id": "fx_foxflame_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxflame_1.png",
+      "sha256": "C2007473DCC340CA7F5F373ABAC686EC6FF7C6467C3D87F29232EFB179777045",
+      "original": "assets/holocrawl/god-vfx01/originals/foxflame.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.1388888888888889
+    },
+    {
+      "id": "fx_oni_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_oni_0.png",
+      "sha256": "4F8873573E279FF675C1DD632E33B482642C0D83D3B7C8651387314FA01E190A",
+      "original": "assets/holocrawl/god-vfx01/originals/oni.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.0763888888888889
+    },
+    {
+      "id": "fx_oni_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_oni_1.png",
+      "sha256": "086AE7F809CD8C5880BAADDFF0EE903224C6D0D05FDDB2C5E9A267260E91A25E",
+      "original": "assets/holocrawl/god-vfx01/originals/oni.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.0625
+    },
+    {
+      "id": "fx_charm_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_charm_0.png",
+      "sha256": "EAF162DE6613BB595DD21A391A347FFF2E82E372D41FFF1E92A93D54599502CD",
+      "original": "assets/holocrawl/god-vfx01/originals/charm.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.05555555555555555
+    },
+    {
+      "id": "fx_charm_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_charm_1.png",
+      "sha256": "1E4C85BFD2B16A64D3CC70057A15FEF39F6175934F9AC93839FAB15564C64DD0",
+      "original": "assets/holocrawl/god-vfx01/originals/charm.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.06944444444444445
+    },
+    {
+      "id": "fx_punch_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_punch_0.png",
+      "sha256": "F41E4F4416B896434CE13EC7A79B39794CDB15E6B6EDAB81CCFFFEF1FF285198",
+      "original": "assets/holocrawl/god-vfx01/originals/punch.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.14583333333333334
+    },
+    {
+      "id": "fx_punch_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_punch_1.png",
+      "sha256": "83155706CC247AC2D8769A793DB99813EE692D9CE50F579F097DC3631833C47A",
+      "original": "assets/holocrawl/god-vfx01/originals/punch.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.3055555555555556
+    },
+    {
+      "id": "fx_sleep_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_sleep_0.png",
+      "sha256": "C94C144C21214B4E6100B5801F73FCEA04DA28A27DAE3E2FBF8A6D74E1B415DC",
+      "original": "assets/holocrawl/god-vfx01/originals/sleep.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.04861111111111111
+    },
+    {
+      "id": "fx_sleep_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_sleep_1.png",
+      "sha256": "722B8B2271BB97E19A3D8BF9AE627F5239C00192316148792044B4B443F0CAC6",
+      "original": "assets/holocrawl/god-vfx01/originals/sleep.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.13194444444444445
+    },
+    {
+      "id": "fx_carrotburst_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_carrotburst_0.png",
+      "sha256": "8FF63E34B2F1CD853FFF892400FEC0BA050B9C6DCCD629D2E324310038B48AC6",
+      "original": "assets/holocrawl/god-vfx01/originals/carrotburst.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.11805555555555555
+    },
+    {
+      "id": "fx_carrotburst_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_carrotburst_1.png",
+      "sha256": "48677737781AB8E58B69D618474E3FACE2FDE637A36334DA23F9C3E49B0C6D80",
+      "original": "assets/holocrawl/god-vfx01/originals/carrotburst.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.1527777777777778
+    },
+    {
+      "id": "fx_devil_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_devil_0.png",
+      "sha256": "678A087F41205D643D1E2B9240BAB01F41CEF0D55463F5BAC3FA49D65C9CAD9A",
+      "original": "assets/holocrawl/god-vfx01/originals/devil.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.04861111111111111
+    },
+    {
+      "id": "fx_devil_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_devil_1.png",
+      "sha256": "81C1FC1ED8F1AE86713FF0B438B33005ED15FD25AF64A4D5A99A810996B56877",
+      "original": "assets/holocrawl/god-vfx01/originals/devil.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.14583333333333334
+    },
+    {
+      "id": "fx_circus_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_circus_0.png",
+      "sha256": "217DD5545A1952FC069B2F5B6F84F83022828AFC9268EFB008344E06E8F3A155",
+      "original": "assets/holocrawl/god-vfx01/originals/circus.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.013888888888888888
+    },
+    {
+      "id": "fx_circus_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_circus_1.png",
+      "sha256": "DC97CA5C8962BC26F2AFBEB0E711C09C9AD7BDB17F6C57671E8F22C304CFB232",
+      "original": "assets/holocrawl/god-vfx01/originals/circus.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.0763888888888889
+    },
+    {
+      "id": "fx_reagent_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_reagent_0.png",
+      "sha256": "F49BA9001D59FAABC1D026DC846B450A871168565394C4BBE8FEFAECDC84CEB3",
+      "original": "assets/holocrawl/god-vfx01/originals/reagent.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.05555555555555555
+    },
+    {
+      "id": "fx_reagent_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_reagent_1.png",
+      "sha256": "6C47261921EF2AD513B9F69790B6B173C8E01ACC195001CC2405F7D241023EEB",
+      "original": "assets/holocrawl/god-vfx01/originals/reagent.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.05555555555555555
+    },
+    {
+      "id": "fx_ravenflight_0",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_ravenflight_0.png",
+      "sha256": "DFB0959F9456A903B6667B745D6ED2E3ADCEA52904F8087555E9017E23D8A924",
+      "original": "assets/holocrawl/god-vfx01/originals/ravenflight.png",
+      "frame": 0,
+      "centerOpaqueFraction": 0.3263888888888889
+    },
+    {
+      "id": "fx_ravenflight_1",
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_ravenflight_1.png",
+      "sha256": "907FDDCE168BF527CD4E5F5AD53A75C874EBF6ABA4CD122A0C54780587905992",
+      "original": "assets/holocrawl/god-vfx01/originals/ravenflight.png",
+      "frame": 1,
+      "centerOpaqueFraction": 0.1111111111111111
+    }
+  ]
+}

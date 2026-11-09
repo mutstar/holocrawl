@@ -1,0 +1,22 @@
+{
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxshift_0.png",
+      "sha256": "e13c11bd56562e8dbfc381bdc4c1bc44eb8e429c838cc612e08cac840dfcefa6"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxshift_1.png",
+      "sha256": "fc3a31044c8ac3d0365b339597615556374b3bfd08c01a8fa8fac35cecbf0d9f"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxcircle_0.png",
+      "sha256": "58fa767523f39491ebaba8497139a5dff45aa22e4a78bc809ea8db604a388d96"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_foxcircle_1.png",
+      "sha256": "44c7435e212cea4f038c2a89d4ba7443d4bd6d7029ab4f32d35da92a353b82e7"
+    }
+  ],
+  "processing": "Built-in image_gen followed by alpha crop and nearest fit only",
+  "existingFire": "fx_foxflame_0/1 retained"
+}

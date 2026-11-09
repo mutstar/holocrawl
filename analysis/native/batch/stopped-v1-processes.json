@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 45536,
+    "ProcessName": "native-all-v1-magic-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-all-v1-magic-01.exe"
+  },
+  {
+    "Id": 35696,
+    "ProcessName": "native-all-v1-melee-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-all-v1-melee-01.exe"
+  },
+  {
+    "Id": 37948,
+    "ProcessName": "native-all-v1-ranged-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-all-v1-ranged-01.exe"
+  },
+  {
+    "Id": 7816,
+    "ProcessName": "native-tail-v1-magic-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-tail-v1-magic-01.exe"
+  },
+  {
+    "Id": 48308,
+    "ProcessName": "native-tail-v1-melee-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-tail-v1-melee-01.exe"
+  },
+  {
+    "Id": 29632,
+    "ProcessName": "native-tail-v1-ranged-01",
+    "Path": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\native-tail-v1-ranged-01.exe"
+  }
+]

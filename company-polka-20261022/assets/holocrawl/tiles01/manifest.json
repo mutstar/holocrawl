@@ -1,0 +1,582 @@
+{
+  "version": "tiles01",
+  "importPipeline": "Equal 8x4 atlas slicing, alpha bounding-box fit to 28px, nearest-neighbor resize into transparent 32px tiles; originals unchanged.",
+  "assets": [
+    {
+      "id": "god_suisei",
+      "kind": "god",
+      "sourceCell": 0,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_suisei.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "1bf1decf5a027cec80fa3472564d9ef00dca0362a58e29f8bd1b52acbd3b512b"
+    },
+    {
+      "id": "god_miko",
+      "kind": "god",
+      "sourceCell": 1,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_miko.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e7e1d3cc476c6244f1d8b64a0bd471b88a730ea598f77e2009ecb232556270ab"
+    },
+    {
+      "id": "god_aki",
+      "kind": "god",
+      "sourceCell": 2,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_aki.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "edb87d2eea1878a179eccc619595b3af4066eb3e2378422c3a1d796c49effecc"
+    },
+    {
+      "id": "god_fubuki",
+      "kind": "god",
+      "sourceCell": 3,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_fubuki.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e2716d4882173a26ab32a801a81eadf1e51c98e4b7935e5796a04737ab07953a"
+    },
+    {
+      "id": "god_ayame",
+      "kind": "god",
+      "sourceCell": 4,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_ayame.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "79af96955740cbe73ab4afd3b20647a69f6f71d962ee891eddd828437d573051"
+    },
+    {
+      "id": "god_choco",
+      "kind": "god",
+      "sourceCell": 5,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_choco.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "7c4ea57e08623df4a22017b6425b567d51906d19893fa6b41ce409b7004fa438"
+    },
+    {
+      "id": "god_korone",
+      "kind": "god",
+      "sourceCell": 6,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_korone.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f4019e4565fc4f1580f10132b12cac9a07104f491179f342f9a328a2a718e9ba"
+    },
+    {
+      "id": "god_okayu",
+      "kind": "god",
+      "sourceCell": 7,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_okayu.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "c5147b00ba972689c6c85f7b77be3831fb8683668daeb11e4eb4ee583a44b6fe"
+    },
+    {
+      "id": "god_pekora",
+      "kind": "god",
+      "sourceCell": 8,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_pekora.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "2f797c372b681e72e228ac1e3fca2026d3c7c8a3647252d9018d958bbea98353"
+    },
+    {
+      "id": "god_noel",
+      "kind": "god",
+      "sourceCell": 9,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_noel.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "d63b7e319bae57e9eb833e58f61815e4ee6826c9319278c4e773bdbf6d0e7871"
+    },
+    {
+      "id": "god_watame",
+      "kind": "god",
+      "sourceCell": 10,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_watame.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "7939cc8c14038f4978fb636aa2b3ff4127bba2fbd898d6a100950208b50799ab"
+    },
+    {
+      "id": "god_towa",
+      "kind": "god",
+      "sourceCell": 11,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_towa.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "9dc85f737bbb4eeb2598f7f4bba986651f144bf42ed83556a1b26c2bd6634ee3"
+    },
+    {
+      "id": "god_lamy",
+      "kind": "god",
+      "sourceCell": 12,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_lamy.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e36b552d62dd408825914ff7c49c73b9a018f8eee493dc0638830f59af53bfe1"
+    },
+    {
+      "id": "god_polka",
+      "kind": "god",
+      "sourceCell": 13,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_polka.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "672100c0f397c6cbf92bfbf3b9baf023dac62ca1d47666d27635031922abc0cf"
+    },
+    {
+      "id": "god_koyori",
+      "kind": "god",
+      "sourceCell": 14,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_koyori.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "a3f4386760873cdfa4b6f62a30b43d45e8966c150308a95e136882192c07b5f2"
+    },
+    {
+      "id": "god_lui",
+      "kind": "god",
+      "sourceCell": 15,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_lui.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e7718fda181a4bb3a47e61b46222190212b24c8922a68d362f709cce24105143"
+    },
+    {
+      "id": "god_raden",
+      "kind": "god",
+      "sourceCell": 16,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_raden.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "edd581878a90f592960ece42df404c503e1bc4f0ceebd04c2fd9d3180b02d8d9"
+    },
+    {
+      "id": "god_hajime",
+      "kind": "god",
+      "sourceCell": 17,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_hajime.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "dc7ee1ddfa3ae38b8fd572d0c6a90b4b4c08de9ff0a948f0662d85d81acc06c2"
+    },
+    {
+      "id": "god_su",
+      "kind": "god",
+      "sourceCell": 18,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_su.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "d425ad6c23ee0a0190039ed864e752d5b5fbca4dab4a13873685fa91bc3012c0"
+    },
+    {
+      "id": "god_vivi",
+      "kind": "god",
+      "sourceCell": 19,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_vivi.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "0a2e8338da1897a42898c7b9b9d330e0935071aac0e0def9a91c750744ac8ff4"
+    },
+    {
+      "id": "god_sopia",
+      "kind": "god",
+      "sourceCell": 20,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_sopia.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "d986797202716edc6315132fa49c3c3fa3e515b744ce5376a9fd46c6f8a6928c"
+    },
+    {
+      "id": "god_mela",
+      "kind": "god",
+      "sourceCell": 21,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/god_mela.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "a5f590e288bb54266ddb9ea769692833a992cde3b4393d752aa6cf022e724d84"
+    },
+    {
+      "id": "rose",
+      "kind": "sprite",
+      "sourceCell": 22,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/rose.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "90854099f8f77514967dc3d9c800dd83e932e3eb083cfbf9f3fd542982fa0766"
+    },
+    {
+      "id": "fox",
+      "kind": "sprite",
+      "sourceCell": 23,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fox.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "d8271170c233adc4f1fd5822e40e8c05f9e25aea35e7462a36a8dabe57a25bfa"
+    },
+    {
+      "id": "raven",
+      "kind": "sprite",
+      "sourceCell": 24,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/raven.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "1053f6b10d5ff81b0427f50aec2c95771c99ad35c72d6acfd7842e2ace724fda"
+    },
+    {
+      "id": "swordsman",
+      "kind": "sprite",
+      "sourceCell": 25,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/swordsman.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "39c195139d6ee1ccf3e89d5517799e5bf886c899b385c42dd1f71929ab3f61f6"
+    },
+    {
+      "id": "hound",
+      "kind": "sprite",
+      "sourceCell": 26,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/hound.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "4017f34b044780acdea7b055a8aa731cee93da983091151b5ba7049b4cb542b8"
+    },
+    {
+      "id": "carrot",
+      "kind": "sprite",
+      "sourceCell": 27,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/carrot.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "a7efab5b20c2fc7bf63b464f0c8305011c799858e654884b8f63ad0398fc8f4d"
+    },
+    {
+      "id": "orbit_icon",
+      "kind": "sprite",
+      "sourceCell": 28,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/orbit_icon.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "38e5fc183df60f65690a81bc5db296da9843ea654ec828f812fb5412054096ba"
+    },
+    {
+      "id": "warning_icon",
+      "kind": "sprite",
+      "sourceCell": 29,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/warning_icon.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "ccb4a8ca845aac3dde0ed7203898560e6976d0e18bb4546d8f0b87647372161a"
+    },
+    {
+      "id": "puddle",
+      "kind": "sprite",
+      "sourceCell": 30,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/puddle.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "9fdef351b7e7cc606af2be619dc67e187aaa47d325ae67797f2d767ee55aaef7"
+    },
+    {
+      "id": "impact_icon",
+      "kind": "sprite",
+      "sourceCell": 31,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/impact_icon.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "343e3f829647e2dc9305f8988af968bab24f28a5b890c4e9979aa94a10d0436f"
+    },
+    {
+      "id": "fx_warning_0",
+      "kind": "effect",
+      "sourceCell": 0,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_warning_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "3dccca58748524f023dd234e467c09f07a60bffed84800b97331ebc98d4357f1"
+    },
+    {
+      "id": "fx_warning_1",
+      "kind": "effect",
+      "sourceCell": 1,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_warning_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "9ecbe5d6c22209c1f7fce17dc15fcbd4a582f1f547caf8ae807ba55f7e100747"
+    },
+    {
+      "id": "fx_urgent_0",
+      "kind": "effect",
+      "sourceCell": 2,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_urgent_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f65d8b30aae7ed30809afab3eae1ccb6f4c25bfecdcbbb224b24a793b71f0421"
+    },
+    {
+      "id": "fx_urgent_1",
+      "kind": "effect",
+      "sourceCell": 3,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_urgent_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "762cc522858b1ea2dc56be3a5ffa7088fed0b3bf5a507aa0d95c0a9dd48bc068"
+    },
+    {
+      "id": "fx_shrine_0",
+      "kind": "effect",
+      "sourceCell": 4,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_shrine_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "07c51e9bbde07a2fff7bc44d8f1c56fa81ebd5c9d89c5ec1c27b07aa8b76a2b7"
+    },
+    {
+      "id": "fx_shrine_1",
+      "kind": "effect",
+      "sourceCell": 5,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_shrine_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "bf4fcf657ea674189c7f042cad629ac389347b07c3b455b716434e53d90193d1"
+    },
+    {
+      "id": "fx_garden_0",
+      "kind": "effect",
+      "sourceCell": 6,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_garden_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "a905b02af1cc4598f9668f38c7616ce8f26dc82660a762ee116673f6ff294f5d"
+    },
+    {
+      "id": "fx_garden_1",
+      "kind": "effect",
+      "sourceCell": 7,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_garden_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e45184f2394d99789dd6d62b4ee700119ee8d2613e2ded0535aef82067657e29"
+    },
+    {
+      "id": "fx_water_0",
+      "kind": "effect",
+      "sourceCell": 8,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_water_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "ef40fd4a4c47dd830cf3ec233fd3b5f0dcfd81dd083480d8bde64af9beb455b3"
+    },
+    {
+      "id": "fx_water_1",
+      "kind": "effect",
+      "sourceCell": 9,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_water_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "c6fda99d4920e912fd0b8dea3e7d7c32071d163967438077cf7e17ecd8f46772"
+    },
+    {
+      "id": "fx_gravity_0",
+      "kind": "effect",
+      "sourceCell": 10,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_gravity_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f562692ca452ce0c39bc1f5527dbe4fdbade5234994986868c9a5381225d9f38"
+    },
+    {
+      "id": "fx_gravity_1",
+      "kind": "effect",
+      "sourceCell": 11,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_gravity_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "278c51ce606603088f0bae1969adfd57fa602c1516fe0913b2b1b88545b6a54a"
+    },
+    {
+      "id": "fx_orbit_0",
+      "kind": "effect",
+      "sourceCell": 12,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_orbit_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e60b6d16bdd74896d7725991c16bc0d9973c9f9b8e7fca9995021ba7c178e1c4"
+    },
+    {
+      "id": "fx_orbit_1",
+      "kind": "effect",
+      "sourceCell": 13,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_orbit_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "3f5108d3eefc9c04a2e6d88eee5a473fee638e419b7535f5f53f4abac636777f"
+    },
+    {
+      "id": "fx_fire_0",
+      "kind": "effect",
+      "sourceCell": 14,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_fire_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "1fa8aa666045b9799edcdd49cfc3f4420138c3f417c1135ddacc18becdc2a510"
+    },
+    {
+      "id": "fx_fire_1",
+      "kind": "effect",
+      "sourceCell": 15,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_fire_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "358325712ce4d090616a29a6a07f378072197aa6d091107d77d50e9eef2c5d4a"
+    },
+    {
+      "id": "fx_exhibit_0",
+      "kind": "effect",
+      "sourceCell": 16,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_exhibit_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e69e82302aed515a1de169578067fcad4000e218c985d70f6b5b30f09ec1ade8"
+    },
+    {
+      "id": "fx_exhibit_1",
+      "kind": "effect",
+      "sourceCell": 17,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_exhibit_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "a7a265f1b84c719ab24792ca0705e52947773666bd2b233819d188819cf02d61"
+    },
+    {
+      "id": "fx_spotlight_0",
+      "kind": "effect",
+      "sourceCell": 18,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_spotlight_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f73a6ee94d5b107c5a50c3fc92ad5d82faf63a6f9e14b6006a89aee972a2e2af"
+    },
+    {
+      "id": "fx_spotlight_1",
+      "kind": "effect",
+      "sourceCell": 19,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_spotlight_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "3b006327d701ad82ae63d0852ee94f7ed97841769908a0a1f67ba3bb81a5b04a"
+    },
+    {
+      "id": "fx_frost_0",
+      "kind": "effect",
+      "sourceCell": 20,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_frost_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "c49cf332b5eaad59d3dcd61bf3584f7a353d46e728241c6ddbe5d64ae417bc3b"
+    },
+    {
+      "id": "fx_frost_1",
+      "kind": "effect",
+      "sourceCell": 21,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_frost_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "fe73d69c848c5dec0a6df7ae8cd171dc9c447d49d050f81c6b2b568a595a8b4a"
+    },
+    {
+      "id": "fx_rhythm_0",
+      "kind": "effect",
+      "sourceCell": 22,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_rhythm_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "3c2eb76e9dbca4eb831bd9a8497291c6a1a351b6b9b3877cc3e090b2475188c7"
+    },
+    {
+      "id": "fx_rhythm_1",
+      "kind": "effect",
+      "sourceCell": 23,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_rhythm_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "7bf2a457ec8322960f87ee2839d7e27b73e6950aa3c629ad77bd3ea76c397a0e"
+    },
+    {
+      "id": "fx_shield_0",
+      "kind": "effect",
+      "sourceCell": 24,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_shield_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "3db4450adff05c4486a5ec2e114477c3018f0326da86cfdd396b09cc27b180fe"
+    },
+    {
+      "id": "fx_shield_1",
+      "kind": "effect",
+      "sourceCell": 25,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_shield_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "503e4b427f01acc13a0c002fab2abf3e2ee884394002fa16205aa767d600dc3b"
+    },
+    {
+      "id": "fx_slime_0",
+      "kind": "effect",
+      "sourceCell": 26,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_slime_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "ee776b9b34d848d82049c77f8015ef76c3926561d1cdcffa633ea50810dc03ad"
+    },
+    {
+      "id": "fx_slime_1",
+      "kind": "effect",
+      "sourceCell": 27,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_slime_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f686613a5031c95ae379d95aa22faf5860baf8daad93c7e9f1d92c4c1fbd2d40"
+    },
+    {
+      "id": "fx_impact_0",
+      "kind": "effect",
+      "sourceCell": 28,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_impact_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "b5b2f68f238c674a656ed244fae4cdee341ee3adfaf5bcbd9794fcd6757289d0"
+    },
+    {
+      "id": "fx_impact_1",
+      "kind": "effect",
+      "sourceCell": 29,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_impact_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "af26b19d8bf03b9c53b04b040506b57d7a43c74e5c73d98d273001197ab086fa"
+    },
+    {
+      "id": "fx_comet_0",
+      "kind": "effect",
+      "sourceCell": 30,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_comet_0.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "b82e5704bc04a9a3041ba681d2210fcf7ed0c02e361fe477fdfc779e7fd7cdf6"
+    },
+    {
+      "id": "fx_comet_1",
+      "kind": "effect",
+      "sourceCell": 31,
+      "file": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_comet_1.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "f14e379d33b49bb120802cb8eb8c019463461641ad30a1398a4d3b6b67f8e3f3"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "nativeAbility": true,
+  "crossedEnemy": true,
+  "mpCost": 3,
+  "pietyCost": 2,
+  "timeCostAut": 10,
+  "renderPreservesState": true,
+  "interpolatedAirFrames": false,
+  "cameraAlignment": "Crop shifted 64 native pixels after leap to preserve enemy world position",
+  "gameplayChanged": false,
+  "runtimeBinaryChanged": false,
+  "review": "analysis/previews/polka-review01/index.html#tier3"
+}

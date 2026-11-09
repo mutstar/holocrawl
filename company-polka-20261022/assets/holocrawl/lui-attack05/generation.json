@@ -1,0 +1,10 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the leg anatomy of this Ganmo pixel-art attack pose. It incorrectly has THREE separate legs/feet: two feet on ground and one raised claw at right. It must have EXACTLY TWO LEGS TOTAL: ONE supporting foot on ground and ONE leg extended forward at right with a grasping claw. REMOVE the extra ground leg/foot completely (the bottom-right ground-standing leg); reconstruct belly/cape edge where it joins. Keep the forward raised attacking claw and the rear supporting ground foot. There must be exactly TWO feet visible after editing, not three. Preserve the rest EXACTLY: sharp gold eyes, head/beak, white collar, brown raised wings, narrow cream torso, red tie, burgundy cape, right-facing leaning attack pose, same chunky low-res pixel style and palette. Transparent background. No new parts, particles, text or ground.",
+  "nativeMax": [
+    30,
+    30
+  ],
+  "integration": "nearest-neighbor; left via horizontal mirror",
+  "anatomy": "one ground foot + one raised attacking foot; two legs total"
+}

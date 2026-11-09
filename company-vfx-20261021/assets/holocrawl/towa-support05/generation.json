@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen edit",
+  "prompt": "Edit this existing transparent pixel-art purple devil-arrow projectile. Keep its RIGHT-pointing hooked spearhead and crooked short shaft silhouette. Make shaft noticeably THICKER, about twice its current thickness relative to the head, with a continuous broad very pale lavender-white central stripe along the shaft and spearhead. Make the two hooked barbs chunkier. Bright luminous lavender body with saturated violet-magenta edge and thin deep purple outline. It will be reduced to 24x12 actual pixels and needs to stand out against a busy magenta dungeon ground effect. Keep crisp coarse pixel blocks; no smooth glow cloud, no blur, no added particles, no scenery, no text. One compact horizontal arrow only, transparent background. Preserve the distinctive shape and compact proportions.",
+  "processing": "Alpha threshold128, crop, nearest-neighbor24x12, eight rotations on32x32"
+}

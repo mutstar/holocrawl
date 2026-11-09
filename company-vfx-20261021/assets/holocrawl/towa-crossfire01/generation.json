@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen edit",
+  "prompt": "Edit this transparent pixel art demon wing spell emblem for Towa tier5. Keep the paired bat/demon wings motif but simplify into a COMPACT readable crest: two small raised bat wings flanking TWO crossed short devil arrows, each with a spearhead and hooked barbs, forming an X. Bright light lavender and pale purple-white highlights, vivid magenta-violet edges, a tiny lime-green accent at the central junction. Replace the very dark thin purple lines with thick bold solid pixel strokes, no black filled mass. A small clear silhouette readable at only 48 pixels wide and about 36 tall. No outer circle, no large ground ring, no cloud glow, no text, no scene, no character. One emblem centered with transparent background, crisp chunky retro pixels. The empty spaces between wings and arrows must remain transparent.",
+  "processing": "Alpha crop and nearest-neighbor44/48px width on160 canvas, centered16px above actor"
+}

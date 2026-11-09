@@ -1,0 +1,4243 @@
+diff --git a/crawl-ref/source/Makefile.obj b/crawl-ref/source/Makefile.obj
+index 75f74a62e18e28ca7ec2864013cc3a6b14096f21..8aefbf7b8761454ad8c8b939f5ea16d7d3afa484 100644
+--- a/crawl-ref/source/Makefile.obj
++++ b/crawl-ref/source/Makefile.obj
+@@ -1,4 +1,12 @@
+ OBJECTS = \
++holocrawl.o \
++holo-sopia.o \
++holo-batch.o \
++holo-batch-martial.o \
++holo-batch-resources.o \
++holo-batch-experiments.o \
++holo-batch-space.o \
++holo-batch-summons.o \
+ ability.o \
+ abyss.o \
+ acquire.o \
+diff --git a/crawl-ref/source/attack.cc b/crawl-ref/source/attack.cc
+index 46710314a3c7aec665cd7280b81bbcb1c669b0ab..fb34a2fd002ac4e25bfefd534388281dd6f07baf 100644
+--- a/crawl-ref/source/attack.cc
++++ b/crawl-ref/source/attack.cc
+@@ -6,6 +6,8 @@
+  */
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-batch.h"
+ 
+ #include "attack.h"
+ 
+@@ -77,14 +79,24 @@ bool attack::handle_phase_attempted()
+     return true;
+ }
+ 
++void attack::record_holo_hit()
++{
++    if(attacker->is_player()) holo_batch::note_primary_hit(defender);
++    else if(defender->is_player() && holo_preac_damage>0)
++        holo_batch::contact(attacker,damage_brand==SPWPN_FLAMING || attk_flavour==AF_FIRE?BEAM_FIRE:BEAM_MISSILE);
++    holo_batch::summon_hit(attacker,defender);
++}
+ bool attack::handle_phase_blocked()
+ {
++    if(attacker->is_monster() && defender->is_player() && holo_can_damage && attk_damage>0)
++        holo_batch::contact(attacker,damage_brand==SPWPN_FLAMING || attk_flavour==AF_FIRE?BEAM_FIRE:BEAM_MISSILE);
+     damage_done = 0;
+     return true;
+ }
+ 
+ bool attack::handle_phase_damaged()
+ {
++    record_holo_hit();
+     // We have to check in_bounds() because removed kraken tentacles are
+     // temporarily returned to existence (without a position) when they
+     // react to damage.
+@@ -104,6 +116,8 @@ bool attack::handle_phase_damaged()
+     announce_hit();
+     // Inflict stored damage
+     damage_done = inflict_damage(damage_done);
++    if(attacker->is_player()) holo_batch::note_primary_damage(defender,damage_done);
++    else holo_batch::companion_damage(attacker,damage_done);
+ 
+     // TODO: Unify these, added here so we can get rid of player_attack
+     if (attacker->is_player())
+@@ -162,7 +176,7 @@ int attack::calc_to_hit(bool random)
+     if (attacker->is_player())
+     {
+         // fighting contribution
+-        mhit += maybe_random_div(you.skill(SK_FIGHTING, 100), 100, random);
++        mhit += maybe_random_div(holo_fighting_skill(100), 100, random);
+ 
+         // weapon skill contribution
+         if (using_weapon())
+@@ -220,6 +234,7 @@ int attack::calc_to_hit(bool random)
+         if (you.get_mutation_level(MUT_EYEBALLS))
+             mhit += 2 * you.get_mutation_level(MUT_EYEBALLS) + 1;
+ 
++        mhit+=holo_batch::to_hit(attacker,defender);
+         // hit roll
+         mhit = maybe_random2(mhit, random);
+     }
+@@ -276,7 +291,7 @@ int attack::calc_to_hit(bool random)
+     }
+     // Don't delay doing this roll until test_hit().
+     if (!attacker->is_player())
+-        mhit = random2(mhit + 1);
++        mhit = random2(mhit + holo_batch::to_hit(attacker,defender) + 1);
+ 
+     dprf(DIAG_COMBAT, "%s: Base to-hit: %d, Final to-hit: %d",
+          attacker->name(DESC_PLAIN).c_str(),
+@@ -351,6 +366,7 @@ string attack::anon_pronoun(pronoun_type pron)
+  */
+ void attack::init_attack(skill_type unarmed_skill, int attack_number)
+ {
++    holo_preac_damage=0;
+     ASSERT(attacker);
+     weapon          = attacker->weapon(attack_number);
+ 
+@@ -386,6 +402,10 @@ void attack::init_attack(skill_type unarmed_skill, int attack_number)
+ 
+         attk_type       = mon_attk.type;
+         attk_flavour    = mon_attk.flavour;
++        int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;
++        if(holo_batch::custom_monster(*attacker->as_monster(),holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) {
++            mon_attk.damage=holo_damage;attk_type=attack_number==0 && holo_damage>0?AT_HIT:AT_NONE;attk_flavour=AF_PLAIN;
++        }
+ 
+         // Don't scale damage for YOU_FAULTLESS etc.
+         if (attacker->get_experience_level() == 0)
+@@ -1154,7 +1174,7 @@ int attack::player_apply_fighting_skill(int damage, bool aux)
+ {
+     const int base = aux? 40 : 30;
+ 
+-    damage *= base * 100 + (random2(you.skill(SK_FIGHTING, 100) + 1));
++    damage *= base * 100 + (random2(holo_fighting_skill(100) + 1));
+     damage /= base * 100;
+ 
+     return damage;
+@@ -1194,6 +1214,7 @@ int attack::player_apply_slaying_bonuses(int damage, bool aux)
+     damage_plus += slaying_bonus(!weapon && wpn_skill == SK_THROWING
+                                  || (weapon && is_range_weapon(*weapon)
+                                             && using_weapon()));
++    damage_plus += holo_batch::slaying(defender,aux);
+ 
+     damage += (damage_plus > -1) ? (random2(1 + damage_plus))
+                                  : (-random2(1 - damage_plus));
+@@ -1282,6 +1303,7 @@ int attack::calc_damage()
+         damage     += 1 + random2(attk_damage);
+ 
+         damage = apply_damage_modifiers(damage, damage_max);
++        holo_preac_damage=damage;
+ 
+         set_attack_verb(damage);
+         return apply_defender_ac(damage, damage_max);
+@@ -1311,6 +1333,8 @@ int attack::calc_damage()
+         if (!defender->alive())
+             return 0;
+         damage = player_apply_final_multipliers(damage);
++        damage += holo_batch::raw_bonus(defender);
++        damage = holo_batch::multiplier(damage);
+         damage = apply_defender_ac(damage);
+ 
+         damage = max(0, damage);
+diff --git a/crawl-ref/source/attack.h b/crawl-ref/source/attack.h
+index 8c03c906c33760f9a3debb504977ff138a48967a..edf2be2533678c8ae21def46782a0511846caad5 100644
+--- a/crawl-ref/source/attack.h
++++ b/crawl-ref/source/attack.h
+@@ -34,6 +34,8 @@ public:
+ 
+     int     to_hit;
+     int     damage_done;
++    int     holo_preac_damage=0;
++    bool    holo_can_damage=true;
+     int     special_damage; // TODO: We'll see if we can remove this
+     int     aux_damage;     // TOOD: And this too
+ 
+@@ -120,6 +122,7 @@ public:
+ // Private Methods
+ protected:
+     virtual void init_attack(skill_type unarmed_skill, int attack_number);
++    void record_holo_hit();
+ 
+     /* Attack Phases */
+     virtual bool handle_phase_attempted();
+diff --git a/crawl-ref/source/beam.cc b/crawl-ref/source/beam.cc
+index e67237a244775d891138266d873e15b774ad9f83..7c8716ecc4d680ff078103552924fd007ac09004 100644
+--- a/crawl-ref/source/beam.cc
++++ b/crawl-ref/source/beam.cc
+@@ -4,6 +4,8 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-batch.h"
++#include "holocrawl.h"
+ 
+ #include "beam.h"
+ 
+@@ -3131,6 +3133,7 @@ bool bolt::misses_player()
+                 finish_beam();
+             }
+             you.shield_block_succeeded(agent());
++            if(damage.num>0 && damage.size>0 && !is_enchantment()) holo_batch::contact(agent(),flavour);
+             return true;
+         }
+ 
+@@ -3746,6 +3749,7 @@ void bolt::affect_player()
+         return;
+     }
+ 
++    if(!is_enchantment() && damage.num>0 && damage.size>0) holo_batch::attack_attempt(agent(),&you);
+     if (misses_player())
+         return;
+ 
+@@ -3773,6 +3777,7 @@ void bolt::affect_player()
+     // Roll the damage.
+     if (!(origin_spell == SPELL_FLASH_FREEZE && you.duration[DUR_FROZEN]))
+         pre_ac_dam += damage.roll();
++    if(pre_ac_dam>0) holo_batch::contact(agent(),flavour);
+ 
+     int pre_res_dam = apply_AC(&you, pre_ac_dam);
+ 
+@@ -3875,7 +3880,8 @@ void bolt::affect_player()
+     {
+         if (!player_res_sticky_flame())
+         {
+-            napalm_player(random2avg(7, 3) + 1, get_source_name(), aux_source);
++            if(napalm_player(random2avg(7, 3) + 1, get_source_name(), aux_source) && holo_batch::active())
++                you.props["holo_sticky_source"]=int(source_id);
+             was_affected = true;
+         }
+     }
+@@ -4101,7 +4107,7 @@ bool bolt::determine_damage(monster* mon, int& preac, int& postac, int& final,
+         preac = preac_max_damage;
+     }
+     else if (!freeze_immune)
+-        preac = damage.roll();
++        preac = origin_spell!=SPELL_NO_SPELL ? holo_batch::spell_damage(damage.roll(),source_id):damage.roll();
+ 
+     int tracer_postac_max = preac_max_damage;
+ 
+@@ -4120,7 +4126,7 @@ bool bolt::determine_damage(monster* mon, int& preac, int& postac, int& final,
+     {
+         postac = max(0, postac);
+         // Don't do side effects (beam might miss or be a tracer).
+-        final = mons_adjust_flavoured(mon, *this, postac, false);
++        final = holo_batch::fire_protection(*mon,mons_adjust_flavoured(mon, *this, postac, false),flavour);
+     }
+ 
+     // Sanity check. Importantly for
+@@ -4975,7 +4981,8 @@ void bolt::affect_monster(monster* mon)
+             bleed_onto_floor(mon->pos(), mon->type, blood, true);
+         }
+         // Now hurt monster.
+-        mon->hurt(agent(), final, flavour, KILLED_BY_BEAM, "", "", false);
++        const int actual=mon->hurt(agent(), final, flavour, KILLED_BY_BEAM, "", "", false);
++        holo_batch::note_spell_damage(mon,actual,flavour,source_id);
+     }
+ 
+     if (mon->alive())
+@@ -6553,6 +6560,8 @@ string bolt::get_source_name() const
+ */
+ bool bolt::can_knockback(const actor &act, int dam) const
+ {
++    if (act.is_player() && holo_force_immune())
++        return false;
+     if (act.is_stationary())
+         return false;
+ 
+@@ -6574,6 +6583,8 @@ bool bolt::can_knockback(const actor &act, int dam) const
+ */
+ bool bolt::can_pull(const actor &act, int dam) const
+ {
++    if (act.is_player() && holo_force_immune())
++        return false;
+     if (act.is_stationary() || adjacent(source, act.pos()))
+         return false;
+ 
+diff --git a/crawl-ref/source/cloud.cc b/crawl-ref/source/cloud.cc
+index 2aab95644ec861ff39dc848413914a84b87effe4..513f37bdedefece84be488762f1c5133946a04ce 100644
+--- a/crawl-ref/source/cloud.cc
++++ b/crawl-ref/source/cloud.cc
+@@ -6,6 +6,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-batch.h"
+ 
+ #include "cloud.h"
+ 
+@@ -1270,13 +1271,14 @@ int actor_apply_cloud(actor *act)
+     monster *mons = !player? act->as_monster() : nullptr;
+     const beam_type cloud_flavour = _cloud2beam(cloud.type);
+ 
++    if(player && cloud.type==CLOUD_FIRE) holo_batch::fire_contact(cloud.source);
+     if (actor_cloud_immune(*act, cloud))
+         return 0;
+ 
+     const int resist = _actor_cloud_resist(act, cloud);
+     const int cloud_max_base_damage =
+         _actor_cloud_base_damage(act, cloud, resist, true);
+-    const int final_damage = _actor_cloud_damage(act, cloud, false);
++    const int final_damage = holo_batch::fire_protection(*act,_actor_cloud_damage(act, cloud, false),cloud_flavour);
+ 
+     if ((player || final_damage > 0
+          || _cloud_has_negative_side_effects(cloud.type))
+diff --git a/crawl-ref/source/holo-batch-experiments.cc b/crawl-ref/source/holo-batch-experiments.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..e25a49a87c8910fa5b91347e3e3fc27a50391fdf
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-experiments.cc
+@@ -0,0 +1,330 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include <algorithm>
++#include <stdexcept>
++#include "act-iter.h"
++#include "cloud.h"
++#include "env.h"
++#include "fight.h"
++#include "holocrawl.h"
++#include "mon-ench.h"
++#include "mon-util.h"
++#include "player.h"
++#include "terrain.h"
++
++namespace holo_batch {
++namespace {
++bool valid(monster *mon,int range=5) {
++    return mon && mon->alive() && mon->attitude==ATT_HOSTILE && you.can_see(*mon)
++        && grid_distance(you.pos(),mon->pos())<=range && seen(mon->pos());
++}
++bool cone(const coord_def &pos,const coord_def &dir,int range) {
++    const coord_def d=pos-you.pos();
++    for(int r=1;r<=range;++r) for(int w=1-r;w<r;++w)
++        if(d==coord_def(dir.x*r-dir.y*w,dir.y*r+dir.x*w)) return true;
++    return false;
++}
++coord_def direction(monster &mon) {
++    coord_def d=mon.pos()-you.pos();return coord_def((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
++}
++void quest_success(int hd) {
++    s.resource=min(6,s.resource+1+(hd>=you.experience_level));s.one_end=you.elapsed_time+60;
++    s.one_ready=you.elapsed_time+50;s.secondary=0;
++    for(mid_t id:s.performance_hits) s.rewarded.insert(id);
++    s.performance_hits.clear();++s.totals.procs;
++}
++void performance_hit(mid_t mid,int hd,bool killed) {
++    if(!is(god_id::polka) || !s.secondary || s.three_end<=you.elapsed_time
++        || s.rewarded.count(mid) || hd<max(1,(you.experience_level+1)/2)) return;
++    s.performance_hits.insert(mid);if(mid==s.marked) ++s.offence;
++    if(killed && ((mid==s.marked && ((s.secondary==1 && s.offence>=3)
++        || (s.secondary==2 && s.defence>=2))) || (s.secondary==3 && s.performance_hits.size()>=3))) quest_success(hd);
++}
++void fire_area(const coord_def &origin,int radius,int raw,bool self) {
++    std::vector<mid_t> ids;
++    for(monster_iterator mi;mi;++mi) if(mi->alive() && grid_distance(origin,mi->pos())<=radius
++        && line(origin,mi->pos())) ids.push_back(mi->mid);
++    for(mid_t id:ids) {
++        monster *mon=monster_by_mid(id);const bool credit=eligible(*mon);const int hd=mon->get_experience_level();
++        const int dealt=hurt(*mon,raw,BEAM_FIRE,false,true);
++        if(credit && dealt>0) performance_hit(id,hd,!mon->alive());
++    }
++    if(self && grid_distance(origin,you.pos())<=radius && line(origin,you.pos())) {
++        const int before=you.hp;
++        ouch(resist_adjust_damage(&you,BEAM_FIRE,raw),KILLED_BY_WILD_MAGIC,you.mid,"reagent combustion");
++        s.totals.self_damage+=max(0,before-you.hp);
++    }
++}
++void reagent(monster &mon,int type,int at) {
++    auto &t=s.targets[mon.mid];const int previous=t.expires>at?t.kind:0;
++    if(previous && previous!=type && you.piety>=75 && you.piety>=2) {
++        you.piety-=2;++s.totals.procs;
++        const int pair=previous+type;
++        const bool critical=s.five_end>at && s.exhibit==pair;
++        const coord_def origin=mon.pos();t.kind=0;t.stacks=0;t.expires=0;
++        if(critical) { s.five_end=0;s.five_ready=at+100; }
++        if(pair==3) fire_area(origin,critical?2:1,roll_dice(critical?4:2,(critical?8:6)+s.inv/3),true);
++        else if(pair==5) {
++            if(critical) t.weak_until=at+40;
++            hurt(mon,roll_dice(critical?4:3,(critical?6:4)+s.inv/3),BEAM_MISSILE,true,true);
++        } else {
++            hazard h;h.pos=origin;h.kind=4;h.extra=critical?2:1;
++            h.end=at+(critical?60+2*s.inv:40+s.inv);s.hazards.push_back(h);
++            if(critical) for(monster_iterator mi;mi;++mi) {
++                auto &status=s.targets[mi->mid];
++                if(mi->alive() && grid_distance(origin,mi->pos())<=2 && line(origin,mi->pos())
++                    && !mi->airborne() && mi->res_constrict()<3 && status.immune<=at) {
++                    status.root=at+20;status.immune=at+80;
++                }
++            }
++            if(critical && !you.airborne() && you.res_constrict()<3 && grd(you.pos())==DNGN_FLOOR
++                && grid_distance(origin,you.pos())<=2 && line(origin,you.pos()) && s.tertiary<=at) {
++                s.defence=at+20;s.tertiary=at+80;
++            }
++        }
++        return;
++    }
++    t.kind=type;t.expires=at+60;t.stacks=type==1?4:0;t.next=at+10;
++    if(type!=1) hurt(mon,roll_dice(1,6+s.inv/3),type==2?BEAM_FIRE:BEAM_COLD,false,true);
++}
++void heat(int gain,int at) {
++    const int bucket=at/10;
++    if(s.last_incoming!=bucket) { s.last_incoming=bucket;s.secondary=0; }
++    gain=min(2-s.secondary,gain);s.resource=min(6,s.resource+gain);s.secondary+=gain;
++    if(gain>0) s.one_end=at+30;
++}
++bool extinguish(const coord_def &p,bool reward) {
++    const cloud_struct *cloud=cloud_at(p);
++    if(!cloud || cloud->type!=CLOUD_FIRE) return false;
++    const bool eligible=s.eligible_sources.count(cloud->source);
++    delete_cloud(p);if(reward && eligible) heat(2,you.elapsed_time);return true;
++}
++}
++
++int polka_finale(int mode,int applause,monster *target)
++{
++    const int now=you.elapsed_time;
++    if(!is(god_id::polka) || mode<0 || mode>2 || applause<3 || applause>6 || applause>s.resource
++        || now<s.five_ready || (mode==0 && !valid(target)) || (mode==2 && enemies(you.pos(),2).empty())
++        || !pay(6,10,120)) return 0;
++    s.resource-=applause;s.five_ready=now+160;
++    if(mode==0) fire_area(target->pos(),2,roll_dice(2,8+s.inv/3)+4*applause,false);
++    else if(mode==1) { heal(8+s.inv/2+4*applause);s.five_end=now+30+10*applause; }
++    else for(mid_t id:enemies(you.pos(),2,true)) {
++        monster *mon=monster_by_mid(id);push(*mon,you.pos(),1);
++        if(mon->alive() && !mental_immune(*mon) && !mon->clarity()
++            && x_chance_in_y(max(15,min(85,45+2*s.inv+3*applause-3*mon->get_experience_level())),100))
++            mon->add_ench(mon_enchant(ENCH_CONFUSION,1,&you,10+5*applause+s.inv/3));
++    }
++    return 10;
++}
++int prepare_reagent(int type)
++{
++    if(!is(god_id::koyori) || type<1 || type>3) return 0;
++    const int free=min(6-s.stock[0]-s.stock[1]-s.stock[2],4-s.stock[type-1]);
++    if(free<=0 || !pay(3,0)) return 0;
++    s.stock[type-1]+=min(2,free);return 10;
++}
++int throw_reagent(monster &target,int type)
++{
++    if(!is(god_id::koyori) || type<1 || type>3 || s.stock[type-1]<=0 || !valid(&target)) return 0;
++    --s.stock[type-1];++s.totals.casts;reagent(target,type,you.elapsed_time);return 10;
++}
++int coat_reagent(int type)
++{
++    if(!is(god_id::koyori) || type<1 || type>3 || s.stock[type-1]<=0) return 0;
++    --s.stock[type-1];s.offence=type;s.one_end=you.elapsed_time+55;++s.totals.casts;return 5;
++}
++int experiment_action(monster *target)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::polka)) {
++        if(s.resource>=3 && now>=s.five_ready) {
++            const int aut=polka_finale(you.hp*2<you.hp_max?1:0,s.resource,target);if(aut) return aut;
++        }
++        if(s.secondary==0 && now>=s.one_ready) {
++            std::vector<mid_t> candidates;
++            for(mid_t id:enemies(you.pos(),6)) if(eligible(*monster_by_mid(id)) && !s.rewarded.count(id)
++                && monster_by_mid(id)->get_experience_level()>=max(1,(you.experience_level+1)/2)) candidates.push_back(id);
++            if(!candidates.empty() && pay(1,0)) {
++                s.marked=candidates.front();s.secondary=candidates.size()>=3?3:2;
++                for(mid_t id:candidates) if(monster_by_mid(id)->get_experience_level()>=you.experience_level) {
++                    s.marked=id;s.secondary=1;break;
++                }
++                s.three_end=now+5+120+3*s.inv;s.offence=0;s.defence=0;
++                s.performance_hits.clear();s.centre=you.pos();return 5;
++            }
++        }
++        if(valid(target,1) && now>=s.three_ready && !you.caught() && !you.cannot_act()) {
++            const coord_def landing=target->pos()*2-you.pos();
++            if(in_bounds(landing) && !actor_at(landing) && grd(landing)==DNGN_FLOOR && seen(landing) && pay(3,2,75)) {
++                const coord_def old=you.pos();you.move_to_pos(landing);you.apply_location_effects(old);after_move(old,true);
++                s.tertiary=now+30;s.three_ready=now+40;return 10;
++            }
++        }
++        if(s.secondary==2 && s.offence>0 && s.defence<2 && valid(target,1) && !you.caught()) {
++            for(int dx=-1;dx<=1;++dx) for(int dy=-1;dy<=1;++dy) {
++                const coord_def p=you.pos()+coord_def(dx,dy);
++                if((dx||dy) && in_bounds(p) && !actor_at(p) && grd(p)==DNGN_FLOOR
++                    && p!=s.centre && adjacent(p,target->pos())) {
++                    const coord_def old=you.pos();you.move_to_pos(p);you.apply_location_effects(old);after_move(old,true);
++                    return player_speed()*player_movement_speed()/10;
++                }
++            }
++        }
++    }
++    if(is(god_id::koyori) && valid(target)) {
++        const int prior=s.targets[target->mid].expires>now?s.targets[target->mid].kind:0;
++        const int type=s.secondary%3+1;
++        if(prior && !five() && now>=s.five_ready && pay(5,8,120)) {
++            s.exhibit=prior+type;s.five_end=now+55;s.five_ready=s.five_end+100;return 5;
++        }
++        if(s.stock[type-1]==0) {
++            const int aut=prepare_reagent(type);if(aut) return aut;
++        } else { const int aut=throw_reagent(*target,type);if(aut) { ++s.secondary;return aut; } }
++    }
++    if(is(god_id::mela)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;
++            s.resource=6;s.last_event=now+30;you.duration[DUR_LIQUID_FLAMES]=0;return 10;
++        }
++        if(valid(target,five()?4:3) && now>=s.three_ready && pay(3,3,75)) {
++            const int stored=s.resource;s.resource=0;const coord_def d=direction(*target);
++            for(mid_t id:enemies(you.pos(),five()?4:3)) {
++                monster *mon=monster_by_mid(id);if(cone(mon->pos(),d,five()?4:3))
++                    hurt(*mon,roll_dice(five()?3:2,6+s.inv/3)+4*stored,BEAM_FIRE,false,true);
++            }
++            for(int dx=-4;dx<=4;++dx) for(int dy=-4;dy<=4;++dy) {
++                const coord_def p=you.pos()+coord_def(dx,dy);
++                if(in_bounds(p) && seen(p) && cone(p,d,five()?4:3)) extinguish(p,true);
++            }
++            s.three_ready=now+40;return 10;
++        }
++    }
++    return 0;
++}
++void experiment_tick(int at)
++{
++    if(is(god_id::polka) && s.secondary && at>=s.three_end) { s.secondary=0;s.performance_hits.clear(); }
++    if(is(god_id::koyori)) for(auto &p:s.targets) {
++        auto &t=p.second;monster *mon=monster_by_mid(p.first);
++        if(at>=t.expires) { t.kind=0;t.stacks=0; }
++        if(mon && mon->alive() && t.kind==1 && t.stacks>0 && at>=t.next) {
++            t.next+=10;--t.stacks;hurt(*mon,2+s.inv/9,BEAM_POISON,false);
++        }
++    }
++    if(is(god_id::mela)) {
++        if(at<s.five_end) {
++            if(at>=s.last_event) { s.last_event+=20;s.resource=min(6,s.resource+1);s.one_end=at+30; }
++            if(at%10==0) {
++                you.duration[DUR_LIQUID_FLAMES]=0;
++                for(int dx=-2;dx<=2;++dx) for(int dy=-2;dy<=2;++dy) {
++                    const coord_def p=you.pos()+coord_def(dx,dy);if(in_bounds(p) && seen(p)) extinguish(p,false);
++                }
++            }
++        } else if(s.resource>0 && at>=s.one_end) { --s.resource;s.one_end=at+20; }
++    }
++}
++void experiment_after_attack(monster *target)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::polka)) {
++        if(ctx.damaged && ctx.eligible) performance_hit(ctx.target,ctx.hd,!target || !target->alive());
++        s.tertiary=0;
++    }
++    if(is(god_id::mela) && ctx.damaged && target && target->alive() && s.resource>0 && !s.defence) {
++        --s.resource;hurt(*target,roll_dice(1,3+s.inv/6),BEAM_FIRE,false);
++    }
++    if(is(god_id::koyori) && ctx.primary && ctx.kind==attack_kind::spell && target && target->alive())
++        experiment_spell(*target,ctx.element);
++    if(is(god_id::koyori) && ctx.primary && ctx.kind!=attack_kind::spell
++        && s.offence && s.one_end>now) {
++        const int type=s.offence;s.offence=0;if(target && target->alive()) reagent(*target,type,now);
++    }
++}
++void experiment_spell(monster &mon,beam_type flavour)
++{
++    if(!is(god_id::koyori) || you.piety<75 || you.piety<2 || (flavour!=BEAM_FIRE && flavour!=BEAM_COLD)) return;
++    const int old=s.targets[mon.mid].expires>you.elapsed_time?s.targets[mon.mid].kind:0;
++    const int type=flavour==BEAM_FIRE?2:3;
++    if(old && old!=type) reagent(mon,type,you.elapsed_time);
++}
++void experiment_move(const coord_def &old,bool voluntary)
++{
++    if(is(god_id::polka) && s.secondary==2 && s.offence>0 && voluntary && old!=you.pos()
++        && you.pos()!=s.centre) { ++s.defence;s.centre=you.pos(); }
++}
++void experiment_contact(const actor *attacker,beam_type flavour)
++{
++    if(is(god_id::mela) && attacker && s.eligible_sources.count(attacker->mid))
++        heat(flavour==BEAM_FIRE || flavour==BEAM_STICKY_FLAME?2:1,you.elapsed_time);
++}
++int experiment_energy(const monster &mon,energy_use_type kind,int base)
++{
++    if(!is(god_id::koyori) || mon.airborne() || mon.is_stationary() || grd(mon.pos())!=DNGN_FLOOR
++        || (kind!=EUT_MOVE && kind!=EUT_SWIM) || mon.has_ench(ENCH_SLOW)) return base;
++    for(const auto &h:s.hazards) if(h.kind==4 && h.end>you.elapsed_time
++        && grid_distance(h.pos,mon.pos())<=h.extra && line(h.pos,mon.pos())) return (base*150+99)/100;
++    return base;
++}
++int monster_ac_penalty(const monster &mon) {
++    return is(god_id::koyori) && s.targets[mon.mid].weak_until>you.elapsed_time ? 6:0;
++}
++int elemental_damage(int damage,beam_type flavour,const actor *source)
++{
++    if(damage>0 && source) { attack_attempt(source,&you);contact(source,flavour); }
++    return is(god_id::mela) && five() && (flavour==BEAM_FIRE || flavour==BEAM_STICKY_FLAME) ? div_rand_round(damage,2):damage;
++}
++void fire_contact(mid_t source) {
++    if(is(god_id::mela) && s.eligible_sources.count(source)) heat(2,you.elapsed_time);
++}
++int fire_protection(const actor &target,int damage,beam_type flavour) {
++    return is(god_id::mela) && five() && (flavour==BEAM_FIRE || flavour==BEAM_STICKY_FLAME)
++        && (target.is_player() || target.is_monster() && target.as_monster()->attitude==ATT_FRIENDLY)
++        && grid_distance(you.pos(),target.pos())<=2 && seen(target.pos()) ? div_rand_round(damage,2):damage;
++}
++int movement_cost(int base) {
++    if(!is(god_id::koyori) || you.airborne() || you.duration[DUR_SLOW] || grd(you.pos())!=DNGN_FLOOR) return base;
++    for(const auto &h:s.hazards) if(h.kind==4 && h.end>you.elapsed_time
++        && grid_distance(h.pos,you.pos())<=h.extra && line(h.pos,you.pos())) return (base*150+99)/100;
++    return base;
++}
++bool player_rooted() { return is(god_id::koyori) && s.defence>you.elapsed_time; }
++void validate_experiments()
++{
++    const auto require=[](bool ok,const char *message) { if(!ok) throw std::runtime_error(std::string("Reagent native fixture: ")+message); };
++    const auto enemy=[]()->monster* { for(monster_iterator mi;mi;++mi) if(mi->attitude==ATT_HOSTILE) return *mi;return nullptr; };
++    holo_reset_validation_fixture();reset("koyori",12);monster *mon=enemy();
++    const int before=mon->hit_points,mp=you.magic_points;
++    reagent(*mon,1,0);require(mon->hit_points==before && s.targets[mon->mid].stacks==4,"poison deals immediate damage");
++    you.elapsed_time=9;advance(9);require(mon->hit_points==before,"poison ticks before ten aut");
++    you.elapsed_time=10;advance(10);require(mon->hit_points<before,"native poison resistance/damage path does not run");
++    reagent(*mon,2,10);require(s.targets[mon->mid].kind==0 && s.targets[mon->mid].stacks==0
++        && you.magic_points==mp && you.piety==178 && you.hp<you.hp_max,"combustion fails to consume residue/piety or damage its caster");
++    holo_reset_validation_fixture();reset("koyori",12);mon=enemy();
++    const int armour_before=mon->armour_class();reagent(*mon,2,0);
++    s.five_end=50;s.exhibit=5;reagent(*mon,3,0);
++    require(mon->armour_class()==max(0,armour_before-6) && s.five_end==0 && s.five_ready==100,"critical thermal shock has wrong AC or expiry");
++    you.elapsed_time=40;require(mon->armour_class()==armour_before,"thermal AC penalty never expires");
++    holo_reset_validation_fixture();reset("koyori",12);mon=enemy();reagent(*mon,3,0);reagent(*mon,1,0);
++    require(experiment_energy(*mon,EUT_MOVE,10)==15 && experiment_energy(*mon,EUT_ATTACK,10)==10
++        && movement_cost(10)==15,"slime does not slow both ground allies and enemies without slowing attacks");
++    you.elapsed_time=52;require(experiment_energy(*mon,EUT_MOVE,10)==10 && movement_cost(10)==10,"slime persists beyond its lifetime");
++    holo_reset_validation_fixture();reset("koyori",12);mon=enemy();
++    require(prepare_reagent(3)==10 && coat_reagent(3)==5 && s.stock[2]==1,"manufacture/coating has wrong stock or time cost");
++    begin_attack(*mon);end_attack(10);require(s.offence==3,"a miss consumes coating");
++    const int cold_before=mon->hit_points;begin_attack(*mon);note_primary_damage(mon,0);end_attack(10);
++    require(s.offence==0 && mon->hit_points<cold_before,"a zero-damage weapon hit fails to consume/apply coating");
++    holo_reset_validation_fixture();reset("koyori",12);mon=enemy();mon->type=MONS_IRON_DRAGON;
++    bool zero_weapon=false;
++    for(int attempt=0;attempt<30 && !zero_weapon;++attempt) {
++        s.offence=3;s.one_end=1000;begin_attack(*mon);bool hit=false;fight_melee(&you,mon,&hit);
++        zero_weapon=hit && ctx.primary && !ctx.damaged;end_attack(10);
++        if(zero_weapon) require(s.offence==0,"native armour-zero weapon hit never reaches the coating hook");
++    }
++    require(zero_weapon,"weapon-zero native fixture did not exercise its branch");
++    holo_reset_validation_fixture();reset("polka",12);mon=enemy();s.resource=6;
++    const coord_def before_push=mon->pos();require(polka_finale(2,3)==10 && s.resource==3
++        && grid_distance(you.pos(),mon->pos())>grid_distance(you.pos(),before_push),"chaos finale does not push or charges the wrong applause");
++}
++}
+diff --git a/crawl-ref/source/holo-batch-internal.h b/crawl-ref/source/holo-batch-internal.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..a1641c4c220c165063260d0c52fa9389ef3d34ac
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-internal.h
+@@ -0,0 +1,96 @@
++#pragma once
++#include "holo-batch.h"
++#include <map>
++#include <set>
++
++namespace holo_batch {
++enum class god_id { none,suisei,miko,aki,fubuki,ayame,choco,korone,okayu,pekora,
++    watame,towa,lamy,polka,koyori,lui,raden,hajime,su,vivi,mela };
++struct target_state {
++    int stacks=0,expires=0,next=0,immune=0,root=0,kind=0;
++    int blind_ready=0,slowed_until=0,weak_until=0,paint=0,paint_end=0;
++    std::map<mid_t,int> raven_hits;
++};
++struct companion {
++    mid_t mid=MID_NOBODY;
++    int expires=0,natural_end=0,next=0,shield=0,kind=0;
++    bool extra=false;
++};
++struct hazard { coord_def pos; int arm=0,end=0,next=0,kind=0,extra=0; mid_t target=MID_NOBODY; };
++struct state {
++    god_id god=god_id::none;
++    int inv=0,next_tick=10,one_end=0,three_end=0,five_end=0;
++    int one_ready=0,three_ready=0,five_ready=0,resource=0,shield=0;
++    int regen_fraction=0,last_event=0,last_incoming=-1000,proc_ready=0;
++    int deferred=0,debt_next=0,debt_ticks=0,secondary=0,tertiary=0;
++    int offence=0,defence=0,exhibit=0,rest[3]={0,0,0},stock[3]={0,0,0};
++    mid_t marked=MID_NOBODY;
++    coord_def centre;
++    std::map<mid_t,target_state> targets;
++    std::vector<companion> companions;
++    std::vector<hazard> hazards;
++    std::set<mid_t> rewarded,performance_hits,candidates,eligible_sources;
++    metrics totals;
++};
++struct action_context {
++    bool ordinary=false,primary=false,damaged=false,double_hit=false,eligible=false,reward_kill=false;
++    attack_kind kind=attack_kind::melee;
++    beam_type element=BEAM_MAGIC;
++    mid_t target=MID_NOBODY;
++    int damage=0,hp_before=0,hd=0,bonus=0,stars_before=0,attention=0;
++    coord_def position;
++};
++extern state s;
++extern action_context ctx;
++extern bool internal_damage;
++bool is(god_id id);
++bool five();
++bool eligible(const monster &mon);
++bool seen(const coord_def &pos);
++bool line(const coord_def &from,const coord_def &to);
++std::vector<mid_t> enemies(const coord_def &origin,int radius,bool far=false,bool require_seen=true);
++int hurt(monster &mon,int raw,beam_type flavour=BEAM_MISSILE,bool ac=true,bool direct=false);
++int heal(int amount);
++bool roll_hit(monster &mon,int accuracy,bool shield=true);
++bool roll_hit_from(actor &source,monster &mon,int accuracy,bool shield=true);
++bool move_actor(monster &mon,const coord_def &destination);
++void push(monster &mon,const coord_def &origin,int distance);
++bool pay(int mp,int piety,int stars=30);
++void on_kill(mid_t mid,int hd,bool direct,bool ordinary);
++int martial_action(monster *target);
++void martial_tick(int at);
++void martial_after_attack(monster *target,int aut);
++void martial_move(const coord_def &old,bool voluntary);
++void martial_kill(mid_t mid,int hd,bool direct,bool ordinary);
++int martial_incoming(int damage,kill_method_type kind,mid_t source);
++int resource_action(monster *target);
++void resource_tick(int at);
++void resource_after_attack(monster *target,int aut);
++void resource_move(const coord_def &old,bool voluntary);
++void resource_kill(mid_t mid,int hd,bool direct,bool ordinary);
++int resource_incoming(int damage,kill_method_type kind,mid_t source);
++int experiment_action(monster *target);
++void experiment_tick(int at);
++void experiment_after_attack(monster *target);
++void experiment_move(const coord_def &old,bool voluntary);
++void experiment_contact(const actor *attacker,beam_type flavour);
++void experiment_spell(monster &mon,beam_type flavour);
++void validate_experiments();
++void validate_summons();
++void garden_entry(monster &mon,const coord_def &old);
++int experiment_energy(const monster &mon,energy_use_type kind,int base);
++bool mental_immune(const monster &mon);
++void resource_contact(const actor *attacker,beam_type flavour);
++int space_action(monster *target);
++void space_tick(int at);
++void space_after_attack(monster *target,int aut);
++void space_move(const coord_def &old,bool voluntary);
++void space_monster(monster &mon,const coord_def &old);
++int space_energy(const monster &mon,energy_use_type kind,int base);
++void space_attempt(const actor *attacker,const actor *defender);
++int summon_action(monster *target);
++void summon_tick(int at);
++void summon_after_attack(monster *target,int aut);
++bool summon_before_monster(monster &mon);
++int summon_energy(const monster &mon,energy_use_type kind,int base);
++}
+diff --git a/crawl-ref/source/holo-batch-martial.cc b/crawl-ref/source/holo-batch-martial.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..48edd922723695bb6c075620017dbfbc6f3c3ed3
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-martial.cc
+@@ -0,0 +1,301 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include "act-iter.h"
++#include "env.h"
++#include "fight.h"
++#include "holocrawl.h"
++#include "mon-util.h"
++#include "mon-ench.h"
++#include "player.h"
++#include "terrain.h"
++
++namespace holo_batch {
++namespace {
++bool in_shrine() {
++    return s.one_end>you.elapsed_time && seen(s.centre)
++        && grid_distance(s.centre,you.pos())<=(five()?3:you.piety>=75?2:1);
++}
++int radius() { return five()?3:you.piety>=75?2:1; }
++int attention() {
++    int n=0;
++    for(mid_t id:enemies(you.pos(),LOS_DEFAULT_RANGE)) {
++        const monster &mon=*monster_by_mid(id);
++        if(eligible(mon) && !mon.asleep() && mon.foe==MHITYOU
++            && mon.get_experience_level()>=max(1,(you.experience_level+2)/3)) ++n;
++    }
++    return min(5,n);
++}
++bool allowed_step(const coord_def &p) {
++    return in_bounds(p) && !actor_at(p) && grd(p)==DNGN_FLOOR;
++}
++void sculpture_wave(const coord_def &direction) {
++    std::set<coord_def> cells;
++    for(int side=five()?-1:0;side<=(five()?1:0);++side) for(int r=1;r<=3;++r) {
++        const coord_def p=you.pos()+direction*r+coord_def(-direction.y*side,direction.x*side);
++        if(!in_bounds(p) || feat_is_solid(grd(p))) break;
++        if(seen(p)) cells.insert(p);
++    }
++    for(mid_t id:enemies(you.pos(),4,true)) {
++        monster *mon=monster_by_mid(id);
++        if(!cells.count(mon->pos())) continue;
++        hurt(*mon,roll_dice(five()?3:2,5+s.inv/3));
++        if(mon->alive()) push(*mon,you.pos(),five()?2:1);
++    }
++}
++}
++
++int change_exhibit(int piece)
++{
++    if(!is(god_id::raden) || five() || piece<0 || piece>2 || piece==s.exhibit || !pay(1,0)) return 0;
++    s.exhibit=piece;return 10;
++}
++int martial_action(monster *target)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::miko)) {
++        if(s.one_end<=now && grd(you.pos())==DNGN_FLOOR && pay(3,0)) {
++            s.centre=you.pos();s.one_end=now+10+200+5*s.inv;s.last_event=now+30;s.regen_fraction=0;return 10;
++        }
++        if(in_shrine() && !five() && now>=s.five_ready && pay(6,10,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+100;
++            s.one_end=max(s.one_end,s.five_end);
++            for(duration_type dur:{DUR_POISONING,DUR_CONF,DUR_SLOW,DUR_AFRAID,DUR_LIQUID_FLAMES,DUR_CORROSION})
++                if(you.duration[dur]) { you.duration[dur]=0;break; }
++            return 10;
++        }
++        if(in_shrine() && s.three_end<=now && pay(3,3,75)) {
++            s.three_end=now+10+50+2*s.inv;return 10;
++        }
++    }
++    if(is(god_id::watame)) {
++        if(!five() && now>=s.five_ready && pay(6,15,120)) {
++            s.five_end=now+5+80+2*s.inv;s.five_ready=s.five_end+300;s.offence=0;return 5;
++        }
++        if(s.three_end<=now && now>=s.three_ready && pay(3,3,75)) {
++            s.resource=3;s.three_end=now+5+60+s.inv;s.three_ready=s.three_end+30;return 5;
++        }
++    }
++    if(is(god_id::vivi)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;return 10;
++        }
++        if(!five() && s.one_end<=now && pay(2,0)) {
++            s.one_end=now+10+150+5*s.inv;return 10;
++        }
++        const auto victims=enemies(you.pos(),five()?3:2);
++        if(!victims.empty() && now>=s.three_ready && pay(3,4,75)) {
++            const int percent=100+((five() || s.one_end>now)?10+s.inv/6:0)+(five()?5*attention():0);
++            for(mid_t id:victims) {
++                monster *mon=monster_by_mid(id);
++                hurt(*mon,div_rand_round(roll_dice(2,6+s.inv/3)*percent,100),BEAM_MAGIC,false,true);
++                if(mon->alive() && now>=s.targets[id].blind_ready
++                    && mons_can_be_blinded(mon->type)
++                    && x_chance_in_y(max(15,min(85,60+2*s.inv-3*mon->get_experience_level())),100)) {
++                    const int duration=20+s.inv/2;
++                    mon->add_ench(mon_enchant(ENCH_BLIND,1,&you,duration));
++                    s.targets[id].blind_ready=now+duration+80;
++                }
++            }
++            s.three_ready=now+50;return 10;
++        }
++    }
++    if(is(god_id::ayame) && target && adjacent(you.pos(),target->pos())) {
++        if(!five() && now>=s.five_ready && pay(5,10,120)) {
++            s.marked=target->mid;s.centre=you.pos();s.five_end=now+10+60+2*s.inv;
++            s.one_end=s.five_end;s.five_ready=s.five_end+100;return 10;
++        }
++        if(now>=s.three_ready && pay(3,3,75)) {
++            s.three_ready=now+20;
++            const mid_t id=target->mid;
++            bool first_hit=false;
++            begin_attack(*target);fight_melee(&you,target,&first_hit);
++            const int delay=you.time_taken;end_attack(delay);
++            target=monster_by_mid(id);
++            if(target && target->alive()) {
++                begin_attack(*target);ctx.double_hit=first_hit;
++                // Suppress auxiliaries on every second swing, including a miss on the first.
++                s.defence=1;fight_melee(&you,target);s.defence=0;end_attack(delay);
++            }
++            return max(1,delay);
++        }
++    }
++    if(is(god_id::raden)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;return 10;
++        }
++        // The baseline policy exhibits painting; defensive pieces become available in the exhibition.
++        const int shield_piece=2;
++        if((five() || s.exhibit==2) && s.shield==0 && now>=s.rest[shield_piece] && pay(3,3,75)) {
++            s.shield=five()?16+s.inv:10+2*s.inv/3;s.three_end=now+10+(five()?60:50);s.rest[2]=now+50;
++            holo_reduce_poison_time(50);
++            for(duration_type dur:{DUR_CONF,DUR_SLOW,DUR_AFRAID}) you.duration[dur]=(you.duration[dur]+1)/2;
++            return 10;
++        }
++        if(target && seen(target->pos()) && grid_distance(you.pos(),target->pos())<=5
++            && (s.exhibit==0 || five()) && s.targets[target->mid].paint>0
++            && now>=s.rest[0] && pay(3,3,75)) {
++            const coord_def origin=target->pos(); const int stacks=s.targets[target->mid].paint;
++            s.targets[target->mid].paint=0;s.rest[0]=now+10+40;
++            const int raw=roll_dice(five()?3:2,6+s.inv/3)+4*stacks;
++            for(mid_t id:enemies(origin,five()?2:1)) hurt(*monster_by_mid(id),raw);
++            if(grid_distance(origin,you.pos())<=(five()?2:1) && line(origin,you.pos())) {
++                const int before=you.hp;
++                ouch(you.apply_ac(raw),KILLED_BY_WILD_MAGIC,you.mid,"painting explosion");
++                s.totals.self_damage+=max(0,before-you.hp);
++            }
++            return 10;
++        }
++        if(target && (five() || s.exhibit==1) && now>=s.rest[1] && pay(3,3,75)) {
++            coord_def d=target->pos()-you.pos();d.x=(d.x>0)-(d.x<0);d.y=(d.y>0)-(d.y<0);
++            sculpture_wave(d);s.rest[1]=now+10+40;return 10;
++        }
++    }
++    if(is(god_id::hajime)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;return 10;
++        }
++        const int distance=grid_distance(you.pos(),target->pos());
++        if(distance>=2 && distance<=3 && now>=s.three_ready && !you.caught()) {
++            coord_def position=you.pos(); std::vector<coord_def> route;
++            for(int step=0;step<2 && !adjacent(position,target->pos());++step) {
++                coord_def d=target->pos()-position;d.x=(d.x>0)-(d.x<0);d.y=(d.y>0)-(d.y<0);
++                position+=d;if(!allowed_step(position)) { route.clear();break; }route.push_back(position);
++            }
++            if(!route.empty() && adjacent(position,target->pos()) && pay(3,3,75)) {
++                const int p=s.resource;s.resource=0;
++                for(coord_def destination:route) {
++                    const coord_def old=you.pos();
++                    if(!you.move_to_pos(destination)) break;
++                    you.apply_location_effects(old);
++                    if(you.hp<=0 || you.cannot_act() || you.caught()) return 10;
++                }
++                if(target->alive() && roll_hit(*target,20+s.inv+2*p)) hurt(*target,roll_dice(2,6+s.inv/3)+3*p);
++                if(five()) for(mid_t id:enemies(you.pos(),1)) hurt(*monster_by_mid(id),roll_dice(2,4+s.inv/3));
++                s.three_ready=now+10+30;return 10;
++            }
++        }
++        // During the ultimate, orbit the target at normal movement cost when possible.
++        if(five() && adjacent(you.pos(),target->pos()) && !you.caught()) {
++            for(int dx=-1;dx<=1;++dx) for(int dy=-1;dy<=1;++dy) {
++                coord_def p=you.pos()+coord_def(dx,dy);
++                if((dx||dy) && allowed_step(p) && adjacent(p,target->pos())) {
++                    const coord_def old=you.pos();you.move_to_pos(p);you.apply_location_effects(old);after_move(old,true);
++                    return player_speed()*player_movement_speed()/10;
++                }
++            }
++        }
++    }
++    return 0;
++}
++
++void martial_tick(int at)
++{
++    if(is(god_id::miko) && s.one_end>at && seen(s.centre)) {
++        const bool inside=grid_distance(s.centre,you.pos())<=radius();
++        while(s.last_event<=at) {
++            if(inside) { s.regen_fraction+=12+s.inv;heal(s.regen_fraction/12);s.regen_fraction%=12; }
++            s.last_event+=20;
++        }
++        if(s.three_end>at) for(mid_t id:enemies(s.centre,radius())) {
++            monster *mon=monster_by_mid(id);
++            if(grid_distance(s.centre,mon->pos())==radius() && s.targets[id].next<=at) {
++                hurt(*mon,roll_dice(1,5+s.inv/4),BEAM_FIRE,false);
++                s.targets[id].next=at+10;
++            }
++        }
++    }
++    if(is(god_id::watame)) {
++        s.regen_fraction+=(27+s.inv)*(s.five_end>at?3:1);
++        heal(s.regen_fraction/90);s.regen_fraction%=90;
++    }
++    if(is(god_id::vivi) && s.five_end>at) {
++        for(mid_t id:enemies(you.pos(),LOS_DEFAULT_RANGE)) {
++            monster *mon=monster_by_mid(id);
++            if(mon->asleep()) mon->behaviour=BEH_SEEK;
++            mon->foe=MHITYOU;mon->target=you.pos();
++        }
++    }
++    if(is(god_id::hajime) && at>=s.one_end) s.resource=0;
++    if(is(god_id::ayame)) {
++        monster *mon=monster_by_mid(s.marked);
++        if(!mon || !mon->alive() || s.one_end<=at) {
++            if(s.five_end>at) { s.five_end=at;s.five_ready=at+100; }
++            s.marked=MID_NOBODY;
++        }
++        else if(s.five_end>at && (grid_distance(s.centre,you.pos())>2 || grid_distance(s.centre,mon->pos())>2)) {
++            s.five_end=at;s.five_ready=at+100;
++        }
++    }
++    if(is(god_id::raden)) {
++        if(at>=s.three_end) s.shield=0;
++        for(auto &p:s.targets) if(p.second.paint_end<=at) p.second.paint=0;
++    }
++}
++void martial_after_attack(monster *target,int)
++{
++    if(is(god_id::ayame) && ctx.kind!=attack_kind::melee && ctx.target!=s.marked && ctx.eligible) {
++        if(five()) { s.five_end=you.elapsed_time;s.five_ready=you.elapsed_time+100; }
++        s.marked=MID_NOBODY;s.one_end=0;
++    }
++    if(is(god_id::ayame) && ctx.kind==attack_kind::melee && target && target->alive() && target->attitude==ATT_HOSTILE) {
++        if(s.marked!=ctx.target && five()) { s.five_end=you.elapsed_time;s.five_ready=you.elapsed_time+100; }
++        s.marked=ctx.target;s.one_end=five()?s.five_end:you.elapsed_time+30;
++    }
++    if(is(god_id::raden) && ctx.damaged && target && target->alive()
++        && (s.exhibit==0 || five()) && you.elapsed_time>=s.rest[0]) {
++        auto &t=s.targets[ctx.target];
++        if(t.paint>0) hurt(*target,roll_dice(1,2+s.inv/6),BEAM_MAGIC,false);
++        if(target->alive()) { t.paint=min(3,t.paint+1);t.paint_end=you.elapsed_time+60; }
++    }
++}
++void martial_move(const coord_def &old,bool voluntary)
++{
++    if(!is(god_id::hajime) || !voluntary || you.confused() || you.cannot_act() || old==you.pos()) return;
++    for(mid_t id:enemies(you.pos(),1)) {
++        const monster &mon=*monster_by_mid(id);
++        if(eligible(mon) && grid_distance(old,mon.pos())<=2 && line(old,mon.pos())) {
++            s.resource=min(3,s.resource+1);s.one_end=you.elapsed_time+30;break;
++        }
++    }
++    if(five()) for(mid_t id:enemies(you.pos(),1)) hurt(*monster_by_mid(id),roll_dice(2,4+s.inv/3));
++}
++void martial_kill(mid_t mid,int,bool direct,bool ordinary)
++{
++    if(is(god_id::raden) && direct && ordinary && (s.exhibit==2 || five())
++        && you.elapsed_time>=s.rest[2] && you.elapsed_time>=s.proc_ready) {
++        heal(2+s.inv/6);s.proc_ready=you.elapsed_time+20;
++    }
++    if(is(god_id::ayame) && five() && mid==s.marked) {
++        if(direct && ordinary && ctx.kind==attack_kind::melee) {
++            s.three_ready=you.elapsed_time;
++            you.magic_points=min(you.max_magic_points,you.magic_points+3+s.inv/6);
++        }
++        s.five_end=you.elapsed_time;s.five_ready=you.elapsed_time+100;
++    }
++}
++int martial_incoming(int damage,kill_method_type kind,mid_t source)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::miko) && in_shrine() && five())
++        damage=damage>0?max(1,div_rand_round(damage*(100-15-s.inv/3),100)):0;
++    if(is(god_id::miko) && in_shrine() && you.piety>=75 && kind==KILLED_BY_BEAM) {
++        const monster *mon=monster_by_mid(source);
++        if(mon && grid_distance(s.centre,mon->pos())>radius())
++            damage=damage>0?max(1,div_rand_round(damage*(90-s.inv/3),100)):0;
++    }
++    if(is(god_id::raden) && s.three_end>now && s.shield>0) {
++        const int absorbed=min(damage,s.shield);damage-=absorbed;s.shield-=absorbed;s.totals.absorbed+=absorbed;
++    }
++    if(is(god_id::watame)) {
++        if((kind==KILLED_BY_MONSTER || kind==KILLED_BY_BEAM) && s.three_end>now && s.resource>0) {
++            const int absorbed=min(5+s.inv/3,damage*4/10);
++            if(absorbed>0) { damage-=absorbed;--s.resource;s.totals.absorbed+=absorbed; }
++            if(!s.resource) { s.three_end=now;s.three_ready=now+30; }
++        }
++        if(five() && !s.offence && damage>=you.hp && you.hp>0) {
++            damage=you.hp-1;s.offence=1;s.tertiary=max(1,you.hp_max*15/100);++s.totals.procs;
++        }
++    }
++    return damage;
++}
++}
+diff --git a/crawl-ref/source/holo-batch-resources.cc b/crawl-ref/source/holo-batch-resources.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..363e3cbfd44065a7f852b41e99b33b2c7bb415fa
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-resources.cc
+@@ -0,0 +1,289 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include "monster.h"
++#include "fight.h"
++#include "food.h"
++#include "holocrawl.h"
++#include "mon-ench.h"
++#include "mon-util.h"
++#include "player.h"
++namespace holo_batch {
++bool mental_immune(const monster &mon)
++{ return mons_intel(mon)==I_BRAINLESS && !(mon.holiness()&MH_NATURAL); }
++namespace {
++bool valid(monster *mon,int range=5) {
++    return mon && mon->alive() && mon->attitude==ATT_HOSTILE
++        && you.can_see(*mon) && grid_distance(you.pos(),mon->pos())<=range && seen(mon->pos());
++}
++void root(monster &mon,int duration) {
++    if(!mon.is_stationary() && mon.res_constrict()<3)
++        s.targets[mon.mid].root=you.elapsed_time+duration;
++}
++void charm_end(int at) {
++    monster *mon=monster_by_mid(s.marked);
++    if(mon && mon->alive()) {
++        mon->attitude=ATT_HOSTILE;mon->foe=MHITYOU;mon->target=you.pos();mon->behaviour=BEH_SEEK;
++        s.targets[mon->mid].immune=at+150;
++    }
++    s.secondary=0;s.marked=MID_NOBODY;s.five_ready=at+100;
++}
++void chill(monster &mon,int n,int at) {
++    auto &t=s.targets[mon.mid];t.stacks=min(4,t.stacks+n);t.expires=at+50;
++    if(t.stacks==4 && t.immune<=at && mon.res_cold()<3 && mon.res_constrict()<3) {
++        root(mon,10);t.stacks=2;t.immune=at+60;
++    }
++}
++coord_def direction(monster &mon) {
++    coord_def d=mon.pos()-you.pos();return coord_def((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
++}
++bool cone(const coord_def &pos,const coord_def &dir,int range) {
++    const coord_def d=pos-you.pos();
++    for(int r=1;r<=range;++r) for(int w=1-r;w<r;++w)
++        if(d==coord_def(dir.x*r-dir.y*w,dir.y*r+dir.x*w)) return true;
++    return false;
++}
++}
++int resource_action(monster *target)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::suisei) && valid(target,6)) {
++        const int stars=s.marked==target->mid && s.one_end>now?s.resource:0;
++        bool pending=false;for(const auto &h:s.hazards) if(h.arm>now) pending=true;
++        if(!pending && stars>=3 && pay(6,10,120)) {
++            hazard h;h.pos=target->pos();h.arm=now+30;h.kind=1;h.extra=stars;
++            h.target=s.marked;s.hazards.push_back(h);s.resource=0;return 10;
++        }
++        if(stars>=3 && valid(target,5) && pay(3,3,75)) {
++            const coord_def d=direction(*target);
++            for(mid_t id:enemies(you.pos(),5)) {
++                monster *mon=monster_by_mid(id);const coord_def delta=mon->pos()-you.pos();
++                if(delta.x*d.y!=delta.y*d.x || delta.x*d.x+delta.y*d.y<=0) continue;
++                if(roll_hit(*mon,20+s.inv,false)) {
++                    const bool marked=mon->mid==s.marked;
++                    hurt(*mon,roll_dice(2,8+s.inv/2)+(marked?3*stars:0));
++                    if(marked) s.resource=0;
++                }
++            }
++            return 10;
++        }
++    }
++    if(is(god_id::choco)) {
++        if(s.secondary<0) return 0;
++        if(valid(target) && (s.marked!=target->mid || s.one_end<=now) && pay(2,0)) {
++            s.marked=target->mid;s.resource=1;s.one_end=now+10+100+3*s.inv;return 10;
++        }
++        if(target && target->mid==s.marked && s.one_end>now) {
++            auto &t=s.targets[target->mid];const int stacks=s.resource;
++            if(stacks>=3 && now>=s.five_ready && now>=t.immune && pay(6,12,120)) {
++                s.resource=0;s.one_end=0;
++                if(mental_immune(*target)) {
++                    t.weak_until=now+50;s.five_ready=t.weak_until+100;
++                } else if(x_chance_in_y(max(15,min(85,50+2*s.inv+5*stacks-3*target->get_experience_level())),100)) {
++                    // ENCH_CHARM also changes native summons; change only the selected actor.
++                    target->attitude=ATT_FRIENDLY;target->foe=MHITYOU;target->behaviour=BEH_SEEK;
++                    s.five_end=now+10+max(20,min(80,40+2*s.inv-target->get_experience_level()));
++                    s.secondary=-1;s.regen_fraction=0;s.last_event=-100;s.tertiary=0;
++                } else { t.weak_until=now+30;s.five_ready=now+130; }
++                return 10;
++            }
++            if(stacks>=1 && valid(target,1) && now>=s.three_ready && pay(3,3,75)) {
++                const bool ecstatic=t.root>now,credit=eligible(*target);
++                const bool undead=bool(target->holiness()&MH_UNDEAD),nonliving=bool(target->holiness()&MH_NONLIVING);
++                int raw=roll_dice(2,6+s.inv/3)+3*stacks;if(nonliving) raw/=2;
++                s.resource=0;const int dealt=hurt(*target,raw,BEAM_MAGIC,false,true);
++                if(credit && !nonliving) heal(dealt*(ecstatic?60:40)/(undead?200:100));
++                s.three_ready=now+40;return 10;
++            }
++        }
++    }
++    if(is(god_id::korone) && valid(target,1)) {
++        if(!five() && s.resource>=6 && now>=s.five_ready && pay(5,12,120)) {
++            s.five_end=now+5+60+2*s.inv;s.five_ready=s.five_end+150;s.secondary=0;
++            s.debt_next=s.five_end+10;s.debt_ticks=5;s.offence=s.five_end+50;return 5;
++        }
++        if((five() || (s.resource>=3 && (you.piety<120 || now<s.five_ready))) && now>=s.three_ready && pay(2,2,75)) {
++            if(!five()) s.resource-=3;
++            s.defence=1;begin_attack(*target);fight_melee(&you,target);
++            const int aut=you.time_taken;const bool hit=ctx.primary;const mid_t id=target->mid;
++            end_attack(aut);s.defence=0;target=monster_by_mid(id);
++            if(hit && target && target->alive()) { s.marked=id;s.targets[id].slowed_until=now+aut+20+s.inv; }
++            s.three_ready=now+aut+30;return max(1,aut);
++        }
++    }
++    if(is(god_id::okayu)) {
++        if(s.resource<75 && now>=s.one_ready) for(int slot=0;slot<ENDOFPACK;++slot) {
++            item_def &food=you.inv[slot];
++            if(food.defined() && food.base_type==OBJ_FOOD && can_eat(food,true)) {
++                const int gain=food.sub_type==FOOD_RATION?20:8;
++                if(eat_item(food)) {
++                    s.resource=min(100,s.resource+gain);s.one_ready=now+110;++s.totals.casts;return 10;
++                }
++            }
++        }
++        if(valid(target,3) && s.marked==target->mid && s.one_end>now && s.targets[s.marked].stacks>=2
++            && s.resource>=25 && now>=s.five_ready && pay(5,8,120)) {
++            auto &t=s.targets[s.marked];const bool sleeping=target->asleep();
++            int raw=roll_dice(2,8+s.inv/2)+5*t.stacks;if(sleeping) raw=div_rand_round(raw*130,100);
++            const bool credit=eligible(*target);s.resource-=25;t.stacks=0;s.one_end=0;
++            hurt(*target,raw,BEAM_MAGIC,true,true);
++            if(credit && !target->alive()) s.resource=min(100,s.resource+20);
++            else if(target->alive() && target->asleep()) target->behaviour=BEH_SEEK;
++            s.five_ready=now+60;return 10;
++        }
++        if(valid(target) && (s.marked!=target->mid || s.one_end<=now) && s.resource>=10 && pay(3,2,75)) {
++            s.resource-=10;s.marked=target->mid;s.one_end=now+110+3*s.inv;
++            auto &t=s.targets[s.marked];t.stacks=1;t.next=now+30;t.kind=0;return 10;
++        }
++    }
++    if(is(god_id::lamy)) {
++        if(!five() && s.resource>=61 && now>=s.five_ready && pay(6,12,120)) {
++            s.secondary=s.resource;s.resource=0;
++            const int duration=(60+2*s.inv)*(s.secondary>=61?115:100)/100;
++            s.five_end=now+10+duration;s.five_ready=s.five_end+150;s.last_event=now+30;return 10;
++        }
++        if(!five() && s.resource<60 && pay(2,1)) { s.resource=min(100,s.resource+30);return 10; }
++        if(valid(target,4) && (five() || s.resource>=20) && now>=s.three_ready && pay(3,3,75)) {
++            const bool drunk=!five() && s.resource>=61;if(!five()) s.resource-=20;
++            const coord_def d=direction(*target);
++            for(mid_t id:enemies(you.pos(),4)) {
++                monster *mon=monster_by_mid(id);if(!cone(mon->pos(),d,4)) continue;
++                int raw=roll_dice(2,7+s.inv/3);if(drunk) raw=div_rand_round(raw*115,100);
++                if(hurt(*mon,raw,BEAM_COLD,false,true)>0 && mon->alive()) chill(*mon,2,now);
++            }
++            s.three_ready=now+40;return 10;
++        }
++    }
++    return 0;
++}
++void resource_tick(int at)
++{
++    if(is(god_id::suisei)) {
++        if(at>=s.one_end) s.resource=0;
++        for(auto &h:s.hazards) if(h.arm && h.arm<=at) {
++            h.arm=0;const int raw=roll_dice(3,10+s.inv/2);
++            for(mid_t id:enemies(h.pos,1,false,false)) hurt(*monster_by_mid(id),raw+(id==h.target?5*h.extra:0));
++            if(grid_distance(h.pos,you.pos())<=1 && line(h.pos,you.pos())) {
++                const int before=you.hp;ouch(you.apply_ac(raw),KILLED_BY_WILD_MAGIC,you.mid,"comet impact");
++                s.totals.self_damage+=max(0,before-you.hp);
++            }
++        }
++    }
++    if(is(god_id::choco)) {
++        monster *mon=monster_by_mid(s.marked);
++        if(s.secondary<0 && (!mon || !mon->alive() || at>=s.five_end)) charm_end(at);
++        if(s.secondary>=0 && at>=s.one_end) s.resource=0;
++    }
++    if(is(god_id::korone)) {
++        if(s.five_end && at>=s.five_end && s.secondary!=1) { s.resource=0;s.secondary=1;s.offence=s.five_end+50; }
++        if(s.deferred>0 && at>=s.debt_next && s.debt_ticks>0 && at>=s.five_end) {
++            const int payment=(s.deferred+s.debt_ticks-1)/s.debt_ticks;
++            s.deferred-=payment;--s.debt_ticks;s.debt_next+=10;s.totals.deferred_paid+=payment;
++            internal_damage=true;ouch(payment,KILLED_BY_WILD_MAGIC,you.mid,"deferred endurance damage");internal_damage=false;
++        }
++        if(at>=s.one_end && s.resource>0 && at>=s.five_end && at%10==0) --s.resource;
++    }
++    if(is(god_id::okayu)) {
++        if(at%500==0) s.resource=max(0,s.resource-1);
++        const int maximum=s.resource?4+s.inv/3+s.resource/20:0;s.shield=min(s.shield,maximum);
++        if(at>=s.last_event) { s.shield=min(maximum,s.shield+1);s.last_event+=20; }
++        monster *mon=monster_by_mid(s.marked);
++        if(mon && mon->alive()) {
++            auto &t=s.targets[s.marked];
++            if(t.root && at>=t.root) { if(mon->asleep()) mon->behaviour=BEH_SEEK;t.root=0; }
++            if(at<s.one_end && at>=t.next) {
++                t.next+=20;if(you.can_see(*mon)) t.stacks=min(4,t.stacks+1);
++                if(t.stacks==4 && !t.kind) {
++                    t.kind=1;
++                    if(at>=t.immune) {
++                        t.immune=at+100;
++                        if(!mental_immune(*mon) && mon->can_sleep()
++                            && x_chance_in_y(max(20,min(85,60+2*s.inv-3*mon->get_experience_level())),100)) {
++                            mon->put_to_sleep(&you,0);t.root=at+20;
++                        }
++                    }
++                }
++            }
++        }
++    }
++    if(is(god_id::lamy)) {
++        if(at%20==0 && at>=s.five_end) s.resource=max(0,s.resource-5);
++        if(at<s.five_end && at>=s.last_event) {
++            s.last_event+=20;
++            for(mid_t id:enemies(you.pos(),2)) {
++                monster *mon=monster_by_mid(id);
++                if(hurt(*mon,roll_dice(1,6+s.inv/3)+s.secondary/20,BEAM_COLD,false)>0 && mon->alive()) chill(*mon,1,at);
++            }
++        }
++        for(auto &p:s.targets) if(at>=p.second.expires) p.second.stacks=0;
++    }
++}
++void resource_after_attack(monster *target,int)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::suisei) && ctx.damaged && target && target->alive()) {
++        if(s.marked==MID_NOBODY || s.one_end<=now) { s.resource=0;s.marked=ctx.target; }
++        if(s.marked==ctx.target) { s.resource=min(5,s.resource+1);s.one_end=now+100; }
++    }
++    if(is(god_id::choco) && ctx.damaged && s.secondary>=0 && target && target->alive()
++        && target->mid==s.marked && s.one_end>now) {
++        s.resource=min(5,s.resource+1);s.one_end=now+100+3*s.inv;
++        auto &t=s.targets[s.marked];
++        if(s.resource==5 && t.next<=now && !mental_immune(*target)) { root(*target,10);t.root=now+10;t.next=now+80; }
++    }
++    if(is(god_id::korone)) {
++        if(ctx.eligible && ctx.damaged && ctx.kind==attack_kind::melee && now>=s.offence && !five()) {
++            s.resource=min(6,s.resource+1);s.one_end=now+50;
++        }
++        if(five() && ctx.kind==attack_kind::melee && target && target->alive() && roll_hit(*target,20+s.inv))
++            hurt(*target,roll_dice(1,6+s.inv/2));
++    }
++    if(is(god_id::lamy) && ctx.damaged && target && target->alive() && (s.resource>=20 || five())) {
++        int raw=roll_dice(1,3+s.inv/6);if(!five() && s.resource>=61) raw=div_rand_round(raw*115,100);
++        if(hurt(*target,raw,BEAM_COLD,false)>0 && target->alive()) chill(*target,1,now);
++    }
++}
++void resource_move(const coord_def &,bool) {}
++void resource_kill(mid_t mid,int,bool direct,bool ordinary)
++{
++    if(is(god_id::suisei) && direct && ordinary && ctx.stars_before>0) {
++        s.offence=roll_dice(1,5+2*ctx.stars_before);s.three_end=you.elapsed_time+30;
++    }
++    if(is(god_id::suisei) && s.marked==mid) { s.marked=MID_NOBODY;s.resource=0; }
++    if(is(god_id::okayu) && direct) s.resource=min(100,s.resource+3);
++    if(is(god_id::choco) && s.secondary<0 && s.marked==mid) charm_end(you.elapsed_time);
++}
++int resource_incoming(int damage,kill_method_type kind,mid_t source)
++{
++    const int now=you.elapsed_time;const monster *mon=monster_by_mid(source);
++    const bool hostile=mon && eligible(*mon) && (kind==KILLED_BY_MONSTER || kind==KILLED_BY_BEAM);
++    if(is(god_id::choco) && hostile && s.targets[source].weak_until>now) damage=div_rand_round(damage*80,100);
++    if(is(god_id::korone)) {
++        if(hostile && damage>=max(1,(you.hp_max*3+99)/100) && now>=s.proc_ready && now>=s.offence && !five()) {
++            s.resource=min(6,s.resource+1);s.one_end=now+50;s.proc_ready=now+10;
++        }
++        if(five() && source!=you.mid && (kind==KILLED_BY_MONSTER || kind==KILLED_BY_BEAM)) {
++            const int deferred=damage/4;s.deferred+=deferred;damage-=deferred;
++        }
++    }
++    if(is(god_id::okayu) && hostile) {
++        s.last_event=now+50;const int absorbed=min(s.shield,damage);
++        s.shield-=absorbed;damage-=absorbed;s.totals.absorbed+=absorbed;
++    }
++    return damage;
++}
++void companion_damage(const actor *attacker,int damage)
++{
++    if(!is(god_id::choco) || s.secondary>=0 || !attacker || attacker->mid!=s.marked || damage<=0) return;
++    const int bucket=you.elapsed_time/10;
++    if(s.last_event!=bucket) { s.last_event=bucket;s.tertiary=0; }
++    s.regen_fraction+=15*damage;const int wanted=min(3-s.tertiary,s.regen_fraction/100);
++    s.regen_fraction%=100;s.tertiary+=wanted;heal(wanted);
++}
++void resource_contact(const actor *attacker,beam_type)
++{
++    if(is(god_id::okayu) && attacker && attacker->is_monster()) {
++        const monster *mon=monster_by_mid(attacker->mid);
++        if(mon && eligible(*mon)) s.last_event=you.elapsed_time+50;
++    }
++}
++}
+diff --git a/crawl-ref/source/holo-batch-space.cc b/crawl-ref/source/holo-batch-space.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..16d1651a169934007f71d0cec57858348adc63e9
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-space.cc
+@@ -0,0 +1,210 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include <algorithm>
++#include "act-iter.h"
++#include "env.h"
++#include "fight.h"
++#include "holocrawl.h"
++#include "mon-util.h"
++#include "player.h"
++#include "terrain.h"
++namespace holo_batch {
++namespace {
++bool water(const coord_def &pos,int at) {
++    if(grd(pos)!=DNGN_FLOOR || !seen(pos)) return false;
++    if(s.five_end>at && grid_distance(you.pos(),pos)<=2) return true;
++    for(const auto &h:s.hazards) if(h.kind==20 && h.pos==pos && h.end>at) return true;
++    return false;
++}
++void explosion(const coord_def &origin,int dice,int at,const coord_def *limit=nullptr) {
++    const int raw=roll_dice(dice,8+s.inv/3),fire=raw/2,fragment=raw-fire;
++    std::vector<mid_t> victims;
++    for(monster_iterator mi;mi;++mi) if(mi->alive() && grid_distance(origin,mi->pos())<=1
++        && (!limit || grid_distance(*limit,mi->pos())<=3) && line(origin,mi->pos())) victims.push_back(mi->mid);
++    for(mid_t id:victims) {
++        monster *mon=monster_by_mid(id);if(!mon || !mon->alive()) continue;
++        hurt(*mon,fire,BEAM_FIRE,false,true);if(mon->alive()) hurt(*mon,fragment);
++    }
++    if(grid_distance(origin,you.pos())<=1 && (!limit || grid_distance(*limit,you.pos())<=3) && line(origin,you.pos())) {
++        int damage=resist_adjust_damage(&you,BEAM_FIRE,fire)+you.apply_ac(fragment);
++        if(you.piety>=75 && damage>0) damage=max(1,div_rand_round(damage*75,100));
++        const int before=you.hp;ouch(damage,KILLED_BY_WILD_MAGIC,you.mid,"carrot explosion");
++        s.totals.self_damage+=max(0,before-you.hp);
++    }
++    // Mark for this same logical instant; the caller drains chains without re-entering this vector.
++    for(auto &h:s.hazards) if(h.kind==10 && h.end>at && grid_distance(origin,h.pos)<=1 && line(origin,h.pos)) h.next=at;
++}
++void drain_bombs(int at) {
++    bool again=true;
++    while(again && !holo_benchmark_finished()) {
++        again=false;
++        for(size_t i=0;i<s.hazards.size();++i) {
++            auto &h=s.hazards[i];if(h.kind!=10 || h.end<=at) continue;
++            const monster *mon=monster_at(h.pos);
++            if(h.next>at && !(h.extra==0 && h.arm<=at && mon && mon->attitude==ATT_HOSTILE && !mon->airborne())) continue;
++            const coord_def origin=h.pos;h.end=0;h.next=0;
++            explosion(origin,2,at);again=true;
++        }
++    }
++}
++bool qualifies(const monster &mon) {
++    return mon.alive() && mon.attitude==ATT_HOSTILE && you.can_see(mon)
++        && s.one_end>you.elapsed_time && grid_distance(s.centre,mon.pos())<=2 && line(s.centre,mon.pos());
++}
++}
++int space_action(monster *target)
++{
++    if(!target || !target->alive()) return 0;
++    const int now=you.elapsed_time;
++    if(is(god_id::su)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;s.last_event=now+20;return 10;
++        }
++        if(now>=s.three_ready && grid_distance(you.pos(),target->pos())<=5) {
++            coord_def d=target->pos()-you.pos();d.x=(d.x>0)-(d.x<0);d.y=(d.y>0)-(d.y<0);
++            bool wide=five();std::set<coord_def> cells;
++            for(int r=1;r<=5;++r) {
++                const coord_def p=you.pos()+d*r;if(!in_bounds(p) || feat_is_solid(grd(p)) || !line(you.pos(),p)) break;
++                wide|=water(p,now);
++                cells.insert(p);
++                if(wide) for(int side:{-1,1}) {
++                    const coord_def q=p+coord_def(-d.y*side,d.x*side);
++                    if(in_bounds(q) && seen(q)) cells.insert(q);
++                }
++            }
++            std::vector<mid_t> victims;
++            for(mid_t id:enemies(you.pos(),6,true)) if(cells.count(monster_by_mid(id)->pos())) victims.push_back(id);
++            if(!victims.empty() && pay(3,3,75)) {
++                for(mid_t id:victims) {
++                    monster *mon=monster_by_mid(id);hurt(*mon,roll_dice(2,7+s.inv/3)+(five()?3+s.inv/3:0),BEAM_MISSILE,true,true);
++                    if(mon->alive()) for(int step=0;step<(five()?2:1);++step) if(!move_actor(*mon,mon->pos()+d)) break;
++                }
++                s.three_ready=now+40;return 10;
++            }
++        }
++    }
++    if(is(god_id::towa)) {
++        coord_def aim=target->pos();
++        while(grid_distance(you.pos(),aim)>5) {
++            const coord_def delta=aim-you.pos();aim-=coord_def((delta.x>0)-(delta.x<0),(delta.y>0)-(delta.y<0));
++        }
++        if(s.one_end<=now && grid_distance(aim,target->pos())<=2 && seen(aim) && pay(4,4,75)) {
++            s.centre=aim;s.one_end=now+10+60+2*s.inv;s.resource=4;s.five_end=0;return 10;
++        }
++        if(s.one_end>now && seen(s.centre) && grid_distance(you.pos(),s.centre)<=6
++            && !five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+5+50+2*s.inv;s.one_end=s.five_end;s.five_ready=s.five_end+100;s.resource=8;return 5;
++        }
++    }
++    if(is(god_id::pekora)) {
++        if(now>=s.five_ready && grid_distance(you.pos(),target->pos())<=5 && pay(7,14,120)) {
++            s.centre=target->pos();int index=0;
++            for(int dx=-1;dx<=1 && index<3;++dx) {
++                const coord_def p=target->pos()+coord_def(dx,0);
++                if(!in_bounds(p) || grd(p)!=DNGN_FLOOR || !seen(p)) continue;
++                hazard h;h.pos=p;h.kind=11;h.arm=now+30+10*index++;h.end=h.arm+1;s.hazards.push_back(h);
++            }
++            s.five_ready=now+50+150;return 10;
++        }
++        int count=0;bool armed=false;
++        for(const auto &h:s.hazards) if(h.kind==10 && h.end>now) {
++            ++count;
++            if(h.arm<=now && seen(h.pos) && grid_distance(h.pos,target->pos())<=1) armed=true;
++        }
++        if(armed && pay(2,2,75)) {
++            for(auto &h:s.hazards) if(h.kind==10 && h.end>now && h.arm<=now && seen(h.pos)) h.next=now;
++            drain_bombs(now);return 5;
++        }
++        if(count<(you.piety>=75?5:3)) {
++            // Fixed policy plants in a visible empty cell next to the current enemy.
++            for(int dx=-1;dx<=1;++dx) for(int dy=-1;dy<=1;++dy) {
++                const coord_def p=target->pos()+coord_def(dx,dy);
++                if(!in_bounds(p) || actor_at(p) || grd(p)!=DNGN_FLOOR || !seen(p)
++                    || grid_distance(you.pos(),p)>(you.piety>=75?5:3)) continue;
++                bool occupied=false;for(const auto &h:s.hazards) if(h.kind==10 && h.end>now && h.pos==p) occupied=true;
++                if(!occupied && pay(2,1)) {
++                    hazard h;h.pos=p;h.kind=10;h.arm=now+20;h.end=h.arm+200;h.next=h.end+1;s.hazards.push_back(h);return 10;
++                }
++            }
++        }
++    }
++    return 0;
++}
++void space_tick(int at)
++{
++    if(is(god_id::su) && s.five_end>at && s.last_event<=at) {
++        s.last_event+=10;
++        for(mid_t id:enemies(you.pos(),2)) {
++            monster *mon=monster_by_mid(id);if(water(mon->pos(),at)) hurt(*mon,roll_dice(2,3+s.inv/6));
++        }
++    }
++    if(is(god_id::pekora)) {
++        // Expiry wins ties; delayed bombs and chains may explode without player LOS.
++        for(size_t i=0;i<s.hazards.size();++i) {
++            auto &h=s.hazards[i];if(h.kind==11 && h.arm && h.arm<=at) {
++                const coord_def pos=h.pos;h.arm=0;explosion(pos,3,at,&s.centre);
++            }
++        }
++        drain_bombs(at);
++    }
++    if(is(god_id::towa)) {
++        if(at>=s.one_end) { s.candidates.clear();return; }
++        const int bucket=at/10;
++        if(s.last_event!=bucket) { s.last_event=bucket;s.secondary=0;s.performance_hits.clear(); }
++        for(mid_t id:enemies(you.pos(),LOS_DEFAULT_RANGE)) {
++            if(!s.candidates.count(id) || s.performance_hits.count(id) || s.resource<=0
++                || s.secondary>=(s.five_end>at?2:1)) continue;
++            monster *mon=monster_by_mid(id);if(!qualifies(*mon)) continue;
++            --s.resource;++s.secondary;s.performance_hits.insert(id);
++            if(roll_hit(*mon,22+s.inv)) {
++                hurt(*mon,roll_dice(2,5+s.inv/3));
++                if(mon->alive()) s.targets[id].slowed_until=at+20;
++            }
++        }
++        s.candidates.clear();
++    }
++}
++void space_after_attack(monster *,int)
++{
++    if(!is(god_id::su) || !ctx.damaged || grd(ctx.position)!=DNGN_FLOOR) return;
++    s.hazards.erase(std::remove_if(s.hazards.begin(),s.hazards.end(),[](const hazard &h){return h.pos==ctx.position || h.end<=you.elapsed_time;}),s.hazards.end());
++    if(s.hazards.size()>=12) s.hazards.erase(s.hazards.begin());
++    hazard h;h.pos=ctx.position;h.kind=20;h.end=you.elapsed_time+50+s.inv;s.hazards.push_back(h);
++}
++void space_move(const coord_def &,bool) {}
++void space_monster(monster &mon,const coord_def &old)
++{
++    garden_entry(mon,old);
++    if(is(god_id::pekora) && old!=mon.pos()) drain_bombs(you.elapsed_time);
++    if(is(god_id::towa) && old!=mon.pos() && qualifies(mon)) s.candidates.insert(mon.mid);
++    if(is(god_id::towa) && old!=mon.pos()) s.targets[mon.mid].slowed_until=0;
++    if(is(god_id::ayame) && five() && mon.mid!=s.marked && mon.attitude==ATT_HOSTILE
++        && adjacent(old,mon.pos()) && grid_distance(s.centre,old)>2
++        && grid_distance(s.centre,mon.pos())<=2 && s.targets[mon.mid].next<=you.elapsed_time) {
++        mon.speed_increment-=(20*mon.speed+9)/10;s.targets[mon.mid].next=you.elapsed_time+30;
++    }
++    if(is(god_id::miko) && s.one_end>you.elapsed_time && s.three_end>you.elapsed_time) {
++        const int radius=five()?3:you.piety>=75?2:1;
++        if(grid_distance(s.centre,mon.pos())==radius && grid_distance(s.centre,old)!=radius
++            && s.targets[mon.mid].next<=you.elapsed_time) {
++            hurt(mon,roll_dice(1,5+s.inv/4),BEAM_FIRE,false);s.targets[mon.mid].next=you.elapsed_time+10;
++        }
++    }
++}
++void space_attempt(const actor *attacker,const actor *defender)
++{
++    if(!active() || !attacker || !defender || !defender->is_player() || !attacker->is_monster()) return;
++    if(is(god_id::okayu)) s.last_event=you.elapsed_time+50;
++    if(is(god_id::towa) && qualifies(*attacker->as_monster())) s.candidates.insert(attacker->mid);
++}
++int space_energy(const monster &mon,energy_use_type kind,int base)
++{
++    if(kind!=EUT_MOVE && kind!=EUT_SWIM) return base;
++    int percent=100;
++    if(is(god_id::su) && !mon.airborne() && mons_habitat(mon,true)!=HT_AMPHIBIOUS
++        && mons_habitat(mon,true)!=HT_WATER && mon.res_constrict()<3 && water(mon.pos(),you.elapsed_time)) percent=125;
++    if(is(god_id::towa) && s.targets[mon.mid].slowed_until>you.elapsed_time) percent=150;
++    if(mon.has_ench(ENCH_SLOW)) return base;
++    return (base*percent+99)/100;
++}
++}
+diff --git a/crawl-ref/source/holo-batch-summons.cc b/crawl-ref/source/holo-batch-summons.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..1a0071235298ee5430e59b9b7773782e8d13b187
+--- /dev/null
++++ b/crawl-ref/source/holo-batch-summons.cc
+@@ -0,0 +1,367 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include <algorithm>
++#include <stdexcept>
++#include "act-iter.h"
++#include "beam.h"
++#include "env.h"
++#include "fight.h"
++#include "holocrawl.h"
++#include "mgen-data.h"
++#include "mon-death.h"
++#include "mon-ench.h"
++#include "mon-place.h"
++#include "mon-util.h"
++#include "player.h"
++#include "terrain.h"
++namespace holo_batch {
++namespace {
++companion *find(mid_t id) {
++    if(!active()) return nullptr;
++    for(auto &c:s.companions) if(c.mid==id) return &c;
++    return nullptr;
++}
++void dismiss(companion &c) {
++    monster *mon=monster_by_mid(c.mid);c.expires=0;
++    if(mon && mon->alive()) monster_die(*mon,KILL_DISMISSED,NON_MONSTER,true);
++}
++std::vector<coord_def> empty_cells(const coord_def &origin,int radius) {
++    std::vector<coord_def> cells;
++    for(int r=1;r<=radius;++r) for(int dx=-r;dx<=r;++dx) for(int dy=-r;dy<=r;++dy) {
++        const coord_def p=origin+coord_def(dx,dy);
++        if(max(abs(dx),abs(dy))==r && in_bounds(p) && !actor_at(p) && grd(p)==DNGN_FLOOR && seen(p)) cells.push_back(p);
++    }
++    return cells;
++}
++bool spawn(const coord_def &pos,int kind,int end,bool extra=false) {
++    // Native rats supply a single ordinary physical melee attack and no spells/brands.
++    // Flight, stationary behavior, stats and first-action scheduling are set explicitly below.
++    mgen_data mg(MONS_RAT,BEH_FRIENDLY,pos,MHITNOT,MG_FORCE_PLACE);
++    mg.extra_flags|=MF_NO_REWARD|MF_HARD_RESET;mg.summoner=&you;
++    mg.mname=kind==1?"Holo rose":kind==2?"Holo fox image":"Holo raven";
++    monster *mon=create_monster(mg,false);if(!mon) return false;
++    companion c;c.mid=mon->mid;c.kind=kind;c.expires=end;c.natural_end=end;c.extra=extra;c.next=you.elapsed_time+20;
++    if(kind==3 && five()) c.shield=6+s.inv/3;
++    s.companions.push_back(c);
++    mon->hit_points=mon->max_hit_points=kind==2?1:12+s.inv;
++    mon->speed=10;mon->speed_increment=0;
++    if(kind==3) mon->add_ench(mon_enchant(ENCH_FLIGHT,1,&you,end-you.elapsed_time+10));
++    ++s.totals.summons;return true;
++}
++int count() {
++    int n=0;for(auto &c:s.companions) {
++        const monster *mon=monster_by_mid(c.mid);if(mon && mon->alive() && c.expires>you.elapsed_time) ++n;
++    } return n;
++}
++void foxfire(monster &fox,monster &target,int raw,bool automatic) {
++    if(raw<=0 || !target.alive() || !line(fox.pos(),target.pos())) return;
++    if(!automatic && !roll_hit_from(fox,target,20+s.inv)) return;
++    hurt(target,raw/2,BEAM_FIRE,false);
++    if(target.alive()) hurt(target,raw-raw/2);
++}
++void deceive(companion &c) {
++    monster *fox=monster_by_mid(c.mid);if(!fox) return;
++    const int now=you.elapsed_time;
++    for(mid_t id:enemies(fox->pos(),4)) {
++        monster *mon=monster_by_mid(id);auto &t=s.targets[id];
++        if(t.immune>now || !mon->can_see(*fox) || (five() && s.performance_hits.count(id))) continue;
++        if(five()) {
++            std::vector<mid_t> images;
++            for(const auto &image:s.companions) {
++                const monster *other=monster_by_mid(image.mid);
++                if(other && other->alive() && grid_distance(mon->pos(),other->pos())<=4 && mon->can_see(*other)) images.push_back(image.mid);
++            }
++            if(images.empty() || images[id%images.size()]!=c.mid) continue;
++        }
++        t.immune=now+40;if(five()) s.performance_hits.insert(id);
++        if(x_chance_in_y(max(20,min(85,65+2*s.inv-3*mon->get_experience_level())),100)) {
++            t.raven_hits.clear();t.raven_hits[c.mid]=now+30;
++            mon->foe=fox->mindex();mon->target=fox->pos();mon->behaviour=BEH_SEEK;
++        }
++    }
++}
++int garden_radius(int at) { return s.three_end>at?3:you.piety>=75?2:1; }
++bool garden(const coord_def &pos,int at) {
++    return s.one_end>at && s.one_ready<=at && grd(pos)==DNGN_FLOOR
++        && grid_distance(s.centre,pos)<=garden_radius(at) && line(s.centre,pos);
++}
++}
++int summon_action(monster *target)
++{
++    const int now=you.elapsed_time;
++    if(is(god_id::aki)) {
++        if(s.one_end<=now && target && you.can_see(*target) && pay(3,0)) {
++            for(auto &c:s.companions) dismiss(c);
++            s.centre=target->pos();
++            while(grid_distance(you.pos(),s.centre)>4) {
++                const coord_def delta=s.centre-you.pos();s.centre-=coord_def((delta.x>0)-(delta.x<0),(delta.y>0)-(delta.y<0));
++            }
++            s.one_ready=now+20;s.one_end=s.one_ready+200+5*s.inv;
++            s.last_event=s.one_ready;s.proc_ready=s.one_ready+20;return 10;
++        }
++        if(s.one_end>now && seen(s.centre) && grid_distance(you.pos(),s.centre)<=6) {
++            if(now>=s.five_ready && s.one_ready<=now && pay(6,12,120)) {
++                s.three_end=now+70;s.five_end=now+50;s.five_ready=now+160;
++                for(mid_t id:enemies(s.centre,3)) {
++                    monster *mon=monster_by_mid(id);auto &t=s.targets[id];const int stacks=min(3,t.stacks+1);
++                    if(grd(mon->pos())!=DNGN_FLOOR) continue;
++                    t.stacks=0;if(stacks==3 && mon->res_constrict()<3) t.root=now+20;
++                    hurt(*mon,roll_dice(2,8+s.inv/2)+6*stacks);
++                }
++                return 10;
++            }
++            if(count()<2) {
++                std::vector<coord_def> cells;
++                for(const coord_def &p:empty_cells(s.centre,garden_radius(now)))
++                    if(garden(p,now) && grid_distance(you.pos(),p)<=6) cells.push_back(p);
++                if(cells.size()>=2 && pay(4,3,75)) {
++                    spawn(cells[0],1,now+10+80+3*s.inv);spawn(cells[1],1,now+10+80+3*s.inv);return 10;
++                }
++            }
++        }
++    }
++    if(is(god_id::fubuki)) {
++        if(!five() && now>=s.five_ready && pay(6,12,120)) {
++            s.five_end=now+10+40+s.inv;s.five_ready=s.five_end+100;s.performance_hits.clear();
++            for(auto &c:s.companions) c.expires=max(c.expires,s.five_end);
++            const auto cells=empty_cells(you.pos(),3);
++            for(const coord_def &p:cells) {
++                if(count()>=4) break;
++                spawn(p,2,s.five_end,true);
++            }
++            for(auto &c:s.companions) if(c.kind==2) deceive(c);
++            return 10;
++        }
++        if(!five() && count()<(you.piety>=75?2:1)) {
++            const auto cells=empty_cells(you.pos(),4);
++            if(!cells.empty() && pay(3,1)) {
++                spawn(cells.front(),2,now+10+60+3*s.inv);deceive(s.companions.back());return 10;
++            }
++        }
++        if(now>=s.three_ready && you.hp*2<you.hp_max && !you.no_tele(true,false)) {
++            for(auto &c:s.companions) {
++                monster *fox=monster_by_mid(c.mid);
++                if(!fox || !fox->alive() || !seen(fox->pos()) || grid_distance(you.pos(),fox->pos())>5) continue;
++                if(pay(3,3,75)) {
++                    const coord_def old=you.pos(),dest=fox->pos();
++                    // Remove the image from the grid while moving the player, preserving its lifetime.
++                    mgrd(dest)=NON_MONSTER;you.move_to_pos(dest);fox->moveto(old);mgrd(old)=fox->mindex();
++                    you.apply_location_effects(old);
++                    for(mid_t id:enemies(old,1)) foxfire(*fox,*monster_by_mid(id),roll_dice(1,6+s.inv/3),true);
++                    s.three_ready=now+5+30;return 5;
++                }
++            }
++        }
++    }
++    if(is(god_id::lui)) {
++        if(!five() && now>=s.five_ready && pay(7,14,120)) {
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;
++            for(auto &c:s.companions) {
++                c.expires=max(c.expires,s.five_end);c.shield=6+s.inv/3;
++            }
++            for(const coord_def &p:empty_cells(you.pos(),2)) {
++                if(count()>=6) break;
++                spawn(p,3,s.five_end,true);
++            }
++            return 10;
++        }
++        if(count()<(five()?6:you.piety>=75?3:2)) {
++            const auto cells=empty_cells(you.pos(),1);
++            if(!cells.empty() && pay(3,0)) { spawn(cells.front(),3,now+10+120+4*s.inv,count()>=3);return 10; }
++        }
++        if(target && target->alive() && seen(target->pos()) && grid_distance(you.pos(),target->pos())<=5 && now>=s.three_ready) {
++            bool possible=false;
++            for(auto &c:s.companions) {
++                monster *raven=monster_by_mid(c.mid);
++                if(raven && raven->alive() && grid_distance(raven->pos(),target->pos())<=4
++                    && !empty_cells(target->pos(),1).empty() && line(raven->pos(),target->pos())) possible=true;
++            }
++            if(possible && pay(3,3,75)) {
++                for(auto &c:s.companions) {
++                    monster *raven=monster_by_mid(c.mid);
++                    if(!raven || !raven->alive() || !target->alive() || grid_distance(raven->pos(),target->pos())>4) continue;
++                    const auto cells=empty_cells(target->pos(),1);
++                    for(const coord_def &p:cells) if(line(raven->pos(),p)) {
++                        raven->move_to_pos(p);raven->foe=target->mindex();raven->target=target->pos();
++                        if(roll_hit_from(*raven,*target,21+s.inv)) {
++                            summon_hit(raven,target);hurt(*target,roll_dice(1,5+s.inv/3)+3+s.inv/6);
++                        }
++                        c.next=now+20;raven->speed_increment=0;break;
++                    }
++                }
++                s.three_ready=now+50;return 10;
++            }
++        }
++    }
++    return 0;
++}
++void summon_tick(int at)
++{
++    for(auto &c:s.companions) {
++        monster *mon=monster_by_mid(c.mid);if(!mon || !mon->alive()) continue;
++        if(c.expires<=at || ((is(god_id::lui)||is(god_id::fubuki)) && c.extra && at>=s.five_end)
++            || (is(god_id::aki) && at>=s.one_end)) { dismiss(c);continue; }
++        if(is(god_id::lui) && at>=s.five_end) { c.shield=0;if(c.natural_end<=at) { dismiss(c);continue; } }
++        if(c.kind==1 && c.next<=at) {
++            c.next+=s.five_end>at?10:15;
++            mid_t best=MID_NOBODY;int stacks=-1;
++            for(mid_t id:enemies(mon->pos(),s.five_end>at?5:4)) {
++                monster *enemy=monster_by_mid(id);
++                if(garden(enemy->pos(),at) && s.targets[id].stacks>stacks) { best=id;stacks=s.targets[id].stacks; }
++            }
++            monster *enemy=monster_by_mid(best);
++            if(enemy) {
++                bolt thorn;thorn.source=mon->pos();thorn.target=enemy->pos();thorn.range=s.five_end>at?5:4;
++                thorn.flavour=thorn.real_flavour=BEAM_MISSILE;thorn.damage=dice_def(1,4+s.inv/3);
++                thorn.hit=18+s.inv;thorn.name="rose thorn";thorn.set_agent(mon);thorn.thrower=KILL_MON_MISSILE;
++                thorn.animate=false;thorn.fire();++s.totals.hits;
++            }
++        }
++    }
++    if(is(god_id::aki)) {
++        if(s.one_end>at && at>=s.one_ready && at>=s.three_end) {
++            for(mid_t id:enemies(s.centre,garden_radius(at),false,false)) {
++                monster *mon=monster_by_mid(id);if(!garden(mon->pos(),at)) continue;
++                auto &t=s.targets[id];
++                if(t.next<=at) { t.stacks=min(3,t.stacks+1);t.expires=at+60;t.next=at+10; }
++            }
++        }
++        if(at>=s.proc_ready) {
++            s.proc_ready+=20;
++            for(auto &entry:s.targets) {
++                auto &t=entry.second;monster *mon=monster_by_mid(entry.first);
++                if(at>=t.expires) t.stacks=0;
++                if(mon && mon->alive() && t.stacks>0) hurt(*mon,roll_dice(1,2+s.inv/6)+t.stacks);
++            }
++        }
++    }
++    if(is(god_id::fubuki)) for(auto &h:s.hazards) if(h.kind==31 && h.arm && h.arm<=at) {
++        h.arm=0;monster *mon=monster_by_mid(h.target);if(mon && mon->alive()) {
++            hurt(*mon,h.extra/2,BEAM_FIRE,false);if(mon->alive()) hurt(*mon,h.extra-h.extra/2);
++        }
++    }
++}
++void summon_after_attack(monster *target,int aut)
++{
++    if(!is(god_id::fubuki) || !target || !target->alive() || aut<=0) return;
++    const mid_t id=target->mid;
++    for(auto &c:s.companions) {
++        target=monster_by_mid(id);monster *fox=monster_by_mid(c.mid);
++        if(target && target->alive() && fox && fox->alive() && you.can_see(*target) && you.can_see(*fox)
++            && grid_distance(fox->pos(),target->pos())<=(five()?5:4))
++            foxfire(*fox,*target,div_rand_round(roll_dice(1,6+s.inv/3)*min(aut,10),10),false);
++    }
++}
++void garden_entry(monster &mon,const coord_def &old)
++{
++    const int now=you.elapsed_time;
++    if(!is(god_id::aki) || mon.attitude!=ATT_HOSTILE || !garden(mon.pos(),now)
++        || garden(old,now) || s.three_end>now) return;
++    auto &t=s.targets[mon.mid];
++    if(t.next<=now) { t.stacks=min(3,t.stacks+1);t.expires=now+60;t.next=now+10; }
++}
++bool summon_before_monster(monster &mon)
++{
++    if(!active()) return true;
++    companion *c=find(mon.mid);
++    if(c) {
++        if(c->kind!=3 || c->next>you.elapsed_time) { mon.speed_increment=0;return false; }
++        const auto ids=enemies(mon.pos(),LOS_DEFAULT_RANGE);
++        if(!ids.empty()) { monster *enemy=monster_by_mid(ids.front());mon.foe=enemy->mindex();mon.target=enemy->pos();mon.behaviour=BEH_SEEK; }
++        else if(grid_distance(mon.pos(),you.pos())<=2) { mon.speed_increment=0;return false; }
++        return true;
++    }
++    if(is(god_id::fubuki)) {
++        auto &t=s.targets[mon.mid];bool decoy=false;
++        for(const auto &entry:t.raven_hits) {
++            monster *fox=monster_by_mid(entry.first);
++            if(entry.second>you.elapsed_time && fox && fox->alive() && mon.can_see(*fox)) {
++                mon.foe=fox->mindex();mon.target=fox->pos();mon.behaviour=BEH_SEEK;decoy=true;break;
++            }
++        }
++        if(!decoy) { mon.foe=MHITYOU;mon.target=you.pos(); }
++    }
++    return true;
++}
++int summon_energy(const monster &mon,energy_use_type kind,int base)
++{
++    const companion *c=find(mon.mid);
++    if(c && c->kind==3) return kind==EUT_MOVE || kind==EUT_SWIM ? (five()?6:8):10;
++    if(is(god_id::aki) && (kind==EUT_MOVE || kind==EUT_SWIM) && !mon.has_ench(ENCH_SLOW)) {
++        const auto &t=s.targets[mon.mid];if(t.expires>you.elapsed_time) return (base*(100+15*t.stacks)+99)/100;
++    }
++    return base;
++}
++bool summon_stationary(const monster &mon) { const companion *c=find(mon.mid);return c && c->kind!=3; }
++bool custom_monster(const monster &mon,int &hp,int &ac,int &ev,int &hit,int &damage)
++{
++    const companion *c=find(mon.mid);if(!c) return false;
++    hp=c->kind==2?1:12+s.inv;ac=c->kind==1?2:c->kind==2?0:1;
++    ev=c->kind==1?0:c->kind==2?10+s.inv/3:14+s.inv/3+(five()?4:0);
++    hit=16+s.inv;damage=c->kind==3?5+s.inv/3:0;return true;
++}
++int companion_hurt(monster &mon,const actor *source,int damage)
++{
++    companion *c=find(mon.mid);if(!c || damage<=0) return damage;
++    const int absorbed=min(c->shield,damage);c->shield-=absorbed;damage-=absorbed;s.totals.absorbed+=absorbed;
++    if(c->kind==2 && five() && damage>0 && source && source->is_monster()
++        && source->as_monster()->attitude==ATT_HOSTILE && grid_distance(source->pos(),mon.pos())<=5
++        && line(source->pos(),mon.pos()) && s.targets[source->mid].next<=you.elapsed_time) {
++        s.targets[source->mid].next=you.elapsed_time+10;
++        hazard h;h.kind=31;h.target=source->mid;h.arm=you.elapsed_time+1;h.extra=roll_dice(1,6+s.inv/3);s.hazards.push_back(h);
++    }
++    return damage;
++}
++bool passable_companion(const actor *actor) { const companion *c=actor?find(actor->mid):nullptr;return c && c->kind==2; }
++void expire_passable_at(const coord_def &pos) {
++    monster *mon=monster_at(pos);companion *c=mon?find(mon->mid):nullptr;if(c && c->kind==2) dismiss(*c);
++}
++bool swap_companion(const coord_def &destination)
++{
++    monster *mon=monster_at(destination);const companion *c=mon?find(mon->mid):nullptr;
++    if(!c || c->kind==2 || !adjacent(you.pos(),destination)
++        || (c->kind==1 && (!garden(you.pos(),you.elapsed_time) || !garden(destination,you.elapsed_time)))) return false;
++    const coord_def old=you.pos();mgrd(destination)=NON_MONSTER;
++    you.move_to_pos(destination);mon->moveto(old);mgrd(old)=mon->mindex();
++    you.apply_location_effects(old);mon->apply_location_effects(destination,KILL_MISC,NON_MONSTER);return true;
++}
++void summon_hit(const actor *source,const actor *target) {
++    if(!is(god_id::lui) || you.piety<75 || !source || !target || !target->is_monster()) return;
++    const companion *c=find(source->mid);if(c && c->kind==3) s.targets[target->mid].raven_hits[source->mid]=you.elapsed_time+30;
++}
++void validate_summons()
++{
++    const auto require=[](bool ok,const char *message) { if(!ok) throw std::runtime_error(std::string("Companion native fixture: ")+message); };
++    holo_reset_validation_fixture();reset("fubuki",12);you.piety=60;
++    require(summon_action(nullptr)==10 && count()==1,"single image does not spawn");
++    monster *fox=monster_by_mid(s.companions.front().mid);
++    require(fox && fox->hit_points==1 && fox->evasion()==14 && passable_companion(fox),"image has wrong native HP/EV/passability");
++    const coord_def image=fox->pos();expire_passable_at(image);
++    require(!monster_at(image) && count()==0,"walking through an image leaves an occupied cell");
++    holo_reset_validation_fixture();reset("lui",12);
++    require(summon_action(nullptr)==10 && count()==6,"army does not create six native actors");
++    monster *raven=monster_by_mid(s.companions.front().mid);
++    require(raven && raven->hit_points==24 && raven->armour_class()==1 && raven->evasion()==22
++        && raven->airborne() && !eligible(*raven),"raven stats/flight/XP isolation are wrong");
++    raven->speed_increment=10;you.elapsed_time=10;
++    require(!summon_before_monster(*raven) && raven->speed_increment==0,"raven acts during its summoning turn");
++    you.elapsed_time=20;require(summon_before_monster(*raven),"raven never becomes ready");
++    require(monster_energy(*raven,EUT_MOVE,10)==6 && monster_energy(*raven,EUT_ATTACK,10)==10,"army accelerates attacks instead of movement");
++    monster *enemy=nullptr;for(monster_iterator mi;mi;++mi) if(mi->attitude==ATT_HOSTILE) enemy=*mi;
++    const int hp=raven->hit_points;raven->hurt(enemy,5);
++    require(raven->hit_points==hp && s.companions.front().shield==5,"raven barrier misses native incoming HP damage");
++    const coord_def player_old=you.pos(),raven_old=raven->pos();
++    require(swap_companion(raven_old) && you.pos()==raven_old && raven->pos()==player_old
++        && monster_at(player_old)==raven,"native companion swap corrupts occupancy");
++    enemy->type=MONS_IRON_DRAGON;
++    require(raven->move_to_pos(enemy->pos()+coord_def(1,1)),"zero-damage raven fixture landing is occupied");
++    bool zero_raven=false;
++    for(int attempt=0;attempt<30 && !zero_raven;++attempt) {
++        s.targets[enemy->mid].raven_hits.clear();const int hp_before=enemy->hit_points;
++        bool hit=false;fight_melee(raven,enemy,&hit);zero_raven=hit && enemy->hit_points==hp_before;
++        if(zero_raven) require(s.targets[enemy->mid].raven_hits.count(raven->mid)==1,
++            "native armour-zero raven hit fails to contribute distraction");
++    }
++    require(zero_raven,"raven-zero native fixture did not exercise its branch");
++}
++}
+diff --git a/crawl-ref/source/holo-batch.cc b/crawl-ref/source/holo-batch.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..d6cbdf765d3feaba844519bce5bed98dc2ecdca8
+--- /dev/null
++++ b/crawl-ref/source/holo-batch.cc
+@@ -0,0 +1,482 @@
++#include "AppHdr.h"
++#include "holo-batch-internal.h"
++#include <algorithm>
++#include <stdexcept>
++#include "act-iter.h"
++#include "env.h"
++#include "fight.h"
++#include "holocrawl.h"
++#include "los.h"
++#include "melee-attack.h"
++#include "mon-util.h"
++#include "mon-tentacle.h"
++#include "player.h"
++#include "spl-cast.h"
++#include "terrain.h"
++#include "traps.h"
++
++namespace holo_batch {
++state s;
++action_context ctx;
++bool internal_damage=false;
++bool active() { return s.god!=god_id::none && holo_benchmark_active(); }
++bool is(god_id id) { return active() && s.god==id; }
++bool five() { return active() && s.five_end>you.elapsed_time; }
++const metrics &get_metrics() { return s.totals; }
++std::vector<std::string> implemented()
++{
++    return {"suisei","miko","aki","fubuki","ayame","choco","korone","okayu","pekora",
++        "watame","towa","lamy","polka","koyori","lui","raden","hajime","su","vivi","mela"};
++}
++void reset(const std::string &name,int invocation)
++{
++    s=state(); ctx=action_context(); internal_damage=false;
++    if (name.empty()) return;
++    const std::map<std::string,god_id> names={
++        {"suisei",god_id::suisei},{"miko",god_id::miko},{"aki",god_id::aki},
++        {"fubuki",god_id::fubuki},{"ayame",god_id::ayame},{"choco",god_id::choco},
++        {"korone",god_id::korone},{"okayu",god_id::okayu},{"pekora",god_id::pekora},
++        {"watame",god_id::watame},{"towa",god_id::towa},{"lamy",god_id::lamy},
++        {"polka",god_id::polka},{"koyori",god_id::koyori},{"lui",god_id::lui},
++        {"raden",god_id::raden},{"hajime",god_id::hajime},{"su",god_id::su},
++        {"vivi",god_id::vivi},{"mela",god_id::mela}};
++    const auto ready=implemented();
++    if (std::find(ready.begin(),ready.end(),name)==ready.end())
++        throw std::runtime_error("Unimplemented combat core requested: "+name);
++    s.god=names.at(name); s.inv=invocation;
++    for(monster_iterator mi;mi;++mi) if(eligible(**mi)) s.eligible_sources.insert(mi->mid);
++    s.next_tick=you.elapsed_time+1;
++    if (s.god==god_id::okayu) { s.resource=30;s.shield=4+s.inv/3+1;s.last_event=you.elapsed_time+50; }
++}
++bool eligible(const monster &mon)
++{
++    return !mon.is_summoned() && mons_gives_xp(mon,you) && mon.attitude==ATT_HOSTILE;
++}
++bool line(const coord_def &from,const coord_def &to)
++{ return from==to || exists_ray(from,to,opc_solid_see); }
++bool seen(const coord_def &pos) { return you.see_cell(pos) && line(you.pos(),pos); }
++std::vector<mid_t> enemies(const coord_def &origin,int radius,bool far,bool require_seen)
++{
++    std::vector<mid_t> ids;
++    for (monster_iterator mi;mi;++mi)
++        if (mi->alive() && mi->attitude==ATT_HOSTILE && (!require_seen || you.can_see(**mi))
++            && grid_distance(origin,mi->pos())<=radius && line(origin,mi->pos()))
++            ids.push_back(mi->mid);
++    std::sort(ids.begin(),ids.end(),[&](mid_t a,mid_t b) {
++        const monster *ma=monster_by_mid(a),*mb=monster_by_mid(b);
++        int da=grid_distance(origin,ma->pos()),db=grid_distance(origin,mb->pos());
++        if(da!=db) return far ? da>db : da<db;
++        if(ma->pos().x!=mb->pos().x) return ma->pos().x<mb->pos().x;
++        return ma->pos().y<mb->pos().y;
++    });
++    return ids;
++}
++int hurt(monster &mon,int raw,beam_type flavour,bool ac,bool direct)
++{
++    if (!mon.alive()) return 0;
++    int amount=ac ? mon.apply_ac(raw) : raw;
++    if (flavour!=BEAM_MISSILE && flavour!=BEAM_MAGIC)
++        amount=resist_adjust_damage(&mon,flavour,amount);
++    const mid_t id=mon.mid; const int hd=mon.get_experience_level();
++    const bool credit=eligible(mon);
++    ++s.totals.hits;
++    const int dealt=mon.hurt(&you,max(0,amount),flavour);
++    s.totals.damage+=dealt;
++    if (credit && !mon.alive()) on_kill(id,hd,direct,false);
++    return dealt;
++}
++int heal(int amount)
++{
++    if (amount<=0 || you.hp<=0 || you.duration[DUR_DEATHS_DOOR]) return 0;
++    const int gain=min(amount,you.hp_max-you.hp);
++    if (gain>0) you.heal(gain);
++    s.totals.healed+=gain;
++    return gain;
++}
++class strike_probe:public melee_attack {
++public:
++    strike_probe(actor &source,monster &mon):melee_attack(&source,&mon) {}
++    bool hits(int accuracy,bool shields) {
++        to_hit=random2(accuracy+1);
++        return (!shields || !attack_shield_blocked(false))
++            && test_hit(to_hit,defender->evasion(ev_ignore::none,&you),true)>=0;
++    }
++};
++bool roll_hit(monster &mon,int accuracy,bool shield)
++{ strike_probe probe(you,mon); return probe.hits(accuracy,shield); }
++bool roll_hit_from(actor &source,monster &mon,int accuracy,bool shield)
++{ strike_probe probe(source,mon);return probe.hits(accuracy,shield); }
++bool move_actor(monster &mon,const coord_def &destination)
++{
++    if (!mon.alive() || mon.is_stationary() || mons_is_tentacle_or_tentacle_segment(mon.type)
++        || !in_bounds(destination) || actor_at(destination) || trap_at(destination)
++        || !mon.can_pass_through(destination) || !mon.is_habitable(destination)) return false;
++    const coord_def old=mon.pos();
++    if(!mon.move_to_pos(destination)) return false;
++    mon.apply_location_effects(old,KILL_YOU,MHITYOU);
++    return true;
++}
++void push(monster &mon,const coord_def &origin,int distance)
++{
++    coord_def d=mon.pos()-origin;
++    if(!d.x && !d.y) d=mon.pos()-you.pos();
++    d.x=(d.x>0)-(d.x<0);d.y=(d.y>0)-(d.y<0);
++    for(int i=0;i<distance && mon.alive();++i)
++        if(!move_actor(mon,mon.pos()+d)) break;
++}
++bool pay(int mp,int piety,int stars)
++{
++    if (you.piety<stars || you.piety<piety || you.magic_points<mp) return false;
++    you.magic_points-=mp; you.piety-=piety; ++s.totals.casts;
++    return true;
++}
++int choose_action(monster *target)
++{
++    if(!active() || !target) return 0;
++    int aut=martial_action(target);
++    if(!aut) aut=resource_action(target);
++    if(!aut) aut=experiment_action(target);
++    if(!aut) aut=space_action(target);
++    if(!aut) aut=summon_action(target);
++    return aut;
++}
++void advance(int now)
++{
++    if(!active() || holo_benchmark_finished()) return;
++    while(s.next_tick<=now && !holo_benchmark_finished()) {
++        const int at=s.next_tick; ++s.next_tick;
++        if(at%10==0) martial_tick(at);
++        resource_tick(at); experiment_tick(at);space_tick(at); summon_tick(at);
++    }
++}
++bool pending_resolution()
++{
++    if(!active()) return false;
++    if(s.deferred>0) return true;
++    for(const auto &h:s.hazards) if((h.kind==1 || h.kind==11) && h.arm>0) return true;
++    if(is(god_id::choco) && s.secondary<0) {
++        const monster *mon=monster_by_mid(s.marked);
++        return mon && mon->alive();
++    }
++    return false;
++}
++void begin_attack(monster &target,attack_kind kind)
++{
++    ctx=action_context();
++    if(!active()) return;
++    ctx.ordinary=true;ctx.kind=kind;ctx.target=target.mid;
++    ctx.hp_before=target.hit_points;ctx.hd=target.get_experience_level();ctx.position=target.pos();
++    ctx.eligible=eligible(target);
++    if(is(god_id::suisei)) {
++        ctx.stars_before=s.marked==target.mid && s.one_end>you.elapsed_time ? s.resource : 0;
++        if(s.three_end>you.elapsed_time) ctx.bonus=s.offence;
++    }
++    if(is(god_id::korone) && s.defence) ctx.bonus=roll_dice(1,4+s.inv/3);
++    if(is(god_id::okayu)) s.last_event=you.elapsed_time+50;
++    if(is(god_id::hajime) && kind==attack_kind::melee) {
++        ctx.bonus=s.resource*(3+s.inv/6);ctx.stars_before=s.resource;s.resource=0;
++    }
++    if(is(god_id::vivi) && five()) {
++        for(mid_t id:enemies(you.pos(),LOS_DEFAULT_RANGE)) {
++            const monster *mon=monster_by_mid(id);
++            if(eligible(*mon) && !mon->asleep() && mon->foe==MHITYOU
++                && mon->get_experience_level()>=max(1,(you.experience_level+2)/3))
++                ++ctx.attention;
++        }
++        ctx.attention=min(5,ctx.attention);
++    }
++}
++void note_primary_hit(const actor *target)
++{
++    if(active() && ctx.ordinary && target && target->mid==ctx.target) ctx.primary=true;
++}
++void note_primary_damage(const actor *target,int damage)
++{
++    if(active() && ctx.ordinary && target && target->mid==ctx.target) {
++        ctx.primary=true;ctx.damage+=max(0,damage);ctx.damaged|=damage>0;
++        if(is(god_id::suisei) && ctx.bonus>0) {
++            monster *mon=monster_by_mid(ctx.target);
++            const int bonus=ctx.bonus;ctx.bonus=0;s.three_end=0;s.offence=0;
++            if(mon && mon->alive()) { hurt(*mon,bonus);ctx.reward_kill=!mon->alive(); }
++        }
++    }
++}
++void end_attack(int aut)
++{
++    if(!active() || !ctx.ordinary) return;
++    monster *target=monster_by_mid(ctx.target);
++    if(is(god_id::suisei) && ctx.primary && ctx.bonus>0) {
++        const int bonus=ctx.bonus;ctx.bonus=0;s.three_end=0;s.offence=0;
++        if(target && target->alive()) { hurt(*target,bonus);ctx.reward_kill=!target->alive(); }
++    }
++    if(ctx.damaged && ctx.eligible && !ctx.reward_kill && (!target || !target->alive())) on_kill(ctx.target,ctx.hd,true,true);
++    martial_after_attack(target,aut);resource_after_attack(target,aut);
++    experiment_after_attack(target);
++    space_after_attack(target,aut);summon_after_attack(target,aut);
++    ctx=action_context();
++}
++void cancel_attack() { ctx=action_context(); }
++int to_hit(const actor *attacker,const actor *defender)
++{
++    if(!active()) return 0;
++    if(attacker->is_player() && defender->is_monster()) {
++        int bonus=0;
++        if(is(god_id::ayame) && ctx.ordinary && ctx.kind==attack_kind::melee && s.marked==defender->mid && s.one_end>you.elapsed_time
++            && adjacent(you.pos(),defender->pos())) bonus+=3+s.inv/6+(five() ? 4 : 0);
++        if(is(god_id::hajime) && ctx.ordinary && ctx.kind==attack_kind::melee) bonus+=ctx.stars_before;
++        if(is(god_id::korone)) bonus+=five() ? 6 : s.resource;
++        if(is(god_id::korone) && s.defence) bonus+=6;
++        if(is(god_id::lamy) && !five()) bonus-=s.resource>80 ? 8 : s.resource>60 ? 4 : 0;
++        if(is(god_id::polka) && s.one_end>you.elapsed_time) bonus+=3;
++        if(is(god_id::towa) && ctx.ordinary && ctx.kind==attack_kind::ranged) {
++            if(enemies(you.pos(),1).empty()) bonus+=4+s.inv/6;
++            if(five() && grid_distance(s.centre,defender->pos())<=2 && seen(defender->pos())) bonus+=6;
++        }
++        if(is(god_id::ayame) && ctx.double_hit) bonus+=8;
++        return bonus;
++    }
++    if(attacker->is_monster() && defender->is_player()) {
++        const auto it=s.targets.find(attacker->mid);
++        int bonus=0;
++        if(is(god_id::choco) && attacker->mid==s.marked && s.one_end>you.elapsed_time)
++            bonus-=s.resource*(mental_immune(*attacker->as_monster())?1:2);
++        if(it!=s.targets.end()) {
++            if(it->second.blind_ready<0) bonus-=5;
++            if(is(god_id::lui) && you.piety>=75) {
++                int n=0;for(const auto &p:it->second.raven_hits) if(p.second>you.elapsed_time) ++n;
++                bonus-=2*min(3,n);
++            }
++        }
++        return bonus;
++    }
++    return 0;
++}
++int slaying(const actor *defender,bool aux)
++{
++    if(!active() || aux || !ctx.ordinary || ctx.kind!=attack_kind::melee) return 0;
++    if(is(god_id::ayame) && s.marked==defender->mid && s.one_end>you.elapsed_time
++        && adjacent(you.pos(),defender->pos())) return 2+s.inv/9+(five() ? 3 : 0);
++    if(is(god_id::korone)) return (five() ? 6 : s.resource)/2;
++    return 0;
++}
++int raw_bonus(const actor *defender)
++{
++    return active() && !is(god_id::suisei) && ctx.ordinary && ctx.kind==attack_kind::melee && defender->mid==ctx.target
++        ? ctx.bonus : 0;
++}
++int multiplier(int damage,bool auxiliary)
++{
++    if(!active() || auxiliary || !ctx.ordinary) return damage;
++    int percent=100;
++    if(is(god_id::vivi) && (s.one_end>you.elapsed_time || five()))
++        percent+=10+s.inv/6+(five() ? 5*ctx.attention : 0);
++    if(is(god_id::lamy) && !five() && s.resource>60) percent+=15;
++    if(is(god_id::polka)) {
++        if(s.one_end>you.elapsed_time) percent+=10;
++        if(s.tertiary>you.elapsed_time) percent+=20;
++    }
++    if(is(god_id::towa) && ctx.kind==attack_kind::ranged && enemies(you.pos(),1).empty()) percent+=10;
++    return percent==100 ? damage : div_rand_round(damage*percent,100);
++}
++int evasion(const actor *attacker)
++{
++    return active() && is(god_id::ayame) && attacker && attacker->mid==s.marked
++        && s.one_end>you.elapsed_time && adjacent(you.pos(),attacker->pos())
++        ? 2+s.inv/9+(five() ? 3 : 0) : 0;
++}
++int armour()
++{
++    return is(god_id::raden) && (s.exhibit==1 || five()) && you.elapsed_time>=s.rest[1]
++        ? 2+s.inv/9 : 0;
++}
++int status_percent(duration_type kind)
++{
++    if(is(god_id::miko) && s.one_end>you.elapsed_time
++        && grid_distance(s.centre,you.pos())<=(five()?3:you.piety>=75?2:1)
++        && (kind==DUR_CONF || kind==DUR_SLOW || kind==DUR_AFRAID || kind==DUR_POISONING))
++        return five()?50:75;
++    if(is(god_id::polka) && five() && (kind==DUR_CONF || kind==DUR_SLOW || kind==DUR_AFRAID || kind==DUR_POISONING)) return 50;
++    return 100;
++}
++int status_duration(duration_type kind,int aut) {
++    const int percent=status_percent(kind);return percent==100?aut:max(10,div_rand_round(aut*percent,100));
++}
++bool revealing() { return is(god_id::vivi) && (five() || s.one_end>you.elapsed_time); }
++int resistance(beam_type flavour)
++{
++    if(flavour==BEAM_FIRE && is(god_id::mela)) return five()?2:1;
++    if(flavour==BEAM_COLD && is(god_id::lamy) && (s.resource>=20 || five())) return 1;
++    return 0;
++}
++int natural_regen(int base)
++{ return is(god_id::okayu) && s.resource>=50 ? base*120/100 : base; }
++int spell_damage(int damage,mid_t source)
++{ return active() && source==you.mid && ctx.ordinary && ctx.kind==attack_kind::spell ? multiplier(damage):damage; }
++void note_spell_damage(const actor *target,int damage,beam_type flavour,mid_t source)
++{
++    if(active() && source==you.mid && ctx.ordinary && ctx.kind==attack_kind::spell && target->mid==ctx.target) {
++        ctx.element=flavour;note_primary_damage(target,damage);
++    }
++}
++int spell_failure(int raw)
++{
++    if(!is(god_id::lamy) || five() || s.resource<=60) return raw;
++    const int target=min(100,failure_rate_to_int(raw)+(s.resource>80?10:5));
++    while(raw<100 && failure_rate_to_int(raw)<target) ++raw;
++    return raw;
++}
++int monster_armour(const monster &mon,int base)
++{
++    base=max(0,base-monster_ac_penalty(mon));
++    return is(god_id::towa) && five() && ctx.ordinary && ctx.kind==attack_kind::ranged
++        && mon.mid==ctx.target && grid_distance(s.centre,mon.pos())<=2 && seen(mon.pos()) ? base*70/100:base;
++}
++bool rooted(const monster &mon)
++{
++    if(!active() || is(god_id::okayu)) return false;
++    const auto it=s.targets.find(mon.mid);
++    return it!=s.targets.end() && it->second.root>you.elapsed_time;
++}
++void after_move(const coord_def &old,bool voluntary)
++{
++    if(!active()) return;
++    ++s.totals.moves; martial_move(old,voluntary);resource_move(old,voluntary);experiment_move(old,voluntary);space_move(old,voluntary);
++}
++void on_kill(mid_t mid,int hd,bool direct,bool ordinary)
++{
++    ++s.totals.kills;
++    martial_kill(mid,hd,direct,ordinary);resource_kill(mid,hd,direct,ordinary);
++}
++int incoming(int damage,kill_method_type kind,mid_t source)
++{
++    if(!active() || internal_damage || damage==INSTANT_DEATH) return damage;
++    damage=martial_incoming(damage,kind,source);
++    return resource_incoming(damage,kind,source);
++}
++void post_damage()
++{
++    if(is(god_id::watame) && s.tertiary>0) { const int amount=s.tertiary;s.tertiary=0;heal(amount); }
++}
++bool suppress_aux() { return is(god_id::ayame) && s.defence!=0; }
++void contact(const actor *attacker,beam_type flavour) { resource_contact(attacker,flavour);experiment_contact(attacker,flavour); }
++void defended(const actor *attacker,bool)
++{
++    if(!is(god_id::watame) || you.piety<75 || !attacker || !attacker->is_monster()
++        || !attacker->alive() || !adjacent(you.pos(),attacker->pos())
++        || you.elapsed_time<s.proc_ready || !x_chance_in_y(20+s.inv,100)) return;
++    s.proc_ready=you.elapsed_time+10;
++    monster &mon=*monster_by_mid(attacker->mid);
++    if(roll_hit(mon,20+s.inv)) hurt(mon,roll_dice(1,6+s.inv/2));
++    ++s.totals.procs;
++}
++int monster_energy(const monster &mon,energy_use_type kind,int base)
++{
++    if(!active() || mon.stasis()) return base;
++    base=summon_energy(mon,kind,base);
++    base=experiment_energy(mon,kind,base);
++    if(mon.attitude!=ATT_HOSTILE) return base;
++    base=space_energy(mon,kind,base);
++    const auto it=s.targets.find(mon.mid);if(it==s.targets.end()) return base;
++    const auto &t=it->second;const int now=you.elapsed_time;
++    const bool moving=kind==EUT_MOVE || kind==EUT_SWIM;
++    int percent=100;
++    if(is(god_id::okayu) && mon.mid==s.marked && s.one_end>now
++        && (moving || kind==EUT_ATTACK || kind==EUT_SPELL))
++        percent+=t.stacks*(mental_immune(mon)?4:8);
++    if(is(god_id::lamy) && moving && t.expires>now)
++        percent+=t.stacks*(mon.res_cold()>=2?5:10);
++    if(is(god_id::korone) && moving && t.slowed_until>now) percent=max(percent,150);
++    // Native slow already doubles action costs through speed, so keep the stronger effect.
++    if(mon.has_ench(ENCH_SLOW) && percent<=200) return base;
++    return (base*percent+99)/100;
++}
++bool before_monster(monster &mon) { return summon_before_monster(mon); }
++void after_monster(monster &mon,const coord_def &old) { space_monster(mon,old); }
++void attack_attempt(const actor *attacker,const actor *defender) { space_attempt(attacker,defender); }
++void validate()
++{
++    const auto require=[](bool ok,const std::string &message) {
++        if(!ok) throw std::runtime_error("Holo batch native validation: "+message);
++    };
++    const auto target=[]()->monster* {
++        for(monster_iterator mi;mi;++mi) if(mi->alive() && mi->attitude==ATT_HOSTILE) return *mi;
++        return nullptr;
++    };
++    holo_reset_validation_fixture();
++    require(!active() && armour()==0 && resistance(BEAM_FIRE)==0 && multiplier(100)==100,
++        "inactive hooks change the baseline");
++    for(const std::string &god:implemented()) {
++        holo_reset_validation_fixture();reset(god,12);
++        for(int turn=0;turn<60 && !holo_benchmark_finished();++turn) {
++            monster *mon=target();int aut=choose_action(mon);
++            if(!aut && mon && adjacent(you.pos(),mon->pos())) {
++                begin_attack(*mon);you.time_taken=10;fight_melee(&you,mon);aut=max(1,you.time_taken);end_attack(aut);
++            }
++            holo_validation_spend_time(aut?aut:10);
++            require(s.resource>=0 && s.shield>=0 && s.deferred>=0,god+" has negative resources");
++            require(you.magic_points>=0 && you.piety>=0 && you.hp_max==10000,god+" changes a fixed kit or overspends");
++        }
++        require(!holo_benchmark_finished() && s.totals.casts>0,god+" has no live native ability action");
++    }
++    holo_reset_validation_fixture();reset("choco",12);
++    monster *mon=target();s.marked=mon->mid;s.secondary=-1;s.five_end=20;mon->attitude=ATT_FRIENDLY;
++    require(pending_resolution(),"last charmed enemy produces a premature victory");
++    you.elapsed_time=19;advance(19);require(mon->attitude==ATT_FRIENDLY,"charm expires early");
++    you.elapsed_time=20;advance(20);require(mon->attitude==ATT_HOSTILE && !pending_resolution(),"charm fails to restore hostility");
++    holo_reset_validation_fixture();reset("korone",12);
++    mon=target();mon->attitude=ATT_FRIENDLY;you.hp=3;
++    s.deferred=10;s.five_end=1;s.debt_next=11;s.debt_ticks=5;s.secondary=1;
++    require(pending_resolution(),"unpaid deferred damage produces a premature victory");
++    you.elapsed_time=11;advance(11);require(you.hp==1 && s.deferred==8,"first debt payment is not exact");
++    you.elapsed_time=21;advance(21);require(holo_benchmark_finished() && you.hp<=0,"deferred damage cannot kill after combat");
++    holo_reset_validation_fixture();reset("mela",12);mon=target();
++    contact(mon,BEAM_MISSILE);contact(mon,BEAM_FIRE);contact(mon,BEAM_FIRE);
++    require(s.resource==2 && resistance(BEAM_FIRE)==1,"heat cap or base fire resistance is wrong");
++    you.elapsed_time=10;contact(mon,BEAM_FIRE);require(s.resource==4,"heat does not reset its 10-aut budget");
++    contact(&you,BEAM_FIRE);require(s.resource==4,"self damage generates heat");
++    holo_reset_validation_fixture();reset("mela",12);mon=target();
++    you.equip[EQ_SHIELD]=-1;you.slot_item(EQ_BODY_ARMOUR)->plus=200;
++    bool zero_incoming=false;
++    for(int attempt=0;attempt<20 && !zero_incoming;++attempt) {
++        you.elapsed_time=10*attempt;s.resource=0;s.secondary=0;s.last_incoming=-1000;
++        const int hp_before=you.hp;bool hit=false;fight_melee(mon,&you,&hit);
++        if(hit && you.hp==hp_before) {
++            require(s.resource>0,"a native hit fully absorbed by armour fails to generate heat");zero_incoming=true;
++        }
++    }
++    require(zero_incoming,"armour-zero native hit fixture did not exercise its branch");
++    holo_reset_validation_fixture();reset("ayame",12);mon=target();mon->hit_points=1;
++    s.marked=mon->mid;s.one_end=s.five_end=1000;you.magic_points=100;
++    bool duel_kill=false;
++    for(int attempt=0;attempt<20 && !duel_kill;++attempt) {
++        s.three_ready=0;const int mp_before=you.magic_points;const mid_t id=mon->mid;
++        require(martial_action(mon)>0,"double strike fixture cannot activate");
++        mon=monster_by_mid(id);duel_kill=!mon || !mon->alive();
++        if(duel_kill) require(s.three_ready==you.elapsed_time && s.five_end==you.elapsed_time
++            && you.magic_points==mp_before-3+5,"double-strike completion overwrites the duel kill cooldown/MP reset");
++    }
++    require(duel_kill,"duel fixture never lands a killing native melee attack");
++    holo_reset_validation_fixture();reset("su",12);mon=target();
++    begin_attack(*mon);note_primary_damage(mon,0);end_attack(10);require(s.hazards.empty(),"zero damage creates water");
++    begin_attack(*mon);note_primary_damage(mon,1);end_attack(10);
++    require(s.hazards.size()==1 && monster_energy(*mon,EUT_MOVE,10)==13
++        && monster_energy(*mon,EUT_ATTACK,10)==10,"water changes attacks or fails to slow movement");
++    holo_reset_validation_fixture();reset("lamy",12);s.resource=80;mon=target();begin_attack(*mon);
++    require(multiplier(100)==115 && resistance(BEAM_COLD)==1,"high drunkenness has wrong direct damage");
++    s.five_end=100;require(multiplier(100)==100,"blizzard retains the high-drunk direct damage bonus");
++    holo_reset_validation_fixture();reset("raden",12);mon=target();you.piety=100;
++    const int mp=you.magic_points;
++    require(change_exhibit(1)==10 && you.magic_points==mp-1 && armour()==3,"exhibit switching has wrong cost or armour");
++    s.rest[1]=40;require(change_exhibit(0)==10 && change_exhibit(1)==10 && armour()==0,"switching resets a resting exhibit");
++    require(change_exhibit(2)==10,"craft exhibit cannot be selected");you.duration[DUR_SLOW]=100;
++    require(martial_action(mon)==10 && s.shield==18 && you.duration[DUR_SLOW]==50,"craft shield or cleansing is missing");
++    holo_reset_validation_fixture();reset("mela",12);mon=target();mon->type=MONS_FIRE_ELEMENTAL;
++    const int hp=mon->hit_points;
++    require(hurt(*mon,20,BEAM_FIRE,false)==0 && mon->hit_points==hp,"fire damage bypasses native rF+++ immunity");
++    require(hurt(*mon,20,BEAM_MISSILE,false)>0,"resistance fixture rejects ordinary physical damage");
++    validate_experiments();validate_summons();
++    holo_reset_validation_fixture();
++    reset();
++    fprintf(stderr,"HoloCrawl batch native core checks passed: 20 modules, resource/charm/debt/water/resistance fixtures\n");
++}
++}
+diff --git a/crawl-ref/source/holo-batch.h b/crawl-ref/source/holo-batch.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..e47590e3b2b727c2c2339040aa57e73d0ba85e5d
+--- /dev/null
++++ b/crawl-ref/source/holo-batch.h
+@@ -0,0 +1,75 @@
++#pragma once
++
++#include <string>
++#include <vector>
++#include "coord.h"
++#include "duration-type.h"
++#include "energy-use-type.h"
++#include "mon-enum.h"
++#include "ouch.h"
++
++namespace holo_batch {
++enum class attack_kind { melee, ranged, spell };
++struct metrics {
++    int casts=0, hits=0, damage=0, healed=0, absorbed=0, moves=0;
++    int summons=0, procs=0, kills=0, self_damage=0, deferred_paid=0;
++};
++std::vector<std::string> implemented();
++void reset(const std::string &god="",int invocation=0);
++bool active();
++int choose_action(monster *target);
++void advance(int now);
++bool pending_resolution();
++void begin_attack(monster &target,attack_kind kind=attack_kind::melee);
++void note_primary_damage(const actor *target,int damage);
++void note_primary_hit(const actor *target);
++void end_attack(int aut);
++void cancel_attack();
++void after_move(const coord_def &old,bool voluntary=true);
++int to_hit(const actor *attacker,const actor *defender);
++int slaying(const actor *defender,bool aux);
++int raw_bonus(const actor *defender);
++int multiplier(int damage,bool auxiliary=false);
++int evasion(const actor *attacker);
++int armour();
++int incoming(int damage,kill_method_type kind,mid_t source);
++void post_damage();
++void contact(const actor *attacker,beam_type flavour);
++bool suppress_aux();
++void defended(const actor *attacker,bool blocked);
++int status_duration(duration_type kind,int aut);
++int status_percent(duration_type kind);
++bool revealing();
++int resistance(beam_type flavour);
++int natural_regen(int base);
++bool rooted(const monster &mon);
++void companion_damage(const actor *attacker,int damage);
++void attack_attempt(const actor *attacker,const actor *defender);
++int monster_ac_penalty(const monster &mon);
++int elemental_damage(int damage,beam_type flavour,const actor *source);
++int spell_damage(int damage,mid_t source);
++void note_spell_damage(const actor *target,int damage,beam_type flavour,mid_t source);
++int spell_failure(int raw);
++int monster_armour(const monster &mon,int base);
++void fire_contact(mid_t source);
++int fire_protection(const actor &target,int damage,beam_type flavour);
++bool swap_companion(const coord_def &destination);
++int change_exhibit(int piece);
++int movement_cost(int base);
++int polka_finale(int mode,int applause,monster *target=nullptr);
++int prepare_reagent(int type);
++int throw_reagent(monster &target,int type);
++int coat_reagent(int type);
++bool player_rooted();
++int monster_energy(const monster &mon,energy_use_type kind,int base);
++bool before_monster(monster &mon);
++bool summon_stationary(const monster &mon);
++void summon_hit(const actor *source,const actor *target);
++void after_monster(monster &mon,const coord_def &old);
++bool custom_monster(const monster &mon,int &hp,int &ac,int &ev,int &hit,int &damage);
++int companion_hurt(monster &mon,const actor *source,int damage);
++bool passable_companion(const actor *actor);
++void expire_passable_at(const coord_def &pos);
++const metrics &get_metrics();
++void validate();
++}
+diff --git a/crawl-ref/source/holo-sopia.cc b/crawl-ref/source/holo-sopia.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..873908ab6a376137f37e2c494186bf402cc17b05
+--- /dev/null
++++ b/crawl-ref/source/holo-sopia.cc
+@@ -0,0 +1,375 @@
++#include "AppHdr.h"
++#include "holo-sopia.h"
++
++#include <algorithm>
++#include <map>
++#include <stdexcept>
++#include <vector>
++
++#include "act-iter.h"
++#include "env.h"
++#include "holocrawl.h"
++#include "los.h"
++#include "mon-util.h"
++#include "mon-tentacle.h"
++#include "player.h"
++#include "terrain.h"
++#include "traps.h"
++
++namespace holo_sopia {
++namespace {
++bool enabled=false, ring_only=false, field=false, big=false;
++int inv=0, ring_end=0, ring_next=0, field_end=0, field_next=0;
++int charge=0, charge_next=0, big_ready=0;
++coord_def centre;
++std::map<mid_t,int> pull_ready;
++metrics counters;
++
++bool clear_line(const coord_def &a,const coord_def &b)
++{
++    // Native find_ray intentionally rejects a zero-length ray.
++    return a==b || exists_ray(a,b,opc_solid_see);
++}
++
++bool visible(const coord_def &p)
++{
++    return you.see_cell(p) && clear_line(you.pos(),p);
++}
++
++std::vector<mid_t> targets(const coord_def &origin, int radius, bool far_first=false)
++{
++    std::vector<mid_t> result;
++    for (monster_iterator mi; mi; ++mi)
++        if (mi->alive() && mi->attitude==ATT_HOSTILE
++            && grid_distance(origin,mi->pos())<=radius && you.can_see(**mi) && visible(mi->pos())
++            && clear_line(origin,mi->pos()))
++            result.push_back(mi->mid);
++    std::sort(result.begin(),result.end(),[&](mid_t a,mid_t b) {
++        const monster *ma=monster_by_mid(a), *mb=monster_by_mid(b);
++        const int da=grid_distance(origin,ma->pos()), db=grid_distance(origin,mb->pos());
++        if (da!=db)
++            return far_first ? da>db : da<db;
++        if (ma->pos().x!=mb->pos().x)
++            return ma->pos().x<mb->pos().x;
++        return ma->pos().y<mb->pos().y;
++    });
++    return result;
++}
++
++bool movable(const monster &mon)
++{
++    return !mon.is_stationary() && !mons_is_tentacle_or_tentacle_segment(mon.type);
++}
++
++bool legal(const monster &mon,const coord_def &p)
++{
++    return in_bounds(p) && !actor_at(p) && !trap_at(p)
++        && mon.can_pass_through(p) && mon.is_habitable(p);
++}
++
++bool relocate(monster &mon,const coord_def &p)
++{
++    const coord_def old=mon.pos();
++    if (!legal(mon,p) || !mon.move_to_pos(p))
++        return false;
++    mon.apply_location_effects(old,KILL_YOU,MHITYOU);
++    return true;
++}
++
++bool pull_one(monster &mon)
++{
++    if (!movable(mon))
++        return false;
++    const int distance=grid_distance(centre,mon.pos());
++    // Fixed coordinate order, no extra path RNG and no occupied-centre collision.
++    for (int x=mon.pos().x-1;x<=mon.pos().x+1;++x)
++        for (int y=mon.pos().y-1;y<=mon.pos().y+1;++y)
++        {
++            const coord_def p(x,y);
++            if (grid_distance(centre,p)<distance && relocate(mon,p))
++                return true;
++        }
++    return false;
++}
++
++void damage(monster &mon,int raw)
++{
++    const int dealt=mon.apply_ac(raw);
++    counters.damage+=mon.hurt(&you,dealt,BEAM_MISSILE);
++}
++
++void end_field(int when)
++{
++    if (big)
++        big_ready=when+150;
++    field=big=false;
++    charge=0;
++}
++
++bool cast_ring()
++{
++    if (you.piety<30 || you.magic_points<3)
++        return false;
++    you.magic_points-=3;
++    const int complete=you.elapsed_time+10;
++    if (!ring_end || you.elapsed_time>=ring_end)
++        ring_next=complete+10;
++    ring_end=complete+100+4*inv;
++    ++counters.ring_casts;
++    return true;
++}
++
++bool cast_field(bool empower,const coord_def &requested=you.pos())
++{
++    const int now=you.elapsed_time;
++    if (big || you.piety<(empower ? 120 : 75)
++        || you.magic_points<(empower ? 7 : 3) || (empower && now<big_ready))
++        return false;
++    const bool upgrade=empower && field;
++    const coord_def pos=upgrade ? centre : requested;
++    if ((!upgrade && grid_distance(you.pos(),pos)>4) || !visible(pos) || grd(pos)!=DNGN_FLOOR)
++        return false;
++    you.magic_points-=empower ? 7 : 3;
++    you.piety-=empower ? 14 : 3;
++    centre=pos;
++    field=true;
++    big=empower;
++    field_end=now+10+60+2*inv;
++    if (!upgrade)
++        field_next=now+10+20;
++    if (empower)
++    {
++        charge=0;
++        charge_next=now+10+20;
++        ++counters.big_casts;
++    }
++    else
++        ++counters.field_casts;
++    return true;
++}
++
++bool detonate()
++{
++    const int now=you.elapsed_time;
++    if (!field || !big || now>=field_end || charge<1
++        || !visible(centre) || grid_distance(you.pos(),centre)>6)
++        return false;
++    const int c=charge;
++    const coord_def origin=centre;
++    const auto victims=targets(origin,2,true);
++    end_field(now);
++    ++counters.detonations;
++    for (mid_t id:victims)
++    {
++        monster *mon=monster_by_mid(id);
++        if (!mon || !mon->alive())
++            continue;
++        damage(*mon,roll_dice(3,8+inv/3)+6*c);
++        mon=monster_by_mid(id);
++        if (!mon || !mon->alive() || !movable(*mon))
++            continue;
++        coord_def delta=mon->pos()-origin;
++        if (!delta.x && !delta.y)
++            delta=mon->pos()-you.pos();
++        delta.x=(delta.x>0)-(delta.x<0);
++        delta.y=(delta.y>0)-(delta.y<0);
++        for (int step=0;step<2 && mon->alive();++step)
++            if (!relocate(*mon,mon->pos()+delta))
++                break;
++    }
++    return true;
++}
++}
++
++void reset(bool active,int invocation,bool only_ring)
++{
++    enabled=active;
++    inv=invocation;
++    ring_only=only_ring;
++    ring_end=ring_next=field_end=field_next=charge_next=big_ready=charge=0;
++    field=big=false;
++    pull_ready.clear();
++    counters=metrics();
++}
++
++int choose_action(const coord_def *preferred)
++{
++    if (!enabled)
++        return 0;
++    const int now=you.elapsed_time;
++    if (big && charge>=1 && (charge>=3 || field_end-now<=20) && detonate())
++        return 10;
++    const coord_def aim=preferred?*preferred:you.pos();
++    if ((!preferred || grid_distance(aim,you.pos())<=1) && (!ring_end || now>=ring_end) && cast_ring())
++        return 10;
++    if (!ring_only && !big && now>=big_ready && cast_field(true,aim))
++        return 10;
++    if (!ring_only && !field && cast_field(false,aim))
++        return 10;
++    return 0;
++}
++
++void advance(int now)
++{
++    if (!enabled || holo_benchmark_finished())
++        return;
++    // Like native duration/cloud processing, positions are sampled at the
++    // post-monster world phase. Multiple elapsed ticks are never collapsed.
++    for (;;)
++    {
++        int at=INT_MAX;
++        if (ring_end)
++            at=min(at,min(ring_end,ring_next));
++        if (field)
++            at=min(at,min(field_end,field_next));
++        if (big)
++            at=min(at,charge_next);
++        if (at>now)
++            break;
++        // Expiry wins exact-time ties. Gravity then ring on shared ticks.
++        if (ring_end && at>=ring_end)
++            ring_end=0;
++        if (field && at>=field_end)
++            end_field(at);
++        if (big && at==charge_next)
++        {
++            charge=min(3,charge+1);
++            charge_next+=20;
++        }
++        if (field && at==field_next)
++        {
++            field_next+=20;
++            ++counters.field_ticks;
++            if (visible(centre))
++                for (mid_t id:targets(centre,big ? 3 : 2))
++                {
++                    monster *mon=monster_by_mid(id);
++                    if (!mon || !mon->alive())
++                        continue;
++                    ++counters.field_hits;
++                    damage(*mon,roll_dice(1,4+inv/3));
++                    mon=monster_by_mid(id);
++                    if (!mon || !mon->alive() || pull_ready[id]>at)
++                        continue;
++                    pull_ready[id]=at+20;
++                    ++counters.pull_attempts;
++                    const int chance=max(15,min(90,65+2*inv-3*mon->get_experience_level()));
++                    if (x_chance_in_y(chance,100) && pull_one(*mon))
++                        ++counters.pulls;
++                }
++        }
++        if (ring_end && at==ring_next)
++        {
++            ring_next+=10;
++            ++counters.ring_ticks;
++            for (mid_t id:targets(you.pos(),1))
++            {
++                monster *mon=monster_by_mid(id);
++                if (mon && mon->alive())
++                {
++                    ++counters.ring_hits;
++                    damage(*mon,roll_dice(1,4+inv/3));
++                }
++            }
++        }
++    }
++}
++
++const metrics &get_metrics() { return counters; }
++
++void validate()
++{
++    const auto require=[](bool ok,const char *message) {
++        if (!ok)
++            throw std::runtime_error(string("Sopia validation: ")+message);
++    };
++    monster *mon=nullptr;
++    for (monster_iterator mi;mi;++mi)
++        if (mi->alive()) { mon=*mi; break; }
++    require(mon!=nullptr,"native monster fixture required");
++    mon->hit_points=mon->max_hit_points=10000;
++    you.elapsed_time=0;
++    reset(true,12);
++    require(cast_ring(),"ring cast");
++    advance(19); require(counters.ring_ticks==0,"no immediate ring tick");
++    advance(20); require(counters.ring_ticks==1,"first tick at completion plus ten aut");
++    advance(25); require(counters.ring_ticks==1,"five aut does not add a tick");
++    advance(40); require(counters.ring_ticks==3,"all elapsed ten-aut ticks retained");
++    you.elapsed_time=40;
++    require(cast_ring(),"ring refresh");
++    advance(50); require(counters.ring_ticks==4,"refresh must preserve tick phase");
++    reset(true,0);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    require(cast_ring(),"expiry fixture cast");
++    advance(110); require(counters.ring_ticks==9 && ring_end==0,"expiry before same-time tick");
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(true) && !detonate(),"C0 cannot detonate");
++    advance(30); require(charge==1,"first charge at completion plus twenty aut");
++    advance(70); require(charge==3,"charge capped at three");
++    advance(94); require(!field && charge==0 && big_ready==244,"expiry has no explosion and starts cooldown");
++    require(counters.detonations==0,"natural expiry does not explode");
++    reset(true,12);
++    centre=you.pos();
++    mon->move_to_pos(you.pos()+coord_def(2,0));
++    const int energy=mon->speed_increment;
++    require(pull_one(*mon) && grid_distance(centre,mon->pos())==1
++            && mon->speed_increment==energy,"legal pull changes position without consuming monster energy");
++    require(!pull_one(*mon),"occupied player centre cannot be entered");
++    mon->move_to_pos(you.pos()+coord_def(2,0));
++    for (int y=you.pos().y-1;y<=you.pos().y+1;++y)
++        grd[you.pos().x+1][y]=DNGN_ROCK_WALL;
++    require(!pull_one(*mon),"no pulling through blocked destination cells");
++    for (int y=you.pos().y-1;y<=you.pos().y+1;++y)
++        grd[you.pos().x+1][y]=DNGN_FLOOR;
++    los_changed();
++    const monster_type original_type=mon->type;
++    mon->type=MONS_OKLOB_PLANT;
++    require(!movable(*mon) && !pull_one(*mon),"stationary monsters resist movement");
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(false),"ordinary field cast");
++    advance(30);
++    require(counters.field_hits==1 && counters.pulls==0,"stationary targets still take compression hits");
++    mon->type=original_type;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    const int centre_hp=mon->hit_points;
++    require(cast_field(false,mon->pos()),"off-player fixed field centre");
++    advance(30);
++    require(counters.field_hits==1 && mon->hit_points<centre_hp,
++            "targets on the exact field centre still take damage");
++    mon->move_to_pos(you.pos()+coord_def(1,0));
++    mon->attitude=ATT_FRIENDLY;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    const int friendly_hp=mon->hit_points;
++    require(cast_ring(),"friendly exclusion fixture");
++    advance(20);
++    require(counters.ring_hits==0 && mon->hit_points==friendly_hp,"ring excludes allies");
++    mon->attitude=ATT_HOSTILE;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(true),"detonation fixture cast");
++    advance(70);
++    you.elapsed_time=70;
++    const int mp_before=you.magic_points, piety_before=you.piety;
++    require(detonate() && counters.detonations==1 && !field && big_ready==220,
++            "manual detonation consumes field and starts cooldown");
++    require(you.magic_points==mp_before && you.piety==piety_before,
++            "detonation has no second resource cost");
++    require(grid_distance(you.pos(),mon->pos())==3,"detonation pushes survivors two legal cells");
++    reset(false,0);
++    fprintf(stderr,"HoloCrawl Sopia timer/native movement checks passed\n");
++}
++}
+diff --git a/crawl-ref/source/holo-sopia.h b/crawl-ref/source/holo-sopia.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..81ceeb2c2b11dc65a7d0fd84f3aed8b790b8d2c4
+--- /dev/null
++++ b/crawl-ref/source/holo-sopia.h
+@@ -0,0 +1,15 @@
++#pragma once
++#include "coord.h"
++
++namespace holo_sopia {
++struct metrics {
++    int ring_casts=0, ring_ticks=0, ring_hits=0;
++    int field_casts=0, field_ticks=0, field_hits=0;
++    int pull_attempts=0, pulls=0, big_casts=0, detonations=0, damage=0;
++};
++void reset(bool enabled, int invocation, bool ring_only=false);
++int choose_action(const coord_def *preferred=nullptr); // Mutates ability state/resources; caller spends returned aut.
++void advance(int now); // Native post-monster phase; drains due logical aut events.
++const metrics &get_metrics();
++void validate(); // Controlled native-monster fixture checks, not win-rate trials.
++}
+diff --git a/crawl-ref/source/holocrawl.cc b/crawl-ref/source/holocrawl.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..67085e04c359912c46b8fd4ee86eb3684cfc219e
+--- /dev/null
++++ b/crawl-ref/source/holocrawl.cc
+@@ -0,0 +1,500 @@
++#include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-sopia.h"
++#include "holo-batch.h"
++
++#include <cstdlib>
++#include <fstream>
++#include <stdexcept>
++
++#include "act-iter.h"
++#include "beam.h"
++#include "branch.h"
++#include "dungeon.h"
++#include "directn.h"
++#include "env.h"
++#include "fight.h"
++#include "item-prop.h"
++#include "items.h"
++#include "los.h"
++#include "message.h"
++#include "mgen-data.h"
++#include "mon-act.h"
++#include "mon-place.h"
++#include "mon-util.h"
++#include "newgame-def.h"
++#include "ng-setup.h"
++#include "options.h"
++#include "package.h"
++#include "player.h"
++#include "skills.h"
++#include "shout.h"
++#include "state.h"
++#include "spl-cast.h"
++#include "spl-util.h"
++#include "throw.h"
++#include "terrain.h"
++
++extern void world_reacts();
++
++namespace {
++bool running = false;
++bool dead = false;
++bool left_by_banishment = false;
++bool noel = false;
++bool old_balance = false;
++int skill_until = 0;
++int commander_until = 0;
++int commander_ready = 0;
++int invocation = 0;
++string build_kind="melee";
++
++bool skill_active() { return running && noel && you.elapsed_time < skill_until; }
++bool commander_active() { return running && noel && you.elapsed_time < commander_until; }
++
++int environment_integer(const char *name, int fallback, int low, int high)
++{
++    const char *value = getenv(name);
++    if (!value)
++        return fallback;
++    char *endptr = nullptr;
++    const long parsed = strtol(value, &endptr, 10);
++    if (!endptr || *endptr || parsed < low || parsed > high)
++        throw std::runtime_error(string("Invalid environment value: ") + name);
++    return parsed;
++}
++
++struct scenario {
++    const char *name;
++    int xl, skill, inv, hp, mp, piety;
++    monster_type enemy;
++    int count;
++};
++
++void reset_character(const scenario &test, uint64_t seed)
++{
++    holo_sopia::reset(false,0);
++    holo_batch::reset();
++    noel = false;
++    dead = false;
++    left_by_banishment = false;
++    skill_until = commander_until = commander_ready = 0;
++    Options.no_save = true;
++    Options.seed = seed;
++    crawl_state.seed = seed;
++    if (you.save)
++    {
++        you.save->abort();
++        delete you.save;
++        you.save = nullptr;
++    }
++    newgame_def ng;
++    ng.name = "HoloBench";
++    ng.type = GAME_TYPE_CUSTOM_SEED;
++    ng.species = SP_HUMAN;
++    ng.job = JOB_FIGHTER;
++    ng.weapon = WPN_LONG_SWORD;
++    ng.seed = seed;
++    setup_game(ng);
++    you.turn_is_over=false;
++    dgn_reset_level(false);
++    // The fixture contains only its explicitly listed enemies.
++    env.spawn_random_rate = 0;
++    for (int x = 0; x < GXM; ++x)
++        for (int y = 0; y < GYM; ++y)
++            grd[x][y] = DNGN_ROCK_WALL;
++    for (int x = 25; x <= 45; ++x)
++        for (int y = 25; y <= 45; ++y)
++            grd[x][y] = DNGN_FLOOR;
++    you.moveto(coord_def(35,35));
++    los_changed();
++    you.experience_level = test.xl;
++    you.max_level = test.xl;
++    you.experience = exp_needed(test.xl);
++    you.base_stats[STAT_STR] = 18;
++    you.base_stats[STAT_INT] = 8;
++    you.base_stats[STAT_DEX] = 12;
++    you.stat_loss.init(0);
++    for (int sk = 0; sk < NUM_SKILLS; ++sk)
++    {
++        you.skills[sk] = 0;
++        you.skill_points[sk] = 0;
++        you.ct_skill_points[sk] = 0;
++    }
++    for (skill_type sk : {SK_FIGHTING, SK_LONG_BLADES, SK_ARMOUR, SK_SHIELDS})
++        set_skill_level(sk, test.skill);
++    set_skill_level(SK_INVOCATIONS, test.inv);
++    invocation = test.inv;
++    you.hp = you.hp_max = test.hp;
++    you.magic_points = you.max_magic_points = test.mp;
++    you.piety = test.piety;
++    you.religion = GOD_NO_GOD;
++    you.hunger = 6000;
++    // Stable kits; all gods get the same equipment, no random god gifts.
++    if (you.weapon())
++        you.weapon()->plus = test.xl >= 20 ? 4 : test.xl >= 12 ? 2 : 1;
++    if (you.slot_item(EQ_BODY_ARMOUR))
++    {
++        you.slot_item(EQ_BODY_ARMOUR)->sub_type = test.xl >= 20 ? ARM_PLATE_ARMOUR : test.xl >= 12 ? ARM_CHAIN_MAIL : ARM_SCALE_MAIL;
++        you.slot_item(EQ_BODY_ARMOUR)->plus = test.xl >= 20 ? 4 : test.xl >= 12 ? 2 : 0;
++    }
++    if (you.shield())
++        you.shield()->plus = test.xl >= 20 ? 2 : test.xl >= 12 ? 1 : 0;
++    if(build_kind!="melee") {
++        you.received_weapon_warning=true;
++        you.equip[EQ_SHIELD]=-1;
++        set_skill_level(SK_SHIELDS,0);
++        set_skill_level(SK_ARMOUR,0);
++        set_skill_level(SK_DODGING,test.skill/2);
++        you.slot_item(EQ_BODY_ARMOUR)->sub_type=build_kind=="magic"?ARM_ROBE:ARM_LEATHER_ARMOUR;
++        you.slot_item(EQ_BODY_ARMOUR)->plus=test.xl>=20?4:test.xl>=12?2:0;
++        if(build_kind=="ranged") {
++            you.weapon()->sub_type=test.xl>=12?WPN_LONGBOW:WPN_SHORTBOW;
++            set_skill_level(SK_BOWS,test.skill);
++            item_def &arrows=you.inv[ENDOFPACK-1];arrows.clear();
++            arrows.base_type=OBJ_MISSILES;arrows.sub_type=MI_ARROW;arrows.quantity=80;
++            arrows.link=ENDOFPACK-1;arrows.pos=ITEM_IN_INVENTORY;arrows.slot='Z';
++        } else {
++            you.weapon()->sub_type=WPN_DAGGER;
++            you.base_stats[STAT_STR]=8;you.base_stats[STAT_INT]=18;
++            for(skill_type sk:{SK_SPELLCASTING,SK_CONJURATIONS,SK_FIRE_MAGIC}) set_skill_level(sk,test.skill);
++            add_spell_to_memory(SPELL_MAGIC_DART);
++            add_spell_to_memory(SPELL_THROW_FLAME);
++            if(test.xl>=20) add_spell_to_memory(SPELL_BOLT_OF_FIRE);
++        }
++    }
++    you.redraw_armour_class = true;
++    update_vision_range();
++    // Reset after character setup so equipment and enemies are matched by seed.
++    clear_pending_noises();
++    rng::seed(seed);
++    const coord_def melee_offsets[] = {coord_def(1,0),coord_def(0,1),coord_def(-1,0)};
++    const coord_def ranged_offsets[] = {coord_def(6,0),coord_def(5,2),coord_def(-6,0)};
++    for (int n = 0; n < test.count; ++n)
++    {
++        mgen_data mg = mgen_data::hostile_at(test.enemy, false,you.pos()+(build_kind=="melee"?melee_offsets[n]:ranged_offsets[n]));
++        mg.flags |= MG_FORCE_PLACE;
++        monster *mon = create_monster(mg, false);
++        if (!mon)
++            throw std::runtime_error("Could not create benchmark enemy");
++        mon->foe = MHITYOU;
++        mon->behaviour = BEH_SEEK;
++        mon->target = you.pos();
++    }
++}
++
++void spend_time(int aut)
++{
++    if(holo_benchmark_finished()) return;
++    you.time_taken = aut;
++    you.turn_is_over = true;
++    world_reacts();
++}
++
++monster *nearest_enemy()
++{
++    monster *best = nullptr;
++    for (monster_iterator mi; mi; ++mi)
++        if (mi->alive() && mi->attitude == ATT_HOSTILE
++            && (!best || grid_distance(you.pos(),mi->pos()) < grid_distance(you.pos(),best->pos())))
++            best = *mi;
++    return best;
++}
++
++bool noel_action()
++{
++    if (!noel)
++        return false;
++    if (you.piety >= 120 && you.elapsed_time >= commander_ready && you.magic_points >= 5)
++    {
++        you.magic_points -= 5;
++        you.piety -= 10;
++        commander_until = you.elapsed_time + 5 + 60 + 2*invocation;
++        commander_ready = commander_until + 100;
++        spend_time(5);
++        return true;
++    }
++    if (you.piety >= 30 && you.elapsed_time >= skill_until && you.magic_points >= 2 && you.piety >= 2)
++    {
++        you.magic_points -= 2;
++        you.piety -= 2;
++        skill_until = you.elapsed_time + 10 + 80 + 4*invocation;
++        spend_time(10);
++        return true;
++    }
++    return false;
++}
++
++void validate_noel_hooks()
++{
++    const scenario fixture = {"hook_checks",12,12,12,95,22,180,MONS_ETTIN,1};
++    reset_character(fixture, 42);
++    const auto require = [](bool condition, const char *message) {
++        if (!condition)
++            throw std::runtime_error(string("Noel hook validation: ")+message);
++    };
++    require(holo_armour_bonus() == 0 && holo_shield_bonus() == 0
++            && holo_melee_damage(100) == 100 && !holo_force_immune(),
++            "no-god hooks must be inert");
++    noel = true;
++    skill_until = you.elapsed_time + 100;
++    require(you.skill(SK_LONG_BLADES) == 18 && you.skill(SK_ARMOUR) == 18
++            && you.skill(SK_SHIELDS) == 18, "I12 skill bonus must be six");
++    require(you.skill(SK_FIGHTING) == 12 && holo_fighting_skill(1) == 18
++            && you.hp_max == 95 && you.skill(SK_DODGING) == 0,
++            "Fighting must affect attack calculations without increasing HP");
++    const int skill_ac = you.armour_class();
++    const int skill_sh = player_shield_class();
++    old_balance = false;
++    commander_until = you.elapsed_time + 50;
++    require(you.armour_class() == skill_ac+6
++            && player_shield_class() == skill_sh+8
++            && holo_melee_damage(100) == 130 && holo_force_immune(),
++            "v2 commander must add AC6 / displayed SH4 and 30 percent melee");
++    old_balance = true;
++    require(you.armour_class() == skill_ac+10
++            && player_shield_class() == skill_sh+12,
++            "v1 commander must add AC10 / displayed SH6");
++    set_skill_level(SK_LONG_BLADES, 25);
++    require(you.skill(SK_LONG_BLADES) == 27, "temporary skills must cap at 27");
++    you.elapsed_time = commander_until;
++    require(holo_armour_bonus() == 0 && !holo_force_immune(),
++            "commander must expire at its exact deadline");
++    you.elapsed_time = skill_until;
++    require(you.skill(SK_LONG_BLADES) == 25 && holo_fighting_skill(1) == 12,
++            "skill buff must expire independently");
++    noel = false;
++    fprintf(stderr,"HoloCrawl Noel hook checks passed\n");
++}
++}
++
++bool holo_engine_benchmark_requested()
++{
++    const char *value = getenv("HOLOCRAWL_ENGINE_BENCH");
++    return crawl_state.test && value && string(value)=="1";
++}
++
++bool holo_benchmark_active() { return running; }
++void holo_reset_validation_fixture()
++{
++    const scenario fixture={"batch_checks",12,12,12,10000,200,180,MONS_ETTIN,1};
++    reset_character(fixture,43);
++    for(monster_iterator mi;mi;++mi) mi->hit_points=mi->max_hit_points=10000;
++}
++void holo_validation_spend_time(int aut) { spend_time(aut); }
++bool holo_spell_target(dist &target,bolt &beam,int range)
++{
++    monster *mon=nearest_enemy();if(!mon || !you.can_see(*mon) || grid_distance(you.pos(),mon->pos())>range) return false;
++    target.target=mon->pos();target.isValid=true;target.isTarget=true;
++    beam.set_target(target);beam.source=you.pos();return true;
++}
++bool holo_benchmark_finished() { return running && (dead || left_by_banishment); }
++bool holo_record_benchmark_banishment()
++{
++    if (!running)
++        return false;
++    left_by_banishment = true;
++    return true;
++}
++bool holo_record_benchmark_death()
++{
++    if (!running || you.hp > 0)
++        return false;
++    dead = true;
++    return true;
++}
++
++int holo_armour_bonus() { return commander_active() ? (old_balance ? 8 : 4)+invocation/6 : 0; }
++int holo_shield_bonus() { return commander_active() && you.shield() ? (old_balance ? 5 : 3)+invocation/9 : 0; }
++
++int holo_skill_bonus(skill_type skill, int scale)
++{
++    if (!skill_active())
++        return 0;
++    const skill_type weapon_skill = you.weapon() && is_weapon(*you.weapon()) ? item_attack_skill(*you.weapon()) : SK_UNARMED_COMBAT;
++    return skill == weapon_skill || skill == SK_ARMOUR || skill == SK_SHIELDS ? (5+invocation/9)*scale : 0;
++}
++
++int holo_fighting_skill(int scale)
++{
++    const int base = you.skill(SK_FIGHTING,scale);
++    return skill_active() ? min(27*scale,base+(5+invocation/9)*scale) : base;
++}
++
++int holo_melee_damage(int damage)
++{
++    return commander_active() ? div_rand_round(damage*130,100) : damage;
++}
++
++bool holo_force_immune() { return commander_active(); }
++
++int holo_run_engine_benchmark()
++{
++    const int trials = environment_integer("HOLOCRAWL_TRIALS", 10, 1, 100000);
++    const int seed_start = environment_integer("HOLOCRAWL_SEED_START", 1000, 1, 1000000000);
++    const bool reverse_variants = environment_integer("HOLOCRAWL_REVERSE_VARIANTS", 0, 0, 1);
++    const string suite=getenv("HOLOCRAWL_SUITE") ? getenv("HOLOCRAWL_SUITE") : "noel";
++    if (suite!="noel" && suite!="sopia" && suite!="batch" && suite!="batch-dev")
++        throw std::runtime_error("Unknown HOLOCRAWL_SUITE");
++    const bool sopia_suite=suite=="sopia";
++    const bool batch_suite=suite=="batch" || suite=="batch-dev";
++    const string requested_build=getenv("HOLOCRAWL_BUILD")?getenv("HOLOCRAWL_BUILD"):"melee";
++    if(requested_build!="melee" && requested_build!="ranged" && requested_build!="magic") throw std::runtime_error("Unknown HOLOCRAWL_BUILD");
++    if(!batch_suite && requested_build!="melee") throw std::runtime_error("Legacy reference suites use their original melee kit");
++    if(suite=="batch" && holo_batch::implemented().size()!=20)
++        throw std::runtime_error("Full 22-god batch is not implemented yet; refusing placeholder win rates");
++    std::vector<string> variants=sopia_suite
++        ? std::vector<string>{"no_god","noel_v2","sopia_ring","sopia_full"}
++        : std::vector<string>{"no_god","noel_v1","noel_v2"};
++    if(batch_suite) {
++        variants={"no_god","noel_v2","sopia_full"};
++        for(const string &name:holo_batch::implemented()) variants.push_back(name);
++    }
++    const char *output = getenv("HOLOCRAWL_RESULTS");
++    if (!output)
++        throw std::runtime_error("HOLOCRAWL_RESULTS must name an output JSONL file");
++    std::ofstream results(output);
++    if (!results)
++        throw std::runtime_error("Cannot open benchmark results file");
++    const scenario cases[] = {
++        {"early_ogre",6,6,6,50,12,60,MONS_OGRE,1},
++        {"early_three_orcs",6,6,6,50,12,60,MONS_ORC,3},
++        {"mid_ettin",12,12,12,95,22,100,MONS_ETTIN,1},
++        {"mid_three_warriors",12,12,12,95,22,100,MONS_ORC_WARRIOR,3},
++        {"late_stone_giant",20,18,18,155,35,180,MONS_STONE_GIANT,1},
++        {"late_two_stone_giants",20,18,18,155,35,180,MONS_STONE_GIANT,2},
++        {"late_three_ettins",20,18,18,155,35,180,MONS_ETTIN,3},
++        {"late_three_warriors",20,18,18,155,35,180,MONS_ORC_WARRIOR,3},
++    };
++    no_messages quiet;
++    crawl_state.show_more_prompt = false;
++    crawl_state.disables.set(DIS_CONFIRMATIONS);
++    crawl_state.disables.set(DIS_DELAY);
++    crawl_state.disables.set(DIS_SPAWNS);
++    running = true;
++    validate_noel_hooks();
++    const scenario sopia_checks={"sopia_checks",12,12,12,95,22,180,MONS_OGRE,1};
++    reset_character(sopia_checks,42);
++    holo_sopia::validate();
++    if(batch_suite) holo_batch::validate();
++    build_kind=requested_build;
++    for (const scenario &test : cases)
++        for (int trial = 0; trial < trials; ++trial)
++            for (int slot = 0; slot < int(variants.size()); ++slot)
++            {
++                const int variant = reverse_variants ? int(variants.size())-1-slot : slot;
++                reset_character(test, seed_start+trial);
++                const string name=variants[variant];
++                noel = name=="noel_v1" || name=="noel_v2";
++                old_balance = name=="noel_v1";
++                holo_sopia::reset(name=="sopia_ring" || name=="sopia_full",invocation,name=="sopia_ring");
++                if(batch_suite && name!="no_god" && name!="noel_v2" && name!="sopia_full")
++                    holo_batch::reset(name,invocation);
++                int actions = 0;
++                while (!holo_benchmark_finished() && (nearest_enemy() || holo_batch::pending_resolution()) && you.elapsed_time < 2000 && actions++ < 1000)
++                {
++                    you.turn_is_over=false;
++                    you.time_taken=10;
++                    if(build_kind!="melee") you.received_weapon_warning=true;
++                    if (you.cannot_act())
++                    {
++                        spend_time(10);
++                        continue;
++                    }
++                    if (noel_action())
++                        continue;
++                    const int batch_time=holo_batch::choose_action(nearest_enemy());
++                    if(batch_time) { spend_time(batch_time);continue; }
++                    coord_def preferred=you.pos();
++                    if(build_kind!="melee" && nearest_enemy() && you.can_see(*nearest_enemy())) {
++                        preferred=nearest_enemy()->pos();
++                        while(grid_distance(you.pos(),preferred)>4) {
++                            const coord_def delta=preferred-you.pos();preferred-=coord_def((delta.x>0)-(delta.x<0),(delta.y>0)-(delta.y<0));
++                        }
++                    }
++                    const int ability_time=holo_sopia::choose_action(build_kind=="melee"?nullptr:&preferred);
++                    if (ability_time)
++                    {
++                        spend_time(ability_time);
++                        continue;
++                    }
++                    monster *target = nearest_enemy();
++                    if(!target) { spend_time(10);continue; }
++                    if(build_kind=="ranged" && you.inv[ENDOFPACK-1].defined() && you.can_see(*target)) {
++                        dist aim;aim.target=target->pos();aim.isValid=true;aim.isTarget=true;
++                        bolt shot;you.time_taken=10;holo_batch::begin_attack(*target,holo_batch::attack_kind::ranged);
++                        const bool fired=throw_it(shot,ENDOFPACK-1,&aim);
++                        if(fired) { holo_batch::end_attack(max(1,you.time_taken));spend_time(max(1,you.time_taken));continue; }
++                        holo_batch::cancel_attack();
++                    }
++                    if(build_kind=="magic" && you.can_see(*target) && you.magic_points>0) {
++                        const spell_type spell=test.xl>=20 && you.magic_points>=6?SPELL_BOLT_OF_FIRE
++                            :you.magic_points>=2?SPELL_THROW_FLAME:SPELL_MAGIC_DART;
++                        you.time_taken=10;holo_batch::begin_attack(*target,holo_batch::attack_kind::spell);
++                        const bool cast=cast_a_spell(false,spell);
++                        if(cast) { holo_batch::end_attack(max(1,you.time_taken));spend_time(max(1,you.time_taken));continue; }
++                        holo_batch::cancel_attack();
++                    }
++                    if (adjacent(you.pos(),target->pos()))
++                    {
++                        you.time_taken = 10;
++                        holo_batch::begin_attack(*target);
++                        fight_melee(&you,target);
++                        holo_batch::end_attack(max(1,you.time_taken));
++                        spend_time(max(1,you.time_taken));
++                    }
++                    else
++                    {
++                        coord_def delta = target->pos()-you.pos();
++                        delta.x = (delta.x > 0)-(delta.x < 0);
++                        delta.y = (delta.y > 0)-(delta.y < 0);
++                        const coord_def destination = you.pos()+delta;
++                        if(holo_batch::passable_companion(actor_at(destination))) holo_batch::expire_passable_at(destination);
++                        const coord_def old=you.pos();
++                        if(!you.cannot_move() && !you.caught() && holo_batch::swap_companion(destination)) holo_batch::after_move(old,true);
++                        else if (!you.cannot_move() && !you.caught() && !actor_at(destination) && !feat_is_solid(grd(destination)))
++                        {
++                            you.move_to_pos(destination);
++                            if(batch_suite) you.apply_location_effects(old);
++                            holo_batch::after_move(old,true);
++                        }
++                        spend_time(player_speed()*player_movement_speed()/10);
++                    }
++                }
++                const char *outcome = dead ? "loss" : left_by_banishment ? "banished"
++                    : !nearest_enemy() && !holo_batch::pending_resolution() ? "win" : "timeout";
++                results << "{\"schema\":" << (batch_suite ? 4 : sopia_suite ? 3 : 2) << ",\"engine\":\"dcss-0.24.0\",\"god\":\"" << name
++                        << "\",\"scope\":\"" << (batch_suite ? "batch-native-fixed-kit-combat-cores" : sopia_suite ? "sopia-native-fixed-melee-combat-core" : "noel-combat-abilities-fixed-kit-no-gifts")
++                        << "\",\"scenario\":\"" << test.name
++                        << "\",\"seed\":" << seed_start+trial << ",\"outcome\":\"" << outcome
++                        << "\",\"hp\":" << you.hp << ",\"max_hp\":" << test.hp
++                        << ",\"mp\":" << you.magic_points << ",\"piety\":" << int(you.piety)
++                        << ",\"aut\":" << you.elapsed_time << ",\"actions\":" << actions;
++                if (sopia_suite || batch_suite)
++                {
++                    if(batch_suite) results << ",\"build\":\"" << build_kind << "\"";
++                    const auto &m=holo_sopia::get_metrics();
++                    results << ",\"effects\":{\"ring_casts\":" << m.ring_casts << ",\"ring_ticks\":" << m.ring_ticks
++                        << ",\"ring_hits\":" << m.ring_hits << ",\"field_casts\":" << m.field_casts
++                        << ",\"field_ticks\":" << m.field_ticks << ",\"field_hits\":" << m.field_hits
++                        << ",\"pull_attempts\":" << m.pull_attempts << ",\"pulls\":" << m.pulls
++                        << ",\"big_casts\":" << m.big_casts << ",\"detonations\":" << m.detonations
++                        << ",\"damage\":" << m.damage;
++                    if(batch_suite) {
++                        const auto &b=holo_batch::get_metrics();
++                        results << ",\"batch_casts\":" << b.casts << ",\"batch_hits\":" << b.hits
++                            << ",\"batch_damage\":" << b.damage << ",\"batch_healed\":" << b.healed
++                            << ",\"batch_absorbed\":" << b.absorbed << ",\"batch_moves\":" << b.moves
++                            << ",\"batch_summons\":" << b.summons << ",\"batch_procs\":" << b.procs
++                            << ",\"batch_kills\":" << b.kills << ",\"batch_self_damage\":" << b.self_damage
++                            << ",\"batch_deferred_paid\":" << b.deferred_paid;
++                    }
++                    results << "}";
++                }
++                results << "}\n";
++                results.flush();
++            }
++    running = false;
++    fprintf(stderr,"HoloCrawl native-engine benchmark complete: %d trials\n",trials*int(sizeof(cases)/sizeof(cases[0]))*int(variants.size()));
++    return 0;
++}
+diff --git a/crawl-ref/source/holocrawl.h b/crawl-ref/source/holocrawl.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..caa75c973e43274c525b87df236ce7f4c8a8bb2b
+--- /dev/null
++++ b/crawl-ref/source/holocrawl.h
+@@ -0,0 +1,22 @@
++#pragma once
++
++#include "skill-type.h"
++
++// Hooks are inert outside the explicit engine benchmark for now.
++// No unimplemented god is substituted by a flat damage multiplier.
++bool holo_engine_benchmark_requested();
++int holo_run_engine_benchmark();
++bool holo_benchmark_active();
++bool holo_benchmark_finished();
++bool holo_record_benchmark_death();
++bool holo_record_benchmark_banishment();
++int holo_armour_bonus();
++int holo_shield_bonus();
++int holo_skill_bonus(skill_type skill, int scale);
++int holo_fighting_skill(int scale);
++int holo_melee_damage(int damage);
++bool holo_force_immune();
++void holo_reset_validation_fixture();
++void holo_validation_spend_time(int aut);
++void holo_reduce_poison_time(int percent);
++bool holo_spell_target(class dist &target,struct bolt &beam,int range);
+diff --git a/crawl-ref/source/libw32c.cc b/crawl-ref/source/libw32c.cc
+index 3d2023834a80ca4c759a6e0750cfd5c51806a0a0..9812aacb1198047da354696400aac9a8ba9cbc51 100644
+--- a/crawl-ref/source/libw32c.cc
++++ b/crawl-ref/source/libw32c.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #if defined(TARGET_OS_WINDOWS) && !defined(USE_TILE_LOCAL)
+ 
+@@ -86,6 +87,7 @@ static int cx = 0, cy = 0;
+ // and now, for the screen buffer
+ static CHAR_INFO *screen = nullptr;
+ static COORD screensize;
++static bool holo_virtual_console = false;
+ #define SCREENINDEX(x,y) ((x)+screensize.X*(y))
+ static unsigned InputCP, OutputCP;
+ static const unsigned PREFERRED_CODEPAGE = 437;
+@@ -346,6 +348,16 @@ static void w32_term_resizer()
+ 
+ void console_startup()
+ {
++    if (holo_engine_benchmark_requested())
++    {
++        // Retain view/visibility updates without opening a Windows console.
++        // set_w32_screen_size uses its 80x25 fallback for a null handle.
++        holo_virtual_console = true;
++        inbuf = outbuf = old_outbuf = nullptr;
++        set_w32_screen_size();
++        memset(screen, 0, sizeof(CHAR_INFO)*screensize.X*screensize.Y);
++        return;
++    }
+     inbuf = GetStdHandle(STD_INPUT_HANDLE);
+     old_outbuf = GetStdHandle(STD_OUTPUT_HANDLE);
+ 
+@@ -412,6 +424,13 @@ void console_startup()
+ 
+ void console_shutdown()
+ {
++    if (holo_virtual_console)
++    {
++        delete [] screen;
++        screen = nullptr;
++        holo_virtual_console = false;
++        return;
++    }
+     // don't do anything if we were never initted
+     if (inbuf == nullptr && outbuf == nullptr && old_outbuf == nullptr)
+         return;
+@@ -576,7 +595,7 @@ void textbackground(int c)
+ static void cprintf_aux(const char *s)
+ {
+     // early out -- not initted yet
+-    if (outbuf == nullptr)
++    if (outbuf == nullptr && !holo_virtual_console)
+     {
+         printf("%S", OUTW(s));
+         return;
+diff --git a/crawl-ref/source/main.cc b/crawl-ref/source/main.cc
+index 526e387d473c6656a71b8b87dde26145ce7830a6..0c7f4f67266185089c6cc7f8984cf5f8e58fc309 100644
+--- a/crawl-ref/source/main.cc
++++ b/crawl-ref/source/main.cc
+@@ -4,6 +4,9 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-sopia.h"
++#include "holo-batch.h"
+ 
+ #include <algorithm>
+ #include <cerrno>
+@@ -2097,6 +2100,13 @@ static void _check_banished()
+ {
+     if (you.banished)
+     {
++        // A fixed encounter ends here; there is no saved campaign/Abyss level.
++        // Record the real banishment instead of granting immunity or calling it HP death.
++        if (holo_record_benchmark_banishment())
++        {
++            you.banished = false;
++            return;
++        }
+         you.banished = false;
+         ASSERT(brdepth[BRANCH_ABYSS] != -1);
+         if (!player_in_branch(BRANCH_ABYSS))
+@@ -2211,6 +2221,8 @@ void world_reacts()
+ 
+     ASSERT(you.time_taken >= 0);
+     you.elapsed_time += you.time_taken;
++    holo_sopia::advance(you.elapsed_time);
++    holo_batch::advance(you.elapsed_time);
+     if (you.elapsed_time >= 2*1000*1000*1000)
+     {
+         // 2B of 1/10 turns. A 32-bit signed int can hold 2.1B.
+diff --git a/crawl-ref/source/melee-attack.cc b/crawl-ref/source/melee-attack.cc
+index e974b2911a45246b7bd68d34e13ff1df21491e97..e281345bc1c5bd636d41f8aab80c9c42288ac234 100644
+--- a/crawl-ref/source/melee-attack.cc
++++ b/crawl-ref/source/melee-attack.cc
+@@ -4,6 +4,8 @@
+  */
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-batch.h"
+ 
+ #include "melee-attack.h"
+ 
+@@ -95,6 +97,7 @@ bool melee_attack::can_reach()
+ 
+ bool melee_attack::handle_phase_attempted()
+ {
++    holo_batch::attack_attempt(attacker,defender);
+     // Skip invalid and dummy attacks.
+     if (defender && (!adjacent(attack_position, defender->pos())
+                      && !can_reach())
+@@ -480,8 +483,10 @@ bool melee_attack::handle_phase_hit()
+             beogh_follower_convert(defender->as_monster(), true);
+         }
+     }
+-    else if (needs_message)
++    else
+     {
++        record_holo_hit();
++        if(needs_message) {
+         attack_verb = attacker->is_player()
+                       ? attack_verb
+                       : attacker->conj_verb(mons_attack_verb());
+@@ -492,6 +497,7 @@ bool melee_attack::handle_phase_hit()
+              attack_verb.c_str(),
+              defender_name(true).c_str(),
+              attacker->is_player() ? "do" : "does");
++        }
+     }
+ 
+     // Check for weapon brand & inflict that damage too
+@@ -591,6 +597,7 @@ bool melee_attack::handle_phase_damaged()
+ 
+ bool melee_attack::handle_phase_aux()
+ {
++    if(attacker->is_player() && holo_batch::suppress_aux()) return true;
+     if (attacker->is_player()
+         && !cleaving
+         && wu_jian_attack != WU_JIAN_ATTACK_TRIGGERED_AUX)
+@@ -836,7 +843,8 @@ bool melee_attack::attack()
+ 
+     // Calculate various ev values and begin to check them to determine the
+     // correct handle_phase_ handler.
+-    const int ev = defender->evasion(ev_ignore::none, attacker);
++    const int ev = defender->evasion(ev_ignore::none, attacker)
++        + (defender->is_player()?holo_batch::evasion(attacker):0);
+     ev_margin = test_hit(to_hit, ev, !attacker->is_player());
+     bool shield_blocked = attack_shield_blocked(true);
+ 
+@@ -883,7 +891,12 @@ bool melee_attack::attack()
+     }
+ 
+     if (shield_blocked)
++    {
+         handle_phase_blocked();
++        if(defender->is_player()) {
++            holo_batch::defended(attacker,true);
++        }
++    }
+     else
+     {
+         if (attacker != defender && adjacent(defender->pos(), attack_position)
+@@ -913,7 +926,10 @@ bool melee_attack::attack()
+             }
+         }
+         else
++        {
+             handle_phase_dodged();
++            if(defender->is_player()) holo_batch::defended(attacker,false);
++        }
+     }
+ 
+     if (attacker->is_player())
+@@ -1560,7 +1576,7 @@ int melee_attack::player_apply_final_multipliers(int damage)
+     if (you.duration[DUR_CONFUSING_TOUCH])
+         return 0;
+ 
+-    return damage;
++    return holo_melee_damage(damage);
+ }
+ 
+ void melee_attack::set_attack_verb(int damage)
+@@ -3320,6 +3336,8 @@ void melee_attack::riposte()
+ 
+ bool melee_attack::do_knockback(bool trample)
+ {
++    if (defender->is_player() && holo_force_immune())
++        return false;
+     if (defender->is_stationary())
+         return false; // don't even print a message
+ 
+@@ -3545,6 +3563,8 @@ int melee_attack::weapon_damage()
+ 
+ int melee_attack::calc_mon_to_hit_base()
+ {
++    int hp=0,ac=0,ev=0,hit=0,damage=0;
++    if(attacker->is_monster() && holo_batch::custom_monster(*attacker->as_monster(),hp,ac,ev,hit,damage)) return hit;
+     const bool fighter = attacker->is_monster()
+                          && attacker->as_monster()->is_fighter();
+     const int hd_mult = fighter ? 25 : 15;
+diff --git a/crawl-ref/source/mon-act.cc b/crawl-ref/source/mon-act.cc
+index 3ebf8816109c78adbc1ec3d59ab0a754522e5c81..d351ca312164806f4aff9a456005655a0003d625 100644
+--- a/crawl-ref/source/mon-act.cc
++++ b/crawl-ref/source/mon-act.cc
+@@ -4,6 +4,8 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-batch.h"
+ 
+ #include "mon-act.h"
+ 
+@@ -1907,6 +1909,9 @@ void handle_monster_move(monster* mons)
+ 
+         // See if we move into (and fight) an unfriendly monster.
+         monster* targ = monster_at(mons->pos() + mmov);
++        if(targ && holo_batch::passable_companion(targ) && mons->foe!=targ->mindex()) {
++            holo_batch::expire_passable_at(targ->pos());targ=nullptr;
++        }
+ 
+         //If a tentacle owner is attempting to move into an adjacent
+         //segment, kill the segment and adjust connectivity data.
+@@ -2338,6 +2343,14 @@ void handle_monsters(bool with_noise)
+     int tries = 0; // infinite loop protection, shouldn't be ever needed
+     while (!monster_queue.empty())
+     {
++        if (holo_benchmark_finished())
++        {
++            // Normal gameplay exits on death. Repeated fixtures must also
++            // discard pending actions before monster slots are reused.
++            while (!monster_queue.empty())
++                monster_queue.pop();
++            break;
++        }
+         if (tries++ > 32767)
+         {
+             die("infinite handle_monsters() loop, mons[0 of %d] is %s",
+@@ -2360,7 +2373,9 @@ void handle_monsters(bool with_noise)
+         // the queue just after this.
+         if (oldspeed == mon->speed_increment)
+         {
+-            handle_monster_move(mon);
++            const coord_def holo_old_position=mon->pos();
++            if(holo_batch::before_monster(*mon)) handle_monster_move(mon);
++            if(mon->alive()) holo_batch::after_monster(*mon,holo_old_position);
+             _post_monster_move(mon);
+             fire_final_effects();
+         }
+@@ -2371,6 +2386,9 @@ void handle_monsters(bool with_noise)
+         // If the player got banished, discard pending monster actions.
+         if (you.banished)
+         {
++            if (holo_benchmark_active())
++                while (!monster_queue.empty())
++                    monster_queue.pop();
+             // Clear list of mesmerising monsters.
+             you.clear_beholders();
+             you.clear_fearmongers();
+@@ -2915,6 +2933,7 @@ bool mon_can_move_to_pos(const monster* mons, const coord_def& delta,
+     // are aligned differently.
+     if (monster* targmonster = monster_at(targ))
+     {
++        if(holo_batch::passable_companion(targmonster) && mons->foe!=targmonster->mindex()) return true;
+         if (just_check)
+         {
+             if (targ == mons->pos())
+diff --git a/crawl-ref/source/monster.cc b/crawl-ref/source/monster.cc
+index 94d444d72c8a9ed47c2ecc689a3bda2c32d025e0..8f133e0f6870031f48d3ff70b625061360763424 100644
+--- a/crawl-ref/source/monster.cc
++++ b/crawl-ref/source/monster.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-batch.h"
+ 
+ #include <algorithm>
+ #include <functional>
+@@ -3012,6 +3013,7 @@ bool monster::cannot_act() const
+ 
+ bool monster::cannot_move() const
+ {
++    if(holo_batch::rooted(*this)) return true;
+     return cannot_act() || has_ench(ENCH_WHIRLWIND_PINNED);
+ }
+ 
+@@ -3261,6 +3263,8 @@ static int _zombie_ac_modifier(monster_type type)
+  */
+ int monster::base_armour_class() const
+ {
++    int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;
++    if(holo_batch::custom_monster(*this,holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) return holo_ac;
+     ASSERT(!invalid_monster_type(type));
+ 
+     // ghost demon struct overrides the monster values.
+@@ -3356,7 +3360,7 @@ int monster::armour_class(bool calc_unid) const
+     if (has_ench(ENCH_CORROSION))
+         ac -= 8;
+ 
+-    return max(ac, 0);
++    return holo_batch::monster_armour(*this,max(ac,0));
+ }
+ 
+ /**
+@@ -3391,6 +3395,8 @@ static int _zombie_ev_modifier(monster_type type)
+  **/
+ int monster::base_evasion() const
+ {
++    int holo_hp=0,holo_ac=0,holo_ev=0,holo_hit=0,holo_damage=0;
++    if(holo_batch::custom_monster(*this,holo_hp,holo_ac,holo_ev,holo_hit,holo_damage)) return holo_ev;
+     // ghost demon struct overrides the monster values.
+     if (mons_is_ghost_demon(type))
+         return ghost->ev;
+@@ -4382,6 +4388,7 @@ int monster::hurt(const actor *agent, int amount, beam_type flavour,
+                    kill_method_type kill_type, string /*source*/,
+                    string /*aux*/, bool cleanup_dead, bool attacker_effects)
+ {
++    if(amount!=INSTANT_DEATH) amount=holo_batch::companion_hurt(*this,agent,amount);
+     if (mons_is_projectile(type)
+         || mid == MID_ANON_FRIEND
+         || type == MONS_PLAYER_SHADOW)
+@@ -5263,7 +5270,7 @@ bool monster::can_bleed(bool /*allow_tran*/) const
+ 
+ bool monster::is_stationary() const
+ {
+-    return mons_class_is_stationary(type);
++    return holo_batch::summon_stationary(*this) || mons_class_is_stationary(type);
+ }
+ 
+ /**
+@@ -5685,11 +5692,11 @@ int monster::action_energy(energy_use_type et) const
+     // Amphibious monster speed boni are now dealt with using SWIM_ENERGY,
+     // rather than here.
+     case EUT_SWIM:    move_cost = mu.swim; break;
+-    case EUT_MISSILE: return mu.missile;
++    case EUT_MISSILE: return holo_batch::monster_energy(*this,et,mu.missile);
+     case EUT_ITEM:    return mu.item;
+     case EUT_SPECIAL: return mu.special;
+-    case EUT_SPELL:   return mu.spell;
+-    case EUT_ATTACK:  return mu.attack;
++    case EUT_SPELL:   return holo_batch::monster_energy(*this,et,mu.spell);
++    case EUT_ATTACK:  return holo_batch::monster_energy(*this,et,mu.attack);
+     case EUT_PICKUP:  return mu.pickup_percent;
+     }
+ 
+@@ -5714,7 +5721,7 @@ int monster::action_energy(energy_use_type et) const
+         move_cost += 6;
+ 
+     // Never reduce the cost to zero
+-    return max(move_cost, 1);
++    return holo_batch::monster_energy(*this,et,max(move_cost, 1));
+ }
+ 
+ void monster::lose_energy(energy_use_type et, int div, int mult)
+diff --git a/crawl-ref/source/ng-setup.cc b/crawl-ref/source/ng-setup.cc
+index 55cf6279f709864ff5379c3ada7d80d4d4f5871d..cc61711235ee3d1cdd0a5b68792f412f3f30f9ec 100644
+--- a/crawl-ref/source/ng-setup.cc
++++ b/crawl-ref/source/ng-setup.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "ng-setup.h"
+ 
+@@ -590,7 +591,9 @@ static void _setup_generic(const newgame_def& ng)
+     init_companions();
+ 
+     // Create the save file.
+-    if (Options.no_save)
++    if (holo_benchmark_active())
++        you.save = nullptr; // Fixed encounters never create campaign saves.
++    else if (Options.no_save)
+         you.save = new package();
+     else
+         you.save = new package(get_savedir_filename(you.your_name).c_str(),
+diff --git a/crawl-ref/source/ouch.cc b/crawl-ref/source/ouch.cc
+index 9d3abdb076042000120885768c3f5861359dbb8b..b65480a52a074fc9f6412ccd67aa710eb0df782a 100644
+--- a/crawl-ref/source/ouch.cc
++++ b/crawl-ref/source/ouch.cc
+@@ -4,6 +4,8 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-batch.h"
+ 
+ #include "ouch.h"
+ 
+@@ -279,7 +281,7 @@ int check_your_resists(int hurted, beam_type flavour, string source,
+         break;
+     }                           // end switch
+ 
+-    return hurted;
++    return doEffects ? holo_batch::elemental_damage(hurted,flavour,nullptr):hurted;
+ }
+ 
+ /**
+@@ -902,6 +904,7 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
+             return;
+         }
+ 
++        dam=holo_batch::incoming(dam,death_type,source);
+         you.turn_damage += dam;
+         if (you.damage_source != source)
+         {
+@@ -911,6 +914,9 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
+         you.source_damage += dam;
+ 
+         dec_hp(dam, true);
++        holo_batch::post_damage();
++        if (holo_record_benchmark_death())
++            return;
+ 
+         // Even if we have low HP messages off, we'll still give a
+         // big hit warning (in this case, a hit for half our HPs) -- bwr
+diff --git a/crawl-ref/source/player.cc b/crawl-ref/source/player.cc
+index 8e4fc8d7453f68ff3efeb44fbd2bcb515fa7cc95..569111c5c3d87a5842aa5814450f6ac83080cb8b 100644
+--- a/crawl-ref/source/player.cc
++++ b/crawl-ref/source/player.cc
+@@ -4,6 +4,8 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-batch.h"
+ 
+ #include "player.h"
+ 
+@@ -1123,7 +1125,7 @@ int player_regen()
+ 
+     // Before applying other effects, make sure that there's something
+     // to heal.
+-    rr = max(1, rr);
++    rr = holo_batch::natural_regen(max(1, rr));
+ 
+     // Bonus regeneration for alive vampires.
+     if (you.species == SP_VAMPIRE && you.vampire_alive)
+@@ -1353,6 +1355,7 @@ int player_res_fire(bool calc_unid, bool temp, bool items)
+         rf += get_form()->res_fire();
+     }
+ 
++    rf += holo_batch::resistance(BEAM_FIRE);
+     if (rf > 3)
+         rf = 3;
+     if (temp && you.duration[DUR_FIRE_VULN])
+@@ -1443,6 +1446,7 @@ int player_res_cold(bool calc_unid, bool temp, bool items)
+     rc += you.get_mutation_level(MUT_ICY_BLUE_SCALES, temp) == 3 ? 1 : 0;
+     rc += you.get_mutation_level(MUT_SHAGGY_FUR, temp) == 3 ? 1 : 0;
+ 
++    rc += holo_batch::resistance(BEAM_COLD);
+     if (rc < -3)
+         rc = -3;
+     else if (rc > 3)
+@@ -1930,7 +1934,7 @@ int player_movement_speed()
+     if (mv < FASTEST_PLAYER_MOVE_SPEED)
+         mv = FASTEST_PLAYER_MOVE_SPEED;
+ 
+-    return mv;
++    return holo_batch::movement_cost(mv);
+ }
+ 
+ /**
+@@ -2272,7 +2276,7 @@ int player_shield_class()
+     shield += you.wearing(EQ_AMULET_PLUS, AMU_REFLECTION) * 200;
+     shield += you.scan_artefacts(ARTP_SHIELDING) * 200;
+ 
+-    return (shield + 50) / 100;
++    return (shield + 50) / 100 + 2*holo_shield_bonus();
+ }
+ 
+ /**
+@@ -2557,6 +2561,13 @@ static void _handle_god_wrath(int exp)
+ 
+ void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
+ {
++    // Fixed-character encounters do not train or level up between kills.
++    if (holo_benchmark_active())
++    {
++        if (actual_gain)
++            *actual_gain = 0;
++        return;
++    }
+     if (crawl_state.game_is_arena())
+         return;
+ 
+@@ -3196,7 +3207,7 @@ int player_stealth()
+ 
+     stealth = max(0, stealth);
+ 
+-    return stealth;
++    return holo_batch::revealing() ? stealth/2:stealth;
+ }
+ 
+ // Is a given duration about to expire?
+@@ -4129,6 +4140,8 @@ void paralyse_player(string source, int amount)
+     you.paralyse(nullptr, amount, source);
+ }
+ 
++static double _poison_dur_to_aut(double dur);
++static double _poison_aut_to_dur(double aut);
+ bool poison_player(int amount, string source, string source_aux, bool force)
+ {
+     ASSERT(!crawl_state.game_is_arena());
+@@ -4157,6 +4170,12 @@ bool poison_player(int amount, string source, string source_aux, bool force)
+         amount *= 2;
+ 
+     you.duration[DUR_POISONING] += amount * 1000;
++    const int holo_percent=holo_batch::status_percent(DUR_POISONING);
++    if(holo_percent<100) {
++        const double old_aut=_poison_dur_to_aut(old_value);
++        you.duration[DUR_POISONING]=int(_poison_aut_to_dur(old_aut
++            +(_poison_dur_to_aut(you.duration[DUR_POISONING])-old_aut)*holo_percent/100));
++    }
+ 
+     if (you.duration[DUR_POISONING] > old_value)
+     {
+@@ -4226,6 +4245,8 @@ static double _poison_aut_to_dur(double aut)
+     return 15.0 * 10000.0 + 1000.0 * (aut - aut_from_max_speed);
+ }
+ 
++void holo_reduce_poison_time(int percent)
++{ you.duration[DUR_POISONING]=int(ceil(_poison_aut_to_dur(_poison_dur_to_aut(you.duration[DUR_POISONING])*percent/100))); }
+ void handle_player_poison(int delay)
+ {
+     const double cur_dur = you.duration[DUR_POISONING];
+@@ -4422,6 +4443,7 @@ bool miasma_player(actor *who, string source_aux)
+ 
+ bool napalm_player(int amount, string source, string source_aux)
+ {
++    if(holo_batch::active()) you.props.erase("holo_sticky_source");
+     ASSERT(!crawl_state.game_is_arena());
+ 
+     if (player_res_sticky_flame() || amount <= 0 || you.duration[DUR_WATER_HOLD] || feat_is_watery(grd(you.pos())))
+@@ -4457,8 +4479,10 @@ void dec_napalm_player(int delay)
+ 
+     mprf(MSGCH_WARN, "You are covered in liquid flames!");
+ 
+-    const int hurted = resist_adjust_damage(&you, BEAM_FIRE,
+-                                            random2avg(9, 2) + 1);
++    if(holo_batch::active() && you.props.exists("holo_sticky_source"))
++        holo_batch::fire_contact(you.props["holo_sticky_source"].get_int());
++    const int hurted = holo_batch::fire_protection(you,resist_adjust_damage(&you, BEAM_FIRE,
++                                            random2avg(9, 2) + 1),BEAM_FIRE);
+ 
+     you.expose_to_element(BEAM_STICKY_FLAME, 2);
+     maybe_melt_player_enchantments(BEAM_STICKY_FLAME, hurted * delay / BASELINE_DELAY);
+@@ -5493,7 +5517,7 @@ bool player::paralysed() const
+ 
+ bool player::cannot_move() const
+ {
+-    return paralysed() || petrified();
++    return holo_batch::player_rooted() || paralysed() || petrified();
+ }
+ 
+ bool player::confused() const
+@@ -5716,6 +5740,9 @@ int player::skill(skill_type sk, int scale, bool real, bool drained, bool temp)
+ 
+     if (temp && duration[DUR_HEROISM] && sk <= SK_LAST_MUNDANE)
+         level = min(level + 5 * scale, MAX_SKILL_LEVEL * scale);
++    const int holo_bonus = temp ? holo_skill_bonus(sk,scale) : 0;
++    if (holo_bonus)
++        level = min(level + holo_bonus, MAX_SKILL_LEVEL*scale);
+     return level;
+ }
+ 
+@@ -5908,7 +5935,7 @@ int player::armour_class(bool /*calc_unid*/) const
+ 
+     AC += sanguine_armour_bonus();
+ 
+-    return AC / scale;
++    return AC / scale + holo_armour_bonus() + holo_batch::armour();
+ }
+  /**
+   * Guaranteed damage reduction.
+@@ -6929,6 +6956,7 @@ bool player::innate_sinv() const
+ 
+ bool player::invisible() const
+ {
++    if(holo_batch::revealing()) return false;
+     return (duration[DUR_INVIS] || form == transformation::shadow)
+            && !backlit();
+ }
+@@ -7333,7 +7361,7 @@ void player::increase_duration(duration_type dur, int turns, int cap,
+         mpr(msg);
+     cap *= BASELINE_DELAY;
+ 
+-    duration[dur] += turns * BASELINE_DELAY;
++    duration[dur] += holo_batch::status_duration(dur,turns*BASELINE_DELAY);
+     if (cap && duration[dur] > cap)
+         duration[dur] = cap;
+ }
+diff --git a/crawl-ref/source/ranged-attack.cc b/crawl-ref/source/ranged-attack.cc
+index a8d1992981064322d628797807d5c24d81e358ca..bea3f896e3098446cf9d51abae7ee9b114a6f0fa 100644
+--- a/crawl-ref/source/ranged-attack.cc
++++ b/crawl-ref/source/ranged-attack.cc
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "AppHdr.h"
++#include "holo-batch.h"
+ 
+ #include "ranged-attack.h"
+ 
+@@ -32,6 +33,7 @@ ranged_attack::ranged_attack(actor *attk, actor *defn, item_def *proj,
+       should_alert_defender(true), launch_type(launch_retval::BUGGY)
+ {
+     init_attack(SK_THROWING, 0);
++    holo_can_damage=!proj->is_type(OBJ_MISSILES,MI_DART) && !proj->is_type(OBJ_MISSILES,MI_THROWING_NET);
+     kill_type = KILLED_BY_BEAM;
+ 
+     string proj_name = projectile->name(DESC_PLAIN);
+@@ -163,6 +165,7 @@ bool ranged_attack::attack()
+ // XXX: Are there any cases where this might fail?
+ bool ranged_attack::handle_phase_attempted()
+ {
++    holo_batch::attack_attempt(attacker,defender);
+     attacker->attacking(defender, true);
+     attack_occurred = true;
+ 
+@@ -274,12 +277,14 @@ bool ranged_attack::handle_phase_hit()
+ 
+     if (projectile->is_type(OBJ_MISSILES, MI_DART))
+     {
++        record_holo_hit();
+         damage_done = dart_duration_roll(get_ammo_brand(*projectile));
+         set_attack_verb(0);
+         announce_hit();
+     }
+     else if (projectile->is_type(OBJ_MISSILES, MI_THROWING_NET))
+     {
++        record_holo_hit();
+         set_attack_verb(0);
+         announce_hit();
+         if (defender->is_player())
+@@ -290,6 +295,7 @@ bool ranged_attack::handle_phase_hit()
+     else
+     {
+         damage_done = calc_damage();
++        if(damage_done<=0) record_holo_hit();
+         if (damage_done > 0 || projectile->is_type(OBJ_MISSILES, MI_DART))
+         {
+             if (!handle_phase_damaged())
+diff --git a/crawl-ref/source/shout.cc b/crawl-ref/source/shout.cc
+index 938ea77f55c281d4bda864a9bd03477957b45f49..04f7c47605ebb61152d3a7f12245b668c829d883 100644
+--- a/crawl-ref/source/shout.cc
++++ b/crawl-ref/source/shout.cc
+@@ -39,6 +39,7 @@
+ #include "viewchar.h"
+ 
+ static noise_grid _noise_grid;
++void clear_pending_noises() { _noise_grid.reset(); }
+ static void _actor_apply_noise(actor *act,
+                                const coord_def &apparent_source,
+                                int noise_intensity_millis,
+diff --git a/crawl-ref/source/shout.h b/crawl-ref/source/shout.h
+index 8a6e04a8412ef00a48d611e160740619fda65c7e..bbdce5b9b8786982719301a1eeaa2b5e0762887f 100644
+--- a/crawl-ref/source/shout.h
++++ b/crawl-ref/source/shout.h
+@@ -23,3 +23,5 @@ void monster_shout(monster *mons, int s_type);
+ bool check_awaken(monster* mons, int stealth);
+ 
+ void apply_noises();
++// Discard queued sounds at an isolated headless fixture boundary.
++void clear_pending_noises();
+diff --git a/crawl-ref/source/spl-cast.cc b/crawl-ref/source/spl-cast.cc
+index e8b8d25257ee537450845ce58c34b008ce1a1263..675f85ac5a3005e98fae0fa0769f7865bacbcc04 100644
+--- a/crawl-ref/source/spl-cast.cc
++++ b/crawl-ref/source/spl-cast.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-batch.h"
+ 
+ #include "spl-cast.h"
+ 
+@@ -1480,7 +1481,7 @@ spret your_spells(spell_type spell, int powc, bool allow_fail,
+                           random2avg(88, 3), "the malice of Vehumet");
+         }
+ 
+-        const int spfail_chance = raw_spell_fail(spell);
++        const int spfail_chance = holo_batch::spell_failure(raw_spell_fail(spell));
+ 
+         if (spfl < spfail_chance)
+             fail = spfail_chance - spfl;
+diff --git a/crawl-ref/source/spl-transloc.cc b/crawl-ref/source/spl-transloc.cc
+index 581dd8b00504136b12c43aa4b305d9949d689292..0fe0e2e0ca21fae7814f4b47452e7d04cd3f6e1d 100644
+--- a/crawl-ref/source/spl-transloc.cc
++++ b/crawl-ref/source/spl-transloc.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "spl-transloc.h"
+ 
+@@ -1031,6 +1032,8 @@ int gravitas_range(int pow)
+ static void _attract_actor(const actor* agent, actor* victim,
+                            const coord_def pos, int pow, int strength)
+ {
++    if (victim && victim->is_player() && holo_force_immune())
++        return;
+     ASSERT(victim); // XXX: change to actor &victim
+ 
+     ray_def ray;
+@@ -1142,6 +1145,8 @@ spret cast_gravitas(int pow, const coord_def& where, bool fail)
+  */
+ static coord_def _beckon_destination(const actor &beckoned, const bolt &path)
+ {
++    if (beckoned.is_player() && holo_force_immune())
++        return beckoned.pos();
+     if (beckoned.is_stationary()  // don't move statues, etc
+         || mons_is_tentacle_or_tentacle_segment(beckoned.type)) // a mess...
+     {
+diff --git a/crawl-ref/source/spl-util.cc b/crawl-ref/source/spl-util.cc
+index cdf8f6690a17feaabaea968c9b01c445575890cc..a73ae6f6c9280be6b586fc81b59faaa95334debf 100644
+--- a/crawl-ref/source/spl-util.cc
++++ b/crawl-ref/source/spl-util.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "spl-util.h"
+ 
+@@ -750,6 +751,7 @@ void apply_area_cloud(cloud_func func, const coord_def& where,
+  */
+ bool spell_direction(dist &spelld, bolt &pbolt, direction_chooser_args *args)
+ {
++    if(holo_benchmark_active()) return holo_spell_target(spelld,pbolt,args?args->range:pbolt.range);
+     direction_chooser_args newargs;
+     // This should be before the overwrite, so callers can specify a different
+     // mode if they want.
+diff --git a/crawl-ref/source/startup.cc b/crawl-ref/source/startup.cc
+index ba6304ae8dbb1acd1f1963d59b960eeb0c9293b9..2e7d49cead43330d291454e9ac11c909eb63e711 100644
+--- a/crawl-ref/source/startup.cc
++++ b/crawl-ref/source/startup.cc
+@@ -6,6 +6,7 @@
+ #include "AppHdr.h"
+ 
+ #include "startup.h"
++#include "holocrawl.h"
+ 
+ #include "abyss.h"
+ #include "arena.h"
+@@ -171,6 +172,12 @@ static void _initialize()
+     }
+ #endif
+ 
++    if (holo_engine_benchmark_requested())
++    {
++        cio_init();
++        end(holo_run_engine_benchmark(), false);
++    }
++
+     if (!crawl_state.test_list)
+     {
+         if (!crawl_state.io_inited)
+diff --git a/crawl-ref/source/traps.cc b/crawl-ref/source/traps.cc
+index 10d472d5f12323aae663427a36d9697c7076c97a..4333a624d94d91ec32a0acbc1d076772b3606f1f 100644
+--- a/crawl-ref/source/traps.cc
++++ b/crawl-ref/source/traps.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "traps.h"
+ #include "trap-def.h"
+@@ -1354,6 +1355,13 @@ static level_id _generic_shaft_dest(level_pos lpos, bool known = false)
+  */
+ void roll_trap_effects()
+ {
++    // Fixed encounter fixtures have no campaign level/save behind the room.
++    // Exclude exploration traps, without changing any monster combat rules.
++    if (holo_benchmark_active())
++    {
++        you.trapped = false;
++        return;
++    }
+     int trap_rate = trap_rate_for_place();
+ 
+     you.trapped = you.num_turns && !have_passive(passive_t::avoid_traps)
+diff --git a/crawl-ref/source/util/species-gen.py b/crawl-ref/source/util/species-gen.py
+index a4b103afc1e75be7bef300da0ded1a24fc6f4797..67c1d994f1871d10d45c3bdf5217de52988afac0 100755
+--- a/crawl-ref/source/util/species-gen.py
++++ b/crawl-ref/source/util/species-gen.py
+@@ -7,6 +7,7 @@ import os
+ import sys
+ import traceback
+ import collections
++import collections.abc
+ import re
+ 
+ import yaml  # pip install pyyaml
+@@ -17,7 +18,7 @@ def quote_or_nullptr(key, d):
+     else:
+         return 'nullptr'
+ 
+-class Species(collections.MutableMapping):
++class Species(collections.abc.MutableMapping):
+     """Parser for YAML definition files.
+ 
+     If any YAML content is invalid, the relevant parser function below should
+@@ -417,7 +418,7 @@ def main():
+             continue
+         f_path = os.path.join(args.datadir, f_name)
+         try:
+-            species_spec = yaml.load(open(f_path))
++            species_spec = yaml.safe_load(open(f_path))
+         except yaml.YAMLError as e:
+             print("Failed to load %s: %s" % (f_name, e))
+             sys.exit(1)

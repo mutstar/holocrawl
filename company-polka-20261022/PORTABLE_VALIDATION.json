@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "bundledDependenciesOnly": true,
+  "relocatedNativeGame": true,
+  "gods": 22,
+  "freshProcessReload": true,
+  "lamyCaster": {
+    "status": "passed",
+    "invocation": 12,
+    "baseSpellPower": 24,
+    "buffSpellPower": 27,
+    "drink": 40,
+    "overdoseEV": -3,
+    "nativeAreaCast": true,
+    "perCastDedup": true,
+    "dotPetDivineExcluded": true,
+    "banquetTurns": 8,
+    "banquetCooldown": 15,
+    "saved": true
+  },
+  "binarySha256": "AEC9C5F690BC9775E79C5FC7BA789B464A99E05EDAF1ABE411B3411F1A3E01D1"
+}

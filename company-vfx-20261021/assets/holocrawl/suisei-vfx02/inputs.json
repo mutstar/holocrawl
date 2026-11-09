@@ -1,0 +1,12 @@
+[
+  {
+    "id": "starmark",
+    "prompt": "Edit this two-cell transparent pixel art strip. Keep EXACTLY 2 equally sized cells in one horizontal row, same framing and cyan/gold constellation concept. Make the reticle MUCH LESS dense: one-pixel-thin broken corner brackets at the outer corners, four TINY 2-3-pixel star points. Remove the continuous diamond/ring, remove inner chevrons and all filled broad cyan/gold bands. Keep at least the central 70 percent completely empty/transparent so a monster's face stays readable. Frame 1 quiet cyan bracket tips, frame 2 tiny gold twinkles. Readable at 32x32, very sparse crisp pixels, no text, no background.",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-a0572dda-e2c2-40f0-b33f-f094c67cb7a1.png"
+  },
+  {
+    "id": "orbitalcut",
+    "prompt": "Redesign this two-cell strip so it reads as a sharp MELEE SWORD CUT through space, not a laser beam or a straight line. EXACTLY two equal cells horizontal on genuine transparent background. Dominant horizontal travel direction with a long curved crescent/sabre slash SWEEP, tapering needle points, bright razor-white leading edge, cyan displaced edge, and a dark blue split-space afterimage. Frame 1 a sweeping scythe-shaped blade arc with a brief localized impact notch, frame 2 the arc has cut through and breaks into 3-5 angular star shards with a thinner fading scar. Strong asymmetric curved blade silhouette, vertically about 12 pixels high within a 32x32 cell and about 28 pixels wide, NOT a uniform horizontal bar, NOT an oval ring, NOT a projectile. Sparse crisp pixel art with limited colors, no text/no border/no character, no smooth glow. Wide transparent padding between frames.",
+    "source": "C:\\Users\\IN\\.codex\\generated_images\\01a14d40-76d6-70c1-a246-5af1d9c9eacb\\exec-9b009e22-a396-4521-87d6-ca8fd9145483.png"
+  }
+]

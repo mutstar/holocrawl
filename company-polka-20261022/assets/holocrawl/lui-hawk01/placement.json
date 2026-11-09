@@ -1,0 +1,27 @@
+{
+  "bodyMax": [
+    26,
+    26
+  ],
+  "tile": [
+    32,
+    32
+  ],
+  "badgeMax": [
+    12,
+    14
+  ],
+  "badgeAt": [
+    18,
+    0
+  ],
+  "altarMax": [
+    25,
+    28
+  ],
+  "portraitMax": [
+    24,
+    28
+  ],
+  "resampling": "nearest"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "gods": 22,
+  "images": 110,
+  "currentGod": "polka",
+  "currentTier": 1,
+  "allImagesPresent": true
+}

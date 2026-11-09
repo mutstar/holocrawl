@@ -1,0 +1,193 @@
+{
+  "scope": "Workspace files excluding .git, dependency/toolchain/venv directories; archives not unpacked; text files <=8MiB, NUL binary detection",
+  "scannedTextFiles": 239746,
+  "skipped": {
+    "archive": 6,
+    "over_8MiB": 327,
+    "binary": 194239
+  },
+  "topLevel": {
+    "company-polka-20261022": {
+      "files": 266587,
+      "bytes": 9263933481
+    },
+    "company-vfx-20261021": {
+      "files": 133691,
+      "bytes": 8200277973
+    },
+    "holocrawl-0341": {
+      "files": 23253,
+      "bytes": 1999544320
+    },
+    "runtime": {
+      "files": 682,
+      "bytes": 1410926690
+    },
+    "engine": {
+      "files": 9942,
+      "bytes": 1028240818
+    },
+    "analysis": {
+      "files": 131,
+      "bytes": 39912352
+    },
+    "HOLOCRAWL_ALL_GODS_CHECKPOINT_2026-10-19.zip": {
+      "files": 1,
+      "bytes": 19213964
+    },
+    ".home-preview": {
+      "files": 3,
+      "bytes": 2327371
+    },
+    "HOLOCRAWL_NOEL_SOPIA_VERIFIED_2026-10-19.zip": {
+      "files": 1,
+      "bytes": 2322416
+    },
+    "HOLOCRAWL_ENGINE_VERIFIED_2026-10-19.zip": {
+      "files": 1,
+      "bytes": 1071183
+    },
+    "HOLOCRAWL_ENGINE_HANDOFF_2026-10-19.zip": {
+      "files": 1,
+      "bytes": 182493
+    },
+    "CHECKPOINT_MANIFEST.json": {
+      "files": 1,
+      "bytes": 151081
+    },
+    "HOLOCRAWL_DESIGN.md": {
+      "files": 1,
+      "bytes": 125035
+    },
+    "review-company-20261021": {
+      "files": 1,
+      "bytes": 97743
+    },
+    "CONTINUE_HERE.md": {
+      "files": 1,
+      "bytes": 97520
+    },
+    "scripts": {
+      "files": 11,
+      "bytes": 38328
+    },
+    "HOLOCRAWL_HANDOFF_2026-10-19.zip": {
+      "files": 1,
+      "bytes": 23946
+    },
+    "vfx-preview-server.err.log": {
+      "files": 1,
+      "bytes": 22467
+    },
+    "START_HOME_2026-11-04.md": {
+      "files": 1,
+      "bytes": 7426
+    },
+    "HOME_RESUME.md": {
+      "files": 1,
+      "bytes": 5891
+    },
+    "OPEN_HOME_EXPLORER.ps1": {
+      "files": 1,
+      "bytes": 2723
+    },
+    "RUN_HOME_CHECKS.ps1": {
+      "files": 1,
+      "bytes": 1331
+    },
+    "HOLOCRAWL_ALL_GODS_CHECKPOINT_2026-10-19.verification.json": {
+      "files": 1,
+      "bytes": 304
+    },
+    "OPEN_HOME_EXPLORER.cmd": {
+      "files": 1,
+      "bytes": 118
+    },
+    ".gitignore": {
+      "files": 1,
+      "bytes": 57
+    },
+    "vfx-preview-server.log": {
+      "files": 1,
+      "bytes": 0
+    }
+  },
+  "largeFiles": [
+    {
+      "path": "company-vfx-20261021/exports/HOLOCRAWL_HOME_2026-10-21_LAMY_CASTER01_FULL_CAPTURES.zip",
+      "MiB": 1299.9
+    },
+    {
+      "path": "company-polka-20261022/engine/tiles-crawl/crawl-ref/source/crawl.exe",
+      "MiB": 450.0
+    },
+    {
+      "path": "company-vfx-20261021/engine/tiles-crawl/crawl-ref/source/crawl.exe",
+      "MiB": 443.5
+    },
+    {
+      "path": "holocrawl-0341/engine/upstream/crawl-ref/source/crawl.exe",
+      "MiB": 440.0
+    },
+    {
+      "path": "engine/crawl/crawl-ref/source/crawl.exe",
+      "MiB": 395.2
+    }
+  ],
+  "archives": [
+    {
+      "path": "HOLOCRAWL_ALL_GODS_CHECKPOINT_2026-10-19.zip",
+      "MiB": 18.3
+    },
+    {
+      "path": "HOLOCRAWL_ENGINE_HANDOFF_2026-10-19.zip",
+      "MiB": 0.2
+    },
+    {
+      "path": "HOLOCRAWL_ENGINE_VERIFIED_2026-10-19.zip",
+      "MiB": 1.0
+    },
+    {
+      "path": "HOLOCRAWL_HANDOFF_2026-10-19.zip",
+      "MiB": 0.0
+    },
+    {
+      "path": "HOLOCRAWL_NOEL_SOPIA_VERIFIED_2026-10-19.zip",
+      "MiB": 2.2
+    },
+    {
+      "path": "company-vfx-20261021/exports/HOLOCRAWL_HOME_2026-10-21_LAMY_CASTER01_FULL_CAPTURES.zip",
+      "MiB": 1299.9
+    }
+  ],
+  "nestedRepositories": [
+    "engine/crawl",
+    "engine/crawl/crawl-ref/source/contrib/lua",
+    "engine/crawl/crawl-ref/source/contrib/pcre",
+    "engine/crawl/crawl-ref/source/contrib/sqlite",
+    "engine/crawl/crawl-ref/source/contrib/zlib",
+    "holocrawl-0341/engine/upstream",
+    "holocrawl-0341/engine/upstream/crawl-ref/source/contrib/lua",
+    "holocrawl-0341/engine/upstream/crawl-ref/source/contrib/pcre",
+    "holocrawl-0341/engine/upstream/crawl-ref/source/contrib/sqlite",
+    "holocrawl-0341/engine/upstream/crawl-ref/source/contrib/zlib"
+  ],
+  "sensitiveFilenames": [],
+  "signatureMatches": [],
+  "assignmentCandidates": [
+    {
+      "path": "engine/crawl/crawl-ref/docs/ssh_guide.txt",
+      "line": 121,
+      "kind": "password",
+      "value_length": 25
+    },
+    {
+      "path": "holocrawl-0341/engine/upstream/crawl-ref/docs/ssh_guide.txt",
+      "line": 121,
+      "kind": "password",
+      "value_length": 25
+    }
+  ],
+  "readErrors": [],
+  "elapsedSeconds": 649.6
+}

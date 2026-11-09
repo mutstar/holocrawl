@@ -1,0 +1,17 @@
+{
+  "bodyMax": [
+    30,
+    30
+  ],
+  "badgeMax": [
+    12,
+    14
+  ],
+  "badgeAt": [
+    18,
+    0
+  ],
+  "resampling": "nearest",
+  "selectedVariant": "B",
+  "bodyFrames": "same approved standing pose in both frames; no fabricated flap"
+}

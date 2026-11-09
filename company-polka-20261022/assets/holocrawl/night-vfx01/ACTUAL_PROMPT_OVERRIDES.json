@@ -1,0 +1,11 @@
+{
+  "mode": "built-in imagegen",
+  "note": "These four final requests used the exact following shorter prompts; the remaining twelve use inputs.json verbatim.",
+  "base": "One isolated magical VFX emblem for authentic low-resolution pixel-art dungeon crawler. Transparent background, hard pixels, limited vibrant palette, no blur, no background, no text, no characters. Square composition with alpha margins and a mostly hollow centre. Designed for96x96 overlay. Depict ",
+  "append": {
+    "watame": "an ivory sheep-wool ring with two little golden ram horns and pale gold music sparks",
+    "towa": "a purple crosshair framed by slim violet demon wings, hollow central reticle",
+    "lamy": "an icy blue snowflake chalice emitting curved frost crescents and crystalline snow sparks",
+    "polka": "a red-gold circus firework rosette with magenta and blue confetti and a small jester star"
+  }
+}

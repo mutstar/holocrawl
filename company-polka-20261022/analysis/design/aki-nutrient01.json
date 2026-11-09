@@ -1,0 +1,29 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-03",
+  "revision": "aki-nutrient03",
+  "review": "analysis/previews/aki-nutrient03/index.html",
+  "widths": [
+    5,
+    5,
+    7
+  ],
+  "tier2": {
+    "name": "장미의 양분",
+    "type": "passive",
+    "unlockPiety": 50,
+    "mp": "min(3,1+floor(Inv/12))",
+    "cooldownAut": 30,
+    "stacks": 3,
+    "sources": [
+      "direct",
+      "garden DoT",
+      "own rose",
+      "bloom pre-consumption"
+    ],
+    "fullMp": "No storage or cooldown consumed"
+  },
+  "save": "Existing saved rest[0] cooldown; no serializer layout changes.",
+  "runtimeDeployed": true,
+  "binarySha256": "7f39685a8359895e7b7a4c444aa1181ef83a671174430036312ee98ea99d3b93"
+}

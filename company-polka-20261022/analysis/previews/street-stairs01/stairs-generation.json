@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset: one compact pixel-art DOWN staircase terrain sprite for a Dungeon Crawl Stone Soup style 32px tile roguelike, to place anywhere in a modern concrete plaza. ONLY a rectangular sunken concrete stairwell opening descending BELOW ground level, five visible grey steps getting darker toward the far/top end, and two simple silver tubular handrails on left and right sides with short posts. Entry is at bottom/front, stairs descend away toward top/back. Clearly recessed hole, NOT freestanding stairs climbing upward. Overhead slightly front-facing view matching traditional DCSS terrain sprites, axis-aligned NOT isometric diamond. Low resolution pixel clusters, limited dark grey cement and muted silver palette, subtle rough wear. Readable at 48px wide x48px tall, about 1.5 game tiles. No building wall, no roof, no doorway, no canopy, no signs, no glowing effects, no surrounding paving square, no background, no cast shadow outside object. Truly transparent background around sprite and between rail posts; preserve opaque dark interior of the stairwell. Single centered sprite fills canvas with minimal margin. Square composition. Not a photograph or smooth high-resolution render.",
+  "asset": "assets/stairs-rails48.png",
+  "original": "assets/stairs-rails-original.png",
+  "size": [
+    48,
+    48
+  ],
+  "transparentBackground": true,
+  "engineIntegrated": false
+}

@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-92ce72cc-0d46-4e48-9f67-eff0f998c912.png",
+  "alphaCrop": [
+    6,
+    293,
+    1976,
+    536
+  ],
+  "canvas": [
+    160,
+    32
+  ],
+  "integration": "Continuous generated stream resized160px wide with original alpha. Reveal prefix32/96/160/160px, render per-world-cell UV intersections without gaps. Strong thickness14/18/20/12px,base8/10/12/8. Below actors, occupied cells get existing counterflash at peak.",
+  "shape": "1cell wide,5cells long, east visual prototype",
+  "combatChanged": false
+}

@@ -1,0 +1,18 @@
+{
+  "prompt": "One tiny pixel-art musical eighth note sprite on transparent background for Dungeon Crawl Stone Soup 0.24 Hajime rhythm status. Single thick short eighth note with bright ivory core, vivid lavender stem and filled cyan note head, dark 1-pixel outline. Very chunky simple shape recognizable at native 8x10 pixels, no thin lines. Upright, centered sole note. Flat limited 4-color palette, crisp nearest-neighbor pixel art, no circle or badge, no sparkles, no glow blur gradients, no letters, no scene. This will be repeated 1/2/3 times to show exact stack count.",
+  "noteSize": [
+    8,
+    10
+  ],
+  "stackCount": [
+    1,
+    2,
+    3
+  ],
+  "canvas": [
+    32,
+    32
+  ],
+  "verticalOffset": -8,
+  "transparent": true
+}

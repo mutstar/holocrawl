@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit target is the attached small staircase game sprite. Completely flatten and simplify it into a traditional Dungeon Crawl Stone Soup terrain TILE, designed as exactly 32x32 pixel art. The previous tall perspective stairwell is rejected. Make a SMALL FLAT rectangular opening cut INTO a concrete ground surface, seen almost directly from overhead, axis aligned rectangle with parallel vertical sides, NO trapezoid or perspective vanishing point. Inside the opening put only 4 short horizontal step stripes progressing dark toward the top. Two SHORT THIN dull silver handrail strokes along left and right edges, with tiny posts, contained entirely within the tile. Narrow one-pixel-equivalent muted mid-grey cement rim, not bulky walls. Use a few chunky crisp pixel clusters, about 8 grey shades. Steps and opening occupy roughly central 24x22 pixels on a 32x32 logical grid; rails at x4 and x27, no part taller than a few pixels above the ground. Concrete is subdued grey #505151, shadows #242629, rail highlights #989b98, avoid bright white. It should blend into a grey rough cement floor, read as a floor marking with depth rather than a miniature building or rendered object. TRUE TRANSPARENT background outside the narrow rim and between rail posts, no paving square, no glow or shadow outside sprite. Preserve an opaque dark opening INSIDE stairwell. Minimal straight overhead game sprite, single object, square canvas, no text, no characters, no props.",
+  "asset": "assets/stairs-flat02-28.png",
+  "original": "assets/stairs-flat02-original.png",
+  "sourceRect": [
+    249,
+    364,
+    982,
+    905
+  ],
+  "renderSize": 28,
+  "logicalTileSize": 32,
+  "engineIntegrated": false
+}

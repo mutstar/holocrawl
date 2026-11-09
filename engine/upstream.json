@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/crawl/crawl.git",
+  "tag": "0.24.0",
+  "commit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "checkout": "engine/crawl",
+  "license": "engine/crawl/LICENSE",
+  "local_patches": "engine/patches",
+  "note": "The checked-out source is excluded from the outer repository. Reproducible patches are exported separately; do not mistake the original handoff zip for game source."
+}

@@ -1,0 +1,112 @@
+{
+  "status": "approved-design-not-implemented",
+  "date": "2026-10-30",
+  "concept": "Approved 1/3/5 caster support, gravity and spell-charged Big Bang; numerical proposal pending review",
+  "invocationsSymbol": "I",
+  "tier1": {
+    "name": "박사의 가르침",
+    "unlockPiety": 30,
+    "mpOnDirectSpellKill": "min(1+floor(I/12),3,actualMpSpentByCast)",
+    "oneRefundPerCast": true,
+    "refundRequiresNaturalXpHostile": true,
+    "exclude": [
+      "summons",
+      "poison/cloud/delayed damage",
+      "god damage",
+      "zero MP casts"
+    ],
+    "giftPietyMilestones": [
+      45,
+      75,
+      110,
+      150
+    ],
+    "giftChoices": 3,
+    "selectCount": 1,
+    "giftRules": "Each milestone once per game, no renounce reset; unseen spells fitting trained schools and current learnable level; defer if no eligible spells; selected spell offered for normal memorisation, no bypass of spell levels or other native restrictions"
+  },
+  "tier3": {
+    "name": "중력 실험실",
+    "unlockPiety": 75,
+    "mp": 3,
+    "piety": 3,
+    "actionAut": 10,
+    "range": 4,
+    "durationAut": "80+2*I",
+    "tickAut": 20,
+    "firstTickAfterCompletionAut": 20,
+    "damage": "1d(4+floor(I/4))",
+    "damageMitigation": "physical, one AC application, no fire/cold resistance",
+    "pullChancePercent": "clamp(75+2*I-2*HD,25,95)",
+    "pullTiles": 1,
+    "perMonsterPullIntervalAut": 20,
+    "oneField": true,
+    "alliesExcluded": true,
+    "radiusByInvocations": [
+      {
+        "minI": 0,
+        "maxI": 7,
+        "radius": 1
+      },
+      {
+        "minI": 8,
+        "maxI": 15,
+        "radius": 2
+      },
+      {
+        "minI": 16,
+        "maxI": 27,
+        "radius": 3
+      }
+    ],
+    "radiusSampledAtCast": true
+  },
+  "tier5": {
+    "name": "빅뱅 가설",
+    "unlockPiety": 120,
+    "mp": 7,
+    "piety": 12,
+    "actionAut": 10,
+    "range": 4,
+    "durationAut": "100+2*I",
+    "fieldTick": "same revised tier3 damage/pull/20aut schedule; no duplicate or immediate tick on upgrade",
+    "chargeMax": 3,
+    "chargeRule": "One charge per paid direct damaging spell cast that actually damages a visible natural XP hostile inside field; one per cast across all victims; no summon/DOT/god damage, no time-based charge; any qualifying victim within actual scaled field can charge; detonation footprint remains5x5",
+    "detonate": {
+      "minCharge": 1,
+      "mp": 0,
+      "piety": 0,
+      "actionAut": 10,
+      "rangeToCentre": 6,
+      "radius": 2,
+      "damage": "3d(8+floor(I/3))+6*C",
+      "damageMitigation": "physical, one AC application",
+      "pushTiles": 2,
+      "alliesExcluded": true
+    },
+    "cooldownAfterEndAut": 150,
+    "fixedCentre": true,
+    "expiresWithoutExplosion": true,
+    "radiusByInvocations": [
+      {
+        "minI": 0,
+        "maxI": 7,
+        "radius": 1
+      },
+      {
+        "minI": 8,
+        "maxI": 15,
+        "radius": 2
+      },
+      {
+        "minI": 16,
+        "maxI": 27,
+        "radius": 3
+      }
+    ]
+  },
+  "unchangedRuntime": "su-five01",
+  "oldOrbitRemovedOnlyOnImplementation": true,
+  "revision": "sopia-caster02",
+  "userDirection": "Invocations-scaled gravity field up to7x7, lower damage, stronger pull"
+}

@@ -1,0 +1,8 @@
+{
+  "mode": "reuse-existing-generated-asset",
+  "source": "assets/holocrawl/suisei-vfx02/originals/starmark.png",
+  "sourceSha256": "e654843f6d83c6da7952263e26b6f28fce782506b427d9c578c5b31078dfd37c",
+  "operation": "Crop existing cyan/gold star glyphs, nearest-neighbour 7x7, arrange fixed slots x3/12/21. Full stack changes all three to gold. No new image generation.",
+  "nativeOffsetY": -10,
+  "logicalTileSize": 32
+}

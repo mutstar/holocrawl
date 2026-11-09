@@ -1,0 +1,16 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit target IMAGE1 is a 32x32 pixel-art staircase game tile. IMAGE2 is ONLY a reference for handrail construction, not for the stairs style, camera or background. Change ONLY handrails on IMAGE1: replace the little individually stepping/zigzag rails with TWO long UNBROKEN STRAIGHT smooth silver handrail tubes, ONE ALONG EACH SIDE of the entire flight, like the continuous sloping rails of the photo. Each single tube must span from low end to high end in one straight continuous sloping stroke, parallel to the staircase slope. Tiny supports under the rails only at ends or midpoint. Do NOT step the handrail up/down at every tread. Keep the original game tile staircase orientation, step geometry, original raised/recessed silhouette, pixel density, grey palette, compact single-tile footprint, shading and dark cavity. No stair or perspective redesign. Coarse crisp pixel clusters readable at32px, rails around1px highlight plus1px shadow. No photographic content, no text/logo/watermark from IMAGE2, no white background, no extra platform or huge scaffold. True transparent background outside the terrain silhouette and gaps between supports. Square canvas, tightly centered sprite.",
+  "referencePhoto": "C:/Users/071staff/AppData/Local/Temp/codex-clipboard-e4cf4e9e-8896-44bd-aac5-97e6572fc7d7.png",
+  "editTargets": [
+    "assets/stairs-up04-32.png",
+    "assets/stairs-down04-32.png"
+  ],
+  "outputs": [
+    "assets/stairs-up05-32.png",
+    "assets/stairs-down05-32.png"
+  ],
+  "size": 32,
+  "transparentBackground": true,
+  "engineIntegrated": false
+}

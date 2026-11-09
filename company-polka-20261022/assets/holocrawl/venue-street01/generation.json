@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "specs": {
+    "asphalt": {
+      "transparent_background": false,
+      "prompt": "Game asset for HoloCrawl, a Dungeon Crawl Stone Soup style traditional square-grid roguelike, Japanese concert venue entrance street at night. True low-resolution pixel art designed on EXACT32x32 logical pixels enlarged nearest-neighbor. Chunky readable shapes, limited muted palette, hard square pixels, no gradients,no blur,no antialiasing,no cinematic lighting,no isometric diamond view,no perspective vanishing point,no text,no watermark. Single tile or sprite only, no sheet, no variants. ONE seamless repeatable32x32 flat asphalt floor tile. Orthogonal top-down. Very dark desaturated blue charcoal asphalt, subtle sparse2-3shade pixel clusters. Quiet low contrast ground for bright characters to stand on. Fill entire square edge to edge; no border, no curb,no road markings,no debris,no cracks bigger than2logicalpixels,no beveled edges. Opposite edges tile seamlessly. No objects or characters."
+    },
+    "wall": {
+      "transparent_background": false,
+      "prompt": "Game asset for HoloCrawl, a Dungeon Crawl Stone Soup style traditional square-grid roguelike, Japanese concert venue entrance street at night. True low-resolution pixel art designed on EXACT32x32 logical pixels enlarged nearest-neighbor. Chunky readable shapes, limited muted palette, hard square pixels, no gradients,no blur,no antialiasing,no cinematic lighting,no isometric diamond view,no perspective vanishing point,no text,no watermark. Single tile or sprite only, no sheet, no variants. ONE square32x32 solid wall terrain tile, fills entire tile. Modern concert venue dark blue-gray concrete wall, readable raised square mass like a classic Dungeon Crawl Stone Soup wall tile viewed from above with a little front face visible. Simple low-detail top slab and dark front face at bottom, thick outline on lower edge, few concrete pixel specks, NOT a building, NOT a room, NOT a floating cube, no bricks,no window,no signage. One tile, no scene, no characters. Brighter than dark asphalt but still muted."
+    },
+    "fence": {
+      "transparent_background": true,
+      "prompt": "Game asset for HoloCrawl, a Dungeon Crawl Stone Soup style traditional square-grid roguelike, Japanese concert venue entrance street at night. True low-resolution pixel art designed on EXACT32x32 logical pixels enlarged nearest-neighbor. Chunky readable shapes, limited muted palette, hard square pixels, no gradients,no blur,no antialiasing,no cinematic lighting,no isometric diamond view,no perspective vanishing point,no text,no watermark. Single tile or sprite only, no sheet, no variants. ONE compact metal concert crowd-control barrier sprite fitting inside32x32cell. Orthogonal top-down with small front face visible. Short horizontal silver-gray metal rail with two posts and four vertical bars, dark outlines, two tiny yellow safety-tape accents. Single-cell terrain obstacle, broad about28logicalpixels, height18logicalpixels. Clearly readable against dark asphalt. No ground,no shadow blob,no people,no words,no background. Genuinely transparent background."
+    },
+    "ticket": {
+      "transparent_background": true,
+      "prompt": "Game asset for HoloCrawl, a Dungeon Crawl Stone Soup style traditional square-grid roguelike, Japanese concert venue entrance street at night. True low-resolution pixel art designed on EXACT32x32 logical pixels enlarged nearest-neighbor. Chunky readable shapes, limited muted palette, hard square pixels, no gradients,no blur,no antialiasing,no cinematic lighting,no isometric diamond view,no perspective vanishing point,no text,no watermark. Single tile or sprite only, no sheet, no variants. ONE compact Japanese concert ticket kiosk / information terminal sprite inside32x32cell. About18logicalpixelswide26logicalpixelstall, upright dark navy metal cabinet with a small bright cyan rectangular screen, tiny pink event-sticker pictogram, off-white slot, stable dark base. Coarse simple pixels, same scale as a32px DCSS character. No readable letters,no words,no surrounding building,no ground,no character,no background. Genuinely transparent background."
+    },
+    "sidewalk": {
+      "transparent_background": false,
+      "prompt": "One seamless32x32 logical pixel-art floor tile for a Dungeon Crawl Stone Soup style square-grid Japanese concert venue sidewalk. Orthogonal top-down. Muted medium-dark neutral blue-gray paving slabs, very subtle seams, few2pixel chips, a little lighter than dark asphalt so the sidewalk is readable. Flat floor texture completely fills square edge-to-edge, no border,no curb,no3D cube,no bevel,no objects,no people,no text,no road marking. True coarse low-resolution pixel art32x32 logicalpixels enlarged nearest-neighbor. Limited4shade palette, no gradients,no blur,no glossy highlights,no antialiasing. One single repeatable tile only, no variants or sheet."
+    }
+  },
+  "processing": "Opaque assets resized to32x32 with nearest-neighbor. Transparent props cropped to alpha bounds,fitted within28x22 fence or20x28 ticket terminal,and placed on32x32 transparent canvas. Originals retained. Preview assembled as a16x12 tile map; existing native sprites only for scale. No native runtime,dungeon generator or collision changes."
+}

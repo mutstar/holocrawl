@@ -1,0 +1,30 @@
+{
+  "mode": "built-in image_gen edit",
+  "prompt": "Use case: precise-object-edit. Transform this tiny white-feather gold commander emblem into a PAIR OF OPEN HAWK WINGS to attach BEHIND the back of a Dungeon Crawl Stone Soup player sprite. Keep ivory-white feathers with muted gold roots/edging and a tiny burgundy fastening at center. Change silhouette to broad left and right wings extending diagonally outward from two close central roots, tips swept up, angular pointed feathers. NO crown, NO emblem border, NO face/body/head/legs, NO circle, NO glow cloud, NO text. The center should have a narrow gap where a player torso can appear in front. Design for a compact native46x30 logical pixel silhouette (roughly1.5 game tiles wide), chunky hard-edged old roguelike pixel art, few clear color clusters, no fine detail or gradients. One connected wing-pair only, fully inside frame. Transparent background. These are wearable back wings, not a floating badge.",
+  "nativeCanvas": [
+    64,
+    64
+  ],
+  "folded": {
+    "size": [
+      32,
+      24
+    ],
+    "at": [
+      16,
+      30
+    ]
+  },
+  "spread": {
+    "size": [
+      46,
+      30
+    ],
+    "at": [
+      9,
+      24
+    ]
+  },
+  "render": "native32px divisor; player-back anchor; under all actors; full spread persists until five_end",
+  "resampling": "nearest-neighbor"
+}

@@ -1,0 +1,10 @@
+{
+  "status": "approved",
+  "date": "2026-11-03",
+  "upstairs": "assets/stairs-up08-32.png",
+  "downstairs": "assets/stairs-down06-32.png",
+  "preview": "analysis/previews/street-stairs06/index.html",
+  "feedback": "User accepted upstairs08 as much better; circular upstairs/downstairs pair finalized.",
+  "engineIntegrated": false,
+  "next": "Visibility and exploration fog preview; not started."
+}

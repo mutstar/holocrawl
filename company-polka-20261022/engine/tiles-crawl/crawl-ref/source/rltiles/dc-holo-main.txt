@@ -1,0 +1,48 @@
+%prefix TILE
+%rim 0
+%back none
+%sdir holo
+rose HOLO_ROSE
+fox HOLO_FOX
+raven HOLO_RAVEN
+swordsman HOLO_SWORDSMAN
+hound HOLO_HOUND
+fx_impact_0 HOLO_BURST_IMPACT_0
+fx_impact_1 HOLO_BURST_IMPACT_1
+fx_comet_0 HOLO_BURST_COMET_0
+fx_comet_1 HOLO_BURST_COMET_1
+
+rose_1 HOLO_ROSE_1
+fox_1 HOLO_FOX_1
+raven_1 HOLO_RAVEN_1
+swordsman_1 HOLO_SWORDSMAN_1
+hound_1 HOLO_HOUND_1
+
+status_five HOLO_STATUS_FIVE
+status_shield HOLO_STATUS_SHIELD
+status_warning HOLO_STATUS_WARNING
+status_urgent HOLO_STATUS_URGENT
+status_wrath HOLO_STATUS_WRATH
+status_cooldown HOLO_STATUS_COOLDOWN
+status_resource HOLO_STATUS_RESOURCE
+status_active HOLO_STATUS_ACTIVE
+
+fx_towa_bullet_e HOLO_TOWA_BULLET_E
+fx_towa_bullet_ne HOLO_TOWA_BULLET_NE
+fx_towa_bullet_n HOLO_TOWA_BULLET_N
+fx_towa_bullet_nw HOLO_TOWA_BULLET_NW
+fx_towa_bullet_w HOLO_TOWA_BULLET_W
+fx_towa_bullet_sw HOLO_TOWA_BULLET_SW
+fx_towa_bullet_s HOLO_TOWA_BULLET_S
+fx_towa_bullet_se HOLO_TOWA_BULLET_SE
+
+fx_towa_crossfire_e HOLO_TOWA_CROSSFIRE_E
+fx_towa_crossfire_ne HOLO_TOWA_CROSSFIRE_NE
+fx_towa_crossfire_n HOLO_TOWA_CROSSFIRE_N
+fx_towa_crossfire_nw HOLO_TOWA_CROSSFIRE_NW
+fx_towa_crossfire_w HOLO_TOWA_CROSSFIRE_W
+fx_towa_crossfire_sw HOLO_TOWA_CROSSFIRE_SW
+fx_towa_crossfire_s HOLO_TOWA_CROSSFIRE_S
+fx_towa_crossfire_se HOLO_TOWA_CROSSFIRE_SE
+lui_attack HOLO_LUI_ATTACK
+lui_attack_left HOLO_LUI_ATTACK_LEFT

@@ -1,0 +1,6 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Asset type: HoloCrawl Suisei pixel-art airborne comet animation sprite strip. Input image is STYLE REFERENCE only for white/cyan/cobalt/gold star magic. Create a new TWO-FRAME horizontal strip, equal square cells, transparent background. Each cell: a clearly recognizable comet FALLING STRAIGHT DOWN, bright substantial white-blue star/rock head near lower middle, long tapered blue/cyan tail extending upward, a few square star fragments, crisp chunky pixel art suitable for downsampling to 32x32. Frame 1 intact descending comet, frame 2 slight tail flicker and more fragments, same head position and scale. Floating in air, no ground circle, no explosion, no environment, no letters, no labels, no grids. Keep all shapes inside each cell with generous transparent margins. Distinct large head and long vertical tail readable at 32 pixels. NOT a slash, NOT a laser beam. 2:1 wide strip.",
+  "reference": "assets/holocrawl/suisei-vfx01/originals/cometfall.png",
+  "generatedSource": "C:/Users/IN/.codex/generated_images/01a14d40-76d6-70c1-a246-5af1d9c9eacb/exec-33935aa6-9e5e-4b8e-ad8a-025313044c2d.png"
+}

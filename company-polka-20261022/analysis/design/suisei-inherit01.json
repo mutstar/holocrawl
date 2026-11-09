@@ -1,0 +1,22 @@
+{
+  "status": "implemented-native-validated",
+  "date": "2026-11-02",
+  "name": "별의 계승",
+  "tier": 4,
+  "type": "passive",
+  "unlockPiety": 100,
+  "minimumInvocations": 0,
+  "effect": "Consume the existing next-hit kill reward on a fresh marked foe. If the ordinary direct attack deals positive damage and the foe survives, start at2stars rather than1.",
+  "cost": "No additional MP/piety/action/star cost. Original attack/spell cost applies.",
+  "constraints": [
+    "Miss keeps reward.",
+    "One-shot and reward-only kills give no inherited stars or recursive reward.",
+    "An already stacked target gains the normal1 only, max3.",
+    "Original3-turn reward expiry retained.",
+    "Single marked-target rule retained.",
+    "Divine powers and DoT/pet damage do not trigger inheritance."
+  ],
+  "save": "Banked reward already uses saved offence/three_end fields; inheritance flag is per-action only. Native bank-save, actual next spell outcomes and strict ordinary-combat RNG continuation verified. Full post-targeting-UI RNG equality is logged separately.",
+  "implementationRevision": "suisei-inherit08",
+  "review": "analysis/previews/suisei-inherit01/index.html"
+}

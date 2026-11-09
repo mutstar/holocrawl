@@ -1,0 +1,14 @@
+{
+  "sourceArt": "../sopia-gravity03/generation.json",
+  "operation": "Native runtime quad scaling and opacity only, no bitmap edit",
+  "opacity": 0.4117647058823529,
+  "transparency": 0.5882352941176471,
+  "spanTiles": [
+    3,
+    5,
+    7
+  ],
+  "layer": "below actors",
+  "anchor": "centre minus radius",
+  "rangeGameplayChanged": false
+}

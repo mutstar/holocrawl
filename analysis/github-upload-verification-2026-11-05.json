@@ -1,0 +1,13 @@
+{
+  "uploaded": true,
+  "privateVerified": true,
+  "url": "https://github.com/mutstar/holocrawl",
+  "branch": "main",
+  "commit": "bfb8e914f145bfdc30106686d51393a577459488",
+  "remoteFileCount": 6294,
+  "requiredFilesPresent": true,
+  "forbiddenPathsPresent": false,
+  "gitlinks": 0,
+  "trackedWorkingTreeClean": true,
+  "sourceEnginePreservedAsPatch": true
+}

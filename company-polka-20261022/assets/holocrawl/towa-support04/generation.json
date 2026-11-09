@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Single tiny retro pixel art projectile sprite, pointing RIGHT, isolated transparent background. A short purple devil arrow / miniature demon spear inspired by Flandre Scarlet's Laevateinn crooked clock-hand weapon: a crisp pointed spade-shaped spearhead at the right, two small swept-back hooked barbs at its base, a short slim slightly crooked shaft extending left. Compact 3:1 horizontal silhouette, NOT a long staff. Towa palette: bright magenta violet body, pale lavender inner highlight, deep purple outline visible on dark dungeon floor. At final size about 20x8 pixels it must read clearly as a short wicked arrow, not a bullet or diamond orb. Blocky low resolution pixels, hard edges, minimal details, flat sprite no perspective, no smooth glow, no motion blur, no text, no scenery, one object only. Generous transparent margins.",
+  "processing": "Alpha threshold128, crop, nearest-neighbor20x8, eight rotations centered on32x32. Existing atlas slots reused; numeric logic unchanged."
+}

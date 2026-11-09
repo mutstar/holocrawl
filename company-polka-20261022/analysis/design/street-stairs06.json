@@ -1,0 +1,14 @@
+{
+  "revision": "street-stairs06",
+  "preview": "analysis/previews/street-stairs06/index.html",
+  "engineIntegrated": false,
+  "runtimeChanged": false,
+  "floorTravelImplemented": false,
+  "assets": [
+    "assets/stairs-up08-32.png",
+    "assets/stairs-down06-32.png"
+  ],
+  "browserValidation": "analysis/previews/street-stairs06/browser-validation.json",
+  "artDirection": "Circular stairs, no handrails; raised up and recessed down, one tile",
+  "upstairsRevision": "upstairs08"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "tile-art-draft",
+  "date": "2026-11-03",
+  "region": "잔향도시1~3층 공연장 앞 거리",
+  "tileSize": [
+    32,
+    32
+  ],
+  "assets": [
+    "asphalt",
+    "wall",
+    "fence",
+    "ticket",
+    "sidewalk"
+  ],
+  "review": "analysis/previews/venue-street01/index.html",
+  "newRasterTool": "built-in image_gen",
+  "composition": "Generated raster tiles assembled in a fixed16x12 tile test map; existing DCSS doll,rat and stairs are scale references.",
+  "engineIntegrated": false,
+  "proceduralGeneratorImplemented": false,
+  "collisionImplemented": false,
+  "runtimeChanged": false,
+  "notes": "Only floor/wall/prop art readability prototype. Prop collisions,door/curb/corner connections,terrain variants and native generation integration remain pending."
+}

@@ -1,0 +1,6 @@
+{
+  "tool": "built-in imagegen",
+  "prompt": "Use the attached character illustration ONLY as a reference for the distinctive jester HAT on the head. Create ONE standalone tiny retro roguelike pixel-art icon of THAT HAT, no character, no face, no ears, no body. Match the reference silhouette: tall curved drooping jester points, rich crimson red main point, vivid blue side panel, black/dark navy panel, thin golden trim, golden bells at tips, small pink band. RED BLUE BLACK should dominate. NO white or cream fabric; at most two tiny yellow highlight pixels. Simple chunky readable solid pixel regions, compact vertical silhouette, dark purple outline thin enough to remain readable against dark dungeon floor. Intended final native size 16x16 game pixels so extremely simple forms, no tiny patterns or fine stars. Hat only, transparent background, no shadow cloud, no text, no frame. Keep the material saturated and clear, not pale or pastel.",
+  "reference": "codex-clipboard-254410cb-7fd3-4ffd-8665-f5b4df4ecf3b.png",
+  "operation": "Reference hat redesign; nearest-neighbour resize and placement in existing 32x32 tiles"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "miko-vfx01",
+  "assets": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_0.png",
+      "sha256": "b2264dfd150397c8af9c8f20faed648d3d0d5781a429d8e9204913ae85d6a747"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_1.png",
+      "sha256": "6e4d898f74a8e8914462772d8828f45c73815b5e47fadc39913df1135b6028c2"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_0.png",
+      "sha256": "26a1f3fbb7a09684c33dc8e601c7f67e82174bef49455341c3368ae7797a075d"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_1.png",
+      "sha256": "2cff4aaa81816e235be30ed0f079a20efcc9a626485d4f28adcf93c02f2801ef"
+    }
+  ],
+  "processing": "Built-in image_gen; alpha crop and nearest-fit only"
+}

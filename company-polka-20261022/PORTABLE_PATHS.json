@@ -1,0 +1,19 @@
+{
+  "version": "home-fullkit01",
+  "root": ".",
+  "entryDocument": "START_HERE_HOME.md",
+  "report": "analysis/native/wrath02/RESULTS_KO.md",
+  "settings": "analysis/native/balance-final01/settings.json",
+  "binary": "runtime/tiles01/HoloCrawl.exe",
+  "source": "engine/campaign-crawl/crawl-ref/source",
+  "launcher": "PLAY_HOLOCRAWL.cmd",
+  "python": ".toolchain/msys64/mingw64/bin/python.exe",
+  "bash": ".toolchain/msys64/usr/bin/bash.exe",
+  "activeJobs": false,
+  "automationsToStart": false,
+  "historicalAbsolutePathsAreEvidenceOnly": true,
+  "tilesSource": "engine/tiles-crawl/crawl-ref/source",
+  "gallery": "analysis/previews/mela-review01/tier5-dispatch01.html",
+  "handoffState": "HOME_HANDOFF_STATE.json",
+  "fullKitInventory": "FULLKIT_CORE_INVENTORY.md"
+}

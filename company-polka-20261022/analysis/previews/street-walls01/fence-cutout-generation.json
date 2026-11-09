@@ -1,0 +1,7 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Extract/recreate a single silver crowd-control fence in the reference pixel-art style. True alpha background including all gaps between bars, no pavement or black backing; five vertical bars, tubular frame, two feet; crisp readable at 32x18 pixels.",
+  "asset": "assets/fence-cutout32.png",
+  "alphaMinimum": 0,
+  "runtimeChanged": false
+}

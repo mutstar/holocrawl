@@ -1,0 +1,12 @@
+{
+  "revision": "street-stairs05",
+  "preview": "analysis/previews/street-stairs05/index.html",
+  "engineIntegrated": false,
+  "floorTravelImplemented": false,
+  "assets": [
+    "assets/stairs-up05-32.png",
+    "assets/stairs-down05-32.png"
+  ],
+  "replaces": "Flat rectangular up/down visual style",
+  "browserValidation": "analysis/previews/street-stairs05/browser-validation.json"
+}

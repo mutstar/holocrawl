@@ -1,0 +1,14 @@
+{
+  "errors": [],
+  "movement": {
+    "reached": true,
+    "wallBlocked": true,
+    "position": {
+      "x": 68,
+      "y": 57
+    }
+  },
+  "changed": true,
+  "deterministic": true,
+  "noOverflow": true
+}

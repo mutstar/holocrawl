@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen edit",
+  "prompt": "Edit this transparent pixel art purple devil-arrow sprite into a visually distinct ULTIMATE UPGRADE projectile. Keep one right-facing hooked spearhead, but shorten shaft strongly and add a pair of unmistakable small swept-back BAT WINGS attached behind the spearhead (above and below the horizontal shaft), plus TWO short separated parallel lavender tail streaks extending left. Overall looks like a compact winged demon bolt, not the original long crooked arrow. Bright pale lavender-white wing membranes, vivid magenta-purple edges, very small lime-green glint at spearhead. Must read at only 26x16 game pixels on a dark busy magenta dungeon floor. Chunky sharp retro pixels, strong silhouette and broad solid highlights, transparent gaps between wings and twin tail streaks. One horizontal projectile only. No scene, text, glow cloud, blur, particles or additional projectiles. Transparent background.",
+  "processing": "Alpha threshold128, crop, nearest-neighbor26x16, eight directions on32x32; separate tier5 atlas slots"
+}

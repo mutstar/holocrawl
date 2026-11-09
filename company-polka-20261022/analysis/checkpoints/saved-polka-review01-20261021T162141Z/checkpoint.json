@@ -1,0 +1,31 @@
+{
+  "savedAtUtc": "2026-10-21T16:21:41.345818+00:00",
+  "workspace": "C:\\Users\\IN\\Documents\\ChatGPT\\Game\\HOLOCRAWL_HOME_2026-10-21_LAMY_CASTER01",
+  "snapshot": "C:\\Users\\IN\\Documents\\ChatGPT\\Game\\HOLOCRAWL_HOME_2026-10-21_LAMY_CASTER01\\analysis\\checkpoints\\saved-polka-review01-20261021T162141Z",
+  "lamy": "all tiers approved",
+  "polka": "tiers1/3/5 pending; existing native draft preview",
+  "next": "Polka feedback",
+  "filesSha256": {
+    "VFX_DRAFT_STATUS.json": "e4383f49520156f72c474750097fa02e8cb407efa2e3a43f977e16dcb3727fb7",
+    "HOME_HANDOFF_STATE.json": "140b2b5fd6d67ebb164758057d01fa7170d79c680701c929285c66277a1593d4",
+    "engine/campaign_status.json": "78e7f5a64b43b66204093d1533e5a65bff01a5f28c49592e06aa7541de104877",
+    "engine/implementation_status.json": "ac1cbf24fba548cac4e20ba7511459ee027ce600d6c3ce28f3e3bd8cd85b29ad",
+    "HOME_SESSION.md": "894a2fdf741a90dd9589f321e2398a623516dbade3513fad6bff0dd9098d3510",
+    "HOME_RESUME.md": "50c65882caeba5c679d6d3c5248a140a4abfe8dc6dd5a423483812def2a7d8a4",
+    "CONTINUE_HERE.md": "50c65882caeba5c679d6d3c5248a140a4abfe8dc6dd5a423483812def2a7d8a4",
+    "CURRENT_WORKSPACE.md": "50c65882caeba5c679d6d3c5248a140a4abfe8dc6dd5a423483812def2a7d8a4",
+    "START_HERE_HOME.md": "50c65882caeba5c679d6d3c5248a140a4abfe8dc6dd5a423483812def2a7d8a4",
+    "analysis/native/polka-review01/validation.json": "f2c86943aa35c6483e70834292724ed659576717358401b71cbfc9380c8cb25b",
+    "analysis/native/lamy-banquet-vfx05/checkpoint-manifest.json": "c74a32aa1730f0ba928bd4cdb170769b2e6db4106404655d57b919749adc74b3",
+    "scripts/review-polka-start.py": "a4ea61d099ee0570838c564e51469cd95a5cf5f1df4d48a01e790da05fb61920",
+    "scripts/publish-lamy-banquet-vfx05.py": "38a4c1a45fae0c42a48b282de4439c503069e841dc0e7a2c4039ff0bc48df483",
+    "scripts/capture-lamy-banquet-vfx05.ps1": "4f676004bc4c91eada3d5a9a9fb1e44cd8012546941c1897c19ebcfee8603c88",
+    "engine/campaign-crawl/crawl-ref/source/tiledgnbuf.cc": "4cd5913c8720123ec6ddd19d3b94bb496fb357ee60a9954a8377e134a1c35930",
+    "engine/campaign-crawl/crawl-ref/source/tiledgnbuf.h": "730332e7d4cf4b6582b84fb17adfc0d00b17edf00e3cf99e665a4f9586d2be55",
+    "engine/campaign-crawl/crawl-ref/source/tilereg-dgn.cc": "ca857adbd7943bf6ca528fc54c80f9eaa2bdd42eab9bbf4cc81ef30aaba565ec",
+    "runtime/tiles01/HoloCrawl.exe": "aec9c5f690bc9775e79c5fc7ba789b464a99e05edaf1abe411b3411f1a3e01d1",
+    "analysis/previews/lamy-banquet-vfx05/index.html": "ec0c65372af51497fcb5e0d4de3745068a14c66f12b177f00e1b58fc384a8b93",
+    "analysis/previews/polka-review01/index.html": "28cce58968e763faf64f26963374b837e0d7181ce31c477e1f44fb09ab58f7f6"
+  },
+  "snapshotScope": "Handoff, approval ledgers, latest renderer source and workflow scripts. Existing runtime/assets remain in workspace; hashes recorded. Not a portable full game archive."
+}

@@ -1,0 +1,6 @@
+{
+  "source": "../mela-onibi01/generation.json",
+  "operation": "Existing generated onibi integration only; cap displayed embers at3 in single row, badge size8x12 through11x18, existing counterburst unchanged",
+  "maxDisplayedEmbers": 3,
+  "combatChanged": false
+}

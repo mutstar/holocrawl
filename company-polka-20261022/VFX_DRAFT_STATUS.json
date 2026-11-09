@@ -1,0 +1,917 @@
+{
+  "revision": "lui-attack06",
+  "approvedGods": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame",
+    "choco",
+    "korone",
+    "okayu",
+    "pekora",
+    "noel",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "sopia",
+    "mela"
+  ],
+  "cornerRevision": "choco",
+  "draftGods": [],
+  "abilityTiers": 66,
+  "nativeScreenshots": 370,
+  "review": "analysis/previews/street-stairs06/index.html",
+  "next": "Review revised cyan-teal shallow water02 with clearer ripples. Deep water01 and approved rectangular door12 unchanged. Browser-only.",
+  "numericChanges": true,
+  "archive": "HOLOCRAWL_HOME_2026-10-30_FULLKIT01.zip",
+  "currentGod": "ayame",
+  "reviewMode": "current-character-only",
+  "tierApprovals": {
+    "choco": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "choco-vfx02",
+      "feedback": "좋다 초코센은 이걸로하고 다음 코로네로가자"
+    },
+    "korone": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "korone-vfx09",
+      "feedback": "완벽하다 이제 그다음"
+    },
+    "okayu": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "okayu-vfx05",
+      "feedback": "오 이게낫네 ㅋㅋ 오카유는 이걸로하고 다음 페코라로가자",
+      "combatRevision": "okayu-balance03"
+    },
+    "pekora": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "sharedExplosionApproved": true,
+      "feedback": "ㅇㅋ 좋다 페코라는 이걸로하고 다음 노엘로가자",
+      "previewRevision": "pekora-vfx02",
+      "combatRevision": "pekora-balance01"
+    },
+    "noel": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "noel-vfx05",
+      "combatRevision": "noel-balance01",
+      "feedback": "오 좋다ㅋㅋ 노엘은 이걸로하고 다음 와타메로가자",
+      "tier3Preview": "noel-supply-sequence01",
+      "tier1Revision": "noel-vfx04"
+    },
+    "watame": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "watame-vfx03",
+      "feedback": "오 좋다ㅋㅋ 와타메는 이걸로하고 다음 토와로가자",
+      "tier1Revision": "watame-vfx02"
+    },
+    "towa": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "revision": "towa-vfx03",
+      "feedback": "ㅇㅋ 좋다ㅋㅋ 토와는 이걸로하고 다음 라미로가자",
+      "pendingRevision": null,
+      "tier3Revision": "towa-support05",
+      "tier3DiagonalPreview": "towa-diagonal01",
+      "tier3Feedback": "ㅇㅋ 잘보이네ㅋㅋ 토와 3성은 이걸로하고 5성으로가자",
+      "tier5Revision": "towa-crossfire02"
+    },
+    "lamy": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "combatRevision": "lamy-tools05",
+      "pendingRevision": null,
+      "tier1Revision": "lamy-caster01",
+      "tier1Feedback": "ㅇㅇ좋다 라미 3성 이펙트도 보자",
+      "tier3ToolSupport": true,
+      "tier3Revision": "lamy-chill-vfx01",
+      "tier3CombatRevision": "lamy-tools05",
+      "tier3Feedback": "ㅇㅇ좋다 라미 3성은 이걸로하고 5성 이펙트 보자",
+      "pendingTier5Revision": null,
+      "tier5Revision": "lamy-banquet-vfx05",
+      "tier5Feedback": "ㅇㅇ좋다 라미는 이걸로하고 다음 폴카 1성 3성 5성 이펙트 보자"
+    },
+    "polka": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "visualSourceRevision": "night-vfx04",
+      "tier1Revision": "polka-vfx05",
+      "feedback": "1·3·5성 전체 승인. 최종 5성 polka-vfx07.",
+      "tier1Feedback": "ㅇㅋ 이제 깔끔하네ㅋㅋ 폴카 1성은 이걸로하고 3성으로가자",
+      "tier3Revision": "polka-leap02",
+      "tier3Feedback": "ㅇㅋ 잘보이네ㅋㅋ 폴카 3성은 이걸로하고 5성으로가자",
+      "tier5Revision": "polka-vfx07",
+      "tier5Feedback": "ㅇㅇ훨낫다 / 이어서 진행하자"
+    },
+    "koyori": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "visualSourceRevision": "koyori-five-critical04",
+      "combatRevision": "koyori-caster02",
+      "tier1Revision": "koyori-tube02",
+      "tier3Revision": "koyori-tier3-border01",
+      "feedback": "1·3·5성 전체 승인. 최종 5성 koyori-five-critical04.",
+      "tier5Revision": "koyori-five-critical04",
+      "revision": "koyori-five-critical04"
+    },
+    "lui": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "tier1Revision": "lui-attack06",
+      "visualSourceRevision": "lui-wings02",
+      "feedback": "오호 그럼 그다음신으로",
+      "tier3Revision": "lui-command01",
+      "tier5Revision": "lui-wings02"
+    },
+    "raden": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "tier1Revision": "raden-vfx03",
+      "feedback": "오 이거멋지다 인정 이제다음",
+      "tier3Preview": "raden-three04",
+      "combatRevision": "raden-balance01",
+      "tier3NumbersApproved": true,
+      "tier3Revision": "raden-three04",
+      "tier5Preview": "raden-five04",
+      "tier5Revision": "raden-five04"
+    },
+    "hajime": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "tier1Revision": "hajime-rhythm03",
+      "feedback": "오 좋다",
+      "tier3Preview": "hajime-dive01",
+      "tier3Revision": "hajime-dive01",
+      "tier5Preview": "hajime-five01",
+      "tier5Revision": "hajime-five01",
+      "approvedAt": "2026-10-29"
+    },
+    "su": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "pendingRevision": null,
+      "tier1Revision": "su-grace01",
+      "tier3Preview": "su-wave03",
+      "feedback": "ㅇㅋㅇㅋ그다음캐릭",
+      "tier3Revision": "su-wave03",
+      "tier3NumbersApproved": true,
+      "tier5Preview": "su-five01",
+      "tier5Revision": "su-five01"
+    },
+    "vivi": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "tier1Preview": "vivi-lipstick01",
+      "tier1Revision": "vivi-lipstick01",
+      "tier3Preview": "vivi-encore04",
+      "feedback": "ㅇㅋ좋네",
+      "tier3Revision": "vivi-encore04",
+      "tier5Preview": "vivi-curtain02",
+      "revision": "vivi-curtain02",
+      "tier5Revision": "vivi-curtain02"
+    },
+    "sopia": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "reviewRevision": "sopia-gravity04",
+      "scope": "Redesigned1/3/5 visuals approved; caster combat unimplemented",
+      "tier3Revision": "sopia-gravity04",
+      "feedback": "굿좋다 ㅋㅋ다음으로",
+      "tier5Revision": "sopia-bigbang02",
+      "tier1BookApproved": true,
+      "tier1Revision": "sopia-teacher02"
+    },
+    "mela": {
+      "approved": [
+        1,
+        3,
+        5
+      ],
+      "pending": [],
+      "reviewRevision": "mela-review01",
+      "scope": "Mela visuals and3heat/1x5normal/1x6enhanced design approved; combat conversion unimplemented",
+      "tier1Preview": "mela-heat3-01",
+      "tier1Revision": "mela-heat3-01",
+      "feedback": "dzwhgek (ㅇㅋ좋다)",
+      "tier3Revision": "mela-beam02",
+      "tier5Revision": "mela-dispatch01"
+    },
+    "suisei": {
+      "approved": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "combatRevision": "suisei-inherit08",
+      "starIndicatorApproved": true,
+      "tier2Implemented": true,
+      "tier4Implemented": true,
+      "tier4Review": "analysis/previews/suisei-inherit01/index.html"
+    },
+    "miko": {
+      "approved": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "pending": [],
+      "combatRevision": "miko-passive01",
+      "tier2Implemented": true
+    },
+    "aki": {
+      "approved": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "pending": [],
+      "combatRevision": "aki-nutrient03",
+      "tier2Implemented": true
+    },
+    "fubuki": {
+      "approved": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "pending": [],
+      "combatRevision": "fubuki-opening01",
+      "tier2Implemented": true
+    },
+    "ayame": {
+      "approved": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "pending": [],
+      "combatRevision": "ayame-zanshin02",
+      "tier2Implemented": true
+    }
+  },
+  "reviewDisplayRequirements": [
+    "current character only",
+    "selected skill effects always visible",
+    "minimum Invocations distinct from piety unlock",
+    "cost and Invocations scaling verified from implementation"
+  ],
+  "buildRoleDirection": {
+    "casterFocused": [
+      "sopia",
+      "koyori",
+      "lamy",
+      "vivi"
+    ],
+    "keepSummoner": [
+      "aki"
+    ],
+    "status": "Accepted design direction; mechanics not yet changed",
+    "intent": "Support ordinary spellcasting through each god system, not merely increase invocation damage",
+    "implemented": [
+      "lamy"
+    ]
+  },
+  "combatRevision": "raden-balance01",
+  "towaPalette": {
+    "primary": "bright magenta",
+    "secondary": "light lavender",
+    "accent": "lime green",
+    "feedback": "토와는 앞으로 저런색 위주로",
+    "appliesTo": "Towa future art revisions; high contrast on dark dungeon floors"
+  },
+  "lamyHudRevision": "lamy-hud01",
+  "luiPendingVariants": {
+    "revision": "lui-ganmo-compare01",
+    "selected": "B",
+    "nativeApplied": true,
+    "appliedRevision": "lui-ganmo-sharp01"
+  },
+  "currentVisualReviewGod": "ayame",
+  "currentVisualReviewTier": 2,
+  "currentVisualReview": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\holocrawl-0341\\preview\\native-water02\\index.html",
+  "visualRevision": "hajime-rhythm03",
+  "playBinarySha256": "902c7a6c5590c7947c4391022203d0be1f750a4a9b794cebfff80bbdbc99e901",
+  "luiAttackRevision": "lui-attack06",
+  "savedAtUtc": "2026-10-22T09:46:15.221946+00:00",
+  "entryDocument": "START_HERE_HOME.md",
+  "futureGrowthPlan": "Complete current 1/3/5 visuals first, then per-god passive/utility additions and optional capstone relocation.",
+  "radenBalance": {
+    "revision": "raden-balance01",
+    "invocations12": {
+      "normal": {
+        "paintingMean3Stacks": 33,
+        "sculptureMean": 22.5,
+        "shield": 26,
+        "shieldTurns": 8
+      },
+      "exhibition": {
+        "paintingMean3Stacks": 40.5,
+        "sculptureMean": 28,
+        "shield": 40,
+        "shieldTurns": 10
+      }
+    },
+    "proof": {
+      "status": "passed",
+      "invocations": [
+        0,
+        6,
+        12,
+        18,
+        27
+      ],
+      "normalAndExhibition": true,
+      "nativeDamageAndAC": true,
+      "shieldAbsorptionAndDuration": true,
+      "costsAndRecoveryUnchanged": true
+    }
+  },
+  "suCombatRevision": "su-grace01",
+  "viviCasterDraft": {
+    "status": "approved-design-not-implemented",
+    "tier1": {
+      "name": "Spotlight",
+      "stacks": 3,
+      "bonusPerStack": "3+floor(I/12)%",
+      "expireAut": 40,
+      "oneGainPerDamagingCast": true
+    },
+    "tier3": {
+      "name": "Encore",
+      "mp": 2,
+      "piety": 3,
+      "actionAut": 5,
+      "echoPercent": "40+10*consumedStacks+floor(I/6)",
+      "armAut": 40,
+      "cooldownAut": 50
+    },
+    "tier5": {
+      "name": "Grand finale",
+      "mp": 6,
+      "piety": 12,
+      "actionAut": 10,
+      "durationAfterCastAut": "60+2*I",
+      "cooldownAfterEndAut": 150,
+      "burst": "2d(5+floor(I/3))",
+      "radius": 1,
+      "oneBurstDamagePerVictimPerCast": true
+    }
+  },
+  "viviVisualPreviewRevision": "vivi-curtain02",
+  "viviPreviewBinarySha256": "ce0f2a1050a8806dc8e171fccb7e68edd1884d28b4187541156efec9d27cdfb1",
+  "sopiaCasterDraft": {
+    "status": "approved-design-not-implemented",
+    "date": "2026-10-30",
+    "concept": "Approved 1/3/5 caster support, gravity and spell-charged Big Bang; numerical proposal pending review",
+    "invocationsSymbol": "I",
+    "tier1": {
+      "name": "박사의 가르침",
+      "unlockPiety": 30,
+      "mpOnDirectSpellKill": "min(1+floor(I/12),3,actualMpSpentByCast)",
+      "oneRefundPerCast": true,
+      "refundRequiresNaturalXpHostile": true,
+      "exclude": [
+        "summons",
+        "poison/cloud/delayed damage",
+        "god damage",
+        "zero MP casts"
+      ],
+      "giftPietyMilestones": [
+        45,
+        75,
+        110,
+        150
+      ],
+      "giftChoices": 3,
+      "selectCount": 1,
+      "giftRules": "Each milestone once per game, no renounce reset; unseen spells fitting trained schools and current learnable level; defer if no eligible spells; selected spell offered for normal memorisation, no bypass of spell levels or other native restrictions"
+    },
+    "tier3": {
+      "name": "중력 실험실",
+      "unlockPiety": 75,
+      "mp": 3,
+      "piety": 3,
+      "actionAut": 10,
+      "range": 4,
+      "durationAut": "80+2*I",
+      "tickAut": 20,
+      "firstTickAfterCompletionAut": 20,
+      "damage": "1d(4+floor(I/4))",
+      "damageMitigation": "physical, one AC application, no fire/cold resistance",
+      "pullChancePercent": "clamp(75+2*I-2*HD,25,95)",
+      "pullTiles": 1,
+      "perMonsterPullIntervalAut": 20,
+      "oneField": true,
+      "alliesExcluded": true,
+      "radiusByInvocations": [
+        {
+          "minI": 0,
+          "maxI": 7,
+          "radius": 1
+        },
+        {
+          "minI": 8,
+          "maxI": 15,
+          "radius": 2
+        },
+        {
+          "minI": 16,
+          "maxI": 27,
+          "radius": 3
+        }
+      ],
+      "radiusSampledAtCast": true
+    },
+    "tier5": {
+      "name": "빅뱅 가설",
+      "unlockPiety": 120,
+      "mp": 7,
+      "piety": 12,
+      "actionAut": 10,
+      "range": 4,
+      "durationAut": "100+2*I",
+      "fieldTick": "same revised tier3 damage/pull/20aut schedule; no duplicate or immediate tick on upgrade",
+      "chargeMax": 3,
+      "chargeRule": "One charge per paid direct damaging spell cast that actually damages a visible natural XP hostile inside field; one per cast across all victims; no summon/DOT/god damage, no time-based charge; any qualifying victim within actual scaled field can charge; detonation footprint remains5x5",
+      "detonate": {
+        "minCharge": 1,
+        "mp": 0,
+        "piety": 0,
+        "actionAut": 10,
+        "rangeToCentre": 6,
+        "radius": 2,
+        "damage": "3d(8+floor(I/3))+6*C",
+        "damageMitigation": "physical, one AC application",
+        "pushTiles": 2,
+        "alliesExcluded": true
+      },
+      "cooldownAfterEndAut": 150,
+      "fixedCentre": true,
+      "expiresWithoutExplosion": true,
+      "radiusByInvocations": [
+        {
+          "minI": 0,
+          "maxI": 7,
+          "radius": 1
+        },
+        {
+          "minI": 8,
+          "maxI": 15,
+          "radius": 2
+        },
+        {
+          "minI": 16,
+          "maxI": 27,
+          "radius": 3
+        }
+      ]
+    },
+    "unchangedRuntime": "su-five01",
+    "oldOrbitRemovedOnlyOnImplementation": true,
+    "revision": "sopia-caster02",
+    "userDirection": "Invocations-scaled gravity field up to7x7, lower damage, stronger pull"
+  },
+  "sopiaVisualPreviewRevision": "sopia-teacher02",
+  "sopiaPreviewBinarySha256": "962d6971240524e31539a7cde5d10b79f648308380343d3f65b326fabe421fc6",
+  "melaVisualPreviewRevision": "mela-dispatch01",
+  "melaPreviewBinarySha256": "06e14c130e21c01092afb3f50f85a4e02930147ca49f3ee35c77bd7b0516640e",
+  "melaHeat3Draft": {
+    "status": "approved-design-not-implemented",
+    "revision": "mela-heat3-01",
+    "date": "2026-10-30",
+    "principle": "One new ember represents two old heat units; max3 instead6",
+    "tier1": {
+      "maxHeat": 3,
+      "normalContact": "Two qualifying non-fire contacts award one ember; one pending half-charge tracked internally, no extra pip",
+      "fireContact": "One qualifying fire contact/tick awards one ember",
+      "sourceCapPer10Aut": 1,
+      "counterCost": 1,
+      "counterFireDamage": "2d(3+floor(I/6))",
+      "keepAfterGainAut": 30,
+      "decayEveryAut": 40,
+      "partialCharge": "A pending normal-contact half-charge expires after30aut without qualifying gain/contact and clears on level change or renunciation; counts toward per10aut source allowance so mixed normal/fire cannot exceed one ember equivalent"
+    },
+    "tier3": {
+      "heatBonusPerEmber": 8,
+      "damage": "2d(6+floor(I/3))+8*H",
+      "cloudAbsorptionReward": 1,
+      "shape": "piercing straight line",
+      "width": 1,
+      "range": 5,
+      "normalFireCloudRemoval": "same line",
+      "changeApproved": "오키좋다 고고고"
+    },
+    "tier5": {
+      "initialHeat": 3,
+      "automaticChargeEveryAut": 40,
+      "automaticGain": 1,
+      "breathDamage": "3d(6+floor(I/3))+8*H",
+      "enhancedBreathGeometry": {
+        "width": 1,
+        "range": 6,
+        "status": "approved-design-not-implemented"
+      }
+    },
+    "unchanged": "rF, MP/piety costs, action times, range, duration, cooldowns, visual counterburst",
+    "scope": "3-ember native visual prototype implemented; live gameplay remains old6-heat rules until numerical approval and implementation",
+    "approval": "오케이 다음과정으로"
+  },
+  "melaDispatchDraft": {
+    "status": "approved-design-not-implemented",
+    "date": "2026-10-30",
+    "name": "메라조 출동!",
+    "unlockPiety": 120,
+    "mp": 6,
+    "piety": 12,
+    "actionAut": 10,
+    "durationAut": "60+2*I",
+    "cooldownAfterEndAut": 150,
+    "initialHeat": 3,
+    "automaticHeat": {
+      "everyAut": 40,
+      "gain": 1,
+      "max": 3
+    },
+    "protection": {
+      "radius": 2,
+      "extraRf": 1,
+      "fireDamageReductionAfterRfPercent": 50,
+      "targets": "self and allies, visible and line of effect",
+      "extinguish": "ordinary fire clouds and self/allied sticky flames on activation and every10aut"
+    },
+    "enhancedBreath": {
+      "width": 1,
+      "rangeProposal": 6,
+      "rangeStatus": "approved-design-not-implemented",
+      "damage": "3d(6+floor(I/3))+8*H",
+      "mp": 3,
+      "piety": 3,
+      "actionAut": 10,
+      "cooldownAfterCompletionAut": 30
+    },
+    "art": "Small blue ghost-fire wreath under player, faint5x5ward rim, dense continuous192x32flame stream under actors",
+    "runtime": "su-five01 unchanged; actual Mela remains old6heat/cone rules",
+    "approval": "dzwhgek (Korean keyboard: ㅇㅋ좋다), after tier5 effects explanation"
+  },
+  "all22GodVisualsApproved": true,
+  "activeWork": "browser-shallow-water-review02",
+  "currentDesignGod": "ayame",
+  "fullKitPlan": "analysis/design/suisei-fullkit01.json",
+  "passiveExpansionPolicy": {
+    "status": "approved-workflow-only",
+    "strongKitAdditionalPassives": 1,
+    "unclearOrWeakKitAdditionalPassives": 2,
+    "mandatoryTier2And4": false,
+    "assignmentsApproved": false,
+    "nextGod": "suisei",
+    "nextWorkLocation": "home",
+    "inventory": "FULLKIT_CORE_INVENTORY.md"
+  },
+  "suiseiStarPreviewRevision": "suisei-stars03",
+  "suiseiStarPreviewBinarySha256": "37e0f8ae302b393ff8bda8456b72076a7bb294d2f33e9bcd97fb71712296dec9",
+  "suiseiThreeStarDraft": {
+    "date": "2026-11-02",
+    "status": "implemented-native-validated",
+    "userDirection": "Reduce maximum stars from 5 to 3 and retune related effects because targets often die before five stacks.",
+    "maxStars": 3,
+    "tier1": {
+      "type": "passive-with-manual-retarget",
+      "killRewardDamage": "1d(3+4*S)",
+      "meanAtStars1To3": [
+        4,
+        6,
+        8
+      ],
+      "rewardWindowAut": 30,
+      "markExpirySinceLastDirectDamageAut": 100,
+      "ordinaryHitsReceiveDamageBonusFromStars": false
+    },
+    "tier3": {
+      "type": "active",
+      "damage": "2d(8+floor(I/2))+5*S against marked target; base damage only against other targets",
+      "mp": 3,
+      "piety": 3,
+      "range": 5,
+      "meanAtI12Stars0To3BeforeAC": [
+        15,
+        20,
+        25,
+        30
+      ]
+    },
+    "tier5": {
+      "type": "active",
+      "damage": "3d(10+floor(I/2))+8*S against snapshotted marked target; base damage only against other targets",
+      "mp": 6,
+      "piety": 10,
+      "range": 6,
+      "radius": 1,
+      "landingDelayAfterCastAut": 20,
+      "meanAtI12Stars0To3BeforeAC": [
+        25.5,
+        33.5,
+        41.5,
+        49.5
+      ]
+    },
+    "pietyMarkedKillBonus": "Keep existing threshold S>=3: now requires full stacks. Other eligibility rules unchanged.",
+    "visualProposal": "Approved indicator now connected to ordinary gameplay: cyan1/2 and gold3 above marked enemy.",
+    "unapprovedPassiveCandidates": {
+      "focusedObservation": "If retained, ordinary accuracy +3 against marked target at S>=2; auto-hit and MR checks unaffected.",
+      "starInheritance": "Retain user-preferred start at 2/3: only when existing kill-reward bonus hits a new marked target and it survives. Not implemented."
+    },
+    "constraints": [
+      "Faster full stacks are a real buff; maximum damage preserved approximately, not a balance-equivalence claim.",
+      "Keep original one-stack-per-damaging-action, exclusion, consumption, miss, expiry, friendly-fire and reward anti-recursion rules unless separately changed."
+    ],
+    "visualReview": "analysis/previews/suisei-stars01/index.html",
+    "visualStatus": "approved-and-live",
+    "implementationRevision": "suisei-three03",
+    "ordinaryRuntime": "runtime/tiles01/HoloCrawl.exe",
+    "saveMigration": "Legacy v1 Suisei stars ceil(3*S/5), cap3; keep already-rolled reward and preserve +5/old-star bonus of already queued comets. New Suisei payload v2. Other gods remain v1."
+  },
+  "suiseiCombatRevision": "suisei-inherit08",
+  "suiseiFocusDraft": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-02",
+    "name": "집중 관측",
+    "tier": 2,
+    "type": "passive",
+    "proposedUnlockPiety": 50,
+    "minimumInvocations": 0,
+    "condition": "Current marked target alive, mark unexpired, at least2of3 stars.",
+    "effect": "Accuracy +3 on attacks with ordinary hit checks, including melee/ranged and eligible attack spells. No damage bonus. Auto-hit attacks and MR checks unaffected.",
+    "cost": "No activation, MP, piety consumption, extra action or star consumption.",
+    "scaling": "Fixed +3; does not scale with Invocations or increase hit chance by a flat3 percentage points.",
+    "visualDirection": "Use the approved 2/3-star indicator to recognize eligibility; no new large effect required.",
+    "unlockPiety": 50,
+    "implementationRevision": "suisei-focus02",
+    "review": "analysis/previews/suisei-focus01/index.html"
+  },
+  "lastArchiveIncludesLatest": false,
+  "suiseiInheritance": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-02",
+    "name": "별의 계승",
+    "tier": 4,
+    "type": "passive",
+    "unlockPiety": 100,
+    "minimumInvocations": 0,
+    "effect": "Consume the existing next-hit kill reward on a fresh marked foe. If the ordinary direct attack deals positive damage and the foe survives, start at2stars rather than1.",
+    "cost": "No additional MP/piety/action/star cost. Original attack/spell cost applies.",
+    "constraints": [
+      "Miss keeps reward.",
+      "One-shot and reward-only kills give no inherited stars or recursive reward.",
+      "An already stacked target gains the normal1 only, max3.",
+      "Original3-turn reward expiry retained.",
+      "Single marked-target rule retained.",
+      "Divine powers and DoT/pet damage do not trigger inheritance."
+    ],
+    "save": "Banked reward already uses saved offence/three_end fields; inheritance flag is per-action only. Native bank-save, actual next spell outcomes and strict ordinary-combat RNG continuation verified. Full post-targeting-UI RNG equality is logged separately.",
+    "implementationRevision": "suisei-inherit08",
+    "review": "analysis/previews/suisei-inherit01/index.html"
+  },
+  "fullKitCompletedGods": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame"
+  ],
+  "mikoCombatRevision": "miko-passive01",
+  "mikoShrine557": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-03",
+    "revision": "miko-torii03",
+    "widths": [
+      5,
+      5,
+      7
+    ],
+    "art": "Four generated32px torii rendered at4/3 scale,raised,corner floor glyph suppressed; with golden shimenawa and white shide at7x7 corners. Visual only; expire with tier5. Existing shrine,flame,expansion retained.",
+    "review": "analysis/previews/miko-torii03/index.html",
+    "tier2Passive": "Proposal only: heal2+Inv/6, overflow shield cap4+Inv/3. Not implemented.",
+    "binarySha256": "2131c0f024366eff854203712c15ed047e5123b79494a561c03dfc9a448f6b50"
+  },
+  "mikoBloomDraft": {
+    "status": "approved-art-connected-to-gameplay",
+    "combatImplemented": true,
+    "runtimeDeployed": true,
+    "date": "2026-11-03",
+    "revision": "miko-bloom03",
+    "review": "analysis/previews/miko-bloom03/index.html",
+    "tier": 2,
+    "type": "passive",
+    "name": "봉납의 벚꽃",
+    "art": "Green healing cross rises with five sakura blossoms; pale pink transparent-center circular barrier surrounds the character in overflow draft.",
+    "proposedPiety": 50,
+    "heal": "2+floor(Inv/6)",
+    "shieldCap": "4+floor(Inv/3)",
+    "procIntervalAut": 20,
+    "shieldDurationAut": 50,
+    "proof": {
+      "status": "passed",
+      "visualDraftOnly": true,
+      "combatImplemented": false,
+      "modes": 2,
+      "frames": 14,
+      "capturePreservesStateAndRng": true
+    },
+    "combatRevision": "miko-passive01"
+  },
+  "mikoPassive": {
+    "status": "implemented-native-validated",
+    "revision": "miko-passive01",
+    "date": "2026-11-03",
+    "name": "봉납의 벚꽃",
+    "tier": 2,
+    "type": "passive",
+    "unlockPiety": 50,
+    "heal": "2+floor(Inv/6)",
+    "shieldCap": "4+floor(Inv/3)",
+    "procIntervalAut": 20,
+    "shieldDurationAut": 50,
+    "save": "Existing saved shield/defence/proc_ready fields; no new serializer layout. Fresh-process absorption/state/RNG verified.",
+    "visual": "Approved green cross,five blossoms,pale circular barrier now connected to actual kills and shield.",
+    "review": "analysis/previews/miko-passive01/index.html",
+    "combatImplemented": true,
+    "runtimeDeployed": true,
+    "binarySha256": "bb8d3c0f0cb15a915c33672292a8c60b21cd10053f22cfa6fc609fb3d457639c"
+  },
+  "akiCombatRevision": "aki-nutrient03",
+  "akiFullKit": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-03",
+    "revision": "aki-nutrient03",
+    "review": "analysis/previews/aki-nutrient03/index.html",
+    "widths": [
+      5,
+      5,
+      7
+    ],
+    "tier2": {
+      "name": "장미의 양분",
+      "type": "passive",
+      "unlockPiety": 50,
+      "mp": "min(3,1+floor(Inv/12))",
+      "cooldownAut": 30,
+      "stacks": 3,
+      "sources": [
+        "direct",
+        "garden DoT",
+        "own rose",
+        "bloom pre-consumption"
+      ],
+      "fullMp": "No storage or cooldown consumed"
+    },
+    "save": "Existing saved rest[0] cooldown; no serializer layout changes.",
+    "runtimeDeployed": true,
+    "binarySha256": "7f39685a8359895e7b7a4c444aa1181ef83a671174430036312ee98ea99d3b93"
+  },
+  "fubukiCombatRevision": "fubuki-opening01",
+  "fubukiOpening": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-03",
+    "revision": "fubuki-opening01",
+    "review": "analysis/previews/fubuki-opening01/index.html",
+    "tier": 2,
+    "type": "passive",
+    "name": "여우의 빈틈",
+    "unlockPiety": 50,
+    "extraFoxfire": 1,
+    "trigger": "First successful ordinary direct hit on living deceived foe; only its deceiving image fires extra, once per successful deception.",
+    "cost": "No extra MP/piety/action. Same native hit/resistance/time-scaling as ordinary foxfire.",
+    "save": "Existing Fubuki target.kind:0unspent/1spent. Reset on successful deception. Existing raven_hits stores deceiving image and expiry. No serializer layout changes.",
+    "newVfxAdded": false,
+    "runtimeDeployed": true,
+    "binarySha256": "74128a5c233a16df61f3d46aeaeecb7d8982657a2a9658aacfbc2b8a19bb9812"
+  },
+  "ayameCombatRevision": "ayame-zanshin02",
+  "ayameZanshin": {
+    "status": "implemented-native-validated",
+    "date": "2026-11-03",
+    "revision": "ayame-zanshin02",
+    "review": "analysis/previews/ayame-zanshin02/index.html",
+    "tier": 2,
+    "type": "passive",
+    "name": "귀인의 잔심",
+    "unlockPiety": 50,
+    "durationAfterCompletedKillAut": 30,
+    "accuracy": "3+floor(Inv/6)",
+    "slaying": "2+floor(Inv/9)",
+    "trigger": "Direct adjacent ordinary melee kill of marked XP foe; next new adjacent XP foe first melee swing gains1star hit/slaying and consumes on attempt,even miss.",
+    "save": "Existing saved tertiary expiry; action-only eligibility/snapshot fields are transient. No serializer layout changes.",
+    "newVfxAdded": false,
+    "runtimeDeployed": true,
+    "binarySha256": "902c7a6c5590c7947c4391022203d0be1f750a4a9b794cebfff80bbdbc99e901"
+  },
+  "currentMapArt": "street-stairs06",
+  "currentDungeonPreview": "analysis/previews/street-stairs06/index.html",
+  "currentStairsUpRevision": "upstairs12",
+  "currentStairsDownRevision": "spiral06",
+  "stairsApproved": true,
+  "activeProject": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\holocrawl-0341",
+  "targetEngineVersion": "0.34.1",
+  "migrationStatus": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\holocrawl-0341\\migration-status.json",
+  "godStructureReview": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\holocrawl-0341\\preview\\gods\\index.html",
+  "godStructureCount": 22,
+  "abilitySlotsDefined": 110,
+  "allAbilitySlotsMandatory": false,
+  "nativeStreetLauncher": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\holocrawl-0341\\PLAY_STREET.cmd",
+  "nativeStreetFirstFloor": true,
+  "floorTravelImplemented": false,
+  "actualGameApplicationDeferred": true,
+  "companyScope": "Browser-only art, structure and layout.",
+  "marketFixtureTypes": 20,
+  "merchMemberCount": 84,
+  "doorArtApproved": true,
+  "doorArtSelectedRevision": "native-door12"
+}

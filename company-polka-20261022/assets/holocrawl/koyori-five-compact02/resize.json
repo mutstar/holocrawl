@@ -1,0 +1,21 @@
+{
+  "operation": "nearest-neighbour resize of existing sprites; no new illustration",
+  "activeBadgeSize": [
+    14,
+    14
+  ],
+  "activeBadgePosition": [
+    18,
+    0
+  ],
+  "centralSizes": [
+    16,
+    20
+  ],
+  "peripheralSizes": [
+    10,
+    14
+  ],
+  "criticalFrames": 2,
+  "normalTier3Unchanged": true
+}

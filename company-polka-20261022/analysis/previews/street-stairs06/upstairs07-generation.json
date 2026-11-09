@@ -1,0 +1,9 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Edit target IMAGE1 is the rejected circular UPSTAIRS32px game sprite. IMAGE2 (original DCSS upstairs) is the reference for clear elevated steps and traditional roguelike terrain pixel art. Revise ONLY the upstairs design, preserving compact one32px tile footprint and neutral concrete greys. Current fan-like spiral looks like a seashell, turbine or sculpture; REMOVE radial pinwheel blades, triangular wedges and center pivot/column. Instead make a LOW SHORT FLIGHT OF FOUR CHUNKY CONCRETE STEPS following a GENTLE CURVE, almost like the DCSS raised stair but rounded around the outside. Wide mostly rectangular treads, clearly separated vertical riser faces, low entry LOWER RIGHT and small flat highest landing UPPER LEFT. Only about a quarter-turn, NOT a full circular spiral. The outside footprint should be softly rounded, with a stepped silhouette, but the viewer should read ordinary stairs UP instantly. Subtle side-wall thickness, no giant block foundation. Traditional Crawl slight overhead front-side angle; no modern 3D perspective. A few large crisp pixel clusters, around8 shades, muted grey #555754 with lit tread edges #8e9087 and shadows #2b2d2d. NO handrails, no balustrade, no tall center pillar, no dark central hole, no ornament, no text, no floor square, no surrounding cast shadow. TRUE TRANSPARENT outside sprite. Tight square composition, readable at actual32x32.",
+  "asset": "assets/stairs-up07-32.png",
+  "original": "assets/stairs-up07-original.png",
+  "size": 32,
+  "downstairsUnchanged": "assets/stairs-down06-32.png",
+  "downstairsSha256": "a2422297ee73330d28faafae9ce58e30f7c05c74d2088fc1a00a70accf40740c"
+}
