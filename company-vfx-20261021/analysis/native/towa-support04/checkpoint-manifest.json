@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "revision": "towa-support04",
+  "runtimeSha256": "843F057FA86ACC750BA06A1F2BDDC8E9EB454119DFF2126297AAB2E99F6E2D16",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "allArtAndOtherSourcePreserved": true,
+  "changedHashes": {
+    "holo-visual.cc": "277f3ae50d1894743eac8c63b2ac7f5c5c0e2b74299ff82f56556f678dd2a5fb",
+    "rltiles/dc-holo-main.txt": "c7485bbadbadb9726df0611a9676e7eed596ba06cf7e3fbdba98835f13b0b700",
+    "rltiles/holo/fx_towa_bullet_e.png": "1077f427986e04f5d5599db1d7bda080d0c9a04355a1a737d4d0e8226fa2f769",
+    "rltiles/holo/fx_towa_bullet_n.png": "97dd43af343745d0609f5839e9bfa97bbde3ab4681efd6e948238f688c33a33f",
+    "rltiles/holo/fx_towa_bullet_ne.png": "a6953227c5a6738973f39150727b07ff5dc340c3035768ea40a60351e059b287",
+    "rltiles/holo/fx_towa_bullet_nw.png": "2ed3a8e56f158f66e65aacb228e61aa76f310337c0e256a671a40a578f958aa6",
+    "rltiles/holo/fx_towa_bullet_s.png": "b3b95c18975a75180a794ea87c4a7d11f935f17b1923e038a2d48814c61f3af0",
+    "rltiles/holo/fx_towa_bullet_se.png": "932daf2091e3b9397b1c8940ef2c2f4bd8164cc8f4c03ff061bc42a6526de76d",
+    "rltiles/holo/fx_towa_bullet_sw.png": "379eb7fb4eb820aeaf8f3aa1b9e39316d310d957c4fde8ec88e6d6aa5929ae5e",
+    "rltiles/holo/fx_towa_bullet_w.png": "d2328a40966bd57d62ce7ec8c6bf6c045a9fcd96535ddc2b6dd246e68f9959e4"
+  },
+  "visual": "Generated short purple devil arrow with hooked spearhead, 8 directional main-atlas tiles; native support callback",
+  "sequences": {
+    "1": [
+      "towa-demo-1-zone.png",
+      "towa-demo-1-moved.png",
+      "towa-shot-1-flight0.png",
+      "towa-shot-1-flight1.png",
+      "towa-shot-1-flight1.png",
+      "towa-demo-1-after.png"
+    ],
+    "2": [
+      "towa-demo-2-zone.png",
+      "towa-demo-2-moved.png",
+      "towa-shot-2-flight0.png",
+      "towa-shot-2-flight1.png",
+      "towa-shot-2-flight2.png",
+      "towa-demo-2-after.png"
+    ]
+  },
+  "captionOutsideNativePixels": true,
+  "proof": "native/towa-support.json",
+  "regression": "native/validation.json",
+  "freshRestore": "native/reload.json",
+  "feedback": "pending",
+  "artSlotNote": "Historical bullet slot names retained for stable atlas IDs; art is now a short purple devil arrow."
+}

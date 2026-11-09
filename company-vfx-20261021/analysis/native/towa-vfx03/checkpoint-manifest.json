@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "revision": "towa-vfx03",
+  "runtimeSha256": "43C2A2ED745B733DB470097F563149E423338A6BCB296C63E46E422B51938DA9",
+  "changed": [
+    "rltiles/holo/fx_night_towa1_0.png",
+    "rltiles/holo/fx_night_towa1_1.png"
+  ],
+  "allCombatSourcesAndOtherArtPreserved": true,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "nativeFit": [
+    14,
+    10
+  ],
+  "framesIdentical": true,
+  "position": [
+    25,
+    7
+  ],
+  "prompt": "assets/holocrawl/towa-vfx03/generation.json",
+  "feedback": "tier1 approved",
+  "validation": "capture-validation.json"
+}

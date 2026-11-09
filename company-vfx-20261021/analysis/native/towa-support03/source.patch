@@ -1,0 +1,28 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -562,7 +562,9 @@
+     for(int i=0;i<=steps;++i) {
+         const auto p=from+coord_def(delta.x*i/steps,delta.y*i/steps);
+         if(!in_bounds(p) || !you.see_cell(p))continue;
+-        tiles.clear_overlays();tiles.add_overlay(p,TILE_BOLT_MAGIC_DART+i%6);
++        tiles.clear_overlays();const int dx=(delta.x>0)-(delta.x<0),dy=(delta.y>0)-(delta.y<0);
++            const int direction=dy<0?(dx>0?1:dx<0?3:2):dy>0?(dx>0?7:dx<0?5:6):(dx<0?4:0);
++            tiles.add_overlay(p,TILE_HOLO_TOWA_BULLET_E+direction);
+         if(shots)capture(stem+"-flight"+std::to_string(i)+".png",false);
+         else {update_screen();scaled_delay(i==steps?90:65);}
+     }
+--- before/rltiles/dc-holo-main.txt
++++ after/rltiles/dc-holo-main.txt
+@@ -26,3 +26,12 @@
+ status_cooldown HOLO_STATUS_COOLDOWN
+ status_resource HOLO_STATUS_RESOURCE
+ status_active HOLO_STATUS_ACTIVE
++
++fx_towa_bullet_e HOLO_TOWA_BULLET_E
++fx_towa_bullet_ne HOLO_TOWA_BULLET_NE
++fx_towa_bullet_n HOLO_TOWA_BULLET_N
++fx_towa_bullet_nw HOLO_TOWA_BULLET_NW
++fx_towa_bullet_w HOLO_TOWA_BULLET_W
++fx_towa_bullet_sw HOLO_TOWA_BULLET_SW
++fx_towa_bullet_s HOLO_TOWA_BULLET_S
++fx_towa_bullet_se HOLO_TOWA_BULLET_SE

@@ -1,0 +1,28 @@
+%prefix TILE
+%rim 0
+%back none
+%sdir holo
+rose HOLO_ROSE
+fox HOLO_FOX
+raven HOLO_RAVEN
+swordsman HOLO_SWORDSMAN
+hound HOLO_HOUND
+fx_impact_0 HOLO_BURST_IMPACT_0
+fx_impact_1 HOLO_BURST_IMPACT_1
+fx_comet_0 HOLO_BURST_COMET_0
+fx_comet_1 HOLO_BURST_COMET_1
+
+rose_1 HOLO_ROSE_1
+fox_1 HOLO_FOX_1
+raven_1 HOLO_RAVEN_1
+swordsman_1 HOLO_SWORDSMAN_1
+hound_1 HOLO_HOUND_1
+
+status_five HOLO_STATUS_FIVE
+status_shield HOLO_STATUS_SHIELD
+status_warning HOLO_STATUS_WARNING
+status_urgent HOLO_STATUS_URGENT
+status_wrath HOLO_STATUS_WRATH
+status_cooldown HOLO_STATUS_COOLDOWN
+status_resource HOLO_STATUS_RESOURCE
+status_active HOLO_STATUS_ACTIVE

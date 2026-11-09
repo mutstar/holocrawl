@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "revision": "towa-support03",
+  "runtimeSha256": "DDCF1995901045B4AE17B39218FF5413D6C7941DE39AD1A17EFA951C6618316C",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "allArtAndOtherSourcePreserved": true,
+  "changedHashes": {
+    "holo-visual.cc": "277f3ae50d1894743eac8c63b2ac7f5c5c0e2b74299ff82f56556f678dd2a5fb",
+    "rltiles/dc-holo-main.txt": "c7485bbadbadb9726df0611a9676e7eed596ba06cf7e3fbdba98835f13b0b700"
+  },
+  "visual": "Generated silver/brass bullet with short magenta tracer, 8 directional main-atlas tiles; native support callback",
+  "sequences": {
+    "1": [
+      "towa-demo-1-zone.png",
+      "towa-demo-1-moved.png",
+      "towa-shot-1-flight0.png",
+      "towa-shot-1-flight1.png",
+      "towa-shot-1-flight1.png",
+      "towa-demo-1-after.png"
+    ],
+    "2": [
+      "towa-demo-2-zone.png",
+      "towa-demo-2-moved.png",
+      "towa-shot-2-flight0.png",
+      "towa-shot-2-flight1.png",
+      "towa-shot-2-flight2.png",
+      "towa-demo-2-after.png"
+    ]
+  },
+  "captionOutsideNativePixels": true,
+  "proof": "native/towa-support.json",
+  "regression": "native/validation.json",
+  "freshRestore": "native/reload.json",
+  "feedback": "pending"
+}

@@ -1,0 +1,87 @@
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -22,6 +22,7 @@
+ void comet_impact(const coord_def &pos);
+ void rose_thorn_cell(const coord_def &from,const coord_def &to,const coord_def &cell);
+ void impact(const coord_def &pos,int radius,bool fire=false);
++void towa_support(const coord_def &from,const coord_def &to);
+ effect invocation_at(const coord_def &pos);
+ effect invocation_sprite_at(const coord_def &pos,int &span_x,int &span_y);
+ void fox_swap(const coord_def &from,const coord_def &to,const std::vector<coord_def> &hits);
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -549,6 +549,28 @@
+     if(it==fox_arrivals.end() || int(it-fox_arrivals.begin())<(fox_frame+1)/2)return false;
+     const monster *mon=monster_at(p);
+     return mon && appearance(*mon)==sprite::fox;
++}
++void towa_support(const coord_def &from,const coord_def &to) {
++#ifdef USE_TILE_LOCAL
++    const char *shots=crawl_state.test?getenv("HOLOCRAWL_TOWA_SHOT_REVIEW"):nullptr;
++    if(holo_benchmark_active() || (crawl_state.test && !shots) || !you.see_cell(to))return;
++    static int sequence=0;const int seq=shots?++sequence:0;
++    const auto before=shots?fox_signature():std::string();
++    const std::string stem=shots?std::string(shots)+"/towa-shot-"+std::to_string(seq):"";
++    if(shots)capture(stem+"-ready.png");
++    const int steps=max(1,grid_distance(from,to));const auto delta=to-from;
++    for(int i=0;i<=steps;++i) {
++        const auto p=from+coord_def(delta.x*i/steps,delta.y*i/steps);
++        if(!in_bounds(p) || !you.see_cell(p))continue;
++        tiles.clear_overlays();tiles.add_overlay(p,TILE_BOLT_MAGIC_DART+i%6);
++        if(shots)capture(stem+"-flight"+std::to_string(i)+".png",false);
++        else {update_screen();scaled_delay(i==steps?90:65);}
++    }
++    tiles.clear_overlays();if(!shots)update_screen();
++    if(shots && before!=fox_signature())throw std::runtime_error("Towa shot visuals changed gameplay/RNG");
++#else
++    (void)from;(void)to;
++#endif
+ }
+ void impact(const coord_def &p,int radius,bool fire){
+     const auto g=holo_worship::current();
+--- before/holo-batch-space.cc
++++ after/holo-batch-space.cc
+@@ -216,7 +216,9 @@
+                 || s.secondary>=(s.five_end>at?2:1)) continue;
+             monster *mon=monster_by_mid(id);if(!mon || !mon->alive()) continue;if(!qualifies(*mon)) continue;
+             --s.resource;++s.secondary;s.performance_hits.insert(id);
+-            if(roll_hit(*mon,22+s.inv)) {
++            const bool hit=roll_hit(*mon,22+s.inv);
++            holo_visual::towa_support(s.centre,mon->pos());
++            if(hit) {
+                 hurt(*mon,roll_dice(2,5+s.inv/3));
+                 if(mon->alive()) s.targets[id].slowed_until=at+20;
+             }
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -131,6 +131,30 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_TOWA_SHOT_REVIEW")) {
++        std::ofstream proof(dir+"/towa-support.json");proof<<"{\"status\":\"passed\",\"cases\":[";
++        for(int distance=1;distance<=2;++distance) {
++            auto *m=fixture("towa");const auto origin=you.pos();
++            const auto initial=origin+coord_def(distance==1?0:1,-2),dest=origin+coord_def(0,-distance);
++            require(m->move_to_pos(initial),"Towa initial enemy position");m->hit_points=m->max_hit_points=40;
++            require(invoke(3,nullptr,&origin)==10,"Towa actual covering zone invocation");step(10);
++            const std::string stem=std::string(shots)+"/towa-demo-"+std::to_string(distance);
++            holo_visual::capture(stem+"-zone.png");
++            const auto old=m->pos();require(m->move_to_pos(dest),"Towa enemy one-step movement");holo_batch::after_monster(*m,old);
++            require(grid_distance(you.pos(),m->pos())==distance && holo_batch::s.candidates.count(m->mid),"Towa movement registered at requested distance");
++            holo_visual::capture(stem+"-moved.png");
++            int seed=0;
++            for(int trial=1;trial<1000;++trial) {rng::seed(99000+trial);if(holo_batch::roll_hit(*m,22+holo_batch::s.inv) && roll_dice(2,5+holo_batch::s.inv/3)>=12){seed=99000+trial;break;}}
++            require(seed,"Towa reproducible hit fixture");rng::seed(seed);
++            const int hp=m->hit_points,ammo=holo_batch::s.resource;
++            ++you.elapsed_time;holo_batch::space_tick(you.elapsed_time);
++            require(holo_batch::s.resource==ammo-1 && m->hit_points<hp,"Towa actual support shot damage/ammo");
++            holo_visual::capture(stem+"-after.png");
++            if(distance==2)proof<<",";
++            proof<<"{\"distance\":"<<distance<<",\"damage\":"<<hp-m->hit_points<<",\"ammoBefore\":"<<ammo<<",\"ammoAfter\":"<<holo_batch::s.resource<<"}";
++        }
++        proof<<"],\"nativeMovementTrigger\":true,\"visualRngUnchanged\":true}\n";
+     }
+     // Noel: Heroism's duration roll +5 turns, fixed +6 to mundane combat.
+     {

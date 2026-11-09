@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "revision": "watame-vfx03",
+  "runtimeSha256": "B1D80B2A671B8FE154EB3B147C8811472315E105A45A56DCE52A1D15F40663B9",
+  "changed": [
+    "holo-visual.cc",
+    "tilereg-dgn.cc",
+    "rltiles/holo/fx_night_watame5_0.png",
+    "rltiles/holo/fx_night_watame5_1.png"
+  ],
+  "otherSourceAndArtPreserved": true,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "notesWidths": [
+    46,
+    50
+  ],
+  "woolWidths": [
+    30,
+    34
+  ],
+  "notesEndY": 64,
+  "woolStartY": 96,
+  "persistent": "Query saved Watame five_end,follow player,foreground with empty actor centre",
+  "prompt": "assets/holocrawl/watame-vfx03/generation.json",
+  "feedback": "approved",
+  "validation": "capture-validation.json"
+}

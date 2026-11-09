@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "revision": "watame-vfx02",
+  "runtimeSha256": "AAF7876510EAB1C41579B1E99E70F98F00C2C24AF58FDF596A18970685C67B7E",
+  "changed": [
+    "rltiles/holo/fx_night_watame1_0.png",
+    "rltiles/holo/fx_night_watame1_1.png"
+  ],
+  "allCombatSourcesAndOtherArtPreserved": true,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "nativeSize": 12,
+  "framesIdentical": true,
+  "position": [
+    26,
+    7
+  ],
+  "prompt": "assets/holocrawl/watame-vfx02/generation.json",
+  "feedback": "tier1 approved",
+  "validation": "capture-validation.json"
+}

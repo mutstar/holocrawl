@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "revision": "towa-vfx04",
+  "runtimeSha256": "88C6762D90A27185D984EA5A978C3E05BF203C61B3218DB9B55E05126D46F73F",
+  "changed": [
+    "rltiles/holo/fx_night_towa3_0.png",
+    "rltiles/holo/fx_night_towa3_1.png"
+  ],
+  "allCombatSourcesAndOtherArtPreserved": true,
+  "numericChanges": false,
+  "prompt": "assets/holocrawl/towa-vfx04/generation.json",
+  "feedback": "pending",
+  "validation": "capture-validation.json"
+}
