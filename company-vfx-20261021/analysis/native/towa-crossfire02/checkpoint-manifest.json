@@ -1,0 +1,136 @@
+{
+  "status": "passed",
+  "revision": "towa-crossfire02",
+  "runtimeSha256": "FE97DD8181E05CEA9A719C510CA431244D8239815CE45ADD2D38BEA81FA0C616",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "otherArtAndGameplaySourcePreserved": true,
+  "changedHashes": {
+    "holo-visual.cc": "bea9cef5cd3a5990db128402a3557252ddd9bfaa83a3ad7486f210b0c0275e5b",
+    "rltiles/dc-holo-main.txt": "6b42c84178eeb2ffc3402e987ef7d1bcd7d466246497210c8602eb7a5b496ca0",
+    "rltiles/holo/fx_towa_crossfire_e.png": "6062a287d4e45c4867948426c9aea641fd3e4a393269b31fe3e8eaf14c561355",
+    "rltiles/holo/fx_towa_crossfire_ne.png": "e69b23f13351cc636c2c96c6fdbb234b2687cf476f6ef2c3349664b812b32567",
+    "rltiles/holo/fx_towa_crossfire_n.png": "99bd921cd2ba347fe018b2bc025c25238d5449f096700bac17ad39f2c05511ce",
+    "rltiles/holo/fx_towa_crossfire_nw.png": "57f45b322942ce6be1962164fee66ceb4824ced08d43520f0c27db4d47c55b1d",
+    "rltiles/holo/fx_towa_crossfire_w.png": "effb7453ecd7753b7bf4a6503e655203f5dc649f00af183f8a3e12c31f577926",
+    "rltiles/holo/fx_towa_crossfire_sw.png": "88c9eef7e5adb9b442aade6008fb8c7922889b459d5ca473562607c3e515fb64",
+    "rltiles/holo/fx_towa_crossfire_s.png": "b521b16b0888b46c680b558e85c564917bf1c04adbefd7bc0ce1cd22b8d70361",
+    "rltiles/holo/fx_towa_crossfire_se.png": "ad4f19999df5fce43290cd95ce4384973a75294d447094e5376a9a5082d6232b"
+  },
+  "crestWidths": [
+    44,
+    48
+  ],
+  "proof": {
+    "status": "passed",
+    "tier": 5,
+    "volleys": [
+      {
+        "ammoBefore": 8,
+        "ammoAfter": 6,
+        "damage": 8
+      },
+      {
+        "ammoBefore": 6,
+        "ammoAfter": 4,
+        "damage": 3
+      }
+    ],
+    "nativeMovementTrigger": true,
+    "shotsPerTurn": 2,
+    "artOnly": true
+  },
+  "sequence": [
+    [
+      "crossfire-before.png",
+      "3성 엄호 구역",
+      600
+    ],
+    [
+      "crossfire-cast0.png",
+      "5성 · 악마의 교차포화",
+      260
+    ],
+    [
+      "crossfire-cast1.png",
+      "작은 날개 + 교차한 화살",
+      280
+    ],
+    [
+      "crossfire-active.png",
+      "강화 완료 · 탄약 8발",
+      600
+    ],
+    [
+      "towa-shot-1-flight0.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-1-flight1.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-1-flight2.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight0.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight1.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight2.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "crossfire-after0.png",
+      "1턴째 완료 · 탄약 8→6발",
+      1100
+    ],
+    [
+      "towa-shot-3-flight0.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-3-flight1.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-3-flight2.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight0.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight1.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight2.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "crossfire-after1.png",
+      "2턴째 완료 · 탄약 6→4발",
+      1100
+    ]
+  ],
+  "feedback": "pending"
+}

@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": "noel-vfx02",
+  "combatRevision": "noel-balance01",
+  "runtimeSha256": "1649A4A77B12F73BBE9C3F4EBDE9BE8A08C808D0EF5B045EEF92B612EAE18B32",
+  "changedHashes": {
+    "holo-campaign.cc": "2366a2efda3da7449d13cdfe06e1fece0c9df9810ee2137477d1186e8f63d876",
+    "holo-campaign-test.cc": "519ce002426dd1e756b013a0cda14f71e91dd1269e7afa9e201464f60880fdda",
+    "rltiles/holo/fx_night_noel1_0.png": "ae5cc63d8c742ac1277703b02fec1988be1320e38ad53f4cc950ad5704260c31",
+    "rltiles/holo/fx_night_noel1_1.png": "d130974dd4976d976c0e1ac8b3b4f83e2ec686a3305c5434460ce294c682e555"
+  },
+  "otherSourceAndArtPreserved": true,
+  "saveFormatChanged": false,
+  "bonus": 6,
+  "duration": "min(110,15+random2avg(6*I,2)) turns from cast start",
+  "nativeIconSizes": [
+    14,
+    16
+  ],
+  "generation": "assets/holocrawl/noel-vfx02/generation.json",
+  "validation": "native/noel-balance.json",
+  "regression": "native/validation.json",
+  "restore": "native/reload.json",
+  "feedback": "pending",
+  "scope": "Native mechanics/save tests; not full campaign winrate"
+}

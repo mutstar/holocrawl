@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "revision": "towa-crossfire01",
+  "runtimeSha256": "E32EEC41B16242E85480F6DE4764834AA3DE9475EDBBCB01AAE66D33758E0020",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "otherArtAndGameplaySourcePreserved": true,
+  "changedHashes": {
+    "holo-campaign-test.cc": "9e851f93b99b34ea6bbecdf7211728e08327890a74962521b58281699425b214",
+    "rltiles/holo/fx_night_towa5_0.png": "2899c4c585132e7ffd51da0d71d7c3a2d765be91f6920be21c410c970159ee1d",
+    "rltiles/holo/fx_night_towa5_1.png": "148506b8c92d3c38657c71732322d5b9f50bde0ca40e5d92fe23135fe5b05642"
+  },
+  "crestWidths": [
+    44,
+    48
+  ],
+  "proof": {
+    "status": "passed",
+    "tier": 5,
+    "volleys": [
+      {
+        "ammoBefore": 8,
+        "ammoAfter": 6,
+        "damage": 8
+      },
+      {
+        "ammoBefore": 6,
+        "ammoAfter": 4,
+        "damage": 3
+      }
+    ],
+    "nativeMovementTrigger": true,
+    "shotsPerTurn": 2,
+    "artOnly": true
+  },
+  "sequence": [
+    [
+      "crossfire-before.png",
+      "3성 엄호 구역",
+      600
+    ],
+    [
+      "crossfire-cast0.png",
+      "5성 · 악마의 교차포화",
+      260
+    ],
+    [
+      "crossfire-cast1.png",
+      "작은 날개 + 교차한 화살",
+      280
+    ],
+    [
+      "crossfire-active.png",
+      "강화 완료 · 탄약 8발",
+      600
+    ],
+    [
+      "towa-shot-1-flight0.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-1-flight1.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-1-flight2.png",
+      "1턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight0.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight1.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-2-flight2.png",
+      "1턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "crossfire-after0.png",
+      "1턴째 완료 · 탄약 8→6발",
+      1100
+    ],
+    [
+      "towa-shot-3-flight0.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-3-flight1.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-3-flight2.png",
+      "2턴째 · 지원사격 1/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight0.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight1.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "towa-shot-4-flight2.png",
+      "2턴째 · 지원사격 2/2",
+      180
+    ],
+    [
+      "crossfire-after1.png",
+      "2턴째 완료 · 탄약 6→4발",
+      1100
+    ]
+  ],
+  "feedback": "pending"
+}

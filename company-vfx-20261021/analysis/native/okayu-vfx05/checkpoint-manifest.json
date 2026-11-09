@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "revision": "okayu-vfx05",
+  "tier": 5,
+  "frames": [
+    {
+      "frame": 0,
+      "size": [
+        24,
+        24
+      ],
+      "bounds": [
+        68,
+        62,
+        92,
+        86
+      ]
+    },
+    {
+      "frame": 1,
+      "size": [
+        18,
+        18
+      ],
+      "bounds": [
+        71,
+        65,
+        89,
+        83
+      ]
+    }
+  ],
+  "sourceCrop": [
+    320,
+    328,
+    942,
+    938
+  ],
+  "numericChanges": false,
+  "description": "Compact dream-devouring vortex shrinks24 to18px,6px above target centre,foreground110ms each; approved1/3 preserved",
+  "runtimeSha256": "17EA9AF1E9498C0405A6CAD809CC0635A25D451FCEBB7BC1B18B4CF043F58951",
+  "otherSourceAndArtHashesPreserved": true,
+  "tests": "22 native god controls, Okayu waking bonus and fresh-process restore passed",
+  "feedback": "approved",
+  "artwork": "assets/holocrawl/okayu-vfx05/dream-vortex.png",
+  "prompt": "assets/holocrawl/okayu-vfx05/generation.json",
+  "userFeedback": "오 이게낫네 ㅋㅋ 오카유는 이걸로하고 다음 페코라로가자"
+}

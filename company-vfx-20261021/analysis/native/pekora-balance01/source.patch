@@ -1,0 +1,175 @@
+--- before/holo-batch-space.cc
++++ after/holo-batch-space.cc
+@@ -18,9 +18,11 @@
+     for(const auto &h:s.hazards) if(h.kind==20 && h.pos==pos && h.end>at) return true;
+     return false;
+ }
+-void explosion(const coord_def &origin,int dice,int at,const coord_def *limit=nullptr) {
++// extra: 0=pressure trigger, 1=legacy delayed fuse, 130/150=boost percent.
++int bomb_multiplier(const hazard &h) { return h.extra==1 || h.extra==150?150:h.extra==130?130:100; }
++void explosion(const coord_def &origin,int dice,int at,const coord_def *limit=nullptr,int multiplier=100) {
+     holo_visual::impact(origin,1,true);
+-    const int raw=roll_dice(dice,8+s.inv/3),fire=raw/2,fragment=raw-fire;
++    const int raw=roll_dice(dice,8+s.inv/3)*multiplier/100,fire=raw/2,fragment=raw-fire;
+     std::vector<mid_t> victims;
+     for(monster_iterator mi;mi;++mi) if(mi->alive() && grid_distance(origin,mi->pos())<=1
+         && (!limit || grid_distance(*limit,mi->pos())<=3) && line(origin,mi->pos())) victims.push_back(mi->mid);
+@@ -35,10 +37,27 @@
+         s.totals.self_damage+=max(0,before-you.hp);
+     }
+     // Mark for this same logical instant; the caller drains chains without re-entering this vector.
+-    for(auto &h:s.hazards) if(h.kind==10 && h.end>at && grid_distance(origin,h.pos)<=1 && line(origin,h.pos)) h.next=at;
++    for(auto &h:s.hazards) if(h.kind==10 && h.end>at && grid_distance(origin,h.pos)<=1 && line(origin,h.pos))  {h.next=at;if(multiplier>100)h.extra=max(multiplier,bomb_multiplier(h));}
+ }
+ void drain_bombs(int at) {
+     holo_campaign::bomb_scope campaign_bombs;
++    // Resolve connected chains before dealing damage, so vector order cannot
++    // make a neighbour explode unboosted or multiply the bonus repeatedly.
++    for(auto &h:s.hazards) if(h.kind==10 && h.end>at && h.extra==0 && h.arm<=at) {
++        const monster *m=monster_at(h.pos);
++        if(m && m->attitude==ATT_HOSTILE && !m->airborne())h.next=at;
++    }
++    bool spread=true;
++    while(spread) {
++        spread=false;
++        for(auto &h:s.hazards)if(h.kind==10 && h.end>at && h.next<=at)
++            for(auto &n:s.hazards)if(n.kind==10 && n.end>at && grid_distance(h.pos,n.pos)<=1 && line(h.pos,n.pos)) {
++                const int boost=max(bomb_multiplier(h),bomb_multiplier(n));
++                if(n.next>at){n.next=at;spread=true;}
++                if(boost>bomb_multiplier(h)){h.extra=boost;spread=true;}
++                if(boost>bomb_multiplier(n)){n.extra=boost;spread=true;}
++            }
++    }
+     bool again=true;
+     while(again && !holo_benchmark_finished()) {
+         again=false;
+@@ -47,7 +66,7 @@
+             const monster *mon=monster_at(h.pos);
+             if(h.next>at && !(h.extra==0 && h.arm<=at && mon && mon->attitude==ATT_HOSTILE && !mon->airborne())) continue;
+             const coord_def origin=h.pos;h.end=0;h.next=0;
+-            explosion(origin,2,at);again=true;
++            explosion(origin,2,at,nullptr,bomb_multiplier(h));again=true;
+         }
+     }
+ }
+@@ -125,7 +144,7 @@
+             if(h.arm<=now && seen(h.pos) && grid_distance(h.pos,target->pos())<=1) armed=true;
+         }
+         if(armed && safe_detonation && policy_can_spend(2) && pay(2,2,75)) {
+-            for(auto &h:s.hazards) if(h.kind==10 && h.end>now && h.arm<=now && seen(h.pos)) h.next=now;
++            for(auto &h:s.hazards) if(h.kind==10 && h.end>now && h.arm<=now && seen(h.pos)) {h.next=now;h.extra=max(130,bomb_multiplier(h));}
+             drain_bombs(now);return 5;
+         }
+         if(count<(you.piety>=75?5:3)) {
+@@ -137,7 +156,7 @@
+                 if(policy() && grid_distance(you.pos(),p)<=1) continue;
+                 bool occupied=false;for(const auto &h:s.hazards) if(h.kind==10 && h.end>now && h.pos==p) occupied=true;
+                 if(!occupied && policy_can_spend(2) && pay(2,1)) {
+-                    hazard h;h.pos=p;h.kind=10;h.arm=now+20;h.end=h.arm+200;h.next=h.end+1;s.hazards.push_back(h);return 10;
++                    hazard h;h.pos=p;h.kind=10;h.arm=now+20;h.end=h.arm+200;h.next=h.end+1;s.hazards.push_back(h);return 5;
+                 }
+             }
+         }
+@@ -259,7 +278,7 @@
+  if(manual_tier==1){
+   int count=0;for(auto h:s.hazards)if(h.kind==10 && h.end>now){++count;if(h.pos==manual_aim)return 0;}
+   if(count>=(you.piety>=75?5:3) || !in_bounds(manual_aim) || actor_at(manual_aim) || grd(manual_aim)!=DNGN_FLOOR || !seen(manual_aim) || grid_distance(you.pos(),manual_aim)>(you.piety>=75?5:3) || !pay(2,1))return 0;
+-  hazard h;h.pos=manual_aim;h.kind=10;h.arm=now+20;h.end=h.arm+200;h.next=h.end+1;s.hazards.push_back(h);return 10;
++  hazard h;h.pos=manual_aim;h.kind=10;h.arm=now+20;h.end=h.arm+200;h.next=h.end+1;s.hazards.push_back(h);return 5;
+  }
+  if(manual_tier==3){
+   std::vector<size_t> selected;
+@@ -269,7 +288,7 @@
+   for(size_t i=0;i<s.hazards.size();++i){const auto &h=s.hazards[i];if(h.kind==10 && h.end>now && h.arm<=now && seen(h.pos) && points.count(h.pos) && (!manual_option || h.extra==0))selected.push_back(i);}
+   if(selected.size()!=points.size())return 0;
+   if(selected.empty() || !pay(2,2,75))return 0;
+-  for(size_t i:selected){auto &h=s.hazards[i];if(manual_option){h.next=now+25;h.extra=1;}else h.next=now;}
++  for(size_t i:selected){auto &h=s.hazards[i];if(manual_option){h.next=now+25;h.extra=150;}else {h.next=now;h.extra=max(130,bomb_multiplier(h));}}
+   if(!manual_option)drain_bombs(now);
+   return 5;
+  }
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -37,7 +37,7 @@
+ extern void process_command(command_type cmd);
+ namespace holo_campaign {
+ namespace {
+-void require(bool ok,const std::string &text){if(!ok)throw std::runtime_error("Campaign abilities: "+text);}
++void require(bool ok,const std::string &text){if(!ok){if(const char *d=getenv("HOLOCRAWL_CAMPAIGN_OUTPUT"))std::ofstream(std::string(d)+"/failure.txt")<<text;throw std::runtime_error("Campaign abilities: "+text);}}
+ monster *fixture(const std::string &god,int piety=180) {
+     holo_reset_validation_fixture();
+     // The battle fixture bypasses native floor entry; ordinary movement
+@@ -132,6 +132,55 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    try {
++    // Pekora quick planting, paid detonation, delayed save and chain propagation.
++    {
++        using namespace holo_batch;
++        auto butterfly=[&](const coord_def &p) -> monster * {
++            for(monster_iterator mi;mi;++mi)monster_die(**mi,KILL_DISMISSED,NON_MONSTER,true);
++            auto mg=mgen_data::hostile_at(MONS_BUTTERFLY,false,p);mg.flags|=MG_FORCE_PLACE;
++            auto *m=create_monster(mg,false);require(m,"Pekora butterfly fixture");
++            m->speed=0;m->speed_increment=0;m->hit_points=m->max_hit_points=10000;return m;
++        };
++        auto plant=[&](const coord_def &p) {
++            require(invoke(1,nullptr,&p,0,3)==5,"Pekora planting must cost5aut");
++        };
++        for(int option=0;option<2;++option) {
++            fixture("pekora");const coord_def p=you.pos()+coord_def(3,0);monster *m=butterfly(p+coord_def(1,0));
++            require(m->armour_class()==0,"Pekora damage fixture AC");
++            plant(p);step(20);
++            const int mp=you.magic_points,faith=you.piety;
++            require(invoke(3,nullptr,&p,option,3)==5,"Pekora fuse action5aut");
++            require(you.magic_points==mp-2 && you.piety==faith-2,"Pekora detonation costs once");
++            if(option) {
++                require(s.hazards[0].extra==150,"Pekora delayed bonus stored");
++                roundtrip();require(s.hazards[0].extra==150,"Pekora delayed bonus roundtrip");
++                m=monster_at(p+coord_def(1,0));require(m,"Pekora target after save");
++                const int before=m->hit_points;step(20);require(m->hit_points==before,"Pekora premature delayed explosion");
++                rng::seed(7711);const int raw=roll_dice(2,8+s.inv/3)*150/100;rng::seed(7711);
++                you.elapsed_time+=5;space_tick(you.elapsed_time);require(before-m->hit_points==raw,"Pekora delayed +50 percent native damage: "+std::to_string(before-m->hit_points)+" expected "+std::to_string(raw));
++            }
++        }
++        // Place the triggered bomb last in the vector: the earlier neighbour
++        // must receive the same boost before either explosion is evaluated.
++        for(int option=0;option<2;++option) {
++            fixture("pekora");
++            const coord_def root=you.pos()+coord_def(3,0),near=root+coord_def(1,0);
++            monster *m=butterfly(near+coord_def(1,0));
++            hazard a;a.kind=10;a.pos=near;a.arm=you.elapsed_time;a.end=you.elapsed_time+200;a.next=a.end+1;s.hazards.push_back(a);
++            a.pos=root;s.hazards.push_back(a);
++            if(option) {
++                require(invoke(3,nullptr,&root,1,3)==5,"Pekora delayed chain setup");roundtrip();step(20);m=monster_at(near+coord_def(1,0));
++            }
++            const int before=m->hit_points;const int mult=option?150:130;
++            rng::seed(7722);const int raw=roll_dice(2,8+s.inv/3)*mult/100;rng::seed(7722);
++            if(option){you.elapsed_time+=5;space_tick(you.elapsed_time);}else require(invoke(3,nullptr,&root,0,3)==5,"Pekora immediate chain");
++            require(before-m->hit_points==raw,"Pekora chain bonus no stacking/vector dependence: "+std::to_string(before-m->hit_points)+" expected "+std::to_string(raw));
++            require(s.hazards[0].end==0 && s.hazards[1].end==0,"Pekora chain consumed each once");
++        }
++        std::ofstream(dir+"/pekora-balance.json")<<"{\"status\":\"passed\",\"plantAut\":5,\"immediatePercent\":130,\"delayedPercent\":150,\"chainOrderIndependent\":true,\"noStacking\":true,\"delayedSaveRoundtrip\":true}\n";
++    }
++    } catch(const std::exception &e){std::ofstream(dir+"/pekora-error.txt")<<e.what();throw;}
+     // Okayu 3* standalone payoff. Use real invocation, native sleep, native
+     // monster HP, ordinary melee/bolt entry points and existing save roundtrip.
+     {
+@@ -466,7 +515,7 @@
+         }
+         for(int type=1;type<=3;++type){auto *m=fixture("koyori");cast("koyori",1,nullptr,you.pos(),type);cast("koyori",1,m,m->pos(),10+type);cast("koyori",5,nullptr,you.pos(),type+2);}
+         fixture("sopia");const auto origin=you.pos();cast("sopia",5,nullptr,origin+coord_def(2,0));step(70);cast("sopia",6,nullptr,origin+coord_def(2,0));
+-        fixture("pekora");const auto bomb=you.pos()+coord_def(3,0);cast("pekora",1,nullptr,bomb);step(10);cast("pekora",3,nullptr,bomb,1);step(40);
++        fixture("pekora");const auto bomb=you.pos()+coord_def(3,0);cast("pekora",1,nullptr,bomb);step(15);cast("pekora",3,nullptr,bomb,1);step(40);
+         fixture("pekora");const auto centre=you.pos();holo_batch::manual_positions={centre+coord_def(3,-1),centre+coord_def(3,0),centre+coord_def(3,1)};cast("pekora",5,nullptr,centre+coord_def(3,0));step(70);
+     }
+     int cast_count=0,roundtrips=0;
+@@ -506,7 +555,7 @@
+             require(food && eat_item(*food),"native food consumption");require(holo_batch::s.resource>=38,"food enters fullness ledger");
+             cast(g,3,m,aim);holo_batch::s.targets[m->mid].stacks=2;holo_batch::s.resource=30;cast(g,5,m,aim);cast_count+=2;
+         } else if(g=="pekora"){
+-            aim=origin+coord_def(3,0);cast(g,1,nullptr,aim);step(10);cast(g,3,nullptr,aim);
++            aim=origin+coord_def(3,0);cast(g,1,nullptr,aim);step(15);cast(g,3,nullptr,aim);
+             holo_batch::manual_positions={origin+coord_def(3,-1),origin+coord_def(3,0),origin+coord_def(3,1)};
+             cast(g,5,nullptr,origin+coord_def(3,0));cast_count+=3;
+         } else if(g=="watame"){

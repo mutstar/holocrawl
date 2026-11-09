@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "revision": "pekora-balance01",
+  "runtimeSha256": "C7B51DF662E6F73EBD8D26C24129A3D75C5B522E0945F38318791437D9AC55DC",
+  "plantAut": 5,
+  "immediateMultiplier": 130,
+  "delayedMultiplier": 150,
+  "chain": "maximum multiplier once, independent of vector order",
+  "numericChanges": true,
+  "saveFormatChanged": false,
+  "artHashesPreserved": true,
+  "otherSourceHashesPreserved": true,
+  "sourceHashes": {
+    "holo-batch-space.cc": "535de73e320ec776a88ada51fd77248627d9b7c03b97f4142755d69b54665406",
+    "holo-campaign-test.cc": "639e242a1a675ede7ca468b28c6ecb21d1ff5a1c6365f25faa950dffcfb8eb4d"
+  },
+  "validation": "native-retry06/pekora-balance.json",
+  "regression": "native-retry06/validation.json",
+  "restore": "native-retry06/reload.json",
+  "scope": "Native ability damage/save controls; not campaign winrate validation"
+}

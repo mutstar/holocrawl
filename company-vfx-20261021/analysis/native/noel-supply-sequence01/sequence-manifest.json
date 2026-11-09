@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "files": [
+    "noel-supply-before.png",
+    "noel-supply-effect0.png",
+    "noel-supply-effect1.png",
+    "noel-supply-after.png",
+    "noel-supply-revealed.png"
+  ],
+  "nativeCapture": true,
+  "actualPlayerMovement": true,
+  "giftRemainsOnDeliveryTile": true,
+  "noScreenshotPainting": true,
+  "runtimeUnchanged": true,
+  "numericChanges": false,
+  "review": "analysis/previews/noel-supply-sequence01/tier3.gif"
+}

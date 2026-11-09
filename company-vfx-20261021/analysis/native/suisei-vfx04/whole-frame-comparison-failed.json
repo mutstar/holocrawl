@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "check": "Cross-run full framebuffer byte equality for unchanged tier1/3",
+  "reason": "Whole frames contain different native terrain flavour. Full frame byte equality is invalid for this visual invariant; no original captures were modified.",
+  "replacementChecks": "Identical source PNG hashes plus exact effect-vs-state masks for both tiers and frames. Full 22-god native tests independently passed."
+}

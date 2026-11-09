@@ -1,0 +1,52 @@
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -292,10 +292,10 @@
+ int noel_shield(){return noel_commander() && you.shield()?3+value("noel_command_inv")/9:0;}
+ int noel_skill_bonus(skill_type skill,int scale){
+     if(!skill_up())return 0;
+-    const auto weapon=you.weapon() && is_weapon(*you.weapon())?item_attack_skill(*you.weapon()):SK_UNARMED_COMBAT;
+-    return skill==weapon || skill==SK_ARMOUR || skill==SK_SHIELDS?(5+value("noel_skill_inv")/9)*scale:0;
+-}
+-int noel_fighting_bonus(int scale){return skill_up()?(5+value("noel_skill_inv")/9)*scale:0;}
++    // Fighting uses its attack-only hook below, preserving maximum HP.
++    return skill>SK_FIGHTING && skill<=SK_LAST_MUNDANE?6*scale:0;
++}
++int noel_fighting_bonus(int scale){return skill_up()?6*scale:0;}
+ int invoke(int tier,monster *target,const coord_def *aim,int option,int amount) {
+     if(!active() || you.cannot_act())return 0;
+     const auto g=holo_worship::current();const int need=tier==5?120:tier==3?75:tier==6?0:tier<0?0:30;
+@@ -317,7 +317,7 @@
+     int aut=0;const int now=you.elapsed_time,I=you.skill(SK_INVOCATIONS,1);
+     if(g=="noel") {
+         auto &t=data();
+-        if(tier==1 && value("noel_skill_end")<=now && pay(2,2,30)){t["noel_skill_end"]=now+10+80+4*I;t["noel_skill_inv"]=I;aut=10;}
++        if(tier==1 && value("noel_skill_end")<=now && pay(2,2,30)){t["noel_skill_end"]=now+10*min(110,15+random2avg(I*6,2));t["noel_skill_inv"]=I;aut=10;}
+         if(tier==5 && value("noel_command_end")<=now && value("noel_ready")<=now && pay(5,10,120)){t["noel_command_end"]=now+5+60+2*I;t["noel_ready"]=now+5+60+2*I+100;t["noel_command_inv"]=I;aut=5;}
+     } else if(g=="sopia")aut=holo_sopia::manual_action(tier,aim?*aim:you.pos(),option);
+     else aut=holo_batch::manual_action(tier,target,aim?*aim:you.pos(),option,amount);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -131,6 +131,23 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    // Noel: Heroism's duration roll +5 turns, fixed +6 to mundane combat.
++    {
++        for(int trial=0;trial<12;++trial) {
++            fixture("noel");const int I=you.skill(SK_INVOCATIONS,1),now=you.elapsed_time,hp=you.hp_max;
++            rng::seed(8800+trial);const int expected=10*min(110,15+random2avg(I*6,2));rng::seed(8800+trial);
++            require(invoke(1)==10,"Noel knight cast time");
++            const int until=you.props["holocrawl_campaign"]["noel_skill_end"].get_int();
++            require(until-now==expected,"Noel Heroism plus5 duration");
++            for(int sk=int(SK_FIRST_WEAPON);sk<=int(SK_LAST_MUNDANE);++sk)
++                require(noel_skill_bonus(skill_type(sk),1)==6,"Noel all mundane skills +6");
++            require(noel_fighting_bonus(1)==6 && noel_skill_bonus(SK_SPELLCASTING,1)==0 && you.hp_max==hp,"Noel Fighting/magic/HP controls");
++            require(you.magic_points==98 && you.piety==178,"Noel costs unchanged");
++            if(trial==0){roundtrip();require(you.props["holocrawl_campaign"]["noel_skill_end"].get_int()==until && noel_skill_bonus(SK_DODGING,1)==6,"Noel active buff save");}
++            you.elapsed_time=until;require(noel_fighting_bonus(1)==0 && noel_skill_bonus(SK_DODGING,1)==0,"Noel buff expires");
++        }
++        std::ofstream(dir+"/noel-balance.json")<<"{\"status\":\"passed\",\"mundaneBonus\":6,\"heroismDurationExtraTurns\":5,\"maxDurationTurns\":110,\"costsUnchanged\":true,\"noMaxHPBonus\":true,\"activeSave\":true,\"expiry\":true}\n";
+     }
+     try {
+     // Pekora quick planting, paid detonation, delayed save and chain propagation.

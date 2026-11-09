@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "revision": "okayu-balance03",
+  "runtimeSha256": "A72BDB45D883739182228A115A3AA08A0F78B29A272F66917F564948AF13811C",
+  "changedSourceSha256": {
+    "holo-batch-internal.h": "1c15edc73d975103073452710dfd484f69854a97ce2a928af1e83ed5654c2dbb",
+    "holo-batch-resources.cc": "41f14b8798aeb12cee2054ca48e9dbcafaf5bdcaab3acb1d34166b0a375a5570",
+    "holo-batch.cc": "2a757596dddb2a1bc5c6ecbad47ae6e6029be9bde98e482f8c4327163bb65448",
+    "holo-batch.h": "0de923daf9553ab82ae9961005e9ce0320e082211b28ca98c9dd11d83846da8f",
+    "holo-campaign-test.cc": "782b49d566daf3c9bc6ac645bb56644cdb72c3e2a83e092296c1c6cf4f8136d2",
+    "holo-campaign.cc": "f1f7758967c98ad08c6c3dbdd7e65fe59e287888ea63e444b75675f0beef4e5b",
+    "holo-campaign.h": "9919ae80db72deacb2085683e8f7e2abef70e8b74204cb7089a366b244c3e768",
+    "monster.cc": "312338f840bbf93c448ed2dd7995a1190656577070821dc94d086a1f43dee013",
+    "spl-cast.cc": "9488e67c6256d80029487af1947cd54b764dc459c1f5e31ac36f569886de06e1"
+  },
+  "artHashesPreserved": true,
+  "otherSourceHashesPreserved": true,
+  "saveFormatChanged": false,
+  "proof": "native/okayu-waking.json",
+  "regression": "native/validation.json",
+  "freshRestore": "native/reload.json",
+  "scope": "Native function/arena controls, not campaign winrate validation",
+  "wakingBonusPercent": 30,
+  "wakingBonusMinimum": 1,
+  "wakingBonusCap": "8+floor(Invocations/3)",
+  "review": "analysis/previews/all-gods-vfx-draft04/index.html#okayu"
+}

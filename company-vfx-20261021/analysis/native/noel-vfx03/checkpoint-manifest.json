@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "revision": "noel-vfx03",
+  "runtimeSha256": "DC7AD0586293DF181A8CF870500803EF726C4F8016D4F67EDA7CDDEF9BD1587C",
+  "changed": [
+    "rltiles/holo/fx_night_noel1_0.png",
+    "rltiles/holo/fx_night_noel1_1.png"
+  ],
+  "allCombatSourcesAndOtherArtPreserved": true,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "nativeSizes": [
+    14,
+    16
+  ],
+  "position": [
+    24,
+    8
+  ],
+  "prompt": "assets/holocrawl/noel-vfx03/generation.json",
+  "feedback": "pending",
+  "validation": "capture-validation.json"
+}

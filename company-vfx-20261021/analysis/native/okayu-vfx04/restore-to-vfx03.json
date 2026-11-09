@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "restoredRevision": "okayu-vfx03",
+  "visibleSize": [
+    12,
+    11
+  ],
+  "runtimeSha256": "1a082ef981ac7147d97317ba3fdd6bd54b4c14e1b3d7c81d40178f826988a322",
+  "featureAtlasSha256": "29f43fb1a15cc2bc1ca69935ae258c63893fe7f08811b6f7a0d31bc2bd0cb7da",
+  "userFeedback": "축소 전 버전으로 복원",
+  "sourceArtworkRestoredExactly": true
+}

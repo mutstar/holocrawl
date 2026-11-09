@@ -1,0 +1,38 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -132,7 +132,34 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
+-    if(const char *shots=getenv("HOLOCRAWL_TOWA_SHOT_REVIEW")) {
++    if(const char *shots=getenv("HOLOCRAWL_TOWA_CROSSFIRE_REVIEW")) {
++        auto *left=fixture("towa");const auto origin=you.pos();
++        require(left->move_to_pos(origin+coord_def(-1,-2)),"Crossfire left setup");
++        auto mg=mgen_data::hostile_at(MONS_ETTIN,false,origin+coord_def(1,-2));mg.flags|=MG_FORCE_PLACE;
++        auto *right=create_monster(mg,false);require(right,"Crossfire right setup");
++        for(auto *m:{left,right}){m->speed=0;m->speed_increment=0;m->hit_points=m->max_hit_points=100;}
++        require(invoke(3,nullptr,&origin)==10,"Crossfire real tier3 prerequisite");step(10);
++        const std::string stem=std::string(shots)+"/crossfire";
++        holo_visual::capture(stem+"-before.png");
++        require(invoke(5,nullptr,&origin)==5 && holo_batch::s.resource==8,"Crossfire real tier5 activation eight ammo");
++        for(int f=0;f<2;++f)holo_visual::capture_invocation("towa",origin,f,stem+"-cast"+std::to_string(f)+".png",5,false,0);
++        step(5);holo_visual::capture(stem+"-active.png");
++        std::ofstream proof(dir+"/towa-crossfire.json");proof<<"{\"status\":\"passed\",\"tier\":5,\"volleys\":[";
++        for(int volley=0;volley<2;++volley) {
++            const int before=left->hit_points+right->hit_points,ammo=holo_batch::s.resource;
++            int side=-1;for(auto *m:{left,right}) {
++                const auto old=m->pos();const auto dest=origin+coord_def(side*(volley==0?2:1),-2);side=1;
++                require(m->move_to_pos(dest),"Crossfire enemy movement");holo_batch::after_monster(*m,old);
++            }
++            you.elapsed_time+=10;rng::seed(99001+volley);holo_batch::space_tick(you.elapsed_time);
++            require(holo_batch::s.resource==ammo-2,"Crossfire two native shots in one turn");
++            const int damage=before-left->hit_points-right->hit_points;require(damage>0,"Crossfire real HP loss");
++            holo_visual::capture(stem+"-after"+std::to_string(volley)+".png");
++            if(volley)proof<<",";proof<<"{\"ammoBefore\":"<<ammo<<",\"ammoAfter\":"<<holo_batch::s.resource<<",\"damage\":"<<damage<<"}";
++        }
++        proof<<"],\"nativeMovementTrigger\":true,\"shotsPerTurn\":2,\"artOnly\":true}\n";
++    }
++    if(!getenv("HOLOCRAWL_TOWA_CROSSFIRE_REVIEW")) if(const char *shots=getenv("HOLOCRAWL_TOWA_SHOT_REVIEW")) {
+         std::ofstream proof(dir+"/towa-support.json");proof<<"{\"status\":\"passed\",\"cases\":[";
+         for(int distance=1;distance<=2;++distance) {
+             auto *m=fixture("towa");const auto origin=you.pos();

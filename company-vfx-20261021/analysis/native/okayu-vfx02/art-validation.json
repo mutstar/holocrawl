@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "revision": "okayu-vfx02",
+  "tier": 1,
+  "iconMaxSize": 12,
+  "iconSize": [
+    12,
+    11
+  ],
+  "bounds": [
+    23,
+    4,
+    30,
+    11
+  ],
+  "centre": [
+    26,
+    7
+  ],
+  "framesIdentical": true,
+  "changed": [
+    "rltiles/holo/fx_night_okayu1_0.png",
+    "rltiles/holo/fx_night_okayu1_1.png"
+  ],
+  "numericChanges": false,
+  "sourceChanges": false,
+  "otherTiersPreserved": true
+}
