@@ -1,0 +1,31 @@
+{
+  "dataset": "final-sopia-1000",
+  "encounters": 32000,
+  "scenarios": 8,
+  "variants": 4,
+  "seedsPerScenarioVariant": 1000,
+  "shards": 4,
+  "nativeExitCodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "nativeSopiaChecks": "passed",
+  "reverseOrderExactMatches": 160,
+  "independentBatchExactMatches": 320,
+  "noelAndBaselineRegressionExactMatches": 16000,
+  "banishments": 6,
+  "timeouts": 0,
+  "recordCompleteness": "passed",
+  "ringOnlyAndLockedAbilityIsolation": "passed",
+  "sourcePatchSha256": "B3B966FC1C07D5B82B4B627810CEC2B7FACDDBAC8801BE84478E9A8D7599A34B",
+  "buildBinarySha256": "F291885D18508F3E47648A4C6C52FE893AC7F96BAA2ADAEF32110CEFF4162DCD",
+  "timingPhase": "post-monster native world phase; drains all due logical ticks using current phase positions",
+  "limitations": [
+    "fixed adjacent melee fixtures",
+    "self-centred field selection policy",
+    "no campaign piety income, wrath, UI or saves",
+    "no continuous reconstruction of within-action monster positions"
+  ]
+}

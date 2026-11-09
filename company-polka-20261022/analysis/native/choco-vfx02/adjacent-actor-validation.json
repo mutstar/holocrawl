@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "upperActorMaskPixels": 613,
+  "upperActorPixelsOverlapped": 8,
+  "upperActorFractionUnchanged": 0.9869494290375204,
+  "backgroundChangesAllowed": true,
+  "scope": "This fixed adjacent-orc scene retains >98% of upper actor pixels; not a guarantee for every monster silhouette."
+}

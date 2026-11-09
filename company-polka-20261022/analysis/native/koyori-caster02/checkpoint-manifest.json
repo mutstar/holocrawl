@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "revision": "koyori-caster02",
+  "binarySha256": "053bb86edcaf013bf8e0b9a95cb7f71365d84149aed16c2eb281bc6a468d7a5f",
+  "sourceSha256": {
+    "holo-batch-experiments.cc": "f4a6f2253fe5efc509f5744263470f743737f0f926130887583495fa77d6b608",
+    "holo-campaign-test.cc": "fb805187fdb865f17d122b2c91bc6f20eb156b90aa7b198e26a4c0691a5a8c45",
+    "holo-campaign.cc": "7127638ed6c3f23ca3861c42a7862b2b70e56f7dfa358651c0ad06fbb8f16804",
+    "holo-visual.cc": "e29469e44371fde70552a13235ebf3f8e3ae757b650972594010af29b4029cd4",
+    "holo-visual.h": "56112157f5f4f6ab9d116655aec49dcba68859c614c398bcbcdfbef242ad96bd",
+    "Makefile.obj": "351cb8019e1a9ab550d1e52bc9aef8f12a518c95c5fe554c8f00d8dbc913eccd",
+    "mon-project.cc": "f66b03072cc840b6326a23f79fd5f995da766804f0e522aae283053382f045ef",
+    "monster.cc": "b8b1145dec4b1da0269f97892f3827004dd5aa6b3cf0ea68ab8da8a1c3dd5278",
+    "spl-cast.cc": "739d5f96c84ca6ad0b0a3c23740bd8e3de72458cedf78023b4d5812e6f9be570",
+    "spl-util.cc": "7b5b2809f3d7a1612c45f1a3c9816bbd5ba5975a08b3809f3415d17660694864",
+    "status.cc": "b36fdfef160c61cf13a234a472e2bb125ee439854c7ac5034e9bc61479a88c9b",
+    "status.h": "541824aa7b7ca5c7f7ec4495c55c5388420cd0d306aea7163d11165aba23e39a",
+    "rltiles\\dc-holo-feat.txt": "6eac556317200da47ad34f6c79aeee4101a83f996b6d5784b9e731b4b365ae31",
+    "holo-koyori.cc": "a4277d8c3f00d2e2979383dc506e76dab7e6357d678108a549b094caaf972183",
+    "holo-koyori.h": "9867472c4d72fb336dc926a8061048285fab859271281f6cf750825065da0ab4"
+  },
+  "otherSourceAndOldArtPreserved": true,
+  "nativeSaveFormatChanged": false,
+  "nativeNormalCasting": true,
+  "nativeAreaSpell": true,
+  "nativeDelayedOrb": true,
+  "poisonImmuneMark": true,
+  "friendlyAndSelfSafe": true,
+  "globalReagentCycle": true,
+  "singleReactionCentrePerCast": true,
+  "rangeBonus": 1,
+  "reactionMultiplier": 0.85,
+  "critical": {
+    "mp": 6,
+    "piety": 10,
+    "activationAut": 5,
+    "durationAut": 80,
+    "maxCasts": 4,
+    "cooldownAut": 200
+  },
+  "allGods": 22,
+  "freshProcessKoyoriRestore": true,
+  "validation": {
+    "status": "passed",
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "053BB86EDCAF013BF8E0B9A95CB7F71365D84149AED16C2EB281BC6A468D7A5F",
+    "gods": 22,
+    "rawScreenshots": 301,
+    "chocoControls": false
+  },
+  "review": "analysis/previews/koyori-review01/index.html#tier1",
+  "visualApproved": false,
+  "portableStartup": {
+    "status": "passed",
+    "bundledRuntimeDependencies": true,
+    "binarySha256": "053BB86EDCAF013BF8E0B9A95CB7F71365D84149AED16C2EB281BC6A468D7A5F"
+  },
+  "newAssetSha256": {
+    "rltiles\\holo\\fx_koyoricold_0.png": "25964409f4a51015589d6ad0908019b8123691e8955f1be5f0c15031729d7409",
+    "rltiles\\holo\\fx_koyoricold_1.png": "25964409f4a51015589d6ad0908019b8123691e8955f1be5f0c15031729d7409",
+    "rltiles\\holo\\fx_koyoriheat_0.png": "05fd3813c8bede27c77137724d388263d2d5e18b2b4d90a211d90098fa3d63d1",
+    "rltiles\\holo\\fx_koyoriheat_1.png": "05fd3813c8bede27c77137724d388263d2d5e18b2b4d90a211d90098fa3d63d1",
+    "rltiles\\holo\\fx_koyoripoison_0.png": "64ecd386e297bd9d43aeab9a22139e6f5a080a88146a4d0a286c57eb265d5520",
+    "rltiles\\holo\\fx_koyoripoison_1.png": "64ecd386e297bd9d43aeab9a22139e6f5a080a88146a4d0a286c57eb265d5520"
+  },
+  "migrationKey": "holo_koyori_caster_v1",
+  "captureFixture": "Ordinary Magic Dart command, piety60, Invocations12; before/after per reagent, only native MP1 paid."
+}

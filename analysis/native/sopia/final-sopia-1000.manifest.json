@@ -1,0 +1,69 @@
+{
+  "trialsPerCase": 1000,
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "reverseVariants": false,
+  "variants": [
+    "no_god",
+    "noel_v2",
+    "sopia_ring",
+    "sopia_full"
+  ],
+  "sourcePatchSha256": "B3B966FC1C07D5B82B4B627810CEC2B7FACDDBAC8801BE84478E9A8D7599A34B",
+  "randomSpawns": false,
+  "designSha256": "4490CA455B3D6BF09E2184943E3FF8F7F09AAA79403C579646B699097100DA86",
+  "explorationTraps": false,
+  "scope": "No-god, current Noel, Sopia ring-only and Sopia full combat core; fixed melee kits; no campaign progression.",
+  "seedStart": 1000,
+  "buildBinarySha256": "F291885D18508F3E47648A4C6C52FE893AC7F96BAA2ADAEF32110CEFF4162DCD",
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "suite": "sopia",
+  "results": "runtime\\results\\final-sopia-1000.jsonl",
+  "sourceRuns": [
+    {
+      "file": "final-sopia-shard-a.jsonl",
+      "records": 8000,
+      "resultsSha256": "5B8A1A2326E75444818BCE8BB99B32539D9BDF7C8724F3F07BA01036C81F78A0",
+      "manifestSha256": "CDA3E9E3BDD3613F799A5A504F5C4AF0BBB9874C5C1DEF28F6740C5DAAF40C6F",
+      "binarySha256": "B2FE5DB86EFBFB312E9F3C07C18A3E44032C48A75BD27810F3CC6FA416102C79",
+      "seedStart": 1000,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-sopia-shard-b.jsonl",
+      "records": 8000,
+      "resultsSha256": "4BB4C3D4330C3662C64A87CED88085B00ED3D14CAF8A7EED3D7434023F78AB04",
+      "manifestSha256": "6CB61573B992D7256E6ADB434441D04C292314DADF33A95831F27277BF61A9F7",
+      "binarySha256": "FDC19DCB22E80C206483C634458407EB2DA5631271FC176173CC822A6AFACFFD",
+      "seedStart": 1250,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-sopia-shard-c.jsonl",
+      "records": 8000,
+      "resultsSha256": "98F2BDC674C991FF0CB1170265F28F099E86CC6127E7020EA4209507BC3DE4F9",
+      "manifestSha256": "3F9F6E90E3B03400622B4B3FFFEFA35EDDA915186E2B2514BB8DF2F1B0ACEC3C",
+      "binarySha256": "2CD0CD2DA55F17D918ACF5857021DDB39894041F8D4645B448C4A96E4D7C6A60",
+      "seedStart": 1500,
+      "trialsPerCase": 250
+    },
+    {
+      "file": "final-sopia-shard-d.jsonl",
+      "records": 8000,
+      "resultsSha256": "3C648938A31841035064A4BB8770BD351F964CB42D8B4F7D1D1C59B1E2FED81A",
+      "manifestSha256": "728681C4B898929D7C87E4E98D025C682842292A3EA8D57CC66CDB7FEC86909B",
+      "binarySha256": "7F7E4FF0FC68B373E697058FDFBA9D00D5074E8D1AFEB337227D305FFB3DDF49",
+      "seedStart": 1750,
+      "trialsPerCase": 250
+    }
+  ]
+}

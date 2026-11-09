@@ -1,0 +1,1 @@
+Native melee fixture initialized turn_is_over=false, so command_scope correctly cancelled post-attack mark handling.02 mirrors native outer command turn-spending initialization. Also snapshot tier2 eligibility before kill piety gain so a49-piety kill does not retroactively earn the passive.01 not deployed.

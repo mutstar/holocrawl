@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "revision": "hajime-rhythm03",
+  "binarySha256": "4aa0f5f37a86fbec06c79415a10587e8f883a225202dc47430d92e560f7a7e77",
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeMovementCommands": true,
+    "nativeMeleeCommand": true,
+    "stacks": [
+      0,
+      1,
+      2,
+      3,
+      0
+    ],
+    "invocations": 12,
+    "mpPietyCost": 0,
+    "attackDamage": 0,
+    "captureStateRngUnchanged": true
+  },
+  "validation": {
+    "gods": 22,
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "4AA0F5F37A86FBEC06C79415A10587E8F883A225202DC47430D92E560F7A7E77",
+    "rawScreenshots": 5,
+    "chocoControls": false,
+    "status": "passed"
+  }
+}

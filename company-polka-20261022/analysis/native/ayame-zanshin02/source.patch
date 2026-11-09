@@ -1,0 +1,217 @@
+--- before/holo-batch-internal.h
++++ after/holo-batch-internal.h
+@@ -35,6 +35,8 @@
+ struct action_context {
+     bool ordinary=false,primary=false,damaged=false,double_hit=false,eligible=false,reward_kill=false;
+     bool star_inheritance=false; // Per-action only; the banked reward uses existing saved fields.
++    bool ayame_zanshin_unlocked=false;
++    int ayame_zanshin_end=0; // Per-action snapshot; saved bank is state.tertiary.
+     bool dream_sleep=false;mid_t dream_target=MID_NOBODY;
+     attack_kind kind=attack_kind::melee;
+     beam_type element=BEAM_MAGIC;
+--- before/holo-batch-martial.cc
++++ after/holo-batch-martial.cc
+@@ -245,6 +245,7 @@
+     }
+     if(is(god_id::hajime) && at>=s.one_end) s.resource=0;
+     if(is(god_id::ayame)) {
++        if(s.tertiary<=at || you.piety<50)s.tertiary=0;
+         monster *mon=monster_by_mid(s.marked);
+         if(!mon || !mon->alive() || s.one_end<=at) {
+             if(s.five_end>at) { s.five_end=at;s.five_ready=at+100; }
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -245,6 +245,10 @@
+     ctx.ordinary=true;ctx.kind=kind;ctx.target=target.mid;
+     ctx.hp_before=target.hit_points;ctx.hd=target.get_experience_level();ctx.position=target.pos();
+     ctx.eligible=eligible(target);
++    ctx.ayame_zanshin_unlocked=is(god_id::ayame) && you.piety>=50;
++    if(is(god_id::ayame) && you.piety>=50 && kind==attack_kind::melee && ctx.eligible
++        && adjacent(you.pos(),target.pos()) && s.tertiary>you.elapsed_time
++        && (s.marked!=target.mid || s.one_end<=you.elapsed_time))ctx.ayame_zanshin_end=s.tertiary;
+     if(is(god_id::suisei)) {
+         ctx.stars_before=s.marked==target.mid && s.one_end>you.elapsed_time ? s.resource : 0;
+         if(s.three_end>you.elapsed_time) ctx.bonus=s.offence;
+@@ -296,7 +300,16 @@
+             ctx.star_inheritance=you.piety>=100 && ctx.stars_before==0 && ctx.damaged && !ctx.reward_kill;
+         }
+     }
+-    if(ctx.damaged && ctx.eligible && !ctx.reward_kill && (!target || !target->alive())) on_kill(ctx.target,ctx.hd,true,true);
++    if(is(god_id::ayame) && ctx.ayame_zanshin_end>0 && aut>0) {
++        if(s.tertiary==ctx.ayame_zanshin_end)s.tertiary=0;
++        ++s.totals.procs;
++    }
++    if(ctx.damaged && ctx.eligible && !ctx.reward_kill && (!target || !target->alive())) {
++        if(is(god_id::ayame) && ctx.ayame_zanshin_unlocked && you.piety>=50 && aut>0 && ctx.kind==attack_kind::melee
++            && ctx.target==s.marked && s.one_end>you.elapsed_time && adjacent(you.pos(),ctx.position))
++            s.tertiary=you.elapsed_time+aut+30;
++        on_kill(ctx.target,ctx.hd,true,true);
++    }
+     // A reward-only kill must clear the dead mark without earning a new reward.
+     if(is(god_id::suisei) && ctx.reward_kill && s.marked==ctx.target) {s.marked=MID_NOBODY;s.resource=0;}
+     martial_after_attack(target,aut);resource_after_attack(target,aut);
+@@ -322,6 +335,8 @@
+             bonus+=suisei_focus_accuracy(defender);
+         if(is(god_id::ayame) && ctx.ordinary && ctx.kind==attack_kind::melee && s.marked==defender->mid && s.one_end>you.elapsed_time
+             && adjacent(you.pos(),defender->pos())) bonus+=3+s.inv/6+(five() ? 4 : 0);
++        else if(is(god_id::ayame) && ctx.ayame_zanshin_end>0 && ctx.target==defender->mid
++            && adjacent(you.pos(),defender->pos()))bonus+=3+s.inv/6;
+         if(is(god_id::hajime) && ctx.ordinary && ctx.kind==attack_kind::melee) bonus+=ctx.stars_before;
+         if(is(god_id::korone)) bonus+=five() ? 6 : s.resource;
+         if(is(god_id::korone) && s.defence) bonus+=6;
+@@ -356,6 +371,8 @@
+     if(!active() || aux || !ctx.ordinary || ctx.kind!=attack_kind::melee) return 0;
+     if(is(god_id::ayame) && s.marked==defender->mid && s.one_end>you.elapsed_time
+         && adjacent(you.pos(),defender->pos())) return 2+s.inv/9+(five() ? 3 : 0);
++    if(is(god_id::ayame) && ctx.ayame_zanshin_end>0 && ctx.target==defender->mid
++        && adjacent(you.pos(),defender->pos()))return 2+s.inv/9;
+     if(is(god_id::korone)) return (five() ? 6 : passive()?s.resource:0)/2;
+     return 0;
+ }
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -99,6 +99,12 @@
+     beam.fire();landed=holo_batch::ctx.primary;you.turn_is_over=true;you.time_taken=10;}
+     return landed;
+ }
++void ayame_test_melee(monster *m,bool spend=true) {
++    // Native outer command processing starts an ordinary action as turn-spending.
++    you.turn_is_over=true;you.time_taken=10;
++    {command_scope command;fight_melee(&you,m);}
++    if(spend)step(std::max(1,you.time_taken));
++}
+ void close_save(){if(you.save){you.save->abort();delete you.save;you.save=nullptr;}}
+ std::vector<unsigned char> rng_bytes() {
+     std::vector<unsigned char> bytes;
+@@ -154,6 +160,61 @@
+ int run_tests() {
+     const char *path=getenv("HOLOCRAWL_CAMPAIGN_OUTPUT");require(path,"output directory required");const std::string dir(path);
+     crawl_state.show_more_prompt=false;
++    if(getenv("HOLOCRAWL_AYAME_ZANSHIN_RELOAD")) {
++        using namespace holo_batch;
++        holo_reset_validation_fixture();reload_disk(dir+"/ayame-save",true);
++        auto *m=monster_by_mid(you.props["ayame_test_target"].get_int());require(m,"restored Ayame target");
++        require(holo_worship::rank()==2 && s.tertiary==you.elapsed_time+30,"Ayame bank3turn restore");
++        ayame_test_melee(m);require(s.tertiary==0 && s.totals.procs==1,"restored first attack consumption");
++        ayame_test_melee(m);require(s.totals.procs==1,"restored bank repeated");
++        std::ifstream f(dir+"/ayame-expected.txt");std::string expected((std::istreambuf_iterator<char>(f)),{});
++        require(signature()==expected,"Ayame exact native melee continuation differs");
++        std::ofstream(dir+"/ayame-reload.json")<<"{\"status\":\"passed\",\"threeTurnBankRestored\":true,\"nativeMeleeStateAndRngExact\":true}";
++        close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_AYAME_ZANSHIN_REVIEW")) {
++        using namespace holo_batch;
++        auto setup=[&](int faith) {auto *m=fixture("ayame",faith);m->type=MONS_RAT;m->set_hit_dice(1);m->hit_points=m->max_hit_points=10000;return m;};
++        auto grant=[&](int faith) {
++            auto *m=setup(faith);ayame_test_melee(m);
++            require(s.marked==m->mid,"native initial melee did not mark opponent");
++            m->hit_points=m->max_hit_points=1;
++            for(int i=0;i<40 && m->alive();++i)ayame_test_melee(m);
++            require(!m->alive(),"native marked melee kill");return m;
++        };
++        for(int faith:{49,50}){grant(faith);require(s.tertiary==(faith==50?you.elapsed_time+30:0),"native kill reward faith49/50 or completed-action duration");}
++        for(int I:{0,12,27}) {
++            auto *m=setup(50);s.inv=I;s.tertiary=you.elapsed_time+30;
++            begin_attack(*m);require(to_hit(&you,m)==3+I/6 && slaying(m,false)==2+I/9 && slaying(m,true)==0,"first-swing accuracy/slaying scaling");
++            require(evasion(m)==0 && s.tertiary>0,"bank grants early EV or consumed on preview");cancel_attack();require(s.tertiary>0,"cancel lost bank");
++        }
++        auto *m=setup(50);s.tertiary=you.elapsed_time+30;begin_attack(*m);end_attack(10);
++        require(s.tertiary==0 && s.totals.procs==1 && s.marked==m->mid,"miss did not consume and establish ordinary mark");
++        begin_attack(*m);require(to_hit(&you,m)==5 && slaying(m,false)==3,"second swing lost ordinary1star bonuses");end_attack(10);require(s.totals.procs==1,"second swing spent another bank");
++        m=setup(50);s.tertiary=you.elapsed_time+30;begin_attack(*m);end_attack(0);require(s.tertiary>0,"zero-time action consumed bank");
++        m=setup(50);s.tertiary=you.elapsed_time;begin_attack(*m);require(to_hit(&you,m)==0 && slaying(m,false)==0,"expired bank applied");cancel_attack();
++        m=setup(49);s.tertiary=you.elapsed_time+30;begin_attack(*m);require(to_hit(&you,m)==0 && slaying(m,false)==0,"locked bank applied");cancel_attack();
++        for(auto kind:{attack_kind::ranged,attack_kind::spell}){m=setup(50);s.tertiary=you.elapsed_time+30;begin_attack(*m,kind);end_attack(10);require(s.tertiary>0 && s.totals.procs==0,"non-melee consumed bank");}
++        m=setup(50);s.tertiary=you.elapsed_time+30;require(m->move_to_pos(you.pos()+coord_def(2,0)),"reach fixture");begin_attack(*m);require(to_hit(&you,m)==0,"reach applied bank");end_attack(10);require(s.tertiary>0,"reach consumed bank");
++        m=setup(50);m->flags|=MF_NO_REWARD;s.tertiary=you.elapsed_time+30;begin_attack(*m);require(to_hit(&you,m)==0,"no-XP target got bank");end_attack(10);require(s.tertiary>0,"no-XP target consumed bank");
++        m=setup(50);s.tertiary=you.elapsed_time+30;leave_level();require(s.tertiary==0,"bank crossed floor");
++        m=setup(50);s.tertiary=you.elapsed_time+1;step(10);require(s.tertiary==0,"bank expiry cleanup");
++        m=setup(75);s.tertiary=you.elapsed_time+30;const int hp=m->hit_points;cast("ayame",3,m,m->pos());
++        require(m->hit_points<hp && s.tertiary==0 && s.totals.procs==1 && s.marked==m->mid,"native Twin slash bank integration");
++        m=setup(180);cast("ayame",5,m,m->pos());m->hit_points=m->max_hit_points=1;
++        for(int i=0;i<40 && m->alive();++i)ayame_test_melee(m);
++        require(!m->alive() && s.tertiary==you.elapsed_time+30 && !five() && s.three_ready<=you.elapsed_time,"five-star kill reward compatibility");
++        grant(50);holo_visual::capture(std::string(shots)+"/ayame-zanshin-banked.png");
++        auto mg=mgen_data::hostile_at(MONS_ORC,false,you.pos()+coord_def(1,0));mg.flags|=MG_FORCE_PLACE;
++        auto *next=create_monster(mg,false);require(next,"next duel opponent");next->speed=next->speed_increment=0;next->hit_points=next->max_hit_points=10000;
++        you.props["ayame_test_target"]=int(next->mid);holo_visual::capture(std::string(shots)+"/ayame-zanshin-before.png");
++        save_disk(dir+"/ayame-save");close_save();ayame_test_melee(next);
++        require(s.tertiary==0 && s.totals.procs==1,"native new opponent first melee did not spend bank");holo_visual::capture(std::string(shots)+"/ayame-zanshin-after.png");
++        ayame_test_melee(next);require(s.totals.procs==1,"native following melee duplicated bank");
++        std::ofstream(dir+"/ayame-expected.txt")<<signature();
++        std::ofstream(dir+"/ayame-zanshin.json")<<"{\"status\":\"passed\",\"unlock\":50,\"completedKillBankAut\":30,\"accuracyAtInv12\":5,\"slayingAtInv12\":3,\"nativeMarkedMeleeKill\":true,\"nativeTwinSlash\":true,\"nativeNextOpponentMelee\":true,\"missConsumes\":true,\"cancelAndZeroTimePreserve\":true,\"fiveStarCompatible\":true,\"expiryFloorRangeAndSourceControls\":true}";
++        close_save();return 0;
++    }
+     if(getenv("HOLOCRAWL_FUBUKI_OPENING_RELOAD")) {
+         using namespace holo_batch;
+         holo_reset_validation_fixture();reload_disk(dir+"/fubuki-save",true);
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -279,7 +279,7 @@
+ void grant(int amount) {
+     if(!active() || amount<=0)return;
+     const int before=you.piety;you.piety=std::min(200,before+amount);you.redraw_title=true;
+-    for(int threshold:{30,50,75,100,120})if(((threshold!=50 && threshold!=100) || holo_worship::current()=="suisei" || (threshold==50 && (holo_worship::current()=="miko" || holo_worship::current()=="aki" || holo_worship::current()=="fubuki"))) && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
++    for(int threshold:{30,50,75,100,120})if(((threshold!=50 && threshold!=100) || holo_worship::current()=="suisei" || (threshold==50 && (holo_worship::current()=="miko" || holo_worship::current()=="aki" || holo_worship::current()=="fubuki" || holo_worship::current()=="ayame"))) && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
+     refresh();
+ }
+ void advance() {
+@@ -380,11 +380,12 @@
+     std::vector<std::string> lines;if(!active())return lines;
+     const auto &s=holo_batch::s;const auto g=holo_worship::current();
+     const int rank=holo_worship::rank();
+-    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":(g=="miko" || g=="aki" || g=="fubuki")?"30 / 50 / 75 / 120":"30 / 75 / 120"));
++    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":(g=="miko" || g=="aki" || g=="fubuki" || g=="ayame")?"30 / 50 / 75 / 120":"30 / 75 / 120"));
+     const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
+     if(g=="miko")lines.push_back("1* active: MP3/1turn, fixed5x5 sanctuary from unlock; duration20+0.5*Inv turns. Heal1+Inv/12 HP every2turns. 3* active: MP3/piety3/1turn, flames on5x5 boundary; passive: outside ranged damage reduced10+Inv/3 percent. 5* active: MP6/piety10/1turn, expands to7x7 for6+0.2*Inv turns, reduces damage15+Inv/3 percent and cleanses one condition.");
+     if(g=="suisei")lines.push_back(make_stringf("Constellation stars: %d/3 | next-hit reward: %d (%s)",s.resource,s.three_end>you.elapsed_time?s.offence:0,turns(s.three_end).c_str()));
++    if(g=="ayame")lines.push_back(make_stringf("2* passive Oni zanshin: %s | remaining %d aut",you.piety<50?"locked (piety50)":s.tertiary>you.elapsed_time?"ready: next new adjacent melee target gets1* hit/slaying":"needs a marked melee kill",std::max(0,s.tertiary-you.elapsed_time)));
+     if(g=="fubuki")lines.push_back(std::string("2* passive Fox opening: ")+(you.piety<50?"locked (piety50)":"first direct hit on deceived foe: its decoy fires one extra foxfire"));
+     if(g=="aki")lines.push_back(make_stringf("2* passive Rose nourishment: %s | MP gain %d | cooldown %d aut",you.piety<50?"locked (piety50)":"ready",std::min(3,1+s.inv/12),std::max(0,s.rest[0]-you.elapsed_time)));
+     if(g=="miko")lines.push_back(make_stringf("2* passive Blossom offering: %s | Shield %d/%d (%d aut)",you.piety<50?"locked (piety50)":"ready",s.shield,4+s.inv/3,std::max(0,s.defence-you.elapsed_time)));
+@@ -462,6 +463,7 @@
+     if(g=="koyori")lines.push_back("1*: passive direct attack spells cycle Heat/Cold/Poison; no extra MP/piety. Heat1d(4+Inv/6), Cold1d(3+Inv/9) and move+15%/2t, Poison(2+Inv/12)x2 ticks. Marks6t. 3*: eligible ranged attack spells +1 range, LOS cap, no blast-radius change. Different reagents react once/cast: fire2d(5+Inv/4) radius1, thermal3d(6+Inv/4) half AC, slime2d(3+Inv/6) radius1 and move+35%/3t. All reaction damage x0.85 rounded down once. No self/ally splash. 5*: MP6/piety10,0.5t;8t or4 successful attack casts;20t cooldown from activation. Pairs thermal/fire/slime/thermal; reaction x1.5 for thermal(ignore AC), x1.35 otherwise; slime move+50%/4t. No tools/clouds/pets/poison followup/recursion. One reagent application per target and one reaction centre per cast. Existing marks and sequence saved.");
+     if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, damaging spells and tools: one chill/target/use. A cloud field plus all spread cells share that use; first positive damage only, no direct+cloud double stack, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/use and per10aut (a cloud field can burst once total):2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/divine/poison-DoT procs. Tool charges and costs remain normal; cloud ticks do not repeatedly stack. Old untagged clouds are excluded.");
+     if(g=="suisei")lines.push_back("1* passive: one star per positive direct attack, max3, expires10 turns since last hit. A marked kill grants next-hit1d(3+4*stars) for3 turns, AC applies. Manual retarget costs1 turn. 3* active: MP3/piety3/1turn, range5 piercing,2d(8+Inv/2)+5 per marked star; consumes stars only on hit. 5* active: MP6/piety10/1turn, range6 fixed3x3, lands2turns after completion;3d(10+Inv/2)+8 per snapshotted marked star, AC applies. No tracking. Allies/self may be hit.");
++    if(g=="ayame")lines.push_back("2* passive Oni zanshin,piety50: direct adjacent melee kill of a live marked XP foe grants3turns of zanshin. Next new adjacent ordinary melee target gets1* accuracy3+Inv/6 and slaying2+Inv/9 on its first swing; consumes on attempt, even miss. Twin slash supports this; second swing uses ordinary mark bonuses. No extra EV,5* bonus,MP/piety/action cost or stacking. Cancelled/0time actions keep it; ranged/spell/reach/non-XP targets do not consume it.");
+     if(g=="fubuki")lines.push_back("2* passive Fox opening,piety50: first successful ordinary melee/ranged/direct spell hit on a living deceived foe triggers one extra foxfire from the decoy that deceived it. Once per successful deception, not per image. Miss retains it; expiry/dead or hidden decoy invalidates it. Normal hit,resistance and min(actionAut,10)/10 scaling apply. No extra MP/piety/turn cost. Divine powers,DoT,pets and0-time actions excluded.");
+     if(g=="aki")lines.push_back("1* active: MP3/1turn, fixed5x5 garden, blooms1turn after completion. 3* active: two attack roses, garden remains5x5. 5* active: temporary7x7 bloom. 2* passive Rose nourishment,piety50: XP foe with3thorn stacks dies inside garden to your direct attack,garden DoT or own rose: regain min(3,1+Inv/12)MP, max once per3turns. Bloom uses stacks before consumption. No extra resources/action. Full MP: no stored reward or cooldown spent.");
+     if(g=="miko")lines.push_back("2* passive Blossom offering, piety50: direct XP-enemy kill with both in shrine heals2+Inv/6HP, once per2turns. Excess healing becomes shield, cap4+Inv/3HP, lasts5turns; renewed on overflow. Leaving shrine, floor change or new shrine removes it. No extra MP/piety/turn cost. Ordinary attacks, poison, clouds and traps can be absorbed; costs, torment and divine wrath are excluded.");
+@@ -617,6 +619,7 @@
+     if(g=="miko" || g=="aki" || g=="raden")s.three_end=0;
+     if(g=="raden" || g=="miko")s.shield=0;
+     if(g=="miko")s.defence=0;
++    if(g=="ayame")s.tertiary=0;
+     if(g=="polka")s.secondary=0;
+     if(g=="hajime" || g=="mela" || g=="suisei")s.resource=0;
+     if(g=="miko" || g=="aki" || g=="ayame" || g=="choco" || g=="towa" || g=="lamy" || g=="raden" || g=="hajime" || g=="su" || g=="vivi" || g=="mela" || g=="koyori"){
+--- before/holo-worship.cc
++++ after/holo-worship.cc
+@@ -130,7 +130,7 @@
+ int rank()
+ {
+     if(!active()) return 0;
+-    return you.piety>=120?5:current()=="suisei" && you.piety>=100?4:you.piety>=75?3:(current()=="suisei" || current()=="miko" || current()=="aki" || current()=="fubuki") && you.piety>=50?2:you.piety>=30?1:0;
++    return you.piety>=120?5:current()=="suisei" && you.piety>=100?4:you.piety>=75?3:(current()=="suisei" || current()=="miko" || current()=="aki" || current()=="fubuki" || current()=="ayame") && you.piety>=50?2:you.piety>=30?1:0;
+ }
+ void validate_save()
+ {
+@@ -231,7 +231,7 @@
+ {
+     Menu menu(MF_SINGLESELECT);
+     menu.set_title(new MenuEntry("HoloCrawl: "+display_name(),MEL_TITLE));
+-    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 100 / 120":(current()=="miko" || current()=="aki" || current()=="fubuki")?"30 / 50 / 75 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
++    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 100 / 120":(current()=="miko" || current()=="aki" || current()=="fubuki" || current()=="ayame")?"30 / 50 / 75 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
+     menu.add_entry(new MenuEntry("Use a to choose invocations. Natural kills grant piety; decay is 1 per 300 turns.",MEL_SUBTITLE));
+     for(const auto &line:holo_campaign::status_lines())menu.add_entry(new MenuEntry(line,MEL_SUBTITLE));
+     if(active())menu.add_entry(new MenuEntry("God description and worship rules",MEL_ITEM,1,'?'));
+@@ -299,7 +299,7 @@
+             && you.piety==15 && you.magic_points==mp,"same-god join changed resources/time");
+         for(int p:{0,29,30,49,50,74,75,99,100,119,120,200}) {
+             you.piety=p;
+-            const int expected=p>=120?5:id=="suisei" && p>=100?4:p>=75?3:(id=="suisei" || id=="miko" || id=="aki" || id=="fubuki") && p>=50?2:p>=30?1:0;
++            const int expected=p>=120?5:id=="suisei" && p>=100?4:p>=75?3:(id=="suisei" || id=="miko" || id=="aki" || id=="fubuki" || id=="ayame") && p>=50?2:p>=30?1:0;
+             require(rank()==expected,"unlock boundary");
+             const auto states=rng::get_states();
+             auto bytes=player_tag();

@@ -1,0 +1,12 @@
+{
+  "status": "inconclusive",
+  "method": "Cross-build raw framebuffer pixel comparison",
+  "reason": "Cosmetic floor tile variants differ between separate native captures, so byte-identical cross-build frames are not a valid oracle. This comparison is not counted as a pass. Native geometry/RNG/state tests and direct visual inspection are used for this change.",
+  "beforeFrameChangedPixels": 128654,
+  "bbox": [
+    131,
+    100,
+    862,
+    580
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "revision": "lamy-banquet-vfx05",
+  "numericChanges": false,
+  "combatRevision": "lamy-tools05",
+  "renderHookOnly": true,
+  "runtimeSha256": "AEC9C5F690BC9775E79C5FC7BA789B464A99E05EDAF1ABE411B3411F1A3E01D1",
+  "proof": {
+    "status": "passed",
+    "nativeActivation": true,
+    "durationTurns": 8,
+    "playerFollowingWreath": true,
+    "nativeMovement": true,
+    "savedBuff": true,
+    "actualSpellBurst": true,
+    "actualWandBurst": true,
+    "centreAndAdjacentDamaged": true,
+    "outsideUnchanged": true,
+    "chillDedup": true,
+    "wreathExpired": true,
+    "renderingStateUnchanged": true,
+    "wallControlCaptured": true
+  },
+  "spellSequence": "lamy5-burst1",
+  "toolSequence": "lamy5-burst2",
+  "openFloorCells": 9,
+  "wallControlCells": 8,
+  "reviewStatus": "tiers1/3 approved; tier5 pending",
+  "sourceHashes": {
+    "holo-lamy.cc": "4F84F3C2EEA2384247099054425E876367E7CA4E5A77DE12BB99EED367E10B68",
+    "holo-visual.cc": "E9584B6E6163FF13F30E8170F384B9670943643956B9EA0E40DBC56D06CB8351",
+    "holo-visual.h": "FC4A1A0D1C88F3903BDA49B8D5479F3AE33AA4C824CA7F4312BEDBE1C9DCDE88",
+    "tilereg-dgn.cc": "CA857ADBD7943BF6CA528FC54C80F9EAA2BDD42EAB9BBF4CC81EF30AABA565EC",
+    "tiledgnbuf.cc": "4CD5913C8720123EC6DDD19D3B94BB496FB357EE60A9954A8377E134A1C35930",
+    "tiledgnbuf.h": "730332E7D4CF4B6582B84FB17ADFC0D00B17EDF00E3CF99E665A4F9586D2BE55",
+    "holo-campaign-test.cc": "654DBE1F29B2C96158592B4AAC26143EB5C9338EA7BF27310A2B28CC1C031110",
+    "rltiles/dc-holo-feat.txt": "F6031DFE25BBAAA4E0D6DEB5569291C2E559287745AF59AD82293EB6019F3B2B"
+  },
+  "scope": "Native VFX, cost/damage geometry, save and 22-god regressions; not campaign winrate",
+  "rangeOutline": {
+    "rgb": [
+      150,
+      220,
+      250
+    ],
+    "alpha": 105,
+    "widthPixelsAt32pxTile": 1,
+    "fill": false,
+    "internalGrid": false,
+    "brokenFrostRim": true,
+    "roundedPixelCorners": true,
+    "belowSnowAndActors": true
+  },
+  "unchangedCombatFilesVerified": true,
+  "visualInspection": "Native tier5-states.png inspected: internal grid absent, pale broken outer rim, stepped corners, snow and actors visible."
+}

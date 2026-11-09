@@ -1,0 +1,31 @@
+{
+  "randomSpawns": false,
+  "designSha256": "156E21052328252D43D0F5E0CA7A53714F05C47B8EF8190462DA5C9EF548A36B",
+  "buildBinarySha256": "EBFFB9F4F2546DBA7554E5E62E7C18399BBB9446DF4F4562AA51E5BAD93EC9F0",
+  "explorationTraps": false,
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\final-regression-1882.jsonl",
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression; other 21 gods not implemented.",
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\final-regression-1882.exe",
+  "trialsPerCase": 1,
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "seedStart": 1882,
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "sourcePatchSha256": "C299B78AC1D2B44CE493EE836C0E80CB85B1849B8011CAD416B4133A473E0F17",
+  "binarySha256": "613400ACE666AA5CC93A79F0D9B88AE1C6C03827020C85DF5FE61FD591517B2E",
+  "reverseVariants": false
+}

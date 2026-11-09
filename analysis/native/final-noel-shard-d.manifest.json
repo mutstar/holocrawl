@@ -1,0 +1,31 @@
+{
+  "buildBinarySha256": "EBFFB9F4F2546DBA7554E5E62E7C18399BBB9446DF4F4562AA51E5BAD93EC9F0",
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression; other 21 gods not implemented.",
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\final-noel-shard-d.exe",
+  "explorationTraps": false,
+  "trialsPerCase": 250,
+  "designSha256": "156E21052328252D43D0F5E0CA7A53714F05C47B8EF8190462DA5C9EF548A36B",
+  "seedStart": 1750,
+  "randomSpawns": false,
+  "sourcePatchSha256": "C299B78AC1D2B44CE493EE836C0E80CB85B1849B8011CAD416B4133A473E0F17",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "reverseVariants": false,
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "binarySha256": "9F79CF087F755F546119107C23C41D2A57F738E5ACDDFE4FAB2D28440DD2D8CE",
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\final-noel-shard-d.jsonl"
+}

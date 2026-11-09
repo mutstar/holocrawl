@@ -1,0 +1,1 @@
+Hajime ordinary movement expected 3 rhythm, got 0 now=27 end=0

@@ -1,0 +1,1258 @@
+diff --git a/crawl-ref/source/Makefile.obj b/crawl-ref/source/Makefile.obj
+index 75f74a62e18e28ca7ec2864013cc3a6b14096f21..a8168d6743fc3ce4fdf0a7e0ad8ef5d1e1d40afe 100644
+--- a/crawl-ref/source/Makefile.obj
++++ b/crawl-ref/source/Makefile.obj
+@@ -1,4 +1,6 @@
+ OBJECTS = \
++holocrawl.o \
++holo-sopia.o \
+ ability.o \
+ abyss.o \
+ acquire.o \
+diff --git a/crawl-ref/source/attack.cc b/crawl-ref/source/attack.cc
+index 46710314a3c7aec665cd7280b81bbcb1c669b0ab..8db425ec126c722bd3212af2231936e7beaeceba 100644
+--- a/crawl-ref/source/attack.cc
++++ b/crawl-ref/source/attack.cc
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "attack.h"
+ 
+@@ -162,7 +163,7 @@ int attack::calc_to_hit(bool random)
+     if (attacker->is_player())
+     {
+         // fighting contribution
+-        mhit += maybe_random_div(you.skill(SK_FIGHTING, 100), 100, random);
++        mhit += maybe_random_div(holo_fighting_skill(100), 100, random);
+ 
+         // weapon skill contribution
+         if (using_weapon())
+@@ -1154,7 +1155,7 @@ int attack::player_apply_fighting_skill(int damage, bool aux)
+ {
+     const int base = aux? 40 : 30;
+ 
+-    damage *= base * 100 + (random2(you.skill(SK_FIGHTING, 100) + 1));
++    damage *= base * 100 + (random2(holo_fighting_skill(100) + 1));
+     damage /= base * 100;
+ 
+     return damage;
+diff --git a/crawl-ref/source/beam.cc b/crawl-ref/source/beam.cc
+index e67237a244775d891138266d873e15b774ad9f83..2955097c2545db77a4d41d836250c586bfe9f90a 100644
+--- a/crawl-ref/source/beam.cc
++++ b/crawl-ref/source/beam.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "beam.h"
+ 
+@@ -6553,6 +6554,8 @@ string bolt::get_source_name() const
+ */
+ bool bolt::can_knockback(const actor &act, int dam) const
+ {
++    if (act.is_player() && holo_force_immune())
++        return false;
+     if (act.is_stationary())
+         return false;
+ 
+@@ -6574,6 +6577,8 @@ bool bolt::can_knockback(const actor &act, int dam) const
+ */
+ bool bolt::can_pull(const actor &act, int dam) const
+ {
++    if (act.is_player() && holo_force_immune())
++        return false;
+     if (act.is_stationary() || adjacent(source, act.pos()))
+         return false;
+ 
+diff --git a/crawl-ref/source/holo-sopia.cc b/crawl-ref/source/holo-sopia.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..2f34b1b84f305ddd06e0e07192b7ab858b09def7
+--- /dev/null
++++ b/crawl-ref/source/holo-sopia.cc
+@@ -0,0 +1,374 @@
++#include "AppHdr.h"
++#include "holo-sopia.h"
++
++#include <algorithm>
++#include <map>
++#include <stdexcept>
++#include <vector>
++
++#include "act-iter.h"
++#include "env.h"
++#include "holocrawl.h"
++#include "los.h"
++#include "mon-util.h"
++#include "mon-tentacle.h"
++#include "player.h"
++#include "terrain.h"
++#include "traps.h"
++
++namespace holo_sopia {
++namespace {
++bool enabled=false, ring_only=false, field=false, big=false;
++int inv=0, ring_end=0, ring_next=0, field_end=0, field_next=0;
++int charge=0, charge_next=0, big_ready=0;
++coord_def centre;
++std::map<mid_t,int> pull_ready;
++metrics counters;
++
++bool clear_line(const coord_def &a,const coord_def &b)
++{
++    // Native find_ray intentionally rejects a zero-length ray.
++    return a==b || exists_ray(a,b,opc_solid_see);
++}
++
++bool visible(const coord_def &p)
++{
++    return you.see_cell(p) && clear_line(you.pos(),p);
++}
++
++std::vector<mid_t> targets(const coord_def &origin, int radius, bool far_first=false)
++{
++    std::vector<mid_t> result;
++    for (monster_iterator mi; mi; ++mi)
++        if (mi->alive() && mi->attitude==ATT_HOSTILE
++            && grid_distance(origin,mi->pos())<=radius && you.can_see(**mi) && visible(mi->pos())
++            && clear_line(origin,mi->pos()))
++            result.push_back(mi->mid);
++    std::sort(result.begin(),result.end(),[&](mid_t a,mid_t b) {
++        const monster *ma=monster_by_mid(a), *mb=monster_by_mid(b);
++        const int da=grid_distance(origin,ma->pos()), db=grid_distance(origin,mb->pos());
++        if (da!=db)
++            return far_first ? da>db : da<db;
++        if (ma->pos().x!=mb->pos().x)
++            return ma->pos().x<mb->pos().x;
++        return ma->pos().y<mb->pos().y;
++    });
++    return result;
++}
++
++bool movable(const monster &mon)
++{
++    return !mon.is_stationary() && !mons_is_tentacle_or_tentacle_segment(mon.type);
++}
++
++bool legal(const monster &mon,const coord_def &p)
++{
++    return in_bounds(p) && !actor_at(p) && !trap_at(p)
++        && mon.can_pass_through(p) && mon.is_habitable(p);
++}
++
++bool relocate(monster &mon,const coord_def &p)
++{
++    const coord_def old=mon.pos();
++    if (!legal(mon,p) || !mon.move_to_pos(p))
++        return false;
++    mon.apply_location_effects(old,KILL_YOU,MHITYOU);
++    return true;
++}
++
++bool pull_one(monster &mon)
++{
++    if (!movable(mon))
++        return false;
++    const int distance=grid_distance(centre,mon.pos());
++    // Fixed coordinate order, no extra path RNG and no occupied-centre collision.
++    for (int x=mon.pos().x-1;x<=mon.pos().x+1;++x)
++        for (int y=mon.pos().y-1;y<=mon.pos().y+1;++y)
++        {
++            const coord_def p(x,y);
++            if (grid_distance(centre,p)<distance && relocate(mon,p))
++                return true;
++        }
++    return false;
++}
++
++void damage(monster &mon,int raw)
++{
++    const int dealt=mon.apply_ac(raw);
++    counters.damage+=mon.hurt(&you,dealt,BEAM_MISSILE);
++}
++
++void end_field(int when)
++{
++    if (big)
++        big_ready=when+150;
++    field=big=false;
++    charge=0;
++}
++
++bool cast_ring()
++{
++    if (you.piety<30 || you.magic_points<3)
++        return false;
++    you.magic_points-=3;
++    const int complete=you.elapsed_time+10;
++    if (!ring_end || you.elapsed_time>=ring_end)
++        ring_next=complete+10;
++    ring_end=complete+100+4*inv;
++    ++counters.ring_casts;
++    return true;
++}
++
++bool cast_field(bool empower,const coord_def &requested=you.pos())
++{
++    const int now=you.elapsed_time;
++    if (big || you.piety<(empower ? 120 : 75)
++        || you.magic_points<(empower ? 7 : 3) || (empower && now<big_ready))
++        return false;
++    const bool upgrade=empower && field;
++    const coord_def pos=upgrade ? centre : requested;
++    if ((!upgrade && grid_distance(you.pos(),pos)>4) || !visible(pos) || grd(pos)!=DNGN_FLOOR)
++        return false;
++    you.magic_points-=empower ? 7 : 3;
++    you.piety-=empower ? 14 : 3;
++    centre=pos;
++    field=true;
++    big=empower;
++    field_end=now+10+60+2*inv;
++    if (!upgrade)
++        field_next=now+10+20;
++    if (empower)
++    {
++        charge=0;
++        charge_next=now+10+20;
++        ++counters.big_casts;
++    }
++    else
++        ++counters.field_casts;
++    return true;
++}
++
++bool detonate()
++{
++    const int now=you.elapsed_time;
++    if (!field || !big || now>=field_end || charge<1
++        || !visible(centre) || grid_distance(you.pos(),centre)>6)
++        return false;
++    const int c=charge;
++    const coord_def origin=centre;
++    const auto victims=targets(origin,2,true);
++    end_field(now);
++    ++counters.detonations;
++    for (mid_t id:victims)
++    {
++        monster *mon=monster_by_mid(id);
++        if (!mon || !mon->alive())
++            continue;
++        damage(*mon,roll_dice(3,8+inv/3)+6*c);
++        mon=monster_by_mid(id);
++        if (!mon || !mon->alive() || !movable(*mon))
++            continue;
++        coord_def delta=mon->pos()-origin;
++        if (!delta.x && !delta.y)
++            delta=mon->pos()-you.pos();
++        delta.x=(delta.x>0)-(delta.x<0);
++        delta.y=(delta.y>0)-(delta.y<0);
++        for (int step=0;step<2 && mon->alive();++step)
++            if (!relocate(*mon,mon->pos()+delta))
++                break;
++    }
++    return true;
++}
++}
++
++void reset(bool active,int invocation,bool only_ring)
++{
++    enabled=active;
++    inv=invocation;
++    ring_only=only_ring;
++    ring_end=ring_next=field_end=field_next=charge_next=big_ready=charge=0;
++    field=big=false;
++    pull_ready.clear();
++    counters=metrics();
++}
++
++int choose_action()
++{
++    if (!enabled)
++        return 0;
++    const int now=you.elapsed_time;
++    if (big && charge>=1 && (charge>=3 || field_end-now<=20) && detonate())
++        return 10;
++    if ((!ring_end || now>=ring_end) && cast_ring())
++        return 10;
++    if (!ring_only && !big && now>=big_ready && cast_field(true))
++        return 10;
++    if (!ring_only && !field && cast_field(false))
++        return 10;
++    return 0;
++}
++
++void advance(int now)
++{
++    if (!enabled || holo_benchmark_finished())
++        return;
++    // Like native duration/cloud processing, positions are sampled at the
++    // post-monster world phase. Multiple elapsed ticks are never collapsed.
++    for (;;)
++    {
++        int at=INT_MAX;
++        if (ring_end)
++            at=min(at,min(ring_end,ring_next));
++        if (field)
++            at=min(at,min(field_end,field_next));
++        if (big)
++            at=min(at,charge_next);
++        if (at>now)
++            break;
++        // Expiry wins exact-time ties. Gravity then ring on shared ticks.
++        if (ring_end && at>=ring_end)
++            ring_end=0;
++        if (field && at>=field_end)
++            end_field(at);
++        if (big && at==charge_next)
++        {
++            charge=min(3,charge+1);
++            charge_next+=20;
++        }
++        if (field && at==field_next)
++        {
++            field_next+=20;
++            ++counters.field_ticks;
++            if (visible(centre))
++                for (mid_t id:targets(centre,big ? 3 : 2))
++                {
++                    monster *mon=monster_by_mid(id);
++                    if (!mon || !mon->alive())
++                        continue;
++                    ++counters.field_hits;
++                    damage(*mon,roll_dice(1,4+inv/3));
++                    mon=monster_by_mid(id);
++                    if (!mon || !mon->alive() || pull_ready[id]>at)
++                        continue;
++                    pull_ready[id]=at+20;
++                    ++counters.pull_attempts;
++                    const int chance=max(15,min(90,65+2*inv-3*mon->get_experience_level()));
++                    if (x_chance_in_y(chance,100) && pull_one(*mon))
++                        ++counters.pulls;
++                }
++        }
++        if (ring_end && at==ring_next)
++        {
++            ring_next+=10;
++            ++counters.ring_ticks;
++            for (mid_t id:targets(you.pos(),1))
++            {
++                monster *mon=monster_by_mid(id);
++                if (mon && mon->alive())
++                {
++                    ++counters.ring_hits;
++                    damage(*mon,roll_dice(1,4+inv/3));
++                }
++            }
++        }
++    }
++}
++
++const metrics &get_metrics() { return counters; }
++
++void validate()
++{
++    const auto require=[](bool ok,const char *message) {
++        if (!ok)
++            throw std::runtime_error(string("Sopia validation: ")+message);
++    };
++    monster *mon=nullptr;
++    for (monster_iterator mi;mi;++mi)
++        if (mi->alive()) { mon=*mi; break; }
++    require(mon!=nullptr,"native monster fixture required");
++    mon->hit_points=mon->max_hit_points=10000;
++    you.elapsed_time=0;
++    reset(true,12);
++    require(cast_ring(),"ring cast");
++    advance(19); require(counters.ring_ticks==0,"no immediate ring tick");
++    advance(20); require(counters.ring_ticks==1,"first tick at completion plus ten aut");
++    advance(25); require(counters.ring_ticks==1,"five aut does not add a tick");
++    advance(40); require(counters.ring_ticks==3,"all elapsed ten-aut ticks retained");
++    you.elapsed_time=40;
++    require(cast_ring(),"ring refresh");
++    advance(50); require(counters.ring_ticks==4,"refresh must preserve tick phase");
++    reset(true,0);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    require(cast_ring(),"expiry fixture cast");
++    advance(110); require(counters.ring_ticks==9 && ring_end==0,"expiry before same-time tick");
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(true) && !detonate(),"C0 cannot detonate");
++    advance(30); require(charge==1,"first charge at completion plus twenty aut");
++    advance(70); require(charge==3,"charge capped at three");
++    advance(94); require(!field && charge==0 && big_ready==244,"expiry has no explosion and starts cooldown");
++    require(counters.detonations==0,"natural expiry does not explode");
++    reset(true,12);
++    centre=you.pos();
++    mon->move_to_pos(you.pos()+coord_def(2,0));
++    const int energy=mon->speed_increment;
++    require(pull_one(*mon) && grid_distance(centre,mon->pos())==1
++            && mon->speed_increment==energy,"legal pull changes position without consuming monster energy");
++    require(!pull_one(*mon),"occupied player centre cannot be entered");
++    mon->move_to_pos(you.pos()+coord_def(2,0));
++    for (int y=you.pos().y-1;y<=you.pos().y+1;++y)
++        grd[you.pos().x+1][y]=DNGN_ROCK_WALL;
++    require(!pull_one(*mon),"no pulling through blocked destination cells");
++    for (int y=you.pos().y-1;y<=you.pos().y+1;++y)
++        grd[you.pos().x+1][y]=DNGN_FLOOR;
++    los_changed();
++    const monster_type original_type=mon->type;
++    mon->type=MONS_OKLOB_PLANT;
++    require(!movable(*mon) && !pull_one(*mon),"stationary monsters resist movement");
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(false),"ordinary field cast");
++    advance(30);
++    require(counters.field_hits==1 && counters.pulls==0,"stationary targets still take compression hits");
++    mon->type=original_type;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    const int centre_hp=mon->hit_points;
++    require(cast_field(false,mon->pos()),"off-player fixed field centre");
++    advance(30);
++    require(counters.field_hits==1 && mon->hit_points<centre_hp,
++            "targets on the exact field centre still take damage");
++    mon->move_to_pos(you.pos()+coord_def(1,0));
++    mon->attitude=ATT_FRIENDLY;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    const int friendly_hp=mon->hit_points;
++    require(cast_ring(),"friendly exclusion fixture");
++    advance(20);
++    require(counters.ring_hits==0 && mon->hit_points==friendly_hp,"ring excludes allies");
++    mon->attitude=ATT_HOSTILE;
++    reset(true,12);
++    you.elapsed_time=0;
++    you.magic_points=22;
++    you.piety=180;
++    require(cast_field(true),"detonation fixture cast");
++    advance(70);
++    you.elapsed_time=70;
++    const int mp_before=you.magic_points, piety_before=you.piety;
++    require(detonate() && counters.detonations==1 && !field && big_ready==220,
++            "manual detonation consumes field and starts cooldown");
++    require(you.magic_points==mp_before && you.piety==piety_before,
++            "detonation has no second resource cost");
++    require(grid_distance(you.pos(),mon->pos())==3,"detonation pushes survivors two legal cells");
++    reset(false,0);
++    fprintf(stderr,"HoloCrawl Sopia timer/native movement checks passed\n");
++}
++}
+diff --git a/crawl-ref/source/holo-sopia.h b/crawl-ref/source/holo-sopia.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..309b0bcf320f7ffe24362b5f3dbc7184003ac16b
+--- /dev/null
++++ b/crawl-ref/source/holo-sopia.h
+@@ -0,0 +1,14 @@
++#pragma once
++
++namespace holo_sopia {
++struct metrics {
++    int ring_casts=0, ring_ticks=0, ring_hits=0;
++    int field_casts=0, field_ticks=0, field_hits=0;
++    int pull_attempts=0, pulls=0, big_casts=0, detonations=0, damage=0;
++};
++void reset(bool enabled, int invocation, bool ring_only=false);
++int choose_action(); // Mutates ability state/resources; caller spends returned aut.
++void advance(int now); // Native post-monster phase; drains due logical aut events.
++const metrics &get_metrics();
++void validate(); // Controlled native-monster fixture checks, not win-rate trials.
++}
+diff --git a/crawl-ref/source/holocrawl.cc b/crawl-ref/source/holocrawl.cc
+new file mode 100644
+index 0000000000000000000000000000000000000000..0fc96a7b5013e3533b206a31a0426eb94086e8cd
+--- /dev/null
++++ b/crawl-ref/source/holocrawl.cc
+@@ -0,0 +1,388 @@
++#include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-sopia.h"
++
++#include <cstdlib>
++#include <fstream>
++#include <stdexcept>
++
++#include "act-iter.h"
++#include "branch.h"
++#include "dungeon.h"
++#include "env.h"
++#include "fight.h"
++#include "item-prop.h"
++#include "items.h"
++#include "los.h"
++#include "message.h"
++#include "mgen-data.h"
++#include "mon-act.h"
++#include "mon-place.h"
++#include "mon-util.h"
++#include "newgame-def.h"
++#include "ng-setup.h"
++#include "options.h"
++#include "package.h"
++#include "player.h"
++#include "skills.h"
++#include "state.h"
++#include "terrain.h"
++
++extern void world_reacts();
++
++namespace {
++bool running = false;
++bool dead = false;
++bool left_by_banishment = false;
++bool noel = false;
++bool old_balance = false;
++int skill_until = 0;
++int commander_until = 0;
++int commander_ready = 0;
++int invocation = 0;
++
++bool skill_active() { return running && noel && you.elapsed_time < skill_until; }
++bool commander_active() { return running && noel && you.elapsed_time < commander_until; }
++
++int environment_integer(const char *name, int fallback, int low, int high)
++{
++    const char *value = getenv(name);
++    if (!value)
++        return fallback;
++    char *endptr = nullptr;
++    const long parsed = strtol(value, &endptr, 10);
++    if (!endptr || *endptr || parsed < low || parsed > high)
++        throw std::runtime_error(string("Invalid environment value: ") + name);
++    return parsed;
++}
++
++struct scenario {
++    const char *name;
++    int xl, skill, inv, hp, mp, piety;
++    monster_type enemy;
++    int count;
++};
++
++void reset_character(const scenario &test, uint64_t seed)
++{
++    holo_sopia::reset(false,0);
++    noel = false;
++    dead = false;
++    left_by_banishment = false;
++    skill_until = commander_until = commander_ready = 0;
++    Options.no_save = true;
++    Options.seed = seed;
++    crawl_state.seed = seed;
++    if (you.save)
++    {
++        you.save->abort();
++        delete you.save;
++        you.save = nullptr;
++    }
++    newgame_def ng;
++    ng.name = "HoloBench";
++    ng.type = GAME_TYPE_CUSTOM_SEED;
++    ng.species = SP_HUMAN;
++    ng.job = JOB_FIGHTER;
++    ng.weapon = WPN_LONG_SWORD;
++    ng.seed = seed;
++    setup_game(ng);
++    dgn_reset_level(false);
++    // The fixture contains only its explicitly listed enemies.
++    env.spawn_random_rate = 0;
++    for (int x = 0; x < GXM; ++x)
++        for (int y = 0; y < GYM; ++y)
++            grd[x][y] = DNGN_ROCK_WALL;
++    for (int x = 25; x <= 45; ++x)
++        for (int y = 25; y <= 45; ++y)
++            grd[x][y] = DNGN_FLOOR;
++    you.moveto(coord_def(35,35));
++    los_changed();
++    you.experience_level = test.xl;
++    you.max_level = test.xl;
++    you.experience = exp_needed(test.xl);
++    you.base_stats[STAT_STR] = 18;
++    you.base_stats[STAT_INT] = 8;
++    you.base_stats[STAT_DEX] = 12;
++    you.stat_loss.init(0);
++    for (int sk = 0; sk < NUM_SKILLS; ++sk)
++    {
++        you.skills[sk] = 0;
++        you.skill_points[sk] = 0;
++        you.ct_skill_points[sk] = 0;
++    }
++    for (skill_type sk : {SK_FIGHTING, SK_LONG_BLADES, SK_ARMOUR, SK_SHIELDS})
++        set_skill_level(sk, test.skill);
++    set_skill_level(SK_INVOCATIONS, test.inv);
++    invocation = test.inv;
++    you.hp = you.hp_max = test.hp;
++    you.magic_points = you.max_magic_points = test.mp;
++    you.piety = test.piety;
++    you.religion = GOD_NO_GOD;
++    you.hunger = 6000;
++    // Stable kits; all gods get the same equipment, no random god gifts.
++    if (you.weapon())
++        you.weapon()->plus = test.xl >= 20 ? 4 : test.xl >= 12 ? 2 : 1;
++    if (you.slot_item(EQ_BODY_ARMOUR))
++    {
++        you.slot_item(EQ_BODY_ARMOUR)->sub_type = test.xl >= 20 ? ARM_PLATE_ARMOUR : test.xl >= 12 ? ARM_CHAIN_MAIL : ARM_SCALE_MAIL;
++        you.slot_item(EQ_BODY_ARMOUR)->plus = test.xl >= 20 ? 4 : test.xl >= 12 ? 2 : 0;
++    }
++    if (you.shield())
++        you.shield()->plus = test.xl >= 20 ? 2 : test.xl >= 12 ? 1 : 0;
++    you.redraw_armour_class = true;
++    update_vision_range();
++    // Reset after character setup so equipment and enemies are matched by seed.
++    rng::seed(seed);
++    const coord_def offsets[] = {coord_def(1,0),coord_def(0,1),coord_def(-1,0)};
++    for (int n = 0; n < test.count; ++n)
++    {
++        mgen_data mg = mgen_data::hostile_at(test.enemy, false, you.pos()+offsets[n]);
++        mg.flags |= MG_FORCE_PLACE;
++        monster *mon = create_monster(mg, false);
++        if (!mon)
++            throw std::runtime_error("Could not create benchmark enemy");
++        mon->foe = MHITYOU;
++        mon->behaviour = BEH_SEEK;
++        mon->target = you.pos();
++    }
++}
++
++void spend_time(int aut)
++{
++    you.time_taken = aut;
++    you.turn_is_over = true;
++    world_reacts();
++}
++
++monster *nearest_enemy()
++{
++    monster *best = nullptr;
++    for (monster_iterator mi; mi; ++mi)
++        if (mi->alive() && mi->attitude == ATT_HOSTILE
++            && (!best || grid_distance(you.pos(),mi->pos()) < grid_distance(you.pos(),best->pos())))
++            best = *mi;
++    return best;
++}
++
++bool noel_action()
++{
++    if (!noel)
++        return false;
++    if (you.piety >= 120 && you.elapsed_time >= commander_ready && you.magic_points >= 5)
++    {
++        you.magic_points -= 5;
++        you.piety -= 10;
++        commander_until = you.elapsed_time + 5 + 60 + 2*invocation;
++        commander_ready = commander_until + 100;
++        spend_time(5);
++        return true;
++    }
++    if (you.piety >= 30 && you.elapsed_time >= skill_until && you.magic_points >= 2 && you.piety >= 2)
++    {
++        you.magic_points -= 2;
++        you.piety -= 2;
++        skill_until = you.elapsed_time + 10 + 80 + 4*invocation;
++        spend_time(10);
++        return true;
++    }
++    return false;
++}
++
++void validate_noel_hooks()
++{
++    const scenario fixture = {"hook_checks",12,12,12,95,22,180,MONS_ETTIN,1};
++    reset_character(fixture, 42);
++    const auto require = [](bool condition, const char *message) {
++        if (!condition)
++            throw std::runtime_error(string("Noel hook validation: ")+message);
++    };
++    require(holo_armour_bonus() == 0 && holo_shield_bonus() == 0
++            && holo_melee_damage(100) == 100 && !holo_force_immune(),
++            "no-god hooks must be inert");
++    noel = true;
++    skill_until = you.elapsed_time + 100;
++    require(you.skill(SK_LONG_BLADES) == 18 && you.skill(SK_ARMOUR) == 18
++            && you.skill(SK_SHIELDS) == 18, "I12 skill bonus must be six");
++    require(you.skill(SK_FIGHTING) == 12 && holo_fighting_skill(1) == 18
++            && you.hp_max == 95 && you.skill(SK_DODGING) == 0,
++            "Fighting must affect attack calculations without increasing HP");
++    const int skill_ac = you.armour_class();
++    const int skill_sh = player_shield_class();
++    old_balance = false;
++    commander_until = you.elapsed_time + 50;
++    require(you.armour_class() == skill_ac+6
++            && player_shield_class() == skill_sh+8
++            && holo_melee_damage(100) == 130 && holo_force_immune(),
++            "v2 commander must add AC6 / displayed SH4 and 30 percent melee");
++    old_balance = true;
++    require(you.armour_class() == skill_ac+10
++            && player_shield_class() == skill_sh+12,
++            "v1 commander must add AC10 / displayed SH6");
++    set_skill_level(SK_LONG_BLADES, 25);
++    require(you.skill(SK_LONG_BLADES) == 27, "temporary skills must cap at 27");
++    you.elapsed_time = commander_until;
++    require(holo_armour_bonus() == 0 && !holo_force_immune(),
++            "commander must expire at its exact deadline");
++    you.elapsed_time = skill_until;
++    require(you.skill(SK_LONG_BLADES) == 25 && holo_fighting_skill(1) == 12,
++            "skill buff must expire independently");
++    noel = false;
++    fprintf(stderr,"HoloCrawl Noel hook checks passed\n");
++}
++}
++
++bool holo_engine_benchmark_requested()
++{
++    const char *value = getenv("HOLOCRAWL_ENGINE_BENCH");
++    return crawl_state.test && value && string(value)=="1";
++}
++
++bool holo_benchmark_active() { return running; }
++bool holo_benchmark_finished() { return running && (dead || left_by_banishment); }
++bool holo_record_benchmark_banishment()
++{
++    if (!running)
++        return false;
++    left_by_banishment = true;
++    return true;
++}
++bool holo_record_benchmark_death()
++{
++    if (!running || you.hp > 0)
++        return false;
++    dead = true;
++    return true;
++}
++
++int holo_armour_bonus() { return commander_active() ? (old_balance ? 8 : 4)+invocation/6 : 0; }
++int holo_shield_bonus() { return commander_active() && you.shield() ? (old_balance ? 5 : 3)+invocation/9 : 0; }
++
++int holo_skill_bonus(skill_type skill, int scale)
++{
++    if (!skill_active())
++        return 0;
++    const skill_type weapon_skill = you.weapon() && is_weapon(*you.weapon()) ? item_attack_skill(*you.weapon()) : SK_UNARMED_COMBAT;
++    return skill == weapon_skill || skill == SK_ARMOUR || skill == SK_SHIELDS ? (5+invocation/9)*scale : 0;
++}
++
++int holo_fighting_skill(int scale)
++{
++    const int base = you.skill(SK_FIGHTING,scale);
++    return skill_active() ? min(27*scale,base+(5+invocation/9)*scale) : base;
++}
++
++int holo_melee_damage(int damage)
++{
++    return commander_active() ? div_rand_round(damage*130,100) : damage;
++}
++
++bool holo_force_immune() { return commander_active(); }
++
++int holo_run_engine_benchmark()
++{
++    const int trials = environment_integer("HOLOCRAWL_TRIALS", 10, 1, 100000);
++    const int seed_start = environment_integer("HOLOCRAWL_SEED_START", 1000, 1, 1000000000);
++    const bool reverse_variants = environment_integer("HOLOCRAWL_REVERSE_VARIANTS", 0, 0, 1);
++    const string suite=getenv("HOLOCRAWL_SUITE") ? getenv("HOLOCRAWL_SUITE") : "noel";
++    if (suite!="noel" && suite!="sopia")
++        throw std::runtime_error("Unknown HOLOCRAWL_SUITE");
++    const bool sopia_suite=suite=="sopia";
++    const std::vector<string> variants=sopia_suite
++        ? std::vector<string>{"no_god","noel_v2","sopia_ring","sopia_full"}
++        : std::vector<string>{"no_god","noel_v1","noel_v2"};
++    const char *output = getenv("HOLOCRAWL_RESULTS");
++    if (!output)
++        throw std::runtime_error("HOLOCRAWL_RESULTS must name an output JSONL file");
++    std::ofstream results(output);
++    if (!results)
++        throw std::runtime_error("Cannot open benchmark results file");
++    const scenario cases[] = {
++        {"early_ogre",6,6,6,50,12,60,MONS_OGRE,1},
++        {"early_three_orcs",6,6,6,50,12,60,MONS_ORC,3},
++        {"mid_ettin",12,12,12,95,22,100,MONS_ETTIN,1},
++        {"mid_three_warriors",12,12,12,95,22,100,MONS_ORC_WARRIOR,3},
++        {"late_stone_giant",20,18,18,155,35,180,MONS_STONE_GIANT,1},
++        {"late_two_stone_giants",20,18,18,155,35,180,MONS_STONE_GIANT,2},
++        {"late_three_ettins",20,18,18,155,35,180,MONS_ETTIN,3},
++        {"late_three_warriors",20,18,18,155,35,180,MONS_ORC_WARRIOR,3},
++    };
++    no_messages quiet;
++    crawl_state.show_more_prompt = false;
++    crawl_state.disables.set(DIS_CONFIRMATIONS);
++    crawl_state.disables.set(DIS_DELAY);
++    crawl_state.disables.set(DIS_SPAWNS);
++    running = true;
++    validate_noel_hooks();
++    const scenario sopia_checks={"sopia_checks",12,12,12,95,22,180,MONS_OGRE,1};
++    reset_character(sopia_checks,42);
++    holo_sopia::validate();
++    for (const scenario &test : cases)
++        for (int trial = 0; trial < trials; ++trial)
++            for (int slot = 0; slot < int(variants.size()); ++slot)
++            {
++                const int variant = reverse_variants ? int(variants.size())-1-slot : slot;
++                reset_character(test, seed_start+trial);
++                const string name=variants[variant];
++                noel = name=="noel_v1" || name=="noel_v2";
++                old_balance = name=="noel_v1";
++                holo_sopia::reset(name=="sopia_ring" || name=="sopia_full",invocation,name=="sopia_ring");
++                int actions = 0;
++                while (!holo_benchmark_finished() && nearest_enemy() && you.elapsed_time < 2000 && actions++ < 1000)
++                {
++                    if (you.cannot_act())
++                    {
++                        spend_time(10);
++                        continue;
++                    }
++                    if (noel_action())
++                        continue;
++                    const int ability_time=holo_sopia::choose_action();
++                    if (ability_time)
++                    {
++                        spend_time(ability_time);
++                        continue;
++                    }
++                    monster *target = nearest_enemy();
++                    if (adjacent(you.pos(),target->pos()))
++                    {
++                        you.time_taken = 10;
++                        fight_melee(&you,target);
++                        spend_time(max(1,you.time_taken));
++                    }
++                    else
++                    {
++                        coord_def delta = target->pos()-you.pos();
++                        delta.x = (delta.x > 0)-(delta.x < 0);
++                        delta.y = (delta.y > 0)-(delta.y < 0);
++                        const coord_def destination = you.pos()+delta;
++                        if (!actor_at(destination) && !feat_is_solid(grd(destination)))
++                            you.move_to_pos(destination);
++                        spend_time(player_speed()*player_movement_speed()/10);
++                    }
++                }
++                const char *outcome = dead ? "loss" : left_by_banishment ? "banished" : !nearest_enemy() ? "win" : "timeout";
++                results << "{\"schema\":" << (sopia_suite ? 3 : 2) << ",\"engine\":\"dcss-0.24.0\",\"god\":\"" << name
++                        << "\",\"scope\":\"" << (sopia_suite ? "sopia-native-fixed-melee-combat-core" : "noel-combat-abilities-fixed-kit-no-gifts")
++                        << "\",\"scenario\":\"" << test.name
++                        << "\",\"seed\":" << seed_start+trial << ",\"outcome\":\"" << outcome
++                        << "\",\"hp\":" << you.hp << ",\"max_hp\":" << test.hp
++                        << ",\"mp\":" << you.magic_points << ",\"piety\":" << int(you.piety)
++                        << ",\"aut\":" << you.elapsed_time << ",\"actions\":" << actions;
++                if (sopia_suite)
++                {
++                    const auto &m=holo_sopia::get_metrics();
++                    results << ",\"effects\":{\"ring_casts\":" << m.ring_casts << ",\"ring_ticks\":" << m.ring_ticks
++                        << ",\"ring_hits\":" << m.ring_hits << ",\"field_casts\":" << m.field_casts
++                        << ",\"field_ticks\":" << m.field_ticks << ",\"field_hits\":" << m.field_hits
++                        << ",\"pull_attempts\":" << m.pull_attempts << ",\"pulls\":" << m.pulls
++                        << ",\"big_casts\":" << m.big_casts << ",\"detonations\":" << m.detonations
++                        << ",\"damage\":" << m.damage << "}";
++                }
++                results << "}\n";
++                results.flush();
++            }
++    running = false;
++    fprintf(stderr,"HoloCrawl native-engine benchmark complete: %d trials\n",trials*int(sizeof(cases)/sizeof(cases[0]))*int(variants.size()));
++    return 0;
++}
+diff --git a/crawl-ref/source/holocrawl.h b/crawl-ref/source/holocrawl.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..a61ebd2c09cfc6ce81b13a8f75796346ebc07d30
+--- /dev/null
++++ b/crawl-ref/source/holocrawl.h
+@@ -0,0 +1,18 @@
++#pragma once
++
++#include "skill-type.h"
++
++// Hooks are inert outside the explicit engine benchmark for now.
++// No unimplemented god is substituted by a flat damage multiplier.
++bool holo_engine_benchmark_requested();
++int holo_run_engine_benchmark();
++bool holo_benchmark_active();
++bool holo_benchmark_finished();
++bool holo_record_benchmark_death();
++bool holo_record_benchmark_banishment();
++int holo_armour_bonus();
++int holo_shield_bonus();
++int holo_skill_bonus(skill_type skill, int scale);
++int holo_fighting_skill(int scale);
++int holo_melee_damage(int damage);
++bool holo_force_immune();
+diff --git a/crawl-ref/source/libw32c.cc b/crawl-ref/source/libw32c.cc
+index 3d2023834a80ca4c759a6e0750cfd5c51806a0a0..9812aacb1198047da354696400aac9a8ba9cbc51 100644
+--- a/crawl-ref/source/libw32c.cc
++++ b/crawl-ref/source/libw32c.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #if defined(TARGET_OS_WINDOWS) && !defined(USE_TILE_LOCAL)
+ 
+@@ -86,6 +87,7 @@ static int cx = 0, cy = 0;
+ // and now, for the screen buffer
+ static CHAR_INFO *screen = nullptr;
+ static COORD screensize;
++static bool holo_virtual_console = false;
+ #define SCREENINDEX(x,y) ((x)+screensize.X*(y))
+ static unsigned InputCP, OutputCP;
+ static const unsigned PREFERRED_CODEPAGE = 437;
+@@ -346,6 +348,16 @@ static void w32_term_resizer()
+ 
+ void console_startup()
+ {
++    if (holo_engine_benchmark_requested())
++    {
++        // Retain view/visibility updates without opening a Windows console.
++        // set_w32_screen_size uses its 80x25 fallback for a null handle.
++        holo_virtual_console = true;
++        inbuf = outbuf = old_outbuf = nullptr;
++        set_w32_screen_size();
++        memset(screen, 0, sizeof(CHAR_INFO)*screensize.X*screensize.Y);
++        return;
++    }
+     inbuf = GetStdHandle(STD_INPUT_HANDLE);
+     old_outbuf = GetStdHandle(STD_OUTPUT_HANDLE);
+ 
+@@ -412,6 +424,13 @@ void console_startup()
+ 
+ void console_shutdown()
+ {
++    if (holo_virtual_console)
++    {
++        delete [] screen;
++        screen = nullptr;
++        holo_virtual_console = false;
++        return;
++    }
+     // don't do anything if we were never initted
+     if (inbuf == nullptr && outbuf == nullptr && old_outbuf == nullptr)
+         return;
+@@ -576,7 +595,7 @@ void textbackground(int c)
+ static void cprintf_aux(const char *s)
+ {
+     // early out -- not initted yet
+-    if (outbuf == nullptr)
++    if (outbuf == nullptr && !holo_virtual_console)
+     {
+         printf("%S", OUTW(s));
+         return;
+diff --git a/crawl-ref/source/main.cc b/crawl-ref/source/main.cc
+index 526e387d473c6656a71b8b87dde26145ce7830a6..ba4ddf9b1b25306d53210fca03d379b6ef2fba02 100644
+--- a/crawl-ref/source/main.cc
++++ b/crawl-ref/source/main.cc
+@@ -4,6 +4,8 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
++#include "holo-sopia.h"
+ 
+ #include <algorithm>
+ #include <cerrno>
+@@ -2097,6 +2099,13 @@ static void _check_banished()
+ {
+     if (you.banished)
+     {
++        // A fixed encounter ends here; there is no saved campaign/Abyss level.
++        // Record the real banishment instead of granting immunity or calling it HP death.
++        if (holo_record_benchmark_banishment())
++        {
++            you.banished = false;
++            return;
++        }
+         you.banished = false;
+         ASSERT(brdepth[BRANCH_ABYSS] != -1);
+         if (!player_in_branch(BRANCH_ABYSS))
+@@ -2211,6 +2220,7 @@ void world_reacts()
+ 
+     ASSERT(you.time_taken >= 0);
+     you.elapsed_time += you.time_taken;
++    holo_sopia::advance(you.elapsed_time);
+     if (you.elapsed_time >= 2*1000*1000*1000)
+     {
+         // 2B of 1/10 turns. A 32-bit signed int can hold 2.1B.
+diff --git a/crawl-ref/source/melee-attack.cc b/crawl-ref/source/melee-attack.cc
+index e974b2911a45246b7bd68d34e13ff1df21491e97..5477655e66a3ebb67fd317db539782ea01d66c3d 100644
+--- a/crawl-ref/source/melee-attack.cc
++++ b/crawl-ref/source/melee-attack.cc
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "melee-attack.h"
+ 
+@@ -1560,7 +1561,7 @@ int melee_attack::player_apply_final_multipliers(int damage)
+     if (you.duration[DUR_CONFUSING_TOUCH])
+         return 0;
+ 
+-    return damage;
++    return holo_melee_damage(damage);
+ }
+ 
+ void melee_attack::set_attack_verb(int damage)
+@@ -3320,6 +3321,8 @@ void melee_attack::riposte()
+ 
+ bool melee_attack::do_knockback(bool trample)
+ {
++    if (defender->is_player() && holo_force_immune())
++        return false;
+     if (defender->is_stationary())
+         return false; // don't even print a message
+ 
+diff --git a/crawl-ref/source/mon-act.cc b/crawl-ref/source/mon-act.cc
+index 3ebf8816109c78adbc1ec3d59ab0a754522e5c81..8944329deec35d7c6ef7fe49c267fe6731eaed4f 100644
+--- a/crawl-ref/source/mon-act.cc
++++ b/crawl-ref/source/mon-act.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "mon-act.h"
+ 
+@@ -2338,6 +2339,14 @@ void handle_monsters(bool with_noise)
+     int tries = 0; // infinite loop protection, shouldn't be ever needed
+     while (!monster_queue.empty())
+     {
++        if (holo_benchmark_finished())
++        {
++            // Normal gameplay exits on death. Repeated fixtures must also
++            // discard pending actions before monster slots are reused.
++            while (!monster_queue.empty())
++                monster_queue.pop();
++            break;
++        }
+         if (tries++ > 32767)
+         {
+             die("infinite handle_monsters() loop, mons[0 of %d] is %s",
+@@ -2371,6 +2380,9 @@ void handle_monsters(bool with_noise)
+         // If the player got banished, discard pending monster actions.
+         if (you.banished)
+         {
++            if (holo_benchmark_active())
++                while (!monster_queue.empty())
++                    monster_queue.pop();
+             // Clear list of mesmerising monsters.
+             you.clear_beholders();
+             you.clear_fearmongers();
+diff --git a/crawl-ref/source/ng-setup.cc b/crawl-ref/source/ng-setup.cc
+index 55cf6279f709864ff5379c3ada7d80d4d4f5871d..cc61711235ee3d1cdd0a5b68792f412f3f30f9ec 100644
+--- a/crawl-ref/source/ng-setup.cc
++++ b/crawl-ref/source/ng-setup.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "ng-setup.h"
+ 
+@@ -590,7 +591,9 @@ static void _setup_generic(const newgame_def& ng)
+     init_companions();
+ 
+     // Create the save file.
+-    if (Options.no_save)
++    if (holo_benchmark_active())
++        you.save = nullptr; // Fixed encounters never create campaign saves.
++    else if (Options.no_save)
+         you.save = new package();
+     else
+         you.save = new package(get_savedir_filename(you.your_name).c_str(),
+diff --git a/crawl-ref/source/ouch.cc b/crawl-ref/source/ouch.cc
+index 9d3abdb076042000120885768c3f5861359dbb8b..71ce430546e81180f84fdeda04816759d97505b1 100644
+--- a/crawl-ref/source/ouch.cc
++++ b/crawl-ref/source/ouch.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "ouch.h"
+ 
+@@ -911,6 +912,8 @@ void ouch(int dam, kill_method_type death_type, mid_t source, const char *aux,
+         you.source_damage += dam;
+ 
+         dec_hp(dam, true);
++        if (holo_record_benchmark_death())
++            return;
+ 
+         // Even if we have low HP messages off, we'll still give a
+         // big hit warning (in this case, a hit for half our HPs) -- bwr
+diff --git a/crawl-ref/source/player.cc b/crawl-ref/source/player.cc
+index 8e4fc8d7453f68ff3efeb44fbd2bcb515fa7cc95..14a51e1414632a591cb2a0cdec01d4a92897b3a8 100644
+--- a/crawl-ref/source/player.cc
++++ b/crawl-ref/source/player.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "player.h"
+ 
+@@ -2272,7 +2273,7 @@ int player_shield_class()
+     shield += you.wearing(EQ_AMULET_PLUS, AMU_REFLECTION) * 200;
+     shield += you.scan_artefacts(ARTP_SHIELDING) * 200;
+ 
+-    return (shield + 50) / 100;
++    return (shield + 50) / 100 + 2*holo_shield_bonus();
+ }
+ 
+ /**
+@@ -2557,6 +2558,13 @@ static void _handle_god_wrath(int exp)
+ 
+ void gain_exp(unsigned int exp_gained, unsigned int* actual_gain)
+ {
++    // Fixed-character encounters do not train or level up between kills.
++    if (holo_benchmark_active())
++    {
++        if (actual_gain)
++            *actual_gain = 0;
++        return;
++    }
+     if (crawl_state.game_is_arena())
+         return;
+ 
+@@ -5716,6 +5724,9 @@ int player::skill(skill_type sk, int scale, bool real, bool drained, bool temp)
+ 
+     if (temp && duration[DUR_HEROISM] && sk <= SK_LAST_MUNDANE)
+         level = min(level + 5 * scale, MAX_SKILL_LEVEL * scale);
++    const int holo_bonus = temp ? holo_skill_bonus(sk,scale) : 0;
++    if (holo_bonus)
++        level = min(level + holo_bonus, MAX_SKILL_LEVEL*scale);
+     return level;
+ }
+ 
+@@ -5908,7 +5919,7 @@ int player::armour_class(bool /*calc_unid*/) const
+ 
+     AC += sanguine_armour_bonus();
+ 
+-    return AC / scale;
++    return AC / scale + holo_armour_bonus();
+ }
+  /**
+   * Guaranteed damage reduction.
+diff --git a/crawl-ref/source/spl-transloc.cc b/crawl-ref/source/spl-transloc.cc
+index 581dd8b00504136b12c43aa4b305d9949d689292..0fe0e2e0ca21fae7814f4b47452e7d04cd3f6e1d 100644
+--- a/crawl-ref/source/spl-transloc.cc
++++ b/crawl-ref/source/spl-transloc.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "spl-transloc.h"
+ 
+@@ -1031,6 +1032,8 @@ int gravitas_range(int pow)
+ static void _attract_actor(const actor* agent, actor* victim,
+                            const coord_def pos, int pow, int strength)
+ {
++    if (victim && victim->is_player() && holo_force_immune())
++        return;
+     ASSERT(victim); // XXX: change to actor &victim
+ 
+     ray_def ray;
+@@ -1142,6 +1145,8 @@ spret cast_gravitas(int pow, const coord_def& where, bool fail)
+  */
+ static coord_def _beckon_destination(const actor &beckoned, const bolt &path)
+ {
++    if (beckoned.is_player() && holo_force_immune())
++        return beckoned.pos();
+     if (beckoned.is_stationary()  // don't move statues, etc
+         || mons_is_tentacle_or_tentacle_segment(beckoned.type)) // a mess...
+     {
+diff --git a/crawl-ref/source/startup.cc b/crawl-ref/source/startup.cc
+index ba6304ae8dbb1acd1f1963d59b960eeb0c9293b9..2e7d49cead43330d291454e9ac11c909eb63e711 100644
+--- a/crawl-ref/source/startup.cc
++++ b/crawl-ref/source/startup.cc
+@@ -6,6 +6,7 @@
+ #include "AppHdr.h"
+ 
+ #include "startup.h"
++#include "holocrawl.h"
+ 
+ #include "abyss.h"
+ #include "arena.h"
+@@ -171,6 +172,12 @@ static void _initialize()
+     }
+ #endif
+ 
++    if (holo_engine_benchmark_requested())
++    {
++        cio_init();
++        end(holo_run_engine_benchmark(), false);
++    }
++
+     if (!crawl_state.test_list)
+     {
+         if (!crawl_state.io_inited)
+diff --git a/crawl-ref/source/traps.cc b/crawl-ref/source/traps.cc
+index 10d472d5f12323aae663427a36d9697c7076c97a..4333a624d94d91ec32a0acbc1d076772b3606f1f 100644
+--- a/crawl-ref/source/traps.cc
++++ b/crawl-ref/source/traps.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holocrawl.h"
+ 
+ #include "traps.h"
+ #include "trap-def.h"
+@@ -1354,6 +1355,13 @@ static level_id _generic_shaft_dest(level_pos lpos, bool known = false)
+  */
+ void roll_trap_effects()
+ {
++    // Fixed encounter fixtures have no campaign level/save behind the room.
++    // Exclude exploration traps, without changing any monster combat rules.
++    if (holo_benchmark_active())
++    {
++        you.trapped = false;
++        return;
++    }
+     int trap_rate = trap_rate_for_place();
+ 
+     you.trapped = you.num_turns && !have_passive(passive_t::avoid_traps)
+diff --git a/crawl-ref/source/util/species-gen.py b/crawl-ref/source/util/species-gen.py
+index a4b103afc1e75be7bef300da0ded1a24fc6f4797..67c1d994f1871d10d45c3bdf5217de52988afac0 100755
+--- a/crawl-ref/source/util/species-gen.py
++++ b/crawl-ref/source/util/species-gen.py
+@@ -7,6 +7,7 @@ import os
+ import sys
+ import traceback
+ import collections
++import collections.abc
+ import re
+ 
+ import yaml  # pip install pyyaml
+@@ -17,7 +18,7 @@ def quote_or_nullptr(key, d):
+     else:
+         return 'nullptr'
+ 
+-class Species(collections.MutableMapping):
++class Species(collections.abc.MutableMapping):
+     """Parser for YAML definition files.
+ 
+     If any YAML content is invalid, the relevant parser function below should
+@@ -417,7 +418,7 @@ def main():
+             continue
+         f_path = os.path.join(args.datadir, f_name)
+         try:
+-            species_spec = yaml.load(open(f_path))
++            species_spec = yaml.safe_load(open(f_path))
+         except yaml.YAMLError as e:
+             print("Failed to load %s: %s" % (f_name, e))
+             sys.exit(1)

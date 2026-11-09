@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "revision": "fubuki-vfx05",
+  "runtimeSha256": "8d162488d46e19ce3a19ae9ca324532575958caa79666b0db94b2648e9784817",
+  "combatAudit": "combat-hook-audit.json",
+  "nativeValidation": "capture-validation.json",
+  "galleryValidation": "gallery-validation.json",
+  "feedback": "pending",
+  "scope": "Visual target hit cue only; no new damage or burn status"
+}

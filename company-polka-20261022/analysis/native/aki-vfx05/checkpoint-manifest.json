@@ -1,0 +1,29 @@
+{
+  "version": "aki-vfx05",
+  "status": "passed",
+  "checkedAtUtc": "2026-10-20T14:35:22.081530+00:00",
+  "description": "Aki bloom below actors; other transient effects retain foreground",
+  "allPngsAndCombatLogicUnchanged": true,
+  "sameCombatReviewAsVfx04": true,
+  "nativeRegressionGods": 22,
+  "playBinarySha256": "9085A562807E8CF90BBD20DD5ECCC246B5F8B8A74C338866160F3B74D4244DDB",
+  "files": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/tiledgnbuf.cc",
+      "sha256": "24D4204F75202E889AA8C4BD7CA4D7528723C8C1856221CDDA59340D5D5ADA54"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/tiledgnbuf.h",
+      "sha256": "212BFD9B64E7E8096CDED932C3330DB6CF99AEC3F0E13FECF38514CC6D26D428"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/tilereg-dgn.cc",
+      "sha256": "19626C62B392C34C18E9935E5C6C1EB4612F93807E26F388273046CB8C57BE0D"
+    }
+  ],
+  "actorVisibilityValidation": "analysis/native/aki-vfx05/actor-layer-validation.json",
+  "gallery": "analysis/previews/aki-vfx05/index.html",
+  "artAssetsUnchanged": "assets/holocrawl/aki-vfx04",
+  "scope": "Fixed arena/native visual and save regression; not campaign clear-rate validation",
+  "next": "User review of bloom beneath actors"
+}

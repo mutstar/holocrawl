@@ -1,0 +1,30 @@
+{
+  "seedStart": 1880,
+  "explorationTraps": false,
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\verified-forward-01.exe",
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression; other 21 gods not implemented.",
+  "designSha256": "156E21052328252D43D0F5E0CA7A53714F05C47B8EF8190462DA5C9EF548A36B",
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "sourcePatchSha256": "5BBDFCA56C383550CCE86BC2C8CF8D090C1425DFD925723F4AB150689AAA8017",
+  "reverseVariants": false,
+  "buildBinarySha256": "0E068134132A6AB02EBD292BBAD25B50A74F524DA6A9A242B591778132557749",
+  "trialsPerCase": 10,
+  "binarySha256": "F0A1D5BA3CF96A82A4DA247B59F839C8E231288A74D540B6BE7E896F5232C9A2",
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\verified-forward-01.jsonl",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "randomSpawns": false
+}

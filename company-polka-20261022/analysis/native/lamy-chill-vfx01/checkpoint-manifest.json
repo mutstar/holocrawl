@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "revision": "lamy-chill-vfx01",
+  "numericChanges": false,
+  "combatRevision": "lamy-caster01",
+  "combatHookOnly": true,
+  "preservedExistingArtFiles": 343,
+  "runtimeSha256": "27FF453545276141F87AB493E0BA1FECBD12226843C2F6AA8A4B69048E155751",
+  "native": {
+    "status": "passed",
+    "realSpellCasts": 4,
+    "stackProgression": [
+      1,
+      2,
+      0
+    ],
+    "expiry": true,
+    "saveRestore": true,
+    "renderingStateUnchanged": true
+  },
+  "reviewStatus": "tier1 approved; tier3 pending user review; tier5 art pending",
+  "frames": [
+    {
+      "file": "lamy3-before.png",
+      "sha256": "B796BA4F932D866808618871D76659C1DAC740FFB2761A6A8BD3C349DDC641EF",
+      "durationMs": 800
+    },
+    {
+      "file": "lamy3-cast1.png",
+      "sha256": "E8B73D2630916E570039C65B849C019EBCCCB82B1F6AB97F29963EC2D630EB2B",
+      "durationMs": 1100
+    },
+    {
+      "file": "lamy3-cast2.png",
+      "sha256": "AD71322E00EA95242C45CE4A216D5EE7FE7805EE575C70C43A81F309F97D347F",
+      "durationMs": 1100
+    },
+    {
+      "file": "lamy3-burst3-frame0.png",
+      "sha256": "AFB5D61ED571B360C2C9ED90E48AA77412E801B26A7D954A9CF45F17F1BBC210",
+      "durationMs": 140
+    },
+    {
+      "file": "lamy3-burst3-frame1.png",
+      "sha256": "D5BB52A48751AB51D5B49D967F7052F6976EC02DFB67DE4A2CB0A3B64670B297",
+      "durationMs": 140
+    },
+    {
+      "file": "lamy3-burst3-frame2.png",
+      "sha256": "99EAF247645CA181F486A2C64B501CF08B15F20E49C5C26E7C3B0026DE69E95B",
+      "durationMs": 140
+    },
+    {
+      "file": "lamy3-burst3-frame3.png",
+      "sha256": "0BB85D6F5042B5E505EAB4DBBF5645F120FEB2152A737AFE4B87B34C4A353CBF",
+      "durationMs": 140
+    },
+    {
+      "file": "lamy3-cast3.png",
+      "sha256": "859C78740BD4964A0D4A504FDF4FD8F0AD14FE578586231D10E85A83C6B57361",
+      "durationMs": 1400
+    },
+    {
+      "file": "lamy3-slow-expired.png",
+      "sha256": "035F246756329894E24E21298505EEBE6BECBB0CCAA594125B22721B38AA393D",
+      "durationMs": 1000
+    }
+  ],
+  "sourceHashes": {
+    "holo-lamy.cc": "432E9E3707B8563E021E19437CC92FB84715974D267BE2D9EACC43292A684A9D",
+    "holo-visual.cc": "73E341F7D2F7BEE62E00B4CEF5CE69E93F979C8CEE6951DECC3EA92664DE3F91",
+    "holo-visual.h": "CDFD769D5F239B8E7B46912993E9C0C4E5AC8318DA0E4621748928E67DE0475B",
+    "holo-campaign-test.cc": "6B8FA3BE3093F93A0828C3F73CDC3FF9979196A96F5AAE10C5E3EBD871B2D85B",
+    "rltiles/dc-holo-feat.txt": "A5988A3AED94269EE741437415AE94143ED79DC638DF48E9A933CA0D97957E4C"
+  }
+}

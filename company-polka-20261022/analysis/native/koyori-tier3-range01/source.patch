@@ -1,0 +1,32 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -339,6 +339,12 @@
+         const auto d=p-flashes.front();const int cell=(d.y+1)*3+d.x+1;
+         result.push_back(effect(int(effect::lamybanquetburst00)+9*flash_frame+cell));
+     }
++    // Reaction floor footprint uses the same radius/line predicate as damage.
++    // It is a momentary impact cue, not a persistent hazardous floor.
++    if(!flashes.empty() && (flash_kind==effect::koyoriblast
++        || flash_kind==effect::koyorithermal || flash_kind==effect::koyorislime)
++        && !cell_is_solid(p) && area(p,flashes.front(),flash_kind==effect::koyorithermal?0:1))
++        result.push_back(effect::warning);
+     // Keep the actual 3x3 strike footprint visible during render-only descent.
+     // No hazard lifetime, damage cell, or gameplay timer is extended.
+     if(flash_kind==effect::cometfall && flash_frame<4 && !flashes.empty()
+@@ -672,7 +678,15 @@
+     flash_kind=pair==3?effect::koyoriblast:pair==5?effect::koyorithermal:effect::koyorislime;
+     for(int f=0;f<2;++f){
+         flash_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+-        if(dir)capture(std::string(dir)+"/koyori-reaction-pair"+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f)+".png",false);
++        if(dir){
++            const std::string stem=std::string(dir)+"/koyori-reaction-pair"+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f);
++            capture(stem+".png",false);
++            int cells=0;for(int y=-1;y<=1;++y)for(int x=-1;x<=1;++x){
++                const auto effects=at(p+coord_def(x,y));
++                if(std::find(effects.begin(),effects.end(),effect::warning)!=effects.end())++cells;
++            }
++            std::ofstream(stem+"-area.json")<<"{\"radius\":"<<(pair==5?0:1)<<",\"visibleFloorCells\":"<<cells<<",\"underActors\":true,\"persistentHazard\":false}\n";
++        }
+         else scaled_delay(100);
+     }
+     clear();const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);

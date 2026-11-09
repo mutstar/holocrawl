@@ -1,0 +1,49 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -687,7 +687,7 @@
+     // One clear impact over the target body instead of repeating tiny glyphs on nine cells.
+     flashes.assign(1,p);koyori_compact=critical;
+     flash_kind=pair==3?effect::koyoriblast:pair==5?effect::koyorithermal:effect::koyorislime;
+-    for(int f=0;f<2;++f){
++    for(int f=0;f<(critical?3:2);++f){
+         flash_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+         if(dir){
+             const std::string stem=std::string(dir)+(critical?"/koyori5-reaction-pair":"/koyori-reaction-pair")+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f);
+@@ -703,7 +703,7 @@
+             }
+             std::ofstream(stem+"-area.json")<<"{\"radius\":"<<(pair==5?0:1)<<",\"visibleFloorCells\":"<<cells<<",\"impactCells\":"<<impacts<<",\"underActors\":true,\"persistentHazard\":false}\n";
+         }
+-        else scaled_delay(critical?80:100);
++        else scaled_delay(critical?(f==0?55:f==1?85:60):100);
+     }
+     clear();const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+     if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Koyori reaction visual changed gameplay/RNG");
+@@ -753,11 +753,11 @@
+         || (kind==effect::koyorislimeedge && flash_kind==effect::koyorislime)))frame=flash_frame;
+     if(frame<0)frame=flash_kind!=effect::none && kind==flash_kind?flash_frame:(you.elapsed_time/10)%2;
+     if(koyori_compact){
+-        if(kind==effect::koyoriblast)return TILE_HOLO_FX_KOYORICOMPACTBLAST_0+frame%2;
+-        if(kind==effect::koyorithermal)return TILE_HOLO_FX_KOYORICOMPACTTHERMAL_0+frame%2;
+-        if(kind==effect::koyorislime)return TILE_HOLO_FX_KOYORICOMPACTSLIME_0+frame%2;
+-        if(kind==effect::koyoriblastedge)return TILE_HOLO_FX_KOYORICOMPACTBLASTEDGE_0+frame%2;
+-        if(kind==effect::koyorislimeedge)return TILE_HOLO_FX_KOYORICOMPACTSLIMEEDGE_0+frame%2;
++        if(kind==effect::koyoriblast)return frame>=2?TILE_HOLO_FX_KOYORICOMPACTBLAST_ECHO:TILE_HOLO_FX_KOYORICOMPACTBLAST_0+frame%2;
++        if(kind==effect::koyorithermal)return frame>=2?TILE_HOLO_FX_KOYORICOMPACTTHERMAL_ECHO:TILE_HOLO_FX_KOYORICOMPACTTHERMAL_0+frame%2;
++        if(kind==effect::koyorislime)return frame>=2?TILE_HOLO_FX_KOYORICOMPACTSLIME_ECHO:TILE_HOLO_FX_KOYORICOMPACTSLIME_0+frame%2;
++        if(kind==effect::koyoriblastedge)return frame>=2?TILE_HOLO_FX_KOYORICOMPACTBLASTEDGE_ECHO:TILE_HOLO_FX_KOYORICOMPACTBLASTEDGE_0+frame%2;
++        if(kind==effect::koyorislimeedge)return frame>=2?TILE_HOLO_FX_KOYORICOMPACTSLIMEEDGE_ECHO:TILE_HOLO_FX_KOYORICOMPACTSLIMEEDGE_0+frame%2;
+     }
+     return TILE_HOLO_FX_WARNING_0+(int(kind)-1)*2+(frame%2);
+ }
+--- before/rltiles\dc-holo-feat.txt
++++ after/rltiles\dc-holo-feat.txt
+@@ -411,3 +411,9 @@
+ fx_koyoricompactblastedge_1 HOLO_FX_KOYORICOMPACTBLASTEDGE_1
+ fx_koyoricompactslimeedge_0 HOLO_FX_KOYORICOMPACTSLIMEEDGE_0
+ fx_koyoricompactslimeedge_1 HOLO_FX_KOYORICOMPACTSLIMEEDGE_1
++
++fx_koyoricompactblast_echo HOLO_FX_KOYORICOMPACTBLAST_ECHO
++fx_koyoricompactthermal_echo HOLO_FX_KOYORICOMPACTTHERMAL_ECHO
++fx_koyoricompactslime_echo HOLO_FX_KOYORICOMPACTSLIME_ECHO
++fx_koyoricompactblastedge_echo HOLO_FX_KOYORICOMPACTBLASTEDGE_ECHO
++fx_koyoricompactslimeedge_echo HOLO_FX_KOYORICOMPACTSLIMEEDGE_ECHO

@@ -1,0 +1,75 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -802,6 +802,10 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::night_hajime1) {
++        const int rhythm=holo_batch::s.resource;
++        return rhythm>=3?TILE_HOLO_FX_HAJIMERHYTHM3:rhythm==2?TILE_HOLO_FX_HAJIMERHYTHM2:TILE_HOLO_FX_NIGHT_HAJIME1_0;
++    }
+     if(kind==effect::night_raden5) {
+         if(frame<0)frame=flash_kind==kind?flash_frame:3;
+         return frame==0?TILE_HOLO_FX_NIGHT_RADEN5_0:frame==2?TILE_HOLO_FX_RADENFIVE_OPEN:TILE_HOLO_FX_NIGHT_RADEN5_1;
+@@ -842,7 +846,7 @@
+     if(holo_benchmark_active() || you.form!=transformation::none || Options.tile_use_monster!=MONS_0)return;
+     const auto ids=holo_worship::gods();const auto found=std::find(ids.begin(),ids.end(),holo_worship::current());
+     // Polka uses the floating performance hat; omit the old separate star charm.
+-    if(holo_campaign::active() && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && holo_worship::current()!="lui" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
++    if(holo_campaign::active() && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && holo_worship::current()!="lui" && holo_worship::current()!="hajime" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
+     // Render-only base swap: native armour, helmet, weapons and species/forms survive.
+     if(you.species==SP_HUMAN && is_player_tile(doll.parts[TILEP_PART_BASE],TILEP_BASE_HUMAN)
+         && player_doll.parts[TILEP_PART_BODY]==TILEP_SHOW_EQUIP) {
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -138,7 +138,8 @@
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,2);
+         // Native-size backdrops anchor to the player's feet beneath actors.
+         const bool native_backdrop=lui_wings || raden_screen;
+-        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+(polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(polka_hat?12:0),
++        const bool hajime_notes=tileidx==holo_visual::effect_tile(holo_visual::effect::night_hajime1,0);
++        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+(polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(polka_hat?12:hajime_notes?8:0),
+             true,-1,native_backdrop?32.0f:float(inf.width)/span_x,native_backdrop?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -161,6 +161,38 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_HAJIME_RHYTHM_REVIEW")) {
++        auto *m=fixture("hajime",50);const auto origin=you.pos();
++        // Already-explored choreography room, matching other movement reviews.
++        // Native campaign exploration trap rules are unchanged.
++        for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
++        you.trapped=false;
++        set_skill_level(SK_INVOCATIONS,12);advance();
++        require(m->move_to_pos(origin+coord_def(1,1)),"Hajime rhythm target placement");
++        auto shot=[&](const std::string &name){const auto stable=signature();holo_visual::capture(std::string(shots)+"/rhythm-"+name+".png");require(stable==signature(),"Hajime rhythm screenshot changed gameplay/RNG");};
++        require(holo_batch::s.resource==0,"Hajime rhythm fixture starts charged");shot("0");
++        const int mp=you.magic_points,piety=you.piety;
++        const command_type commands[]={CMD_MOVE_RIGHT,CMD_MOVE_LEFT,CMD_MOVE_RIGHT};
++        std::vector<int> tiles_seen;
++        for(int i=0;i<3;++i) {
++            const auto old=you.pos();you.turn_is_over=false;process_command(commands[i]);
++            require(you.turn_is_over && you.pos()!=old,"Hajime ordinary move failed");
++            std::ofstream(std::string(shots)+"/movement.log",std::ios::app)<<i<<" before step rhythm="<<holo_batch::s.resource<<" now="<<you.elapsed_time<<" end="<<holo_batch::s.one_end<<" moveAut="<<you.time_taken<<" player="<<you.pos().x<<","<<you.pos().y<<" enemy="<<m->pos().x<<","<<m->pos().y<<"\n";
++            step(you.time_taken);
++            require(holo_batch::s.resource==i+1,"Hajime ordinary movement expected "+std::to_string(i+1)+" rhythm, got "+std::to_string(holo_batch::s.resource)+" now="+std::to_string(you.elapsed_time)+" end="+std::to_string(holo_batch::s.one_end));
++#ifdef USE_TILE
++            const int tile=holo_visual::effect_tile(holo_visual::effect::night_hajime1);
++            require(std::find(tiles_seen.begin(),tiles_seen.end(),tile)==tiles_seen.end(),"Hajime rhythm counts have duplicate sprites");tiles_seen.push_back(tile);
++#endif
++            shot(std::to_string(i+1));
++        }
++        require(you.magic_points==mp && you.piety==piety,"Hajime rhythm movement spent MP/piety");
++        const int hp=m->hit_points;you.turn_is_over=false;process_command(CMD_MOVE_DOWN);
++        require(you.turn_is_over && you.pos()==origin+coord_def(1,0) && holo_batch::s.resource==0,"Hajime native melee attempt did not consume rhythm");
++        step(you.time_taken);shot("spent");
++        require(holo_visual::invocation_at(you.pos())!=holo_visual::effect::night_hajime1,"Hajime spent rhythm badge persists");
++        std::ofstream(std::string(shots)+"/rhythm.json")<<"{\"status\":\"passed\",\"nativeMovementCommands\":true,\"nativeMeleeCommand\":true,\"stacks\":[0,1,2,3,0],\"invocations\":12,\"mpPietyCost\":0,\"attackDamage\":"<<hp-m->hit_points<<",\"captureStateRngUnchanged\":true}\n";
++    }
+     // Exercise the real damage/AC and shield budgets at low, mid and max Invo.
+     for(int I:{0,6,12,18,27})for(bool exhibition:{false,true})for(int option=0;option<3;++option) {
+         auto *m=fixture("raden");const auto origin=you.pos();

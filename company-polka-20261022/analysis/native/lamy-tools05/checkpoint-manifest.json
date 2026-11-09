@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "revision": "lamy-tools05",
+  "native": {
+    "status": "passed",
+    "nativeFlameWand": true,
+    "nativeLamp": true,
+    "wandChargesPaid": true,
+    "directCloudDedup": true,
+    "cloudCrossCellDedup": true,
+    "nativeCloudSpread": true,
+    "separateRecastStacks": true,
+    "threeStackBurst": true,
+    "immuneZeroExcluded": true,
+    "enemyDivineSoberExcluded": true,
+    "banquetCloudOncePerUse": true,
+    "splashLaterCloudDedup": true,
+    "nativeCloudSavePrepared": true
+  },
+  "cloudReload": {
+    "status": "passed",
+    "nativeCloudRestored": true,
+    "dedupRestored": true,
+    "continuationExact": true
+  },
+  "runtimeSha256": "73C685B8D767D8CC4A4DDB36DE843309BC982FBF89F04F6AE6D18FC0360514A5",
+  "visualsUnchanged": true,
+  "tier1ScalingUnchanged": true,
+  "nativeSaveSchemaChanged": false,
+  "saveMetadata": "Native serialized per-level env.properties: use ids, cells, target MID claims and banquet use claims",
+  "priorFailuresPreserved": [
+    "lamy-tools01",
+    "lamy-tools02"
+  ],
+  "supersedes": "lamy-tools03; adds splash/later-cloud dedup; lamy-tools04 build-only",
+  "sourceHashes": {
+    "holo-lamy.h": "4E4E289DE9ABB8D496C952B3C7C93D5BEAFF06A36D6AB8F205369A46209E1DC1",
+    "holo-lamy.cc": "C28481EF72651FD546852960A650C2353B64DD450B79AF6AAA702140A5DB498B",
+    "holo-campaign.cc": "A292F5D88599B423C692E6A09DDB9427039330A0E418B8947AD829798A401CF3",
+    "spl-cast.cc": "8BC62490A5147F845CB042A1EEEFDE9493576FF9568C5EB0F1EA3084B42BC5E5",
+    "evoke.cc": "971318CA2D37C9195597B3034E3DE8D3C507F46C8EDFDF71278EA4E60B35141F",
+    "cloud.cc": "D3E9F25952FA98F0CA29B340632296605DA5AC3E7D0FD60F59D11EA5B540636B",
+    "holo-campaign-test.cc": "DE45F6E1F94ADBE03EC56C04AE030BDE8D2FFD14AB91C66020099B437457EE4C"
+  },
+  "scope": "Native tool/cloud feature, save, and 22-god regression checks; not campaign winrate"
+}

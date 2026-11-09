@@ -1,0 +1,43 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -68,6 +68,8 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
++    if(e==effect::night_koyori5)return 1; // Compact player-relative badge, never legacy 5x5.
++
+     if(e>=effect::night_korone1 && e<=effect::night_mela5)return (int(e)-int(effect::night_korone1))%3==0?1:(int(e)-int(effect::night_korone1))%3==1?3:5;
+     if(e==effect::night_polkaheal || e==effect::night_polkachaos)return 5;
+     if(e==effect::night_radenstone || e==effect::night_radencraft)return 3;
+@@ -822,6 +824,19 @@
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="koyori" && tier==5){
++        int anchors=0;
++        for(int y=-2;y<=2;++y)for(int x=-2;x<=2;++x){
++            int sx=1,sy=1;const auto p=you.pos()+coord_def(x,y);
++            if(invocation_sprite_at(p,sx,sy)!=effect::night_koyori5)continue;
++            if(p!=you.pos() || sx!=1 || sy!=1)
++                throw std::runtime_error("Koyori5 activation anchor/scale differs from persistent badge");
++            ++anchors;
++        }
++        if(anchors!=1)throw std::runtime_error("Koyori5 activation must have one player anchor");
++        std::ofstream(path+"-anchor.json")<<"{\"status\":\"passed\",\"playerAnchor\":true,\"anchors\":1,\"span\":[1,1],\"matchesPersistentBadge\":true}\n";
++    }
++
+     try { capture(path); } catch(...) { clear();throw; }
+     clear();tiles.invalidate_dungeon_overlays();
+ #else
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -143,7 +143,8 @@
+                         && cue!=holo_visual::effect::night_korone3
+                         && cue!=holo_visual::effect::night_okayu5
+                         && cue!=holo_visual::effect::night_noel5
+-                        && cue!=holo_visual::effect::night_watame5)
++                        && cue!=holo_visual::effect::night_watame5
++                        && cue!=holo_visual::effect::night_koyori5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift

@@ -1,0 +1,38 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -161,6 +161,35 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_HAJIME_FIVE_REVIEW")) {
++        auto *m=fixture("hajime");const auto origin=you.pos();
++        for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
++        you.trapped=false;require(m->move_to_pos(origin+coord_def(1,1)),"Hajime five target placement");
++        auto enemy=[&](const coord_def &p){auto mg=mgen_data::hostile_at(MONS_ETTIN,false,p);mg.flags|=MG_FORCE_PLACE;auto *n=create_monster(mg,false);require(n,"Hajime five extra target placement");n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;return n;};
++        auto *near=enemy(origin+coord_def(-1,1));auto *outside=enemy(origin+coord_def(3,2));
++        auto shot=[&](const std::string &name){const auto stable=signature();holo_visual::capture(std::string(shots)+"/bancho-"+name+".png");require(stable==signature(),"Hajime five capture changed gameplay/RNG");};
++        shot("before");const int mp=you.magic_points,piety=you.piety;
++        const int aut=invoke(5,nullptr,&origin);require(aut==10 && you.magic_points==mp-6 && you.piety==piety-12,"Hajime five activation costs differ");
++        const auto stable=signature();for(int f=0;f<2;++f)holo_visual::capture_invocation("hajime",origin,f,std::string(shots)+"/bancho-cast"+std::to_string(f)+".png",5);
++        require(stable==signature(),"Hajime five invocation capture changed gameplay/RNG");step(aut);shot("active");
++        const int remaining=holo_batch::s.five_end-you.elapsed_time;
++        require(remaining==60+2*holo_batch::s.inv && holo_batch::s.five_ready-holo_batch::s.five_end==150,"Hajime five duration/cooldown differs");
++        const int hp=m->hit_points,near_hp=near->hit_points,out_hp=outside->hit_points;step(10);
++        require(m->hit_points==hp && near->hit_points==near_hp,"Hajime five dealt damage while waiting");shot("wait");
++        std::ofstream events(std::string(shots)+"/movement.json");events<<"[";
++        const command_type moves[]={CMD_MOVE_RIGHT,CMD_MOVE_LEFT,CMD_MOVE_UP,CMD_MOVE_DOWN};
++        for(int i=0;i<4;++i){
++            const auto old=you.pos();const int a=m->hit_points,b=near->hit_points;
++            you.turn_is_over=false;process_command(moves[i]);require(you.turn_is_over && you.pos()!=old,"Hajime five native movement failed");
++            step(you.time_taken);shot("move"+std::to_string(i+1));
++            require(outside->hit_points==out_hp,"Hajime five damaged outside adjacent range");
++            if(i)events<<",";events<<"{\"move\":"<<i+1<<",\"targetA\":"<<a-m->hit_points<<",\"targetB\":"<<b-near->hit_points<<"}";
++        }
++        events<<"]\n";
++        require(hp-m->hit_points+near_hp-near->hit_points>0,"Hajime five native movement caused no damage");
++        step(holo_batch::s.five_end-you.elapsed_time);shot("ended");require(!holo_batch::five(),"Hajime five did not expire");
++        std::ofstream(std::string(shots)+"/bancho.json")<<"{\"status\":\"passed\",\"nativeMovementCommands\":true,\"moveCount\":4,\"invocations\":"<<holo_batch::s.inv<<",\"mpCost\":6,\"pietyCost\":12,\"remainingAfterCastAut\":"<<remaining<<",\"waitDoesNotDamage\":true,\"outsideRangePreserved\":true,\"damageA\":"<<hp-m->hit_points<<",\"damageB\":"<<near_hp-near->hit_points<<",\"expired\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_HAJIME_DIVE_REVIEW")) {
+         auto *m=fixture("hajime",100);const auto origin=you.pos();
+         for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;

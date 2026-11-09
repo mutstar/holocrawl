@@ -1,0 +1,4 @@
+{
+  "status": "failed-preserved",
+  "reason": "Capture helper admitted only two Lamy frames; production activation now has four. Explicitly expand Lamy tier5 capture bound to match real animation; preserve original partial captures."
+}

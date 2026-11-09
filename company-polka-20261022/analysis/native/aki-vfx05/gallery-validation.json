@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "nativeReview": {
+    "status": "passed",
+    "nativeBoltTraversal": true,
+    "bloomWidth": 7,
+    "capturePreservesGameplay": true,
+    "beforeShotHp": 10000,
+    "afterShotHp": 9988,
+    "beforeBloomHp": 9988,
+    "afterBloomHp": 9963
+  },
+  "projectileCells": [
+    {
+      "frame": 1,
+      "from": [
+        35,
+        36
+      ],
+      "to": [
+        38,
+        35
+      ],
+      "cell": [
+        36,
+        36
+      ]
+    },
+    {
+      "frame": 2,
+      "from": [
+        35,
+        36
+      ],
+      "to": [
+        38,
+        35
+      ],
+      "cell": [
+        37,
+        35
+      ]
+    }
+  ],
+  "rawFiles": [
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/rose-flight-1.png",
+      "sha256": "7b8bbb1463f2c9e68efaad0c3e807e8aa123838b65e90421c98b799f95324ef4"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/rose-flight-2.png",
+      "sha256": "4e7d67e049a90a55b3676cf841524492925e6f05772dc86e046831a91b8747d9"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/aki-bloom-frame0.png",
+      "sha256": "160d9721763c5a1f3299d959576ff98fbd36806bfe09b6cbb6daeffef3a25902"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/aki-bloom-frame1.png",
+      "sha256": "944aaef81af82112fd8a79712d74e77b3c3728605c7c86255487784507819a14"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/aki-bloom-frame2.png",
+      "sha256": "21a6ba7c3b713d6f45d1bef5dec5f9edaed00df9390e66aa403bb0221c20e54a"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/aki-bloom-frame3.png",
+      "sha256": "90fd9a3e3d379039ad613c4deb9cddcb8c712a08288d2a1827d06b715036d9af"
+    },
+    {
+      "path": "analysis/native/aki-vfx05/native/shots/aki-bloom-aftermath.png",
+      "sha256": "33897f97f97fbab4dbb3bafed16c9b3e7b160ee4c5d3404c04f85b62a30bcf95"
+    }
+  ],
+  "gallery": "analysis/previews/aki-vfx05/index.html"
+}

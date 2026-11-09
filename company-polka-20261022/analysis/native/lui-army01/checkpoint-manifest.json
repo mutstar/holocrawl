@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "revision": "lui-army01",
+  "binarySha256": "7cc98db6393e47dc8a0bb5e41e7ed7222215de8d0a6394202e58bcb22fb470c8",
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "otherArtPreserved": true,
+  "army": {
+    "status": "passed",
+    "invocations": 12,
+    "mpCost": 7,
+    "pietyCost": 14,
+    "hawksActive": 6,
+    "hawksAfterExpiry": 3,
+    "remainingAutAfterCast": 84,
+    "shieldPerHawk": 10,
+    "evasionBonus": 4,
+    "moveEnergy": 6,
+    "attackEnergy": 10,
+    "cooldownAfterEndAut": 150
+  },
+  "nativeFiles": [
+    "lui-army-before.png",
+    "lui-army-cast0.png",
+    "lui-army-cast1.png",
+    "lui-army-active.png",
+    "lui-army-ended.png"
+  ],
+  "compactBadge": true,
+  "validation": {
+    "status": "passed",
+    "binarySha256": "7CC98DB6393E47DC8A0BB5E41E7ED7222215DE8D0A6394202E58BCB22FB470C8",
+    "gods": 22,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "chocoControls": false,
+    "freshProcessRestore": true,
+    "rawScreenshots": 34
+  }
+}

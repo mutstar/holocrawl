@@ -1,0 +1,91 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -303,6 +303,30 @@
+             require(index==0?near->hit_points<hp:index==1?near->hit_points==hp:holo_koyori::movement(*near,100)==135,"Koyori tier3 reaction footprint");
+             holo_visual::capture(stem+"-after.png");
+         }
++        if(const char *five=getenv("HOLOCRAWL_KOYORI_FIVE_REVIEW")){
++            auto *target=fixture("koyori",150);const auto origin=you.pos();
++            require(target->move_to_pos(origin+coord_def(2,0)),"Koyori five target");
++            auto mg=mgen_data::hostile_at(MONS_ETTIN,false,target->pos()+coord_def(0,1));mg.flags|=MG_FORCE_PLACE;
++            auto *near=create_monster(mg,false);require(near,"Koyori five neighbour");near->hit_points=near->max_hit_points=10000;near->speed=near->speed_increment=0;
++            set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++            require(add_spell_to_memory(SPELL_MAGIC_DART),"Koyori five learn dart");
++            holo_visual::capture(std::string(five)+"/koyori5-before.png");
++            const int mp=you.magic_points,faith=you.piety;
++            require(invoke(5)==5 && you.magic_points==mp-6 && you.piety==faith-10,"Koyori five activation cost");
++            for(int f=0;f<2;++f)holo_visual::capture_invocation("koyori",origin,f,std::string(five)+"/koyori5-activate"+std::to_string(f)+".png",5);
++            step(5);require(s.offence==4,"Koyori five four charges");holo_visual::capture(std::string(five)+"/koyori5-ready.png");
++            for(int index=0;index<4;++index){
++                const auto stem=std::string(five)+"/koyori5-cast"+std::to_string(index);const int count=s.totals.procs;
++                for(int attempt=0;attempt<20 && s.totals.procs==count;++attempt){
++                    holo_visual::capture(stem+"-before.png");you.prev_targ=target->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++                    require(cast_a_spell(false,SPELL_MAGIC_DART),"Koyori five native spell");
++                }
++                require(s.totals.procs==count+1 && s.offence==3-index,"Koyori five one charge per damaging spell");
++                holo_visual::capture(stem+"-after.png");
++            }
++            require(s.five_end==0 && invoke(5)==0,"Koyori five depletion/cooldown");
++            std::ofstream(dir+"/koyori-five-review.json")<<"{\"status\":\"passed\",\"activationMP\":6,\"activationPiety\":10,\"activationAut\":5,\"nativeDamagingSpells\":4,\"chargesConsumed\":4,\"cooldownRetained\":true}\n";
++        }
+         const int kinds[]={2,3,1};
+         for(int index=0;index<3;++index){
+             auto *m=fixture("koyori",60);const auto origin=you.pos();
+--- before/holo-koyori.cc
++++ after/holo-koyori.cc
+@@ -86,7 +86,7 @@
+             hurt(*v,raw,pair==3?BEAM_FIRE:BEAM_MISSILE,pair==4,true);
+         }
+     }
+-    holo_visual::koyori_reaction(centre,pair);
++    holo_visual::koyori_reaction(centre,pair,critical);
+ }
+ }
+ void tick(int at){
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -373,6 +373,8 @@
+         return flash_kind==effect::koyoriblast?effect::koyoriblastedge:effect::koyorislimeedge;
+     const auto lamy=lamy_mark(p);if(lamy!=effect::none)return lamy;
+     const auto choco=choco_mark(p);if(choco!=effect::none)return choco;
++    if(holo_koyori::enabled() && p==you.pos() && holo_batch::s.five_end>you.elapsed_time
++        && holo_batch::s.offence>0)return effect::night_koyori5;
+     const int reagent=holo_koyori::mark(p);
+     if(reagent)return reagent==2?effect::koyoriheat:reagent==3?effect::koyoricold:effect::koyoripoison;
+     const auto ns=night_status(p);if(ns!=effect::none)return ns;
+@@ -672,20 +674,20 @@
+ #endif
+ }
+ 
+-void koyori_reaction(const coord_def &p,int pair) {
++void koyori_reaction(const coord_def &p,int pair,bool critical) {
+ #ifdef USE_TILE_LOCAL
+     if(holo_benchmark_active() || !you.see_cell(p))return;
+-    const char *dir=crawl_state.test?getenv("HOLOCRAWL_KOYORI_REACTION_REVIEW"):nullptr;
++    const char *dir=crawl_state.test?getenv(critical?"HOLOCRAWL_KOYORI_FIVE_REVIEW":"HOLOCRAWL_KOYORI_REACTION_REVIEW"):nullptr;
+     if(crawl_state.test && !dir)return;
+     const auto before=crawl_state.test?fox_signature():std::string();
+     static int sequence=0;const int seq=++sequence;
+     // One clear impact over the target body instead of repeating tiny glyphs on nine cells.
+     flashes.assign(1,p);
+     flash_kind=pair==3?effect::koyoriblast:pair==5?effect::koyorithermal:effect::koyorislime;
+-    for(int f=0;f<2;++f){
++    for(int f=0;f<(critical?4:2);++f){
+         flash_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+         if(dir){
+-            const std::string stem=std::string(dir)+"/koyori-reaction-pair"+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f);
++            const std::string stem=std::string(dir)+(critical?"/koyori5-reaction-pair":"/koyori-reaction-pair")+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f);
+             capture(stem+".png",false);
+             int cells=0,impacts=0;for(int y=-1;y<=1;++y)for(int x=-1;x<=1;++x){
+                 const auto effects=at(p+coord_def(x,y));
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -24,7 +24,7 @@
+ bool lamy_banquet_cell(const coord_def &pos);
+ void lamy_banquet_burst(const coord_def &pos);
+ void lamy_chill_burst(const coord_def &pos);
+-void koyori_reaction(const coord_def &pos,int pair);
++void koyori_reaction(const coord_def &pos,int pair,bool critical=false);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ void towa_support(const coord_def &from,const coord_def &to);
+ effect invocation_at(const coord_def &pos);

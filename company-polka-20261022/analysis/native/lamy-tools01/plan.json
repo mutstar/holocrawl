@@ -1,0 +1,21 @@
+{
+  "revision": "lamy-tools01",
+  "scope": "Lamy tier3 tools/cloud support; tier1 power formula unchanged; tier5 shares use attribution and cloud burst limited once per use",
+  "rules": [
+    "direct damaging tool use: each hostile target once per use",
+    "all cloud cells/spread from same spell/tool use: each hostile target once on first positive damage",
+    "direct damage and cloud from same use deduplicated",
+    "zero damage/immune/friendly/enemy/pet/divine/shadow excluded",
+    "existing clouds before upgrade remain untagged",
+    "save through native level properties; no native save schema change"
+  ],
+  "checks": [
+    "actual wand zap",
+    "actual lamp of fire",
+    "cloud tick/movement/copy/expiry/replacement",
+    "direct+cloud dedup",
+    "3 stacks explosion",
+    "save and fresh-process continuation",
+    "22-god native regressions"
+  ]
+}

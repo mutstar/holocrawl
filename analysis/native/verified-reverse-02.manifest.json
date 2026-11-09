@@ -1,0 +1,31 @@
+{
+  "explorationTraps": false,
+  "buildBinarySha256": "EBFFB9F4F2546DBA7554E5E62E7C18399BBB9446DF4F4562AA51E5BAD93EC9F0",
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\verified-reverse-02.jsonl",
+  "randomSpawns": false,
+  "binarySha256": "0B14B3B057043F9B534329AB0ECD4BA6690C1FBA92D0BBC262495CE71443B916",
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "seedStart": 1660,
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "reverseVariants": true,
+  "designSha256": "156E21052328252D43D0F5E0CA7A53714F05C47B8EF8190462DA5C9EF548A36B",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\verified-reverse-02.exe",
+  "sourcePatchSha256": "C299B78AC1D2B44CE493EE836C0E80CB85B1849B8011CAD416B4133A473E0F17",
+  "trialsPerCase": 5,
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression; other 21 gods not implemented."
+}

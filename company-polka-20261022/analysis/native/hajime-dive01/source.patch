@@ -1,0 +1,27 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -161,6 +161,24 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_HAJIME_DIVE_REVIEW")) {
++        auto *m=fixture("hajime",100);const auto origin=you.pos();
++        for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
++        you.trapped=false;require(m->move_to_pos(origin+coord_def(3,0)),"Hajime dive target placement");
++        holo_batch::s.resource=3;holo_batch::s.one_end=you.elapsed_time+30;
++        auto shot=[&](const std::string &name){const auto stable=signature();holo_visual::capture(std::string(shots)+"/dive-"+name+".png");require(stable==signature(),"Hajime dive screenshot changed gameplay/RNG");};
++        shot("before");
++        const int now=you.elapsed_time,mp=you.magic_points,piety=you.piety,hp=m->hit_points;
++        const auto aim=m->pos();const int aut=invoke(3,m,&aim);
++        require(aut==10 && you.pos()==origin+coord_def(2,0) && adjacent(you.pos(),m->pos()),"Hajime dive failed two-cell native movement");
++        require(you.magic_points==mp-3 && you.piety==piety-3 && holo_batch::s.resource==0,"Hajime dive costs/rhythm consumption differ");
++        require(holo_batch::s.three_ready-now==40,"Hajime dive cooldown differs");
++        const auto stable=signature();
++        for(int f=0;f<2;++f)holo_visual::capture_invocation("hajime",aim,f,std::string(shots)+"/dive-cast"+std::to_string(f)+".png",3);
++        require(stable==signature(),"Hajime dive invocation capture changed gameplay/RNG");
++        step(aut);shot("after");
++        std::ofstream(std::string(shots)+"/dive.json")<<"{\"status\":\"passed\",\"nativeAbility\":true,\"startTargetDistance\":3,\"cellsMoved\":2,\"rhythmBefore\":3,\"rhythmAfter\":0,\"mpCost\":3,\"pietyCost\":3,\"costAut\":10,\"cooldownAfterCastAut\":30,\"invocations\":"<<holo_batch::s.inv<<",\"damage\":"<<hp-m->hit_points<<",\"continuousTravelAnimation\":false,\"captureStateRngUnchanged\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_HAJIME_RHYTHM_REVIEW")) {
+         auto *m=fixture("hajime",50);const auto origin=you.pos();
+         // Already-explored choreography room, matching other movement reviews.

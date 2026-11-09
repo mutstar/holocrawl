@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "revision": "korone-vfx07",
+  "tier": 5,
+  "frames": [
+    {
+      "frame": 0,
+      "bounds": [
+        56,
+        57,
+        104,
+        104
+      ],
+      "spriteSize": [
+        48,
+        48
+      ],
+      "sha256": "0ac07ac63f64ab6bf69c780b743862bbaf921ab6083c610ec3319ac9c8e7a60e"
+    },
+    {
+      "frame": 1,
+      "bounds": [
+        52,
+        53,
+        108,
+        108
+      ],
+      "spriteSize": [
+        56,
+        56
+      ],
+      "sha256": "34018c8d4de6c3ba7b8a7f49ca0564b53aef796bad4840ae39520d6b2d2cd43d"
+    }
+  ],
+  "newMaxSizes": [
+    48,
+    56
+  ],
+  "centre": [
+    80,
+    80
+  ],
+  "frameMilliseconds": 110,
+  "activationFrames": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "renderUnderActors": true,
+  "changed": [
+    "holo-visual.cc",
+    "tilereg-dgn.cc",
+    "rltiles/holo/fx_night_korone5_0.png",
+    "rltiles/holo/fx_night_korone5_1.png"
+  ],
+  "numericChanges": false,
+  "scope": "Presentation-only twin-paw aura; open centre and under-actor layer retain the player silhouette.",
+  "runtimeSha256": "5A2856127C8F1289B5F9EABF4DD1B58F62FA377E9AE03018E1F85F6EC065DE5A",
+  "otherSourceAndArtHashesPreserved": true,
+  "tests": "22-god native controls and fresh-process restore passed",
+  "feedback": "pending",
+  "review": "analysis/previews/all-gods-vfx-draft04/index.html#korone"
+}

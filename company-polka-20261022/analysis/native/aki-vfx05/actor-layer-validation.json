@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "scope": "Four native bloom frames; fixed fixture actor core ROIs compared with effect-free same-state frame. Semitransparent rose edges can blend with the ground beneath them.",
+  "manualNativeVisualReview": true,
+  "groundBeforeAllActors": true,
+  "foregroundRoutingOnlyChangedForAkiBloom": true,
+  "samples": [
+    {
+      "frame": 0,
+      "actor": "player",
+      "sampledBrightPixels": 102,
+      "unchangedPixels": 102,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 0,
+      "actor": "enemy",
+      "sampledBrightPixels": 211,
+      "unchangedPixels": 211,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 0,
+      "actor": "rose-up",
+      "sampledBrightPixels": 183,
+      "unchangedPixels": 155,
+      "meanChannelDifference": 2.368
+    },
+    {
+      "frame": 0,
+      "actor": "rose-down",
+      "sampledBrightPixels": 182,
+      "unchangedPixels": 141,
+      "meanChannelDifference": 3.636
+    },
+    {
+      "frame": 1,
+      "actor": "player",
+      "sampledBrightPixels": 102,
+      "unchangedPixels": 99,
+      "meanChannelDifference": 0.016
+    },
+    {
+      "frame": 1,
+      "actor": "enemy",
+      "sampledBrightPixels": 211,
+      "unchangedPixels": 211,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 1,
+      "actor": "rose-up",
+      "sampledBrightPixels": 183,
+      "unchangedPixels": 98,
+      "meanChannelDifference": 4.14
+    },
+    {
+      "frame": 1,
+      "actor": "rose-down",
+      "sampledBrightPixels": 182,
+      "unchangedPixels": 102,
+      "meanChannelDifference": 5.996
+    },
+    {
+      "frame": 2,
+      "actor": "player",
+      "sampledBrightPixels": 102,
+      "unchangedPixels": 102,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 2,
+      "actor": "enemy",
+      "sampledBrightPixels": 211,
+      "unchangedPixels": 211,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 2,
+      "actor": "rose-up",
+      "sampledBrightPixels": 183,
+      "unchangedPixels": 80,
+      "meanChannelDifference": 8.605
+    },
+    {
+      "frame": 2,
+      "actor": "rose-down",
+      "sampledBrightPixels": 182,
+      "unchangedPixels": 71,
+      "meanChannelDifference": 9.643
+    },
+    {
+      "frame": 3,
+      "actor": "player",
+      "sampledBrightPixels": 102,
+      "unchangedPixels": 98,
+      "meanChannelDifference": 0.016
+    },
+    {
+      "frame": 3,
+      "actor": "enemy",
+      "sampledBrightPixels": 211,
+      "unchangedPixels": 211,
+      "meanChannelDifference": 0.0
+    },
+    {
+      "frame": 3,
+      "actor": "rose-up",
+      "sampledBrightPixels": 183,
+      "unchangedPixels": 76,
+      "meanChannelDifference": 7.526
+    },
+    {
+      "frame": 3,
+      "actor": "rose-down",
+      "sampledBrightPixels": 182,
+      "unchangedPixels": 85,
+      "meanChannelDifference": 15.485
+    }
+  ]
+}

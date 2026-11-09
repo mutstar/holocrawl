@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "revision": "hajime-dive01",
+  "binarySha256": "53406653d3857de607836343b5fc8994c6b823fa4783de910d794f30e4fefead",
+  "combatChanged": false,
+  "artChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeAbility": true,
+    "startTargetDistance": 3,
+    "cellsMoved": 2,
+    "rhythmBefore": 3,
+    "rhythmAfter": 0,
+    "mpCost": 3,
+    "pietyCost": 3,
+    "costAut": 10,
+    "cooldownAfterCastAut": 30,
+    "invocations": 12,
+    "damage": 0,
+    "continuousTravelAnimation": false,
+    "captureStateRngUnchanged": true
+  },
+  "validation": {
+    "chocoControls": false,
+    "rawScreenshots": 4,
+    "gods": 22,
+    "status": "passed",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "53406653D3857DE607836343B5FC8994C6B823FA4783DE910D794F30E4FEFEAD",
+    "freshProcessRestore": true
+  }
+}

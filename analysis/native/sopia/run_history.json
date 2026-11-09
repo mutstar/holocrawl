@@ -1,0 +1,12 @@
+{
+  "excludedRuns": [
+    "sopia-forward-01"
+  ],
+  "reason": "Initial implementation smoke failed a native self-check because the original ray API rejects source==target; fixed before final source/build. No rows from that run enter the final dataset.",
+  "pendingDataset": "final-sopia-1000",
+  "preliminaryRuns": [
+    "sopia-forward-02",
+    "sopia-reverse-02"
+  ],
+  "finalResultsAvailable": true
+}

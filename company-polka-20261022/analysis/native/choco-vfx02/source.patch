@@ -1,0 +1,14 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -235,7 +235,10 @@
+             if(record)holo_visual::capture(std::string(shots)+"/choco-stack"+std::to_string(stacks)+".png");
+         };
+         auto *target=setup();holo_visual::capture(std::string(shots)+"/choco-before.png");grow(target,5,true);
+-        {const auto upper=target->pos()+coord_def(0,-1);auto mg=mgen_data::hostile_at(MONS_ORC,false,upper);mg.flags|=MG_FORCE_PLACE;
++        {holo_visual::capture(std::string(shots)+"/choco-raised-no-upper.png");
++        const int stacks_before_upper=holo_batch::s.resource;holo_batch::s.resource=0;
++        holo_visual::capture(std::string(shots)+"/choco-raised-no-upper-no-marker.png");holo_batch::s.resource=stacks_before_upper;
++        const auto upper=target->pos()+coord_def(0,-1);auto mg=mgen_data::hostile_at(MONS_ORC,false,upper);mg.flags|=MG_FORCE_PLACE;
+         auto *above=create_monster(mg,false);require(above && above->pos()==upper,"upper monster control failed");above->speed=0;above->hit_points=above->max_hit_points=10000;
+         const auto before=signature();holo_visual::capture(std::string(shots)+"/choco-corner-upper.png");
+         const int stacks=holo_batch::s.resource;holo_batch::s.resource=0;holo_visual::capture(std::string(shots)+"/choco-corner-upper-no-marker.png");holo_batch::s.resource=stacks;

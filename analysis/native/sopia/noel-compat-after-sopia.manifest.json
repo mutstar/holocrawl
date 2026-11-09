@@ -1,0 +1,32 @@
+{
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\noel-compat-after-sopia.exe",
+  "scope": "No-god versus Noel combat core v1/v2; fixed equipment, no gift progression.",
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\noel-compat-after-sopia.jsonl",
+  "binarySha256": "A22138857C6CF3987067B3FEAA41EF18F3B35AC32E7F8E8FD01384F0D02B8D1D",
+  "sourcePatchSha256": "B3B966FC1C07D5B82B4B627810CEC2B7FACDDBAC8801BE84478E9A8D7599A34B",
+  "trialsPerCase": 10,
+  "reverseVariants": false,
+  "suite": "noel",
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "buildBinarySha256": "F291885D18508F3E47648A4C6C52FE893AC7F96BAA2ADAEF32110CEFF4162DCD",
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "variants": [
+    "no_god",
+    "noel_v1",
+    "noel_v2"
+  ],
+  "designSha256": "4490CA455B3D6BF09E2184943E3FF8F7F09AAA79403C579646B699097100DA86",
+  "explorationTraps": false,
+  "seedStart": 1658,
+  "randomSpawns": false
+}

@@ -1,0 +1,1 @@
+{"status":"failed-preserved","reason":"Dedicated test save changed Options.save_dir; later native exploration shaft needed map cache in uncached temporary test directory.","evidence":"gdb/debug.log: file_lock -> map cache -> native shaft during Hajime test","fix":"Restore original save_dir after isolated cloud save; no gameplay trap modification or check bypass."}

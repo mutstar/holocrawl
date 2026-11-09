@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "nativeReview": {
+    "status": "passed",
+    "swapExact": true,
+    "departureFireDamage": true,
+    "foxCount": 4,
+    "newFoxes": 3,
+    "masksCleared": true,
+    "beforeFireHp": 10000,
+    "afterFireHp": 9997
+  },
+  "revealSequence": [
+    0,
+    1,
+    1,
+    2,
+    2,
+    3
+  ],
+  "rawFiles": [
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-before.png",
+      "sha256": "696a439df471ba324a309f60d73d3e7a7267df5fc5f1d25663301d5bbf924e40"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-frame0.png",
+      "sha256": "8943c28ef770c5f299a6bbffebe3de4ad069cc578809cf969a6c0263c8a8a533"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-frame1.png",
+      "sha256": "639adc582a87d61e02fa047325c6332c8a6bf9f7329145daaabe879c72f9947b"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-frame2.png",
+      "sha256": "faf9f0ec56255754369baa569727657c1eedbc22eb4e5053aa6fe08553bf40b6"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-frame3.png",
+      "sha256": "29576a4b4ba740cdd6709a81f35be7217f7f3a89fadbc24dcc74b0e26909c1e4"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-swap-after.png",
+      "sha256": "dc316712596001d2e4e42f6b956ab938e5ef90f7272f0b964eec9c7d745b1905"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-before.png",
+      "sha256": "dc316712596001d2e4e42f6b956ab938e5ef90f7272f0b964eec9c7d745b1905"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame0.png",
+      "sha256": "ec99c2bae5d7a38f49f2a75c0ade484817cc2108d39566604b80101808e3dd5c"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame1.png",
+      "sha256": "0069e5313960dde0e04e93d9f49c09099069bd2f342c4664f0ff069b40fe9040"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame2.png",
+      "sha256": "99037eac35fdb42c441e6299a030cbda4bda87edab274fd0c12c4f239dcc7402"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame3.png",
+      "sha256": "a04e53efa2c4bc300df2d660e5c0aa393f7acb7b8adaf5b15687c8c94b56c844"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame4.png",
+      "sha256": "cbc370bdfd63e59e5814bef853dbd78256e4960f6213ecd3d0b01073d363bf9f"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-frame5.png",
+      "sha256": "d0844d88142306d8a7035a763b67b7c7fb452a6958d4699f63edeba2b2e089ab"
+    },
+    {
+      "path": "analysis/native/fubuki-vfx05/native/shots/fubuki-gather-after.png",
+      "sha256": "e596371d4b1bb74fd4b950e2b05ca8ff030d015bad5e758390e887c89470340d"
+    }
+  ],
+  "gallery": "analysis/previews/fubuki-vfx05/index.html"
+}

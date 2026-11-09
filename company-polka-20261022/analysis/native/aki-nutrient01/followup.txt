@@ -1,0 +1,1 @@
+Direct,DoT,rose,bloom source cases and5/5/7 passed. Cooldown test expected absoluteMP12 without native naturalMP regeneration during30aut.03 compares with MP immediately before kill.01 not deployed.

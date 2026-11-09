@@ -1,0 +1,71 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -53,6 +53,7 @@
+ std::vector<coord_def> flashes;
+ effect flash_kind=effect::none;
+ int flash_frame=0;
++bool koyori_compact=false;
+ int fox_scene=0,fox_frame=0;
+ coord_def fox_from,fox_to;
+ std::vector<coord_def> fox_arrivals,fox_hits;
+@@ -268,7 +269,7 @@
+ #endif
+ }
+ }
+-void clear(){flashes.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
++void clear(){koyori_compact=false;flashes.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
+ void bind_altar(const std::string &god) {
+     if(holo_benchmark_active() || !feat_is_altar(grd(you.pos())))return;
+     if(!env.properties.exists(altar_key))env.properties[altar_key].new_table();
+@@ -682,9 +683,9 @@
+     const auto before=crawl_state.test?fox_signature():std::string();
+     static int sequence=0;const int seq=++sequence;
+     // One clear impact over the target body instead of repeating tiny glyphs on nine cells.
+-    flashes.assign(1,p);
++    flashes.assign(1,p);koyori_compact=critical;
+     flash_kind=pair==3?effect::koyoriblast:pair==5?effect::koyorithermal:effect::koyorislime;
+-    for(int f=0;f<(critical?4:2);++f){
++    for(int f=0;f<2;++f){
+         flash_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+         if(dir){
+             const std::string stem=std::string(dir)+(critical?"/koyori5-reaction-pair":"/koyori-reaction-pair")+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f);
+@@ -700,7 +701,7 @@
+             }
+             std::ofstream(stem+"-area.json")<<"{\"radius\":"<<(pair==5?0:1)<<",\"visibleFloorCells\":"<<cells<<",\"impactCells\":"<<impacts<<",\"underActors\":true,\"persistentHazard\":false}\n";
+         }
+-        else scaled_delay(100);
++        else scaled_delay(critical?80:100);
+     }
+     clear();const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
+     if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Koyori reaction visual changed gameplay/RNG");
+@@ -749,6 +750,13 @@
+     if(frame<0 && ((kind==effect::koyoriblastedge && flash_kind==effect::koyoriblast)
+         || (kind==effect::koyorislimeedge && flash_kind==effect::koyorislime)))frame=flash_frame;
+     if(frame<0)frame=flash_kind!=effect::none && kind==flash_kind?flash_frame:(you.elapsed_time/10)%2;
++    if(koyori_compact){
++        if(kind==effect::koyoriblast)return TILE_HOLO_FX_KOYORICOMPACTBLAST_0+frame%2;
++        if(kind==effect::koyorithermal)return TILE_HOLO_FX_KOYORICOMPACTTHERMAL_0+frame%2;
++        if(kind==effect::koyorislime)return TILE_HOLO_FX_KOYORICOMPACTSLIME_0+frame%2;
++        if(kind==effect::koyoriblastedge)return TILE_HOLO_FX_KOYORICOMPACTBLASTEDGE_0+frame%2;
++        if(kind==effect::koyorislimeedge)return TILE_HOLO_FX_KOYORICOMPACTSLIMEEDGE_0+frame%2;
++    }
+     return TILE_HOLO_FX_WARNING_0+(int(kind)-1)*2+(frame%2);
+ }
+ int sprite_tile(sprite kind) {
+--- before/rltiles\dc-holo-feat.txt
++++ after/rltiles\dc-holo-feat.txt
+@@ -400,3 +400,14 @@
+ altar_vivi HOLO_ALTAR_VIVI
+ altar_sopia HOLO_ALTAR_SOPIA
+ altar_mela HOLO_ALTAR_MELA
++
++fx_koyoricompactblast_0 HOLO_FX_KOYORICOMPACTBLAST_0
++fx_koyoricompactblast_1 HOLO_FX_KOYORICOMPACTBLAST_1
++fx_koyoricompactthermal_0 HOLO_FX_KOYORICOMPACTTHERMAL_0
++fx_koyoricompactthermal_1 HOLO_FX_KOYORICOMPACTTHERMAL_1
++fx_koyoricompactslime_0 HOLO_FX_KOYORICOMPACTSLIME_0
++fx_koyoricompactslime_1 HOLO_FX_KOYORICOMPACTSLIME_1
++fx_koyoricompactblastedge_0 HOLO_FX_KOYORICOMPACTBLASTEDGE_0
++fx_koyoricompactblastedge_1 HOLO_FX_KOYORICOMPACTBLASTEDGE_1
++fx_koyoricompactslimeedge_0 HOLO_FX_KOYORICOMPACTSLIMEEDGE_0
++fx_koyoricompactslimeedge_1 HOLO_FX_KOYORICOMPACTSLIMEEDGE_1

@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "revision": "aki-nutrient03",
+  "binarySha256": "7f39685a8359895e7b7a4c444aa1181ef83a671174430036312ee98ea99d3b93",
+  "nativeProof": {
+    "status": "passed",
+    "widths": [
+      5,
+      5,
+      7
+    ],
+    "unlock": 50,
+    "mpAtInv0_12_27": [
+      1,
+      2,
+      3
+    ],
+    "nativeDirectDotRoseBloomKills": true,
+    "cooldown": 30,
+    "fullMpNoStorage": true,
+    "controls": true
+  },
+  "freshReload": {
+    "status": "passed",
+    "cooldownRestored": true,
+    "nativeKillsAndRngExact": true
+  },
+  "validation": {
+    "combatImplemented": true,
+    "gods": 22,
+    "status": "passed",
+    "binarySha256": "7F39685A8359895E7B7A4C444AA1181EF83A671174430036312EE98EA99D3B93",
+    "freshMpCooldownRestore": true
+  },
+  "runtimeDeployed": true
+}

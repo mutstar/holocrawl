@@ -1,0 +1,27 @@
+{
+  "dataset": "final-noel-1000",
+  "encounters": 24000,
+  "scenarios": 8,
+  "variants": 3,
+  "seedsPerScenarioVariant": 1000,
+  "completeShards": 4,
+  "nativeExitCodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "noelHookChecks": "passed",
+  "reverseOrderExactMatches": 120,
+  "independentBatchExactMatches": 240,
+  "seed1882ExactMatches": 24,
+  "banishments": 4,
+  "timeouts": 0,
+  "summaryValidation": "passed",
+  "incompleteBatchRejection": "passed",
+  "overlappingShardRejection": "passed",
+  "sameBuildAndSourceForRegressionRuns": true,
+  "sourcePatchSha256": "C299B78AC1D2B44CE493EE836C0E80CB85B1849B8011CAD416B4133A473E0F17",
+  "buildBinarySha256": "EBFFB9F4F2546DBA7554E5E62E7C18399BBB9446DF4F4562AA51E5BAD93EC9F0",
+  "report": "RESULTS_NOEL.md"
+}

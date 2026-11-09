@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "revision": "ayame-zanshin02",
+  "binarySha256": "902c7a6c5590c7947c4391022203d0be1f750a4a9b794cebfff80bbdbc99e901",
+  "nativeProof": {
+    "status": "passed",
+    "unlock": 50,
+    "completedKillBankAut": 30,
+    "accuracyAtInv12": 5,
+    "slayingAtInv12": 3,
+    "nativeMarkedMeleeKill": true,
+    "nativeTwinSlash": true,
+    "nativeNextOpponentMelee": true,
+    "missConsumes": true,
+    "cancelAndZeroTimePreserve": true,
+    "fiveStarCompatible": true,
+    "expiryFloorRangeAndSourceControls": true
+  },
+  "freshReload": {
+    "status": "passed",
+    "threeTurnBankRestored": true,
+    "nativeMeleeStateAndRngExact": true
+  },
+  "validation": {
+    "gods": 22,
+    "status": "passed",
+    "freshZanshinRestore": true,
+    "combatImplemented": true,
+    "binarySha256": "902C7A6C5590C7947C4391022203D0BE1F750A4A9B794CEBFFF80BBDBC99E901"
+  },
+  "runtimeDeployed": true
+}

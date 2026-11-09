@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "revision": "lamy-banquet-vfx03",
+  "numericChanges": false,
+  "combatRevision": "lamy-tools05",
+  "renderHookOnly": true,
+  "runtimeSha256": "373284C03B88485A772574C54F96921BC60D703889472A109D95AD7D4F216D8F",
+  "proof": {
+    "status": "passed",
+    "nativeActivation": true,
+    "durationTurns": 8,
+    "playerFollowingWreath": true,
+    "nativeMovement": true,
+    "savedBuff": true,
+    "actualSpellBurst": true,
+    "actualWandBurst": true,
+    "centreAndAdjacentDamaged": true,
+    "outsideUnchanged": true,
+    "chillDedup": true,
+    "wreathExpired": true,
+    "renderingStateUnchanged": true,
+    "wallControlCaptured": true
+  },
+  "spellSequence": "lamy5-burst1",
+  "toolSequence": "lamy5-burst2",
+  "openFloorCells": 9,
+  "wallControlCells": 8,
+  "reviewStatus": "tiers1/3 approved; tier5 pending",
+  "sourceHashes": {
+    "holo-lamy.cc": "4F84F3C2EEA2384247099054425E876367E7CA4E5A77DE12BB99EED367E10B68",
+    "holo-visual.cc": "34724F5F4F3B030FD7E2D2487318B76FC9D310A7F73C799C3A5DA8CDFEDDFCFB",
+    "holo-visual.h": "7EC2DC85BCE2534FA35082AAD24115C0425C5EA29315098341D54FBCDFBE6B3A",
+    "tilereg-dgn.cc": "ACE77B3AFCEE1042890BCF90A1048D9CEB22B3BA8DAB0433021ED7AAFC865474",
+    "holo-campaign-test.cc": "654DBE1F29B2C96158592B4AAC26143EB5C9338EA7BF27310A2B28CC1C031110",
+    "rltiles/dc-holo-feat.txt": "F6031DFE25BBAAA4E0D6DEB5569291C2E559287745AF59AD82293EB6019F3B2B"
+  },
+  "scope": "Native VFX, cost/damage geometry, save and 22-god regressions; not campaign winrate"
+}

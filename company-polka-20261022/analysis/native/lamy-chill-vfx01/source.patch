@@ -1,0 +1,153 @@
+--- before/holo-lamy.cc
++++ after/holo-lamy.cc
+@@ -21,7 +21,9 @@
+     ++t.stacks;t.expires=now+60;
+     if(t.stacks>=3) {
+         t.stacks=0;t.slowed_until=now+20;
++        const auto pos=mon.pos();
+         hurt(mon,roll_dice(2,3+s.inv/6),BEAM_COLD,false);
++        holo_visual::lamy_chill_burst(pos);
+     }
+ }
+ }
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -88,6 +88,19 @@
+     return on?night_effect(g,1):effect::none;
+ }
+ 
++effect lamy_mark(const coord_def &p) {
++    if(!holo_campaign::active() || holo_worship::current()!="lamy")return effect::none;
++    const auto &s=holo_batch::s;const int now=you.elapsed_time;
++    for(const auto &entry:s.targets) {
++        const auto *m=monster_by_mid(entry.first);
++        if(!m || !m->alive() || m->pos()!=p || !you.can_see(*m))continue;
++        const auto &t=entry.second;
++        if(t.expires>now && t.stacks>0)return t.stacks>=2?effect::lamychill2:effect::lamychill1;
++        if(t.slowed_until>now)return effect::lamyslow;
++    }
++    return effect::none;
++}
++
+ effect choco_mark(const coord_def &p) {
+     if(!holo_campaign::active() || holo_worship::current()!="choco")return effect::none;
+     const auto &s=holo_batch::s;const auto *mon=monster_by_mid(s.marked);
+@@ -333,6 +346,7 @@
+             && grid_distance(you.pos(),mon->pos())==1)return effect::ayameaura;
+     }
+     if(flash_kind!=effect::none && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return flash_kind;
++    const auto lamy=lamy_mark(p);if(lamy!=effect::none)return lamy;
+     const auto choco=choco_mark(p);if(choco!=effect::none)return choco;
+     const auto ns=night_status(p);if(ns!=effect::none)return ns;
+     if(holo_campaign::active() && holo_worship::current()=="suisei") {
+@@ -349,6 +363,10 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(flash_kind>=effect::lamyburst0 && flash_kind<=effect::lamyburst3 && !flashes.empty()) {
++        if(p==flashes.front()-coord_def(1,1)){span_x=span_y=3;return flash_kind;}
++        if(p==flashes.front())return effect::none;
++    }
+     // Render-only commander regalia follows the player for the saved buff duration.
+     if(flash_kind==effect::none && holo_campaign::noel_commander()
+         && p==you.pos()-coord_def(2,2)) {
+@@ -575,6 +593,24 @@
+     (void)from;(void)to;
+ #endif
+ }
++void lamy_chill_burst(const coord_def &p) {
++#ifdef USE_TILE_LOCAL
++    if(holo_benchmark_active() || !you.see_cell(p))return;
++    const char *dir=crawl_state.test?getenv("HOLOCRAWL_LAMY_CHILL_REVIEW"):nullptr;
++    if(crawl_state.test && !dir)return;
++    const auto before=crawl_state.test?fox_signature():std::string();
++    static int sequence=0;const int seq=++sequence;
++    for(int f=0;f<4;++f) {
++        flashes.assign(1,p);flash_kind=effect(int(effect::lamyburst0)+f);flash_frame=0;
++        const auto saved_rng=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved_rng);
++        if(dir)capture(std::string(dir)+"/lamy3-burst"+std::to_string(seq)+"-frame"+std::to_string(f)+".png",false);
++        else scaled_delay(95);
++    }
++    clear();tiles.invalidate_dungeon_overlays();update_screen();
++    if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Lamy burst visuals changed gameplay/RNG");
++#endif
++}
++
+ void impact(const coord_def &p,int radius,bool fire){
+     const auto g=holo_worship::current();
+     if(holo_campaign::active() && (g=="pekora" || g=="sopia")) {
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+@@ -21,6 +21,7 @@
+ void invocation(const std::string &god,int tier,const coord_def &pos,int option=0);
+ void comet_impact(const coord_def &pos);
+ void rose_thorn_cell(const coord_def &from,const coord_def &to,const coord_def &cell);
++void lamy_chill_burst(const coord_def &pos);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ void towa_support(const coord_def &from,const coord_def &to);
+ effect invocation_at(const coord_def &pos);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -202,6 +202,30 @@
+         require(s.targets[m->mid].stacks==1 && s.targets[adj->mid].stacks==1,"Lamy AoE/direct chill dedup");
+         fixture("towa");require(holo_lamy::power_bonus()==0 && holo_lamy::power(SPELL_FIREBALL,100)==100 && holo_lamy::evasion_penalty()==0,"Lamy changes other god");
+         std::ofstream proof(dir+"/lamy-caster.json");proof<<"{\"status\":\"passed\",\"invocation\":12,\"baseSpellPower\":"<<base_power<<",\"buffSpellPower\":"<<buff_power<<",\"drink\":40,\"overdoseEV\":-3,\"nativeAreaCast\":true,\"perCastDedup\":true,\"dotPetDivineExcluded\":true,\"banquetTurns\":8,\"banquetCooldown\":15,\"saved\":true}\n";
++    }
++    if(const char *shots=getenv("HOLOCRAWL_LAMY_CHILL_REVIEW")) {
++        using namespace holo_batch;
++        auto *m=fixture("lamy");const mid_t mid=m->mid;const auto origin=you.pos();
++        require(m->move_to_pos(origin+coord_def(2,0)),"Lamy chill visible target setup");
++        s.resource=40;
++        set_skill_level(SK_ICE_MAGIC,27);set_skill_level(SK_SPELLCASTING,27);
++        you.duration[DUR_BRILLIANCE]=100;
++        auto shot=[&](const char *name){const auto stable=signature();holo_visual::capture(std::string(shots)+"/lamy3-"+name+".png");require(stable==signature(),"Lamy chill capture mutated gameplay/RNG");};
++        shot("before");
++        for(int i=1;i<=3;++i) {
++            require(your_spells(SPELL_OZOCUBUS_REFRIGERATION,40,true)==spret::success,"Lamy chill actual spell");
++            require(s.targets[mid].stacks==i%3,"Lamy chill real spell stack progression");
++            shot(("cast"+std::to_string(i)).c_str());step(10);
++        }
++        require(s.targets[mid].slowed_until>you.elapsed_time,"Lamy chill slow active");
++        roundtrip();m=monster_by_mid(mid);shot("restored");
++        step(20);shot("slow-expired");
++        require(holo_visual::invocation_at(m->pos())==holo_visual::effect::none,"Lamy slow marker expiry");
++        require(your_spells(SPELL_OZOCUBUS_REFRIGERATION,40,true)==spret::success,"Lamy expiry cast");
++        shot("expiry-stack");step(60);shot("stack-expired");
++        require(holo_visual::invocation_at(m->pos())==holo_visual::effect::none,"Lamy stack marker expiry");
++        fixture("towa");require(holo_visual::invocation_at(you.pos()+coord_def(2,0))==holo_visual::effect::none,"Lamy marker other god");
++        std::ofstream(dir+"/lamy-chill-vfx.json")<<"{\"status\":\"passed\",\"realSpellCasts\":4,\"stackProgression\":[1,2,0],\"expiry\":true,\"saveRestore\":true,\"renderingStateUnchanged\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_LAMY_HUD_REVIEW")) {
+         fixture("lamy");const int amounts[]={12,40,80,0};const char *names[]={"sober","tipsy","drunk","banquet"};
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -262,6 +262,20 @@
+ fx_night_radenstone_1 HOLO_FX_NIGHT_RADENSTONE_1
+ fx_night_radencraft_0 HOLO_FX_NIGHT_RADENCRAFT_0
+ fx_night_radencraft_1 HOLO_FX_NIGHT_RADENCRAFT_1
++fx_lamychill1_0 HOLO_FX_LAMYCHILL1_0
++fx_lamychill1_1 HOLO_FX_LAMYCHILL1_1
++fx_lamychill2_0 HOLO_FX_LAMYCHILL2_0
++fx_lamychill2_1 HOLO_FX_LAMYCHILL2_1
++fx_lamyslow_0 HOLO_FX_LAMYSLOW_0
++fx_lamyslow_1 HOLO_FX_LAMYSLOW_1
++fx_lamyburst0_0 HOLO_FX_LAMYBURST0_0
++fx_lamyburst0_1 HOLO_FX_LAMYBURST0_1
++fx_lamyburst1_0 HOLO_FX_LAMYBURST1_0
++fx_lamyburst1_1 HOLO_FX_LAMYBURST1_1
++fx_lamyburst2_0 HOLO_FX_LAMYBURST2_0
++fx_lamyburst2_1 HOLO_FX_LAMYBURST2_1
++fx_lamyburst3_0 HOLO_FX_LAMYBURST3_0
++fx_lamyburst3_1 HOLO_FX_LAMYBURST3_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

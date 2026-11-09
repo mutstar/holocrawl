@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "revision": "hajime-five01",
+  "binarySha256": "e43022dae6a023337bb6ae75c3a59aec9181e8c6a330863f36f468d4d089db37",
+  "combatChanged": false,
+  "artChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeMovementCommands": true,
+    "moveCount": 4,
+    "invocations": 12,
+    "mpCost": 6,
+    "pietyCost": 12,
+    "remainingAfterCastAut": 84,
+    "waitDoesNotDamage": true,
+    "outsideRangePreserved": true,
+    "damageA": 28,
+    "damageB": 18,
+    "expired": true
+  },
+  "moves": [
+    {
+      "move": 1,
+      "targetA": 8,
+      "targetB": 0
+    },
+    {
+      "move": 2,
+      "targetA": 10,
+      "targetB": 11
+    },
+    {
+      "move": 3,
+      "targetA": 0,
+      "targetB": 0
+    },
+    {
+      "move": 4,
+      "targetA": 10,
+      "targetB": 7
+    }
+  ],
+  "validation": {
+    "chocoControls": false,
+    "binarySha256": "E43022DAE6A023337BB6AE75C3A59AEC9181E8C6A330863F36F468D4D089DB37",
+    "freshProcessRestore": true,
+    "rawScreenshots": 10,
+    "status": "passed",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "gods": 22
+  }
+}

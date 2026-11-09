@@ -1,0 +1,7 @@
+{
+  "revision": "lamy-banquet-vfx04",
+  "request": "Pale sky-blue square cells show actual 3x3 without covering snow",
+  "renderer": "Native ShapeBuffer, 1px edges at32px tile, RGB137/213/249 alpha100/255, no fill, below flower/actors",
+  "geometry": "same read-only cell predicate as burst, LOS/walls clipped",
+  "combatChanges": false
+}

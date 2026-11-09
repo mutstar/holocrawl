@@ -1,0 +1,33 @@
+{
+  "sourcePatchSha256": "B3B966FC1C07D5B82B4B627810CEC2B7FACDDBAC8801BE84478E9A8D7599A34B",
+  "variants": [
+    "no_god",
+    "noel_v2",
+    "sopia_ring",
+    "sopia_full"
+  ],
+  "binary": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\bin\\final-sopia-shard-d.exe",
+  "scope": "No-god, current Noel, Sopia ring-only and Sopia full combat core; fixed melee kits; no campaign progression.",
+  "randomSpawns": false,
+  "explorationTraps": false,
+  "reverseVariants": false,
+  "scenarios": [
+    "early_ogre",
+    "early_three_orcs",
+    "mid_ettin",
+    "mid_three_warriors",
+    "late_stone_giant",
+    "late_two_stone_giants",
+    "late_three_ettins",
+    "late_three_warriors"
+  ],
+  "designSha256": "4490CA455B3D6BF09E2184943E3FF8F7F09AAA79403C579646B699097100DA86",
+  "banishmentPolicy": "Ends the fixed encounter as a separate banished outcome; not a win or HP death.",
+  "engineCommit": "a7d21def0a8b0b39c6825b643a3b51f371b73583",
+  "seedStart": 1750,
+  "binarySha256": "7F7E4FF0FC68B373E697058FDFBA9D00D5074E8D1AFEB337227D305FFB3DDF49",
+  "results": "C:\\Users\\071staff\\Documents\\ChatGPT\\HoloCrawl\\runtime\\results\\final-sopia-shard-d.jsonl",
+  "buildBinarySha256": "F291885D18508F3E47648A4C6C52FE893AC7F96BAA2ADAEF32110CEFF4162DCD",
+  "trialsPerCase": 250,
+  "suite": "sopia"
+}

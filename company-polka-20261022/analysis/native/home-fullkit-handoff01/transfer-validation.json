@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "archive": "C:\\Users\\071staff\\Desktop\\HOLOCRAWL_HOME_2026-10-30_FULLKIT01.zip",
+  "bytes": 1177104005,
+  "sha256": "919186E4E8F94E220698A26C9CAE627F86397BAA2393A70934190AF58F740EBB",
+  "files": 69662,
+  "allArchivedHashesVerified": true,
+  "crcVerified": true,
+  "relocatedNativeSmokePassed": true,
+  "previewImagesVerified": 70
+}

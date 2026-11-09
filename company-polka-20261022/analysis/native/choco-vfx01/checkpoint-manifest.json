@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "revision": "choco-vfx01",
+  "runtimeSha256": "f3fbcdf9d05e60e285434c858a2816ca6306fa281da1b5a75263d0720102625d",
+  "combatAndPriorArtPreserved": true,
+  "feedback": "pending",
+  "prompts": "assets/holocrawl/choco-vfx01/inputs.json"
+}

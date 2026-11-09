@@ -1,0 +1,58 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1107,6 +1107,27 @@
+ 
+     const int pet_piety=you.piety;m->max_hit_points=100;m->hurt(raven,20000,BEAM_MISSILE);
+     require(you.piety==pet_piety+2,"native raven kill credit / strong bonus");
++    if(const char *review=getenv("HOLOCRAWL_LUI_ARMY_REVIEW")) {
++        m=fixture("lui",180);m->move_to_pos(you.pos()+coord_def(4,0));
++        for(int n=0;n<3;++n)cast("lui",1,nullptr,you.pos());
++        holo_visual::capture(std::string(review)+"/lui-army-before.png");
++        const int mp_before=you.magic_points,faith_before=you.piety,now=you.elapsed_time;
++        const int cost=invoke(5,nullptr,nullptr,0,3);
++        require(cost==10 && you.magic_points==mp_before-7 && you.piety==faith_before-14,"Lui army costs");
++        require(holo_batch::s.companions.size()==6,"Lui army six companions");
++        require(holo_batch::s.five_end==now+10+60+2*holo_batch::s.inv && holo_batch::s.five_ready==holo_batch::s.five_end+150,"Lui army duration/cooldown");
++        for(const auto &c:holo_batch::s.companions){auto *h=monster_by_mid(c.mid);require(h && c.shield==6+holo_batch::s.inv/3 && h->evasion()==14+holo_batch::s.inv/3+4 && holo_batch::monster_energy(*h,EUT_MOVE,10)==6 && holo_batch::monster_energy(*h,EUT_ATTACK,10)==10,"Lui army shield/evasion/energy");}
++        for(int f=0;f<2;++f)holo_visual::capture_invocation("lui",you.pos(),f,std::string(review)+"/lui-army-cast"+std::to_string(f)+".png",5);
++        step(cost);const int remaining=holo_batch::s.five_end-you.elapsed_time;
++        holo_visual::capture(std::string(review)+"/lui-army-active.png");
++        int sx=0,sy=0;require(holo_visual::invocation_sprite_at(you.pos()-coord_def(2,2),sx,sy)!=holo_visual::effect::night_lui5,"Lui army legacy 5x5 anchor");
++        step(remaining);holo_visual::capture(std::string(review)+"/lui-army-ended.png");
++        int survivors=0;
++        for(const auto &c:holo_batch::s.companions){auto *h=monster_by_mid(c.mid);if(h && h->alive()){++survivors;require(c.shield==0,"Lui army shield did not expire");}}
++        require(survivors==3,"Lui army extra summons did not expire");
++        std::ofstream proof(std::string(review)+"/lui-army.json");
++        proof<<"{\"status\":\"passed\",\"invocations\":"<<holo_batch::s.inv<<",\"mpCost\":7,\"pietyCost\":14,\"hawksActive\":6,\"hawksAfterExpiry\":3,\"remainingAutAfterCast\":"<<remaining<<",\"shieldPerHawk\":"<<6+holo_batch::s.inv/3<<",\"evasionBonus\":4,\"moveEnergy\":6,\"attackEnergy\":10,\"cooldownAfterEndAut\":150}";
++    }
+     if(const char *review=getenv("HOLOCRAWL_LUI_COMMAND_REVIEW")) {
+         m=fixture("lui",100);
+         for(int n=0;n<3;++n)cast("lui",1,nullptr,you.pos());
+@@ -1205,3 +1226,4 @@
+ }
+ }
+ 
++
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -70,7 +70,7 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
+-    if(e==effect::night_koyori5)return 1; // Compact player-relative badge, never legacy 5x5.
++    if(e==effect::night_koyori5 || e==effect::night_lui5)return 1; // Compact player-relative badges.
+ 
+     if(e>=effect::night_korone1 && e<=effect::night_mela5)return (int(e)-int(effect::night_korone1))%3==0?1:(int(e)-int(effect::night_korone1))%3==1?3:5;
+     if(e==effect::night_polkaheal || e==effect::night_polkachaos)return 5;
+@@ -89,7 +89,10 @@
+     else if(g=="towa" || g=="su" || g=="mela")on=true; // passive readiness, not a hit assertion
+     else if(g=="raden")on=true; // current exhibit readiness
+     else if(g=="koyori")on=false; // New caster vial is drawn by mark().
+-    else if(g=="lui")on=!s.companions.empty();
++    else if(g=="lui") {
++        if(s.five_end>now)return effect::night_lui5;
++        on=!s.companions.empty();
++    }
+     else if(g=="vivi" || g=="polka")on=s.one_end>now || s.five_end>now;
+     return on?night_effect(g,1):effect::none;
+ }

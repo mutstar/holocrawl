@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "revision": "koyori-tube01",
+  "combatRevision": "koyori-caster02",
+  "gameplayAndOtherArtPreserved": true,
+  "binarySha256": "8ff0d5b9bb927c70899f6a9e3a359bcc0addca694a459a1f9d97a06736795f4e",
+  "validation": {
+    "gods": 22,
+    "freshProcessRestore": true,
+    "chocoControls": false,
+    "binarySha256": "8FF0D5B9BB927C70899F6A9E3A359BCC0ADDCA694A459A1F9D97A06736795F4E",
+    "rawScreenshots": 301,
+    "status": "passed",
+    "scope": "VFX and native state controls, not campaign winrate."
+  },
+  "visualApproved": false,
+  "iconSize": [
+    8,
+    18
+  ],
+  "tilePosition": [
+    21,
+    0
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "version": "home-lamy-caster01",
+  "savedAtUtc": "2026-10-21T09:58:27.073576+00:00",
+  "entryDocument": "START_HERE_HOME.md",
+  "gameCheckpoint": "engine/campaign_status.json",
+  "gameVersion": "lamy-caster01",
+  "gallery": "analysis/previews/all-gods-vfx-draft04/index.html",
+  "skillPages": [
+    "analysis/previews/current-god-art/skills-1.png",
+    "analysis/previews/current-god-art/skills-2.png",
+    "analysis/previews/current-god-art/skills-3.png",
+    "analysis/previews/current-god-art/skills-4.png"
+  ],
+  "skillsData": "scripts/god-art-skills.json",
+  "galleryGenerator": "scripts/preview-current-god-art.py",
+  "nativePlayBinary": "runtime/tiles01/HoloCrawl.exe",
+  "playBinarySha256": "8F471F33A91328E623651C07CF9B4E6AAFF43E85073F1FE06F7AAD49064FBD15",
+  "botWinrateWorkDeferred": true,
+  "next": "Wait for user feedback on Lamy tier1 actual drink GIF; tiers3/5 mechanics applied, art review pending",
+  "visualVersion": "god-vfx01",
+  "visualValidation": "analysis/native/god-vfx01/validation.json",
+  "visualRevision": "lamy-caster01",
+  "nativeVfxGallery": "analysis/previews/god-vfx-ingame/index.html",
+  "suiseiVisualReview": "analysis/previews/suisei-vfx04/index.html",
+  "suiseiVisualValidation": "analysis/native/suisei-vfx04/gallery-validation.json",
+  "suiseiVisualFeedback": "User accepted all Suisei tiers including VFX04 tier5 on 2026-10-20",
+  "currentVisualReviewGod": "lamy",
+  "mikoVisualReview": "analysis/previews/miko-vfx02/index.html",
+  "mikoVisualValidation": "analysis/native/miko-vfx02/gallery-validation.json",
+  "mikoVisualFeedback": "User accepted Miko VFX02 tier3 flames and tier5 domain on 2026-10-20",
+  "akiVisualReview": "analysis/previews/aki-vfx05/index.html",
+  "akiVisualValidation": "analysis/native/aki-vfx05/gallery-validation.json",
+  "akiVisualFeedback": "User accepted Aki VFX05 bloom below actors and prior thorn flight",
+  "fubukiVisualReview": "analysis/previews/fubuki-vfx05/index.html",
+  "fubukiVisualValidation": "analysis/native/fubuki-vfx05/gallery-validation.json",
+  "fubukiVisualFeedback": "User accepted Fubuki VFX05 including damaged-enemy foxfire on 2026-10-21",
+  "ayameVisualReview": "analysis/previews/ayame-vfx02/index.html",
+  "ayameVisualValidation": "analysis/native/ayame-vfx02/gallery-validation.json",
+  "ayameVisualFeedback": "User accepted Ayame VFX02 tier1/3/5 on 2026-10-21",
+  "chocoVisualReview": "analysis/previews/choco-vfx02/index.html",
+  "chocoVisualValidation": "analysis/native/choco-vfx03/checkpoint-manifest.json",
+  "chocoVisualFeedback": "Tiers 1, 3 and 5 approved.",
+  "integratedVfxReview": "analysis/previews/all-gods-vfx-draft04/index.html",
+  "integratedVfxValidation": "analysis/native/night-vfx04/gallery-validation.json",
+  "vfxDraftHandoff": {
+    "revision": "night-vfx04",
+    "approvedGods": [
+      "suisei",
+      "miko",
+      "aki",
+      "fubuki",
+      "ayame",
+      "choco",
+      "korone",
+      "okayu",
+      "pekora",
+      "noel",
+      "watame",
+      "towa"
+    ],
+    "cornerRevision": "choco",
+    "draftGods": [
+      "lamy",
+      "polka",
+      "koyori",
+      "lui",
+      "raden",
+      "hajime",
+      "su",
+      "vivi",
+      "sopia",
+      "mela"
+    ],
+    "abilityTiers": 66,
+    "nativeScreenshots": 370,
+    "review": "analysis/previews/all-gods-vfx-draft04/index.html",
+    "next": "Review Lamy tier1 drink, then passive chill and spell burst visuals",
+    "numericChanges": true,
+    "archive": "exports/HOLOCRAWL_COMPANY_2026-10-21_VFX_DRAFT.zip",
+    "currentGod": "lamy",
+    "reviewMode": "current-character-only",
+    "tierApprovals": {
+      "choco": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "choco-vfx02",
+        "feedback": "좋다 초코센은 이걸로하고 다음 코로네로가자"
+      },
+      "korone": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "korone-vfx09",
+        "feedback": "완벽하다 이제 그다음"
+      },
+      "okayu": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "okayu-vfx05",
+        "feedback": "오 이게낫네 ㅋㅋ 오카유는 이걸로하고 다음 페코라로가자",
+        "combatRevision": "okayu-balance03"
+      },
+      "pekora": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "sharedExplosionApproved": true,
+        "feedback": "ㅇㅋ 좋다 페코라는 이걸로하고 다음 노엘로가자",
+        "previewRevision": "pekora-vfx02",
+        "combatRevision": "pekora-balance01"
+      },
+      "noel": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "noel-vfx05",
+        "combatRevision": "noel-balance01",
+        "feedback": "오 좋다ㅋㅋ 노엘은 이걸로하고 다음 와타메로가자",
+        "tier3Preview": "noel-supply-sequence01",
+        "tier1Revision": "noel-vfx04"
+      },
+      "watame": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "watame-vfx03",
+        "feedback": "오 좋다ㅋㅋ 와타메는 이걸로하고 다음 토와로가자",
+        "tier1Revision": "watame-vfx02"
+      },
+      "towa": {
+        "approved": [
+          1,
+          3,
+          5
+        ],
+        "pending": [],
+        "revision": "towa-vfx03",
+        "feedback": "ㅇㅋ 좋다ㅋㅋ 토와는 이걸로하고 다음 라미로가자",
+        "pendingRevision": null,
+        "tier3Revision": "towa-support05",
+        "tier3DiagonalPreview": "towa-diagonal01",
+        "tier3Feedback": "ㅇㅋ 잘보이네ㅋㅋ 토와 3성은 이걸로하고 5성으로가자",
+        "tier5Revision": "towa-crossfire02"
+      },
+      "lamy": {
+        "approved": [],
+        "pending": [
+          1,
+          3,
+          5
+        ],
+        "combatRevision": "lamy-caster01",
+        "pendingRevision": "lamy-caster01"
+      }
+    },
+    "reviewDisplayRequirements": [
+      "current character only",
+      "selected skill effects always visible",
+      "minimum Invocations distinct from piety unlock",
+      "cost and Invocations scaling verified from implementation"
+    ],
+    "buildRoleDirection": {
+      "casterFocused": [
+        "sopia",
+        "koyori",
+        "lamy",
+        "vivi"
+      ],
+      "keepSummoner": [
+        "aki"
+      ],
+      "status": "Accepted design direction; mechanics not yet changed",
+      "intent": "Support ordinary spellcasting through each god system, not merely increase invocation damage",
+      "implemented": [
+        "lamy"
+      ]
+    },
+    "combatRevision": "noel-balance01",
+    "towaPalette": {
+      "primary": "bright magenta",
+      "secondary": "light lavender",
+      "accent": "lime green",
+      "feedback": "토와는 앞으로 저런색 위주로",
+      "appliesTo": "Towa future art revisions; high contrast on dark dungeon floors"
+    },
+    "lamyHudRevision": "lamy-hud01"
+  },
+  "currentVisualReviewTier": 1,
+  "visualReviewMode": "current-character-only",
+  "koroneVisualFeedback": "Tiers 1,3,5 approved; final tier5 split-layer revision korone-vfx09.",
+  "koroneVisualValidation": "analysis/native/korone-vfx09/checkpoint-manifest.json",
+  "buildRoleDirection": {
+    "casterFocused": [
+      "sopia",
+      "koyori",
+      "lamy",
+      "vivi"
+    ],
+    "keepSummoner": [
+      "aki"
+    ],
+    "status": "Lamy caster mechanics implemented; Sophia/Koyori/Vivi remain accepted directions",
+    "intent": "Support ordinary spellcasting through each god system, not merely increase invocation damage",
+    "implemented": [
+      "lamy"
+    ]
+  },
+  "okayuVisualFeedback": "All tiers approved. Tier1 onigiri12x11; tier3 waking-hit bonus; tier5 compact24→18px dream vortex (okayu-vfx05).",
+  "okayuVisualValidation": "analysis/native/okayu-vfx05/checkpoint-manifest.json",
+  "combatRevision": "lamy-caster01",
+  "okayuCombatFeedback": "3* waking hit implemented: first ordinary direct positive hit on own nap sleep +30%,minimum1,cap8+I/3. No divine/5* double stack. Save format unchanged.",
+  "okayuCombatValidation": "analysis/native/okayu-balance03/checkpoint-manifest.json",
+  "pekoraVisualFeedback": "All tiers approved. pekora-vfx02 actual blast previews; pekora-balance01 combat tuning retained.",
+  "pekoraCombatFeedback": "Plant5aut, immediate130%,delayed150%,chain max multiplier once; saved in existing hazard.extra,legacy delayed supported.",
+  "pekoraCombatValidation": "analysis/native/pekora-balance01/checkpoint-manifest.json",
+  "pekoraPreviewRevision": "pekora-vfx02",
+  "noelVisualFeedback": "All tiers approved. Tier1 shield12/14px; tier3 actual delivery GIF; tier5 persistent silver wings/crown (noel-vfx05).",
+  "noelCombatValidation": "analysis/native/noel-vfx02/checkpoint-manifest.json",
+  "noelVisualValidation": "analysis/native/noel-vfx05/checkpoint-manifest.json",
+  "noelTier3Preview": "analysis/previews/noel-supply-sequence01/tier3.gif",
+  "watameVisualFeedback": "All tiers approved. Tier1 wool12px; tier3 barrier; tier5 persistent gold music notes/wool cushion (watame-vfx03).",
+  "watameVisualValidation": "analysis/native/watame-vfx03/checkpoint-manifest.json",
+  "towaVisualFeedback": "All tiers approved; tier5 winged bolt crossfire02. Now reviewing Lamy caster direction.",
+  "towaVisualValidation": "analysis/native/towa-crossfire02/checkpoint-manifest.json",
+  "towaPalette": {
+    "primary": "bright magenta",
+    "secondary": "light lavender",
+    "accent": "lime green",
+    "feedback": "토와는 앞으로 저런색 위주로",
+    "appliesTo": "Towa future art revisions; high contrast on dark dungeon floors"
+  },
+  "towaTier3Approved": true,
+  "lamyReviewStatus": "Caster mechanics implemented and verified. Reviewing tier1 drink HUD/VFX. Tier3 passive and tier5 spell burst mechanics applied; art review pending.",
+  "lamyHudRevision": "lamy-hud01",
+  "lamyCombatValidation": "analysis/native/lamy-caster01/checkpoint-manifest.json"
+}

@@ -1,0 +1,83 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -281,6 +281,28 @@
+     {
+         using namespace holo_batch;
+         const char *shots=getenv("HOLOCRAWL_KOYORI_CASTER_REVIEW");
++        // Native tier3 clips: a saved reagent mark reacts to a real Magic Dart.
++        if(shots)for(int index=0;index<3;++index){
++            auto *m=fixture("koyori",90);const auto origin=you.pos();
++            require(m->move_to_pos(origin+coord_def(2,0)),"Koyori reaction target placement");
++            auto mg=mgen_data::hostile_at(MONS_ETTIN,false,m->pos()+coord_def(0,1));mg.flags|=MG_FORCE_PLACE;
++            auto *near=create_monster(mg,false);require(near,"Koyori reaction neighbour");
++            near->hit_points=near->max_hit_points=10000;near->speed=near->speed_increment=0;
++            s.resource=index;const int old[]={1,2,3};s.targets[m->mid].kind=old[index];s.targets[m->mid].expires=you.elapsed_time+60;
++            set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++            require(add_spell_to_memory(SPELL_MAGIC_DART),"Koyori reaction learn dart");
++            const std::string stem=std::string(shots)+"/koyori3-"+std::to_string(index);
++            holo_visual::capture(stem+"-before.png");const int n=s.totals.procs,hp=near->hit_points;
++            // Native dart may deal zero through AC; show the first actual damaging hit.
++            for(int attempt=0;attempt<12 && s.totals.procs==n;++attempt){
++                holo_visual::capture(stem+"-before.png");
++                you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++                require(cast_a_spell(false,SPELL_MAGIC_DART),"Koyori reaction true cast");
++            }
++            require(s.totals.procs==n+1 && s.targets[m->mid].kind==0,"Koyori tier3 reaction consumes mark: procs="+std::to_string(s.totals.procs)+" before="+std::to_string(n)+" kind="+std::to_string(s.targets[m->mid].kind)+" cycle="+std::to_string(s.resource)+" mp="+std::to_string(you.magic_points));
++            require(index==0?near->hit_points<hp:index==1?near->hit_points==hp:holo_koyori::movement(*near,100)==135,"Koyori tier3 reaction footprint");
++            holo_visual::capture(stem+"-after.png");
++        }
+         const int kinds[]={2,3,1};
+         for(int index=0;index<3;++index){
+             auto *m=fixture("koyori",60);const auto origin=you.pos();
+--- before/holo-koyori.cc
++++ after/holo-koyori.cc
+@@ -86,6 +86,7 @@
+             hurt(*v,raw,pair==3?BEAM_FIRE:BEAM_MISSILE,pair==4,true);
+         }
+     }
++    holo_visual::koyori_reaction(centre,pair);
+ }
+ }
+ void tick(int at){
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -657,6 +657,29 @@
+     }
+     clear();tiles.invalidate_dungeon_overlays();update_screen();
+     if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Lamy burst visuals changed gameplay/RNG");
++#endif
++}
++
++void koyori_reaction(const coord_def &p,int pair) {
++#ifdef USE_TILE_LOCAL
++    if(holo_benchmark_active() || !you.see_cell(p))return;
++    const char *dir=crawl_state.test?getenv("HOLOCRAWL_KOYORI_REACTION_REVIEW"):nullptr;
++    if(crawl_state.test && !dir)return;
++    const auto before=crawl_state.test?fox_signature():std::string();
++    static int sequence=0;const int seq=++sequence;
++    flashes.clear();const int radius=pair==5?0:1;
++    for(int x=-radius;x<=radius;++x)for(int y=-radius;y<=radius;++y){
++        const auto cell=p+coord_def(x,y);
++        if(in_bounds(cell) && you.see_cell(cell) && holo_batch::line(p,cell))flashes.push_back(cell);
++    }
++    flash_kind=pair==3?effect::fire:pair==5?effect::frost:effect::slime;
++    for(int f=0;f<2;++f){
++        flash_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++        if(dir)capture(std::string(dir)+"/koyori-reaction-pair"+std::to_string(pair)+"-"+std::to_string(seq)+"-frame"+std::to_string(f)+".png",false);
++        else scaled_delay(100);
++    }
++    clear();const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++    if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Koyori reaction visual changed gameplay/RNG");
+ #endif
+ }
+ 
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -24,6 +24,7 @@
+ bool lamy_banquet_cell(const coord_def &pos);
+ void lamy_banquet_burst(const coord_def &pos);
+ void lamy_chill_burst(const coord_def &pos);
++void koyori_reaction(const coord_def &pos,int pair);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ void towa_support(const coord_def &from,const coord_def &to);
+ effect invocation_at(const coord_def &pos);

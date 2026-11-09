@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "revision": "koyori-five-review01",
+  "combatNumbersChanged": false,
+  "otherSourceAndPreviousTierArtPreserved": true,
+  "approvedTiers": [
+    1,
+    3
+  ],
+  "tier5Approved": false,
+  "binarySha256": "c807d31e69f4e3e4937e10075217e2f561df1be21bf917ef7cbf2c11ef3578da",
+  "validation": {
+    "gods": 22,
+    "binarySha256": "C807D31E69F4E3E4937E10075217E2F561DF1BE21BF917EF7CBF2C11EF3578DA",
+    "freshProcessRestore": true,
+    "chocoControls": false,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "rawScreenshots": 363,
+    "status": "passed"
+  },
+  "nativeFourCasts": {
+    "status": "passed",
+    "activationMP": 6,
+    "activationPiety": 10,
+    "activationAut": 5,
+    "nativeDamagingSpells": 4,
+    "chargesConsumed": 4,
+    "cooldownRetained": true
+  }
+}

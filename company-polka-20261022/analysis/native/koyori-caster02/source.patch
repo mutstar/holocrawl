@@ -1,0 +1,709 @@
+--- before/holo-batch-experiments.cc
++++ after/holo-batch-experiments.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holo-campaign.h"
+ #include "holo-batch-internal.h"
+ #include <algorithm>
+@@ -239,6 +240,7 @@
+ }
+ void experiment_tick(int at)
+ {
++    if(holo_koyori::enabled()){holo_koyori::tick(at);return;}
+     if(is(god_id::polka) && s.secondary && at>=s.three_end) { s.secondary=0;s.performance_hits.clear();++s.totals.performances_expired; }
+     if(is(god_id::koyori)) for(auto &p:s.targets) {
+         auto &t=p.second;monster *mon=monster_by_mid(p.first);
+@@ -269,15 +271,16 @@
+     if(is(god_id::mela) && passive() && (!holo_campaign::active() || s.offence) && ctx.damaged && target && target->alive() && s.resource>0 && !s.defence) {
+         --s.resource;hurt(*target,roll_dice(1,3+s.inv/6),BEAM_FIRE,false);
+     }
+-    if(is(god_id::koyori) && ctx.primary && ctx.kind==attack_kind::spell && target && target->alive())
++    if(!holo_koyori::enabled() && is(god_id::koyori) && ctx.primary && ctx.kind==attack_kind::spell && target && target->alive())
+         experiment_spell(*target,ctx.element);
+-    if(is(god_id::koyori) && ctx.primary && ctx.kind!=attack_kind::spell
++    if(!holo_koyori::enabled() && is(god_id::koyori) && ctx.primary && ctx.kind!=attack_kind::spell
+         && s.offence && s.one_end>now) {
+         const int type=s.offence;s.offence=0;if(target && target->alive()) reagent(*target,type,now);
+     }
+ }
+ void experiment_spell(monster &mon,beam_type flavour)
+ {
++    if(holo_koyori::enabled())return;
+     if(!is(god_id::koyori) || !holo_campaign::reactions_enabled() || you.piety<75 || you.piety<2 || (flavour!=BEAM_FIRE && flavour!=BEAM_COLD)) return;
+     const int old=s.targets[mon.mid].expires>you.elapsed_time?s.targets[mon.mid].kind:0;
+     const int type=flavour==BEAM_FIRE?2:3;
+@@ -295,6 +298,7 @@
+ }
+ int experiment_energy(const monster &mon,energy_use_type kind,int base)
+ {
++    if(holo_koyori::enabled())return (kind==EUT_MOVE || kind==EUT_SWIM)?holo_koyori::movement(mon,base):base;
+     if(!is(god_id::koyori) || mon.airborne() || mon.is_stationary() || grd(mon.pos())!=DNGN_FLOOR
+         || (kind!=EUT_MOVE && kind!=EUT_SWIM) || mon.has_ench(ENCH_SLOW)) return base;
+     for(const auto &h:s.hazards) if(h.kind==4 && h.end>you.elapsed_time
+@@ -302,6 +306,7 @@
+     return base;
+ }
+ int monster_ac_penalty(const monster &mon) {
++    if(holo_koyori::enabled())return 0;
+     if(!is(god_id::koyori))return 0;
+     const auto found=s.targets.find(mon.mid);
+     return found!=s.targets.end() && found->second.weak_until>you.elapsed_time ? 6:0;
+@@ -320,12 +325,13 @@
+         && grid_distance(you.pos(),target.pos())<=2 && seen(target.pos()) ? div_rand_round(damage,2):damage;
+ }
+ int movement_cost(int base) {
++    if(holo_koyori::enabled())return base;
+     if(!is(god_id::koyori) || you.airborne() || you.duration[DUR_SLOW] || grd(you.pos())!=DNGN_FLOOR) return base;
+     for(const auto &h:s.hazards) if(h.kind==4 && h.end>you.elapsed_time
+         && grid_distance(h.pos,you.pos())<=h.extra && line(h.pos,you.pos())) return (base*150+99)/100;
+     return base;
+ }
+-bool player_rooted() { return is(god_id::koyori) && s.defence>you.elapsed_time; }
++bool player_rooted() { if(holo_koyori::enabled())return false;return is(god_id::koyori) && s.defence>you.elapsed_time; }
+ void validate_experiments()
+ {
+     const auto require=[](bool ok,const char *message) { if(!ok) throw std::runtime_error(std::string("Reagent native fixture: ")+message); };
+@@ -369,6 +375,7 @@
+ namespace holo_batch {
+ int manual_experiment(monster *target) {
+  if(!manual())return -1;
++ if(holo_koyori::enabled())return holo_koyori::action();
+  const int now=you.elapsed_time;
+  if(is(god_id::polka)) {
+   if(manual_tier==-1){s.secondary=0;s.performance_hits.clear();return 0;}
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1,5 +1,6 @@
+ #include "AppHdr.h"
+ #include "holo-lamy.h"
++#include "holo-koyori.h"
+ #include "cloud.h"
+ #include "losglobal.h"
+ #include "evoke.h"
+@@ -34,6 +35,7 @@
+ #include "monster.h"
+ #include "mgen-data.h"
+ #include "mon-place.h"
++#include "mon-project.h"
+ #include "options.h"
+ #include "player.h"
+ #include "random.h"
+@@ -130,6 +132,12 @@
+ int run_tests() {
+     const char *path=getenv("HOLOCRAWL_CAMPAIGN_OUTPUT");require(path,"output directory required");const std::string dir(path);
+     crawl_state.show_more_prompt=false;
++    if(getenv("HOLOCRAWL_KOYORI_RELOAD")) {
++        holo_reset_validation_fixture();reload_disk(dir+"/koyori-save");step(10);
++        std::ifstream f(dir+"/koyori-expected.txt");std::string expected((std::istreambuf_iterator<char>(f)),{});
++        require(signature()==expected,"Koyori fresh-process state/RNG/poison/critical restore");
++        std::ofstream(dir+"/koyori-reload.json")<<"{\"status\":\"passed\"}\n";close_save();return 0;
++    }
+     if(getenv("HOLOCRAWL_LAMY_TOOL_RELOAD")) {
+         holo_reset_validation_fixture();reload_disk(dir+"/lamy-cloud-save");
+         auto *m=monster_by_mid(you.props["lamy_test_mid"].get_int());
+@@ -268,6 +276,94 @@
+         save_disk(dir+"/lamy-cloud-save");actor_apply_cloud(m);
+         {std::ofstream expected(dir+"/lamy-cloud-expected.txt");expected<<signature();}close_save();Options.save_dir=original_save_dir;
+         std::ofstream(dir+"/lamy-tools.json")<<"{\"status\":\"passed\",\"nativeFlameWand\":true,\"nativeLamp\":true,\"wandChargesPaid\":true,\"directCloudDedup\":true,\"cloudCrossCellDedup\":true,\"nativeCloudSpread\":true,\"separateRecastStacks\":true,\"threeStackBurst\":true,\"immuneZeroExcluded\":true,\"enemyDivineSoberExcluded\":true,\"banquetCloudOncePerUse\":true,\"splashLaterCloudDedup\":true,\"nativeCloudSavePrepared\":true}\n";
++    }
++    // Koyori caster01: true normal casting, per-cast identity and saved state.
++    {
++        using namespace holo_batch;
++        const char *shots=getenv("HOLOCRAWL_KOYORI_CASTER_REVIEW");
++        const int kinds[]={2,3,1};
++        for(int index=0;index<3;++index){
++            auto *m=fixture("koyori",60);const auto origin=you.pos();
++            require(m->move_to_pos(origin+coord_def(2,0)),"Koyori visible spell target");
++            s.resource=index;set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);
++            you.duration[DUR_BRILLIANCE]=100;require(add_spell_to_memory(SPELL_MAGIC_DART),"Koyori learn native dart");
++            const std::string stem=shots?std::string(shots)+"/koyori1-"+std::to_string(index):"";
++            if(shots)holo_visual::capture(stem+"-before.png");
++            const int mp=you.magic_points,faith=you.piety;
++            you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++            require(cast_a_spell(false,SPELL_MAGIC_DART),"Koyori normal cast command");
++            require(you.magic_points==mp-1 && you.piety==faith,"Koyori passive charges extra MP/piety");
++            require(s.resource==(index+1)%3 && s.targets[m->mid].kind==kinds[index],"Koyori cycle/mark from actual spell");
++            require(s.targets[m->mid].expires==you.elapsed_time+60,"Koyori six-turn mark");
++            const auto stable=signature();if(shots)holo_visual::capture(stem+"-after.png");
++            require(stable==signature(),"Koyori rendering changed state/RNG");
++            if(index==1)require(holo_koyori::movement(*m,100)==115,"Koyori cold move-only 15 percent");
++            if(index==2){
++                const int hp=m->hit_points;step(10);require(hp-m->hit_points==3 && s.targets[m->mid].stacks==1,"Koyori poison first tick");
++                step(10);require(hp-m->hit_points==6 && s.targets[m->mid].stacks==0,"Koyori poison second tick");
++                step(10);require(hp-m->hit_points==6,"Koyori poison extra tick");
++            }else step(10);
++            if(shots)holo_visual::capture(stem+"-settled.png");
++            roundtrip();require(s.resource==(index+1)%3,"Koyori cycle save roundtrip");
++        }
++        auto *m=fixture("koyori",74);const int base=spell_range(SPELL_FLAME_TONGUE,40,true);
++        you.piety=75;require(spell_range(SPELL_FLAME_TONGUE,40,true)==std::min(int(you.current_vision),base+1),"Koyori range +1 at75");
++        require(spell_range(SPELL_FLAME_TONGUE,40,false)==base,"Koyori bonus-disabled range");
++        require(!holo_koyori::range_bonus(SPELL_BLINK,5) && !holo_koyori::range_bonus(SPELL_FREEZE,1)
++            && !holo_koyori::range_bonus(SPELL_OZOCUBUS_REFRIGERATION,7),"Koyori excluded range types");
++        require(holo_koyori::reaction_damage(16,3,false)==13 && holo_koyori::reaction_damage(27,5,false)==22
++            && holo_koyori::reaction_damage(10,4,false)==8 && holo_koyori::reaction_damage(27,5,true)==34
++            && holo_koyori::reaction_damage(16,3,true)==18,"Koyori 85-percent/critical single rounding");
++        m=fixture("koyori");
++        auto mg=mgen_data::hostile_at(MONS_ETTIN,false,you.pos()+coord_def(1,1));mg.flags|=MG_FORCE_PLACE;
++        auto *second=create_monster(mg,false);require(second,"Koyori AoE target");second->hit_points=second->max_hit_points=10000;second->speed=0;
++        const auto aim=m->pos();
++        {holo_koyori::spell_scope cast(SPELL_FIREBALL,true,aim);m->hurt(&you,1,BEAM_MAGIC);m->hurt(&you,1,BEAM_MAGIC);second->hurt(&you,1,BEAM_MAGIC);}
++        require(s.resource==1 && s.targets[m->mid].kind==2 && s.targets[second->mid].kind==2,"Koyori AoE uses same reagent and one cycle");
++        const int procs=s.totals.procs;
++        {holo_koyori::spell_scope cast(SPELL_FIREBALL,true,aim);m->hurt(&you,1,BEAM_MAGIC);second->hurt(&you,1,BEAM_MAGIC);}
++        require(s.totals.procs==procs+1 && s.targets[m->mid].kind==0 && s.targets[second->mid].kind==3,"Koyori one aimed reaction centre per cast");
++        const int hp=you.hp;
++        s.resource=0;s.targets[m->mid].kind=1;s.targets[m->mid].expires=you.elapsed_time+60;
++        {holo_koyori::spell_scope cast(SPELL_MAGIC_DART,true,aim);m->hurt(&you,1,BEAM_MAGIC);}
++        require(you.hp==hp,"Koyori reaction hurts self");
++        m=fixture("koyori",60);set_skill_level(SK_ICE_MAGIC,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++        require(your_spells(SPELL_OZOCUBUS_REFRIGERATION,40,true)==spret::success && s.resource==1 && s.targets[m->mid].kind==2,"Koyori true native area spell");
++        m=fixture("koyori",60);require(m->move_to_pos(you.pos()+coord_def(4,0)),"Koyori native orb target");
++        set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++        you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++        require(your_spells(SPELL_IOOD,80,true)==spret::success,"Koyori delayed orb native cast");
++        for(int n=0;n<30 && s.resource==0;++n)step(10);
++        require(s.resource==1 && s.targets[m->mid].kind==2,"Koyori direct delayed orb applies exactly one reagent");
++        m=fixture("koyori");
++        auto immune_mg=mgen_data::hostile_at(MONS_IRON_GOLEM,false,you.pos()+coord_def(2,1));immune_mg.flags|=MG_FORCE_PLACE;
++        auto *immune=create_monster(immune_mg,false);require(immune,"Koyori poison immune fixture");immune->hit_points=immune->max_hit_points=10000;immune->speed=0;s.resource=2;
++        {holo_koyori::spell_scope cast(SPELL_MAGIC_DART,true,immune->pos());immune->hurt(&you,1,BEAM_MAGIC);}
++        require(s.targets[immune->mid].kind==1 && immune->res_poison()>=3,"Koyori immune target retains reagent mark");
++        const int immune_hp=immune->hit_points;step(20);require(immune->hit_points==immune_hp,"Koyori poison bypassed immunity");
++        auto *ally=fixture("koyori");ally->attitude=ATT_FRIENDLY;
++        auto hostile_mg=mgen_data::hostile_at(MONS_ETTIN,false,you.pos()+coord_def(1,1));hostile_mg.flags|=MG_FORCE_PLACE;
++        auto *hostile=create_monster(hostile_mg,false);require(hostile,"Koyori friendly splash fixture");hostile->hit_points=hostile->max_hit_points=10000;
++        s.targets[hostile->mid].kind=1;s.targets[hostile->mid].expires=you.elapsed_time+60;const int ally_hp=ally->hit_points;
++        {holo_koyori::spell_scope cast(SPELL_MAGIC_DART,true,hostile->pos());hostile->hurt(&you,1,BEAM_MAGIC);}
++        require(ally->hit_points==ally_hp,"Koyori combustion hurts ally");
++        m=fixture("koyori");const int seq=s.resource;
++        {holo_koyori::spell_scope cast(SPELL_MAGIC_DART,true,m->pos());m->hurt(&you,0,BEAM_MAGIC);m->hurt(&you,1,BEAM_POISON,KILLED_BY_POISON);m->hurt(&you,1,BEAM_FIRE,KILLED_BY_CLOUD);m->hurt(m,1,BEAM_MAGIC);{damage_scope divine(false);m->hurt(&you,1,BEAM_MAGIC);}}
++        {holo_koyori::spell_scope cast(SPELL_MAGIC_DART,false,m->pos());m->hurt(&you,1,BEAM_MAGIC);}
++        require(s.resource==seq && s.targets.empty(),"Koyori zero/tool/pet/poison/cloud/divine exclusions");
++        m=fixture("koyori");const int mp=you.magic_points,faith=you.piety,now=you.elapsed_time;
++        require(invoke(5)==5 && you.magic_points==mp-6 && you.piety==faith-10 && s.offence==4,"Koyori actual critical cost/charges");
++        step(5);require(s.five_end-you.elapsed_time==80 && s.five_ready==now+200,"Koyori critical duration/cooldown");
++        const int critical_procs=s.totals.procs;
++        for(int i=0;i<4;++i){holo_koyori::spell_scope cast(SPELL_MAGIC_DART,true,m->pos());m->hurt(&you,1,BEAM_MAGIC);}
++        require(s.offence==0 && s.five_end==0 && s.totals.procs==critical_procs+4 && invoke(5)==0,"Koyori four critical casts and cooldown");
++        s.targets[m->mid].root=you.elapsed_time+20;s.targets[m->mid].slowed_until=you.elapsed_time+30;s.targets[m->mid].weak_until=you.elapsed_time+40;
++        require(holo_koyori::movement(*m,100)==150,"Koyori strongest slow only");
++        m=fixture("koyori");s.resource=2;auto &t=s.targets[m->mid];t.kind=1;t.stacks=2;t.next=you.elapsed_time+10;t.expires=you.elapsed_time+60;
++        require(invoke(5)==5,"Koyori saved critical activation");step(5);roundtrip();
++        const auto old_save_dir=Options.save_dir;save_disk(dir+"/koyori-save");step(10);
++        std::ofstream(dir+"/koyori-expected.txt")<<signature();close_save();Options.save_dir=old_save_dir;
++        std::ofstream(dir+"/koyori-caster.json")<<"{\"status\":\"passed\",\"nativeNormalCasting\":true,\"onlyNativeSpellMP\":true,\"threeReagents\":true,\"rangePlusOne\":true,\"reactionScale85\":true,\"oneCentrePerCast\":true,\"criticalCostAndFourCharges\":true,\"poisonTwoTicks\":true,\"saved\":true}\n";
+     }
+     // Lamy caster redesign: actual damage attribution, costs, saves and HUD.
+     {
+@@ -841,7 +937,7 @@
+             if(option==0){holo_batch::s.targets[m->mid].paint=3;holo_batch::s.targets[m->mid].paint_end=you.elapsed_time+100;}
+             cast("raden",3,m,m->pos(),option);
+         }
+-        for(int type=1;type<=3;++type){auto *m=fixture("koyori");cast("koyori",1,nullptr,you.pos(),type);cast("koyori",1,m,m->pos(),10+type);cast("koyori",5,nullptr,you.pos(),type+2);}
++        fixture("koyori");cast("koyori",5,nullptr,you.pos());
+         fixture("sopia");const auto origin=you.pos();cast("sopia",5,nullptr,origin+coord_def(2,0));step(70);cast("sopia",6,nullptr,origin+coord_def(2,0));
+         fixture("pekora");const auto bomb=you.pos()+coord_def(3,0);cast("pekora",1,nullptr,bomb);step(15);cast("pekora",3,nullptr,bomb,1);step(40);
+         fixture("pekora");const auto centre=you.pos();holo_batch::manual_positions={centre+coord_def(3,-1),centre+coord_def(3,0),centre+coord_def(3,1)};cast("pekora",5,nullptr,centre+coord_def(3,0));step(70);
+@@ -895,10 +991,8 @@
+         } else if(g=="polka"){
+             cast(g,1,m,aim,1);cast(g,3,m,aim);holo_batch::s.resource=3;cast(g,5,nullptr,you.pos(),1);cast_count+=3;
+         } else if(g=="koyori"){
+-            cast(g,1,nullptr,origin,1);cast(g,1,m,aim,11);require(invoke(3)==0 && !reactions_enabled(),"free catalyst toggle");
+-            require(invoke(3)==0 && reactions_enabled(),"restore catalyst toggle");
+-            if(const char *shots=getenv("HOLOCRAWL_NIGHT_REVIEW"))holo_visual::capture(std::string(shots)+"/koyori-catalyst3.png");
+-            cast(g,5,nullptr,origin,3);cast_count+=3;
++            require(invoke(1)==0 && invoke(3)==0,"Koyori passives are not invocation buttons");
++            cast(g,5,nullptr,origin);++cast_count;
+         } else if(g=="lui"){
+             cast(g,1,nullptr,origin);cast(g,3,m,aim);cast(g,5,nullptr,origin);cast_count+=3;
+         } else if(g=="raden"){
+@@ -1012,7 +1106,7 @@
+     roundtrip();fprintf(stderr,"Campaign debt restored: HP %d/%d\n",you.hp,you.hp_max);step(50);require(you.props["holocrawl_campaign"]["debt"].get_int()==0 && you.props["holocrawl_campaign"]["debt_paid"].get_int()==17,"integer debt total");
+     fprintf(stderr,"Campaign stairs fixtures\n");
+     fixture("polka");holo_batch::s.resource=5;holo_batch::s.five_ready=999;leave_level();require(holo_batch::s.resource==5 && holo_batch::s.five_ready==999,"applause/cooldown lost at stairs");
+-    fixture("koyori");holo_batch::s.stock[0]=3;holo_batch::s.five_end=100;leave_level();require(holo_batch::s.stock[0]==3 && holo_batch::s.five_end==0 && holo_batch::s.five_ready>=100,"stock/critical end at stairs");
++    fixture("koyori");holo_batch::s.resource=2;holo_batch::s.five_end=100;holo_batch::s.five_ready=200;leave_level();require(holo_batch::s.resource==2 && holo_batch::s.five_end==0 && holo_batch::s.five_ready==200,"Koyori sequence/cooldown at stairs");
+     fixture("noel");cast("noel",5,nullptr,you.pos());const int ready=you.props["holocrawl_campaign"]["noel_ready"].get_int();
+     grd(you.pos())=DNGN_ALTAR_OKAWARU;holo_worship::renounce(false);holo_worship::join("noel",false);require(you.props["holocrawl_campaign"]["noel_ready"].get_int()==ready,"rejoining reset cooldown");
+     // Save native monsters and every ability field, then compare a fresh
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holo-lamy.h"
+ #include "holo-visual.h"
+ #include "holo-wrath.h"
+@@ -126,6 +127,7 @@
+ void refresh() {
+     if(!active())return;
+     holo_batch::s.inv=you.skill(SK_INVOCATIONS,1);
++    holo_koyori::initialise();
+     // The first unlock grants Okayu's initial fullness once per character.
+     if(holo_worship::current()=="okayu" && you.piety>=30) {
+         if(!you.props.exists("holo_initial_resources"))you.props["holo_initial_resources"].new_table();
+@@ -165,7 +167,7 @@
+     if(g=="towa")return {{"Covering fire zone (MP4, piety4)",3,0,2,5},{"Crossfire (MP6, piety12)",5,0,0,0}};
+     if(g=="lamy")return {{"Drink (MP2, piety1)",1,0,0,0},{"Snow banquet (MP6, piety12, intox40)",5,0,0,0}};
+     if(g=="polka")return {{"Performance: strong target (MP1)",1,1,1,6},{"Performance: tightrope (MP1)",1,2,1,6},{"Performance: juggling (MP1)",1,3,1,6},{"Acrobatics (MP3, piety2)",3,0,1,1},{"Acrobatics + 1 applause (MP3, piety2)",3,1,1,1},{"Firework finale (MP6, piety10)",5,0,2,5},{"Curtain call (MP6, piety10)",5,1,0,0},{"Confusion finale (MP6, piety10)",5,2,0,0},{"Abandon performance",-1,0,0,0}};
+-    if(g=="koyori")return {{"Prepare poison (MP3)",1,1,0,0},{"Prepare heat (MP3)",1,2,0,0},{"Prepare cold (MP3)",1,3,0,0},{"Throw poison",1,11,1,5},{"Throw heat",1,12,1,5},{"Throw cold",1,13,1,5},{"Coat poison",1,21,0,0},{"Coat heat",1,22,0,0},{"Coat cold",1,23,0,0},{"Toggle automatic reactions",3,0,0,0},{"Critical combustion (MP5, piety8)",5,3,0,0},{"Critical slime (MP5, piety8)",5,4,0,0},{"Critical thermal shock (MP5, piety8)",5,5,0,0}};
++    if(g=="koyori")return {{"Critical experiment (MP6, piety10)",5,0,0,0}};
+     if(g=="lui")return {{"Summon raven (MP3)",1,0,0,0},{"Hunting command (MP3, piety3)",3,0,1,5},{"Raven host (MP7, piety14)",5,0,0,0}};
+     if(g=="raden")return {{"Exhibit painting (MP1)",1,0,0,0},{"Exhibit sculpture (MP1)",1,1,0,0},{"Exhibit craft (MP1)",1,2,0,0},{"Painting burst (MP3, piety3)",3,0,1,5},{"Sculpture wave (MP3, piety3)",3,1,2,3},{"Craft shield (MP3, piety3)",3,2,0,0},{"Special exhibition (MP6, piety12)",5,0,0,0}};
+     if(g=="hajime")return {{"Dive in (MP3, piety3)",3,0,1,3},{"Bancho time (MP6, piety12)",5,0,0,0}};
+@@ -355,6 +357,7 @@
+     if(g=="raden" && c.tier==1 && holo_batch::five())return "exhibition active";
+     if(g=="raden" && c.tier==3 && !holo_batch::five() && c.option!=s.exhibit)return "requires matching exhibit";
+     if(g=="koyori" && c.tier==1 && c.option>=11 && s.stock[c.option%10-1]<=0)return "no reagent stock";
++    if(g=="koyori" && holo_batch::five())return "critical experiment active";
+     if(g=="lamy" && holo_batch::five())return "banquet active";
+     if(g=="lamy" && c.tier==1 && s.resource>=100)return "intoxication is full";
+     if(g=="lamy" && c.tier==5 && s.resource<40)return "need 40 intoxication";
+@@ -371,11 +374,11 @@
+     const auto &s=holo_batch::s;const auto g=holo_worship::current();
+     const int rank=holo_worship::rank();
+     lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks 30 / 75 / 120",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points)));
+-    const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":"Resource";
++    const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
+     lines.push_back("Corner marks: upper-left power; lower-left protection; upper-right wrath; lower-right recovery/resource.");
+     if(g=="sopia")lines.push_back(holo_sopia::status());
+-    if(g=="koyori")lines.push_back(make_stringf("Reagents: poison %d / heat %d / cold %d | reactions %s",s.stock[0],s.stock[1],s.stock[2],reactions_enabled()?"ON":"OFF"));
++    if(g=="koyori")lines.push_back(holo_koyori::status());
+     if(g=="raden")lines.push_back(make_stringf("Exhibit: %s | recovery: %s / %s / %s",s.exhibit==0?"painting":s.exhibit==1?"sculpture":"craft",turns(s.rest[0]).c_str(),turns(s.rest[1]).c_str(),turns(s.rest[2]).c_str()));
+     if(g=="noel" && you.props.exists("holo_noel_supplies")){const auto &t=you.props["holo_noel_supplies"].get_table();lines.push_back(make_stringf("Knightly supplies: %.1f / %d points",t.at("half_points").get_int()/2.0,std::min(200,100+25*t.at("gifts").get_int())));}
+     const auto wrath=holo_wrath::status();if(!wrath.empty())lines.push_back("Wrath: "+wrath);
+@@ -399,7 +402,7 @@
+         "Ranged attacks build pressure. Establish a covering-fire zone and activate crossfire.",
+         "Drink for attack-spell power. Damaging spells/tools and first cloud damage per use build chill; Snow banquet adds frost bursts. Overdrinking reduces EV by3.",
+         "Complete performances to earn applause; spend it on acrobatics and selectable finales.",
+-        "Prepare poison, heat and cold reagents. Throw or coat them and combine elemental reactions.",
++        "Attack spells cycle heat, cold and poison reagents. Learn longer-range catalyst reactions; Critical experiment injects paired reagents.",
+         "Summon ravens, mark a hunting target and call a raven host; bird kills support worship.",
+         "Choose painting, sculpture or craft. Each exhibit has a matching active power and recovery.",
+         "Build rhythm through movement and melee. Dive in; five stars damage adjacent foes on movement.",
+@@ -442,6 +445,7 @@
+         "Listed costs are charged only on a successful invocation; cancellation costs no turn."};
+     lines.push_back(income[it-ids.begin()]);
+     lines.push_back("Strong means monster HD >= your XL. Direct excludes pet kills; ordinary means your normal attack.");
++    if(g=="koyori")lines.push_back("1*: passive direct attack spells cycle Heat/Cold/Poison; no extra MP/piety. Heat1d(4+Inv/6), Cold1d(3+Inv/9) and move+15%/2t, Poison(2+Inv/12)x2 ticks. Marks6t. 3*: eligible ranged attack spells +1 range, LOS cap, no blast-radius change. Different reagents react once/cast: fire2d(5+Inv/4) radius1, thermal3d(6+Inv/4) half AC, slime2d(3+Inv/6) radius1 and move+35%/3t. All reaction damage x0.85 rounded down once. No self/ally splash. 5*: MP6/piety10,0.5t;8t or4 successful attack casts;20t cooldown from activation. Pairs thermal/fire/slime/thermal; reaction x1.5 for thermal(ignore AC), x1.35 otherwise; slime move+50%/4t. No tools/clouds/pets/poison followup/recursion. One reagent application per target and one reaction centre per cast. Existing marks and sequence saved.");
+     if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, damaging spells and tools: one chill/target/use. A cloud field plus all spread cells share that use; first positive damage only, no direct+cloud double stack, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/use and per10aut (a cloud field can burst once total):2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/divine/poison-DoT procs. Tool charges and costs remain normal; cloud ticks do not repeatedly stack. Old untagged clouds are excluded.");
+     if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+     if(g=="noel")lines.push_back("Taboo: voluntary berserk costs 10 piety and ends Knight's skill / Silver commander.");
+@@ -570,7 +574,7 @@
+     if(g=="polka")s.secondary=0;
+     if(g=="hajime" || g=="mela" || g=="suisei")s.resource=0;
+     if(g=="miko" || g=="aki" || g=="ayame" || g=="choco" || g=="towa" || g=="lamy" || g=="raden" || g=="hajime" || g=="su" || g=="vivi" || g=="mela" || g=="koyori"){
+-        if(s.five_end>now)s.five_ready=now+(g=="ayame" || g=="choco" || g=="towa" || g=="koyori"?100:150);
++        if(s.five_end>now && g!="koyori")s.five_ready=now+(g=="ayame" || g=="choco" || g=="towa" || g=="koyori"?100:150);
+         s.five_end=0;
+     }
+     save();
+@@ -605,6 +609,14 @@
+ }
+ void slime_moved(const monster &m,const coord_def &old){
+  if(!active() || holo_worship::current()!="koyori" || old==m.pos() || m.airborne() || m.has_ench(ENCH_SLOW) || !holo_batch::eligible(m))return;
++ if(holo_koyori::enabled()){
++  const auto it=holo_batch::s.targets.find(m.mid);
++  if(it!=holo_batch::s.targets.end() && (it->second.slowed_until>you.elapsed_time || it->second.weak_until>you.elapsed_time)){
++   auto &t=data();if(!t.exists("discoveries"))t["discoveries"].new_table();auto &discoveries=t["discoveries"].get_table();
++   if(!discoveries.exists("4")){discoveries["4"]=true;grant(3);}
++  }
++  return;
++ }
+  for(auto h:holo_batch::s.hazards)if(h.kind==4 && h.end>you.elapsed_time && grid_distance(old,h.pos)<=h.extra && holo_batch::line(old,h.pos)){
+   auto &t=data();if(!t.exists("discoveries"))t["discoveries"].new_table();auto &d=t["discoveries"].get_table();if(!d.exists("4")){d["4"]=true;grant(3);}break;
+  }
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holo-visual.h"
+ #include "holo-worship.h"
+ #include "holo-campaign.h"
+@@ -82,7 +83,7 @@
+     else if(g=="watame")on=you.hp<you.hp_max || s.three_end>now || s.five_end>now;
+     else if(g=="towa" || g=="su" || g=="mela")on=true; // passive readiness, not a hit assertion
+     else if(g=="raden")on=true; // current exhibit readiness
+-    else if(g=="koyori")on=s.stock[0]+s.stock[1]+s.stock[2]>0 || holo_campaign::reactions_enabled();
++    else if(g=="koyori")on=false; // New caster vial is drawn by mark().
+     else if(g=="lui")on=!s.companions.empty();
+     else if(g=="vivi" || g=="polka")on=s.one_end>now || s.five_end>now;
+     return on?night_effect(g,1):effect::none;
+@@ -360,6 +361,8 @@
+         && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return flash_kind;
+     const auto lamy=lamy_mark(p);if(lamy!=effect::none)return lamy;
+     const auto choco=choco_mark(p);if(choco!=effect::none)return choco;
++    const int reagent=holo_koyori::mark(p);
++    if(reagent)return reagent==2?effect::koyoriheat:reagent==3?effect::koyoricold:effect::koyoripoison;
+     const auto ns=night_status(p);if(ns!=effect::none)return ns;
+     if(holo_campaign::active() && holo_worship::current()=="suisei") {
+         const auto *marked=monster_by_mid(holo_batch::s.marked);
+@@ -478,7 +481,7 @@
+         }
+         const bool cooling=g=="noel"?saved("noel_ready")>now:g=="sopia"?holo_sopia::cooldown()>now:s.one_ready>now || s.three_ready>now || s.five_ready>now;
+         if(cooling)result.push_back(badge::cooldown);
+-        else if(s.resource>0)result.push_back(badge::resource);
++        else if(s.resource>0 && g!="koyori")result.push_back(badge::resource);
+     }
+     if(warning)result.push_back(warning==1?badge::warning:warning==2?badge::urgent:badge::wrath);
+     return result;
+@@ -708,7 +711,7 @@
+     if(holo_benchmark_active() || you.form!=transformation::none || Options.tile_use_monster!=MONS_0)return;
+     const auto ids=holo_worship::gods();const auto found=std::find(ids.begin(),ids.end(),holo_worship::current());
+     // Polka uses the floating performance hat; omit the old separate star charm.
+-    if(holo_campaign::active() && holo_worship::current()!="polka" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
++    if(holo_campaign::active() && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
+     // Render-only base swap: native armour, helmet, weapons and species/forms survive.
+     if(you.species==SP_HUMAN && is_player_tile(doll.parts[TILEP_PART_BASE],TILEP_BASE_HUMAN)
+         && player_doll.parts[TILEP_PART_BODY]==TILEP_SHOW_EQUIP) {
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,koyoriheat,koyoricold,koyoripoison,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+--- before/Makefile.obj
++++ after/Makefile.obj
+@@ -8,6 +8,7 @@
+ holocrawl.o \
+ holo-sopia.o \
+ holo-lamy.o \
++holo-koyori.o \
+ holo-batch.o \
+ holo-batch-martial.o \
+ holo-batch-resources.o \
+--- before/mon-project.cc
++++ after/mon-project.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ 
+ #include "mon-project.h"
+ 
+@@ -98,6 +99,7 @@
+         mon->props[IOOD_FLAWED].get_byte() = true;
+     }
+ 
++    if(caster->is_player() && holo_koyori::direct_cast())mon->props["holo_koyori_direct_orb"]=true;
+     // Move away from the caster's square.
+     iood_act(*mon, true);
+ 
+@@ -328,7 +330,9 @@
+     beam.ex_size = 1;
+     beam.loudness = 7;
+ 
++    const bool reagent_orb=caster->is_player() && mon.props.exists("holo_koyori_direct_orb");
+     monster_die(mon, KILL_DISMISSED, NON_MONSTER);
++    holo_koyori::spell_scope reagent_hit(SPELL_IOOD,reagent_orb,pos);
+ 
+     if (big_boom)
+         beam.explode(true, false);
+--- before/monster.cc
++++ after/monster.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holo-lamy.h"
+ #include "holo-batch.h"
+ 
+@@ -4471,6 +4472,7 @@
+         amount = min(amount, hit_points);
+         hit_points -= amount;
+         holo_lamy::damage(*this,agent,amount,flavour,kill_type);
++        holo_koyori::damage(*this,agent,amount,flavour,kill_type);
+ 
+         if (hit_points > max_hit_points)
+         {
+--- before/spl-cast.cc
++++ after/spl-cast.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holo-lamy.h"
+ #include "holo-campaign.h"
+ #include "holo-batch.h"
+@@ -1504,6 +1505,7 @@
+     // Limit ordinary spell attribution to this cast, before world/cloud ticks.
+     holo_batch::waking_spell_scope waking_spell(allow_fail && fail==0 && !evoked_item);
+     holo_lamy::spell_scope lamy_cast(spell,allow_fail && fail==0 && !evoked_item,evoked_item && fail==0);
++    holo_koyori::spell_scope koyori_cast(spell,allow_fail && fail==0 && !evoked_item,beam.target);
+     spret cast_result = _do_cast(spell, powc, spd, beam, god, fail);
+ 
+     switch (cast_result)
+--- before/spl-util.cc
++++ after/spl-util.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-koyori.h"
+ #include "holocrawl.h"
+ 
+ #include "spl-util.h"
+@@ -966,6 +967,7 @@
+         minrange++;
+     }
+ 
++    if(allow_bonus && holo_koyori::range_bonus(spell,maxrange)){++minrange;++maxrange;}
+     if (minrange == maxrange)
+         return min(minrange, (int)you.current_vision);
+ 
+--- before/status.cc
++++ after/status.cc
+@@ -1,5 +1,6 @@
+ #include "AppHdr.h"
+ #include "holo-lamy.h"
++#include "holo-koyori.h"
+ 
+ #include "status.h"
+ #include "holo-campaign.h"
+@@ -192,6 +193,14 @@
+     // completing or overriding the defaults set above.
+     switch (status)
+     {
++    case STATUS_HOLO_KOYORI:
++    {
++        if(!holo_koyori::enabled() || you.piety<30)return false;
++        const int type=holo_koyori::next_type();
++        inf.light_colour=type==2?LIGHTRED:type==3?LIGHTCYAN:LIGHTGREEN;
++        inf.light_text=holo_koyori::status();
++        inf.short_text=inf.long_text=inf.light_text;return true;
++    }
+     case STATUS_HOLO_LAMY:
+     {
+         if (!holo_campaign::active() || holo_worship::current()!="lamy")
+--- before/status.h
++++ after/status.h
+@@ -58,7 +58,8 @@
+     STATUS_SERPENTS_LASH,
+     STATUS_HEAVENLY_STORM,
+     STATUS_HOLO_LAMY,
+-    STATUS_LAST_STATUS = STATUS_HOLO_LAMY
++    STATUS_HOLO_KOYORI,
++    STATUS_LAST_STATUS = STATUS_HOLO_KOYORI
+ };
+ 
+ struct status_info
+--- before/rltiles\dc-holo-feat.txt
++++ after/rltiles\dc-holo-feat.txt
+@@ -354,6 +354,12 @@
+ fx_lamybanquetburst37_1 HOLO_FX_LAMYBANQUETBURST37_1
+ fx_lamybanquetburst38_0 HOLO_FX_LAMYBANQUETBURST38_0
+ fx_lamybanquetburst38_1 HOLO_FX_LAMYBANQUETBURST38_1
++fx_koyoriheat_0 HOLO_FX_KOYORIHEAT_0
++fx_koyoriheat_1 HOLO_FX_KOYORIHEAT_1
++fx_koyoricold_0 HOLO_FX_KOYORICOLD_0
++fx_koyoricold_1 HOLO_FX_KOYORICOLD_1
++fx_koyoripoison_0 HOLO_FX_KOYORIPOISON_0
++fx_koyoripoison_1 HOLO_FX_KOYORIPOISON_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI
+--- /dev/null
++++ holo-koyori.cc
+@@ -0,0 +1,159 @@
++#include "AppHdr.h"
++#include "holo-koyori.h"
++#include "holo-batch-internal.h"
++#include "holo-campaign.h"
++#include "holo-visual.h"
++#include "holo-worship.h"
++#include "monster.h"
++#include "mon-util.h"
++#include "mon-ench.h"
++#include "player.h"
++#include "random.h"
++#include "stringutil.h"
++#include "spl-util.h"
++#include <algorithm>
++namespace holo_koyori {
++using namespace holo_batch;
++bool enabled(){return holo_campaign::active() && is(god_id::koyori);}
++void initialise(){
++    if(!enabled() || you.props.exists("holo_koyori_caster_v1"))return;
++    // Old reagent inventory/coat/critical fields cannot become new charges.
++    s.resource=s.offence=s.exhibit=s.one_end=s.three_end=s.five_end=0;
++    s.one_ready=s.three_ready=s.five_ready=0;
++    for(int &n:s.stock)n=0;
++    s.targets.clear();s.hazards.clear();you.props["holo_koyori_caster_v1"]=true;
++}
++bool attack_spell(spell_type spell){
++    if(spell==SPELL_NO_SPELL)return false;
++    const auto flags=get_spell_flags(spell);const auto schools=get_spell_disciplines(spell);
++    if(flags&(spflag::helpful|spflag::neutral|spflag::cloud))return false;
++    if(schools&spschool::summoning)return false;
++    if(spell==SPELL_POISONOUS_VAPOURS || spell==SPELL_OLGREBS_TOXIC_RADIANCE
++        || spell==SPELL_TORNADO || spell==SPELL_FULMINANT_PRISM)return false;
++    return spell_harms_target(spell)||spell_harms_area(spell);
++}
++bool range_bonus(spell_type spell,int maxrange){
++    return enabled() && you.piety>=75 && maxrange>1 && attack_spell(spell)
++        && spell!=SPELL_GLACIATE && spell!=SPELL_THUNDERBOLT
++        && (get_spell_flags(spell)&spflag::targeting_mask);
++}
++int next_type(){
++    if(s.five_end>you.elapsed_time && s.offence>0){static const int first[]={2,1,3};return first[std::max(0,s.exhibit)%3];}
++    static const int order[]={2,3,1};return order[std::max(0,s.resource)%3];
++}
++int action(){
++    if(!enabled() || !want(5) || manual_option!=0 || s.five_end>you.elapsed_time
++        || s.five_ready>you.elapsed_time || !pay(6,10,120))return 0;
++    s.five_end=you.elapsed_time+5+80;s.five_ready=you.elapsed_time+200;
++    s.offence=4;s.exhibit=0;return 5;
++}
++std::string status(){
++    static const char *names[]={"","Poison","Heat","Cold"};
++    std::string text=std::string("Next reagent: ")+names[next_type()];
++    if(s.five_end>you.elapsed_time && s.offence>0)
++        {static const char *pairs[]={"Heat+Cold","Poison+Heat","Cold+Poison"};
++        text=make_stringf("Next %s | Critical %d casts / %.1ft",pairs[std::max(0,s.exhibit)%3],s.offence,(s.five_end-you.elapsed_time)/10.0);}
++    if(you.piety>=75)text+=" | attack spell range +1";
++    return text;
++}
++int reaction_damage(int raw,int pair,bool critical){
++    const int multiplier=critical?(pair==5?150:135):100;
++    return std::max(1,raw*85*multiplier/10000);
++}
++namespace {
++void single(monster &m,int type){
++    auto &t=s.targets[m.mid];t.kind=type;t.expires=you.elapsed_time+60;t.stacks=0;
++    if(type==1){t.stacks=2;t.next=you.elapsed_time+10;}
++    else if(type==2)hurt(m,roll_dice(1,4+s.inv/6),BEAM_FIRE,false,true);
++    else {t.root=you.elapsed_time+20;hurt(m,roll_dice(1,3+s.inv/9),BEAM_COLD,false,true);}
++}
++void reaction(monster &m,int pair,bool critical){
++    auto &t=s.targets[m.mid];t.kind=t.stacks=t.expires=0;
++    const auto centre=m.pos();++s.totals.procs;
++    holo_campaign::reaction_scope credit(pair,m);
++    if(pair==5){
++        int raw=reaction_damage(roll_dice(3,6+s.inv/4),pair,critical);
++        if(!critical)raw=m.apply_ac(raw,0,ac_type::half);
++        hurt(m,raw,BEAM_MISSILE,false,true);
++    }else{
++        const int raw=reaction_damage(roll_dice(2,pair==3?5+s.inv/4:3+s.inv/6),pair,critical);
++        for(mid_t id:enemies(centre,1,false,true)){
++            auto *v=monster_by_mid(id);if(!v || !v->alive() || !line(centre,v->pos()))continue;
++            if(pair==4){
++                if(critical)s.targets[id].weak_until=you.elapsed_time+40;
++                else s.targets[id].slowed_until=you.elapsed_time+30;
++            }
++            hurt(*v,raw,pair==3?BEAM_FIRE:BEAM_MISSILE,pair==4,true);
++        }
++    }
++}
++}
++void tick(int at){
++    if(!enabled())return;
++    if(at>=s.five_end)s.offence=0;
++    for(auto &entry:s.targets){
++        auto &t=entry.second;
++        if(at>=t.expires){t.kind=t.stacks=0;continue;}
++        auto *m=monster_by_mid(entry.first);
++        if(m && m->alive() && t.kind==1 && t.stacks>0 && at>=t.next){
++            t.next+=10;--t.stacks;hurt(*m,2+s.inv/12,BEAM_POISON,false,false);
++        }
++    }
++}
++int movement(const monster &m,int base){
++    if(!enabled() || m.has_ench(ENCH_SLOW))return base;
++    auto it=s.targets.find(m.mid);if(it==s.targets.end())return base;
++    const auto &t=it->second;const int now=you.elapsed_time;
++    const int percent=t.weak_until>now?50:t.slowed_until>now?35:t.root>now?15:0;
++    return (base*(100+percent)+99)/100;
++}
++int mark(const coord_def &p){
++    if(!enabled() || you.piety<30)return 0;
++    if(p==you.pos())return next_type();
++    auto *m=monster_at(p);if(!m || !you.can_see(*m))return 0;
++    auto it=s.targets.find(m->mid);
++    return it!=s.targets.end() && it->second.expires>you.elapsed_time?it->second.kind:0;
++}
++struct spell_scope::context{
++    std::vector<std::pair<mid_t,coord_def>> hits;std::set<mid_t> seen;
++    coord_def aim;int type=0,pair=0;bool critical=false;
++};
++namespace {spell_scope::context *current=nullptr;}
++bool direct_cast(){return current && enabled();}
++spell_scope::spell_scope(spell_type spell,bool ordinary,const coord_def &aim):previous(current),cast(nullptr){
++    if(enabled() && you.piety>=30 && ordinary && attack_spell(spell)){
++        cast=new context;cast->aim=aim;cast->type=next_type();
++        cast->critical=s.five_end>you.elapsed_time && s.offence>0;
++        if(cast->critical){static const int pairs[]={5,3,4};cast->pair=pairs[std::max(0,s.exhibit)%3];}
++    }
++    current=cast;
++}
++void damage(monster &m,const actor *source,int amount,beam_type flavour,kill_method_type kind){
++    if(!current || amount<=0 || !source || !source->is_player() || internal_damage
++        || !holo_campaign::ordinary_damage() || m.attitude!=ATT_HOSTILE
++        || kind==KILLED_BY_POISON || kind==KILLED_BY_CLOUD
++        || flavour==BEAM_SHARED_PAIN || flavour==BEAM_STICKY_FLAME || flavour==BEAM_TORMENT_DAMAGE)return;
++    if(current->seen.insert(m.mid).second)current->hits.push_back({m.mid,m.pos()});
++}
++spell_scope::~spell_scope(){
++    current=nullptr;
++    if(cast && enabled() && !cast->hits.empty()){
++        s.resource=(std::max(0,s.resource)+1)%3;
++        std::stable_sort(cast->hits.begin(),cast->hits.end(),[&](const std::pair<mid_t,coord_def> &a,const std::pair<mid_t,coord_def> &b){
++            return grid_distance(a.second,cast->aim)<grid_distance(b.second,cast->aim);
++        });
++        bool reacted=false;
++        for(const auto &hit:cast->hits){
++            auto *m=monster_by_mid(hit.first);if(!m || !m->alive())continue;
++            const auto &t=s.targets[m->mid];const int old=t.expires>you.elapsed_time?t.kind:0;
++            const int pair=cast->critical?cast->pair:old+cast->type;
++            if(!reacted && you.piety>=75 && (cast->critical || (old && old!=cast->type))){
++                reaction(*m,pair,cast->critical);reacted=true;
++            }else single(*m,cast->type);
++        }
++        if(cast->critical){++s.exhibit;if(--s.offence<=0)s.five_end=0;}
++        you.redraw_status_lights=true;
++    }
++    delete cast;current=previous;
++}
++}
+--- /dev/null
++++ holo-koyori.h
+@@ -0,0 +1,28 @@
++#pragma once
++#include "spell-type.h"
++#include "beam-type.h"
++#include "ouch.h"
++#include <string>
++class monster;
++class actor;
++struct coord_def;
++namespace holo_koyori {
++bool enabled();
++bool direct_cast();
++void initialise();
++bool attack_spell(spell_type spell);
++bool range_bonus(spell_type spell,int maxrange);
++int next_type();
++int action();
++void tick(int at);
++int movement(const monster &mon, int base);
++int mark(const coord_def &p);
++std::string status();
++void damage(monster &mon,const actor *source,int amount,beam_type flavour,kill_method_type kind);
++int reaction_damage(int raw,int pair,bool critical);
++class spell_scope {
++public: struct context;
++private: context *previous,*cast;
++public: spell_scope(spell_type spell,bool ordinary,const coord_def &aim);~spell_scope();
++};
++}

@@ -1,0 +1,16 @@
+{
+  "status": "excluded_from_balance_conclusions",
+  "reason": "Excluded preliminary or incomplete runs: before final queue/shaft fixes, crashed, intentionally stopped, or missing fixed-encounter banishment handling. Final validated dataset is final-noel-1000.",
+  "runs": [
+    "native-noel-smoke-05",
+    "native-noel-100-v1",
+    "native-noel-1000-v2",
+    "native-noel-1000-v3",
+    "crash-repro-1882",
+    "trap-fix-1882",
+    "hook-validation-v1",
+    "verified-noel-1000-01"
+  ],
+  "finalResultsAvailable": true,
+  "verifiedDataset": "final-noel-1000"
+}

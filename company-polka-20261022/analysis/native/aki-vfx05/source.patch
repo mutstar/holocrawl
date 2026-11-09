@@ -1,0 +1,75 @@
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -17,6 +17,7 @@
+     m_buf_wall(&im->m_textures[TEX_WALL]),
+     m_buf_feat(&im->m_textures[TEX_FEAT]),
+     m_buf_feat_trans(&im->m_textures[TEX_FEAT], 17),
++    m_buf_holo_ground_vfx(&im->m_textures[TEX_FEAT]),
+     m_buf_doll(&im->m_textures[TEX_PLAYER], 17),
+     m_buf_main_trans(&im->m_textures[TEX_DEFAULT], 17),
+     m_buf_main(&im->m_textures[TEX_DEFAULT]),
+@@ -79,13 +80,14 @@
+     }
+ }
+ 
+-void DungeonCellBuffer::add_holo_vfx_tile(int tileidx,int x,int y,int span_x,int span_y)
++void DungeonCellBuffer::add_holo_vfx_tile(int tileidx,int x,int y,int span_x,int span_y,bool under_actors)
+ {
+     if(tileidx) {
+         const auto &inf=tile_feat_info(tileidx);
+         // Native-size ceremonial sprites keep their detail. For ordinary
+         // 32x32 tiles these offsets/divisors are identical to the old path.
+-        m_buf_holo_vfx.add(tileidx,x,y,(inf.width-TILE_X)/2,inf.height-TILE_Y,
++        auto &buffer=under_actors?m_buf_holo_ground_vfx:m_buf_holo_vfx;
++        buffer.add(tileidx,x,y,(inf.width-TILE_X)/2,inf.height-TILE_Y,
+             true,-1,float(inf.width)/span_x,float(inf.height)/span_y);
+     }
+ }
+@@ -198,6 +200,7 @@
+     m_buf_wall.clear();
+     m_buf_feat.clear();
+     m_buf_feat_trans.clear();
++    m_buf_holo_ground_vfx.clear();
+     m_buf_doll.clear();
+     m_buf_main_trans.clear();
+     m_buf_main.clear();
+@@ -214,6 +217,8 @@
+     m_buf_wall.draw();
+     m_buf_feat.draw();
+     m_buf_feat_trans.draw();
++    // Large garden bloom belongs below every actor and its status/HP marks.
++    m_buf_holo_ground_vfx.draw();
+     m_buf_doll.draw();
+     m_buf_main_trans.draw();
+     m_buf_main.draw();
+--- before/tiledgnbuf.h
++++ after/tiledgnbuf.h
+@@ -23,7 +23,7 @@
+ 
+     void add(const packed_cell &cell, int x, int y);
+     void add_monster(const monster_info &mon, int x, int y);
+-    void add_holo_vfx_tile(int tileidx,int x,int y,int span_x=1,int span_y=1);
++    void add_holo_vfx_tile(int tileidx,int x,int y,int span_x=1,int span_y=1,bool under_actors=false);
+     void add_dngn_tile(int tileidx, int x, int y, bool in_water = false);
+     void add_main_tile(int tileidx, int x, int y);
+     void add_main_tile(int tileidx, int x, int y, int ox, int oy);
+@@ -51,6 +51,7 @@
+     TileBuffer m_buf_wall;
+     TileBuffer m_buf_feat;
+     SubmergedTileBuffer m_buf_feat_trans;
++    TileBuffer m_buf_holo_ground_vfx;
+     SubmergedTileBuffer m_buf_doll;
+     SubmergedTileBuffer m_buf_main_trans;
+     TileBuffer m_buf_main;
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -127,7 +127,8 @@
+             if(map_bounds(gc)) {
+                 int span_x=1,span_y=1;
+                 const auto cue=holo_visual::invocation_sprite_at(gc,span_x,span_y);
+-                m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(cue),x,y,span_x,span_y);
++                m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(cue),x,y,span_x,span_y,
++                    cue==holo_visual::effect::akibloom);
+             }
+             if(gc==you.pos())for(auto badge:holo_visual::badges())
+                 m_buf_dngn.add_main_tile(holo_visual::badge_tile(badge),x,y);

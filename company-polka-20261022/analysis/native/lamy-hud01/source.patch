@@ -1,0 +1,86 @@
+--- before/status.h
++++ after/status.h
+@@ -57,7 +57,8 @@
+     STATUS_MISSILES,
+     STATUS_SERPENTS_LASH,
+     STATUS_HEAVENLY_STORM,
+-    STATUS_LAST_STATUS = STATUS_HEAVENLY_STORM
++    STATUS_HOLO_LAMY,
++    STATUS_LAST_STATUS = STATUS_HOLO_LAMY
+ };
+ 
+ struct status_info
+--- before/status.cc
++++ after/status.cc
+@@ -1,6 +1,9 @@
+ #include "AppHdr.h"
+ 
+ #include "status.h"
++#include "holo-campaign.h"
++#include "holo-worship.h"
++#include "holo-batch-internal.h"
+ 
+ #include "areas.h"
+ #include "branch.h"
+@@ -188,6 +191,22 @@
+     // completing or overriding the defaults set above.
+     switch (status)
+     {
++    case STATUS_HOLO_LAMY:
++    {
++        if (!holo_campaign::active() || holo_worship::current()!="lamy")
++            return false;
++        const auto &ls=holo_batch::s;
++        const int amount=max(0,min(100,ls.resource));
++        const int remaining=max(0,(ls.five_end-you.elapsed_time+9)/10);
++        // Current combat thresholds: new caster design remains a proposal.
++        const char *stage=remaining>0?"Banquet":amount>60?"Drunk":amount>=20?"Tipsy":"Sober";
++        inf.light_colour=remaining>0?LIGHTMAGENTA:amount>60?LIGHTRED:amount>=20?LIGHTCYAN:LIGHTGREY;
++        inf.light_text=remaining>0?make_stringf("Banquet %dt",remaining):make_stringf("%s %d/100",stage,amount);
++        inf.short_text=make_stringf("Lamy: %s, intoxication %d/100",stage,amount);
++        inf.long_text=remaining>0?make_stringf("Snow banquet: %d turns remaining; intoxication %d/100.",remaining,amount):make_stringf("Lamy intoxication: %d/100 (%s).",amount,stage);
++        return true;
++    }
++
+     case DUR_CORROSION:
+         inf.light_text = make_stringf("Corr (%d)",
+                           (-4 * you.props["corrosion_amount"].get_int()));
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -277,7 +277,7 @@
+     if(!active() && !you.props.exists(key))return;
+     auto &t=data();const int now=you.elapsed_time;
+     if(active()) {
+-        refresh();deliver_supplies();int next=value("decay_next");if(next<=0)next=now+3000;
++        refresh();deliver_supplies();if(holo_worship::current()=="lamy")you.redraw_status_lights=true;int next=value("decay_next");if(next<=0)next=now+3000;
+         if(now>=next){const int n=(now-next)/3000+1;you.piety=std::max(0,int(you.piety)-n);t["decay_next"]=next+3000*n;you.redraw_title=true;}
+         if(!combat_active())transfer_debt();
+         for(monster_iterator mi;mi;++mi)if(holo_batch::eligible(**mi))holo_batch::s.eligible_sources.insert(mi->mid);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "status.h"
+ #include "holo-visual.h"
+ #include "holo-wrath.h"
+ #include "holo-campaign.h"
+@@ -131,6 +132,19 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_LAMY_HUD_REVIEW")) {
++        fixture("lamy");const int amounts[]={12,40,80,0};const char *names[]={"sober","tipsy","drunk","banquet"};
++        const char *labels[]={"Sober 12/100","Tipsy 40/100","Drunk 80/100","Banquet 6t"};
++        const int colours[]={LIGHTGREY,LIGHTCYAN,LIGHTRED,LIGHTMAGENTA};
++        for(int i=0;i<4;++i) {
++            holo_batch::s.resource=amounts[i];holo_batch::s.five_end=i==3?you.elapsed_time+60:0;
++            status_info info;require(fill_status_info(STATUS_HOLO_LAMY,info) && info.light_text==labels[i] && info.light_colour==colours[i],"Lamy HUD label/colour");
++            const auto before=signature();holo_visual::capture(std::string(shots)+"/lamy-"+names[i]+".png");require(before==signature(),"Lamy HUD rendering mutated gameplay");
++        }
++        you.elapsed_time+=10;status_info info;require(fill_status_info(STATUS_HOLO_LAMY,info) && info.light_text=="Banquet 5t","Lamy HUD live countdown");
++        fixture("towa");require(!fill_status_info(STATUS_HOLO_LAMY,info),"Lamy status leaked to another god");
++        std::ofstream(dir+"/lamy-hud.json")<<"{\"status\":\"passed\",\"states\":4,\"countdown\":true,\"otherGodHidden\":true,\"renderingStateUnchanged\":true,\"combatRedesignApplied\":false}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_TOWA_CROSSFIRE_REVIEW")) {
+         auto *left=fixture("towa");const auto origin=you.pos();

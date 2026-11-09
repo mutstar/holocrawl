@@ -1,0 +1,16 @@
+{
+  "observedAt": "2026-10-19T15:39:22+09:00",
+  "source": "Microsoft-Windows-CodeIntegrity/Operational",
+  "eventIds": [
+    3033,
+    3077
+  ],
+  "policyId": "{0283ac0f-fff1-49ae-ada1-8a933130cad6}",
+  "message": "Benchmark executable did not meet Enterprise signing level requirements or violated code integrity policy.",
+  "executable": "runtime/bin/isolated-forward.exe",
+  "sha256": "C9949C88B3F3FBC95B2678A160F468E425ECEB4437525D6AD5856DACF63175BD",
+  "buildExecutableSha256": "0E068134132A6AB02EBD292BBAD25B50A74F524DA6A9A242B591778132557749",
+  "status": "resolved by user; post-fix native executable now runs",
+  "securityPolicyChanged": false,
+  "resolutionEvidence": "User confirmed Smart App Control was turned off. Registry state 0 observed; 240-forward and 120-reverse native trials completed and all 120 overlaps matched."
+}

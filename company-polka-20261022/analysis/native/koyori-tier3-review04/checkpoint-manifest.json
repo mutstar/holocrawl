@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "revision": "koyori-tier3-review04",
+  "combatNumbersChanged": false,
+  "otherSourceAndAllArtPreserved": true,
+  "tier1Approved": true,
+  "tier3Approved": false,
+  "binarySha256": "3b1ba99985bcfd172549f05a3b7b599cee323ed36da4670b8d064522f7c5d6ee",
+  "validation": {
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "3B1BA99985BCFD172549F05A3B7B599CEE323ED36DA4670B8D064522F7C5D6EE",
+    "chocoControls": false,
+    "gods": 22,
+    "status": "passed",
+    "rawScreenshots": 327,
+    "freshProcessRestore": true
+  }
+}

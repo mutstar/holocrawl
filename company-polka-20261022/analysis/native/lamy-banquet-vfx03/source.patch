@@ -1,0 +1,303 @@
+--- before/holo-lamy.cc
++++ after/holo-lamy.cc
+@@ -146,7 +146,7 @@
+             s.proc_ready=you.elapsed_time+10;const auto centre=cast->hits.front().second;
+             const int raw=roll_dice(2,5+s.inv/3);++s.totals.procs;
+             const auto victims=enemies(centre,1,false,true);
+-            holo_visual::invocation("lamy",3,centre);
++            holo_visual::lamy_banquet_burst(centre);
+             for(auto id:victims) {
+                 auto *m=monster_by_mid(id);if(!m || !m->alive() || !line(centre,m->pos()))continue;
+                 hurt(*m,m->pos()==centre?raw:raw/2,BEAM_COLD,false);
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -183,6 +183,7 @@
+ }
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
++    if(g=="lamy" && tier==5){flash_kind=effect::lamybanquetcast0;flashes.push_back(you.pos());return;}
+     const auto style=(g=="pekora" && (tier==3 || tier==5))?night_effect(g,1):night_effect(g,tier,option);
+     if(style!=effect::none) {
+         flash_kind=style;coord_def centre=p;
+@@ -238,10 +239,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    const int frames=flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
++    const int frames=flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
+     for(int frame=0;frame<frames;++frame) {
+         flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
+-        scaled_delay(flash_kind==effect::night_okayu5?110:flash_kind==effect::night_korone3 || flash_kind==effect::night_korone5?110:flash_kind==effect::ayameslash || flash_kind==effect::ayameduel?110:flash_kind==effect::cometfall?(frame<4?65:100):(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?95:55);
++        scaled_delay(flash_kind==effect::lamybanquetcast0?105:flash_kind==effect::night_okayu5?110:flash_kind==effect::night_korone3 || flash_kind==effect::night_korone5?110:flash_kind==effect::ayameslash || flash_kind==effect::ayameduel?110:flash_kind==effect::cometfall?(frame<4?65:100):(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?95:55);
+     }
+     clear();tiles.invalidate_dungeon_overlays();update_screen();
+ #endif
+@@ -309,7 +310,6 @@
+         if(s.five_end>now && p==you.pos()) {
+             if(g=="vivi")base=effect::spotlight;
+             if(g=="mela")base=effect::fire;
+-            if(g=="lamy")base=effect::frost;
+             if(g=="raden")base=effect::exhibit;
+         }
+         if((g=="noel" && holo_campaign::noel_commander()) || (g=="watame" && s.three_end>now))
+@@ -327,6 +327,13 @@
+             }
+         }
+     }
++    // Split the generated 96px flower into native cells. Each cell uses the
++    // same 3x3 radius/line predicate as combat and remains below all actors.
++    if(flash_kind==effect::lamybanquetburst00 && !flashes.empty()
++        && area(p,flashes.front(),1) && !cell_is_solid(p)) {
++        const auto d=p-flashes.front();const int cell=(d.y+1)*3+d.x+1;
++        result.push_back(effect(int(effect::lamybanquetburst00)+9*flash_frame+cell));
++    }
+     // Keep the actual 3x3 strike footprint visible during render-only descent.
+     // No hazard lifetime, damage cell, or gameplay timer is extended.
+     if(flash_kind==effect::cometfall && flash_frame<4 && !flashes.empty()
+@@ -345,7 +352,8 @@
+         if(p==you.pos() && s.one_end>you.elapsed_time && mon && mon->alive()
+             && grid_distance(you.pos(),mon->pos())==1)return effect::ayameaura;
+     }
+-    if(flash_kind!=effect::none && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return flash_kind;
++    if(flash_kind!=effect::none && flash_kind!=effect::lamybanquetburst00
++        && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return flash_kind;
+     const auto lamy=lamy_mark(p);if(lamy!=effect::none)return lamy;
+     const auto choco=choco_mark(p);if(choco!=effect::none)return choco;
+     const auto ns=night_status(p);if(ns!=effect::none)return ns;
+@@ -363,6 +371,15 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(flash_kind!=effect::lamybanquetcast0 && holo_campaign::active()
++        && holo_worship::current()=="lamy" && holo_batch::s.five_end>you.elapsed_time
++        && p==you.pos()-coord_def(1,1)) {
++        span_x=span_y=3;return effect::lamybanquetactive;
++    }
++    if(flash_kind==effect::lamybanquetcast0 && !flashes.empty()) {
++        if(p==flashes.front()-coord_def(1,1)){span_x=span_y=3;return flash_kind;}
++        if(p==flashes.front())return effect::none;
++    }
+     if(flash_kind>=effect::lamyburst0 && flash_kind<=effect::lamyburst3 && !flashes.empty()) {
+         if(p==flashes.front()-coord_def(1,1)){span_x=span_y=3;return flash_kind;}
+         if(p==flashes.front())return effect::none;
+@@ -593,6 +610,31 @@
+     (void)from;(void)to;
+ #endif
+ }
++void lamy_banquet_burst(const coord_def &p) {
++#ifdef USE_TILE_LOCAL
++    if(holo_benchmark_active() || !you.see_cell(p))return;
++    const char *dir=crawl_state.test?getenv("HOLOCRAWL_LAMY_BANQUET_REVIEW"):nullptr;
++    if(crawl_state.test && !dir)return;
++    static int sequence=0;const int seq=++sequence;
++    const auto before=crawl_state.test?fox_signature():std::string();
++    for(int f=0;f<4;++f) {
++        flashes.assign(1,p);flash_kind=effect::lamybanquetburst00;flash_frame=f;
++        const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++        if(dir) {
++            const auto stem=std::string(dir)+"/lamy5-burst"+std::to_string(seq)+"-frame"+std::to_string(f);
++            capture(stem+".png",false);
++            int cells=0;for(int y=-1;y<=1;++y)for(int x=-1;x<=1;++x) {
++                const auto effects=at(p+coord_def(x,y));
++                for(auto e:effects)if(e>=effect::lamybanquetburst00 && e<=effect::lamybanquetburst38)++cells;
++            }
++            std::ofstream(stem+"-area.json")<<"{\"centre\":["<<p.x<<','<<p.y<<"],\"radius\":1,\"frame\":"<<f<<",\"visibleFloorCells\":"<<cells<<",\"underActors\":true}\n";
++        } else scaled_delay(110);
++    }
++    clear();const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++    if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Lamy banquet visuals changed gameplay/RNG");
++#endif
++}
++
+ void lamy_chill_burst(const coord_def &p) {
+ #ifdef USE_TILE_LOCAL
+     if(holo_benchmark_active() || !you.see_cell(p))return;
+@@ -644,6 +686,10 @@
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
+     if(kind==effect::carrot)return TILE_HOLO_CARROT;
++    if(kind==effect::lamybanquetcast0) {
++        if(frame<0)frame=flash_frame;
++        return TILE_HOLO_FX_LAMYBANQUETCAST0_0+std::min(3,std::max(0,frame));
++    }
+     if(frame<0 && ((fox_scene==1 && (kind==effect::foxshift || kind==effect::foxflame || kind==effect::foxhit))
+         || (fox_scene==2 && kind==effect::foxcircle)))frame=fox_frame%2;
+     if(frame<0)frame=flash_kind!=effect::none && kind==flash_kind?flash_frame:(you.elapsed_time/10)%2;
+@@ -704,7 +750,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:((god=="miko" || god=="aki") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:((god=="miko" || god=="aki" || god=="lamy") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+@@ -21,6 +21,7 @@
+ void invocation(const std::string &god,int tier,const coord_def &pos,int option=0);
+ void comet_impact(const coord_def &pos);
+ void rose_thorn_cell(const coord_def &from,const coord_def &to,const coord_def &cell);
++void lamy_banquet_burst(const coord_def &pos);
+ void lamy_chill_burst(const coord_def &pos);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ void towa_support(const coord_def &from,const coord_def &to);
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -141,7 +141,8 @@
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift
+-                    || cue==holo_visual::effect::foxcircle || cue==holo_visual::effect::foxflame);
++                    || cue==holo_visual::effect::foxcircle || cue==holo_visual::effect::foxflame
++                    || cue==holo_visual::effect::lamybanquetcast0 || cue==holo_visual::effect::lamybanquetactive);
+             }
+             if(gc==you.pos())for(auto badge:holo_visual::badges())
+                 m_buf_dngn.add_main_tile(holo_visual::badge_tile(badge),x,y);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1,6 +1,7 @@
+ #include "AppHdr.h"
+ #include "holo-lamy.h"
+ #include "cloud.h"
++#include "losglobal.h"
+ #include "evoke.h"
+ #include "item-status-flag-type.h"
+ #include "spl-cast.h"
+@@ -152,6 +153,40 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_LAMY_BANQUET_REVIEW")) {
++        using namespace holo_batch;
++        auto *m=fixture("lamy");const auto origin=you.pos();const auto centre=origin+coord_def(2,0);
++        require(m->move_to_pos(centre),"Lamy banquet target placement");
++        auto enemy=[&](const coord_def &p){auto mg=mgen_data::hostile_at(MONS_ETTIN,false,p);mg.flags|=MG_FORCE_PLACE;auto *n=create_monster(mg,false);require(n,"Lamy banquet enemy placement");n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;return n;};
++        auto *adj=enemy(centre+coord_def(0,1));auto *outside=enemy(centre+coord_def(2,0));
++        auto shot=[&](const char *name){const auto before=signature();holo_visual::capture(std::string(shots)+"/lamy5-"+name+".png");require(before==signature(),"Lamy banquet screenshot mutated state/RNG");};
++        auto active=[&](const coord_def &p){int x=1,y=1;return holo_visual::invocation_sprite_at(p-coord_def(1,1),x,y)==holo_visual::effect::lamybanquetactive && x==3 && y==3;};
++        s.resource=40;shot("before");const int mp=you.magic_points,faith=you.piety;
++        require(invoke(5)==10 && s.resource==0 && you.magic_points==mp-6 && you.piety==faith-12,"Lamy banquet native cost");
++        const auto stable=signature();for(int f=0;f<4;++f)holo_visual::capture_invocation("lamy",origin,f,std::string(shots)+"/lamy5-cast"+std::to_string(f)+".png",5);
++        require(stable==signature(),"Lamy activation frames changed state/RNG");
++        step(10);require(s.five_end-you.elapsed_time==80 && active(you.pos()),"Lamy banquet eight turns and wreath active");shot("active");
++        roundtrip();require(active(you.pos()),"Lamy banquet wreath follows saved buff");
++        const auto old_pos=you.pos();you.turn_is_over=false;process_command(CMD_MOVE_LEFT);require(you.turn_is_over && you.pos()!=old_pos,"Lamy banquet ordinary movement");step(you.time_taken);
++        require(active(you.pos()) && !active(old_pos),"Lamy banquet wreath follows player");shot("moved");
++        set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++        const int mhp=m->hit_points,ahp=adj->hit_points,ohp=outside->hit_points,procs=s.totals.procs;
++        shot("hit-before");you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++        require(your_spells(SPELL_MAGIC_DART,40,true)==spret::success,"Lamy banquet real spell hit");
++        require(s.totals.procs==procs+1 && m->hit_points<mhp && adj->hit_points<ahp && outside->hit_points==ohp,"Lamy banquet true 3x3 centre/splash/outside");
++        require(s.targets[m->mid].stacks==1 && s.targets[adj->mid].stacks==1,"Lamy banquet chill dedup preserved");shot("hit-after");step(10);
++        // Actual wand route drives the same target-centred rendering callback.
++        set_skill_level(SK_EVOCATIONS,27);auto &wand=you.inv[20];wand=item_def();wand.base_type=OBJ_WANDS;wand.sub_type=WAND_FLAME;wand.quantity=1;wand.charges=20;wand.link=20;wand.pos=ITEM_IN_INVENTORY;wand.flags|=ISFLAG_IDENT_MASK;
++        const int before_tool=s.totals.procs;shot("tool-before");
++        for(int attempt=0;attempt<3 && s.totals.procs==before_tool;++attempt){you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);zap_wand(20);if(s.totals.procs==before_tool)step(10);}
++        require(s.totals.procs==before_tool+1,"Lamy banquet actual wand burst");shot("tool-after");
++        const int end=s.five_end;step(std::max(1,end-you.elapsed_time));require(!five() && !active(you.pos()),"Lamy banquet wreath expiration");shot("expired");
++        // A separate render-only wall control uses the exact same cell filter.
++        const auto wall=centre+coord_def(1,-1);grd(wall)=DNGN_ROCK_WALL;invalidate_los();shot("wall-before");
++        const auto control=signature();holo_visual::lamy_banquet_burst(centre);require(control==signature(),"Lamy blocked render control mutated state");
++        grd(wall)=DNGN_FLOOR;invalidate_los();
++        std::ofstream(dir+"/lamy-banquet-vfx.json")<<"{\"status\":\"passed\",\"nativeActivation\":true,\"durationTurns\":8,\"playerFollowingWreath\":true,\"nativeMovement\":true,\"savedBuff\":true,\"actualSpellBurst\":true,\"actualWandBurst\":true,\"centreAndAdjacentDamaged\":true,\"outsideUnchanged\":true,\"chillDedup\":true,\"wreathExpired\":true,\"renderingStateUnchanged\":true,\"wallControlCaptured\":true}\n";
++    }
+     // Approved extension: real tool use and saved per-use cloud attribution.
+     {
+         using namespace holo_batch;
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -276,6 +276,84 @@
+ fx_lamyburst2_1 HOLO_FX_LAMYBURST2_1
+ fx_lamyburst3_0 HOLO_FX_LAMYBURST3_0
+ fx_lamyburst3_1 HOLO_FX_LAMYBURST3_1
++fx_lamybanquetcast0_0 HOLO_FX_LAMYBANQUETCAST0_0
++fx_lamybanquetcast0_1 HOLO_FX_LAMYBANQUETCAST0_1
++fx_lamybanquetcast1_0 HOLO_FX_LAMYBANQUETCAST1_0
++fx_lamybanquetcast1_1 HOLO_FX_LAMYBANQUETCAST1_1
++fx_lamybanquetactive_0 HOLO_FX_LAMYBANQUETACTIVE_0
++fx_lamybanquetactive_1 HOLO_FX_LAMYBANQUETACTIVE_1
++fx_lamybanquetburst00_0 HOLO_FX_LAMYBANQUETBURST00_0
++fx_lamybanquetburst00_1 HOLO_FX_LAMYBANQUETBURST00_1
++fx_lamybanquetburst01_0 HOLO_FX_LAMYBANQUETBURST01_0
++fx_lamybanquetburst01_1 HOLO_FX_LAMYBANQUETBURST01_1
++fx_lamybanquetburst02_0 HOLO_FX_LAMYBANQUETBURST02_0
++fx_lamybanquetburst02_1 HOLO_FX_LAMYBANQUETBURST02_1
++fx_lamybanquetburst03_0 HOLO_FX_LAMYBANQUETBURST03_0
++fx_lamybanquetburst03_1 HOLO_FX_LAMYBANQUETBURST03_1
++fx_lamybanquetburst04_0 HOLO_FX_LAMYBANQUETBURST04_0
++fx_lamybanquetburst04_1 HOLO_FX_LAMYBANQUETBURST04_1
++fx_lamybanquetburst05_0 HOLO_FX_LAMYBANQUETBURST05_0
++fx_lamybanquetburst05_1 HOLO_FX_LAMYBANQUETBURST05_1
++fx_lamybanquetburst06_0 HOLO_FX_LAMYBANQUETBURST06_0
++fx_lamybanquetburst06_1 HOLO_FX_LAMYBANQUETBURST06_1
++fx_lamybanquetburst07_0 HOLO_FX_LAMYBANQUETBURST07_0
++fx_lamybanquetburst07_1 HOLO_FX_LAMYBANQUETBURST07_1
++fx_lamybanquetburst08_0 HOLO_FX_LAMYBANQUETBURST08_0
++fx_lamybanquetburst08_1 HOLO_FX_LAMYBANQUETBURST08_1
++fx_lamybanquetburst10_0 HOLO_FX_LAMYBANQUETBURST10_0
++fx_lamybanquetburst10_1 HOLO_FX_LAMYBANQUETBURST10_1
++fx_lamybanquetburst11_0 HOLO_FX_LAMYBANQUETBURST11_0
++fx_lamybanquetburst11_1 HOLO_FX_LAMYBANQUETBURST11_1
++fx_lamybanquetburst12_0 HOLO_FX_LAMYBANQUETBURST12_0
++fx_lamybanquetburst12_1 HOLO_FX_LAMYBANQUETBURST12_1
++fx_lamybanquetburst13_0 HOLO_FX_LAMYBANQUETBURST13_0
++fx_lamybanquetburst13_1 HOLO_FX_LAMYBANQUETBURST13_1
++fx_lamybanquetburst14_0 HOLO_FX_LAMYBANQUETBURST14_0
++fx_lamybanquetburst14_1 HOLO_FX_LAMYBANQUETBURST14_1
++fx_lamybanquetburst15_0 HOLO_FX_LAMYBANQUETBURST15_0
++fx_lamybanquetburst15_1 HOLO_FX_LAMYBANQUETBURST15_1
++fx_lamybanquetburst16_0 HOLO_FX_LAMYBANQUETBURST16_0
++fx_lamybanquetburst16_1 HOLO_FX_LAMYBANQUETBURST16_1
++fx_lamybanquetburst17_0 HOLO_FX_LAMYBANQUETBURST17_0
++fx_lamybanquetburst17_1 HOLO_FX_LAMYBANQUETBURST17_1
++fx_lamybanquetburst18_0 HOLO_FX_LAMYBANQUETBURST18_0
++fx_lamybanquetburst18_1 HOLO_FX_LAMYBANQUETBURST18_1
++fx_lamybanquetburst20_0 HOLO_FX_LAMYBANQUETBURST20_0
++fx_lamybanquetburst20_1 HOLO_FX_LAMYBANQUETBURST20_1
++fx_lamybanquetburst21_0 HOLO_FX_LAMYBANQUETBURST21_0
++fx_lamybanquetburst21_1 HOLO_FX_LAMYBANQUETBURST21_1
++fx_lamybanquetburst22_0 HOLO_FX_LAMYBANQUETBURST22_0
++fx_lamybanquetburst22_1 HOLO_FX_LAMYBANQUETBURST22_1
++fx_lamybanquetburst23_0 HOLO_FX_LAMYBANQUETBURST23_0
++fx_lamybanquetburst23_1 HOLO_FX_LAMYBANQUETBURST23_1
++fx_lamybanquetburst24_0 HOLO_FX_LAMYBANQUETBURST24_0
++fx_lamybanquetburst24_1 HOLO_FX_LAMYBANQUETBURST24_1
++fx_lamybanquetburst25_0 HOLO_FX_LAMYBANQUETBURST25_0
++fx_lamybanquetburst25_1 HOLO_FX_LAMYBANQUETBURST25_1
++fx_lamybanquetburst26_0 HOLO_FX_LAMYBANQUETBURST26_0
++fx_lamybanquetburst26_1 HOLO_FX_LAMYBANQUETBURST26_1
++fx_lamybanquetburst27_0 HOLO_FX_LAMYBANQUETBURST27_0
++fx_lamybanquetburst27_1 HOLO_FX_LAMYBANQUETBURST27_1
++fx_lamybanquetburst28_0 HOLO_FX_LAMYBANQUETBURST28_0
++fx_lamybanquetburst28_1 HOLO_FX_LAMYBANQUETBURST28_1
++fx_lamybanquetburst30_0 HOLO_FX_LAMYBANQUETBURST30_0
++fx_lamybanquetburst30_1 HOLO_FX_LAMYBANQUETBURST30_1
++fx_lamybanquetburst31_0 HOLO_FX_LAMYBANQUETBURST31_0
++fx_lamybanquetburst31_1 HOLO_FX_LAMYBANQUETBURST31_1
++fx_lamybanquetburst32_0 HOLO_FX_LAMYBANQUETBURST32_0
++fx_lamybanquetburst32_1 HOLO_FX_LAMYBANQUETBURST32_1
++fx_lamybanquetburst33_0 HOLO_FX_LAMYBANQUETBURST33_0
++fx_lamybanquetburst33_1 HOLO_FX_LAMYBANQUETBURST33_1
++fx_lamybanquetburst34_0 HOLO_FX_LAMYBANQUETBURST34_0
++fx_lamybanquetburst34_1 HOLO_FX_LAMYBANQUETBURST34_1
++fx_lamybanquetburst35_0 HOLO_FX_LAMYBANQUETBURST35_0
++fx_lamybanquetburst35_1 HOLO_FX_LAMYBANQUETBURST35_1
++fx_lamybanquetburst36_0 HOLO_FX_LAMYBANQUETBURST36_0
++fx_lamybanquetburst36_1 HOLO_FX_LAMYBANQUETBURST36_1
++fx_lamybanquetburst37_0 HOLO_FX_LAMYBANQUETBURST37_0
++fx_lamybanquetburst37_1 HOLO_FX_LAMYBANQUETBURST37_1
++fx_lamybanquetburst38_0 HOLO_FX_LAMYBANQUETBURST38_0
++fx_lamybanquetburst38_1 HOLO_FX_LAMYBANQUETBURST38_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

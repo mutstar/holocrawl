@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "revision": "lamy-hud01",
+  "runtimeSha256": "5B9AB422036ADF30293A4AD93248F5AE948E3DE527FE462DE2769843D9D1BD51",
+  "combatRedesignApplied": false,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "allArtPreserved": true,
+  "existingThresholds": "20..60 Tipsy; >60 Drunk, pending caster redesign",
+  "proof": {
+    "status": "passed",
+    "states": 4,
+    "countdown": true,
+    "otherGodHidden": true,
+    "renderingStateUnchanged": true,
+    "combatRedesignApplied": false
+  },
+  "changedHashes": {
+    "status.h": "43dc18372ed46d00ef339755d9146e605868b494c0ceedaf586c1bbb199d87e5",
+    "status.cc": "42071c08245fd36d435ccfcfab1bbfe4944efb160b1d9cc7ca0e87fdb2dce769",
+    "holo-campaign.cc": "8c9153e08a416ceea1c99ad4d530e09451faa22c48b90f8eb35e1b258f8c9312",
+    "holo-campaign-test.cc": "32ee1e13dce2aeb4e71d36abe431542623cfc6ebfa573a46a15a9fd884a45883"
+  }
+}

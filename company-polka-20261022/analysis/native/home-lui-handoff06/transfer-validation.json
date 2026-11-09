@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "archive": "C:\\Users\\071staff\\Desktop\\HOLOCRAWL_HOME_2026-10-22_LUI_ATTACK06.zip",
+  "bytes": 853487960,
+  "sha256": "CEA80DC74E3DC14D394AECE94E8CB610B7001CF5BE52FECFE833D701CCF30140",
+  "files": 54649,
+  "allArchivedHashesVerified": true,
+  "crcVerified": true,
+  "relocatedNativeSmokePassed": true,
+  "previewImagesVerified": 94
+}

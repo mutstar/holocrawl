@@ -1,0 +1,1395 @@
+{
+  "scope": "sopia-native-fixed-melee-combat-core",
+  "trials": 160,
+  "pairing_verified": true,
+  "summary": [
+    {
+      "scenario": "early_ogre",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 32.5,
+      "mean_aut": 72.6,
+      "mean_mp": 12,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "early_ogre",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 45.25,
+      "mean_aut": 52.6,
+      "mean_mp": 10.2,
+      "mean_piety": 58,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "early_ogre",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 31.25,
+      "mean_aut": 61.2,
+      "mean_mp": 9,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4.2,
+        "ring_hits": 4,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 12.8
+      }
+    },
+    {
+      "scenario": "early_ogre",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 31.25,
+      "mean_aut": 61.2,
+      "mean_mp": 9,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4.2,
+        "ring_hits": 4,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 12.8
+      }
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 42.2,
+      "mean_aut": 103.4,
+      "mean_mp": 12,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 47.2,
+      "mean_aut": 72.6,
+      "mean_mp": 10,
+      "mean_piety": 57.6,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 47.2,
+      "mean_aut": 55.8,
+      "mean_mp": 9.2,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4,
+        "ring_hits": 6,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 13.2
+      }
+    },
+    {
+      "scenario": "early_three_orcs",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 47.2,
+      "mean_aut": 55.8,
+      "mean_mp": 9.2,
+      "mean_piety": 60,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4,
+        "ring_hits": 6,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 13.2
+      }
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 77,
+      "mean_aut": 131.6,
+      "mean_mp": 35,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 144.2,
+      "mean_aut": 85,
+      "mean_mp": 29.6,
+      "mean_piety": 168,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 78.2,
+      "mean_aut": 122.2,
+      "mean_mp": 25.8,
+      "mean_piety": 164.2,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 10.8,
+        "ring_hits": 8.4,
+        "field_casts": 0.6,
+        "field_ticks": 3.8,
+        "field_hits": 3,
+        "pull_attempts": 3,
+        "pulls": 0,
+        "big_casts": 1,
+        "detonations": 1,
+        "damage": 50.8
+      }
+    },
+    {
+      "scenario": "late_stone_giant",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 69.8,
+      "mean_aut": 153.4,
+      "mean_mp": 34.2,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 1.2,
+        "ring_ticks": 13.8,
+        "ring_hits": 13,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 21.2
+      }
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 54.6,
+      "mean_mp": 35,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 61.2,
+      "mean_mp": 29,
+      "mean_piety": 168,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 46.6,
+      "mean_mp": 25.8,
+      "mean_piety": 166,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 2.6,
+        "ring_hits": 7.8,
+        "field_casts": 0,
+        "field_ticks": 0.8,
+        "field_hits": 2.4,
+        "pull_attempts": 2.4,
+        "pulls": 0,
+        "big_casts": 1,
+        "detonations": 0,
+        "damage": 23.6
+      }
+    },
+    {
+      "scenario": "late_three_ettins",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 47.8,
+      "mean_mp": 32.8,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 2.6,
+        "ring_hits": 7.8,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 17.4
+      }
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 130.2,
+      "mean_aut": 130.8,
+      "mean_mp": 35,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 137.6,
+      "mean_aut": 93.4,
+      "mean_mp": 29.8,
+      "mean_piety": 168,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 133.2,
+      "mean_aut": 86.2,
+      "mean_mp": 26.8,
+      "mean_piety": 166,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 7.2,
+        "ring_hits": 14.4,
+        "field_casts": 0,
+        "field_ticks": 2.8,
+        "field_hits": 5.6,
+        "pull_attempts": 5.4,
+        "pulls": 0,
+        "big_casts": 1,
+        "detonations": 0.6,
+        "damage": 49.2
+      }
+    },
+    {
+      "scenario": "late_three_warriors",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 138.4,
+      "mean_aut": 94,
+      "mean_mp": 33.6,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 8,
+        "ring_hits": 18.2,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 39
+      }
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 98,
+      "mean_mp": 35,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 3,
+      "losses": 2,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.6,
+      "win_rate_wilson95": [
+        0.23072428127601946,
+        0.8823792257673482
+      ],
+      "mean_survivor_hp": 101,
+      "mean_aut": 163.4,
+      "mean_mp": 29.2,
+      "mean_piety": 164.8,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 2,
+      "losses": 3,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.4,
+      "win_rate_wilson95": [
+        0.11762077423265177,
+        0.7692757187239805
+      ],
+      "mean_survivor_hp": 41.5,
+      "mean_aut": 143.8,
+      "mean_mp": 24.8,
+      "mean_piety": 163,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 12.4,
+        "ring_hits": 17.2,
+        "field_casts": 1,
+        "field_ticks": 4.2,
+        "field_hits": 7,
+        "pull_attempts": 6.8,
+        "pulls": 0.4,
+        "big_casts": 1,
+        "detonations": 1,
+        "damage": 106.2
+      }
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 135.2,
+      "mean_mp": 34,
+      "mean_piety": 180,
+      "mean_effects": {
+        "ring_casts": 1.2,
+        "ring_ticks": 11,
+        "ring_hits": 20,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 23.4
+      }
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 78.2,
+      "mean_mp": 22,
+      "mean_piety": 100,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 66,
+      "mean_mp": 21,
+      "mean_piety": 98,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 0,
+      "losses": 5,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.0,
+      "win_rate_wilson95": [
+        5.551115123125783e-17,
+        0.4344824647831612
+      ],
+      "mean_survivor_hp": null,
+      "mean_aut": 60.4,
+      "mean_mp": 16.6,
+      "mean_piety": 97,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4,
+        "ring_hits": 4,
+        "field_casts": 1,
+        "field_ticks": 1.4,
+        "field_hits": 1.4,
+        "pull_attempts": 1.4,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 8
+      }
+    },
+    {
+      "scenario": "mid_ettin",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 1,
+      "losses": 4,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.2,
+      "win_rate_wilson95": [
+        0.036224108632431695,
+        0.6244653702374652
+      ],
+      "mean_survivor_hp": 52,
+      "mean_aut": 69.4,
+      "mean_mp": 20,
+      "mean_piety": 100,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 4.8,
+        "ring_hits": 4.6,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 5
+      }
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "no_god",
+      "trials": 5,
+      "wins": 2,
+      "losses": 3,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.4,
+      "win_rate_wilson95": [
+        0.11762077423265177,
+        0.7692757187239805
+      ],
+      "mean_survivor_hp": 16.5,
+      "mean_aut": 135.4,
+      "mean_mp": 22,
+      "mean_piety": 100,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "noel_v2",
+      "trials": 5,
+      "wins": 3,
+      "losses": 1,
+      "banishments": 1,
+      "timeouts": 0,
+      "win_rate": 0.6,
+      "win_rate_wilson95": [
+        0.23072428127601946,
+        0.8823792257673482
+      ],
+      "mean_survivor_hp": 56,
+      "mean_aut": 133.8,
+      "mean_mp": 21.4,
+      "mean_piety": 97.6,
+      "mean_effects": {
+        "ring_casts": 0,
+        "ring_ticks": 0,
+        "ring_hits": 0,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 0
+      }
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "sopia_full",
+      "trials": 5,
+      "wins": 4,
+      "losses": 1,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 0.8,
+      "win_rate_wilson95": [
+        0.3755346297625348,
+        0.9637758913675682
+      ],
+      "mean_survivor_hp": 51,
+      "mean_aut": 114.2,
+      "mean_mp": 15.6,
+      "mean_piety": 95.2,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 9.8,
+        "ring_hits": 19.2,
+        "field_casts": 1.6,
+        "field_ticks": 3.6,
+        "field_hits": 6.6,
+        "pull_attempts": 6.6,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 36.6
+      }
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "god": "sopia_ring",
+      "trials": 5,
+      "wins": 5,
+      "losses": 0,
+      "banishments": 0,
+      "timeouts": 0,
+      "win_rate": 1.0,
+      "win_rate_wilson95": [
+        0.5655175352168389,
+        1
+      ],
+      "mean_survivor_hp": 39.4,
+      "mean_aut": 128.6,
+      "mean_mp": 20.6,
+      "mean_piety": 100,
+      "mean_effects": {
+        "ring_casts": 1,
+        "ring_ticks": 11.4,
+        "ring_hits": 21.2,
+        "field_casts": 0,
+        "field_ticks": 0,
+        "field_hits": 0,
+        "pull_attempts": 0,
+        "pulls": 0,
+        "big_casts": 0,
+        "detonations": 0,
+        "damage": 36.6
+      }
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "scenario": "early_ogre",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 1,
+      "after_only_wins": 1,
+      "both_win": 3,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": [
+        -0.6197950323045446,
+        0.6197950323045446
+      ]
+    },
+    {
+      "scenario": "early_ogre",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 1,
+      "after_only_wins": 1,
+      "both_win": 3,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": [
+        -0.6197950323045446,
+        0.6197950323045446
+      ]
+    },
+    {
+      "scenario": "early_ogre",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 1,
+      "after_only_wins": 1,
+      "both_win": 3,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": [
+        -0.6197950323045446,
+        0.6197950323045446
+      ]
+    },
+    {
+      "scenario": "early_ogre",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 4,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "early_three_orcs",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 1,
+      "both_win": 4,
+      "win_rate_difference": 0.2,
+      "paired_difference_95_normal": [
+        -0.19199279690800003,
+        0.5919927969080001
+      ]
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 1,
+      "both_win": 4,
+      "win_rate_difference": 0.2,
+      "paired_difference_95_normal": [
+        -0.19199279690800003,
+        0.5919927969080001
+      ]
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_stone_giant",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_ettins",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_three_warriors",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 5,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 3,
+      "both_win": 0,
+      "win_rate_difference": 0.6,
+      "paired_difference_95_normal": [
+        0.11990883236448219,
+        1
+      ]
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 2,
+      "both_win": 0,
+      "win_rate_difference": 0.4,
+      "paired_difference_95_normal": [
+        -0.08009116763551777,
+        0.8800911676355179
+      ]
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 2,
+      "after_only_wins": 1,
+      "both_win": 1,
+      "win_rate_difference": -0.2,
+      "paired_difference_95_normal": [
+        -0.9333513720564979,
+        0.533351372056498
+      ]
+    },
+    {
+      "scenario": "late_two_stone_giants",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 2,
+      "both_win": 0,
+      "win_rate_difference": 0.4,
+      "paired_difference_95_normal": [
+        -0.08009116763551777,
+        0.8800911676355179
+      ]
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": 0,
+      "paired_difference_95_normal": null
+    },
+    {
+      "scenario": "mid_ettin",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 1,
+      "after_only_wins": 0,
+      "both_win": 0,
+      "win_rate_difference": -0.2,
+      "paired_difference_95_normal": [
+        -0.5919927969080001,
+        0.19199279690800003
+      ]
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "no_god",
+      "after": "noel_v2",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 1,
+      "both_win": 2,
+      "win_rate_difference": 0.2,
+      "paired_difference_95_normal": [
+        -0.19199279690800003,
+        0.5919927969080001
+      ]
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "no_god",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 2,
+      "both_win": 2,
+      "win_rate_difference": 0.4,
+      "paired_difference_95_normal": [
+        -0.08009116763551777,
+        0.8800911676355179
+      ]
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "noel_v2",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 0,
+      "after_only_wins": 1,
+      "both_win": 3,
+      "win_rate_difference": 0.2,
+      "paired_difference_95_normal": [
+        -0.19199279690800003,
+        0.5919927969080001
+      ]
+    },
+    {
+      "scenario": "mid_three_warriors",
+      "before": "sopia_ring",
+      "after": "sopia_full",
+      "paired_seeds": 5,
+      "before_only_wins": 1,
+      "after_only_wins": 0,
+      "both_win": 4,
+      "win_rate_difference": -0.2,
+      "paired_difference_95_normal": [
+        -0.5919927969080001,
+        0.19199279690800003
+      ]
+    }
+  ]
+}

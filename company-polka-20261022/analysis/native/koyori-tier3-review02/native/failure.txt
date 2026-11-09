@@ -1,0 +1,1 @@
+Koyori tier3 reaction consumes mark: procs=0 before=0 kind=1 cycle=0 mp=99
