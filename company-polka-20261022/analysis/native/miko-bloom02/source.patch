@@ -1,0 +1,39 @@
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -251,19 +251,21 @@
+         // Native-size ceremonial sprites keep their detail. For ordinary
+         // 32x32 tiles these offsets/divisors are identical to the old path.
+         auto &buffer=under_actors?m_buf_holo_ground_vfx:m_buf_holo_vfx;
+-        // Test-only draft motion: reuse generated raster sprites without combat hooks.
++        // Native draft: green healing cross rises while five sakura blossoms gather.
+         if(tileidx==TILE_HOLO_FX_MIKOBLOSSOM && crawl_state.test) {
+             const int f=you.props["holo_miko_bloom_frame"].get_int();
+             const int dx=(4-f)*12;
+-            buffer.add(tileidx,x,y,dx,-12);
+-            if(f<4) {
+-                buffer.add(tileidx,x,y,dx+6,-22);
+-                buffer.add(tileidx,x,y,dx+12,-2);
+-            }
++            buffer.add(TILE_HOLO_FX_MIKOCROSS,x,y,0,-24-2*f);
++            buffer.add(tileidx,x,y,dx+8,-20);
++            buffer.add(tileidx,x,y,dx-4,-8);
++            buffer.add(tileidx,x,y,dx+2,6);
++            buffer.add(tileidx,x,y,dx-12,-24);
++            buffer.add(tileidx,x,y,dx-16,2);
+             return;
+         }
+         if(tileidx==TILE_HOLO_FX_MIKOPETALSHIELD) {
+-            buffer.add(tileidx,x,y,18,-16);
++            //48px transparent-center barrier surrounds the32px character.
++            buffer.add(tileidx,x,y,0,0,true,-1,32.0f,32.0f);
+             return;
+         }
+         // Reuse the generated32px raster, enlarged4/3 and raised above its corner.
+--- before/rltiles\dc-holo-feat.txt
++++ after/rltiles\dc-holo-feat.txt
+@@ -512,3 +512,5 @@
+ 
+ fx_mikoblossom HOLO_FX_MIKOBLOSSOM
+ fx_mikoshield HOLO_FX_MIKOPETALSHIELD
++
++fx_mikocross HOLO_FX_MIKOCROSS

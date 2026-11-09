@@ -1,0 +1,246 @@
+--- before/holo-batch-internal.h
++++ after/holo-batch-internal.h
+@@ -34,6 +34,7 @@
+ };
+ struct action_context {
+     bool ordinary=false,primary=false,damaged=false,double_hit=false,eligible=false,reward_kill=false;
++    bool dream_sleep=false;mid_t dream_target=MID_NOBODY;
+     attack_kind kind=attack_kind::melee;
+     beam_type element=BEAM_MAGIC;
+     mid_t target=MID_NOBODY;
+--- before/holo-batch-resources.cc
++++ after/holo-batch-resources.cc
+@@ -203,6 +203,7 @@
+         monster *mon=monster_by_mid(s.marked);
+         if(mon && mon->alive()) {
+             auto &t=s.targets[s.marked];
++            if(t.root && !mon->asleep()) {t.root=0;if(t.kind==2)t.kind=3;}
+             if(t.root && at>=t.root) { if(mon->asleep()) mon->behaviour=BEH_SEEK;t.root=0; }
+             if(at<s.one_end && at>=t.next) {
+                 t.next+=20;if(you.can_see(*mon)) t.stacks=min(4,t.stacks+1);
+@@ -212,7 +213,7 @@
+                         t.immune=at+100;
+                         if(!mental_immune(*mon) && mon->can_sleep()
+                             && x_chance_in_y(max(20,min(85,60+2*s.inv-3*mon->get_experience_level())),100)) {
+-                            mon->put_to_sleep(&you,0);t.root=at+20;
++                            mon->put_to_sleep(&you,0);t.root=at+20;t.kind=2;
+                         }
+                     }
+                 }
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -27,6 +27,41 @@
+ state s;
+ action_context ctx;
+ bool internal_damage=false;
++namespace {
++int waking_spell_depth=0;mid_t waking_spell_target=MID_NOBODY;bool waking_spell_sleep=false;
++bool dream_asleep(monster *mon) {
++    if(!mon || !is(god_id::okayu) || mon->mid!=s.marked || s.one_end<=you.elapsed_time) return false;
++    const auto it=s.targets.find(mon->mid);
++    return it!=s.targets.end() && it->second.kind!=3 && it->second.root>you.elapsed_time && mon->asleep();
++}
++}
++waking_spell_scope::waking_spell_scope(bool direct)
++    :old_depth(waking_spell_depth),old_target(waking_spell_target),old_sleep(waking_spell_sleep) {
++    if(direct) {++waking_spell_depth;waking_spell_target=s.marked;waking_spell_sleep=dream_asleep(monster_by_mid(s.marked));}
++}
++waking_spell_scope::~waking_spell_scope() {
++    waking_spell_depth=old_depth;waking_spell_target=old_target;waking_spell_sleep=old_sleep;
++}
++int waking_damage(monster &mon,const actor *source,int damage,kill_method_type kind) {
++    if(!is(god_id::okayu) || damage<=0 || !mon.alive() || !source || !source->is_player()
++        || internal_damage || !holo_campaign::ordinary_damage() || mon.mid!=s.marked
++        || s.one_end<=you.elapsed_time) return damage;
++    if(kind!=KILLED_BY_MONSTER && kind!=KILLED_BY_BEAM && kind!=KILLED_BY_DISINT) return damage;
++    if(!ctx.ordinary && !waking_spell_depth) return damage;
++    auto it=s.targets.find(mon.mid);if(it==s.targets.end())return damage;
++    auto &t=it->second;
++    if(t.kind==3 || t.root<=you.elapsed_time) return damage;
++    const bool snapped=(ctx.ordinary && ctx.dream_target==mon.mid && ctx.dream_sleep)
++        || (waking_spell_depth && waking_spell_target==mon.mid && waking_spell_sleep);
++    if(!mon.asleep() && !snapped) return damage;
++    // Apply once to already AC/resistance-adjusted damage. The cap keeps
++    // native sleeping stabs from multiplying into an unbounded second crit.
++    const int bonus=min(8+s.inv/3,max(1,damage/10*3+(damage%10)*3/10));
++    t.kind=3;t.root=0;mon.behaviour=BEH_SEEK;
++    ++s.totals.procs;
++    return damage+bonus;
++}
++
+ namespace { std::string probe_name;bool preparation_phase=false; }
+ void set_probe(const std::string &name,bool preparing) { probe_name=name;preparation_phase=preparing; }
+ bool probe_is(const char *name) { return probe_name==name; }
+@@ -214,7 +249,10 @@
+         if(s.three_end>you.elapsed_time) ctx.bonus=s.offence;
+     }
+     if(is(god_id::korone) && s.defence) ctx.bonus=roll_dice(1,4+s.inv/3);
+-    if(is(god_id::okayu)) s.last_event=you.elapsed_time+50;
++    if(is(god_id::okayu)) {
++        s.last_event=you.elapsed_time+50;ctx.dream_target=s.marked;
++        ctx.dream_sleep=dream_asleep(monster_by_mid(s.marked));
++    }
+     if(is(god_id::hajime) && passive() && kind==attack_kind::melee) {
+         ctx.bonus=s.resource*(3+s.inv/6);ctx.stars_before=s.resource;s.resource=0;
+     }
+--- before/holo-batch.h
++++ after/holo-batch.h
+@@ -27,6 +27,11 @@
+ void note_primary_hit(const actor *target);
+ void end_attack(int aut);
+ void cancel_attack();
++int waking_damage(monster &mon,const actor *source,int damage,kill_method_type kind);
++class waking_spell_scope {
++    int old_depth;mid_t old_target;bool old_sleep;
++public: explicit waking_spell_scope(bool direct_player_spell);~waking_spell_scope();
++};
+ void after_move(const coord_def &old,bool voluntary=true);
+ int to_hit(const actor *attacker,const actor *defender);
+ int slaying(const actor *defender,bool aux);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -12,6 +12,7 @@
+ #include <sstream>
+ #include <stdexcept>
+ #include "act-iter.h"
++#include "beam.h"
+ #include "command-type.h"
+ #include "dungeon.h"
+ #include "env.h"
+@@ -130,6 +131,74 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    // Okayu 3* standalone payoff. Use real invocation, native sleep, native
++    // monster HP, ordinary melee/bolt entry points and existing save roundtrip.
++    {
++        auto sleeping=[&]() -> monster * {
++            for(int trial=1;trial<=64;++trial) {
++                auto *m=fixture("okayu",75);holo_batch::s.resource=50;
++                rng::seed(41000+trial);
++                require(invoke(3,m,&m->pos())==10,"Okayu nap unavailable before5*");
++                step(70);
++                if(m->asleep()) {require(you.piety==73 && holo_batch::s.targets[m->mid].kind==2,"sleep ready/cost mismatch");return m;}
++            }
++            require(false,"could not obtain actual nap success");return nullptr;
++        };
++        auto ordinary=[&](monster *m,holo_batch::attack_kind kind,int amount) {
++            holo_batch::begin_attack(*m,kind);const int hp=m->hit_points;
++            m->hurt(&you,amount,BEAM_MAGIC,KILLED_BY_BEAM);
++            holo_batch::cancel_attack();return hp-m->hit_points;
++        };
++        auto *m=sleeping();const auto mid=m->mid;
++        roundtrip();require(holo_batch::s.targets[mid].kind==2,"unspent sleep bonus not saved");
++        require(ordinary(m,holo_batch::attack_kind::melee,20)==26,"3* standalone waking damage");
++        require(!m->asleep() && holo_batch::s.targets[mid].kind==3,"hit did not consume/wake");
++        require(ordinary(m,holo_batch::attack_kind::melee,20)==20,"repeated hit got second bonus");
++        roundtrip();require(holo_batch::s.targets[mid].kind==3,"spent sleep bonus not saved");
++        m=sleeping();require(ordinary(m,holo_batch::attack_kind::melee,1000)==1012,"stab-scale cap missing");
++        m=sleeping();you.duration[DUR_QUAD_DAMAGE]=10;
++        require(ordinary(m,holo_batch::attack_kind::melee,20)==92,"native multiplier bypasses waking cap");you.duration[DUR_QUAD_DAMAGE]=0;
++        m=sleeping();m->type=MONS_DEEP_DWARF;
++        require(ordinary(m,holo_batch::attack_kind::melee,1)==0 && holo_batch::s.targets[m->mid].kind==2,"fully absorbed hit consumed waking bonus");
++        m=sleeping();require(ordinary(m,holo_batch::attack_kind::ranged,20)==26,"ranged waking hit missing");
++        m=sleeping();require(ordinary(m,holo_batch::attack_kind::spell,20)==26,"targeted spell waking hit missing");
++        m=sleeping();{
++            holo_batch::waking_spell_scope spell(true);m->behaviour=BEH_SEEK;
++            const int hp=m->hit_points;m->hurt(&you,20,BEAM_MAGIC,KILLED_BY_BEAM);
++            require(hp-m->hit_points==26,"untargeted spell / early wake snapshot missing");
++        }
++        m=sleeping();holo_batch::begin_attack(*m);m->hurt(&you,0,BEAM_MAGIC,KILLED_BY_BEAM);
++        require(holo_batch::s.targets[m->mid].kind==2,"zero damage consumed bonus");holo_batch::cancel_attack();
++        m=sleeping();holo_batch::begin_attack(*m);m->hurt(m,20,BEAM_MAGIC,KILLED_BY_BEAM);
++        require(holo_batch::s.targets[m->mid].kind==2,"non-player damage consumed bonus");holo_batch::cancel_attack();
++        m=sleeping();holo_batch::begin_attack(*m);const int poison_hp=m->hit_points;m->hurt(&you,20,BEAM_POISON,KILLED_BY_POISON);
++        require(poison_hp-m->hit_points==20 && holo_batch::s.targets[m->mid].kind==2,"poison consumed bonus");
++        m->hurt(&you,20,BEAM_FIRE,KILLED_BY_CLOUD);require(holo_batch::s.targets[m->mid].kind==2,"cloud consumed bonus");holo_batch::cancel_attack();
++        m=sleeping();holo_batch::begin_attack(*m);{damage_scope divine(true);const int hp=m->hit_points;m->hurt(&you,20,BEAM_MAGIC);require(hp-m->hit_points==20,"invocation double bonus");}
++        require(holo_batch::s.targets[m->mid].kind==2,"invocation consumed ordinary-hit bonus");holo_batch::cancel_attack();
++        m=sleeping();m->behaviour=BEH_SEEK;require(ordinary(m,holo_batch::attack_kind::melee,20)==20,"externally woken target got bonus");
++        m=sleeping();step(20);require(ordinary(m,holo_batch::attack_kind::spell,20)==20,"expired sleep got bonus");
++        m=fixture("okayu");m->put_to_sleep(&you,0);require(ordinary(m,holo_batch::attack_kind::melee,20)==20,"natural sleep got Okayu bonus");
++        m=sleeping();holo_batch::s.targets[m->mid].kind=1;require(ordinary(m,holo_batch::attack_kind::melee,20)==26,"legacy saved nap compatibility");
++        m=sleeping();rng::seed(424242);const int melee_hp=m->hit_points;fight_melee(&you,m);
++        require(m->hit_points<melee_hp && holo_batch::s.targets[m->mid].kind==3,"native melee did not consume waking hit");
++        m=sleeping();rng::seed(424242);{
++            if(const char *shots=getenv("HOLOCRAWL_OKAYU_REVIEW"))holo_visual::capture(std::string(shots)+"/okayu-sleep-ready.png");
++            command_scope cmd;bolt beam;beam.name="magic dart";beam.origin_spell=SPELL_MAGIC_DART;
++            beam.source=you.pos();beam.target=m->pos();beam.range=5;beam.source_id=you.mid;
++            beam.thrower=KILL_YOU;beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(1,20);beam.hit=AUTOMATIC_HIT;
++            beam.fire();require(holo_batch::s.targets[m->mid].kind==3,"native spell bolt did not consume waking hit");
++            if(const char *shots=getenv("HOLOCRAWL_OKAYU_REVIEW"))holo_visual::capture(std::string(shots)+"/okayu-sleep-spell-hit.png");
++        }
++        int five_damage[2];
++        for(int ready=0;ready<2;++ready) {
++            m=sleeping();you.piety=180;holo_batch::s.resource=50;
++            if(!ready)holo_batch::s.targets[m->mid].kind=3;
++            rng::seed(434343);const int hp=m->hit_points;require(invoke(5,m,&m->pos())==10,"dream eater test cast");five_damage[ready]=hp-m->hit_points;
++        }
++        require(five_damage[0]==five_damage[1] && five_damage[0]>0,"5* sleep bonus double-stacked with3*");
++        std::ofstream proof(dir+"/okayu-waking.json");proof<<"{\"status\":\"passed\",\"percent\":30,\"capAtInv12\":12,\"standaloneAtThreeStars\":true,\"nativeMelee\":true,\"nativeSpellBolt\":true,\"untargetedSpellSnapshot\":true,\"oneHitOnly\":true,\"zeroDamageControl\":true,\"petDotCloudControls\":true,\"expiryAndExternalWake\":true,\"naturalSleepExcluded\":true,\"legacyNapSave\":true,\"unspentAndSpentSaveRoundtrip\":true,\"fiveStarNoDoubleStack\":true}\n";
+     }
+     fixture("noel");holo_wrath::validate();holo_visual::validate();
+     // Native TAG_LEVEL serialization must retain both v2 servant stats and AI
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -438,6 +438,7 @@
+         "Listed costs are charged only on a successful invocation; cancellation costs no turn."};
+     lines.push_back(income[it-ids.begin()]);
+     lines.push_back("Strong means monster HD >= your XL. Direct excludes pet kills; ordinary means your normal attack.");
++    if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+     if(g=="noel")lines.push_back("Taboo: voluntary berserk costs 10 piety and ends Knight's skill / Silver commander.");
+     lines.push_back(holo_wrath::description(g));
+     for(const auto &c:choices(g))lines.push_back(((c.tier==1 || c.tier==3 || c.tier==5)?make_stringf("%d*: ",c.tier):"Utility: ")+c.name);
+@@ -501,6 +502,7 @@
+     if(!aut && !(c.tier<0 || (g=="koyori" && c.tier==3)))mpr("That ability is not available: check resources, cooldown and target conditions.");
+     return true;
+ }
++bool ordinary_damage(){return !divine_damage && !invoking;}
+ damage_scope::damage_scope(bool direct):old_damage(divine_damage),old_direct(divine_direct){divine_damage=true;divine_direct=direct;}
+ damage_scope::~damage_scope(){divine_damage=old_damage;divine_direct=old_direct;}
+ command_scope::command_scope(){++command_depth;}
+--- before/holo-campaign.h
++++ after/holo-campaign.h
+@@ -36,6 +36,7 @@
+ class bomb_scope { bool owner=false; public: bomb_scope(); ~bomb_scope(); };
+ void beam_target(monster *target,bool spell);
+ class command_scope { public: command_scope(); ~command_scope(); };
++bool ordinary_damage(); // Excludes divine/invocation damage, including nested procs.
+ class damage_scope {
+     bool old_damage,old_direct;
+ public: explicit damage_scope(bool direct); ~damage_scope();
+--- before/monster.cc
++++ after/monster.cc
+@@ -4388,6 +4388,7 @@
+                    kill_method_type kill_type, string /*source*/,
+                    string /*aux*/, bool cleanup_dead, bool attacker_effects)
+ {
++    const bool waking_hit_allowed=amount!=INSTANT_DEATH;
+     if(amount!=INSTANT_DEATH) amount=holo_batch::companion_hurt(*this,agent,amount);
+     if (mons_is_projectile(type)
+         || mid == MID_ANON_FRIEND
+@@ -4460,6 +4461,12 @@
+                 flags |= MF_EXPLODE_KILL;
+         }
+ 
++        // Only add the waking hit after native reductions and multipliers:
++        // fully absorbed hits must not consume it, and native stabs/harm
++        // must not multiply the capped extra damage a second time.
++        if(waking_hit_allowed && flavour!=BEAM_SHARED_PAIN
++            && flavour!=BEAM_STICKY_FLAME && flavour!=BEAM_TORMENT_DAMAGE)
++            amount=holo_batch::waking_damage(*this,agent,amount,kill_type);
+         amount = min(amount, hit_points);
+         hit_points -= amount;
+ 
+--- before/spl-cast.cc
++++ after/spl-cast.cc
+@@ -1499,6 +1499,8 @@
+ 
+     if(allow_fail && fail==0 && (flags & spflag::targeting_mask) && spell_harms_target(spell))
+         holo_campaign::beam_target(monster_at(beam.target),true);
++    // Limit ordinary spell attribution to this cast, before world/cloud ticks.
++    holo_batch::waking_spell_scope waking_spell(allow_fail && fail==0 && !evoked_item);
+     spret cast_result = _do_cast(spell, powc, spd, beam, god, fail);
+ 
+     switch (cast_result)

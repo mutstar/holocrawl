@@ -1,0 +1,113 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -175,9 +175,9 @@
+         close_save();return 0;
+     }
+     if(const char *shots=getenv("HOLOCRAWL_MELA_BREATH_REVIEW")) {
+-        auto *m=fixture("mela");const auto origin=you.pos(),aim=origin+coord_def(3,0);
++        auto *m=fixture("mela");const auto origin=you.pos(),aim=origin+coord_def(5,0);
+         require(m->pos()==origin+coord_def(1,0) || m->move_to_pos(origin+coord_def(1,0)),"Mela breath near target placement");
+-        for(const auto &d:std::vector<coord_def>{coord_def(2,1),coord_def(3,-2),coord_def(3,2),coord_def(4,0)}) {
++        for(const auto &d:std::vector<coord_def>{coord_def(3,0),coord_def(5,0),coord_def(3,1),coord_def(6,0)}) {
+             auto mg=mgen_data::hostile_at(MONS_ORC,false,origin+d);mg.flags|=MG_FORCE_PLACE;
+             auto *n=create_monster(mg,false);require(n,"Mela breath comparison placement");
+             n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;
+@@ -193,7 +193,7 @@
+             require(stable==signature(),"Mela breath VFX changed gameplay/RNG");
+         }
+         you.props.erase("holo_mela_heat_preview");
+-        std::ofstream(std::string(shots)+"/breath.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"direction\":\"east\",\"widths\":[1,3,5],\"heatCompared\":[0,3]}\n";
++        std::ofstream(std::string(shots)+"/breath.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"direction\":\"east\",\"width\":1,\"range\":5,\"heatCompared\":[0,3]}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_MELA_ONIBI_REVIEW")) {
+         auto *m=fixture("mela");const auto aim=you.pos()+coord_def(2,0);
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -440,11 +440,11 @@
+ bool mela_breath_preview_cell(const coord_def &p,int &frame,int &distance) {
+     if(!crawl_state.test || !you.props.exists("holo_mela_breath_preview") || flashes.empty()
+         || flash_kind!=effect::night_mela3 || !in_bounds(p) || !you.see_cell(p)
+-        || cell_is_solid(p) || !holo_batch::line(you.pos(),p) || grid_distance(you.pos(),p)>3)return false;
++        || cell_is_solid(p) || !holo_batch::line(you.pos(),p) || grid_distance(you.pos(),p)>5)return false;
+     const auto d=flashes.front()-you.pos();const coord_def dir((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
+     frame=flash_frame;
+-    for(int r=1;r<=std::min(3,frame+1);++r)for(int w=1-r;w<r;++w)
+-        if(p==you.pos()+coord_def(dir.x*r-dir.y*w,dir.y*r+dir.x*w)){distance=r;return true;}
++    for(int r=1;r<=std::min(5,2*frame+1);++r)
++        if(p==you.pos()+coord_def(dir.x*r,dir.y*r)){distance=r;return true;}
+     return false;
+ }
+ bool sopia_gravity_preview_cell(const coord_def &p,coord_def &delta,int &radius,int &frame) {
+@@ -1057,18 +1057,18 @@
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
+     if(god=="mela" && tier==3 && you.props.exists("holo_mela_breath_preview")) {
+-        int count=0;for(int y=-4;y<=4;++y)for(int x=-4;x<=4;++x) {
++        int count=0;for(int y=-6;y<=6;++y)for(int x=-6;x<=6;++x) {
+             int f=0,d=0;if(mela_breath_preview_cell(you.pos()+coord_def(x,y),f,d)) {
+-                if(d<1 || d>3 || f!=frame)throw std::runtime_error("Mela breath visual distance mismatch");
++                if(d<1 || d>5 || f!=frame)throw std::runtime_error("Mela breath visual distance mismatch");
+                 ++count;
+             }
+         }
+-        const int bands=std::min(3,frame+1);
+-        if(pos.y==you.pos().y && count!=bands*bands)throw std::runtime_error("Mela east cone must grow1/4/9cells");
++        const int bands=std::min(5,2*frame+1);
++        if(pos.y==you.pos().y && count!=bands)throw std::runtime_error("Mela east beam must grow1/3/5cells");
+         int f=0,d=0;
+-        if(mela_breath_preview_cell(you.pos(),f,d) || mela_breath_preview_cell(you.pos()+coord_def(4,0),f,d))
++        if(mela_breath_preview_cell(you.pos(),f,d) || mela_breath_preview_cell(you.pos()+coord_def(6,0),f,d) || mela_breath_preview_cell(you.pos()+coord_def(3,1),f,d))
+             throw std::runtime_error("Mela breath affects self/outside range");
+-        std::ofstream(path+"-cone.json")<<"{\"status\":\"passed\",\"frame\":"<<frame<<",\"cells\":"<<count<<",\"widths\":[1,3,5]}\n";
++        std::ofstream(path+"-cone.json")<<"{\"status\":\"passed\",\"frame\":"<<frame<<",\"cells\":"<<count<<",\"width\":1,\"range\":5}\n";
+     }
+ 
+     if(god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview")) {
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -116,6 +116,24 @@
+         const int a=u+sx*k,b=v+sy*k;
+         m_buf_holo_range.add(x+a*p,y+b*p,x+(a+2)*p,y+(b+2)*p,k==0?star:rim);
+     }
++}
++
++void DungeonCellBuffer::add_mela_beam_tile(int tileidx,int x,int y,int distance)
++{
++    const auto &inf=tile_feat_info(tileidx);
++    const auto *texture=static_cast<const TilesTexture *>(m_buf_holo_ground_vfx.current_texture());
++    float sx=x-(distance-1),sy=y,ex,ey,tx,ty,ux,uy;
++    if(!texture->get_coords(tileidx,(inf.width-TILE_X)/2,inf.height-TILE_Y,
++        sx,sy,ex,ey,tx,ty,ux,uy,true,-1,-1,32.0f,32.0f))return;
++    // Slice one shared160px stream at world-cell boundaries. Atlas trimming
++    // is included in sx/ex; no separate miniature flames or stretched gaps.
++    const float left=std::max(sx,float(x)),right=std::min(ex,float(x+1));
++    const float top=std::max(sy,float(y)),bottom=std::min(ey,float(y+1));
++    if(left>=right || top>=bottom)return;
++    GLWPrim cell(left,top,right,bottom);
++    cell.set_tex(tx+(ux-tx)*(left-sx)/(ex-sx),ty+(uy-ty)*(top-sy)/(ey-sy),
++        tx+(ux-tx)*(right-sx)/(ex-sx),ty+(uy-ty)*(bottom-sy)/(ey-sy));
++    m_buf_holo_ground_vfx.add_primitive(cell);
+ }
+ 
+ void DungeonCellBuffer::add_mela_breath_cell(int x,int y)
+--- before/tiledgnbuf.h
++++ after/tiledgnbuf.h
+@@ -25,6 +25,7 @@
+     void add_monster(const monster_info &mon, int x, int y);
+     void add_vivi_impact_cell(int x,int y);
+     void add_mela_breath_cell(int x,int y);
++    void add_mela_beam_tile(int tileidx,int x,int y,int distance);
+     void add_sopia_gravity_cell(int x,int y,int dx,int dy,int radius,int frame);
+     void add_holo_range_cell(int x,int y,bool left_edge,bool top_edge,
+                              bool right_edge,bool bottom_edge);
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -137,7 +137,7 @@
+             int mela_frame=0,mela_distance=0;
+             if(map_bounds(gc) && holo_visual::mela_breath_preview_cell(gc,mela_frame,mela_distance)) {
+                 m_buf_dngn.add_mela_breath_cell(x,y);
+-                m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(holo_visual::effect::night_mela3,mela_frame),x,y,1,1,true);
++                m_buf_dngn.add_mela_beam_tile(holo_visual::effect_tile(holo_visual::effect::night_mela3,mela_frame),x,y,mela_distance);
+             }
+             coord_def sopia_delta;int sopia_radius=0,sopia_frame=0;
+             if(map_bounds(gc) && holo_visual::sopia_gravity_preview_cell(gc,sopia_delta,sopia_radius,sopia_frame))

@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "revision": "lui-command01",
+  "binarySha256": "f5fb724eb476a6cbf6c6b84b0cf0a1527827f182bc7ae05477de462b77b51d32",
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "artPreserved": true,
+  "command": {
+    "status": "passed",
+    "hawks": 3,
+    "damage": 13,
+    "mpCost": 3,
+    "pietyCost": 3,
+    "actionAut": 10,
+    "cooldownAut": 50
+  },
+  "captureSequences": [
+    "lui-attack-2",
+    "lui-attack-3",
+    "lui-attack-4"
+  ],
+  "captureHashes": {
+    "lui-command-before.png": "aa63245e244527da52940cdc8150a95fdd97280bdae269062f94662aa52e9d38",
+    "lui-attack-2-ready.png": "0131d1bd7144430cd8887f9d3b51f6c402474fcd706609a2a46757580bf65e7f",
+    "lui-attack-2-frame0.png": "8ef849e8a5d1f842c8afc3319039bcede99bf0feb6d635ecddf4ade540100d4e",
+    "lui-attack-2-frame1.png": "8ef849e8a5d1f842c8afc3319039bcede99bf0feb6d635ecddf4ade540100d4e",
+    "lui-attack-2-frame2.png": "0131d1bd7144430cd8887f9d3b51f6c402474fcd706609a2a46757580bf65e7f",
+    "lui-attack-3-ready.png": "8168ce442df7479cd06b2ff4d7e19eb7724a9496a8719094cd66807540461d68",
+    "lui-attack-3-frame0.png": "0590932fb81707037099618bf1f1c5c936f515215be68c40fce5331b0238f9d8",
+    "lui-attack-3-frame1.png": "0590932fb81707037099618bf1f1c5c936f515215be68c40fce5331b0238f9d8",
+    "lui-attack-3-frame2.png": "8168ce442df7479cd06b2ff4d7e19eb7724a9496a8719094cd66807540461d68",
+    "lui-attack-4-ready.png": "ba3deb7cdb1995f5541203daaadd9b8c6e1ab7e4640dc8e9b24a26e2befff531",
+    "lui-attack-4-frame0.png": "9b5f6893c22e47dcbf57caae8ac9f5b70e6d864cba9f1fd2a69a36be4cffd57c",
+    "lui-attack-4-frame1.png": "9b5f6893c22e47dcbf57caae8ac9f5b70e6d864cba9f1fd2a69a36be4cffd57c",
+    "lui-attack-4-frame2.png": "ba3deb7cdb1995f5541203daaadd9b8c6e1ab7e4640dc8e9b24a26e2befff531",
+    "lui-command-after.png": "14857f88b0cb14d7347e80b10c99caba240102732327314a9189ccc32adb3bdd"
+  },
+  "validation": {
+    "gods": 22,
+    "rawScreenshots": 35,
+    "chocoControls": false,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "binarySha256": "F5FB724EB476A6CBF6C6B84B0CF0A1527827F182BC7AE05477DE462B77B51D32",
+    "scope": "VFX and native state controls, not campaign winrate."
+  }
+}

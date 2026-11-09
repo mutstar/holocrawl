@@ -1,0 +1,85 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -70,6 +70,7 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
++    if(e==effect::night_raden3 || e==effect::night_radenstone || e==effect::night_radencraft)return 1;
+     if(e==effect::night_koyori5 || e==effect::night_lui5)return 1; // Compact player-relative badges.
+ 
+     if(e>=effect::night_korone1 && e<=effect::night_mela5)return (int(e)-int(effect::night_korone1))%3==0?1:(int(e)-int(effect::night_korone1))%3==1?3:5;
+@@ -192,6 +193,18 @@
+ }
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
++    if(g=="raden" && tier==3) {
++        flash_kind=night_effect(g,tier,option);
++        if(option==1) {
++            const auto d=p-you.pos();const coord_def step((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
++            for(int n=1;n<=3;++n) {
++                const auto cell=you.pos()+step*n;
++                if(!in_bounds(cell) || cell_is_solid(cell))break;
++                if(you.see_cell(cell))flashes.push_back(cell);
++            }
++        } else flashes.push_back(option==2?you.pos():p);
++        return;
++    }
+     if(g=="lamy" && tier==5){flash_kind=effect::lamybanquetcast0;flashes.push_back(you.pos());return;}
+     const auto style=(g=="pekora" && (tier==3 || tier==5))?night_effect(g,1):night_effect(g,tier,option);
+     if(style!=effect::none) {
+@@ -248,9 +261,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    const int frames=flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
++    const int frames=flash_kind==effect::night_radenstone?3:flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
+     for(int frame=0;frame<frames;++frame) {
+         flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
++        if(flash_kind==effect::night_raden3 || flash_kind==effect::night_radenstone || flash_kind==effect::night_radencraft){scaled_delay(105);continue;}
+         scaled_delay(flash_kind==effect::lamybanquetcast0?105:flash_kind==effect::night_okayu5?110:flash_kind==effect::night_korone3 || flash_kind==effect::night_korone5?110:flash_kind==effect::ayameslash || flash_kind==effect::ayameduel?110:flash_kind==effect::cometfall?(frame<4?65:100):(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?95:55);
+     }
+     clear();tiles.invalidate_dungeon_overlays();update_screen();
+@@ -366,6 +380,9 @@
+ }
+ effect invocation_at(const coord_def &p) {
+     if(!in_bounds(p) || !you.see_cell(p))return effect::none;
++    if(flash_kind==effect::night_radenstone
++        && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())
++        return p==flashes[std::min(int(flashes.size())-1,flash_frame)]?flash_kind:effect::none;
+     const auto fox=fox_cue_at(p);if(fox!=effect::none)return fox;
+     if(holo_campaign::active() && holo_worship::current()=="ayame") {
+         const auto &s=holo_batch::s;const auto *mon=monster_by_mid(s.marked);
+@@ -864,7 +881,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:((god=="miko" || god=="aki" || god=="lamy") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -170,7 +170,7 @@
+             const auto aim=option==2?origin:m->pos();
+             cast("raden",3,m,aim,option);
+             const auto stable=signature();
+-            for(int f=0;f<2;++f)
++            for(int f=0;f<(option==1?3:2);++f)
+                 holo_visual::capture_invocation("raden",aim,f,std::string(shots)+"/raden-tier3-option"+std::to_string(option)+"-review-frame"+std::to_string(f)+".png",3,false,option);
+             require(stable==signature(),"Raden third-star capture changed gameplay/RNG");
+         }
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -148,8 +148,10 @@
+                         && cue!=holo_visual::effect::night_okayu5
+                         && cue!=holo_visual::effect::night_noel5
+                         && cue!=holo_visual::effect::night_watame5
++                          && cue!=holo_visual::effect::night_raden3
+                         && cue!=holo_visual::effect::night_koyori5)
+-                    || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
++                    || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft
++                        && cue!=holo_visual::effect::night_radenstone && cue!=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift
+                     || cue==holo_visual::effect::foxcircle || cue==holo_visual::effect::foxflame

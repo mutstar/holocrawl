@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "revision": "lui-hawk01",
+  "binarySha256": "e3434606be80d885d750add59ce470464480d6d50c33fbb7805b7322f9695697",
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "legacyNamesSupported": true,
+  "newNameAndLegacyMigrationChecked": true,
+  "koyoriAndOtherGodArtPreserved": true,
+  "visualApproved": false,
+  "nativeSourceStems": [
+    "lui-tier1-option0-53",
+    "lui-tier1-option0-77"
+  ],
+  "changed": {
+    "holo-batch-summons.cc": "010f84b7e99c85f319dc4203170aba4fd884a96d0816961de19d3b83555560a6",
+    "holo-campaign-test.cc": "9247d24074a9a42bb4f91afc8353d248e5b5c24d3d55ecfe6ad88d3295009f0a",
+    "holo-campaign.cc": "4f71755659e287b195ba727f5f915b01a01561e0ba68aaf4225743ec9f0aa6b5",
+    "holo-visual.cc": "3541551ba9fdf7b3562a32e8db3a6e8c3cace702020a7355f4f2e5e12fd6ef36",
+    "holo-wrath.cc": "d8f1ff7ac125f5871436be3ad4e603579c1f31ce0fb5d508a92601cad212b8f7",
+    "rltiles\\holo\\altar_lui.png": "e5863ce11c510002363ee4d136de388aa71716039f2419ea2dbb869e152938f8",
+    "rltiles\\holo\\charm_lui.png": "1a8cb3b7485a692a953d65125b9d687f945bd9395364c20d931aebd630747c6e",
+    "rltiles\\holo\\fx_night_lui1_0.png": "99c734bd0a673a442e0bd2c815309ecb6b4c8a156175373f28d03c6046cef6c9",
+    "rltiles\\holo\\fx_night_lui1_1.png": "44f01742fc99392c3aa0d1c9e6f505a554e78ecd5890538a036317f9df6a5069",
+    "rltiles\\holo\\fx_ravenflight_0.png": "1b11aa733a1e05a840885e0ecdab82380338e50e109ceafaf910ba5e28b12b2b",
+    "rltiles\\holo\\fx_ravenflight_1.png": "9cf39cfbd7f233b148756250625b94379c6826ac0e9e03481af46e5f29e3095a",
+    "rltiles\\holo\\god_lui.png": "c0129df23672f8d88c4471a7679ad05b72643de1fb9fe5e01a020189bd34ccbf",
+    "rltiles\\holo\\raven.png": "1a09a8145d5dcb26e32187aafbdf7bdb9a2f742172b0dfe21cd14374c0178701",
+    "rltiles\\holo\\raven_1.png": "bdc271e40f8f4521effb6d5522f7447645cbc73f8bd5984ad970eb907bd29925"
+  },
+  "validation": {
+    "rawScreenshots": 355,
+    "freshProcessRestore": true,
+    "chocoControls": false,
+    "binarySha256": "E3434606BE80D885D750ADD59CE470464480D6D50C33FBB7805B7322F9695697",
+    "gods": 22,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "status": "passed"
+  }
+}

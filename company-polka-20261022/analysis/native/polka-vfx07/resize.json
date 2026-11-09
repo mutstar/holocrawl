@@ -1,0 +1,36 @@
+{
+  "scaleApprox": 0.85,
+  "method": "nearest-neighbour from VFX06 generated original",
+  "sizes": {
+    "polka5": [
+      [
+        60,
+        54
+      ],
+      [
+        65,
+        58
+      ]
+    ],
+    "polkaheal": [
+      [
+        51,
+        48
+      ],
+      [
+        54,
+        51
+      ]
+    ],
+    "polkachaos": [
+      [
+        51,
+        48
+      ],
+      [
+        54,
+        51
+      ]
+    ]
+  }
+}

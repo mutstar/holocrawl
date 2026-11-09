@@ -1,0 +1,13 @@
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -264,8 +264,8 @@
+             return;
+         }
+         if(tileidx==TILE_HOLO_FX_MIKOPETALSHIELD) {
+-            //48px transparent-center barrier surrounds the32px character.
+-            buffer.add(tileidx,x,y,0,0,true,-1,32.0f,32.0f);
++            //36px circular barrier is centered on the32px character body.
++            buffer.add(tileidx,x,y,0,8,true,-1,32.0f,32.0f);
+             return;
+         }
+         // Reuse the generated32px raster, enlarged4/3 and raised above its corner.

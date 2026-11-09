@@ -1,0 +1,123 @@
+--- before/holo-batch-summons.cc
++++ after/holo-batch-summons.cc
+@@ -42,7 +42,7 @@
+     // Flight, stationary behavior, stats and first-action scheduling are set explicitly below.
+     mgen_data mg(MONS_RAT,BEH_FRIENDLY,pos,MHITNOT,MG_FORCE_PLACE);
+     mg.extra_flags|=MF_NO_REWARD|MF_HARD_RESET;mg.summoner=&you;
+-    mg.mname=kind==1?"Holo rose":kind==2?"Holo fox image":"Holo raven";
++    mg.mname=kind==1?"Holo rose":kind==2?"Holo fox image":"Holo hawk";
+     monster *mon=create_monster(mg,false);if(!mon) return false;
+     companion c;c.mid=mon->mid;c.kind=kind;c.expires=end;c.natural_end=end;c.extra=extra;c.next=you.elapsed_time+20;
+     if(kind==3 && five()) c.shield=6+s.inv/3;
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1100,6 +1100,11 @@
+     m=fixture("noel",15);m->flags|=MF_NO_REWARD;m->max_hit_points=100;m->hurt(&you,20000,BEAM_MISSILE);
+     require(you.piety==15,"no-reward monster grants faith");
+     m=fixture("lui");cast("lui",1,nullptr,you.pos());monster *raven=monster_by_mid(holo_batch::s.companions.front().mid);
++    require(raven && raven->mname=="Holo hawk","Lui new summon must be a hawk");
++    const int hawk_hp=raven->hit_points;const auto hawk_mid=raven->mid;
++    raven->mname="Holo raven";advance();
++    require(raven->mname=="Holo hawk" && raven->mid==hawk_mid && raven->hit_points==hawk_hp,"Lui legacy name migration changed actor state");
++
+     const int pet_piety=you.piety;m->max_hit_points=100;m->hurt(raven,20000,BEAM_MISSILE);
+     require(you.piety==pet_piety+2,"native raven kill credit / strong bonus");
+     fixture("noel");cast("noel",5,nullptr,you.pos());const int before_berserk=you.piety;
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -128,6 +128,13 @@
+     if(!active())return;
+     holo_batch::s.inv=you.skill(SK_INVOCATIONS,1);
+     holo_koyori::initialise();
++    // Preserve legacy saves: only presentation names change, not companion IDs/state.
++    for(monster_iterator mi;mi;++mi){
++        if(mi->mname=="Holo raven")mi->mname="Holo hawk";
++        else if(mi->mname=="wrath crow" && mi->props.exists("holo_wrath_god")
++            && mi->props["holo_wrath_god"].get_string()=="lui")mi->mname="wrath hawk";
++    }
++
+     // The first unlock grants Okayu's initial fullness once per character.
+     if(holo_worship::current()=="okayu" && you.piety>=30) {
+         if(!you.props.exists("holo_initial_resources"))you.props["holo_initial_resources"].new_table();
+@@ -168,7 +175,7 @@
+     if(g=="lamy")return {{"Drink (MP2, piety1)",1,0,0,0},{"Snow banquet (MP6, piety12, intox40)",5,0,0,0}};
+     if(g=="polka")return {{"Performance: strong target (MP1)",1,1,1,6},{"Performance: tightrope (MP1)",1,2,1,6},{"Performance: juggling (MP1)",1,3,1,6},{"Acrobatics (MP3, piety2)",3,0,1,1},{"Acrobatics + 1 applause (MP3, piety2)",3,1,1,1},{"Firework finale (MP6, piety10)",5,0,2,5},{"Curtain call (MP6, piety10)",5,1,0,0},{"Confusion finale (MP6, piety10)",5,2,0,0},{"Abandon performance",-1,0,0,0}};
+     if(g=="koyori")return {{"Critical experiment (MP6, piety10)",5,0,0,0}};
+-    if(g=="lui")return {{"Summon raven (MP3)",1,0,0,0},{"Hunting command (MP3, piety3)",3,0,1,5},{"Raven host (MP7, piety14)",5,0,0,0}};
++    if(g=="lui")return {{"Summon hawk (MP3)",1,0,0,0},{"Hunting command (MP3, piety3)",3,0,1,5},{"Hawk host (MP7, piety14)",5,0,0,0}};
+     if(g=="raden")return {{"Exhibit painting (MP1)",1,0,0,0},{"Exhibit sculpture (MP1)",1,1,0,0},{"Exhibit craft (MP1)",1,2,0,0},{"Painting burst (MP3, piety3)",3,0,1,5},{"Sculpture wave (MP3, piety3)",3,1,2,3},{"Craft shield (MP3, piety3)",3,2,0,0},{"Special exhibition (MP6, piety12)",5,0,0,0}};
+     if(g=="hajime")return {{"Dive in (MP3, piety3)",3,0,1,3},{"Bancho time (MP6, piety12)",5,0,0,0}};
+     if(g=="su")return {{"Wave (MP3, piety3)",3,0,2,5},{"High tide (MP6, piety12)",5,0,0,0}};
+@@ -403,7 +410,7 @@
+         "Drink for attack-spell power. Damaging spells/tools and first cloud damage per use build chill; Snow banquet adds frost bursts. Overdrinking reduces EV by3.",
+         "Complete performances to earn applause; spend it on acrobatics and selectable finales.",
+         "Attack spells cycle heat, cold and poison reagents. Learn longer-range catalyst reactions; Critical experiment injects paired reagents.",
+-        "Summon ravens, mark a hunting target and call a raven host; bird kills support worship.",
++        "Summon hawks, mark a hunting target and call a hawk host; bird kills support worship.",
+         "Choose painting, sculpture or craft. Each exhibit has a matching active power and recovery.",
+         "Build rhythm through movement and melee. Dive in; five stars damage adjacent foes on movement.",
+         "Build water and release waves. High tide empowers the water-based combat cycle.",
+@@ -428,7 +435,7 @@
+         "Bonus piety: +1 for a direct kill at intoxication 20-69, or during Banquet.",
+         "Bonus piety: +1 for a successfully completed performance; finale costs and applause are separate.",
+         "Bonus piety: +3 for each first reaction discovered; +1 for a strong direct reaction kill.",
+-        "Bonus piety: +1 for a strong enemy killed by one of your ravens.",
++        "Bonus piety: +1 for a strong enemy killed by one of your hawks.",
+         "Bonus piety: +1 for a strong kill, including a qualifying companion kill.",
+         "Bonus piety: +1 for a strong ordinary melee kill at 2+ rhythm, or a direct Dive kill starting at 2+ rhythm.",
+         "Bonus piety: +1 for a strong direct Wave kill when the wave is wide or High tide is active.",
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -291,7 +291,7 @@
+     // Saved native names support pre-art campaign saves without a migration
+     // or storing compiled atlas indices in monster/player save data.
+     if(!testbits(mon.flags,MF_NO_REWARD))return sprite::none;
+-    return mon.mname=="Holo rose"?sprite::rose:mon.mname=="Holo fox image"?sprite::fox:mon.mname=="Holo raven"?sprite::raven:sprite::none;
++    return mon.mname=="Holo rose"?sprite::rose:mon.mname=="Holo fox image"?sprite::fox:(mon.mname=="Holo raven" || mon.mname=="Holo hawk")?sprite::raven:sprite::none;
+ }
+ bool lamy_banquet_cell(const coord_def &p) {
+     return !holo_benchmark_active() && in_bounds(p) && you.see_cell(p)
+@@ -770,7 +770,7 @@
+     if(holo_benchmark_active() || you.form!=transformation::none || Options.tile_use_monster!=MONS_0)return;
+     const auto ids=holo_worship::gods();const auto found=std::find(ids.begin(),ids.end(),holo_worship::current());
+     // Polka uses the floating performance hat; omit the old separate star charm.
+-    if(holo_campaign::active() && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
++    if(holo_campaign::active() && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && holo_worship::current()!="lui" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
+     // Render-only base swap: native armour, helmet, weapons and species/forms survive.
+     if(you.species==SP_HUMAN && is_player_tile(doll.parts[TILEP_PART_BASE],TILEP_BASE_HUMAN)
+         && player_doll.parts[TILEP_PART_BODY]==TILEP_SHOW_EQUIP) {
+@@ -789,7 +789,7 @@
+         themed.push_back(e);
+     }
+     monster fake;fake.flags|=MF_NO_REWARD;
+-    for(const auto &entry:std::vector<std::pair<std::string,sprite>>{{"Holo rose",sprite::rose},{"Holo fox image",sprite::fox},{"Holo raven",sprite::raven}}){fake.mname=entry.first;require(appearance(fake)==entry.second);}
++    for(const auto &entry:std::vector<std::pair<std::string,sprite>>{{"Holo rose",sprite::rose},{"Holo fox image",sprite::fox},{"Holo raven",sprite::raven},{"Holo hawk",sprite::raven}}){fake.mname=entry.first;require(appearance(fake)==entry.second);}
+     fake.mname="rat";require(appearance(fake)==sprite::none);
+ #ifdef USE_TILE
+     require(TILE_HOLO_GOD_MELA-TILE_HOLO_GOD_SUISEI==21);
+--- before/holo-wrath.cc
++++ after/holo-wrath.cc
+@@ -115,7 +115,7 @@
+         const monster_type body=!modern() || fake?MONS_RAT:g=="aki"?MONS_OKLOB_PLANT:g=="ayame"?MONS_ORC_KNIGHT:g=="lui"?MONS_HARPY:MONS_WOLF;
+         mgen_data mg(body,BEH_HOSTILE,cells[i],MHITYOU,MG_FORCE_PLACE);
+         mg.extra_flags|=MF_NO_REWARD|MF_HARD_RESET;
+-        mg.mname=g=="aki"?"wrath rose":g=="fubuki"?(fake?"fox-tail decoy":"wrath spirit fox"):g=="ayame"?"wrath swordsman":g=="korone"?"wrath hound":"wrath crow";
++        mg.mname=g=="aki"?"wrath rose":g=="fubuki"?(fake?"fox-tail decoy":"wrath spirit fox"):g=="ayame"?"wrath swordsman":g=="korone"?"wrath hound":"wrath hawk";
+         monster *m=create_monster(mg,false);if(!m)continue;
+         // Native templates supply bodies, not equipment, acid spells or loot.
+         m->destroy_inventory();m->spells.clear();
+@@ -339,12 +339,12 @@
+     const double turns=(100+5*x)/10.0;
+     if(is_summon(g)) {
+         const auto v=servant(g,x);
+-        std::string result=make_stringf("Wrath at current XL %d: %d hostile %s, after 2 turns for %.1f turns; each HP %d, AC %d, EV %d, speed %d, hit %d, damage %d.",x,group_size(g,x),g=="aki"?"roses":g=="fubuki"?"spirit foxes":g=="ayame"?"swordsmen":g=="korone"?"hounds":"ravens",lifetime(x)/10.0,v.hp,v.ac,v.ev,v.speed,v.hit,v.damage);
++        std::string result=make_stringf("Wrath at current XL %d: %d hostile %s, after 2 turns for %.1f turns; each HP %d, AC %d, EV %d, speed %d, hit %d, damage %d.",x,group_size(g,x),g=="aki"?"roses":g=="fubuki"?"spirit foxes":g=="ayame"?"swordsmen":g=="korone"?"hounds":"hawks",lifetime(x)/10.0,v.hp,v.ac,v.ev,v.speed,v.hit,v.damage);
+         if(g=="aki")result+=make_stringf(" Stationary; range 6 thorns, 2d%d physical every 1.5 turns; AC applies.",5+x/2);
+         if(g=="fubuki")result+=make_stringf(" Plus %d harmless 1-HP decoys; only decoys can be walked through.",2+x/12);
+         if(g=="ayame")result+=" Consecutive hits add up to +12 accuracy; resets after 3 turns without a hit.";
+         if(g=="korone")result+=" A hit adds 30% movement time for 3 turns; does not stack.";
+-        if(g=="lui")result+=" Flying; different ravens give up to -6 accuracy on contact.";
++        if(g=="lui")result+=" Flying; different hawks give up to -6 accuracy on contact.";
+         return result+" No XP or loot; resolved servants persist across stairs until expiry.";
+     }
+     std::string d;

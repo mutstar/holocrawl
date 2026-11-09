@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "revision": "okayu-vfx03",
+  "tier": 1,
+  "sourceArtwork": "assets/holocrawl/okayu-vfx02/onigiri.png",
+  "originalGeneration": "assets/holocrawl/okayu-vfx02/generation.json",
+  "sourceCrop": [
+    375,
+    316,
+    974,
+    839
+  ],
+  "alphaThresholdForCropOnly": 128,
+  "sourcePixelsPreserved": true,
+  "previousVisibleSize": [
+    7,
+    7
+  ],
+  "newVisibleSize": [
+    12,
+    11
+  ],
+  "centre": [
+    26,
+    7
+  ],
+  "framesIdentical": true,
+  "changed": [
+    "rltiles/holo/fx_night_okayu1_0.png",
+    "rltiles/holo/fx_night_okayu1_1.png"
+  ],
+  "sourceChanges": false,
+  "numericChanges": false,
+  "runtimeSha256": "1A082EF981AC7147D97317BA3FDD6BD54B4C14E1B3D7C81D40178F826988A322",
+  "otherSourceAndArtHashesPreserved": true,
+  "tests": "22-god native controls and fresh-process restore passed",
+  "feedback": "pending",
+  "prompt": "assets/holocrawl/okayu-vfx02/generation.json",
+  "review": "analysis/previews/all-gods-vfx-draft04/index.html#okayu"
+}

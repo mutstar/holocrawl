@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "runtimeDeployed": true,
+  "binarySha256": "b2d90dc42eb79116ff364d0d2b0a78f483d5c89728d1f14c0ca8af5eb2556e1a",
+  "nativeProof": {
+    "status": "passed",
+    "lowFaithWidth": 5,
+    "highFaithWidth": 5,
+    "domainWidth": 7,
+    "boundaryOnlyFire": true,
+    "expandedFire": true,
+    "expiredFireGone": true,
+    "expiredDomainGone": true,
+    "capturePreservesGameplay": true
+  },
+  "validation": {
+    "scope": "Miko 1/3/5 tier-specific native VFX and delayed impact, plus 22-god power/save regression. Test arena, fixed equipment, boosted fixture resources; not a normal campaign playthrough.",
+    "binarySha256": "B2D90DC42EB79116FF364D0D2B0A78F483D5C89728D1F14C0CA8AF5EB2556E1A",
+    "rawScreenshots": 18,
+    "capturePreservesGameplayAndRng": true,
+    "status": "passed"
+  }
+}

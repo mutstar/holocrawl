@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "revision": "miko-passive01",
+  "binarySha256": "bb8d3c0f0cb15a915c33672292a8c60b21cd10053f22cfa6fc609fb3d457639c",
+  "nativeProof": {
+    "status": "passed",
+    "combatImplemented": true,
+    "healAtInv12": 4,
+    "capAtInv12": 8,
+    "unlock": 50,
+    "nativeKills": true,
+    "cooldown": true,
+    "expiryAndExit": true,
+    "excludedSources": true
+  },
+  "freshReload": {
+    "status": "passed",
+    "shieldRestored": true,
+    "exactCombatAndRng": true
+  },
+  "validation": {
+    "freshShieldRestore": true,
+    "gods": 22,
+    "binarySha256": "BB8D3C0F0CB15A915C33672292A8C60B21CD10053F22CFA6FC609FB3D457639C",
+    "status": "passed",
+    "combatImplemented": true
+  },
+  "runtimeDeployed": true
+}

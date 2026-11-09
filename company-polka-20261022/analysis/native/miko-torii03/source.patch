@@ -1,0 +1,11 @@
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -254,7 +254,7 @@
+         // Reuse the generated32px raster, enlarged4/3 and raised above its corner.
+         // No new terrain/collision footprint; preserve the existing7x7 domain.
+         if(tileidx==TILE_HOLO_FX_MIKOTORII) {
+-            buffer.add(tileidx,x,y,4,8,true,-1,24.0f,24.0f);
++            buffer.add(tileidx,x,y,-4,-8,true,-1,24.0f,24.0f);
+             return;
+         }
+         // Float Polka's performance hat diagonally above the head.

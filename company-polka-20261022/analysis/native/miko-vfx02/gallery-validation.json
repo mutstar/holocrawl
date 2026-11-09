@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "nativeReview": {
+    "status": "passed",
+    "lowFaithWidth": 3,
+    "highFaithWidth": 5,
+    "domainWidth": 7,
+    "boundaryOnlyFire": true,
+    "expandedFire": true,
+    "expiredFireGone": true,
+    "expiredDomainGone": true,
+    "capturePreservesGameplay": true
+  },
+  "rawFiles": [
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-1-frame0.png",
+      "sha256": "fc39aeffba2a12060aa0ba0060f1a4940094d483febee8fe9228765a2da224df"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-1-frame1.png",
+      "sha256": "6b780a1e65fda431acc6e4d2ebc897b698375c137ee9b9a56f89216c25d041ad"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-1-state.png",
+      "sha256": "7febdeb8cf6e873bea0db59d77e6382774e856de307de7e58de32124a12c0358"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-2-frame0.png",
+      "sha256": "7aaa21678ee78907bb3bcb22141f9498a71accb00a704eea2a6d246a2f386047"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-2-frame1.png",
+      "sha256": "11b00c1630eb12bdc643181ff49b5c3ff383a46c7c9439a763f0b56faec1dc8e"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier1-option0-2-state.png",
+      "sha256": "dd3337d3f0ca6d501818a1f4e0a517f4f0c2cfd3ca0c28c9a4b55bd6cc64ba60"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier3-option0-3-frame0.png",
+      "sha256": "dd3b19139f0f5b915a48d2295c05292e73521bab2e0ca245be6044044c358853"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier3-option0-3-frame1.png",
+      "sha256": "f32efd58abedfb620b4eea76525db4ee4859e25dc15c2b3ad2b8b500d90832d0"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier3-option0-3-state.png",
+      "sha256": "f32efd58abedfb620b4eea76525db4ee4859e25dc15c2b3ad2b8b500d90832d0"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier5-option0-4-frame0.png",
+      "sha256": "e7b0d0c59363b7d5830c3f4100f26bf92c0b62ee8f243f59d930350795c9a6d2"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier5-option0-4-frame1.png",
+      "sha256": "0c52298777be6dc2d69e697156d4d6cd3191531debbaa6cfe1bcf164867f96f2"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-tier5-option0-4-state.png",
+      "sha256": "991c420446e3a6161d307d333b61c768172563477bda5a2673b1a36f547b0549"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-domain-frame0.png",
+      "sha256": "bfad51ff14ab45745dcafe172b677c62a01676546d7c049c721de8be30f809c7"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-domain-frame1.png",
+      "sha256": "fcd86e47cc7b313c888d134f17e8a5373bbc14858dd800e5129528d5d04d9224"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-domain-frame2.png",
+      "sha256": "376f900bc8d617568a36ca1232c85be7022239fe651f03735b6475763bb0ea4e"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-domain-frame3.png",
+      "sha256": "37fb2658f286b2694a8985d854693f3faa732b7190d55c39b300703f687a3e02"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-fire-expired.png",
+      "sha256": "c4c9a941a38c4342fefcc067330326b9056b07d16c369043613299faeee6f558"
+    },
+    {
+      "path": "analysis/native/miko-vfx02/native/shots/miko-domain-expired.png",
+      "sha256": "f89703447c4caa39cb74cce4246695f49b91cfa11f45349a108260df453ca06c"
+    }
+  ],
+  "gallery": "analysis/previews/miko-vfx02/index.html"
+}

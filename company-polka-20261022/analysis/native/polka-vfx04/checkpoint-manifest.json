@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "revision": "polka-vfx04",
+  "numericChanges": false,
+  "gameplaySourcePreserved": true,
+  "rendererOffsetPixels": [
+    4,
+    -12
+  ],
+  "otherArtPreserved": true,
+  "saveFormatChanged": false,
+  "binarySha256": "655c3133c9eed38707b8a1508b1e392dab8c7d3d7b650e580969ad00d6f2dc2c",
+  "nativeFrames": {
+    "1": "polka-tier1-option1-4-frame0.png",
+    "2": "polka-tier1-option2-5-frame0.png",
+    "3": "polka-tier1-option3-6-frame0.png"
+  },
+  "validation": {
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "655C3133C9EED38707B8A1508B1E392DAB8C7D3D7B650E580969AD00D6F2DC2C",
+    "gods": 22,
+    "chocoControls": false,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "rawScreenshots": 323
+  },
+  "review": "analysis/previews/polka-review01/index.html#tier1",
+  "approved": false
+}

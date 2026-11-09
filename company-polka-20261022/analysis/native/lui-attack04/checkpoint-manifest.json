@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "revision": "lui-attack04",
+  "binarySha256": "66216d70148bc754e490d3bd1ae64391640ca92ee2865c9b127265da1b5d6118",
+  "nativeAttackStem": "lui-attack-4",
+  "attackResult": {
+    "status": "passed",
+    "piety": 30,
+    "damage": 2
+  },
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "standingAndOtherGodArtPreserved": true,
+  "visualRngStateGuard": true,
+  "validation": {
+    "chocoControls": false,
+    "binarySha256": "66216D70148BC754E490D3BD1AE64391640CA92EE2865C9B127265DA1B5D6118",
+    "gods": 22,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "rawScreenshots": 17,
+    "scope": "VFX and native state controls, not campaign winrate."
+  }
+}

@@ -1,0 +1,1 @@
+{"status": "superseded", "reason": "Native fixture attempted to move target to its existing cell; no VFX numerical defect. Fixed no-op placement check in mela-breath02; new capture and regressions passed.", "replacement": "../mela-breath02/capture-validation.json"}

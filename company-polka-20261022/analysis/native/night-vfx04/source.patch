@@ -1,0 +1,441 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -23,6 +23,8 @@
+ #include "mon-death.h"
+ #include "mon-util.h"
+ #include "monster.h"
++#include "mgen-data.h"
++#include "mon-place.h"
+ #include "options.h"
+ #include "player.h"
+ #include "random.h"
+@@ -58,7 +60,7 @@
+         static int sequence=0;
+         const std::string stem=std::string(dir)+"/"+god+"-tier"+std::to_string(tier)+"-option"+std::to_string(option)+"-"+std::to_string(++sequence);
+         const auto before=signature();
+-        for(int f=0;f<2;++f)holo_visual::capture_invocation(god,aim,f,stem+"-frame"+std::to_string(f)+".png",tier);
++        for(int f=0;f<2;++f)holo_visual::capture_invocation(god,aim,f,stem+"-frame"+std::to_string(f)+".png",tier,false,option);
+         holo_visual::capture(stem+"-state.png");
+         if(before!=signature()) {
+             std::ofstream(stem+"-before.txt")<<before;
+@@ -233,6 +235,11 @@
+             if(record)holo_visual::capture(std::string(shots)+"/choco-stack"+std::to_string(stacks)+".png");
+         };
+         auto *target=setup();holo_visual::capture(std::string(shots)+"/choco-before.png");grow(target,5,true);
++        {const auto upper=target->pos()+coord_def(0,-1);auto mg=mgen_data::hostile_at(MONS_ORC,false,upper);mg.flags|=MG_FORCE_PLACE;
++        auto *above=create_monster(mg,false);require(above && above->pos()==upper,"upper monster control failed");above->speed=0;above->hit_points=above->max_hit_points=10000;
++        const auto before=signature();holo_visual::capture(std::string(shots)+"/choco-corner-upper.png");
++        const int stacks=holo_batch::s.resource;holo_batch::s.resource=0;holo_visual::capture(std::string(shots)+"/choco-corner-upper-no-marker.png");holo_batch::s.resource=stacks;
++        require(before==signature(),"corner control changed gameplay");}
+         you.hp=you.hp_max-40;const int beforeHp=you.hp,beforeEnemy=target->hit_points;
+         cast("choco",3,target,target->pos());require(target->hit_points<beforeEnemy && you.hp>beforeHp,"kiss damage/heal missing");
+         const auto stable=signature();holo_visual::capture(std::string(shots)+"/choco-kiss-after.png");require(stable==signature(),"kiss after capture mutated state");
+@@ -356,6 +363,40 @@
+         you.moveto(origin);step(1);holo_visual::capture(dir+"/god-altars.png");
+         std::ofstream proof(dir+"/visual-capture.json");proof<<"{\"status\":\"passed\",\"nativeSDL\":true,\"screenshots\":14}\n";close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_NIGHT_REVIEW")) {
++        for(const std::string g:{"korone","okayu","watame","towa","hajime","su","mela"}) {
++            auto *m=fixture(g);for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;you.trapped=false;
++            if(g=="okayu") {for(auto &i:you.inv)if(i.defined() && i.base_type==OBJ_FOOD){eat_item(i);break;}}
++            else if(g=="watame"){you.hp-=20;step(10);}
++            else if(g=="hajime"){process_command(CMD_MOVE_UP);if(you.turn_is_over)step(you.time_taken);}
++            else if(g=="korone" || g=="su")for(int n=0;n<12 && (g=="korone"?holo_batch::s.resource==0:holo_batch::s.hazards.empty());++n){bool hit=false;fight_melee(&you,m,&hit);finish_attack();step(std::max(1,you.time_taken));}
++            const auto before=signature();holo_visual::capture(std::string(shots)+"/"+g+"-passive1.png");require(before==signature(),"passive capture changed state");
++        }
++    }
++    if(getenv("HOLOCRAWL_NIGHT_REVIEW")) {
++        // Selective visual diagnostics use explicitly prepared applause/paint.
++        // These are not natural resource-income or win-rate measurements.
++        for(int option=0;option<3;++option) {
++            auto *m=fixture("polka");holo_batch::s.resource=3;you.hp-=25;
++            cast("polka",5,m,m->pos(),option);
++        }
++        for(int option=1;option<=3;++option) {
++            auto *m=fixture("polka");
++            if(option==3)for(const auto p:{you.pos()+coord_def(2,1),you.pos()+coord_def(-1,1)}){
++                auto mg=mgen_data::hostile_at(MONS_ETTIN,false,p);mg.flags|=MG_FORCE_PLACE;auto *extra=create_monster(mg,false);require(extra,"juggling enemies missing");extra->speed=0;extra->hit_points=extra->max_hit_points=10000;
++            }
++            cast("polka",1,m,m->pos(),option);
++        }
++        for(int option=0;option<3;++option) {
++            auto *m=fixture("raden");if(option)cast("raden",1,nullptr,you.pos(),option);
++            if(option==0){holo_batch::s.targets[m->mid].paint=3;holo_batch::s.targets[m->mid].paint_end=you.elapsed_time+100;}
++            cast("raden",3,m,m->pos(),option);
++        }
++        for(int type=1;type<=3;++type){auto *m=fixture("koyori");cast("koyori",1,nullptr,you.pos(),type);cast("koyori",1,m,m->pos(),10+type);cast("koyori",5,nullptr,you.pos(),type+2);}
++        fixture("sopia");const auto origin=you.pos();cast("sopia",5,nullptr,origin+coord_def(2,0));step(70);cast("sopia",6,nullptr,origin+coord_def(2,0));
++        fixture("pekora");const auto bomb=you.pos()+coord_def(3,0);cast("pekora",1,nullptr,bomb);step(10);cast("pekora",3,nullptr,bomb,1);step(40);
++        fixture("pekora");const auto centre=you.pos();holo_batch::manual_positions={centre+coord_def(3,-1),centre+coord_def(3,0),centre+coord_def(3,1)};cast("pekora",5,nullptr,centre+coord_def(3,0));step(70);
++    }
+     int cast_count=0,roundtrips=0;
+     for(const auto &g:holo_worship::gods()) {
+         monster *m=fixture(g);const auto origin=you.pos();coord_def aim=m->pos();
+@@ -370,9 +411,10 @@
+             const int basehp=you.hp_max,base=you.skill(SK_LONG_BLADES,1,true);
+             macro_sendkeys_end_add_expanded('a');process_command(CMD_USE_ABILITY);require(you.turn_is_over && you.magic_points==98,"normal ability menu / Noel cost");step(you.time_taken);++cast_count;
+             require(you.skill(SK_LONG_BLADES,1,false)==std::min(27,base+6) && you.hp_max==basehp,"Noel native skills / no maxHP gain");
++            if(const char *shots=getenv("HOLOCRAWL_NIGHT_REVIEW"))for(int f=0;f<2;++f)holo_visual::capture_invocation("noel",you.pos(),f,std::string(shots)+"/noel-menu1-frame"+std::to_string(f)+".png",1);
+             cast(g,5,nullptr,origin);++cast_count;require(noel_armour()==6 && noel_shield()==4,"Noel native commander");
+         } else if(g=="suisei"){
+-            cast(g,1,m,aim);cast(g,3,m,aim);cast(g,5,m,origin+coord_def(3,0));cast_count+=3;
++            cast(g,1,m,aim);cast(g,3,m,aim);const auto fixed=holo_sopia::field_centre();cast(g,5,m,origin+coord_def(3,0));require(holo_sopia::field_centre()==fixed,"Sopia upgrade moved actual centre");cast_count+=3;
+         } else if(g=="miko"){
+             cast(g,1,nullptr,origin);cast(g,3,nullptr,origin);cast(g,5,nullptr,origin);cast_count+=3;
+         } else if(g=="aki"){
+@@ -405,7 +447,9 @@
+             cast(g,1,m,aim,1);cast(g,3,m,aim);holo_batch::s.resource=3;cast(g,5,nullptr,you.pos(),1);cast_count+=3;
+         } else if(g=="koyori"){
+             cast(g,1,nullptr,origin,1);cast(g,1,m,aim,11);require(invoke(3)==0 && !reactions_enabled(),"free catalyst toggle");
+-            require(invoke(3)==0 && reactions_enabled(),"restore catalyst toggle");cast(g,5,nullptr,origin,3);cast_count+=3;
++            require(invoke(3)==0 && reactions_enabled(),"restore catalyst toggle");
++            if(const char *shots=getenv("HOLOCRAWL_NIGHT_REVIEW"))holo_visual::capture(std::string(shots)+"/koyori-catalyst3.png");
++            cast(g,5,nullptr,origin,3);cast_count+=3;
+         } else if(g=="lui"){
+             cast(g,1,nullptr,origin);cast(g,3,m,aim);cast(g,5,nullptr,origin);cast_count+=3;
+         } else if(g=="raden"){
+@@ -491,6 +535,10 @@
+         ++gifts;require(item.pos==you.pos() && !item.cursed() && item.plus>=(item.base_type==OBJ_WEAPONS?2:armour_is_enchantable(item)?1:0),"Noel usable uncursed minimum-enchantment delivery");
+     }
+     require(gifts==1,"native equipment gift missing");
++    if(const char *shots=getenv("HOLOCRAWL_NIGHT_REVIEW")) {
++        const auto before=signature();holo_visual::capture_invocation("noel",you.pos(),1,std::string(shots)+"/noel-supply3.png",3);
++        require(before==signature(),"supply capture changed state");
++    }
+     supplies["half_points"]=500;advance();require(supplies["gifts"].get_int()==1,"supply minimum interval ignored");
+     roundtrip();require(you.props["holo_noel_supplies"]["half_points"].get_int()==500,"supply progress save");
+     for(monster_iterator mi;mi;++mi)monster_die(**mi,KILL_DISMISSED,NON_MONSTER,true);
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -117,6 +117,7 @@
+     if(!move_item_to_grid(&placed,drop,true) || placed==NON_ITEM){if(mitm[slot].defined())destroy_item(slot,true);return;}
+     mitm[placed].props["holo_gift"]=std::string("noel");
+     t["half_points"]=t["half_points"].get_int()-threshold;t["gifts"]=t["gifts"].get_int()+1;t["last_gift"]=you.elapsed_time;
++    holo_visual::invocation("noel",3,drop);
+     mprf(MSGCH_GOD,"Noel sends equipment from the knightly order.");
+ }
+ 
+@@ -320,7 +321,7 @@
+         if(tier==5 && value("noel_command_end")<=now && value("noel_ready")<=now && pay(5,10,120)){t["noel_command_end"]=now+5+60+2*I;t["noel_ready"]=now+5+60+2*I+100;t["noel_command_inv"]=I;aut=5;}
+     } else if(g=="sopia")aut=holo_sopia::manual_action(tier,aim?*aim:you.pos(),option);
+     else aut=holo_batch::manual_action(tier,target,aim?*aim:you.pos(),option,amount);
+-    if(aut>0)holo_visual::invocation(g,tier,aim?*aim:target?target->pos():you.pos());
++    if(aut>0)holo_visual::invocation(g,tier,aim?*aim:target?target->pos():you.pos(),option);
+     if(aut>0){if(!(g=="okayu" && tier==1))exercise(SK_INVOCATIONS,1);you.time_taken=aut;you.turn_is_over=true;you.redraw_magic_points=true;you.redraw_armour_class=true;you.redraw_evasion=true;you.redraw_title=true;}
+     return aut;
+ }
+--- before/holo-sopia.cc
++++ after/holo-sopia.cc
+@@ -383,6 +383,7 @@
+ void load_campaign(const std::string &blob){if(blob.empty()){reset(false,0);return;}std::istringstream i(blob);int v=0,n=-1;i>>v>>enabled>>ring_only>>field>>big>>inv>>ring_end>>ring_next>>field_end>>field_next>>charge>>charge_next>>big_ready>>centre.x>>centre.y>>n;if(!i || v!=1 || n<0 || n>100000 || inv<0 || inv>27 || charge<0 || charge>3)throw std::runtime_error("Invalid Sopia campaign save");pull_ready.clear();for(int a=0;a<n;++a){mid_t id;int at;i>>id>>at;pull_ready[id]=at;}i>>counters.ring_casts>>counters.ring_ticks>>counters.ring_hits>>counters.field_casts>>counters.field_ticks>>counters.field_hits>>counters.pull_attempts>>counters.pulls>>counters.big_casts>>counters.detonations>>counters.damage;if(!i)throw std::runtime_error("Truncated Sopia campaign save");i>>std::ws;if(!i.eof())throw std::runtime_error("Trailing Sopia save data");}
+ int manual_action(int tier,const coord_def &aim,int option){if(!enabled)return 0;inv=you.skill(SK_INVOCATIONS,1);if(tier==1)return cast_ring()?10:0;if(tier==3)return cast_field(false,aim)?10:0;if(tier==5)return cast_field(true,aim)?10:0;if(tier==6)return detonate()?10:0;if(tier==-1){if(option==1 && ring_end){ring_end=0;return 5;}if(option==2 && field){end_field(you.elapsed_time);return 5;}}return 0;}
+ int cooldown(){return big_ready;}
++coord_def field_centre(){return centre;}
+ bool five_active(){return enabled && field && big && field_end>you.elapsed_time;}
+ holo_visual::effect visual_at(const coord_def &p){
+     if(!enabled)return holo_visual::effect::none;
+--- before/holo-sopia.h
++++ after/holo-sopia.h
+@@ -18,6 +18,7 @@
+ int manual_action(int tier,const coord_def &aim,int option=0);
+ void leave_level();
+ int cooldown();
++coord_def field_centre(); // Read-only saved field centre for VFX.
+ bool five_active(); // Read-only visual state of the large gravity field.
+ std::string status();
+ holo_visual::effect visual_at(const coord_def &pos);
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -55,6 +55,39 @@
+ int fox_scene=0,fox_frame=0;
+ coord_def fox_from,fox_to;
+ std::vector<coord_def> fox_arrivals,fox_hits;
++const std::vector<std::string> night_gods={"korone","okayu","pekora","noel","watame","towa","lamy","polka","koyori","lui","raden","hajime","su","vivi","sopia","mela"};
++effect night_effect(const std::string &g,int tier,int option=0) {
++    const auto it=std::find(night_gods.begin(),night_gods.end(),g);
++    if(it==night_gods.end())return effect::none;
++    if(g=="polka" && tier==5 && option==1)return effect::night_polkaheal;
++    if(g=="polka" && tier==5 && option==2)return effect::night_polkachaos;
++    if(g=="raden" && tier==3 && option==1)return effect::night_radenstone;
++    if(g=="raden" && tier==3 && option==2)return effect::night_radencraft;
++    return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
++}
++int night_span(effect e) {
++    if(e>=effect::night_korone1 && e<=effect::night_mela5)return (int(e)-int(effect::night_korone1))%3==0?1:(int(e)-int(effect::night_korone1))%3==1?3:5;
++    if(e==effect::night_polkaheal || e==effect::night_polkachaos)return 5;
++    if(e==effect::night_radenstone || e==effect::night_radencraft)return 3;
++    return 0;
++}
++effect night_status(const coord_def &p) {
++    if(p!=you.pos() || !holo_campaign::active() || you.piety<30)return effect::none;
++    const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
++    bool on=false;
++    if(g=="noel")on=holo_campaign::noel_fighting_bonus(1)>0 || holo_campaign::noel_commander();
++    else if(g=="sopia")on=holo_sopia::visual_at(p+coord_def(1,0))!=effect::none;
++    else if(g=="korone" || g=="lamy" || g=="hajime")on=s.resource>0;
++    else if(g=="okayu")on=s.resource>0 || s.shield>0;
++    else if(g=="watame")on=you.hp<you.hp_max || s.three_end>now || s.five_end>now;
++    else if(g=="towa" || g=="su" || g=="mela")on=true; // passive readiness, not a hit assertion
++    else if(g=="raden")on=true; // current exhibit readiness
++    else if(g=="koyori")on=s.stock[0]+s.stock[1]+s.stock[2]>0 || holo_campaign::reactions_enabled();
++    else if(g=="lui")on=!s.companions.empty();
++    else if(g=="vivi" || g=="polka")on=s.one_end>now || s.five_end>now;
++    return on?night_effect(g,1):effect::none;
++}
++
+ effect choco_mark(const coord_def &p) {
+     if(!holo_campaign::active() || holo_worship::current()!="choco")return effect::none;
+     const auto &s=holo_batch::s;const auto *mon=monster_by_mid(s.marked);
+@@ -135,8 +168,17 @@
+     if(!crawl_state.test) { const auto rng_state=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(rng_state); }
+ #endif
+ }
+-void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false) {
++void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
++    const auto style=(g=="pekora" && (tier==3 || tier==5))?night_effect(g,1):night_effect(g,tier,option);
++    if(style!=effect::none) {
++        flash_kind=style;coord_def centre=p;
++        if(g=="sopia" && (tier==3 || tier==5))centre=holo_sopia::field_centre();
++        else if(g=="towa" && tier==5)centre=holo_batch::s.centre;
++        else if(tier==5 && g!="sopia" && g!="okayu" && !(g=="polka" && option==0))centre=you.pos();
++        if(tier==1 && g!="pekora")centre=you.pos();
++        flashes.push_back(centre);return;
++    }
+     if(g=="choco") {
+         flash_kind=tier==3?effect::chocokiss:tier==5?effect::chocowings:effect::chocoheart1;
+         flashes.push_back(p);return;
+@@ -292,6 +334,7 @@
+     }
+     if(flash_kind!=effect::none && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return flash_kind;
+     const auto choco=choco_mark(p);if(choco!=effect::none)return choco;
++    const auto ns=night_status(p);if(ns!=effect::none)return ns;
+     if(holo_campaign::active() && holo_worship::current()=="suisei") {
+         const auto *marked=monster_by_mid(holo_batch::s.marked);
+         if(marked && marked->alive() && marked->pos()==p)return effect::starmark;
+@@ -306,6 +349,11 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    const int ns=night_span(flash_kind);
++    if(ns>1 && !flashes.empty()) {
++        if(p==flashes.front()-coord_def(ns/2,ns/2)){span_x=span_y=ns;return flash_kind;}
++        if(p==flashes.front())return effect::none;
++    }
+     if(choco_large(flash_kind) && !flashes.empty()) {
+         if(p==flashes.front()-coord_def(1,1)){span_x=span_y=3;return flash_kind;}
+         if(p==flashes.front())return effect::none;
+@@ -388,14 +436,14 @@
+ effect invocation_effect(const std::string &g) {
+     return g=="suisei"?effect::comet:g=="mela"?effect::fire:g=="su"?effect::water:g=="sopia"?effect::gravity:g=="miko"?effect::shrine:g=="raden"?effect::exhibit:g=="hajime"?effect::rhythm:g=="vivi"?effect::spotlight:g=="lamy"?effect::frost:g=="aki"?effect::garden:g=="noel" || g=="watame"?effect::shield:g=="fubuki"?effect::foxflame:g=="ayame"?effect::oni:g=="choco"?effect::charm:g=="korone"?effect::punch:g=="okayu"?effect::sleep:g=="pekora"?effect::carrotburst:g=="towa"?effect::devil:g=="polka"?effect::circus:g=="koyori"?effect::reagent:g=="lui"?effect::ravenflight:effect::impact;
+ }
+-void invocation(const std::string &g,int tier,const coord_def &p) {
++void invocation(const std::string &g,int tier,const coord_def &p,int option) {
+     // These two effects are emitted at the actual successful swap/spawn sites.
+     if((g=="fubuki" && (tier==3 || tier==5)) || (g=="choco" && tier==3))return;
+     if(holo_benchmark_active())return;
+     if(tier<0 || (g=="sopia" && tier==6))return;
+     // A casting cue identifies a successful invocation, not its damage footprint.
+     // Persistent geometry remains sourced from actual saved combat state in at().
+-    if(g=="suisei" || g=="miko" || g=="aki" || g=="ayame" || g=="choco") { prepare_invocation(g,tier,p);animate_prepared();if(crawl_state.test)clear(); }
++    if(g=="suisei" || g=="miko" || g=="aki" || g=="ayame" || g=="choco" || night_effect(g,tier,option)!=effect::none) { prepare_invocation(g,tier,p,false,option);animate_prepared();if(crawl_state.test)clear(); }
+     else flash(invocation_effect(g),p,0);
+ }
+ void comet_impact(const coord_def &p) {
+@@ -491,7 +539,22 @@
+     const monster *mon=monster_at(p);
+     return mon && appearance(*mon)==sprite::fox;
+ }
+-void impact(const coord_def &p,int radius,bool fire){flash(fire?effect::fire:effect::impact,p,radius);}
++void impact(const coord_def &p,int radius,bool fire){
++    const auto g=holo_worship::current();
++    if(holo_campaign::active() && (g=="pekora" || g=="sopia")) {
++        flashes.assign(1,p);flash_kind=night_effect(g,g=="pekora"?3:5);
++        if(crawl_state.test) {
++            if(const char *dir=getenv("HOLOCRAWL_NIGHT_REVIEW")) {
++                static int seq=0;const int n=++seq;const auto before=fox_signature();
++                for(int f=0;f<2;++f){flash_frame=f;capture(std::string(dir)+"/"+g+"-impact-"+std::to_string(n)+"-frame"+std::to_string(f)+".png");}
++                if(before!=fox_signature())throw std::runtime_error("Impact capture changed gameplay");
++            }
++            clear();return;
++        }
++        animate_prepared();return;
++    }
++    flash(fire?effect::fire:effect::impact,p,radius);
++}
+ void decorate(MenuEntry &entry,const std::string &g) {
+ #ifdef USE_TILE
+     const int tile=god_tile(g);if(tile)entry.add_tile(tile_def(tile,TEX_FEAT));
+@@ -567,7 +630,7 @@
+     for(const auto &g:holo_worship::gods())require(god_tile(g)>0);
+ #endif
+ }
+-void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase) {
++void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+     if(!crawl_state.test || frame<0 || frame>(impact_phase?5:((god=="miko" || god=="aki") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+@@ -575,7 +638,7 @@
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+-    prepare_invocation(god,tier,pos,impact_phase);flash_frame=frame;
++    prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
+     try { capture(path); } catch(...) { clear();throw; }
+     clear();tiles.invalidate_dungeon_overlays();
+ #else
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+@@ -18,7 +18,7 @@
+ std::string altar(const coord_def &pos);
+ void decorate(MenuEntry &entry,const std::string &god);
+ effect invocation_effect(const std::string &god);
+-void invocation(const std::string &god,int tier,const coord_def &pos);
++void invocation(const std::string &god,int tier,const coord_def &pos,int option=0);
+ void comet_impact(const coord_def &pos);
+ void rose_thorn_cell(const coord_def &from,const coord_def &to,const coord_def &cell);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+@@ -30,7 +30,7 @@
+ bool mask_fox_at(const coord_def &pos);
+ void clear();
+ void validate();
+-void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier=0,bool impact_phase=false);
++void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier=0,bool impact_phase=false,int option=0);
+ void capture(const std::string &path,bool refresh=true); // Native SDL framebuffer, test-only.
+ #ifdef USE_TILE
+ int god_tile(const std::string &god);
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -132,7 +132,9 @@
+                 int span_x=1,span_y=1;
+                 const auto cue=holo_visual::invocation_sprite_at(gc,span_x,span_y);
+                 m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(cue),x,y,span_x,span_y,
+-                    (cue>=holo_visual::effect::chocoheart1 && cue<=holo_visual::effect::chocoheart5)
++                    (cue>=holo_visual::effect::night_korone1 && cue<=holo_visual::effect::night_mela5
++                        && (int(cue)-int(holo_visual::effect::night_korone1))%3!=0)
++                    || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift
+                     || cue==holo_visual::effect::foxcircle || cue==holo_visual::effect::foxflame);
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -158,6 +158,110 @@
+ fx_chocoabsorb6_1 HOLO_FX_CHOCOABSORB6_1
+ fx_chocoabsorb7_0 HOLO_FX_CHOCOABSORB7_0
+ fx_chocoabsorb7_1 HOLO_FX_CHOCOABSORB7_1
++fx_night_korone1_0 HOLO_FX_NIGHT_KORONE1_0
++fx_night_korone1_1 HOLO_FX_NIGHT_KORONE1_1
++fx_night_korone3_0 HOLO_FX_NIGHT_KORONE3_0
++fx_night_korone3_1 HOLO_FX_NIGHT_KORONE3_1
++fx_night_korone5_0 HOLO_FX_NIGHT_KORONE5_0
++fx_night_korone5_1 HOLO_FX_NIGHT_KORONE5_1
++fx_night_okayu1_0 HOLO_FX_NIGHT_OKAYU1_0
++fx_night_okayu1_1 HOLO_FX_NIGHT_OKAYU1_1
++fx_night_okayu3_0 HOLO_FX_NIGHT_OKAYU3_0
++fx_night_okayu3_1 HOLO_FX_NIGHT_OKAYU3_1
++fx_night_okayu5_0 HOLO_FX_NIGHT_OKAYU5_0
++fx_night_okayu5_1 HOLO_FX_NIGHT_OKAYU5_1
++fx_night_pekora1_0 HOLO_FX_NIGHT_PEKORA1_0
++fx_night_pekora1_1 HOLO_FX_NIGHT_PEKORA1_1
++fx_night_pekora3_0 HOLO_FX_NIGHT_PEKORA3_0
++fx_night_pekora3_1 HOLO_FX_NIGHT_PEKORA3_1
++fx_night_pekora5_0 HOLO_FX_NIGHT_PEKORA5_0
++fx_night_pekora5_1 HOLO_FX_NIGHT_PEKORA5_1
++fx_night_noel1_0 HOLO_FX_NIGHT_NOEL1_0
++fx_night_noel1_1 HOLO_FX_NIGHT_NOEL1_1
++fx_night_noel3_0 HOLO_FX_NIGHT_NOEL3_0
++fx_night_noel3_1 HOLO_FX_NIGHT_NOEL3_1
++fx_night_noel5_0 HOLO_FX_NIGHT_NOEL5_0
++fx_night_noel5_1 HOLO_FX_NIGHT_NOEL5_1
++fx_night_watame1_0 HOLO_FX_NIGHT_WATAME1_0
++fx_night_watame1_1 HOLO_FX_NIGHT_WATAME1_1
++fx_night_watame3_0 HOLO_FX_NIGHT_WATAME3_0
++fx_night_watame3_1 HOLO_FX_NIGHT_WATAME3_1
++fx_night_watame5_0 HOLO_FX_NIGHT_WATAME5_0
++fx_night_watame5_1 HOLO_FX_NIGHT_WATAME5_1
++fx_night_towa1_0 HOLO_FX_NIGHT_TOWA1_0
++fx_night_towa1_1 HOLO_FX_NIGHT_TOWA1_1
++fx_night_towa3_0 HOLO_FX_NIGHT_TOWA3_0
++fx_night_towa3_1 HOLO_FX_NIGHT_TOWA3_1
++fx_night_towa5_0 HOLO_FX_NIGHT_TOWA5_0
++fx_night_towa5_1 HOLO_FX_NIGHT_TOWA5_1
++fx_night_lamy1_0 HOLO_FX_NIGHT_LAMY1_0
++fx_night_lamy1_1 HOLO_FX_NIGHT_LAMY1_1
++fx_night_lamy3_0 HOLO_FX_NIGHT_LAMY3_0
++fx_night_lamy3_1 HOLO_FX_NIGHT_LAMY3_1
++fx_night_lamy5_0 HOLO_FX_NIGHT_LAMY5_0
++fx_night_lamy5_1 HOLO_FX_NIGHT_LAMY5_1
++fx_night_polka1_0 HOLO_FX_NIGHT_POLKA1_0
++fx_night_polka1_1 HOLO_FX_NIGHT_POLKA1_1
++fx_night_polka3_0 HOLO_FX_NIGHT_POLKA3_0
++fx_night_polka3_1 HOLO_FX_NIGHT_POLKA3_1
++fx_night_polka5_0 HOLO_FX_NIGHT_POLKA5_0
++fx_night_polka5_1 HOLO_FX_NIGHT_POLKA5_1
++fx_night_koyori1_0 HOLO_FX_NIGHT_KOYORI1_0
++fx_night_koyori1_1 HOLO_FX_NIGHT_KOYORI1_1
++fx_night_koyori3_0 HOLO_FX_NIGHT_KOYORI3_0
++fx_night_koyori3_1 HOLO_FX_NIGHT_KOYORI3_1
++fx_night_koyori5_0 HOLO_FX_NIGHT_KOYORI5_0
++fx_night_koyori5_1 HOLO_FX_NIGHT_KOYORI5_1
++fx_night_lui1_0 HOLO_FX_NIGHT_LUI1_0
++fx_night_lui1_1 HOLO_FX_NIGHT_LUI1_1
++fx_night_lui3_0 HOLO_FX_NIGHT_LUI3_0
++fx_night_lui3_1 HOLO_FX_NIGHT_LUI3_1
++fx_night_lui5_0 HOLO_FX_NIGHT_LUI5_0
++fx_night_lui5_1 HOLO_FX_NIGHT_LUI5_1
++fx_night_raden1_0 HOLO_FX_NIGHT_RADEN1_0
++fx_night_raden1_1 HOLO_FX_NIGHT_RADEN1_1
++fx_night_raden3_0 HOLO_FX_NIGHT_RADEN3_0
++fx_night_raden3_1 HOLO_FX_NIGHT_RADEN3_1
++fx_night_raden5_0 HOLO_FX_NIGHT_RADEN5_0
++fx_night_raden5_1 HOLO_FX_NIGHT_RADEN5_1
++fx_night_hajime1_0 HOLO_FX_NIGHT_HAJIME1_0
++fx_night_hajime1_1 HOLO_FX_NIGHT_HAJIME1_1
++fx_night_hajime3_0 HOLO_FX_NIGHT_HAJIME3_0
++fx_night_hajime3_1 HOLO_FX_NIGHT_HAJIME3_1
++fx_night_hajime5_0 HOLO_FX_NIGHT_HAJIME5_0
++fx_night_hajime5_1 HOLO_FX_NIGHT_HAJIME5_1
++fx_night_su1_0 HOLO_FX_NIGHT_SU1_0
++fx_night_su1_1 HOLO_FX_NIGHT_SU1_1
++fx_night_su3_0 HOLO_FX_NIGHT_SU3_0
++fx_night_su3_1 HOLO_FX_NIGHT_SU3_1
++fx_night_su5_0 HOLO_FX_NIGHT_SU5_0
++fx_night_su5_1 HOLO_FX_NIGHT_SU5_1
++fx_night_vivi1_0 HOLO_FX_NIGHT_VIVI1_0
++fx_night_vivi1_1 HOLO_FX_NIGHT_VIVI1_1
++fx_night_vivi3_0 HOLO_FX_NIGHT_VIVI3_0
++fx_night_vivi3_1 HOLO_FX_NIGHT_VIVI3_1
++fx_night_vivi5_0 HOLO_FX_NIGHT_VIVI5_0
++fx_night_vivi5_1 HOLO_FX_NIGHT_VIVI5_1
++fx_night_sopia1_0 HOLO_FX_NIGHT_SOPIA1_0
++fx_night_sopia1_1 HOLO_FX_NIGHT_SOPIA1_1
++fx_night_sopia3_0 HOLO_FX_NIGHT_SOPIA3_0
++fx_night_sopia3_1 HOLO_FX_NIGHT_SOPIA3_1
++fx_night_sopia5_0 HOLO_FX_NIGHT_SOPIA5_0
++fx_night_sopia5_1 HOLO_FX_NIGHT_SOPIA5_1
++fx_night_mela1_0 HOLO_FX_NIGHT_MELA1_0
++fx_night_mela1_1 HOLO_FX_NIGHT_MELA1_1
++fx_night_mela3_0 HOLO_FX_NIGHT_MELA3_0
++fx_night_mela3_1 HOLO_FX_NIGHT_MELA3_1
++fx_night_mela5_0 HOLO_FX_NIGHT_MELA5_0
++fx_night_mela5_1 HOLO_FX_NIGHT_MELA5_1
++fx_night_polkaheal_0 HOLO_FX_NIGHT_POLKAHEAL_0
++fx_night_polkaheal_1 HOLO_FX_NIGHT_POLKAHEAL_1
++fx_night_polkachaos_0 HOLO_FX_NIGHT_POLKACHAOS_0
++fx_night_polkachaos_1 HOLO_FX_NIGHT_POLKACHAOS_1
++fx_night_radenstone_0 HOLO_FX_NIGHT_RADENSTONE_0
++fx_night_radenstone_1 HOLO_FX_NIGHT_RADENSTONE_1
++fx_night_radencraft_0 HOLO_FX_NIGHT_RADENCRAFT_0
++fx_night_radencraft_1 HOLO_FX_NIGHT_RADENCRAFT_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

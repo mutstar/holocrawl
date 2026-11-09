@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "source": "analysis/native/night-vfx04/gallery-validation.json",
+  "historicalCapture": true,
+  "newArtCreated": false,
+  "entries": [
+    {
+      "tier": 1,
+      "option": 1,
+      "title": "오늘의 공연 · 일점집중",
+      "description": "강한 표적을 지정하고, 해당 표적에게 유효 피해를 3회 이상 준 뒤 처치하면 공연 성공.",
+      "image": "polka-tier1-option1-4.gif",
+      "sha256": "dddd109fa78a7f0674089ccd7fb0e808e958143b7a4b7193d70ae015a1425f6a"
+    },
+    {
+      "tier": 1,
+      "option": 2,
+      "title": "오늘의 공연 · 외줄타기",
+      "description": "지정 표적에게 피해를 준 뒤 두 번 이상 자발적으로 이동하고, 표적을 처치하면 성공.",
+      "image": "polka-tier1-option2-5.gif",
+      "sha256": "67b0852db5aa444726d07967a8c6c35f6a6805a311632a62c3a37df73516eb99"
+    },
+    {
+      "tier": 1,
+      "option": 3,
+      "title": "오늘의 공연 · 저글링",
+      "description": "유효한 서로 다른 적 3명 이상에게 피해를 주고, 공연 중 적을 처치하면 성공.",
+      "image": "polka-tier1-option3-6.gif",
+      "sha256": "7130b9464fff81f819cf5a6859c9aaf4f3db9e52e28a14417448355e2c82c4e2"
+    },
+    {
+      "tier": 3,
+      "option": 0,
+      "title": "공중곡예",
+      "description": "인접 적을 넘어 반대편 빈 바닥으로 도약. 3턴 안의 다음 공격 피해 +20%. 박수 1 추가 사용을 선택하면 착지 주변 적의 명중을 4턴 동안 5 낮춤.",
+      "image": "polka-tier3-option0-59.gif",
+      "sha256": "2d983d87b914d917a902d2bd03b734a3da6d35862485c29cd6309b1d15d477d7"
+    },
+    {
+      "tier": 5,
+      "option": 0,
+      "title": "대단원 · 불꽃 피날레",
+      "description": "지정한 지점 주변 2칸에 화염 피해. 피해량 2d(8+⌊기도술/3⌋)+4×소비 박수. 벽과 경로의 영향을 받음.",
+      "image": "polka-tier5-option0-1.gif",
+      "sha256": "5e180315fed3d5f8115a939f209f379d1c1fd86d3f683cf724903917d66f5361"
+    },
+    {
+      "tier": 5,
+      "option": 1,
+      "title": "대단원 · 커튼콜",
+      "description": "HP를 8+⌊기도술/2⌋+4×소비 박수 회복. 3+소비 박수 턴 동안 새로 적용되는 혼란·감속·공포·중독 지속시간 50%.",
+      "image": "polka-tier5-option1-2.gif",
+      "sha256": "2cbfaf381a841156afcccdde68653fe3fc049f980a0f810be701d4bf08948b6c"
+    },
+    {
+      "tier": 5,
+      "option": 2,
+      "title": "대단원 · 대혼란",
+      "description": "자신 주변 2칸의 적을 1칸 밀치고 혼란 판정. 정신 면역·명료화 대상에게 혼란은 적용되지 않음.",
+      "image": "polka-tier5-option2-3.gif",
+      "sha256": "a8d74f93886c2f3ff5bee1bfee7959b9dc99ebb6df0d5186f692e9486f55e5e4"
+    }
+  ],
+  "nativeFrameHashesVerified": {
+    "native/shots/polka-tier1-option1-4-frame0.png": "4b9541cb18c62300db910a30355ce5eb6feed5f05156b70138f8eba97d33492a",
+    "native/shots/polka-tier1-option1-4-frame1.png": "c1e10fc8bd0382e866510e9e8f2ee1729f8b77e610dd6232c6869cbff7f7dc02",
+    "native/shots/polka-tier1-option1-4-state.png": "3e5fb1a72e94a0920549c08eadd9a6393f1cae50e5f3ae2d81f8d2ed4e23636e",
+    "native/shots/polka-tier1-option1-58-frame0.png": "b462aa6bf1a9dc4af7876aa9e3ee5c1d98e6834fb6c0d6a8e3723b7868d79be5",
+    "native/shots/polka-tier1-option1-58-frame1.png": "ddbc718ec10e5b82cb515de5c65fad3307de38c4cf0240fdb068b5b806f423c4",
+    "native/shots/polka-tier1-option1-58-state.png": "db378c7478dd5159b5725475186778cd5564691533d9c298af312a30c3c0fee6",
+    "native/shots/polka-tier1-option2-5-frame0.png": "9a9b98e865d3020374fbddb341ccec80d60b4aadf7cc379f41e39aaef44a3db5",
+    "native/shots/polka-tier1-option2-5-frame1.png": "03372cd933f74265df0a7894d95f69b79a4919e7ee715f1e7a0ed9a00db8798a",
+    "native/shots/polka-tier1-option2-5-state.png": "f9765aee365c57f8b408421272555b804aeeb001072fccb159d46bb3a33f6d7d",
+    "native/shots/polka-tier1-option3-6-frame0.png": "9ff906b658ca6f937fc0142228930fbe3f95c4fdf0786105879da0a6907bf6bb",
+    "native/shots/polka-tier1-option3-6-frame1.png": "185966a4e4947c121c1d56a58c48e95b417eeda5723a9b7994d7a78e44b54b8b",
+    "native/shots/polka-tier1-option3-6-state.png": "e798986d980e56a277408f8bb50120e0e7493437eb12c8dde7524912637cb602",
+    "native/shots/polka-tier3-option0-59-frame0.png": "1cfdb4de5dfa945418d3e91575472393fcba9ceb8d09b7c16a275551b55a3cde",
+    "native/shots/polka-tier3-option0-59-frame1.png": "ae88658d13375dfa4a6b7160008c8a982b8d11a50349e477a3740c492ed99f9f",
+    "native/shots/polka-tier3-option0-59-state.png": "cc0f0a3ad8fe74f336e1d67a81132cbaaaed40ea05222b25d8ac6efc43fbf54e",
+    "native/shots/polka-tier5-option0-1-frame0.png": "bf0c2f34c6dd00f29cdb4df32917a82c7a51e026aa3983eae47d5b0fa057a2b9",
+    "native/shots/polka-tier5-option0-1-frame1.png": "498bfe35c359cfd3c46f5e1ce77cf6e7e3b2191af0d9a6aebfa4bef2347eb4bd",
+    "native/shots/polka-tier5-option0-1-state.png": "5d1b862d488239978bc5c2f1a2a978d34cc68014ea15d401b8a936928a04fcef",
+    "native/shots/polka-tier5-option1-2-frame0.png": "ea197b0585996db26ce7e596393704a320df142f04b1db1d2c243a9d01b7d732",
+    "native/shots/polka-tier5-option1-2-frame1.png": "49a8a94fa8b8e9c68e7841853cc3ad1e75594d7d9861d837b708879633957341",
+    "native/shots/polka-tier5-option1-2-state.png": "8bbaa2c8d7dc1394b921b7ffba5f898fa3e4d592f92a613b7e59ea921ff945e0",
+    "native/shots/polka-tier5-option1-60-frame0.png": "81565112bedbac71dd0328b2105f3ebe0e8b2c2e9b94463e3d06387a62757b75",
+    "native/shots/polka-tier5-option1-60-frame1.png": "8056254309810aa0978c6722b251881b17c8d94c167dda8cc350af79db183b4c",
+    "native/shots/polka-tier5-option1-60-state.png": "b06e2c874ae109c59ad45c6490b73e824ae77d0cb7094eefa58411ab9bdbde9b",
+    "native/shots/polka-tier5-option2-3-frame0.png": "61a62d153cf91b22f6feed6d7cf3844dd0976169658894cc9b1b42afeeb4c149",
+    "native/shots/polka-tier5-option2-3-frame1.png": "1c862389cfcb083eb5c624b733f9f99635b3db7fe2e504db6a97f3745cf95634",
+    "native/shots/polka-tier5-option2-3-state.png": "afef8c68b3c22532655bae3c476ef665b1587d3f7491bf279faa2805dac15517"
+  },
+  "nativeFrameArchiveFallback": "../HoloCrawl_HOME_2026-10-20/exports/HOLOCRAWL_COMPANY_2026-10-21_VFX_DRAFT/analysis/native/night-vfx04",
+  "numericChanges": false,
+  "reviewStatus": "Polka tiers1/3/5 pending; Lamy approved",
+  "scope": "Verified existing native captures and current-source ability descriptions; not a new gameplay or animation regression run."
+}

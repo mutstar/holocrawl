@@ -1,0 +1,35 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -75,7 +75,7 @@
+     if(p!=you.pos() || !holo_campaign::active() || you.piety<30)return effect::none;
+     const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
+     bool on=false;
+-    if(g=="noel")on=holo_campaign::noel_fighting_bonus(1)>0 || holo_campaign::noel_commander();
++    if(g=="noel")on=holo_campaign::noel_fighting_bonus(1)>0;
+     else if(g=="sopia")on=holo_sopia::visual_at(p+coord_def(1,0))!=effect::none;
+     else if(g=="korone" || g=="lamy" || g=="hajime")on=s.resource>0;
+     else if(g=="okayu")on=s.resource>0 || s.shield>0;
+@@ -349,6 +349,11 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    // Render-only commander regalia follows the player for the saved buff duration.
++    if(flash_kind==effect::none && holo_campaign::noel_commander()
++        && p==you.pos()-coord_def(2,2)) {
++        span_x=span_y=5;return effect::night_noel5;
++    }
+     const int ns=night_span(flash_kind);
+     if(ns>1 && !flashes.empty()) {
+         if(p==flashes.front()-coord_def(ns/2,ns/2)){span_x=span_y=ns;return flash_kind;}
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -135,7 +135,8 @@
+                     (cue>=holo_visual::effect::night_korone1 && cue<=holo_visual::effect::night_mela5
+                         && (int(cue)-int(holo_visual::effect::night_korone1))%3!=0
+                         && cue!=holo_visual::effect::night_korone3
+-                        && cue!=holo_visual::effect::night_okayu5)
++                        && cue!=holo_visual::effect::night_okayu5
++                        && cue!=holo_visual::effect::night_noel5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift

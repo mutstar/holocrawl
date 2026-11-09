@@ -1,0 +1,29 @@
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -133,11 +133,13 @@
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,1);
+         const bool lui_wings=tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,0)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,1);
+-        const bool raden_crest=tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,0)
++        const bool raden_screen=tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,0)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,1)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,2);
+-        buffer.add(tileidx,x,y,lui_wings?0:(inf.width-TILE_X)/2+(polka_hat?4:0),lui_wings?0:inf.height-TILE_Y-(polka_hat?12:raden_crest?8:0),
+-            true,-1,lui_wings?32.0f:float(inf.width)/span_x,lui_wings?32.0f:float(inf.height)/span_y);
++        // Native-size backdrops anchor to the player's feet beneath actors.
++        const bool native_backdrop=lui_wings || raden_screen;
++        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+(polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(polka_hat?12:0),
++            true,-1,native_backdrop?32.0f:float(inf.width)/span_x,native_backdrop?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.
+         // UV cropping preserves every source pixel, position and scale.
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -149,7 +149,6 @@
+                         && cue!=holo_visual::effect::night_noel5
+                         && cue!=holo_visual::effect::night_watame5
+                           && cue!=holo_visual::effect::night_raden3
+-                          && cue!=holo_visual::effect::night_raden5
+                         && cue!=holo_visual::effect::night_koyori5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft
+                         && cue!=holo_visual::effect::night_radenstone && cue!=holo_visual::effect::night_radencraft)

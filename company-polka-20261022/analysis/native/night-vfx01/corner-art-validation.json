@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "targetTileBounds": [
+    32,
+    32,
+    64,
+    64
+  ],
+  "frames": [
+    {
+      "stack": 1,
+      "frame": 0,
+      "alphaBounds": [
+        54,
+        37,
+        60,
+        42
+      ]
+    },
+    {
+      "stack": 1,
+      "frame": 1,
+      "alphaBounds": [
+        55,
+        37,
+        60,
+        42
+      ]
+    },
+    {
+      "stack": 2,
+      "frame": 0,
+      "alphaBounds": [
+        53,
+        35,
+        61,
+        42
+      ]
+    },
+    {
+      "stack": 2,
+      "frame": 1,
+      "alphaBounds": [
+        54,
+        37,
+        60,
+        42
+      ]
+    },
+    {
+      "stack": 3,
+      "frame": 0,
+      "alphaBounds": [
+        53,
+        36,
+        61,
+        43
+      ]
+    },
+    {
+      "stack": 3,
+      "frame": 1,
+      "alphaBounds": [
+        53,
+        35,
+        61,
+        42
+      ]
+    },
+    {
+      "stack": 4,
+      "frame": 0,
+      "alphaBounds": [
+        53,
+        35,
+        63,
+        43
+      ]
+    },
+    {
+      "stack": 4,
+      "frame": 1,
+      "alphaBounds": [
+        53,
+        36,
+        61,
+        43
+      ]
+    },
+    {
+      "stack": 5,
+      "frame": 0,
+      "alphaBounds": [
+        52,
+        36,
+        62,
+        43
+      ]
+    },
+    {
+      "stack": 5,
+      "frame": 1,
+      "alphaBounds": [
+        53,
+        35,
+        63,
+        43
+      ]
+    }
+  ]
+}

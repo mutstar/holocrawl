@@ -1,0 +1,22 @@
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "tilereg-dgn.h"
+ #include "holo-visual.h"
++#include "tile-flags.h"
+ #include "player.h"
+ 
+ #include <algorithm> // any_of
+@@ -126,7 +127,10 @@
+             // Presentation-only arrival sequence: all summons already exist
+             // in the combat state; hide only the not-yet-revealed fox bodies.
+             auto display_cell=vbuf_cell->tile;
+-            if(map_bounds(gc) && (holo_visual::mask_fox_at(gc) || holo_visual::mask_hawk_at(gc)))display_cell.fg=0;
++            if(map_bounds(gc) && holo_visual::mask_fox_at(gc))display_cell.fg=0;
++            // Replace only Ganmo's body; retain native attitude/status flags
++            // so its friendly halo remains visible throughout the strike.
++            if(map_bounds(gc) && holo_visual::mask_hawk_at(gc))display_cell.fg &= ~TILE_FLAG_MASK;
+             m_buf_dngn.add(display_cell, x, y);
+             if(map_bounds(gc) && holo_visual::lamy_banquet_cell(gc))
+                 m_buf_dngn.add_holo_range_cell(x,y,

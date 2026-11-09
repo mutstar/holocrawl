@@ -1,0 +1,41 @@
+{
+  "revision": "mela-onibi01",
+  "previewBinarySha256": "9b618ac45ac7653e28ce86691555588c3a8471edb3ba86902bde5c288960dc2b",
+  "runtimeDeployed": false,
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeSDL": true,
+    "renderOnly": true,
+    "gameplayUnchanged": true,
+    "rngStable": true,
+    "heatStages": [
+      0,
+      3,
+      6,
+      5
+    ],
+    "targetHpUnchanged": true
+  },
+  "validation": {
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "status": "passed",
+    "binarySha256": "9B618AC45AC7653E28CE86691555588C3A8471EDB3BA86902BDE5C288960DC2B",
+    "rawScreenshots": 78,
+    "chocoControls": false,
+    "gods": 22,
+    "freshProcessRestore": true
+  },
+  "art": {
+    "tool": "built-in image_gen",
+    "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-6f304865-73d4-4d75-a647-22d1a41acaec.png",
+    "alphaCrop": [
+      393,
+      139,
+      902,
+      1085
+    ],
+    "integration": "Original alpha preserved, nearest resized generated onibi. Badge8x12 through11x18,heat0..6repeated3pxgenerated ember chips; abovehead offset(+14,-18). Counterflash14x18/22x26/26x30/18x22 centred on victim32px tile.",
+    "gameplayChanged": false
+  }
+}

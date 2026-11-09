@@ -1,0 +1,26 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -781,6 +781,8 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    // Open once on activation; keep the back wings spread for the saved buff.
++    if(kind==effect::night_lui5 && frame<0 && flash_kind!=effect::night_lui5)frame=1;
+     if(kind==effect::carrot)return TILE_HOLO_CARROT;
+     if(kind==effect::lamybanquetcast0) {
+         if(frame<0)frame=flash_frame;
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -131,8 +131,10 @@
+         // Apply to both invocation frames and the persistent status cue.
+         const bool polka_hat=tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,0)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,1);
+-        buffer.add(tileidx,x,y,(inf.width-TILE_X)/2+(polka_hat?4:0),inf.height-TILE_Y-(polka_hat?12:0),
+-            true,-1,float(inf.width)/span_x,float(inf.height)/span_y);
++        const bool lui_wings=tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,0)
++            || tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,1);
++        buffer.add(tileidx,x,y,lui_wings?0:(inf.width-TILE_X)/2+(polka_hat?4:0),lui_wings?0:inf.height-TILE_Y-(polka_hat?12:0),
++            true,-1,lui_wings?32.0f:float(inf.width)/span_x,lui_wings?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.
+         // UV cropping preserves every source pixel, position and scale.

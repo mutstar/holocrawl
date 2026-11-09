@@ -1,0 +1,47 @@
+{
+  "revision": "mela-dispatch01",
+  "previewBinarySha256": "06e14c130e21c01092afb3f50f85a4e02930147ca49f3ee35c77bd7b0516640e",
+  "runtimeDeployed": false,
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeSDL": true,
+    "renderOnly": true,
+    "gameplayUnchanged": true,
+    "rngStable": true,
+    "protectionRadius": 2,
+    "proposedEnhancedBeamRange": 6,
+    "heatStages": [
+      0,
+      3,
+      0,
+      1,
+      0
+    ]
+  },
+  "validation": {
+    "gods": 22,
+    "rawScreenshots": 102,
+    "chocoControls": false,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "06E14C130E21C01092AFB3F50F85A4E02930147CA49F3EE35C77BD7B0516640E",
+    "freshProcessRestore": true,
+    "status": "passed"
+  },
+  "art": {
+    "tool": "built-in image_gen",
+    "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-ff4a367c-e4f9-4bac-a455-e3b6bdc1880b.png",
+    "auraAlphaCrop": [
+      198,
+      65,
+      1065,
+      1115
+    ],
+    "aura": "Generated56/60/64/60pxwreath in96canvas, native span3 anchored player(-1,-1), opacity125/255 below actors",
+    "protection": "Read-only prepared5x5outline, not an enemy damage floor",
+    "beamSource": "../mela-beam02/generation.json",
+    "beam": "Existing approved thick flame source resized192x24/28/30/24px, prefix32/96/192/192px. One6cell line, per-cell native UV slicing.",
+    "combatChanged": false,
+    "enhancedRangeStatus": "6cell visual proposal, pending user review"
+  }
+}

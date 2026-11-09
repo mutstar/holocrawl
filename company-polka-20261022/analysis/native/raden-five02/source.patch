@@ -1,0 +1,80 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -205,9 +205,14 @@
+         const auto stable=signature();
+         for(int f=0;f<2;++f)holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/exhibition-cast"+std::to_string(f)+".png",5);
+         require(stable==signature(),"Raden exhibition invocation capture changed gameplay/RNG");
++        int crest_x=0,crest_y=0;
++        require(holo_visual::invocation_sprite_at(origin,crest_x,crest_y)==holo_visual::effect::night_raden5 && crest_x==1 && crest_y==1,"Raden exhibition crest is not compact and player anchored");
++        const auto ground=holo_visual::at(origin);
++        require(std::find(ground.begin(),ground.end(),holo_visual::effect::exhibit)==ground.end(),"Raden retained old separate exhibit decoration");
+         shot("active");
+         const int remaining=rs.five_end-you.elapsed_time;step(remaining);shot("ended");
+         require(!holo_batch::five(),"Raden exhibition did not expire");
++        require(holo_visual::invocation_at(origin)==holo_visual::effect::night_raden1,"Raden crest did not return to ordinary exhibit after expiry");
+         std::ofstream(std::string(shots)+"/exhibition.json")<<"{\"status\":\"passed\",\"invocations\":"<<I<<",\"remainingAfterCastAut\":"<<remaining<<",\"costAut\":"<<10<<",\"mpCost\":6,\"pietyCost\":12,\"cooldownAfterEndAut\":150,\"expired\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_RADEN_THREE_REVIEW")) {
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -71,7 +71,7 @@
+ }
+ int night_span(effect e) {
+     if(e==effect::night_raden3 || e==effect::night_radenstone || e==effect::night_radencraft)return 1;
+-    if(e==effect::night_koyori5 || e==effect::night_lui5)return 1; // Compact player-relative badges.
++    if(e==effect::night_koyori5 || e==effect::night_lui5 || e==effect::night_raden5)return 1; // Compact player-relative badges.
+ 
+     if(e>=effect::night_korone1 && e<=effect::night_mela5)return (int(e)-int(effect::night_korone1))%3==0?1:(int(e)-int(effect::night_korone1))%3==1?3:5;
+     if(e==effect::night_polkaheal || e==effect::night_polkachaos)return 5;
+@@ -88,7 +88,10 @@
+     else if(g=="okayu")on=s.resource>0 || s.shield>0;
+     else if(g=="watame")on=you.hp<you.hp_max || s.three_end>now || s.five_end>now;
+     else if(g=="towa" || g=="su" || g=="mela")on=true; // passive readiness, not a hit assertion
+-    else if(g=="raden")on=true; // current exhibit readiness
++    else if(g=="raden") {
++        if(s.five_end>now)return effect::night_raden5;
++        on=true; // current exhibit readiness
++    }
+     else if(g=="koyori")on=false; // New caster vial is drawn by mark().
+     else if(g=="lui") {
+         if(s.five_end>now)return effect::night_lui5;
+@@ -338,7 +341,7 @@
+         if(s.five_end>now && p==you.pos()) {
+             if(g=="vivi")base=effect::spotlight;
+             if(g=="mela")base=effect::fire;
+-            if(g=="raden")base=effect::exhibit;
++            // Raden's three exhibits now share one compact persistent crest.
+         }
+         if((g=="noel" && holo_campaign::noel_commander()) || (g=="watame" && s.three_end>now))
+             if(p==you.pos())base=effect::shield;
+@@ -798,6 +801,7 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::night_raden5 && frame<0 && flash_kind!=effect::night_raden5)frame=1;
+     // Saved exhibit selection drives both the cast cue and persistent badge.
+     if(kind==effect::night_raden1) {
+         if(holo_batch::s.exhibit==0)return TILE_HOLO_FX_RADENPAINTING;
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -133,7 +133,9 @@
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_polka1,1);
+         const bool lui_wings=tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,0)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,1);
+-        buffer.add(tileidx,x,y,lui_wings?0:(inf.width-TILE_X)/2+(polka_hat?4:0),lui_wings?0:inf.height-TILE_Y-(polka_hat?12:0),
++        const bool raden_crest=tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,0)
++            || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,1);
++        buffer.add(tileidx,x,y,lui_wings?0:(inf.width-TILE_X)/2+(polka_hat?4:0),lui_wings?0:inf.height-TILE_Y-(polka_hat?12:raden_crest?8:0),
+             true,-1,lui_wings?32.0f:float(inf.width)/span_x,lui_wings?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -149,6 +149,7 @@
+                         && cue!=holo_visual::effect::night_noel5
+                         && cue!=holo_visual::effect::night_watame5
+                           && cue!=holo_visual::effect::night_raden3
++                          && cue!=holo_visual::effect::night_raden5
+                         && cue!=holo_visual::effect::night_koyori5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft
+                         && cue!=holo_visual::effect::night_radenstone && cue!=holo_visual::effect::night_radencraft)

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "upperCellPixelsIdentical": true,
+  "targetCellHasVisibleMarker": true,
+  "upperBox": [
+    387,
+    292,
+    419,
+    324
+  ],
+  "targetBox": [
+    387,
+    324,
+    419,
+    356
+  ]
+}

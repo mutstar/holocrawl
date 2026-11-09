@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": "miko-torii01",
+  "runtimeDeployed": true,
+  "binarySha256": "d9ffb76d36e76ecef3d7fb816b6789f315ee60440144648bdad25be8469f1f9b",
+  "nativeProof": {
+    "status": "passed",
+    "lowFaithWidth": 5,
+    "highFaithWidth": 5,
+    "domainWidth": 7,
+    "boundaryOnlyFire": true,
+    "expandedFire": true,
+    "expiredFireGone": true,
+    "expiredDomainGone": true,
+    "capturePreservesGameplay": true
+  },
+  "validation": {
+    "binarySha256": "D9FFB76D36E76ECEF3D7FB816B6789F315EE60440144648BDAD25BE8469F1F9B",
+    "rawScreenshots": 18,
+    "capturePreservesGameplayAndRng": true,
+    "scope": "Miko 1/3/5 tier-specific native VFX and delayed impact, plus 22-god power/save regression. Test arena, fixed equipment, boosted fixture resources; not a normal campaign playthrough.",
+    "status": "passed"
+  },
+  "cornerMarkers": 4,
+  "visualOnly": true
+}

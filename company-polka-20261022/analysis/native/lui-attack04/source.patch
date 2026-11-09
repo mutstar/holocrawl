@@ -1,0 +1,122 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1107,6 +1107,18 @@
+ 
+     const int pet_piety=you.piety;m->max_hit_points=100;m->hurt(raven,20000,BEAM_MISSILE);
+     require(you.piety==pet_piety+2,"native raven kill credit / strong bonus");
++    if(getenv("HOLOCRAWL_LUI_ATTACK_REVIEW")) {
++        m=fixture("lui",30);cast("lui",1,nullptr,you.pos());
++        raven=monster_by_mid(holo_batch::s.companions.front().mid);
++        require(m->move_to_pos(you.pos()+coord_def(3,0)) && raven->move_to_pos(you.pos()+coord_def(2,0)),"Lui attack fixture positions");
++        m->max_hit_points=m->hit_points=10000;const int initial_hp=m->hit_points;
++        bool landed=false;
++        for(int n=0;n<40 && m->hit_points==initial_hp;++n)fight_melee(raven,m,&landed);
++        require(landed && m->hit_points<initial_hp && !holo_visual::mask_hawk_at(raven->pos()),"Lui native attack/animation cleanup");
++        holo_visual::capture(std::string(getenv("HOLOCRAWL_LUI_ATTACK_REVIEW"))+"/lui-attack-result.png");
++        std::ofstream result(std::string(getenv("HOLOCRAWL_LUI_ATTACK_REVIEW"))+"/lui-attack-result.json");
++        result<<"{\"status\":\"passed\",\"piety\":"<<int(you.piety)<<",\"damage\":"<<initial_hp-m->hit_points<<"}";
++    }
+     fixture("noel");cast("noel",5,nullptr,you.pos());const int before_berserk=you.piety;
+     require(you.go_berserk(true) && !noel_commander() && you.piety==before_berserk-10,"voluntary berserk ends Noel power and applies conduct");
+     fixture("watame");you.magic_points=20;const int before_blood=you.piety;
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -55,6 +55,8 @@
+ int flash_frame=0;
+ bool koyori_compact=false;
+ int fox_scene=0,fox_frame=0;
++bool hawk_striking=false;
++coord_def hawk_strike_from;
+ coord_def fox_from,fox_to;
+ std::vector<coord_def> fox_arrivals,fox_hits;
+ const std::vector<std::string> night_gods={"korone","okayu","pekora","noel","watame","towa","lamy","polka","koyori","lui","raden","hajime","su","vivi","sopia","mela"};
+@@ -632,6 +634,40 @@
+     if(shots && before!=fox_signature())throw std::runtime_error("Towa shot visuals changed gameplay/RNG");
+ #else
+     (void)from;(void)to;
++#endif
++}
++bool mask_hawk_at(const coord_def &p) { return hawk_striking && p==hawk_strike_from; }
++void hawk_attack(const monster &hawk,const coord_def &target,bool hit) {
++#ifdef USE_TILE_LOCAL
++    const char *shots=crawl_state.test?getenv("HOLOCRAWL_LUI_ATTACK_REVIEW"):nullptr;
++    if(!hawk.friendly() || appearance(hawk)!=sprite::raven || holo_benchmark_active()
++        || (crawl_state.test && !shots) || !you.can_see(hawk) || !you.see_cell(target))return;
++    static int sequence=0;
++    const std::string stem=shots?std::string(shots)+"/lui-attack-"+std::to_string(++sequence):"";
++    const auto before=shots?fox_signature():std::string();
++    const auto from=hawk.pos();
++    if(shots)capture(stem+"-ready.png");
++    hawk_strike_from=from;
++    for(int f=0;f<3;++f) {
++        hawk_striking=f<2;
++        const auto rng_state=rng::generators_to_vector();
++        tiles.clear_overlays();redraw_fox_actors();rng::load_generators(rng_state);
++        if(hawk_striking)tiles.add_overlay(from,target.x<from.x?TILE_HOLO_LUI_ATTACK_LEFT:TILE_HOLO_LUI_ATTACK);
++        if(f==1 && hit)tiles.add_overlay(target,effect_tile(effect::impact,0));
++        if(shots)capture(stem+"-frame"+std::to_string(f)+".png",false);
++        else {update_screen();scaled_delay(f==0?80:f==1?95:45);}
++    }
++    hawk_striking=false;tiles.clear_overlays();
++    if(shots) {
++        std::ofstream meta(stem+".json");meta<<"{\"hit\":"<<(hit?"true":"false")<<",\"from\":["<<from.x<<','<<from.y<<"],\"target\":["<<target.x<<','<<target.y<<"]}";
++        if(before!=fox_signature()) {
++            std::ofstream(stem+"-before.txt")<<before;
++            std::ofstream(stem+"-after.txt")<<fox_signature();
++            throw std::runtime_error("Hawk attack animation changed gameplay/RNG");
++        }
++    }
++#else
++    (void)hawk;(void)target;(void)hit;
+ #endif
+ }
+ void lamy_banquet_burst(const coord_def &p) {
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -27,6 +27,8 @@
+ void koyori_reaction(const coord_def &pos,int pair,bool critical=false);
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ void towa_support(const coord_def &from,const coord_def &to);
++void hawk_attack(const monster &hawk,const coord_def &target,bool hit);
++bool mask_hawk_at(const coord_def &pos);
+ effect invocation_at(const coord_def &pos);
+ effect invocation_sprite_at(const coord_def &pos,int &span_x,int &span_y);
+ void fox_swap(const coord_def &from,const coord_def &to,const std::vector<coord_def> &hits);
+--- before/melee-attack.cc
++++ after/melee-attack.cc
+@@ -6,6 +6,7 @@
+ #include "AppHdr.h"
+ #include "holocrawl.h"
+ #include "holo-batch.h"
++#include "holo-visual.h"
+ 
+ #include "melee-attack.h"
+ 
+@@ -847,6 +848,8 @@
+         + (defender->is_player()?holo_batch::evasion(attacker):0);
+     ev_margin = test_hit(to_hit, ev, !attacker->is_player());
+     bool shield_blocked = attack_shield_blocked(true);
++    if(attacker->is_monster() && attacker!=defender)
++        holo_visual::hawk_attack(*attacker->as_monster(),defender->pos(),ev_margin>=0 && !shield_blocked);
+ 
+     // Stuff for god conduct, this has to remain here for scope reasons.
+     god_conduct_trigger conducts[3];
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -126,7 +126,7 @@
+             // Presentation-only arrival sequence: all summons already exist
+             // in the combat state; hide only the not-yet-revealed fox bodies.
+             auto display_cell=vbuf_cell->tile;
+-            if(map_bounds(gc) && holo_visual::mask_fox_at(gc))display_cell.fg=0;
++            if(map_bounds(gc) && (holo_visual::mask_fox_at(gc) || holo_visual::mask_hawk_at(gc)))display_cell.fg=0;
+             m_buf_dngn.add(display_cell, x, y);
+             if(map_bounds(gc) && holo_visual::lamy_banquet_cell(gc))
+                 m_buf_dngn.add_holo_range_cell(x,y,
+--- before/rltiles\dc-holo-main.txt
++++ after/rltiles\dc-holo-main.txt
+@@ -44,3 +44,5 @@
+ fx_towa_crossfire_sw HOLO_TOWA_CROSSFIRE_SW
+ fx_towa_crossfire_s HOLO_TOWA_CROSSFIRE_S
+ fx_towa_crossfire_se HOLO_TOWA_CROSSFIRE_SE
++lui_attack HOLO_LUI_ATTACK
++lui_attack_left HOLO_LUI_ATTACK_LEFT

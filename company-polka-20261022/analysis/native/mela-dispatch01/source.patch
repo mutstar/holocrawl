@@ -1,0 +1,224 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -494,3 +494,12 @@
+ fx_melabreathstrong1 HOLO_FX_MELABREATHSTRONG1
+ fx_melabreathstrong2 HOLO_FX_MELABREATHSTRONG2
+ fx_melabreathstrong3 HOLO_FX_MELABREATHSTRONG3
++
++fx_meladispatch0 HOLO_FX_MELADISPATCH0
++fx_meladispatch1 HOLO_FX_MELADISPATCH1
++fx_meladispatch2 HOLO_FX_MELADISPATCH2
++fx_meladispatch3 HOLO_FX_MELADISPATCH3
++fx_meladispatchbeam0 HOLO_FX_MELADISPATCHBEAM0
++fx_meladispatchbeam1 HOLO_FX_MELADISPATCHBEAM1
++fx_meladispatchbeam2 HOLO_FX_MELADISPATCHBEAM2
++fx_meladispatchbeam3 HOLO_FX_MELADISPATCHBEAM3
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,31 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_MELA_DISPATCH_REVIEW")) {
++        auto *m=fixture("mela");const auto origin=you.pos(),aim=origin+coord_def(6,0);
++        require(m->pos()==origin+coord_def(1,0) || m->move_to_pos(origin+coord_def(1,0)),"Mela dispatch target placement");
++        for(const auto &d:std::vector<coord_def>{coord_def(3,0),coord_def(6,0),coord_def(3,1),coord_def(7,0)}) {
++            auto mg=mgen_data::hostile_at(MONS_ORC,false,origin+d);mg.flags|=MG_FORCE_PLACE;
++            auto *n=create_monster(mg,false);require(n,"Mela dispatch comparison placement");
++            n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;
++        }
++        const auto stable=signature();
++        you.props["holo_mela_heat_preview"]=0;
++        holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/dispatch-before.png",1);
++        you.props["holo_mela_dispatch_preview"]=1;you.props["holo_mela_heat_preview"]=3;
++        for(int f=0;f<4;++f)holo_visual::capture_invocation("mela",origin,f,std::string(shots)+"/dispatch-activate"+std::to_string(f)+".png",5);
++        you.props["holo_mela_breath_preview"]=3;you.props["holo_mela_heat_preview"]=0;
++        for(int f=0;f<4;++f)holo_visual::capture_invocation("mela",aim,f,std::string(shots)+"/dispatch-beam"+std::to_string(f)+".png",3);
++        you.props.erase("holo_mela_breath_preview");
++        holo_visual::capture_invocation("mela",origin,1,std::string(shots)+"/dispatch-empty.png",5);
++        you.props["holo_mela_heat_preview"]=1;
++        holo_visual::capture_invocation("mela",origin,1,std::string(shots)+"/dispatch-recharge.png",5);
++        you.props.erase("holo_mela_dispatch_preview");you.props["holo_mela_heat_preview"]=0;
++        holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/dispatch-ended.png",1);
++        you.props.erase("holo_mela_heat_preview");
++        require(stable==signature(),"Mela dispatch VFX changed heat/HP/world/RNG");
++        std::ofstream(std::string(shots)+"/dispatch.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"protectionRadius\":2,\"proposedEnhancedBeamRange\":6,\"heatStages\":[0,3,0,1,0]}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_MELA_BREATH_REVIEW")) {
+         auto *m=fixture("mela");const auto origin=you.pos(),aim=origin+coord_def(5,0);
+         require(m->pos()==origin+coord_def(1,0) || m->move_to_pos(origin+coord_def(1,0)),"Mela breath near target placement");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -207,6 +207,9 @@
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
+     su_fronts.clear();
++    if(g=="mela" && tier==5 && crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
++        flash_kind=effect::night_mela5;flashes.push_back(you.pos());return;
++    }
+     if(g=="mela" && tier==3 && crawl_state.test && you.props.exists("holo_mela_breath_preview")) {
+         flash_kind=effect::night_mela3;flashes.push_back(p);return;
+     }
+@@ -437,13 +440,20 @@
+     if(wrath==4)result.push_back(effect::slime);
+     return result;
+ }
++bool mela_dispatch_preview_cell(const coord_def &p) {
++    return crawl_state.test && you.props.exists("holo_mela_dispatch_preview")
++        && in_bounds(p) && you.see_cell(p) && !cell_is_solid(p)
++        && grid_distance(you.pos(),p)<=2 && holo_batch::line(you.pos(),p);
++}
+ bool mela_breath_preview_cell(const coord_def &p,int &frame,int &distance) {
+     if(!crawl_state.test || !you.props.exists("holo_mela_breath_preview") || flashes.empty()
+         || flash_kind!=effect::night_mela3 || !in_bounds(p) || !you.see_cell(p)
+-        || cell_is_solid(p) || !holo_batch::line(you.pos(),p) || grid_distance(you.pos(),p)>5)return false;
++        || cell_is_solid(p) || !holo_batch::line(you.pos(),p))return false;
++    const int range=you.props.exists("holo_mela_dispatch_preview")?6:5;
++    if(grid_distance(you.pos(),p)>range)return false;
+     const auto d=flashes.front()-you.pos();const coord_def dir((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
+     frame=flash_frame;
+-    for(int r=1;r<=std::min(5,2*frame+1);++r)
++    for(int r=1;r<=(frame==0?1:frame==1?3:range);++r)
+         if(p==you.pos()+coord_def(dir.x*r,dir.y*r)){distance=r;return true;}
+     return false;
+ }
+@@ -519,6 +529,12 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
++        if(p==you.pos()-coord_def(1,1)){span_x=span_y=3;return effect::night_mela5;}
++        if(p==you.pos())return effect::night_mela1;
++        int f=0,d=0;
++        return flash_frame==2 && mela_breath_preview_cell(p,f,d) && monster_at(p)?effect::fire:effect::none;
++    }
+     if(crawl_state.test && you.props.exists("holo_mela_breath_preview")) {
+         if(p==you.pos())return effect::night_mela1;
+         int f=0,d=0;
+@@ -918,6 +934,11 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
++        if(frame<0)frame=flash_frame;
++        if(kind==effect::night_mela5)return TILE_HOLO_FX_MELADISPATCH0+frame%4;
++        if(kind==effect::night_mela3)return TILE_HOLO_FX_MELADISPATCHBEAM0+frame%4;
++    }
+     if(kind==effect::night_mela3 && crawl_state.test && you.props.exists("holo_mela_breath_preview")) {
+         if(frame<0)frame=flash_frame;
+         return (you.props["holo_mela_breath_preview"].get_int()>0?TILE_HOLO_FX_MELABREATHSTRONG0:TILE_HOLO_FX_MELABREATH0)+frame%4;
+@@ -1049,26 +1070,36 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>((god=="mela" && tier==3 && you.props.exists("holo_mela_breath_preview"))?3:(god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview"))?3:(god=="sopia" && tier==1 && you.props.exists("holo_sopia_teacher_preview"))?3:(god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>((god=="mela" && tier==5 && you.props.exists("holo_mela_dispatch_preview"))?3:(god=="mela" && tier==3 && you.props.exists("holo_mela_breath_preview"))?3:(god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview"))?3:(god=="sopia" && tier==1 && you.props.exists("holo_sopia_teacher_preview"))?3:(god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="mela" && tier==5 && you.props.exists("holo_mela_dispatch_preview")) {
++        int count=0;for(int y=-3;y<=3;++y)for(int x=-3;x<=3;++x)count+=mela_dispatch_preview_cell(you.pos()+coord_def(x,y));
++        if(count!=25)throw std::runtime_error("Mela protection footprint must be5x5");
++        int sx=0,sy=0;
++        if(invocation_sprite_at(you.pos()-coord_def(1,1),sx,sy)!=effect::night_mela5 || sx!=3 || sy!=3)
++            throw std::runtime_error("Mela dispatch aura anchor mismatch");
++        std::ofstream(path+"-ward.json")<<"{\"status\":\"passed\",\"cells\":25,\"auraSpan\":[3,3],\"auraArtPixels\":64}\n";
++    }
++
+     if(god=="mela" && tier==3 && you.props.exists("holo_mela_breath_preview")) {
++        const int range=you.props.exists("holo_mela_dispatch_preview")?6:5;
+         int count=0;for(int y=-6;y<=6;++y)for(int x=-6;x<=6;++x) {
+             int f=0,d=0;if(mela_breath_preview_cell(you.pos()+coord_def(x,y),f,d)) {
+-                if(d<1 || d>5 || f!=frame)throw std::runtime_error("Mela breath visual distance mismatch");
++                if(d<1 || d>range || f!=frame)throw std::runtime_error("Mela breath visual distance mismatch");
+                 ++count;
+             }
+         }
+-        const int bands=std::min(5,2*frame+1);
+-        if(pos.y==you.pos().y && count!=bands)throw std::runtime_error("Mela east beam must grow1/3/5cells");
++        const int bands=frame==0?1:frame==1?3:range;
++        if(pos.y==you.pos().y && count!=bands)throw std::runtime_error("Mela east beam growth mismatch");
+         int f=0,d=0;
+-        if(mela_breath_preview_cell(you.pos(),f,d) || mela_breath_preview_cell(you.pos()+coord_def(6,0),f,d) || mela_breath_preview_cell(you.pos()+coord_def(3,1),f,d))
++        if(mela_breath_preview_cell(you.pos(),f,d) || mela_breath_preview_cell(you.pos()+coord_def(range+1,0),f,d) || mela_breath_preview_cell(you.pos()+coord_def(3,1),f,d))
+             throw std::runtime_error("Mela breath affects self/outside range");
+-        std::ofstream(path+"-cone.json")<<"{\"status\":\"passed\",\"frame\":"<<frame<<",\"cells\":"<<count<<",\"width\":1,\"range\":5}\n";
++        std::ofstream(path+"-cone.json")<<"{\"status\":\"passed\",\"frame\":"<<frame<<",\"cells\":"<<count<<",\"width\":1,\"range\":"<<range<<"}\n";
+     }
+ 
+     if(god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview")) {
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -24,6 +24,7 @@
+ bool lamy_banquet_cell(const coord_def &pos);
+ bool vivi_finale_cell(const coord_def &pos);
+ bool mela_breath_preview_cell(const coord_def &pos,int &frame,int &distance);
++bool mela_dispatch_preview_cell(const coord_def &pos);
+ bool sopia_gravity_preview_cell(const coord_def &pos,coord_def &delta,int &radius,int &frame);
+ void lamy_banquet_burst(const coord_def &pos);
+ void lamy_chill_burst(const coord_def &pos);
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -134,6 +134,18 @@
+     cell.set_tex(tx+(ux-tx)*(left-sx)/(ex-sx),ty+(uy-ty)*(top-sy)/(ey-sy),
+         tx+(ux-tx)*(right-sx)/(ex-sx),ty+(uy-ty)*(bottom-sy)/(ey-sy));
+     m_buf_holo_ground_vfx.add_primitive(cell);
++}
++
++void DungeonCellBuffer::add_mela_dispatch_cell(int x,int y,int dx,int dy)
++{
++    const float p=1.0f/32;const VColour rim(100,218,246,115);
++    m_buf_holo_range.add(x,y,x+1,y+1,VColour(51,152,214,14));
++    for(int i=2;i<30;i+=7) {
++        if(dx==-2)m_buf_holo_range.add(x+p,y+i*p,x+2*p,y+(i+4)*p,rim);
++        if(dx==2)m_buf_holo_range.add(x+30*p,y+i*p,x+31*p,y+(i+4)*p,rim);
++        if(dy==-2)m_buf_holo_range.add(x+i*p,y+p,x+(i+4)*p,y+2*p,rim);
++        if(dy==2)m_buf_holo_range.add(x+i*p,y+30*p,x+(i+4)*p,y+31*p,rim);
++    }
+ }
+ 
+ void DungeonCellBuffer::add_mela_breath_cell(int x,int y)
+@@ -200,7 +212,8 @@
+     if(tileidx) {
+         const auto &inf=tile_feat_info(tileidx);
+         const bool nova=tileidx>=TILE_HOLO_FX_SOPIANOVA0 && tileidx<=TILE_HOLO_FX_SOPIANOVA3;
+-        if(nova || (tileidx>=TILE_HOLO_FX_SOPIAGRAVITY0 && tileidx<=TILE_HOLO_FX_SOPIAGRAVITY3)) {
++        const bool mela_aura=tileidx>=TILE_HOLO_FX_MELADISPATCH0 && tileidx<=TILE_HOLO_FX_MELADISPATCH3;
++        if(mela_aura || nova || (tileidx>=TILE_HOLO_FX_SOPIAGRAVITY0 && tileidx<=TILE_HOLO_FX_SOPIAGRAVITY3)) {
+             // Full-footprint preview, tinted below actors. Texture alpha and
+             // vertex opacity multiply; do not alter the generated bitmap.
+             const auto *texture=static_cast<const TilesTexture *>(m_buf_holo_ground_tint.current_texture());
+@@ -208,7 +221,7 @@
+             if(texture->get_coords(tileidx,(inf.width-TILE_X)/2,inf.height-TILE_Y,
+                 sx,sy,ex,ey,tx,ty,ux,uy,true,-1,-1,float(inf.width)/span_x,float(inf.height)/span_y)) {
+                 GLWPrim rect(sx,sy,ex,ey);rect.set_tex(tx,ty,ux,uy);
+-                int opacity=105;
++                int opacity=mela_aura?125:105;
+                 if(crawl_state.test && you.props.exists("holo_sopia_bigbang_preview")) {
+                     const int stage=you.props["holo_sopia_bigbang_preview"].get_int();
+                     if(nova) { const int alpha[]={210,210,170,90};opacity=alpha[tileidx-TILE_HOLO_FX_SOPIANOVA0]; }
+--- before/tiledgnbuf.h
++++ after/tiledgnbuf.h
+@@ -26,6 +26,7 @@
+     void add_vivi_impact_cell(int x,int y);
+     void add_mela_breath_cell(int x,int y);
+     void add_mela_beam_tile(int tileidx,int x,int y,int distance);
++    void add_mela_dispatch_cell(int x,int y,int dx,int dy);
+     void add_sopia_gravity_cell(int x,int y,int dx,int dy,int radius,int frame);
+     void add_holo_range_cell(int x,int y,bool left_edge,bool top_edge,
+                              bool right_edge,bool bottom_edge);
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -134,6 +134,9 @@
+             // so its friendly halo remains visible throughout the strike.
+             if(map_bounds(gc) && holo_visual::mask_hawk_at(gc))display_cell.fg &= ~TILE_FLAG_MASK;
+             m_buf_dngn.add(display_cell, x, y);
++            if(map_bounds(gc) && holo_visual::mela_dispatch_preview_cell(gc)) {
++                const auto d=gc-you.pos();m_buf_dngn.add_mela_dispatch_cell(x,y,d.x,d.y);
++            }
+             int mela_frame=0,mela_distance=0;
+             if(map_bounds(gc) && holo_visual::mela_breath_preview_cell(gc,mela_frame,mela_distance)) {
+                 m_buf_dngn.add_mela_breath_cell(x,y);

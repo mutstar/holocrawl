@@ -1,0 +1,80 @@
+--- before/holo-batch-martial.cc
++++ after/holo-batch-martial.cc
+@@ -38,7 +38,7 @@
+     for(mid_t id:enemies(you.pos(),4,true)) {
+         monster *mon=monster_by_mid(id);if(!mon || !mon->alive()) continue;
+         if(!cells.count(mon->pos())) continue;
+-        hurt(*mon,roll_dice(five()?3:2,5+s.inv/3));
++        hurt(*mon,roll_dice(five()?4:3,6+s.inv/3)+s.inv/2);
+         if(mon->alive()) push(*mon,you.pos(),five()?2:1);
+     }
+ }
+@@ -137,7 +137,8 @@
+         // The baseline policy exhibits painting; defensive pieces become available in the exhibition.
+         const int shield_piece=2;
+         if(want(3) && (!manual() || manual_option==2) && (five() || s.exhibit==2) && s.shield==0 && now>=s.rest[shield_piece] && pay(3,3,75)) {
+-            s.shield=five()?16+s.inv:10+2*s.inv/3;s.three_end=now+10+(five()?60:50);s.rest[2]=now+50;
++            s.shield=five()?22+3*s.inv/2:14+s.inv;
++            s.three_end=now+10+10*((five()?8:6)+s.inv/6);s.rest[2]=now+50;
+             holo_reduce_poison_time(50);
+             for(duration_type dur:{DUR_CONF,DUR_SLOW,DUR_AFRAID}) you.duration[dur]=(you.duration[dur]+1)/2;
+             return 10;
+@@ -147,7 +148,7 @@
+             && now>=s.rest[0] && pay(3,3,75)) {
+             const coord_def origin=target->pos(); const int stacks=s.targets[target->mid].paint;
+             s.targets[target->mid].paint=0;s.rest[0]=now+10+40;
+-            const int raw=roll_dice(five()?3:2,6+s.inv/3)+4*stacks;
++            const int raw=roll_dice(five()?3:2,8+s.inv/2)+6*stacks;
+             for(mid_t id:enemies(origin,five()?2:1)) { monster *mon=monster_by_mid(id);if(mon && mon->alive()) hurt(*mon,raw); }
+             if(grid_distance(origin,you.pos())<=(five()?2:1) && line(origin,you.pos())) {
+                 const int before=you.hp;
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -623,7 +623,7 @@
+     require(change_exhibit(1)==10 && you.magic_points==mp-1 && armour()==3,"exhibit switching has wrong cost or armour");
+     s.rest[1]=40;require(change_exhibit(0)==10 && change_exhibit(1)==10 && armour()==0,"switching resets a resting exhibit");
+     require(change_exhibit(2)==10,"craft exhibit cannot be selected");you.duration[DUR_SLOW]=100;
+-    require(martial_action(mon)==10 && s.shield==18 && you.duration[DUR_SLOW]==50,"craft shield or cleansing is missing");
++    require(martial_action(mon)==10 && s.shield==26 && s.three_end==90 && you.duration[DUR_SLOW]==50,"craft shield scaling, duration or cleansing is missing");
+     holo_reset_validation_fixture();reset("mela",12);mon=target();mon->type=MONS_FIRE_ELEMENTAL;
+     const int hp=mon->hit_points;
+     require(hurt(*mon,20,BEAM_FIRE,false)==0 && mon->hit_points==hp,"fire damage bypasses native rF+++ immunity");
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -161,6 +161,36 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    // Exercise the real damage/AC and shield budgets at low, mid and max Invo.
++    for(int I:{0,6,12,18,27})for(bool exhibition:{false,true})for(int option=0;option<3;++option) {
++        auto *m=fixture("raden");const auto origin=you.pos();
++        require(m->move_to_pos(origin+coord_def(3,0)),"Raden balance target placement");
++        auto &rs=holo_batch::s;rs.inv=I;rs.exhibit=option;
++        const int now=you.elapsed_time;
++        if(exhibition)rs.five_end=now+1000;
++        if(option==0){rs.targets[m->mid].paint=3;rs.targets[m->mid].paint_end=now+100;}
++        int expected_damage=0;
++        if(option<2) {
++            const auto saved_rng=rng::generators_to_vector();
++            const int raw=option==0?roll_dice(exhibition?3:2,8+I/2)+18:roll_dice(exhibition?4:3,6+I/3)+I/2;
++            expected_damage=m->apply_ac(raw);rng::load_generators(saved_rng);
++        }
++        const int hp=m->hit_points,mp=you.magic_points,piety=you.piety;
++        const auto aim=option==2?origin:m->pos();
++        require(holo_batch::manual_action(3,m,aim,option)==10,"Raden balanced action unavailable");
++        require(you.magic_points==mp-3 && you.piety==piety-3,"Raden balance changed action costs");
++        if(option<2) {
++            require(hp-m->hit_points==expected_damage,"Raden native damage/AC differs from new scaling");
++            if(option==0)require(rs.targets[m->mid].paint==0,"Raden explosion did not consume paint");
++            else require(grid_distance(origin,m->pos())==(exhibition?5:4),"Raden push distance changed");
++        } else {
++            const int shield=exhibition?22+3*I/2:14+I;
++            require(rs.shield==shield && rs.three_end-now==10+10*((exhibition?8:6)+I/6),"Raden shield amount/duration scaling differs");
++            require(holo_batch::martial_incoming(shield+7,KILLED_BY_MONSTER,m->mid)==7 && rs.shield==0,"Raden shield absorption budget differs");
++        }
++        require(rs.rest[option]-now==50,"Raden recovery changed");
++    }
++    std::ofstream(dir+"/raden-balance.json")<<"{\"status\":\"passed\",\"invocations\":[0,6,12,18,27],\"normalAndExhibition\":true,\"nativeDamageAndAC\":true,\"shieldAbsorptionAndDuration\":true,\"costsAndRecoveryUnchanged\":true}\n";
+     if(const char *shots=getenv("HOLOCRAWL_RADEN_THREE_REVIEW")) {
+         for(int option=0;option<3;++option) {
+             auto *m=fixture("raden");const auto origin=you.pos();

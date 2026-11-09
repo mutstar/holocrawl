@@ -1,0 +1,122 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -473,3 +473,15 @@
+ fx_sopiabook1 HOLO_FX_SOPIABOOK1
+ fx_sopiabook2 HOLO_FX_SOPIABOOK2
+ fx_sopiabook3 HOLO_FX_SOPIABOOK3
++
++fx_melaheat0 HOLO_FX_MELAHEAT0
++fx_melaheat1 HOLO_FX_MELAHEAT1
++fx_melaheat2 HOLO_FX_MELAHEAT2
++fx_melaheat3 HOLO_FX_MELAHEAT3
++fx_melaheat4 HOLO_FX_MELAHEAT4
++fx_melaheat5 HOLO_FX_MELAHEAT5
++fx_melaheat6 HOLO_FX_MELAHEAT6
++fx_melahit0 HOLO_FX_MELAHIT0
++fx_melahit1 HOLO_FX_MELAHIT1
++fx_melahit2 HOLO_FX_MELAHIT2
++fx_melahit3 HOLO_FX_MELAHIT3
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,22 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_MELA_ONIBI_REVIEW")) {
++        auto *m=fixture("mela");const auto aim=you.pos()+coord_def(2,0);
++        require(m->move_to_pos(aim),"Mela onibi target placement");
++        const auto stable=signature();const int hp=m->hit_points;
++        for(int heat:std::vector<int>{0,3,6}) {
++            you.props["holo_mela_heat_preview"]=heat;
++            holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/onibi-heat"+std::to_string(heat)+".png",1);
++        }
++        you.props["holo_mela_heat_preview"]=5;you.props["holo_mela_hit_preview"]=1;
++        for(int f=0;f<4;++f)holo_visual::capture_invocation("mela",aim,f,std::string(shots)+"/onibi-hit"+std::to_string(f)+".png",1);
++        you.props.erase("holo_mela_hit_preview");
++        holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/onibi-after.png",1);
++        you.props.erase("holo_mela_heat_preview");
++        require(stable==signature() && hp==m->hit_points,"Mela onibi VFX changed heat/world/HP/RNG");
++        std::ofstream(std::string(shots)+"/onibi.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"heatStages\":[0,3,6,5],\"targetHpUnchanged\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_SOPIA_TEACHER_REVIEW")) {
+         auto *m=fixture("sopia");const auto origin=you.pos();
+         require(m->move_to_pos(origin+coord_def(2,0)),"Sopia teacher comparison target placement");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -207,6 +207,9 @@
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
+     su_fronts.clear();
++    if(g=="mela" && tier==1 && crawl_state.test && you.props.exists("holo_mela_heat_preview")) {
++        flash_kind=effect::night_mela1;flashes.push_back(p);return;
++    }
+     if(g=="sopia" && tier==1 && crawl_state.test && you.props.exists("holo_sopia_teacher_preview")) {
+         flash_kind=effect::night_sopia1;flashes.push_back(you.pos());return;
+     }
+@@ -503,6 +506,11 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(crawl_state.test && you.props.exists("holo_mela_heat_preview")) {
++        if(p==you.pos())return effect::night_mela1;
++        if(you.props.exists("holo_mela_hit_preview") && !flashes.empty() && p==flashes.front())return effect::fire;
++        return effect::none;
++    }
+     if(crawl_state.test && you.props.exists("holo_sopia_teacher_preview"))
+         return !flashes.empty() && p==you.pos()?effect::night_sopia1:effect::none;
+     if(crawl_state.test && you.props.exists("holo_sopia_gravity_preview") && !flashes.empty()) {
+@@ -892,6 +900,10 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(crawl_state.test && you.props.exists("holo_mela_heat_preview")) {
++        if(kind==effect::night_mela1)return TILE_HOLO_FX_MELAHEAT0+std::max(0,std::min(6,you.props["holo_mela_heat_preview"].get_int()));
++        if(kind==effect::fire && you.props.exists("holo_mela_hit_preview"))return TILE_HOLO_FX_MELAHIT0+(frame<0?flash_frame:frame)%4;
++    }
+     if(kind==effect::night_sopia1 && crawl_state.test && you.props.exists("holo_sopia_teacher_preview")) {
+         if(frame<0)frame=flash_frame;
+         return (you.props["holo_sopia_teacher_preview"].get_int()==0?TILE_HOLO_FX_SOPIAMANA0:TILE_HOLO_FX_SOPIABOOK0)+frame%4;
+@@ -968,7 +980,7 @@
+     const auto ids=holo_worship::gods();const auto found=std::find(ids.begin(),ids.end(),holo_worship::current());
+     // Polka uses the floating performance hat; omit the old separate star charm.
+     const bool vivi_concept=crawl_state.test && holo_worship::current()=="vivi" && you.props.exists("holo_vivi_vfx_preview");
+-    if(holo_campaign::active() && !(crawl_state.test && you.props.exists("holo_sopia_teacher_preview")) && !vivi_concept && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && holo_worship::current()!="lui" && holo_worship::current()!="hajime" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
++    if(holo_campaign::active() && !(crawl_state.test && you.props.exists("holo_sopia_teacher_preview")) && !(crawl_state.test && you.props.exists("holo_mela_heat_preview")) && !vivi_concept && holo_worship::current()!="polka" && holo_worship::current()!="koyori" && holo_worship::current()!="lui" && holo_worship::current()!="hajime" && found!=ids.end() && !doll.parts[TILEP_PART_HALO])doll.parts[TILEP_PART_HALO]=TILEP_HOLO_CHARM_SUISEI+int(found-ids.begin());
+     // Render-only base swap: native armour, helmet, weapons and species/forms survive.
+     if(you.species==SP_HUMAN && is_player_tile(doll.parts[TILEP_PART_BASE],TILEP_BASE_HUMAN)
+         && player_doll.parts[TILEP_PART_BODY]==TILEP_SHOW_EQUIP) {
+@@ -1015,13 +1027,21 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>((god=="sopia" && tier==1 && you.props.exists("holo_sopia_teacher_preview"))?3:(god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>((god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview"))?3:(god=="sopia" && tier==1 && you.props.exists("holo_sopia_teacher_preview"))?3:(god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="mela" && tier==1 && you.props.exists("holo_mela_heat_preview")) {
++        int sx=0,sy=0;
++        if(invocation_sprite_at(you.pos(),sx,sy)!=effect::night_mela1 || sx!=1 || sy!=1)
++            throw std::runtime_error("Mela onibi badge anchor mismatch");
++        if(you.props.exists("holo_mela_hit_preview") && invocation_sprite_at(pos,sx,sy)!=effect::fire)
++            throw std::runtime_error("Mela counterflash target mismatch");
++    }
++
+     if(god=="sopia" && tier==1 && you.props.exists("holo_sopia_teacher_preview")) {
+         int sx=0,sy=0;
+         if(invocation_sprite_at(you.pos(),sx,sy)!=effect::night_sopia1 || sx!=1 || sy!=1)
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -227,7 +227,8 @@
+         const bool vivi_gems=(tileidx>=TILE_HOLO_FX_VIVIATTENTION1 && tileidx<=TILE_HOLO_FX_VIVIATTENTION3)
+             || tileidx==TILE_HOLO_FX_VIVIENCORE_READY || tileidx==TILE_HOLO_FX_VIVIFINALE_MARK;
+         const bool sopia_teacher=tileidx>=TILE_HOLO_FX_SOPIAMANA0 && tileidx<=TILE_HOLO_FX_SOPIABOOK3;
+-        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+(sopia_teacher?14:polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(sopia_teacher?24:polka_hat?12:(hajime_notes || vivi_gems)?8:0),
++        const bool mela_heat=tileidx>=TILE_HOLO_FX_MELAHEAT0 && tileidx<=TILE_HOLO_FX_MELAHEAT6;
++        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+((sopia_teacher || mela_heat)?14:polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(sopia_teacher?24:mela_heat?18:polka_hat?12:(hajime_notes || vivi_gems)?8:0),
+             true,-1,native_backdrop?32.0f:float(inf.width)/span_x,native_backdrop?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.

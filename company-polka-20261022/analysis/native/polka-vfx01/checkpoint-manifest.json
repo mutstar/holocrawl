@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "revision": "polka-vfx01",
+  "numericChanges": false,
+  "gameplaySourcePreserved": true,
+  "otherArtPreserved": true,
+  "saveFormatChanged": false,
+  "binarySha256": "acc498f4bb79a71f66c3b232a22eccbcc51e9b52f9d9bfb42cb554f57fddc33e",
+  "nativeFrames": {
+    "1": "polka-tier1-option1-4-frame0.png",
+    "2": "polka-tier1-option2-5-frame0.png",
+    "3": "polka-tier1-option3-6-frame0.png"
+  },
+  "validation": {
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "ACC498F4BB79A71F66C3B232A22ECCBCC51E9B52F9D9BFB42CB554F57FDDC33E",
+    "rawScreenshots": 323,
+    "chocoControls": false,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "gods": 22
+  },
+  "review": "analysis/previews/polka-review01/index.html#tier1",
+  "approved": false
+}

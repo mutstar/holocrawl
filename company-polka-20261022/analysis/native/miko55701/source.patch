@@ -1,0 +1,108 @@
+--- before/holo-batch-martial.cc
++++ after/holo-batch-martial.cc
+@@ -13,9 +13,9 @@
+ namespace {
+ bool in_shrine() {
+     return s.one_end>you.elapsed_time && seen(s.centre)
+-        && grid_distance(s.centre,you.pos())<=(five()?3:you.piety>=75?2:1);
+-}
+-int radius() { return five()?3:you.piety>=75?2:1; }
++        && grid_distance(s.centre,you.pos())<=(five()?3:2);
++}
++int radius() { return five()?3:2; }
+ int attention() {
+     int n=0;
+     for(mid_t id:enemies(you.pos(),LOS_DEFAULT_RANGE)) {
+--- before/holo-batch-space.cc
++++ after/holo-batch-space.cc
+@@ -274,7 +274,7 @@
+         mon.speed_increment-=(20*mon.speed+9)/10;s.targets[mon.mid].next=you.elapsed_time+30;
+     }
+     if(is(god_id::miko) && s.one_end>you.elapsed_time && s.three_end>you.elapsed_time) {
+-        const int radius=five()?3:you.piety>=75?2:1;
++        const int radius=five()?3:2;
+         if(grid_distance(s.centre,mon.pos())==radius && grid_distance(s.centre,old)!=radius
+             && s.targets[mon.mid].next<=you.elapsed_time) {
+             hurt(mon,roll_dice(1,5+s.inv/4),BEAM_FIRE,false);s.targets[mon.mid].next=you.elapsed_time+10;
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -392,7 +392,7 @@
+ int status_percent(duration_type kind)
+ {
+     if(is(god_id::miko) && s.one_end>you.elapsed_time
+-        && grid_distance(s.centre,you.pos())<=(five()?3:you.piety>=75?2:1)
++        && grid_distance(s.centre,you.pos())<=(five()?3:2)
+         && (kind==DUR_CONF || kind==DUR_SLOW || kind==DUR_AFRAID || kind==DUR_POISONING))
+         return five()?50:75;
+     if(is(god_id::polka) && five() && (kind==DUR_CONF || kind==DUR_SLOW || kind==DUR_AFRAID || kind==DUR_POISONING)) return 50;
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1481,8 +1481,9 @@
+             return std::find(fx.begin(),fx.end(),kind)!=fx.end();
+         };
+         fixture("miko",30);cast("miko",1,nullptr,you.pos());
+-        require(has(you.pos()+coord_def(1,0),holo_visual::effect::shrine),"low faith shrine missing");
+-        require(!has(you.pos()+coord_def(2,0),holo_visual::effect::shrine),"low faith shrine too wide");
++        require(has(you.pos()+coord_def(2,2),holo_visual::effect::shrine),"low faith 5x5 corner missing");
++        require(!has(you.pos()+coord_def(3,0),holo_visual::effect::shrine),"low faith shrine exceeds5x5");
++        require(holo_batch::s.one_end-you.elapsed_time==200+5*holo_batch::s.inv,"shrine duration changed");
+         fixture("miko");cast("miko",1,nullptr,you.pos());
+         cast("miko",3,nullptr,you.pos());
+         require(holo_visual::invocation_at(you.pos()+coord_def(2,0))==holo_visual::effect::mikoflame,"boundary flame missing");
+@@ -1501,7 +1502,7 @@
+         require(!has(you.pos()+coord_def(3,3),holo_visual::effect::mikodomain),"expired domain still rendered");
+         holo_visual::capture(std::string(shots)+"/miko-domain-expired.png");
+         std::ofstream proof(dir+"/miko-review.json");
+-        proof<<"{\"status\":\"passed\",\"lowFaithWidth\":3,\"highFaithWidth\":5,\"domainWidth\":7,\"boundaryOnlyFire\":true,\"expandedFire\":true,\"expiredFireGone\":true,\"expiredDomainGone\":true,\"capturePreservesGameplay\":true}\n";
++        proof<<"{\"status\":\"passed\",\"lowFaithWidth\":5,\"highFaithWidth\":5,\"domainWidth\":7,\"boundaryOnlyFire\":true,\"expandedFire\":true,\"expiredFireGone\":true,\"expiredDomainGone\":true,\"capturePreservesGameplay\":true}\n";
+         close_save();return 0;
+     }
+     if(const char *shots=getenv("HOLOCRAWL_AKI_REVIEW")) {
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -383,6 +383,7 @@
+     lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":"30 / 75 / 120"));
+     const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
++    if(g=="miko")lines.push_back("1* active: MP3/1turn, fixed5x5 sanctuary from unlock; duration20+0.5*Inv turns. Heal1+Inv/12 HP every2turns. 3* active: MP3/piety3/1turn, flames on5x5 boundary; passive: outside ranged damage reduced10+Inv/3 percent. 5* active: MP6/piety10/1turn, expands to7x7 for6+0.2*Inv turns, reduces damage15+Inv/3 percent and cleanses one condition.");
+     if(g=="suisei")lines.push_back(make_stringf("Constellation stars: %d/3 | next-hit reward: %d (%s)",s.resource,s.three_end>you.elapsed_time?s.offence:0,turns(s.three_end).c_str()));
+     if(g=="suisei")lines.push_back(std::string("2* Focused observation: ")+(you.piety<50?"locked (piety50)":holo_batch::suisei_focus_accuracy(monster_by_mid(s.marked))?"active: accuracy +3 vs marked foe":"ready: needs 2+ stars on marked foe"));
+     if(g=="suisei")lines.push_back(std::string("4* Star inheritance: ")+(you.piety<100?"locked (piety100)":s.offence>0 && s.three_end>you.elapsed_time?"ready: reward hit starts new foe at2 stars":"waiting for a marked-kill reward"));
+@@ -550,7 +551,7 @@
+     if(g=="sopia" && direct && strong && data().exists("pulled") && data()["pulled"].get_table().exists(std::to_string(m.mid)))++extra;
+     if(g=="koyori" && direct && strong && reaction_depth>0)++extra;
+     if(g=="pekora" && bomb_depth>0)++bomb_kills;
+-    if(g=="miko" && direct && s.one_end>you.elapsed_time && grid_distance(s.centre,you.pos())<=(five()?3:you.piety>=75?2:1) && grid_distance(s.centre,m.pos())<=(five()?3:you.piety>=75?2:1))++extra;
++    if(g=="miko" && direct && s.one_end>you.elapsed_time && grid_distance(s.centre,you.pos())<=(five()?3:2) && grid_distance(s.centre,m.pos())<=(five()?3:2))++extra;
+     if(g=="aki" && direct && (s.targets[m.mid].stacks>=3 || m.props.exists("holo_bloom_three")))++extra;
+     if(g=="ayame" && ordinary && ctx.kind==attack_kind::melee && s.marked==m.mid && s.one_end>you.elapsed_time){++extra;if(five()&&strong)++extra;}
+     if(g=="choco" && direct && ((invoking==3) || s.resource>=5))++extra;
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -292,7 +292,7 @@
+     }
+     if(g=="miko" && tier==3) {
+         flash_kind=effect::mikoflame;
+-        const int radius=holo_batch::five()?3:you.piety>=75?2:1;
++        const int radius=holo_batch::five()?3:2;
+         for(int x=-radius;x<=radius;++x)for(int y=-radius;y<=radius;++y) {
+             const auto cell=holo_batch::s.centre+coord_def(x,y);
+             if(in_bounds(cell) && you.see_cell(cell)
+@@ -388,7 +388,7 @@
+         const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
+         effect base=effect::none;
+         if(g=="sopia" && !(crawl_state.test && you.props.exists("holo_sopia_gravity_preview")))base=holo_sopia::visual_at(p);
+-        if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:you.piety>=75?2:1))
++        if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:2))
+             base=holo_batch::five() && ((std::abs(p.x-s.centre.x)==3 && std::abs(p.y-s.centre.y)==3) || p==s.centre)
+                 ?effect::mikodomain:effect::shrine;
+         if(g=="aki" && s.one_end>now && s.one_ready<=now && grd(p)==DNGN_FLOOR && area(p,s.centre,s.three_end>now?3:you.piety>=75?2:1))base=effect::garden;
+@@ -521,7 +521,7 @@
+     }
+     if(holo_campaign::active() && holo_worship::current()=="miko") {
+         const auto &s=holo_batch::s;const int now=you.elapsed_time;
+-        const int radius=holo_batch::five()?3:you.piety>=75?2:1;
++        const int radius=holo_batch::five()?3:2;
+         if(s.one_end>now && s.three_end>now && grid_distance(p,s.centre)==radius
+             && area(p,s.centre,radius))return effect::mikoflame;
+     }

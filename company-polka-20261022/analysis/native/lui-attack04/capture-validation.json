@@ -1,0 +1,9 @@
+{
+  "chocoControls": false,
+  "binarySha256": "66216D70148BC754E490D3BD1AE64391640CA92EE2865C9B127265DA1B5D6118",
+  "gods": 22,
+  "status": "passed",
+  "freshProcessRestore": true,
+  "rawScreenshots": 17,
+  "scope": "VFX and native state controls, not campaign winrate."
+}

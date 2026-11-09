@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": "noel-vfx05",
+  "runtimeSha256": "3FD33AD42CAE5DF6BE8A136596B285F6D6B38E704CBB6BBCFD89B84351C814C7",
+  "changed": [
+    "holo-visual.cc",
+    "tilereg-dgn.cc",
+    "rltiles/holo/fx_night_noel5_0.png",
+    "rltiles/holo/fx_night_noel5_1.png"
+  ],
+  "otherSourceAndArtPreserved": true,
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "nativeWidths": [
+    64,
+    68
+  ],
+  "centre": [
+    80,
+    74
+  ],
+  "persistent": "Query actual noel_commander buff, follow player, foreground with transparent centre, no new state",
+  "prompt": "assets/holocrawl/noel-vfx05/generation.json",
+  "feedback": "approved",
+  "validation": "capture-validation.json"
+}

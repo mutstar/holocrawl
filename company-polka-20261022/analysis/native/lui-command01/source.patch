@@ -1,0 +1,40 @@
+--- before/holo-batch-summons.cc
++++ after/holo-batch-summons.cc
+@@ -209,7 +209,9 @@
+                     const auto cells=empty_cells(target->pos(),1);
+                     for(const coord_def &p:cells) if(line(raven->pos(),p)) {
+                         raven->move_to_pos(p);raven->foe=target->mindex();raven->target=target->pos();
+-                        if(roll_hit_from(*raven,*target,21+s.inv)) {
++                        const bool hit=roll_hit_from(*raven,*target,21+s.inv);
++                        holo_visual::hawk_attack(*raven,target->pos(),hit);
++                        if(hit) {
+                             summon_hit(raven,target);hurt(*target,roll_dice(1,5+s.inv/3)+3+s.inv/6);
+                         }
+                         c.next=now+20;raven->speed_increment=0;break;
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1107,6 +1107,24 @@
+ 
+     const int pet_piety=you.piety;m->max_hit_points=100;m->hurt(raven,20000,BEAM_MISSILE);
+     require(you.piety==pet_piety+2,"native raven kill credit / strong bonus");
++    if(const char *review=getenv("HOLOCRAWL_LUI_COMMAND_REVIEW")) {
++        m=fixture("lui",100);
++        for(int n=0;n<3;++n)cast("lui",1,nullptr,you.pos());
++        require(m->move_to_pos(you.pos()+coord_def(3,0)),"Lui command enemy placement");
++        const coord_def starts[]={you.pos()+coord_def(0,-1),you.pos()+coord_def(1,-1),you.pos()+coord_def(0,1)};
++        int i=0;for(const auto &c:holo_batch::s.companions) {
++            auto *hawk=monster_by_mid(c.mid);require(hawk && hawk->move_to_pos(starts[i++]),"Lui command hawk placement");
++        }
++        holo_visual::capture(std::string(review)+"/lui-command-before.png");
++        const int hp_before=m->hit_points,mp_before=you.magic_points,faith_before=you.piety;
++        const int now=you.elapsed_time;const int cost=invoke(3,m,nullptr,0,3);
++        require(cost==10 && you.magic_points==mp_before-3 && you.piety==faith_before-3,"Lui command cost");
++        require(holo_batch::s.three_ready==now+50,"Lui command cooldown");
++        for(const auto &c:holo_batch::s.companions){auto *hawk=monster_by_mid(c.mid);require(hawk && grid_distance(hawk->pos(),m->pos())==1,"Lui command landing");}
++        holo_visual::capture(std::string(review)+"/lui-command-after.png");
++        std::ofstream proof(std::string(review)+"/lui-command.json");
++        proof<<"{\"status\":\"passed\",\"hawks\":"<<holo_batch::s.companions.size()<<",\"damage\":"<<hp_before-m->hit_points<<",\"mpCost\":3,\"pietyCost\":3,\"actionAut\":"<<cost<<",\"cooldownAut\":50}";
++    }
+     if(getenv("HOLOCRAWL_LUI_ATTACK_REVIEW")) {
+         m=fixture("lui",30);cast("lui",1,nullptr,you.pos());
+         raven=monster_by_mid(holo_batch::s.companions.front().mid);

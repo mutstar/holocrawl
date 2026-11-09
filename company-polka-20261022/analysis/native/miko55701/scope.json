@@ -1,0 +1,10 @@
+{
+  "revision": "miko55701",
+  "widths": [
+    5,
+    5,
+    7
+  ],
+  "art": "Existing approved Miko raster effects reused on native terrain; no composited effects.",
+  "scope": "Footprint and effect coverage only. New tier2 healing/shield passive remains proposal."
+}

@@ -1,0 +1,58 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -203,7 +203,7 @@
+         require(rs.five_end-you.elapsed_time==60+2*I && rs.five_ready-rs.five_end==150,"Raden exhibition duration/cooldown changed");
+         require(holo_batch::armour()==2+I/9,"Raden exhibition sculpture blessing missing");
+         const auto stable=signature();
+-        for(int f=0;f<2;++f)holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/exhibition-cast"+std::to_string(f)+".png",5);
++        for(int f=0;f<4;++f)holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/exhibition-cast"+std::to_string(f)+".png",5);
+         require(stable==signature(),"Raden exhibition invocation capture changed gameplay/RNG");
+         int crest_x=0,crest_y=0;
+         require(holo_visual::invocation_sprite_at(origin,crest_x,crest_y)==holo_visual::effect::night_raden5 && crest_x==1 && crest_y==1,"Raden exhibition crest is not compact and player anchored");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -264,9 +264,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    const int frames=flash_kind==effect::night_radenstone?3:flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
++    const int frames=flash_kind==effect::night_raden5?4:flash_kind==effect::night_radenstone?3:flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
+     for(int frame=0;frame<frames;++frame) {
+         flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
++        if(flash_kind==effect::night_raden5){scaled_delay(frame==2?140:95);continue;}
+         if(flash_kind==effect::night_raden3 || flash_kind==effect::night_radenstone || flash_kind==effect::night_radencraft){scaled_delay(105);continue;}
+         scaled_delay(flash_kind==effect::lamybanquetcast0?105:flash_kind==effect::night_okayu5?110:flash_kind==effect::night_korone3 || flash_kind==effect::night_korone5?110:flash_kind==effect::ayameslash || flash_kind==effect::ayameduel?110:flash_kind==effect::cometfall?(frame<4?65:100):(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?95:55);
+     }
+@@ -801,7 +802,10 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
+-    if(kind==effect::night_raden5 && frame<0 && flash_kind!=effect::night_raden5)frame=1;
++    if(kind==effect::night_raden5) {
++        if(frame<0)frame=flash_kind==kind?flash_frame:3;
++        return frame==0?TILE_HOLO_FX_NIGHT_RADEN5_0:frame==2?TILE_HOLO_FX_RADENFIVE_OPEN:TILE_HOLO_FX_NIGHT_RADEN5_1;
++    }
+     // Saved exhibit selection drives both the cast cue and persistent badge.
+     if(kind==effect::night_raden1) {
+         if(holo_batch::s.exhibit==0)return TILE_HOLO_FX_RADENPAINTING;
+@@ -885,7 +889,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -134,7 +134,8 @@
+         const bool lui_wings=tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,0)
+             || tileidx==holo_visual::effect_tile(holo_visual::effect::night_lui5,1);
+         const bool raden_crest=tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,0)
+-            || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,1);
++            || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,1)
++            || tileidx==holo_visual::effect_tile(holo_visual::effect::night_raden5,2);
+         buffer.add(tileidx,x,y,lui_wings?0:(inf.width-TILE_X)/2+(polka_hat?4:0),lui_wings?0:inf.height-TILE_Y-(polka_hat?12:raden_crest?8:0),
+             true,-1,lui_wings?32.0f:float(inf.width)/span_x,lui_wings?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then

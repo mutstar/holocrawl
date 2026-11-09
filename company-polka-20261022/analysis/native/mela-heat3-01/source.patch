@@ -1,0 +1,34 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -178,17 +178,17 @@
+         auto *m=fixture("mela");const auto aim=you.pos()+coord_def(2,0);
+         require(m->move_to_pos(aim),"Mela onibi target placement");
+         const auto stable=signature();const int hp=m->hit_points;
+-        for(int heat:std::vector<int>{0,3,6}) {
++        for(int heat:std::vector<int>{0,1,3}) {
+             you.props["holo_mela_heat_preview"]=heat;
+             holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/onibi-heat"+std::to_string(heat)+".png",1);
+         }
+-        you.props["holo_mela_heat_preview"]=5;you.props["holo_mela_hit_preview"]=1;
++        you.props["holo_mela_heat_preview"]=2;you.props["holo_mela_hit_preview"]=1;
+         for(int f=0;f<4;++f)holo_visual::capture_invocation("mela",aim,f,std::string(shots)+"/onibi-hit"+std::to_string(f)+".png",1);
+         you.props.erase("holo_mela_hit_preview");
+         holo_visual::capture_invocation("mela",aim,0,std::string(shots)+"/onibi-after.png",1);
+         you.props.erase("holo_mela_heat_preview");
+         require(stable==signature() && hp==m->hit_points,"Mela onibi VFX changed heat/world/HP/RNG");
+-        std::ofstream(std::string(shots)+"/onibi.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"heatStages\":[0,3,6,5],\"targetHpUnchanged\":true}\n";
++        std::ofstream(std::string(shots)+"/onibi.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"heatStages\":[0,1,3,2],\"targetHpUnchanged\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_SOPIA_TEACHER_REVIEW")) {
+         auto *m=fixture("sopia");const auto origin=you.pos();
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -901,7 +901,7 @@
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
+     if(crawl_state.test && you.props.exists("holo_mela_heat_preview")) {
+-        if(kind==effect::night_mela1)return TILE_HOLO_FX_MELAHEAT0+std::max(0,std::min(6,you.props["holo_mela_heat_preview"].get_int()));
++        if(kind==effect::night_mela1)return TILE_HOLO_FX_MELAHEAT0+std::max(0,std::min(3,you.props["holo_mela_heat_preview"].get_int()));
+         if(kind==effect::fire && you.props.exists("holo_mela_hit_preview"))return TILE_HOLO_FX_MELAHIT0+(frame<0?flash_frame:frame)%4;
+     }
+     if(kind==effect::night_sopia1 && crawl_state.test && you.props.exists("holo_sopia_teacher_preview")) {

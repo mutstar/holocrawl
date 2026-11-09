@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "binarySha256": "4d7e40729ab657653ee81a7d17d852f0f486d74a1ddfc3d7847b6bdc3fd9ca00",
+  "combat": {
+    "revision": "raden-balance01",
+    "invocations12": {
+      "normal": {
+        "paintingMean3Stacks": 33,
+        "sculptureMean": 22.5,
+        "shield": 26,
+        "shieldTurns": 8
+      },
+      "exhibition": {
+        "paintingMean3Stacks": 40.5,
+        "sculptureMean": 28,
+        "shield": 40,
+        "shieldTurns": 10
+      }
+    },
+    "proof": {
+      "status": "passed",
+      "invocations": [
+        0,
+        6,
+        12,
+        18,
+        27
+      ],
+      "normalAndExhibition": true,
+      "nativeDamageAndAC": true,
+      "shieldAbsorptionAndDuration": true,
+      "costsAndRecoveryUnchanged": true
+    }
+  },
+  "validation": {
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "4D7E40729AB657653EE81A7D17D852F0F486D74A1DDFC3D7847B6BDC3FD9CA00",
+    "status": "passed",
+    "gods": 22,
+    "chocoControls": false,
+    "rawScreenshots": 7,
+    "freshProcessRestore": true
+  },
+  "artChanged": false,
+  "saveFormatChanged": false
+}

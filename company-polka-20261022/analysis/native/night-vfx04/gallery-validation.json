@@ -1,0 +1,1357 @@
+{
+  "status": "passed",
+  "gods": 22,
+  "abilityTiers": 66,
+  "coverage": {
+    "suisei": [
+      1,
+      3,
+      5
+    ],
+    "miko": [
+      1,
+      3,
+      5
+    ],
+    "aki": [
+      1,
+      3,
+      5
+    ],
+    "fubuki": [
+      1,
+      3,
+      5
+    ],
+    "ayame": [
+      1,
+      3,
+      5
+    ],
+    "choco": [
+      1,
+      3,
+      5
+    ],
+    "korone": [
+      1,
+      3,
+      5
+    ],
+    "okayu": [
+      1,
+      3,
+      5
+    ],
+    "pekora": [
+      1,
+      3,
+      5
+    ],
+    "noel": [
+      1,
+      3,
+      5
+    ],
+    "watame": [
+      1,
+      3,
+      5
+    ],
+    "towa": [
+      1,
+      3,
+      5
+    ],
+    "lamy": [
+      1,
+      3,
+      5
+    ],
+    "polka": [
+      1,
+      3,
+      5
+    ],
+    "koyori": [
+      1,
+      3,
+      5
+    ],
+    "lui": [
+      1,
+      3,
+      5
+    ],
+    "raden": [
+      1,
+      3,
+      5
+    ],
+    "hajime": [
+      1,
+      3,
+      5
+    ],
+    "su": [
+      1,
+      3,
+      5
+    ],
+    "vivi": [
+      1,
+      3,
+      5
+    ],
+    "sopia": [
+      1,
+      3,
+      5,
+      6
+    ],
+    "mela": [
+      1,
+      3,
+      5
+    ]
+  },
+  "approvedGods": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame"
+  ],
+  "draftGods": [
+    "korone",
+    "okayu",
+    "pekora",
+    "noel",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "sopia",
+    "mela"
+  ],
+  "entries": {
+    "suisei": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "별자리 표식",
+        "image": "../suisei-vfx04/tier1-ingame.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "궤도 절단",
+        "image": "../suisei-vfx04/tier3-ingame.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "혜성 낙하",
+        "image": "../suisei-vfx04/tier5-sequence.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      }
+    ],
+    "miko": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "벚꽃 신사",
+        "image": "../miko-vfx02/tier1.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "액막이 불꽃 / 벚꽃 결계",
+        "image": "../miko-vfx02/tier3.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "신역 전개",
+        "image": "../miko-vfx02/tier5.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      }
+    ],
+    "aki": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "장미의 씨앗",
+        "image": "clips/aki-tier1-option0-32.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "가시 장미",
+        "image": "../aki-vfx05/rose-flight.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "붉은 정원의 만개",
+        "image": "../aki-vfx05/full-bloom.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      }
+    ],
+    "fubuki": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "흰 여우의 분신",
+        "image": "clips/fubuki-tier1-option0-35.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "여우 바꿔치기",
+        "image": "../fubuki-vfx05/swap-fire.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백여우 행렬",
+        "image": "../fubuki-vfx05/fox-arrival.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      }
+    ],
+    "ayame": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "귀인의 간격",
+        "image": "../ayame-vfx02/tier1.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "쌍섬",
+        "image": "../ayame-vfx02/tier3.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백귀의 결투장",
+        "image": "../ayame-vfx02/tier5.gif",
+        "kind": "뭇별 승인본 · 기존 실제 게임 시퀀스 보존"
+      }
+    ],
+    "choco": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "달콤한 시선",
+        "image": "clips/choco-corner.gif",
+        "kind": "타일 내부 우측 위 · 마지막 장면은 바로 위 몬스터 대조"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "위험한 입맞춤",
+        "image": "clips/choco-kiss.gif",
+        "kind": "실제 HP 회복이 있을 때만 귀환 하트"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "서큐버스의 밤",
+        "image": "clips/choco-charm.gif",
+        "kind": "매혹 성공 문양 → 실제 만료"
+      }
+    ],
+    "korone": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "꺾이지 않는 근성",
+        "image": "clips/korone-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "놓치지 않아",
+        "image": "clips/korone-tier3-option0-43.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "끝나지 않는 내구전",
+        "image": "clips/korone-tier5-option0-44.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "okayu": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "모구모구",
+        "image": "clips/okayu-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "같이 낮잠 잘래",
+        "image": "clips/okayu-tier3-option0-45.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "꿈까지 먹어줄게",
+        "image": "clips/okayu-tier5-option0-46.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "pekora": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "수상한 당근",
+        "image": "clips/pekora-tier1-option0-23.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "수상한 당근",
+        "image": "clips/pekora-tier1-option0-47.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "수상한 당근",
+        "image": "clips/pekora-tier1-option0-85.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "수상한 당근",
+        "image": "clips/pekora-tier1-option0-91.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "도화선 조작",
+        "image": "clips/pekora-tier3-option0-48.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 1,
+        "title": "도화선 조작",
+        "image": "clips/pekora-tier3-option1-24.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "페코랜드 개장",
+        "image": "clips/pekora-tier5-option0-25.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "페코랜드 개장",
+        "image": "clips/pekora-tier5-option0-49.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/pekora-impact-2.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/pekora-impact-3.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/pekora-impact-4.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/pekora-impact-5.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/pekora-impact-6.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      }
+    ],
+    "noel": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "기사의 기량",
+        "image": "clips/noel-menu1.gif",
+        "kind": "실제 권능 메뉴 사용 직후"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백은의 기사단장",
+        "image": "clips/noel-tier5-option0-50.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백은의 기사단장",
+        "image": "clips/noel-tier5-option0-84.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백은의 기사단장",
+        "image": "clips/noel-tier5-option0-89.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "백은의 기사단장",
+        "image": "clips/noel-tier5-option0-93.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "기사단의 보급",
+        "image": "clips/noel-gift-0.png",
+        "kind": "실제 선물 생성 완료 · 검사 보급 진척208 사전 설정"
+      }
+    ],
+    "watame": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "포근한 양털",
+        "image": "clips/watame-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "양털 방벽 / 반격박치기",
+        "image": "clips/watame-tier3-option0-51.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "끝나지 않은 노래",
+        "image": "clips/watame-tier5-option0-52.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "towa": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "악마의 조준",
+        "image": "clips/towa-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "엄호사격",
+        "image": "clips/towa-tier3-option0-53.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "악마의 교차포화",
+        "image": "clips/towa-tier5-option0-54.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "lamy": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "설국의 잔",
+        "image": "clips/lamy-tier1-option0-55.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "설국의 잔",
+        "image": "clips/lamy-tier1-option0-90.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "서리의 숨결",
+        "image": "clips/lamy-tier3-option0-56.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "눈의 연회",
+        "image": "clips/lamy-tier5-option0-57.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "polka": [
+      {
+        "tier": 1,
+        "option": 1,
+        "title": "오늘의 공연 · 일점집중",
+        "image": "clips/polka-tier1-option1-4.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 1,
+        "title": "오늘의 공연 · 일점집중",
+        "image": "clips/polka-tier1-option1-58.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 2,
+        "title": "오늘의 공연",
+        "image": "clips/polka-tier1-option2-5.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 3,
+        "title": "오늘의 공연",
+        "image": "clips/polka-tier1-option3-6.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "공중곡예",
+        "image": "clips/polka-tier3-option0-59.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "대단원",
+        "image": "clips/polka-tier5-option0-1.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 1,
+        "title": "대단원 · 커튼콜",
+        "image": "clips/polka-tier5-option1-2.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 1,
+        "title": "대단원 · 커튼콜",
+        "image": "clips/polka-tier5-option1-60.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 2,
+        "title": "대단원",
+        "image": "clips/polka-tier5-option2-3.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "koyori": [
+      {
+        "tier": 1,
+        "option": 1,
+        "title": "조수의 실험대 · 독성 시약 제조",
+        "image": "clips/koyori-tier1-option1-12.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 1,
+        "title": "조수의 실험대 · 독성 시약 제조",
+        "image": "clips/koyori-tier1-option1-61.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 11,
+        "title": "조수의 실험대 · 독성 시약 투척",
+        "image": "clips/koyori-tier1-option11-13.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 11,
+        "title": "조수의 실험대 · 독성 시약 투척",
+        "image": "clips/koyori-tier1-option11-62.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 12,
+        "title": "조수의 실험대",
+        "image": "clips/koyori-tier1-option12-16.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 13,
+        "title": "조수의 실험대",
+        "image": "clips/koyori-tier1-option13-19.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 2,
+        "title": "조수의 실험대",
+        "image": "clips/koyori-tier1-option2-15.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 3,
+        "title": "조수의 실험대",
+        "image": "clips/koyori-tier1-option3-18.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 3,
+        "title": "임계 실험 · 연소",
+        "image": "clips/koyori-tier5-option3-14.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 3,
+        "title": "임계 실험 · 연소",
+        "image": "clips/koyori-tier5-option3-63.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 4,
+        "title": "임계 실험",
+        "image": "clips/koyori-tier5-option4-17.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 5,
+        "title": "임계 실험",
+        "image": "clips/koyori-tier5-option5-20.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "촉매 투입",
+        "image": "clips/koyori-catalyst-0.png",
+        "kind": "실제 무료 촉매 켜기 상태 · 유료 시전 아님"
+      }
+    ],
+    "lui": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "검은 날개의 권속",
+        "image": "clips/lui-tier1-option0-64.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "검은 날개의 권속",
+        "image": "clips/lui-tier1-option0-88.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "사냥 지휘",
+        "image": "clips/lui-tier3-option0-65.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "흑익의 군세",
+        "image": "clips/lui-tier5-option0-66.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "흑익의 군세",
+        "image": "clips/lui-tier5-option0-94.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "raden": [
+      {
+        "tier": 1,
+        "option": 1,
+        "title": "이동 박물관",
+        "image": "clips/raden-tier1-option1-8.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 2,
+        "title": "전시 · 공예품",
+        "image": "clips/raden-tier1-option2-10.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 2,
+        "title": "전시 · 공예품",
+        "image": "clips/raden-tier1-option2-67.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "소장품 발동",
+        "image": "clips/raden-tier3-option0-7.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 1,
+        "title": "소장품 발동",
+        "image": "clips/raden-tier3-option1-9.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 2,
+        "title": "소장품 발동 · 옻칠의 가호",
+        "image": "clips/raden-tier3-option2-11.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 2,
+        "title": "소장품 발동 · 옻칠의 가호",
+        "image": "clips/raden-tier3-option2-68.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "특별전 개막",
+        "image": "clips/raden-tier5-option0-69.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "hajime": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "반쵸의 스텝",
+        "image": "clips/hajime-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "파고들기",
+        "image": "clips/hajime-tier3-option0-70.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "반쵸 타임",
+        "image": "clips/hajime-tier5-option0-71.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "반쵸 타임",
+        "image": "clips/hajime-tier5-option0-87.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "su": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "물결의 흔적",
+        "image": "clips/su-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "밀려오는 파도",
+        "image": "clips/su-tier3-option0-72.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "만조",
+        "image": "clips/su-tier5-option0-73.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "vivi": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "전투 메이크업",
+        "image": "clips/vivi-tier1-option0-74.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "눈부신 등장",
+        "image": "clips/vivi-tier3-option0-75.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "런웨이의 주인공",
+        "image": "clips/vivi-tier5-option0-76.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ],
+    "sopia": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "행성의 고리",
+        "image": "clips/sopia-tier1-option0-77.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "행성의 고리",
+        "image": "clips/sopia-tier1-option0-86.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "중력장",
+        "image": "clips/sopia-tier3-option0-78.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "빅뱅 실험",
+        "image": "clips/sopia-tier5-option0-21.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "빅뱅 실험",
+        "image": "clips/sopia-tier5-option0-79.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "빅뱅 실험",
+        "image": "clips/sopia-tier5-option0-92.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 6,
+        "option": 0,
+        "title": "빅뱅 · 수동 기폭",
+        "image": "clips/sopia-tier6-option0-22.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 6,
+        "option": 0,
+        "title": "빅뱅 · 수동 기폭",
+        "image": "clips/sopia-tier6-option0-80.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/sopia-impact-1.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "실제 폭발/기폭",
+        "image": "clips/sopia-impact-7.gif",
+        "kind": "실제 폭발 콜백 · 준비/예약 시전과 구분"
+      }
+    ],
+    "mela": [
+      {
+        "tier": 1,
+        "option": 0,
+        "title": "불조심의 가호",
+        "image": "clips/mela-passive-0.png",
+        "kind": "실제 자동 가호/상태 · 시전 애니메이션 아님"
+      },
+      {
+        "tier": 3,
+        "option": 0,
+        "title": "화염 역분사",
+        "image": "clips/mela-tier3-option0-81.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      },
+      {
+        "tier": 5,
+        "option": 0,
+        "title": "메라조 출동!",
+        "image": "clips/mela-tier5-option0-82.gif",
+        "kind": "실제 권능 직후 · 두 프레임 비교"
+      }
+    ]
+  },
+  "limits": {
+    "korone": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "okayu": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "pekora": "예약/설치에는 작은 알림과 기존 실제 범위 경고를 유지한다. 당근 폭발 모티프는 실제 폭발 콜백에서만 재생한다.",
+    "noel": "3성은 실제 장비 선물 완료 장면이다. 테스트에서 보급 진척을 미리 설정했다. 가짜 수동3성 권능을 만들지 않았다.",
+    "watame": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "towa": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "lamy": "서리 모티프의 크기는 시전 강조다. 실제 부채꼴 피해 판정·폭은 변경하지 않았으며 정밀한 방향별 숨결은 후속 점검 대상.",
+    "polka": "5성 불꽃·커튼콜·혼란은 선택값을 전달해 서로 구분한다. 커튼콜/혼란 초안은 기존 하트/서커스 아트를 재사용했다.",
+    "koyori": "3성은 실제 무료 촉매 켜기 상태다. 시약 제조·투척과 임계 준비는 같은 실험 모티프를 공유한다. 개별 반응의 별도 투사체·폭발 애니메이션은 후속 피드백 대상.",
+    "lui": "실제 까마귀 개체 수/공격/집중 지휘는 그대로이며 새 깃털 모티프를 추가했다. 후부키처럼 한 마리씩 등장하는 별도 소환 연출은 아직 추가하지 않았다.",
+    "raden": "3성 회화·조각·공예 분기는 서로 다른 모티프를 사용한다. 조각/공예는 기존 충격/보호 아트를 재사용한 초안.",
+    "hajime": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "su": "실제 웅덩이·만조 장판은 유지한다. 새 물결 문양은 시전 알림이며 직선 파도의 이동 경로 애니메이션은 후속 점검 대상.",
+    "vivi": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다.",
+    "sopia": "고리/중력장 위치는 기존 실제 상태 표시를 유지한다. 큰 모티프는 빅뱅 준비와 실제 기폭 캡처를 구분해서 확인한다.",
+    "mela": "전용 모티프를 상태 표시·중간 시전·큰 시전으로 나눈 1차 초안. 시전 문양은 실제 피해 범위나 명중 성공 표시가 아니다. 지속 장판과 소환물은 기존 실제 상태 표시를 유지한다."
+  },
+  "nativeFrames": {
+    "native/shots/aki-tier1-option0-32-frame0.png": "363cd7833d90796775f22a023cf13abbd9852854f317576b3db4b860d189aea1",
+    "native/shots/aki-tier1-option0-32-frame1.png": "0676d6152116046578dc2b93db38103c3c7549177278e7bb744ac88a1a13f9d2",
+    "native/shots/aki-tier1-option0-32-state.png": "d5a1de243b12610b97628a952c47f100de075f69756860e0681fcb36bda4cb4e",
+    "native/shots/aki-tier3-option0-33-frame0.png": "e9f754a944b073dd7b11644ce8efba1bc44268f355c4fa19c420cac2708c2f12",
+    "native/shots/aki-tier3-option0-33-frame1.png": "82030cd2a84a2d97096e863876061504a4d59a85546b6b6066ada2f0836fca1c",
+    "native/shots/aki-tier3-option0-33-state.png": "7d67a0c0d8d63a37fe64ee5a066b88e73f1f48207fa8852c77ae2fef6273522a",
+    "native/shots/aki-tier5-option0-34-frame0.png": "6b4654c034ce43f2bd3809d2d8afd3b964ce2d6d30d4d7ed873762e558ebb0dc",
+    "native/shots/aki-tier5-option0-34-frame1.png": "d139bee5262263ef943e0ad1ef872cab11699207009ed8a96866983f084304ea",
+    "native/shots/aki-tier5-option0-34-state.png": "4483eedd12a33601430562a191001b6237ae5d2d933edbdde92784e65a9950a2",
+    "native/shots/ayame-tier3-option0-38-frame0.png": "395a893845a6fe757ea91139aca8f36a87cb3868bf3250836d4e44d3d51b74c8",
+    "native/shots/ayame-tier3-option0-38-frame1.png": "76e9ecfd9272f4ac891cf8e5b1e1d5e0420f5167fde0fe01bd9c7344753535ef",
+    "native/shots/ayame-tier3-option0-38-state.png": "8141a88471c34d93f696682d85be777f60f8b907d95ca7e6de1805901f928221",
+    "native/shots/ayame-tier5-option0-39-frame0.png": "3b54f395a1730cd00efbf40fda0711a9f6952b37814f8b727099e94c47ff08ca",
+    "native/shots/ayame-tier5-option0-39-frame1.png": "3b54f395a1730cd00efbf40fda0711a9f6952b37814f8b727099e94c47ff08ca",
+    "native/shots/ayame-tier5-option0-39-state.png": "50301d21db7db6dffac3c77c0e752e573d880ab60895be6bd76872cdf7c585a7",
+    "native/shots/choco-tier1-option0-40-frame0.png": "531705fd8e48ae90e2868cf1fa5fd6228102b27ec6d6bee4141103e176d29681",
+    "native/shots/choco-tier1-option0-40-frame1.png": "1eb954251f6ac762a568ccf45bb42cf28e2db56ea323f5393f93238f24085dfa",
+    "native/shots/choco-tier1-option0-40-state.png": "531705fd8e48ae90e2868cf1fa5fd6228102b27ec6d6bee4141103e176d29681",
+    "native/shots/choco-tier3-option0-41-frame0.png": "786dd1521144764377780a921cece889741147c6c868266a88e24adbdaeadcb0",
+    "native/shots/choco-tier3-option0-41-frame1.png": "5acadff00ab3db6c0e6eab14d00f0f7b09aee150e27d373781f362cfb0acbac6",
+    "native/shots/choco-tier3-option0-41-state.png": "13a90ea701eaf89a8c51567631363497109170965e1add23b7e7f1587a440b2d",
+    "native/shots/choco-tier5-option0-42-frame0.png": "36773294044beb13b465565545bef5f1dad267be0267e4d52b386cdad5b26b3a",
+    "native/shots/choco-tier5-option0-42-frame1.png": "3cf0c0cddd989164cbae4e4a099796c1fbdac0a9e86dc9d7ce5cc9ba8cc04cec",
+    "native/shots/choco-tier5-option0-42-state.png": "f148e15696397b396d8b910316495f7782978d5a5b029a37a4b2f396088d6251",
+    "native/shots/fubuki-tier1-option0-35-frame0.png": "ab759f4321f99b88559d646753da1806d79c3a292cfeeb1ba0f1089937091078",
+    "native/shots/fubuki-tier1-option0-35-frame1.png": "15a2cc45128988dd52c1ebc50061e1ad672d6ce07af29a04d5498623b3d02547",
+    "native/shots/fubuki-tier1-option0-35-state.png": "86a60f8ddbf2e85a2dd3b35817aec9c2c1cfaa926b2386be058984f4e990312b",
+    "native/shots/fubuki-tier3-option0-36-frame0.png": "5b420fbb904771df9fbfca233cf4fbb198ae9b55a518f872bdec3f4d5de75827",
+    "native/shots/fubuki-tier3-option0-36-frame1.png": "d428e317e82286740f96c073f409ebd4a17cd25804f7b50aaf1647910bd55e6c",
+    "native/shots/fubuki-tier3-option0-36-state.png": "2632e4bb4f7cb293e2281371d8ed77030cb6629efac23a4f867b946a7fd6abe5",
+    "native/shots/fubuki-tier5-option0-37-frame0.png": "42e54be30abbdb32d7a59fa33400e86636927612ecdc1c9d8d65e23d4b8f1dd6",
+    "native/shots/fubuki-tier5-option0-37-frame1.png": "5f43f960b4169cdf759646a7eeb434f3c317c3c36ff0f7dbe079667ff0ff6653",
+    "native/shots/fubuki-tier5-option0-37-state.png": "981769b4e5ff6f766871ffda95cab5d9aeb22b10517879a8b3318be61e08efec",
+    "native/shots/hajime-passive1.png": "39eb6f67ce8f9d5f6fce89c0b592c7cf03b2989f054aa1cf20f17c74772b42c7",
+    "native/shots/hajime-tier3-option0-70-frame0.png": "a43ee289f19ee7fde2dcdd3a22305b89b7cc0ace893507d14d1b9c3a6f3e9273",
+    "native/shots/hajime-tier3-option0-70-frame1.png": "a59baef4492f764aebb8d7da5bf858bf10cf0a5557c499f159d1aefb2f82408c",
+    "native/shots/hajime-tier3-option0-70-state.png": "0482950135b0d5bab2570cd43dee655d91da5eaa00d646d47903cba27fc54420",
+    "native/shots/hajime-tier5-option0-71-frame0.png": "b4b53e82b9c0072882b950a3133fb6c0e5ba920fe7f839ceaf934edb2d64231c",
+    "native/shots/hajime-tier5-option0-71-frame1.png": "32becc94f7442c2d20f018ef3fc0299666112e483fa6eb00008ba86afca86802",
+    "native/shots/hajime-tier5-option0-71-state.png": "9e3bf618ddd3f6b036997f3bec26de7cb5e0d0aa403d3f91eff586d0ef446a33",
+    "native/shots/hajime-tier5-option0-87-frame0.png": "5ad2c787a5dddd14d5438dbca97590134c74ee95d2a4236fc36b42b7e1e9425a",
+    "native/shots/hajime-tier5-option0-87-frame1.png": "7271081820a91a9e1da0126de44023138ea733de152b58e9cb6d9f94da43b041",
+    "native/shots/hajime-tier5-option0-87-state.png": "68861457fc64576fe4e1b6caa1815c727fcf8c40639d0bc29701aa7c03dcfe9b",
+    "native/shots/korone-passive1.png": "efebf4468bf3b5b32a55bb9bd9e6b4f5ad6707b6a7280be6eb4bf6ce0e39318a",
+    "native/shots/korone-tier3-option0-43-frame0.png": "ccec1cb7340bde4ad710709f9f3e96f767da0bd868f613625971ed604b954310",
+    "native/shots/korone-tier3-option0-43-frame1.png": "a21ff4110894d2b9cc8a57e60bf1c6ecaa8b867edd90e7e9e8e60726b93b99d8",
+    "native/shots/korone-tier3-option0-43-state.png": "1f18354b7fd9d1ee8c3be9c4e9c3db5a524139aeebd59fd160f057f6cdfd2245",
+    "native/shots/korone-tier5-option0-44-frame0.png": "b876bb79e105666ffe6787e2ffce8cd9764d1dd9b924ce5fcbcc555e8ff6c941",
+    "native/shots/korone-tier5-option0-44-frame1.png": "93a3552f828901327a63719e5ee5eb625606e2fd980c2e3e5f9e8a608a8e1ff0",
+    "native/shots/korone-tier5-option0-44-state.png": "84911563bf11d11d6cafe15d506212d5cee7dc8554b815d545c0ae81e8623b76",
+    "native/shots/koyori-catalyst3.png": "d727ebf25d510883a51101fb0bdf5567c81d229089a0ee59cd63765f058c2cae",
+    "native/shots/koyori-tier1-option1-12-frame0.png": "69c7ce53a067050b355b7b4200ba5674fc576497b78bca751f812410cd761786",
+    "native/shots/koyori-tier1-option1-12-frame1.png": "40a5be7179ccc8174926c78bb9bf765057b3b71be0a4312680df2ef065aad5dc",
+    "native/shots/koyori-tier1-option1-12-state.png": "69c7ce53a067050b355b7b4200ba5674fc576497b78bca751f812410cd761786",
+    "native/shots/koyori-tier1-option1-61-frame0.png": "61f0707ff1b50270b4cce5aa48d2547ec390ca3a883a74668759614d6fda8c14",
+    "native/shots/koyori-tier1-option1-61-frame1.png": "029b67f7f404372936866748c35991a419f0a83296fcfd3692454651479fc5cf",
+    "native/shots/koyori-tier1-option1-61-state.png": "61f0707ff1b50270b4cce5aa48d2547ec390ca3a883a74668759614d6fda8c14",
+    "native/shots/koyori-tier1-option11-13-frame0.png": "e89f85a412cdf8a11b25cfdda5b2121ce43fb283670d3e166169889411fabea1",
+    "native/shots/koyori-tier1-option11-13-frame1.png": "8d0002c375be54ab727634a2e4d9f15ad568e96735ba6491ed2d7c9c4b07b664",
+    "native/shots/koyori-tier1-option11-13-state.png": "8d0002c375be54ab727634a2e4d9f15ad568e96735ba6491ed2d7c9c4b07b664",
+    "native/shots/koyori-tier1-option11-62-frame0.png": "9baba03d5c34d8f6857f78749a7fbeee8cb2dae28adacd13b50f5d744788c860",
+    "native/shots/koyori-tier1-option11-62-frame1.png": "aeff2bc9575c7e50d3d19ec223ce3be39ac3cf0e7b864836d7803b4af2c85f39",
+    "native/shots/koyori-tier1-option11-62-state.png": "aeff2bc9575c7e50d3d19ec223ce3be39ac3cf0e7b864836d7803b4af2c85f39",
+    "native/shots/koyori-tier1-option12-16-frame0.png": "d792c7194fbeb70b6e259d6d5fafab937a1d8b01221b8d620cedf55bf10b56b1",
+    "native/shots/koyori-tier1-option12-16-frame1.png": "ea04bb03b9eeb24540e365259e5122c5acdb66d92e1d1bd168dfbe34744882ea",
+    "native/shots/koyori-tier1-option12-16-state.png": "ea04bb03b9eeb24540e365259e5122c5acdb66d92e1d1bd168dfbe34744882ea",
+    "native/shots/koyori-tier1-option13-19-frame0.png": "fc1bd0732af4771a08359e24c1895424509375c2cf60cb1c0ce6653cc58d9b44",
+    "native/shots/koyori-tier1-option13-19-frame1.png": "b4d2b717c1a4c632c8acbfd5ddc15c369cde875f5a7dd26d4c40de7ddf24b312",
+    "native/shots/koyori-tier1-option13-19-state.png": "b4d2b717c1a4c632c8acbfd5ddc15c369cde875f5a7dd26d4c40de7ddf24b312",
+    "native/shots/koyori-tier1-option2-15-frame0.png": "b2c86c082770b65926f0cdc6e2d295c933dbfe2ae137f4d833a9b58cea095a24",
+    "native/shots/koyori-tier1-option2-15-frame1.png": "44503ad91fafb91bfb8311fd009d0f4f0b0f4cece907ba5a6920b0015e12ea88",
+    "native/shots/koyori-tier1-option2-15-state.png": "b2c86c082770b65926f0cdc6e2d295c933dbfe2ae137f4d833a9b58cea095a24",
+    "native/shots/koyori-tier1-option3-18-frame0.png": "4bd97f618448fb49a9f7b3a3338e66f744a12e84dd66f62848ad1e285a6be428",
+    "native/shots/koyori-tier1-option3-18-frame1.png": "3882243d4b4acb9aaca14071880ea8f196f376d80d336a77a373c25a452c3a57",
+    "native/shots/koyori-tier1-option3-18-state.png": "4bd97f618448fb49a9f7b3a3338e66f744a12e84dd66f62848ad1e285a6be428",
+    "native/shots/koyori-tier5-option3-14-frame0.png": "ec9bb6a1cf4bb664e892d82fefdc6d2e7c2009e6928f3ead09d54ba2bf4055ff",
+    "native/shots/koyori-tier5-option3-14-frame1.png": "a6a6968a1170a51f8e61bb03c26dc4d50eb9e0eb48fb76b3156229c4a747ebc9",
+    "native/shots/koyori-tier5-option3-14-state.png": "282c6a0e953aefcea51abc2baa49d4d2ddbe398b5cb3ef59588a4c49402700d4",
+    "native/shots/koyori-tier5-option3-63-frame0.png": "079762ed4b38076887b766511e5ebea103a6a440fcc84fcc8c708c17f19f8844",
+    "native/shots/koyori-tier5-option3-63-frame1.png": "360e80b776229aad071d9e5780228952b50672bb518664ff7cddc279f69dc3b3",
+    "native/shots/koyori-tier5-option3-63-state.png": "474f2931c7d16190fa25988b8f015189c432257a70a24accff68cf14eaa4ed1e",
+    "native/shots/koyori-tier5-option4-17-frame0.png": "d9a015b98c4919842b924bf5b45f629b9046e5c35c25fea31142f5bdaa4f6559",
+    "native/shots/koyori-tier5-option4-17-frame1.png": "9652142483b935a90c3d08ebdf8bb0a9a17865d6b889f9da5b7812dcdb2ff881",
+    "native/shots/koyori-tier5-option4-17-state.png": "6fe1ae731402db6807c20012a9b60d1cb5f48f306ab1da0b916eb1206f732047",
+    "native/shots/koyori-tier5-option5-20-frame0.png": "4c71a10f94a406cefa79ebb01fbb1ef9c2c97dbe4d171d3ca6101e3b9af3f3a3",
+    "native/shots/koyori-tier5-option5-20-frame1.png": "d5f0bebeda8b9b16b1b6313c8d9c8963ecaec8af41112b3a8ec27c8d88f457e9",
+    "native/shots/koyori-tier5-option5-20-state.png": "0402de14444333679d7b95eebf61b5ac4c023027987e4c932280cb1636c0cbbe",
+    "native/shots/lamy-tier1-option0-55-frame0.png": "d01bea3cbc64e678bf02e3260410cb98ca4979e8399b4dc25a9b4b3605cc47ce",
+    "native/shots/lamy-tier1-option0-55-frame1.png": "31b3da07a0a54b699f05d2b09f125339a3324cff63e28f3cfacda7015cd3e9a8",
+    "native/shots/lamy-tier1-option0-55-state.png": "d01bea3cbc64e678bf02e3260410cb98ca4979e8399b4dc25a9b4b3605cc47ce",
+    "native/shots/lamy-tier1-option0-90-frame0.png": "378c9b7d1ce6e2cea096cd92cdf9bdd6e96a3f85fa7705bfe81b8b4e48cf070e",
+    "native/shots/lamy-tier1-option0-90-frame1.png": "fcc9ed99f78419b8b9fd230f5d3e64409ff15401b0f1f4eb9e27e9cba942a8ac",
+    "native/shots/lamy-tier1-option0-90-state.png": "edaf2472254d74d7ea54cb22109cd338277fbc683780523c421445e1db10699f",
+    "native/shots/lamy-tier3-option0-56-frame0.png": "fe104b5b975771335c63b6d02e601e807dbcb49c35d57c96c8ec89cb4c18c1fe",
+    "native/shots/lamy-tier3-option0-56-frame1.png": "cd122621559e3379c2f7207a8cb315d677bf39c9956c0a592189ff91ce4f8761",
+    "native/shots/lamy-tier3-option0-56-state.png": "768e84331812332032ffa856fee9f16402efb2d603092bcdf8539e050909e944",
+    "native/shots/lamy-tier5-option0-57-frame0.png": "e482040cffc7c59211bd42a725f9cbd07deee05b3f764b619a7e487a95bac24a",
+    "native/shots/lamy-tier5-option0-57-frame1.png": "04443b64e63be1e407953000377ed7cfa7615e2d4576029751117fcbf17dfb72",
+    "native/shots/lamy-tier5-option0-57-state.png": "b8de01102bac94fcaad3be41228480c1ec43c20e3cf4bc2361c3ed608c43b5c8",
+    "native/shots/lui-tier1-option0-64-frame0.png": "3a880981d28dfdae7d9039ced3eaf6d5d119427a5e2f123e210a3e2934acf3e1",
+    "native/shots/lui-tier1-option0-64-frame1.png": "1957cfad7aab776129d8088ed235f18bdeb168eedcecb09917383c4818c072e3",
+    "native/shots/lui-tier1-option0-64-state.png": "3a880981d28dfdae7d9039ced3eaf6d5d119427a5e2f123e210a3e2934acf3e1",
+    "native/shots/lui-tier1-option0-88-frame0.png": "283ac12db4e801c64474970fc27b874ab243f5244b3c34eb584ced8333365a2d",
+    "native/shots/lui-tier1-option0-88-frame1.png": "6060949046e1600a3047cd820212f8394d8d24a5a850db2dddfbcf76a3776722",
+    "native/shots/lui-tier1-option0-88-state.png": "283ac12db4e801c64474970fc27b874ab243f5244b3c34eb584ced8333365a2d",
+    "native/shots/lui-tier3-option0-65-frame0.png": "9b38647ca58be7bd32436a3f3993538de493dfa7aafd22f9219795da2b60f084",
+    "native/shots/lui-tier3-option0-65-frame1.png": "7ef0f6bc61f2c17b49ab617ba0c66a27a3cefaecf6b3ce1168befffb261ae4ad",
+    "native/shots/lui-tier3-option0-65-state.png": "f32683dbe77e9e77a3b0c9d83446aa14bf7da0b4811fa9c6efad775e7d71c6bb",
+    "native/shots/lui-tier5-option0-66-frame0.png": "6f4346e48d8a2d1aceb80bf7c845fef013890bbc68a18bc0f94eff86be41c3df",
+    "native/shots/lui-tier5-option0-66-frame1.png": "4bc1095e0d9406cca911b5b42bd39845c157cf2588040e3d8cb2c326b1463fa9",
+    "native/shots/lui-tier5-option0-66-state.png": "1bce4e1afd86c29c40cdeb51bcd1d0e7a3f9104096005928ffd118bfe731a434",
+    "native/shots/lui-tier5-option0-94-frame0.png": "7ae4fe4a2209e6cfb6a14e567b3c8f0f88745aa6328e69229d51b0830fffa083",
+    "native/shots/lui-tier5-option0-94-frame1.png": "8cc4339a810911813a44aaa03f8c2305ef2f65e94ef4950ef71f1a5aae04eb22",
+    "native/shots/lui-tier5-option0-94-state.png": "6613c007c2efdc8be4bf4722b347ba320ad40f749c5d9f474339c6a30c4679fa",
+    "native/shots/mela-passive1.png": "3765d2f27e430d49c5d1859ffb03e6185badbfa83f5c27480285a938e8e33049",
+    "native/shots/mela-tier3-option0-81-frame0.png": "bf8d8cd0833d3b324f0290fba0c030b0ec5904d39f6d344f02235b97cf8b2943",
+    "native/shots/mela-tier3-option0-81-frame1.png": "432ae2a5a0306da009df2552375344e764625a70fdcc49340e97521985ef0569",
+    "native/shots/mela-tier3-option0-81-state.png": "6759a3776b78000966ab529aad804cc2e5645d9e0da6c20cf010b47764ce1f1b",
+    "native/shots/mela-tier5-option0-82-frame0.png": "c7952916c00e116b00c82810589fde6cf920d182129a3a041cc5dcb6b5ce646f",
+    "native/shots/mela-tier5-option0-82-frame1.png": "616a30b42cfd06e783cbf5216d87862c658deea3a4669ced567919e91aa455df",
+    "native/shots/mela-tier5-option0-82-state.png": "fb45e698370bd9860504775143a91a5361db8d85c5e412947b17add7cb11fccf",
+    "native/shots/miko-tier1-option0-29-frame0.png": "ff5df5ed5a384290af74aacc6c316abc86b999ca65502cbd72a169bb0e2c65a8",
+    "native/shots/miko-tier1-option0-29-frame1.png": "6763812e2a50be4c777fdcb31562f068e84f29407fcd1f36084a07398c7772e0",
+    "native/shots/miko-tier1-option0-29-state.png": "87cc615fb5eecbb128d2baef55879cf8c752f65a9b1f02d0914e1039e11b7d6a",
+    "native/shots/miko-tier1-option0-83-frame0.png": "1330d1f2791efd7be8cd4390807c7069aa8c60446c75cd729e30ffbfe8cfbea2",
+    "native/shots/miko-tier1-option0-83-frame1.png": "10595267b1dd21e5a010ab39cc344be437c989ee512e6113ea80ff1805965e64",
+    "native/shots/miko-tier1-option0-83-state.png": "f2b7cd98b6626973409c28cb29921d094321968c2d3261e190a41402dbfcbf73",
+    "native/shots/miko-tier3-option0-30-frame0.png": "6e0d775d565aa1b08522275db3938bdda521db70ad14b336d527aa6eceac98f1",
+    "native/shots/miko-tier3-option0-30-frame1.png": "872984fa623ca19348c57027fac7c074a923725b7337840f8b666f09f101df80",
+    "native/shots/miko-tier3-option0-30-state.png": "872984fa623ca19348c57027fac7c074a923725b7337840f8b666f09f101df80",
+    "native/shots/miko-tier5-option0-31-frame0.png": "7bf2120d81a1b91a4fd42937d5549945b36d3a7a1179760c8fe5bc5d2755c6dd",
+    "native/shots/miko-tier5-option0-31-frame1.png": "42eea277daf8f8a45f79e644f361a8320f16f3fe3a2717caa8310c9eb9d7c69a",
+    "native/shots/miko-tier5-option0-31-state.png": "f0ce497dca703c866ac7de0ed7d8aac4a3734553516764c2b5663859e5e36255",
+    "native/shots/noel-menu1-frame0.png": "07c8fa9fd502f095a805473ef41214454689ce67c967f7c0096f63591d3a8511",
+    "native/shots/noel-menu1-frame1.png": "e063f46d06e77a522d31ecac304217884aa408b94ecb4302563c8009c6535ade",
+    "native/shots/noel-supply3.png": "048d3f759ea8b923b1d4ecbbde27c3c5b34d4773e29d8fa75ab900f90aff485f",
+    "native/shots/noel-tier5-option0-50-frame0.png": "1421273faf50cda2b75419f5a4c6790a98ac798e22a7a45a1fa3a5705538a5ad",
+    "native/shots/noel-tier5-option0-50-frame1.png": "209c085bbfd22b20b6a6b7e1fa4c78f03772b8c143c1ef9c5bffa199af1c5357",
+    "native/shots/noel-tier5-option0-50-state.png": "3abfc8251c26b98f66738250c2d981dffbea9556b22585fd1d7fe747f8f784f2",
+    "native/shots/noel-tier5-option0-84-frame0.png": "a206d0337e066142d366b485a0098f35bd24a42a8831b5ea94f6f4487aa73b9e",
+    "native/shots/noel-tier5-option0-84-frame1.png": "8b8b169d33f02d8c4d08f8cb5dbc9dc6801bcd663d7fcbf0ed35aa498bc95bba",
+    "native/shots/noel-tier5-option0-84-state.png": "dcbcac84b88aaed267a8faecb9391c5619ba80f1ab180ef940943a6294392415",
+    "native/shots/noel-tier5-option0-89-frame0.png": "92303bc6123612ce953a20f3e40db1253851b02aaea16bbf599b082b1952f27e",
+    "native/shots/noel-tier5-option0-89-frame1.png": "7f55d61b17296dd9eb0edaf9d2925980dcb8e99cbf9e7949b3ea1a9c68dd382c",
+    "native/shots/noel-tier5-option0-89-state.png": "4131939b038eef404c1dc4c20d61c772d3b9b2731ccb65981eb4e4e930147a48",
+    "native/shots/noel-tier5-option0-93-frame0.png": "6e30531876b6ff673e981bc041c5b0900ed7109e336aa9cbfabbfb5df0d14fb5",
+    "native/shots/noel-tier5-option0-93-frame1.png": "4f8f3967e1665599f9d83dd2de84c5280494034e1d057027a049e2d67f21cc84",
+    "native/shots/noel-tier5-option0-93-state.png": "bb649949e7c473db6ca28bab2b53673adec49a82bf62eaa247447d0f87bff0c0",
+    "native/shots/okayu-passive1.png": "780b4c221fc38ffa4204d818381ecd62be850ccedb3d3fa9747fe913598250d7",
+    "native/shots/okayu-tier3-option0-45-frame0.png": "e7e79f217fab634e8ece45369adec03ad731f58763f633fdeb1ad39d0e931b88",
+    "native/shots/okayu-tier3-option0-45-frame1.png": "6608f338b5da697cc5c09dbe617e0ab2e9799e3d46722444a3f662937f4d957e",
+    "native/shots/okayu-tier3-option0-45-state.png": "aa75f1f638b9eb7c125be3cedb5d7296c0d6e627af43553fae39fa5de4ba9c6b",
+    "native/shots/okayu-tier5-option0-46-frame0.png": "f81922f79403e8b17cc9311ec67aeaeb2ccbfb569e1332ac63d2bcc10ed4788d",
+    "native/shots/okayu-tier5-option0-46-frame1.png": "61142c50cd95a16c395d3046e31cbd1ea3e8f5ea4d6524c886b271651265eba8",
+    "native/shots/okayu-tier5-option0-46-state.png": "0a7b08fd9f3cb7207f20e6d4ded6776c31fe7687af0b4fae82fa90e6f034f24a",
+    "native/shots/pekora-impact-2-frame0.png": "9ed53b4be39f0c1bb8aa69b6cb0f8bd36bd570f44b1b400f77b345debc505b1f",
+    "native/shots/pekora-impact-2-frame1.png": "fa80d48dcd55f85cf1b84f9369ada2d9719b5b2b10380038ffca79f925c3a764",
+    "native/shots/pekora-impact-3-frame0.png": "03201896f8535976bef5352783f0be6e8313da58f946c63cde2ed3fb08b6177a",
+    "native/shots/pekora-impact-3-frame1.png": "485734b57659b1faf77b3c7c6ac5a35b6a86607c70cf1440912ba565be51519c",
+    "native/shots/pekora-impact-4-frame0.png": "d6b40925a8a9357c9d4db956e1aec7112d192aa39346c8a0f9e7e82cc7971389",
+    "native/shots/pekora-impact-4-frame1.png": "4e26965c3ac08c0ff1b35a4421416268ab83634b9edc9ce7332a047612723a57",
+    "native/shots/pekora-impact-5-frame0.png": "9f64916eefcdca24ae842cbd03cfccc82fc043100204bada112bc8968cdb6c75",
+    "native/shots/pekora-impact-5-frame1.png": "5bc73ec9ba5339eeee889cbdb6ec625c0d60b882206c1b88e0f6f0d7f0005112",
+    "native/shots/pekora-impact-6-frame0.png": "81c72e22ede8204f1d5f9019cdb7f188a3ad6114225cc174d33f7de3af9964ee",
+    "native/shots/pekora-impact-6-frame1.png": "71b31fa58d05fc87752cb1c16df36fd6739506954651bb7dbda67b27a52e2728",
+    "native/shots/pekora-tier1-option0-23-frame0.png": "89c4071950bd3050c638b5cb9f6dc1dba034f82f1069c25e1d8005adb04c33a9",
+    "native/shots/pekora-tier1-option0-23-frame1.png": "b8e7ab60a352d5ba3cc8a8bcd54abb61b2f7ffe4589d657e0a02f49108a2a3a9",
+    "native/shots/pekora-tier1-option0-23-state.png": "87c24096114dea6ed34b20bd7012332411610cd62e0b8eb5032664301aa17938",
+    "native/shots/pekora-tier1-option0-47-frame0.png": "2633f3b6ac1dce8023085276acd44d12707515c2d609b051c6da7dd5c022d180",
+    "native/shots/pekora-tier1-option0-47-frame1.png": "92cd8d0afa0a963e0a2717dbaf3e891923775a3d9d0b2f70b08e368622defe2e",
+    "native/shots/pekora-tier1-option0-47-state.png": "10435e73f9ec2811a31705bf574868bfbd794e4ffd1a335ee4e7743252635f4f",
+    "native/shots/pekora-tier1-option0-85-frame0.png": "9fb3f9866f17cc77c456e3705218fabfd1daf717a0f2f25967789816117ec9b9",
+    "native/shots/pekora-tier1-option0-85-frame1.png": "68c9368ba2d02894a347bb7d836194b8d8f2288775dd8ec626deeb4f446951a8",
+    "native/shots/pekora-tier1-option0-85-state.png": "fd4b1fc99b1907b42bb2cb58aa329ad1ddcf6d6796f261ffe6a17d421285a491",
+    "native/shots/pekora-tier1-option0-91-frame0.png": "1131fa644ff0d87ebf1a0b25cb506f1b3b228ea96c13c7a00335dfd94cbe5a36",
+    "native/shots/pekora-tier1-option0-91-frame1.png": "fedc18ba1afac56fdc3a24446b2d68ed65124c570e75d84cced041aa47e1c27b",
+    "native/shots/pekora-tier1-option0-91-state.png": "2b2765ff258fbf32b4f864af6bb84180c78abd54038f2c97440af4f07a1ab9f4",
+    "native/shots/pekora-tier3-option0-48-frame0.png": "2652ded04056143c3467321bf3fe774a16d11c4cdbf6c8590198881f4df671f1",
+    "native/shots/pekora-tier3-option0-48-frame1.png": "0d376eea5344e5d6893718d8288c345dd8a07412d6a70644b6996eb19d42dd30",
+    "native/shots/pekora-tier3-option0-48-state.png": "7f6d98f3640f2435580b136d21f97099105e6e2d451a0e74357ea964f8ecefa8",
+    "native/shots/pekora-tier3-option1-24-frame0.png": "d8abbcd4b879175cb4f72f56915cb9d9de2cc384a75c03f405352c4ca763bd55",
+    "native/shots/pekora-tier3-option1-24-frame1.png": "cbacbf29b8ed0fb06057713c657bf09e3ef9da370bee115f995fad544bbf6a40",
+    "native/shots/pekora-tier3-option1-24-state.png": "d32834209c4784a80473f9b0db7d52301b57ad84b57d75a4a6405e43423ccaf3",
+    "native/shots/pekora-tier5-option0-25-frame0.png": "b54c26ee8b2615a73898f32df1addb09f3fb945144f8cbbf85ad17dbedf758d0",
+    "native/shots/pekora-tier5-option0-25-frame1.png": "229663c676af89cece77a264c52b9646b45c6cbcbcebec394c03f7e66ca22d73",
+    "native/shots/pekora-tier5-option0-25-state.png": "f3040c80db88ad7e4eb72effe5ead2c9567639a394b983773de1f6c080695d5d",
+    "native/shots/pekora-tier5-option0-49-frame0.png": "13bc95f676cec97e4f867289a0327180e3085cac99e7782ee1dabfe7b4248ff3",
+    "native/shots/pekora-tier5-option0-49-frame1.png": "d786c2a73ddc59e956ccbcd045a55905d2df61c2220356238a941d4f886ce55e",
+    "native/shots/pekora-tier5-option0-49-state.png": "77dab76ed73977d69a607b86c932f9c7180c4d586570d4ab8a9bbf281f9a137b",
+    "native/shots/polka-tier1-option1-4-frame0.png": "4b9541cb18c62300db910a30355ce5eb6feed5f05156b70138f8eba97d33492a",
+    "native/shots/polka-tier1-option1-4-frame1.png": "c1e10fc8bd0382e866510e9e8f2ee1729f8b77e610dd6232c6869cbff7f7dc02",
+    "native/shots/polka-tier1-option1-4-state.png": "3e5fb1a72e94a0920549c08eadd9a6393f1cae50e5f3ae2d81f8d2ed4e23636e",
+    "native/shots/polka-tier1-option1-58-frame0.png": "b462aa6bf1a9dc4af7876aa9e3ee5c1d98e6834fb6c0d6a8e3723b7868d79be5",
+    "native/shots/polka-tier1-option1-58-frame1.png": "ddbc718ec10e5b82cb515de5c65fad3307de38c4cf0240fdb068b5b806f423c4",
+    "native/shots/polka-tier1-option1-58-state.png": "db378c7478dd5159b5725475186778cd5564691533d9c298af312a30c3c0fee6",
+    "native/shots/polka-tier1-option2-5-frame0.png": "9a9b98e865d3020374fbddb341ccec80d60b4aadf7cc379f41e39aaef44a3db5",
+    "native/shots/polka-tier1-option2-5-frame1.png": "03372cd933f74265df0a7894d95f69b79a4919e7ee715f1e7a0ed9a00db8798a",
+    "native/shots/polka-tier1-option2-5-state.png": "f9765aee365c57f8b408421272555b804aeeb001072fccb159d46bb3a33f6d7d",
+    "native/shots/polka-tier1-option3-6-frame0.png": "9ff906b658ca6f937fc0142228930fbe3f95c4fdf0786105879da0a6907bf6bb",
+    "native/shots/polka-tier1-option3-6-frame1.png": "185966a4e4947c121c1d56a58c48e95b417eeda5723a9b7994d7a78e44b54b8b",
+    "native/shots/polka-tier1-option3-6-state.png": "e798986d980e56a277408f8bb50120e0e7493437eb12c8dde7524912637cb602",
+    "native/shots/polka-tier3-option0-59-frame0.png": "1cfdb4de5dfa945418d3e91575472393fcba9ceb8d09b7c16a275551b55a3cde",
+    "native/shots/polka-tier3-option0-59-frame1.png": "ae88658d13375dfa4a6b7160008c8a982b8d11a50349e477a3740c492ed99f9f",
+    "native/shots/polka-tier3-option0-59-state.png": "cc0f0a3ad8fe74f336e1d67a81132cbaaaed40ea05222b25d8ac6efc43fbf54e",
+    "native/shots/polka-tier5-option0-1-frame0.png": "bf0c2f34c6dd00f29cdb4df32917a82c7a51e026aa3983eae47d5b0fa057a2b9",
+    "native/shots/polka-tier5-option0-1-frame1.png": "498bfe35c359cfd3c46f5e1ce77cf6e7e3b2191af0d9a6aebfa4bef2347eb4bd",
+    "native/shots/polka-tier5-option0-1-state.png": "5d1b862d488239978bc5c2f1a2a978d34cc68014ea15d401b8a936928a04fcef",
+    "native/shots/polka-tier5-option1-2-frame0.png": "ea197b0585996db26ce7e596393704a320df142f04b1db1d2c243a9d01b7d732",
+    "native/shots/polka-tier5-option1-2-frame1.png": "49a8a94fa8b8e9c68e7841853cc3ad1e75594d7d9861d837b708879633957341",
+    "native/shots/polka-tier5-option1-2-state.png": "8bbaa2c8d7dc1394b921b7ffba5f898fa3e4d592f92a613b7e59ea921ff945e0",
+    "native/shots/polka-tier5-option1-60-frame0.png": "81565112bedbac71dd0328b2105f3ebe0e8b2c2e9b94463e3d06387a62757b75",
+    "native/shots/polka-tier5-option1-60-frame1.png": "8056254309810aa0978c6722b251881b17c8d94c167dda8cc350af79db183b4c",
+    "native/shots/polka-tier5-option1-60-state.png": "b06e2c874ae109c59ad45c6490b73e824ae77d0cb7094eefa58411ab9bdbde9b",
+    "native/shots/polka-tier5-option2-3-frame0.png": "61a62d153cf91b22f6feed6d7cf3844dd0976169658894cc9b1b42afeeb4c149",
+    "native/shots/polka-tier5-option2-3-frame1.png": "1c862389cfcb083eb5c624b733f9f99635b3db7fe2e504db6a97f3745cf95634",
+    "native/shots/polka-tier5-option2-3-state.png": "afef8c68b3c22532655bae3c476ef665b1587d3f7491bf279faa2805dac15517",
+    "native/shots/raden-tier1-option1-8-frame0.png": "2fcbbae708965881606c944fc03ae4a5b6b921f17baeb6739e4ee1bd8b6ae9a7",
+    "native/shots/raden-tier1-option1-8-frame1.png": "cbb023eb011ecfb894493cbd738db46a33825efd5dbc2d2b3cc51749bd89c6b0",
+    "native/shots/raden-tier1-option1-8-state.png": "2fcbbae708965881606c944fc03ae4a5b6b921f17baeb6739e4ee1bd8b6ae9a7",
+    "native/shots/raden-tier1-option2-10-frame0.png": "273fabd1d88ccca3a4f6b3d04eace807bfa44ff3cdce8a8cd161c702c9cb04b8",
+    "native/shots/raden-tier1-option2-10-frame1.png": "5072b79b6c0e89d78b2ddef6af10dfe4f6801c35097f83f23a9ed2cafbafb321",
+    "native/shots/raden-tier1-option2-10-state.png": "273fabd1d88ccca3a4f6b3d04eace807bfa44ff3cdce8a8cd161c702c9cb04b8",
+    "native/shots/raden-tier1-option2-67-frame0.png": "22eef930c7e21728cb0b2091270b7a82f769e803c4f7e5e6f4e0bad4fec83b9e",
+    "native/shots/raden-tier1-option2-67-frame1.png": "96ee8e96b9a0e5a11ebcf2f081d9443699a94afcb19d2bb4c0fa6e32b40f0465",
+    "native/shots/raden-tier1-option2-67-state.png": "22eef930c7e21728cb0b2091270b7a82f769e803c4f7e5e6f4e0bad4fec83b9e",
+    "native/shots/raden-tier3-option0-7-frame0.png": "ba3cb4a925c8215cc97c305c1bcaca3b44280f667c1036cf6ae7d69887f368c9",
+    "native/shots/raden-tier3-option0-7-frame1.png": "ec152bcf00465edf9ddcfcb319d9dea6c570f46815eccaebf7493cf744db5037",
+    "native/shots/raden-tier3-option0-7-state.png": "db16aeaa1a6f2b84aa84410d2944b86c0def1a684855f0655c78304d6cc32c8b",
+    "native/shots/raden-tier3-option1-9-frame0.png": "fe654eb5b0646d380fd54cbe005510da9c52813b73e0876df1d56bb8d7a270c4",
+    "native/shots/raden-tier3-option1-9-frame1.png": "725b404ff8d51e835ab670b7a283a6734eb5c88b71b439e862f3b0e3860a9369",
+    "native/shots/raden-tier3-option1-9-state.png": "bbff0f31043e78a348b06b952a7c6b02c40dfeeca0833947ef734d9664c3d1bc",
+    "native/shots/raden-tier3-option2-11-frame0.png": "24b86883256dafcd65291cff0c0810334bf7b8bd4fb7e80751f89d2b473b7486",
+    "native/shots/raden-tier3-option2-11-frame1.png": "c77f54996cad7e169a20b79fceb706444f79c11e55a84ee1d5673e8836ad46da",
+    "native/shots/raden-tier3-option2-11-state.png": "62a037d37d7869fc0837ad7661bff0b6d9074f6aaba676508c4f1f139ae145dc",
+    "native/shots/raden-tier3-option2-68-frame0.png": "2b605ac047e06c32b323f96338f91c3f9336523cac27737af95e6887a4188e6f",
+    "native/shots/raden-tier3-option2-68-frame1.png": "7836efd03967d5e03a7bfc69cf9695d3df918cf9796e560fbd2e8a235067db5d",
+    "native/shots/raden-tier3-option2-68-state.png": "b1b5d160e6d3b61b73480c502b71f45703836fb4f0e823dd12cb267a4a70e48f",
+    "native/shots/raden-tier5-option0-69-frame0.png": "d69db55c848d54f3140d0df4256d53b81d30f9321ed6e5b39f0b8df4ea6ae7bd",
+    "native/shots/raden-tier5-option0-69-frame1.png": "b1bc3f86092661429d66fc4cf92d197fdc3012dd9963d39996679525b3421d64",
+    "native/shots/raden-tier5-option0-69-state.png": "7e73423f113349a7cb5c1d6d8ae27d5edea963ac9fde802ddd40c6dd7d277548",
+    "native/shots/sopia-impact-1-frame0.png": "cca2b16dc663664f4d860992de9da986e63261fa6056fbdb77e9fe7ae409a403",
+    "native/shots/sopia-impact-1-frame1.png": "6a9f64ff75f7bcb7b06a64f5c1a5cf6163c1ccb473becd6cb8089e54e4eaaad1",
+    "native/shots/sopia-impact-7-frame0.png": "53a2a4eed2ae01ba8ba4b734d6cb64f180dcb5f9afa9ddb561a618545f5586a0",
+    "native/shots/sopia-impact-7-frame1.png": "aee49ffe71d99405203625329c826da14da3834c644f081e8900d5901be55b7c",
+    "native/shots/sopia-tier1-option0-77-frame0.png": "711649154a80e06ecc11a3dce799f800bcae028b6d01c20a0069238e45fa6743",
+    "native/shots/sopia-tier1-option0-77-frame1.png": "47f56eedbc849b7648d1d0a37eafb8a0e79323dbe0f360f2c0397b3f846196b6",
+    "native/shots/sopia-tier1-option0-77-state.png": "711649154a80e06ecc11a3dce799f800bcae028b6d01c20a0069238e45fa6743",
+    "native/shots/sopia-tier1-option0-86-frame0.png": "dee736b61aeb21ed596e1ba4f9fe238f308a01b0a77edcf13276440e624c8a2e",
+    "native/shots/sopia-tier1-option0-86-frame1.png": "288e0b3f840af4ffeec0c939165be59f71bc3080da9a06ddf3707d2a3129b348",
+    "native/shots/sopia-tier1-option0-86-state.png": "dee736b61aeb21ed596e1ba4f9fe238f308a01b0a77edcf13276440e624c8a2e",
+    "native/shots/sopia-tier3-option0-78-frame0.png": "d53cb7d8814a9009c36dde3e17ac68113b38eec371629e79b1671ae57b636886",
+    "native/shots/sopia-tier3-option0-78-frame1.png": "0e702c584e9d5d8b28d1dca723ecbb6fecde3dc179ba277fb0853634c94c6ea0",
+    "native/shots/sopia-tier3-option0-78-state.png": "beee377a68abe7ccc6da388c65297d6096ac5ade6b99f727194a5a1cfce31078",
+    "native/shots/sopia-tier5-option0-21-frame0.png": "338163859a35b104e683dba0cdcf1261f37c15f804435dba574227733acce3c4",
+    "native/shots/sopia-tier5-option0-21-frame1.png": "80f1bfcbeddd910710a7c7484739b4f4080bb584b06971c9aafe63aef92abd3d",
+    "native/shots/sopia-tier5-option0-21-state.png": "204f0846314730d6b8a9dad9d3993c2b90f86d0ee41a4f37cc68ad0bd09b1e9f",
+    "native/shots/sopia-tier5-option0-79-frame0.png": "2ee181c296857672b9ed333165adffe558791dcd27402172fbbd5dadc17aeb69",
+    "native/shots/sopia-tier5-option0-79-frame1.png": "6c2afa20f10528ebf0f8cd11c271c08fd83c30c20b22c7f2057882a7979a2276",
+    "native/shots/sopia-tier5-option0-79-state.png": "6b3ce44b179e20a315b3546022d504c04a4de301870b0fd9cc1231b9d56b89c8",
+    "native/shots/sopia-tier5-option0-92-frame0.png": "78dec7b3bee78a90bf5c8246ea4134252c3c17c8653b60c0b42318c6676caff5",
+    "native/shots/sopia-tier5-option0-92-frame1.png": "5fa89eef6c1b1a8d98077836a4af14ed54bf7f68f133ea5162619e8b412a0d71",
+    "native/shots/sopia-tier5-option0-92-state.png": "8a6b0ec7a2d1de9e0bf00266c0ce2cc873d24b218762bc038419c58b2742bde5",
+    "native/shots/sopia-tier6-option0-22-frame0.png": "67ca12247d2e2c4190951b65a9a14baca01a3291040d2cdecf9d369db27e64ef",
+    "native/shots/sopia-tier6-option0-22-frame1.png": "fc87e7c015118332d2f0758dc40b89ddb553b3067a0ee28442d620a3d3f0eced",
+    "native/shots/sopia-tier6-option0-22-state.png": "9b0a5d392d5f1807c6419805dbc61028685524b0e81c8935632753ea8aeceb52",
+    "native/shots/sopia-tier6-option0-80-frame0.png": "3f0abad9616b1d196c9e992ac8d7c66328d879feeaf9b7bf7995cee0a833e96b",
+    "native/shots/sopia-tier6-option0-80-frame1.png": "120a550154406451d7e90f993092ce98e251e3c515edfa01dbd37d52f7c1eade",
+    "native/shots/sopia-tier6-option0-80-state.png": "99dea6c34f27ffc7600d90bfe1404d9c14bbde08aae4ed6b886da8604f7ff52a",
+    "native/shots/su-passive1.png": "3277c51680343c2721048224ecdd79b1f1cd95e67ef8f925ad397e648075d0f5",
+    "native/shots/su-tier3-option0-72-frame0.png": "565fe53b7161e34cf5f5dfd163429f738ab08d1cf44f1a66e94097e3274a287a",
+    "native/shots/su-tier3-option0-72-frame1.png": "5716d4a8073f6573c318ae5489c6623bbf664be4b72a0f2bec23df692c84814f",
+    "native/shots/su-tier3-option0-72-state.png": "6d023cee9f1d1aca909eb5295266f6a19f42976d6987fc97efc37f6ff00cd808",
+    "native/shots/su-tier5-option0-73-frame0.png": "ad53a35083e975c495131d89cf5bd31c9407d9e259051971d42ca0a35189daf4",
+    "native/shots/su-tier5-option0-73-frame1.png": "8d5a256a509b759ca0aefc2b8789939db09eb8c1c1dd0d0d89b94e4053409907",
+    "native/shots/su-tier5-option0-73-state.png": "89b98161b06e2e55f7e932d3fa9e9c86bb39926fcc55648490325b819a2a6ce0",
+    "native/shots/suisei-tier1-option0-26-frame0.png": "db535f7b48722ff558229641dfb0635f245d681191527feedade80814e20c0da",
+    "native/shots/suisei-tier1-option0-26-frame1.png": "70c9c0bad61e5aac1e2f6cbd419aeb4c8388a6723681462e6f9c5496ee91655a",
+    "native/shots/suisei-tier1-option0-26-state.png": "db535f7b48722ff558229641dfb0635f245d681191527feedade80814e20c0da",
+    "native/shots/suisei-tier3-option0-27-frame0.png": "601ecff711cb484e1b116fac659c558336adb5da0595870acbe503652805f638",
+    "native/shots/suisei-tier3-option0-27-frame1.png": "8103bd427fd69ece860b0bbbcce993a73826caa23c233d7387e41fceb94db299",
+    "native/shots/suisei-tier3-option0-27-state.png": "ce89957a7b975632b7ecd2eccbb21ce9f38cb738f07b787875f23f36b05faead",
+    "native/shots/suisei-tier5-option0-28-frame0.png": "313d72c1d06a1fd91b93e74d4bc74f9b239435d5067aa20d760ea8f58ab56e8f",
+    "native/shots/suisei-tier5-option0-28-frame1.png": "3a1251a4fe97acf75d269140a0405f2cdb83d031634f75c7013b2033f9c42709",
+    "native/shots/suisei-tier5-option0-28-state.png": "3bf04b333991e368350dc5f98c432ebbdfa8ee3b5d4d095f342a4019e2ae15ec",
+    "native/shots/towa-passive1.png": "ee6284d93702117bbd9ade4190906954a42c0c14222a4bb455c0c7b6161052bb",
+    "native/shots/towa-tier3-option0-53-frame0.png": "80c1168ec0f87b8d91f8544aee8087e82a401c33707bf9dfc09406915cf96857",
+    "native/shots/towa-tier3-option0-53-frame1.png": "63d2fa0b6e326fa312e80c85f054f9a83f68e764a48eb8c6c6751ef831def1fb",
+    "native/shots/towa-tier3-option0-53-state.png": "fce7d8656e271b0fa58dbd3c7cda42a278f8b7ae02e02ee83b9d2472afba5ad6",
+    "native/shots/towa-tier5-option0-54-frame0.png": "af68ee7b7bbbd3ffc722f41f500f70f5350ffc9121c8b4a46c024bfbff50eab8",
+    "native/shots/towa-tier5-option0-54-frame1.png": "debde98961e28c1fdc27b5d2afcdcdff1ed2ecfd82435956e381c7937c7c1b97",
+    "native/shots/towa-tier5-option0-54-state.png": "80dc3074d81f427d7b39b6271d1bedfabd999c8cb5b6a80eb477da5b9358930d",
+    "native/shots/vivi-tier1-option0-74-frame0.png": "4ba88332e86d88ba90a0016858800a1e877ee406cc53afb0fa77215ff3033d2f",
+    "native/shots/vivi-tier1-option0-74-frame1.png": "7d1274ef71f5add05ab9a6594798afbb511829da6045906fbfbed006bd4ab809",
+    "native/shots/vivi-tier1-option0-74-state.png": "4ba88332e86d88ba90a0016858800a1e877ee406cc53afb0fa77215ff3033d2f",
+    "native/shots/vivi-tier3-option0-75-frame0.png": "023670d97bc6f2ecfb1c7deb44f455239ed11c508e4c62ea2a9f3ad65f0c2860",
+    "native/shots/vivi-tier3-option0-75-frame1.png": "2c320db2cb30a09f57442e10cad7f83a356ebe1b130a4a9f4a915a7609dd26ab",
+    "native/shots/vivi-tier3-option0-75-state.png": "9ae159dad2d7594843de86d4c8654cbba585a9c19c1dd9512d42710296896f69",
+    "native/shots/vivi-tier5-option0-76-frame0.png": "f13b9bf670f9649e383821713fe6a01f5ef3a052d9d9356948ebe7a24e1cae98",
+    "native/shots/vivi-tier5-option0-76-frame1.png": "7dfedcf255b2644471a7909ea22b1dae3e6c1690ce7a96f0671ef801f291696a",
+    "native/shots/vivi-tier5-option0-76-state.png": "a0c0cb0814ac6cfbceb76935ca6f78a69086d1f27bafe4c9fe794f53a70c7ed5",
+    "native/shots/watame-passive1.png": "366743dc01043c41cedc6589da68969491bb98560f14f59c1eddf51d6add6464",
+    "native/shots/watame-tier3-option0-51-frame0.png": "eca926ada5106909c9363bf946259a0cf503aef3028af49fd44b6ea479e308b9",
+    "native/shots/watame-tier3-option0-51-frame1.png": "fc5d4ae8a9a707e0fafa9c80a4e76a2c8dda3a5c187adca99116ad3141dd7414",
+    "native/shots/watame-tier3-option0-51-state.png": "0d26b6f1166e6e28ed72cb935ed84942ec85f9e0542c941accd8497a64f3a8ae",
+    "native/shots/watame-tier5-option0-52-frame0.png": "8a2fe2741845a4ffcdb4808bf77dffd9595b5324cd6752e363a0606e1c9d96c7",
+    "native/shots/watame-tier5-option0-52-frame1.png": "094696683fa0bd5933e1a90f97abdbf927ec254c780b2adb2edd8502738ed215",
+    "native/shots/watame-tier5-option0-52-state.png": "09c41e7ea9dc525beb1e924c5025adbddcff82fc6b6ff3e70f4744523e465be1",
+    "native-choco/shots/choco-before.png": "34adba5c1aca98fb25e227a72d57cc3b1a3e5a26106b3b9d5626ffda3616bbe6",
+    "native-choco/shots/choco-corner-upper-no-marker.png": "6aea048debf21224d21871fe469f088fbb9bd835fce382fc91992577ccd37700",
+    "native-choco/shots/choco-corner-upper.png": "ea347b4f360d375965b3f6d36c37c5b9b5bab7eddec70b72dc71b338e368fb5e",
+    "native-choco/shots/choco-failed-state.png": "0f50959ddb1fd502a4121cc2ef5280d2dee6ee4b08eba4c67dc2b3f769c75b36",
+    "native-choco/shots/choco-immune-state.png": "161fcd64461ad319a627f5245d58a993ae025f54d32db1ddf241937705d6f165",
+    "native-choco/shots/choco-kiss-1-frame0.png": "19098e3eeccc398324e3b739a37754fe11f8573426b2a3cb8a24e38377dcabd7",
+    "native-choco/shots/choco-kiss-1-frame1.png": "ae4c9d57edd7b1e8e6f084f69194ccc91f390586b0c74a21ef994fac6d150250",
+    "native-choco/shots/choco-kiss-1-frame2.png": "2a42a0283996951a39068fbfb18d94e6b91ad620a23d518a1686417d33f485d3",
+    "native-choco/shots/choco-kiss-1-frame3.png": "e90644b9ef9b7007d9ed2da4084c6141b1e22a6124f24e01252377197ed547ec",
+    "native-choco/shots/choco-kiss-2-frame0.png": "af68545239c21948ee5e41f6b8c1beb088b5eabc3f37344cb2b3676338786dbb",
+    "native-choco/shots/choco-kiss-2-frame1.png": "53db4328c81edf347619a22078e81e13dc77b1889fe6d4e96fb160d4a9c9b352",
+    "native-choco/shots/choco-kiss-after.png": "a6b71c936ef16604559c5f8bad83cca796e23ee8d88893734e3850c21bff3be7",
+    "native-choco/shots/choco-stack1.png": "b5433abeefaa1ff46e7f5c189c884475affe34bc93913cbb389da607fe2391a8",
+    "native-choco/shots/choco-stack2.png": "8143f65ad3d59b829c9231887a73d76e9e0f3e55d66db3c8ce5188f3c1f2da9a",
+    "native-choco/shots/choco-stack3.png": "8e59877302748388a7424cd1a55686fa7ad7ee04795c8e4d363a87473b67b9dc",
+    "native-choco/shots/choco-stack4.png": "42a02a1cde9d2579711b30fe0d8602aa013863a7e820053fd8068c1707bf026a",
+    "native-choco/shots/choco-stack5.png": "3e43a4881ae191bf5405294986b452607405396e768144ed630db4a9285d742d",
+    "native-choco/shots/choco-success-active.png": "094c4cb6826a6dc64493b210925be20b93c18f829031a14dc9932926fcca6dff",
+    "native-choco/shots/choco-success-expired.png": "d206e68839bd414317a01ed3ca3f3e74ce878ea5669111c1ec6d6e4a9455d9fb",
+    "native-choco/shots/choco-success-frame0.png": "6d179956c39bd2d11daa3aa94f766a38e27ab3c6faceacd7d3ea22b04b38b86c",
+    "native-choco/shots/choco-success-frame1.png": "17ffafb7a99b7d63c7b5795318222f358274ff9b191f59d95c1fd668729568cc",
+    "native-choco/shots/choco-tier3-option0-1-frame0.png": "4c06d1db283c1b08b2078a566c26773d076c25e253471302db4cac62fc747bdc",
+    "native-choco/shots/choco-tier3-option0-1-frame1.png": "d4b6e261c09e382f99cf63f75a28d968e1763f5281454799f7d1b4ed4d0114a3",
+    "native-choco/shots/choco-tier3-option0-1-state.png": "f7ed15a0791a140df31465206cbeec13a2cf2f4ecafad85e6d3efee5cca05281",
+    "native-choco/shots/choco-tier3-option0-2-frame0.png": "b32e8052fedfd6567bcd24987e04fac22cf103021eaad8c8c0678de658befd2c",
+    "native-choco/shots/choco-tier3-option0-2-frame1.png": "4306a982611190d39b112d40e15766140311289fb2ac3e8939fd2258c5c4bde9",
+    "native-choco/shots/choco-tier3-option0-2-state.png": "c6e5f5e9cd66dc3f5437b546f5abb9d573b2a019ec2ab8978027cc873ac53f89",
+    "native-choco/shots/choco-tier5-option0-10-frame0.png": "33551bc99b34021e681fa9383fb56a1b8d77e96eb7e32f2cd8bf8d9e43f32c98",
+    "native-choco/shots/choco-tier5-option0-10-frame1.png": "35af1fe28fc7d86e1381fafd60f7341ee43bc365024fd53dc8ecfa6c812539ff",
+    "native-choco/shots/choco-tier5-option0-10-state.png": "9dc16ae2df5ff42dc68f164de1f88ae48e3d0b1bb96b909b0c9b2b21f5b577dd",
+    "native-choco/shots/choco-tier5-option0-11-frame0.png": "2e80e71ec07a2ef6f7a0f9fa982e3bb210a6d067e3357ca7ea88d84a62dad4f5",
+    "native-choco/shots/choco-tier5-option0-11-frame1.png": "ec28fd14308ffb7798b8ab74ce0f4f60661f88eed6f06141d7bdf6b0406137fb",
+    "native-choco/shots/choco-tier5-option0-11-state.png": "b6b91f7b18a1e7f18751659e898ebd00295d8a6c35e3aec7e4cbeae5ab2dc363",
+    "native-choco/shots/choco-tier5-option0-12-frame0.png": "2e80e71ec07a2ef6f7a0f9fa982e3bb210a6d067e3357ca7ea88d84a62dad4f5",
+    "native-choco/shots/choco-tier5-option0-12-frame1.png": "ec28fd14308ffb7798b8ab74ce0f4f60661f88eed6f06141d7bdf6b0406137fb",
+    "native-choco/shots/choco-tier5-option0-12-state.png": "b6b91f7b18a1e7f18751659e898ebd00295d8a6c35e3aec7e4cbeae5ab2dc363",
+    "native-choco/shots/choco-tier5-option0-13-frame0.png": "878e1d114d92cb168dbce65a4ff849620984e76130d335b5690760acf95d4ccc",
+    "native-choco/shots/choco-tier5-option0-13-frame1.png": "6da66865cc168f14d51560d113e4b006533a7fcd5eed7d4f488f2915717a9716",
+    "native-choco/shots/choco-tier5-option0-13-state.png": "3b3ae9aa1c9cb60fb7fadc40fea6bd7f61282212bdb31119ab0c9b11aaafe1ed",
+    "native-choco/shots/choco-tier5-option0-14-frame0.png": "e563b78b23ff9c09a04cecc8b469e0dd77c68814f22085067c1d3cfe8229c26c",
+    "native-choco/shots/choco-tier5-option0-14-frame1.png": "40dc28b8f5172b5c984c331290d98064b901409ce465373cb0c076a13873205e",
+    "native-choco/shots/choco-tier5-option0-14-state.png": "22cdbd30df4a00264811f8d71850969d547291ef87c0668c9404b37adda689c8",
+    "native-choco/shots/choco-tier5-option0-3-frame0.png": "48c7e66778b891d78e30370cdde8ac5518a3885a49094b9bede3254002e9bffd",
+    "native-choco/shots/choco-tier5-option0-3-frame1.png": "8c4a9a153cb70ce0035ca3850e5df037960576a516a8c2f2b495cb2ca0b5863a",
+    "native-choco/shots/choco-tier5-option0-3-state.png": "931aff48280f3eafde93e31167c62a0ba8037e2cfeb50eb89d6221f43ed7c61c",
+    "native-choco/shots/choco-tier5-option0-4-frame0.png": "3783dfa1f043b13701eb1c318d388e41c06fad616da175a8e1f61c3bb127d683",
+    "native-choco/shots/choco-tier5-option0-4-frame1.png": "b442a1990a5b4c51b5f1d4ac06ac2152f4c1d393a43128a2994e4de81ea044b1",
+    "native-choco/shots/choco-tier5-option0-4-state.png": "9d7bb5543f1b7fb42ded91f9a3b7d60cd49f0c595447f8616000915a4f0b33ce",
+    "native-choco/shots/choco-tier5-option0-5-frame0.png": "3783dfa1f043b13701eb1c318d388e41c06fad616da175a8e1f61c3bb127d683",
+    "native-choco/shots/choco-tier5-option0-5-frame1.png": "b442a1990a5b4c51b5f1d4ac06ac2152f4c1d393a43128a2994e4de81ea044b1",
+    "native-choco/shots/choco-tier5-option0-5-state.png": "9d7bb5543f1b7fb42ded91f9a3b7d60cd49f0c595447f8616000915a4f0b33ce",
+    "native-choco/shots/choco-tier5-option0-6-frame0.png": "ad7adc67e984a89c982835c608cd8dc82e86e9a811803718db72d752d04c37e8",
+    "native-choco/shots/choco-tier5-option0-6-frame1.png": "5961cb1893461c8f3dcf6a833b3128c362f9d55cea5ee44614cf9a5173d53784",
+    "native-choco/shots/choco-tier5-option0-6-state.png": "2550f259e575c352b45ab08c299ec3bb0706e3b56fe4b2929687a76fe48ce33e",
+    "native-choco/shots/choco-tier5-option0-7-frame0.png": "ad7adc67e984a89c982835c608cd8dc82e86e9a811803718db72d752d04c37e8",
+    "native-choco/shots/choco-tier5-option0-7-frame1.png": "5961cb1893461c8f3dcf6a833b3128c362f9d55cea5ee44614cf9a5173d53784",
+    "native-choco/shots/choco-tier5-option0-7-state.png": "2550f259e575c352b45ab08c299ec3bb0706e3b56fe4b2929687a76fe48ce33e",
+    "native-choco/shots/choco-tier5-option0-8-frame0.png": "33551bc99b34021e681fa9383fb56a1b8d77e96eb7e32f2cd8bf8d9e43f32c98",
+    "native-choco/shots/choco-tier5-option0-8-frame1.png": "35af1fe28fc7d86e1381fafd60f7341ee43bc365024fd53dc8ecfa6c812539ff",
+    "native-choco/shots/choco-tier5-option0-8-state.png": "9dc16ae2df5ff42dc68f164de1f88ae48e3d0b1bb96b909b0c9b2b21f5b577dd",
+    "native-choco/shots/choco-tier5-option0-9-frame0.png": "33551bc99b34021e681fa9383fb56a1b8d77e96eb7e32f2cd8bf8d9e43f32c98",
+    "native-choco/shots/choco-tier5-option0-9-frame1.png": "35af1fe28fc7d86e1381fafd60f7341ee43bc365024fd53dc8ecfa6c812539ff",
+    "native-choco/shots/choco-tier5-option0-9-state.png": "9dc16ae2df5ff42dc68f164de1f88ae48e3d0b1bb96b909b0c9b2b21f5b577dd"
+  },
+  "gallery": "analysis/previews/all-gods-vfx-draft04/index.html"
+}

@@ -1,0 +1,74 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1490,7 +1490,10 @@
+         require(holo_visual::invocation_at(you.pos()+coord_def(1,0))!=holo_visual::effect::mikoflame,"interior falsely burning");
+         const int fire_end=holo_batch::s.three_end;
+         cast("miko",5,nullptr,you.pos());
+-        require(has(you.pos()+coord_def(3,3),holo_visual::effect::mikodomain),"great shrine edge missing");
++        int sx=1,sy=1;
++        for(int x:{-3,3})for(int y:{-3,3})
++            require(holo_visual::invocation_sprite_at(you.pos()+coord_def(x,y),sx,sy)==holo_visual::effect::mikotorii && sx==1 && sy==1,"torii missing at domain corner");
++        require(holo_visual::invocation_sprite_at(you.pos()+coord_def(2,2),sx,sy)!=holo_visual::effect::mikotorii,"torii inside domain");
+         require(holo_visual::invocation_at(you.pos()+coord_def(3,0))==holo_visual::effect::mikoflame,"expanded flame missing");
+         const auto before=signature();
+         for(int f=0;f<4;++f)holo_visual::capture_invocation("miko",you.pos(),f,std::string(shots)+"/miko-domain-frame"+std::to_string(f)+".png",5);
+@@ -1499,7 +1502,7 @@
+         require(holo_visual::invocation_at(you.pos()+coord_def(3,0))!=holo_visual::effect::mikoflame,"expired fire still rendered");
+         holo_visual::capture(std::string(shots)+"/miko-fire-expired.png");
+         step(std::max(0,holo_batch::s.five_end-you.elapsed_time));
+-        require(!has(you.pos()+coord_def(3,3),holo_visual::effect::mikodomain),"expired domain still rendered");
++        require(holo_visual::invocation_sprite_at(you.pos()+coord_def(3,3),sx,sy)!=holo_visual::effect::mikotorii,"expired torii still rendered");
+         holo_visual::capture(std::string(shots)+"/miko-domain-expired.png");
+         std::ofstream proof(dir+"/miko-review.json");
+         proof<<"{\"status\":\"passed\",\"lowFaithWidth\":5,\"highFaithWidth\":5,\"domainWidth\":7,\"boundaryOnlyFire\":true,\"expandedFire\":true,\"expiredFireGone\":true,\"expiredDomainGone\":true,\"capturePreservesGameplay\":true}\n";
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -389,7 +389,7 @@
+         effect base=effect::none;
+         if(g=="sopia" && !(crawl_state.test && you.props.exists("holo_sopia_gravity_preview")))base=holo_sopia::visual_at(p);
+         if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:2))
+-            base=holo_batch::five() && ((std::abs(p.x-s.centre.x)==3 && std::abs(p.y-s.centre.y)==3) || p==s.centre)
++            base=holo_batch::five() && p==s.centre
+                 ?effect::mikodomain:effect::shrine;
+         if(g=="aki" && s.one_end>now && s.one_ready<=now && grd(p)==DNGN_FLOOR && area(p,s.centre,s.three_end>now?3:you.piety>=75?2:1))base=effect::garden;
+         if(g=="towa" && s.one_end>now && area(p,s.centre,2))base=effect::spotlight;
+@@ -529,6 +529,12 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    // Visual boundary markers only: no actors, collision or additional terrain.
++    if(holo_campaign::active() && holo_worship::current()=="miko"
++        && holo_batch::s.one_end>you.elapsed_time && holo_batch::five()
++        && std::abs(p.x-holo_batch::s.centre.x)==3
++        && std::abs(p.y-holo_batch::s.centre.y)==3
++        && area(p,holo_batch::s.centre,3))return effect::mikotorii;
+     // Approved stack indicator: read combat state, without gameplay writes.
+     if(holo_campaign::active() && holo_worship::current()=="suisei"
+         && holo_batch::s.one_end>you.elapsed_time && holo_batch::s.resource>0) {
+@@ -941,6 +947,7 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::mikotorii)return TILE_HOLO_FX_MIKOTORII;
+     if(kind>=effect::suiseistars1 && kind<=effect::suiseistars3)
+         return TILE_HOLO_FX_SUISEISTARS1+int(kind)-int(effect::suiseistars1);
+     if(crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,koyoriheat,koyoricold,koyoripoison,koyoriblast,koyorithermal,koyorislime,koyoriblastedge,koyorislimeedge,koyoriblastborder,koyorithermalborder,koyorislimeborder,carrot,suiseistars1,suiseistars2,suiseistars3 };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,koyoriheat,koyoricold,koyoripoison,koyoriblast,koyorithermal,koyorislime,koyoriblastedge,koyorislimeedge,koyoriblastborder,koyorithermalborder,koyorislimeborder,carrot,suiseistars1,suiseistars2,suiseistars3,mikotorii };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+--- before/rltiles\dc-holo-feat.txt
++++ after/rltiles\dc-holo-feat.txt
+@@ -507,3 +507,5 @@
+ fx_suiseistars1 HOLO_FX_SUISEISTARS1
+ fx_suiseistars2 HOLO_FX_SUISEISTARS2
+ fx_suiseistars3 HOLO_FX_SUISEISTARS3
++
++fx_mikotorii HOLO_FX_MIKOTORII

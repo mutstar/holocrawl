@@ -1,0 +1,305 @@
+--- before/holo-batch-martial.cc
++++ after/holo-batch-martial.cc
+@@ -54,7 +54,7 @@
+     const int now=you.elapsed_time;
+     if(is(god_id::miko)) {
+         if(want(1) && (s.one_end<=now || manual()) && grd(you.pos())==DNGN_FLOOR && policy_can_spend(3) && pay(3,0)) {
+-            s.centre=you.pos();s.one_end=now+10+200+5*s.inv;s.last_event=now+30;s.regen_fraction=0;return 10;
++            s.shield=0;s.defence=0;s.centre=you.pos();s.one_end=now+10+200+5*s.inv;s.last_event=now+30;s.regen_fraction=0;return 10;
+         }
+         if(want(5) && in_shrine() && !five() && now>=s.five_ready && (!policy() || you.hp*4<=you.hp_max*3)
+             && !probe_is("shrine_only") && !probe_is("no_ultimate") && policy_can_spend(6) && pay(6,10,120)) {
+@@ -216,6 +216,7 @@
+ 
+ void martial_tick(int at)
+ {
++    if(is(god_id::miko) && (you.piety<50 || s.defence<=at || !in_shrine())){s.shield=0;s.defence=0;}
+     if(is(god_id::miko) && s.one_end>at && seen(s.centre)) {
+         const bool inside=grid_distance(s.centre,you.pos())<=radius();
+         while(s.last_event<=at) {
+@@ -277,6 +278,7 @@
+ }
+ void martial_move(const coord_def &old,bool voluntary)
+ {
++    if(is(god_id::miko) && !in_shrine()){s.shield=0;s.defence=0;}
+     if(!is(god_id::hajime) || !voluntary || you.confused() || you.cannot_act() || old==you.pos()) return;
+     for(mid_t id:enemies(you.pos(),1)) {
+         const monster &mon=*monster_by_mid(id);
+@@ -310,6 +312,16 @@
+         if(mon && grid_distance(s.centre,mon->pos())>radius())
+             damage=damage>0?max(1,div_rand_round(damage*(90-s.inv/3),100)):0;
+     }
++    if(is(god_id::miko)) {
++        if(you.piety<50 || s.defence<=now || !in_shrine()){s.shield=0;s.defence=0;}
++        const bool ordinary=kind==KILLED_BY_MONSTER || kind==KILLED_BY_BEAM || kind==KILLED_BY_DISINT
++            || kind==KILLED_BY_POISON || kind==KILLED_BY_CLOUD || kind==KILLED_BY_TRAP
++            || kind==KILLED_BY_FREEZING || kind==KILLED_BY_BURNING || kind==KILLED_BY_ACID
++            || kind==KILLED_BY_CURARE || kind==KILLED_BY_SPORE || kind==KILLED_BY_HEADBUTT
++            || kind==KILLED_BY_SPINES || kind==KILLED_BY_BARBS || kind==KILLED_BY_BEING_THROWN
++            || kind==KILLED_BY_COLLISION;
++        if(ordinary && damage>0 && s.shield>0){const int n=min(damage,s.shield);damage-=n;s.shield-=n;s.totals.absorbed+=n;}
++    }
+     if(is(god_id::raden) && s.three_end>now && s.shield>0) {
+         const int absorbed=min(damage,s.shield);damage-=absorbed;s.shield-=absorbed;s.totals.absorbed+=absorbed;
+     }
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -140,6 +140,64 @@
+ int run_tests() {
+     const char *path=getenv("HOLOCRAWL_CAMPAIGN_OUTPUT");require(path,"output directory required");const std::string dir(path);
+     crawl_state.show_more_prompt=false;
++    if(getenv("HOLOCRAWL_MIKO_PASSIVE_RELOAD")) {
++        holo_reset_validation_fixture();reload_disk(dir+"/miko-save",true);
++        require(holo_worship::current()=="miko" && holo_worship::rank()==2,"Miko tier2 restore");
++        require(holo_batch::s.shield==4 && holo_batch::s.defence>you.elapsed_time,"Miko shield restore");
++        require(holo_batch::incoming(7,KILLED_BY_MONSTER,MID_NOBODY)==3 && holo_batch::s.shield==0,"restored absorption");
++        std::ifstream f(dir+"/miko-expected.txt");std::string expected((std::istreambuf_iterator<char>(f)),{});
++        require(signature()==expected,"Miko exact combat continuation after fresh restore");
++        std::ofstream(dir+"/miko-reload.json")<<"{\"status\":\"passed\",\"shieldRestored\":true,\"exactCombatAndRng\":true}";
++        close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_MIKO_PASSIVE_REVIEW")) {
++        using namespace holo_batch;
++        auto direct=[&](monster *m) {
++            command_scope command;bolt beam;beam.name="Miko actual kill probe";beam.origin_spell=SPELL_MAGIC_DART;
++            beam.source=you.pos();beam.target=m->pos();beam.range=6;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++            beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(4,20);beam.hit=AUTOMATIC_HIT;
++            beam.fire();you.turn_is_over=true;you.time_taken=10;
++        };
++        auto setup=[&](int faith,int missing) {
++            auto *m=fixture("miko",faith);cast("miko",1,nullptr,you.pos());
++            require(s.inv==12,"Miko fixture Invocations12");
++            m->type=MONS_RAT;m->set_hit_dice(1);m->hit_points=m->max_hit_points=1;
++            you.hp=you.hp_max-missing;return m;
++        };
++        for(int faith:{49,50}) {
++            auto *m=setup(faith,8);const int hp=you.hp;
++            if(faith==50)holo_visual::capture(std::string(shots)+"/miko-heal-before.png");
++            direct(m);require(!m->alive() && you.hp-hp==(faith==50?4:0) && s.shield==0,"native kill heal49/50");
++            if(faith==50)holo_visual::capture(std::string(shots)+"/miko-heal-after.png");
++        }
++        auto *m=setup(50,1);direct(m);require(you.hp==you.hp_max && s.shield==3,"partial overflow");
++        m=setup(50,0);holo_visual::capture(std::string(shots)+"/miko-shield-before.png");
++        direct(m);require(s.shield==4 && s.defence==you.elapsed_time+50,"full HP overflow shield");
++        holo_visual::capture(std::string(shots)+"/miko-shield-after.png");
++        auto spawn=[&]() {
++            auto mg=mgen_data::hostile_at(MONS_RAT,false,you.pos()+coord_def(2,0));mg.flags|=MG_FORCE_PLACE;
++            auto *n=create_monster(mg,false);require(n,"extra rat");n->hit_points=n->max_hit_points=1;n->speed=n->speed_increment=0;return n;
++        };
++        direct(spawn());require(s.shield==4,"cooldown bypass");
++        step(20);direct(spawn());require(s.shield==8,"shield accumulation cap");
++        require(incoming(3,KILLED_BY_DIVINE_WRATH,MID_NOBODY)==3 && s.shield==8,"shield absorbed wrath");
++        require(incoming(3,KILLED_BY_SOMETHING,MID_NOBODY)==3 && s.shield==8,"shield absorbed cost/torment");
++        require(incoming(3,KILLED_BY_MONSTER,MID_NOBODY)==0 && s.shield==5,"ordinary absorption");
++        require(incoming(8,KILLED_BY_CLOUD,MID_NOBODY)==3 && s.shield==0,"cloud absorption");
++        m=setup(50,0);direct(m);s.defence=you.elapsed_time;require(incoming(3,KILLED_BY_BEAM,MID_NOBODY)==3 && s.shield==0,"expired shield");
++        m=setup(50,0);direct(m);const auto old=you.pos();you.moveto(s.centre+coord_def(3,0));after_move(old,true);require(s.shield==0,"leaving shrine retained shield");
++        m=setup(50,0);direct(m);cast("miko",1,nullptr,you.pos());require(s.shield==0,"reinstall retained shield");
++        m=setup(50,0);direct(m);leave_level();require(s.shield==0 && s.defence==0,"floor change retained shield");
++        m=setup(50,8);m->flags|=MF_NO_REWARD;const int hp=you.hp;direct(m);require(you.hp==hp && s.shield==0,"no-XP kill rewarded");
++        m=setup(50,8);require(m->move_to_pos(you.pos()+coord_def(3,0)),"outside target placement");const int before=you.hp;direct(m);require(you.hp==before,"outside enemy rewarded");
++        m=setup(50,8);you.duration[DUR_DEATHS_DOOR]=10;direct(m);require(s.shield==0 && you.hp==you.hp_max-8,"blocked heal became shield");
++        m=setup(50,0);direct(m);you.piety=49;require(incoming(1,KILLED_BY_MONSTER,MID_NOBODY)==1 && s.shield==0,"lost faith retained shield");
++        m=setup(50,0);direct(m);save_disk(dir+"/miko-save");close_save();
++        require(incoming(7,KILLED_BY_MONSTER,MID_NOBODY)==3,"saved fixture absorption");
++        std::ofstream(dir+"/miko-expected.txt")<<signature();
++        std::ofstream(dir+"/miko-passive.json")<<"{\"status\":\"passed\",\"combatImplemented\":true,\"healAtInv12\":4,\"capAtInv12\":8,\"unlock\":50,\"nativeKills\":true,\"cooldown\":true,\"expiryAndExit\":true,\"excludedSources\":true}";
++        close_save();return 0;
++    }
+     if(getenv("HOLOCRAWL_KOYORI_RELOAD")) {
+         holo_reset_validation_fixture();reload_disk(dir+"/koyori-save");step(10);
+         std::ifstream f(dir+"/koyori-expected.txt");std::string expected((std::istreambuf_iterator<char>(f)),{});
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -279,7 +279,7 @@
+ void grant(int amount) {
+     if(!active() || amount<=0)return;
+     const int before=you.piety;you.piety=std::min(200,before+amount);you.redraw_title=true;
+-    for(int threshold:{30,50,75,100,120})if(((threshold!=50 && threshold!=100) || holo_worship::current()=="suisei") && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
++    for(int threshold:{30,50,75,100,120})if(((threshold!=50 && threshold!=100) || holo_worship::current()=="suisei" || (threshold==50 && holo_worship::current()=="miko")) && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
+     refresh();
+ }
+ void advance() {
+@@ -380,11 +380,12 @@
+     std::vector<std::string> lines;if(!active())return lines;
+     const auto &s=holo_batch::s;const auto g=holo_worship::current();
+     const int rank=holo_worship::rank();
+-    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":"30 / 75 / 120"));
++    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":g=="miko"?"30 / 50 / 75 / 120":"30 / 75 / 120"));
+     const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
+     if(g=="miko")lines.push_back("1* active: MP3/1turn, fixed5x5 sanctuary from unlock; duration20+0.5*Inv turns. Heal1+Inv/12 HP every2turns. 3* active: MP3/piety3/1turn, flames on5x5 boundary; passive: outside ranged damage reduced10+Inv/3 percent. 5* active: MP6/piety10/1turn, expands to7x7 for6+0.2*Inv turns, reduces damage15+Inv/3 percent and cleanses one condition.");
+     if(g=="suisei")lines.push_back(make_stringf("Constellation stars: %d/3 | next-hit reward: %d (%s)",s.resource,s.three_end>you.elapsed_time?s.offence:0,turns(s.three_end).c_str()));
++    if(g=="miko")lines.push_back(make_stringf("2* passive Blossom offering: %s | Shield %d/%d (%d aut)",you.piety<50?"locked (piety50)":"ready",s.shield,4+s.inv/3,std::max(0,s.defence-you.elapsed_time)));
+     if(g=="suisei")lines.push_back(std::string("2* Focused observation: ")+(you.piety<50?"locked (piety50)":holo_batch::suisei_focus_accuracy(monster_by_mid(s.marked))?"active: accuracy +3 vs marked foe":"ready: needs 2+ stars on marked foe"));
+     if(g=="suisei")lines.push_back(std::string("4* Star inheritance: ")+(you.piety<100?"locked (piety100)":s.offence>0 && s.three_end>you.elapsed_time?"ready: reward hit starts new foe at2 stars":"waiting for a marked-kill reward"));
+     lines.push_back("Corner marks: upper-left power; lower-left protection; upper-right wrath; lower-right recovery/resource.");
+@@ -459,6 +460,7 @@
+     if(g=="koyori")lines.push_back("1*: passive direct attack spells cycle Heat/Cold/Poison; no extra MP/piety. Heat1d(4+Inv/6), Cold1d(3+Inv/9) and move+15%/2t, Poison(2+Inv/12)x2 ticks. Marks6t. 3*: eligible ranged attack spells +1 range, LOS cap, no blast-radius change. Different reagents react once/cast: fire2d(5+Inv/4) radius1, thermal3d(6+Inv/4) half AC, slime2d(3+Inv/6) radius1 and move+35%/3t. All reaction damage x0.85 rounded down once. No self/ally splash. 5*: MP6/piety10,0.5t;8t or4 successful attack casts;20t cooldown from activation. Pairs thermal/fire/slime/thermal; reaction x1.5 for thermal(ignore AC), x1.35 otherwise; slime move+50%/4t. No tools/clouds/pets/poison followup/recursion. One reagent application per target and one reaction centre per cast. Existing marks and sequence saved.");
+     if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, damaging spells and tools: one chill/target/use. A cloud field plus all spread cells share that use; first positive damage only, no direct+cloud double stack, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/use and per10aut (a cloud field can burst once total):2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/divine/poison-DoT procs. Tool charges and costs remain normal; cloud ticks do not repeatedly stack. Old untagged clouds are excluded.");
+     if(g=="suisei")lines.push_back("1* passive: one star per positive direct attack, max3, expires10 turns since last hit. A marked kill grants next-hit1d(3+4*stars) for3 turns, AC applies. Manual retarget costs1 turn. 3* active: MP3/piety3/1turn, range5 piercing,2d(8+Inv/2)+5 per marked star; consumes stars only on hit. 5* active: MP6/piety10/1turn, range6 fixed3x3, lands2turns after completion;3d(10+Inv/2)+8 per snapshotted marked star, AC applies. No tracking. Allies/self may be hit.");
++    if(g=="miko")lines.push_back("2* passive Blossom offering, piety50: direct XP-enemy kill with both in shrine heals2+Inv/6HP, once per2turns. Excess healing becomes shield, cap4+Inv/3HP, lasts5turns; renewed on overflow. Leaving shrine, floor change or new shrine removes it. No extra MP/piety/turn cost. Ordinary attacks, poison, clouds and traps can be absorbed; costs, torment and divine wrath are excluded.");
+     if(g=="suisei")lines.push_back("2* passive Focused observation (piety50): +3 accuracy vs the live marked foe at2+stars. Ordinary melee/ranged and attack spells with normal hit checks only. No damage bonus, MP/piety/turn/star cost or Invocations scaling. Auto-hit, explosion/engulf and MR checks unchanged. Ends when stars fall below2, mark expires, target changes or piety falls below50.");
+     if(g=="suisei")lines.push_back("4* passive Star inheritance (piety100): consume a marked-kill next-hit reward on a fresh marked foe; if that ordinary direct hit deals positive damage and the foe survives, start at2 stars instead of1. No extra MP/piety/time cost. Miss keeps reward. One-shot/reward-only kill grants no inherited stars or recursive reward. Existing stars just gain the normal1. Original3-turn reward window and max3 stars unchanged.");
+     if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+@@ -552,6 +554,19 @@
+     if(g=="koyori" && direct && strong && reaction_depth>0)++extra;
+     if(g=="pekora" && bomb_depth>0)++bomb_kills;
+     if(g=="miko" && direct && s.one_end>you.elapsed_time && grid_distance(s.centre,you.pos())<=(five()?3:2) && grid_distance(s.centre,m.pos())<=(five()?3:2))++extra;
++    if(g=="miko" && direct && you.piety>=50 && you.hp>0
++        && !you.duration[DUR_DEATHS_DOOR] && s.one_end>you.elapsed_time
++        && seen(s.centre) && grid_distance(s.centre,you.pos())<=(five()?3:2)
++        && grid_distance(s.centre,m.pos())<=(five()?3:2) && line(s.centre,m.pos())
++        && you.elapsed_time>=s.proc_ready) {
++        const int amount=2+s.inv/6,missing=std::max(0,you.hp_max-you.hp);
++        heal(std::min(amount,missing));
++        const int overflow=std::max(0,amount-missing);
++        if(s.defence<=you.elapsed_time)s.shield=0;
++        if(overflow>0){s.shield=std::min(4+s.inv/3,s.shield+overflow);s.defence=you.elapsed_time+50;}
++        s.proc_ready=you.elapsed_time+20;++s.totals.procs;
++        holo_visual::miko_recovery(m.pos());
++    }
+     if(g=="aki" && direct && (s.targets[m.mid].stacks>=3 || m.props.exists("holo_bloom_three")))++extra;
+     if(g=="ayame" && ordinary && ctx.kind==attack_kind::melee && s.marked==m.mid && s.one_end>you.elapsed_time){++extra;if(five()&&strong)++extra;}
+     if(g=="choco" && direct && ((invoking==3) || s.resource>=5))++extra;
+@@ -584,7 +599,8 @@
+     s.targets.clear();s.marked=MID_NOBODY;s.hazards.clear();s.candidates.clear();s.performance_hits.clear();
+     if(g=="miko" || g=="aki" || g=="ayame" || g=="choco" || g=="towa" || g=="hajime" || g=="mela")s.one_end=0;
+     if(g=="miko" || g=="aki" || g=="raden")s.three_end=0;
+-    if(g=="raden")s.shield=0;
++    if(g=="raden" || g=="miko")s.shield=0;
++    if(g=="miko")s.defence=0;
+     if(g=="polka")s.secondary=0;
+     if(g=="hajime" || g=="mela" || g=="suisei")s.resource=0;
+     if(g=="miko" || g=="aki" || g=="ayame" || g=="choco" || g=="towa" || g=="lamy" || g=="raden" || g=="hajime" || g=="su" || g=="vivi" || g=="mela" || g=="koyori"){
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -56,6 +56,8 @@
+ effect flash_kind=effect::none;
+ int flash_frame=0;
+ bool koyori_compact=false;
++int miko_live_frame=-1;
++coord_def miko_live_from;
+ int fox_scene=0,fox_frame=0;
+ bool hawk_striking=false;
+ coord_def hawk_strike_from;
+@@ -354,7 +356,7 @@
+ #endif
+ }
+ }
+-void clear(){koyori_compact=false;flashes.clear();su_fronts.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
++void clear(){miko_live_frame=-1;koyori_compact=false;flashes.clear();su_fronts.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
+ void bind_altar(const std::string &god) {
+     if(holo_benchmark_active() || !feat_is_altar(grd(you.pos())))return;
+     if(!env.properties.exists(altar_key))env.properties[altar_key].new_table();
+@@ -534,6 +536,11 @@
+         if(f>=1 && f<=4)return effect::mikoblossom;
+         if(f>=5 && you.props["holo_miko_bloom_mode"].get_int()==2)return effect::mikopetalshield;
+     }
++    if(p==you.pos() && miko_live_frame>=1)return effect::mikoblossom;
++    if(p==you.pos() && holo_campaign::active() && holo_worship::current()=="miko"
++        && you.piety>=50 && holo_batch::s.shield>0 && holo_batch::s.defence>you.elapsed_time
++        && holo_batch::s.one_end>you.elapsed_time && holo_batch::seen(holo_batch::s.centre)
++        && grid_distance(p,holo_batch::s.centre)<=(holo_batch::five()?3:2))return effect::mikopetalshield;
+     // Visual boundary markers only: no actors, collision or additional terrain.
+     if(holo_campaign::active() && holo_worship::current()=="miko"
+         && holo_batch::s.one_end>you.elapsed_time && holo_batch::five()
+@@ -743,6 +750,30 @@
+ void fox_swap(const coord_def &from,const coord_def &to,const std::vector<coord_def> &hits) {
+     if(holo_benchmark_active() || (crawl_state.test && !getenv("HOLOCRAWL_FUBUKI_REVIEW")))return;
+     clear();fox_scene=1;fox_from=from;fox_to=to;fox_hits=hits;play_fox_scene();
++}
++int miko_recovery_frame() {
++    return crawl_state.test && you.props.exists("holo_miko_bloom_frame")
++        ?you.props["holo_miko_bloom_frame"].get_int():miko_live_frame;
++}
++coord_def miko_recovery_delta() {
++    return miko_live_frame>=1?miko_live_from-you.pos():coord_def(1,0);
++}
++void miko_recovery(const coord_def &from) {
++#ifdef USE_TILE_LOCAL
++    if(holo_benchmark_active())return;
++    const char *dir=crawl_state.test?getenv("HOLOCRAWL_MIKO_PASSIVE_REVIEW"):nullptr;
++    if(crawl_state.test && !dir)return;
++    const auto before=crawl_state.test?fox_signature():std::string();
++    static int seq=0;const int n=++seq;miko_live_from=from;
++    for(int f=1;f<=4;++f){
++        miko_live_frame=f;const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++        if(dir)capture(std::string(dir)+"/miko-proc-"+std::to_string(n)+"-"+std::to_string(f)+".png",false);
++        else scaled_delay(90);
++    }
++    miko_live_frame=-1;
++    const auto saved=rng::generators_to_vector();redraw_fox_actors();rng::load_generators(saved);
++    if(crawl_state.test && before!=fox_signature())throw std::runtime_error("Miko recovery animation changed gameplay/RNG");
++#endif
+ }
+ void choco_kiss(const coord_def &target,int damage,int healed) {
+     if(holo_benchmark_active())return;
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -39,6 +39,9 @@
+ void choco_kiss(const coord_def &target,int damage,int healed);
+ void fox_gather(const std::vector<coord_def> &positions);
+ bool mask_fox_at(const coord_def &pos);
++void miko_recovery(const coord_def &from);
++int miko_recovery_frame();
++coord_def miko_recovery_delta();
+ void clear();
+ void validate();
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier=0,bool impact_phase=false,int option=0);
+--- before/holo-worship.cc
++++ after/holo-worship.cc
+@@ -130,7 +130,7 @@
+ int rank()
+ {
+     if(!active()) return 0;
+-    return you.piety>=120?5:current()=="suisei" && you.piety>=100?4:you.piety>=75?3:current()=="suisei" && you.piety>=50?2:you.piety>=30?1:0;
++    return you.piety>=120?5:current()=="suisei" && you.piety>=100?4:you.piety>=75?3:(current()=="suisei" || current()=="miko") && you.piety>=50?2:you.piety>=30?1:0;
+ }
+ void validate_save()
+ {
+@@ -231,7 +231,7 @@
+ {
+     Menu menu(MF_SINGLESELECT);
+     menu.set_title(new MenuEntry("HoloCrawl: "+display_name(),MEL_TITLE));
+-    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 100 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
++    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 100 / 120":current()=="miko"?"30 / 50 / 75 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
+     menu.add_entry(new MenuEntry("Use a to choose invocations. Natural kills grant piety; decay is 1 per 300 turns.",MEL_SUBTITLE));
+     for(const auto &line:holo_campaign::status_lines())menu.add_entry(new MenuEntry(line,MEL_SUBTITLE));
+     if(active())menu.add_entry(new MenuEntry("God description and worship rules",MEL_ITEM,1,'?'));
+@@ -299,7 +299,7 @@
+             && you.piety==15 && you.magic_points==mp,"same-god join changed resources/time");
+         for(int p:{0,29,30,49,50,74,75,99,100,119,120,200}) {
+             you.piety=p;
+-            const int expected=p>=120?5:id=="suisei" && p>=100?4:p>=75?3:id=="suisei" && p>=50?2:p>=30?1:0;
++            const int expected=p>=120?5:id=="suisei" && p>=100?4:p>=75?3:(id=="suisei" || id=="miko") && p>=50?2:p>=30?1:0;
+             require(rank()==expected,"unlock boundary");
+             const auto states=rng::get_states();
+             auto bytes=player_tag();
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -252,15 +252,16 @@
+         // 32x32 tiles these offsets/divisors are identical to the old path.
+         auto &buffer=under_actors?m_buf_holo_ground_vfx:m_buf_holo_vfx;
+         // Native draft: green healing cross rises while five sakura blossoms gather.
+-        if(tileidx==TILE_HOLO_FX_MIKOBLOSSOM && crawl_state.test) {
+-            const int f=you.props["holo_miko_bloom_frame"].get_int();
+-            const int dx=(4-f)*12;
++        if(tileidx==TILE_HOLO_FX_MIKOBLOSSOM) {
++            const int f=holo_visual::miko_recovery_frame();
++            const auto delta=holo_visual::miko_recovery_delta();
++            const int dx=(4-f)*12*delta.x,dy=(4-f)*12*delta.y;
+             buffer.add(TILE_HOLO_FX_MIKOCROSS,x,y,0,-24-2*f);
+-            buffer.add(tileidx,x,y,dx+8,-20);
+-            buffer.add(tileidx,x,y,dx-4,-8);
+-            buffer.add(tileidx,x,y,dx+2,6);
+-            buffer.add(tileidx,x,y,dx-12,-24);
+-            buffer.add(tileidx,x,y,dx-16,2);
++            buffer.add(tileidx,x,y,dx+8,dy+(-20));
++            buffer.add(tileidx,x,y,dx-4,dy+(-8));
++            buffer.add(tileidx,x,y,dx+2,dy+(6));
++            buffer.add(tileidx,x,y,dx-12,dy+(-24));
++            buffer.add(tileidx,x,y,dx-16,dy+(2));
+             return;
+         }
+         if(tileidx==TILE_HOLO_FX_MIKOPETALSHIELD) {

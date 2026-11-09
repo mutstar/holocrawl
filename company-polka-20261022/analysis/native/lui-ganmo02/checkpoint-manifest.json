@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "revision": "lui-ganmo02",
+  "binarySha256": "f9c95d05fd5b34645488b11cc06b32e8017ab1019aca2a34a6a007435102e315",
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "legacyNamesSupported": true,
+  "newNameAndLegacyMigrationChecked": true,
+  "koyoriAndOtherGodArtPreserved": true,
+  "visualApproved": false,
+  "nativeSourceStems": [
+    "lui-tier1-option0-53",
+    "lui-tier1-option0-77"
+  ],
+  "changed": {
+    "rltiles\\holo\\altar_lui.png": "1d7e17d0e35282e97b5afab2594fa0c595e958dc27942225bcfc32c4f3ce8bb6",
+    "rltiles\\holo\\charm_lui.png": "f7c91147434cb7a9d50f52481df31eeb626447b49308e0f1e0cb151c7eb30189",
+    "rltiles\\holo\\fx_night_lui1_0.png": "b2687966c8fa0b3833ac61833c1b16fef733e2c42c71871043a92d2a9e9f3604",
+    "rltiles\\holo\\fx_night_lui1_1.png": "ca5603af0b00dfd6989a9f20c87c6fdd05751461c1e0a12eeec4cde6bd0f3c9f",
+    "rltiles\\holo\\fx_ravenflight_0.png": "aa5c68300072161a69bdd22a9273d9386a00e09e8aa690ae69b255108332d116",
+    "rltiles\\holo\\fx_ravenflight_1.png": "6cbdd973b2e23909bb28d3c424531234e5cd1b00c8749534aef1e83d657b06a9",
+    "rltiles\\holo\\god_lui.png": "65cf893d49cbcd446202d64f8c899e6f215d3ad995ad68872307d52169349608",
+    "rltiles\\holo\\raven.png": "aa5c68300072161a69bdd22a9273d9386a00e09e8aa690ae69b255108332d116",
+    "rltiles\\holo\\raven_1.png": "df6c3363e44e61f197cef7f077f0bf8a14f2ca3a2b3dd9938f5c765a7052adba"
+  },
+  "validation": {
+    "rawScreenshots": 355,
+    "gods": 22,
+    "chocoControls": false,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "F9C95D05FD5B34645488B11CC06B32E8017AB1019ACA2A34A6A007435102E315"
+  }
+}

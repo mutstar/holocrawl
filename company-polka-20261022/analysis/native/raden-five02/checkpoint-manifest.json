@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "revision": "raden-five02",
+  "binarySha256": "ac06e7e056687dccae7bfc9a8e9dc9155aaf0bdc77b5c880fc9c27ddfa17c267",
+  "combatChanged": false,
+  "artChanged": true,
+  "exhibition": {
+    "status": "passed",
+    "invocations": 12,
+    "remainingAfterCastAut": 84,
+    "costAut": 10,
+    "mpCost": 6,
+    "pietyCost": 12,
+    "cooldownAfterEndAut": 150,
+    "expired": true
+  },
+  "validation": {
+    "binarySha256": "AC06E7E056687DCCAE7BFC9A8E9DC9155AAF0BDC77B5C880FC9C27DDFA17C267",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "gods": 22,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "rawScreenshots": 5,
+    "chocoControls": false
+  }
+}

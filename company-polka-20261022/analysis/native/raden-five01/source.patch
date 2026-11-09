@@ -1,0 +1,28 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -191,6 +191,25 @@
+         require(rs.rest[option]-now==50,"Raden recovery changed");
+     }
+     std::ofstream(dir+"/raden-balance.json")<<"{\"status\":\"passed\",\"invocations\":[0,6,12,18,27],\"normalAndExhibition\":true,\"nativeDamageAndAC\":true,\"shieldAbsorptionAndDuration\":true,\"costsAndRecoveryUnchanged\":true}\n";
++    if(const char *shots=getenv("HOLOCRAWL_RADEN_FIVE_REVIEW")) {
++        auto *m=fixture("raden");const auto origin=you.pos();
++        require(m->move_to_pos(origin+coord_def(3,0)),"Raden exhibition target placement");
++        auto shot=[&](const std::string &name){const auto stable=signature();holo_visual::capture(std::string(shots)+"/exhibition-"+name+".png");require(stable==signature(),"Raden exhibition capture changed gameplay/RNG");};
++        shot("before");
++        const int now=you.elapsed_time,mp=you.magic_points,piety=you.piety;
++        cast("raden",5,nullptr,origin);
++        const auto &rs=holo_batch::s;const int I=rs.inv;
++        require(you.magic_points==mp-6 && you.piety==piety-12,"Raden exhibition activation costs changed");
++        require(rs.five_end-you.elapsed_time==60+2*I && rs.five_ready-rs.five_end==150,"Raden exhibition duration/cooldown changed");
++        require(holo_batch::armour()==2+I/9,"Raden exhibition sculpture blessing missing");
++        const auto stable=signature();
++        for(int f=0;f<2;++f)holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/exhibition-cast"+std::to_string(f)+".png",5);
++        require(stable==signature(),"Raden exhibition invocation capture changed gameplay/RNG");
++        shot("active");
++        const int remaining=rs.five_end-you.elapsed_time;step(remaining);shot("ended");
++        require(!holo_batch::five(),"Raden exhibition did not expire");
++        std::ofstream(std::string(shots)+"/exhibition.json")<<"{\"status\":\"passed\",\"invocations\":"<<I<<",\"remainingAfterCastAut\":"<<remaining<<",\"costAut\":"<<10<<",\"mpCost\":6,\"pietyCost\":12,\"cooldownAfterEndAut\":150,\"expired\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_RADEN_THREE_REVIEW")) {
+         for(int option=0;option<3;++option) {
+             auto *m=fixture("raden");const auto origin=you.pos();

@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "revision": "lui-attack06",
+  "binarySha256": "55488ee23b1680f41057322f0234376f77f2b0af1815162e80f3df18ce9d60c9",
+  "nativeAttackStem": "lui-attack-4",
+  "attackResult": {
+    "status": "passed",
+    "piety": 30,
+    "damage": 2
+  },
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "standingAndOtherGodArtPreserved": true,
+  "visualRngStateGuard": true,
+  "validation": {
+    "gods": 22,
+    "status": "passed",
+    "binarySha256": "55488EE23B1680F41057322F0234376F77F2B0AF1815162E80F3DF18CE9D60C9",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "rawScreenshots": 17,
+    "chocoControls": false,
+    "freshProcessRestore": true
+  },
+  "attackPose": "two forward talons, simultaneous airborne strike",
+  "friendlyHaloPreserved": {
+    "status": "passed",
+    "greenPixelsByFrame": [
+      449,
+      295,
+      295,
+      449,
+      453
+    ],
+    "region": [
+      418,
+      322,
+      453,
+      358
+    ]
+  }
+}
