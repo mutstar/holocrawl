@@ -1,0 +1,19 @@
+{
+  "revision": 153,
+  "base": 152,
+  "inputs": {
+    "doors152.js": "4d44c163b99e265dae2081342ccdbf58c7c2f22ddeb329a3a7543a7aa77514ca",
+    "app152.js": "e008b5995ed752d501baf09d36cb8a1ee320456b484272eeb13bc24b8b7aa2fb",
+    "generator152.js": "d5a1ac77086c3f33ffd0a9134d5525ca5415983a91027ef7be042f903c59b014",
+    "materials152.js": "bf004382f0341c14a271c5fbf3fd68f5beab90d2a1274dd52bbcb47758b4caa6"
+  },
+  "scope": "Mirror the same left wall junction around the28px arch center; remove the horizontal-only one-sided shadow. No sprite or geometry changes.",
+  "checks": [
+    "actual left/right junction pixel symmetry in closed/open states",
+    "same door sprites",
+    "same48 maps and navigation/save/fog checks",
+    "same vertical review example",
+    "native4px sill exact",
+    "open passage pixels preserved"
+  ]
+}

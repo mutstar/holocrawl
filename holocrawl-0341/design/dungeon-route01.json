@@ -149,7 +149,59 @@
           "fullCampaignVerified": false
         },
         "campaignPolicy": "sharedFacilities",
-        "nativePolicyStatus": "legacy-native107-JP-only; shared regional pool not yet ported"
+        "nativePolicyStatus": "legacy-native107-JP-only; shared regional pool not yet ported",
+        "approvedBrowserOrdinaryDoor": {
+          "revision": 159,
+          "status": "user-approved-2026-11-10",
+          "renderer": "preview/doorfit159/doors159.js",
+          "height": 32,
+          "width": 28,
+          "independentGraySill": false,
+          "wallLineSource": "native below-wall north coping; above-wall connection preserved",
+          "noBelowTileProtrusion": true,
+          "fullMapReview": "preview/city-random160/",
+          "nativeIntegrated": false
+        },
+        "previousApprovedBrowserOrdinaryDoor": {
+          "revision": 155,
+          "status": "user-approved-2026-11-10",
+          "renderer": "preview/doorfit155/doors155.js",
+          "name": "32px 은빛 쇠아치·짙은 철제 양문",
+          "width": 28,
+          "height": 32,
+          "offsetY": 0,
+          "wallSill": "native4px wall profile",
+          "mirroredJunctions": true,
+          "fullMapReview": "preview/city-random156/",
+          "nativeIntegrated": false
+        },
+        "currentBrowserOrdinaryDoor": {
+          "revision": 159,
+          "status": "user-approved-2026-11-10",
+          "renderer": "preview/doorfit159/doors159.js",
+          "height": 32,
+          "width": 28,
+          "independentGraySill": false,
+          "wallLineSource": "native below-wall north coping; above-wall connection preserved",
+          "noBelowTileProtrusion": true,
+          "fullMapReview": "preview/city-random160/",
+          "nativeIntegrated": false
+        },
+        "previousApprovedBrowserOrdinaryDoor157": {
+          "revision": 157,
+          "status": "user-approved-2026-11-10",
+          "renderer": "preview/doorfit157/doors157.js",
+          "height": 32,
+          "width": 28,
+          "sillRows": [
+            28,
+            31
+          ],
+          "totalHeightIncludesSill": true,
+          "noBelowTileProtrusion": true,
+          "fullMapReview": "preview/city-random158/",
+          "nativeIntegrated": false
+        }
       },
       "themes": [
         {
@@ -410,7 +462,7 @@
       "allRunes": 15
     }
   ],
-  "currentArtTask": "홀로홈136: 사용자는 기존 아치 입구를 선호한다고 명확히 정정. 기존96x48 입구 도트 그대로 유지, 외벽 면·몰딩만 같은 상아색으로 맞춤. TV 코너96x96→64x64 재제작. 낮은 평문 입구 초안은 미사용.13x11/1층확정/계단왕복·저장,48지도·입구 원본 동일 검사 통과. 사용자 검토 대기·엔진 미적용.",
+  "currentArtTask": "일반문159의32px 금속문·별도밑선제거·실제아래벽선연결승인.160새랜덤1층80x70/문13/홀로홈1/계단6,닫힘열림26문상태수직돌출0·좌우접합/연결/재현통과.전체맵피드백대기.",
   "sharedFacilities": {
     "status": "approved-policy-browser-planning",
     "registry": "preview/facility-pool131/registry.json",

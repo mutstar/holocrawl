@@ -1,0 +1,21 @@
+{
+  "revision": 157,
+  "base": 155,
+  "seed": "CITY153-78251b23",
+  "inputs": {
+    "doors155.js": "cd567989235c57f22184fd57c549140d85982daac283451f9ddcfd65e47965df",
+    "app155.js": "576911832b1d6279466f46e98af08945af2e6682c1a3cc2145edef68b9293488",
+    "generator155.js": "b18592a76b64b7ac57a5a19d33ad9f0817fa5154e10572182da8c57d9161cbea",
+    "materials155.js": "b07e5c60cff4df788a0ca7da067fa580e746224072bfaae0466bd96a57f86078"
+  },
+  "scope": "Keep32px sprite; place native4px sill INSIDE tile rows28..31 instead of32..35. All overlays end at row31. Preserve side junctions within the tile; remove their extra4px tail.",
+  "checks": [
+    "isolated door draw cannot modify rows below tile for both states/directions",
+    "actual same-map sill edge ends at neighboring wall bottom",
+    "sill shading equals native wall profile",
+    "same metal sprite",
+    "same48 maps and navigation/save/fog",
+    "left/right joins match inside tile",
+    "same previous whole-map geometry"
+  ]
+}

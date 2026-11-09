@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "seed": "CITY157-13ffd346",
+  "target": {
+    "x": 23,
+    "y": 31,
+    "id": "street-7",
+    "home": false
+  },
+  "changedPixels": 2412,
+  "changesOutsideBottomRows": 0,
+  "wallLineChecks": [
+    {
+      "id": "street-3",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-4",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-5",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-7",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-9",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-10",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-14",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    },
+    {
+      "id": "street-15",
+      "differences": 0,
+      "reference": "native wall atlas; physical north doorway boundary"
+    }
+  ],
+  "cases": [
+    {
+      "id": "street-3",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-3",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-4",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-4",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-5",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-5",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-6",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-6",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-7",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-7",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-8",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-8",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-9",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-9",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-10",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-10",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-11",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-11",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-12",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-12",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-13",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-13",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-14",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-14",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-15",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-15",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-16",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-16",
+      "opened": true,
+      "outsideY": 0
+    },
+    {
+      "id": "street-17",
+      "opened": false,
+      "outsideY": 0
+    },
+    {
+      "id": "street-17",
+      "opened": true,
+      "outsideY": 0
+    }
+  ],
+  "metalSpritesUnchanged": true,
+  "sameGeometryAs158": true,
+  "pageErrors": []
+}

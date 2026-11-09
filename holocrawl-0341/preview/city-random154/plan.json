@@ -1,0 +1,13 @@
+{
+  "revision": 154,
+  "renderer": 153,
+  "seed": "CITY153-78251b23",
+  "floor": 1,
+  "sourceHashes": {
+    "doors153.js": "793bff7f320f0a3a684934a90d46699e91e35e233049604547e8e5398579fdab",
+    "app153.js": "c8854948ae2d39e8dd6c9275b8bfd1b34469d436d40553c24308dda4bb5f0811",
+    "generator153.js": "43decd47457679069d7eb19201dcc67afed5c40b3388d6c57e43e525d046af4d",
+    "materials153.js": "1bd9296d7fa592bce2e1d9674f9b0ad36258534dbadc64f91c31d246d12cce66"
+  },
+  "scope": "One fresh browser-generated floor, full-map export and review; approved renderer immutable."
+}

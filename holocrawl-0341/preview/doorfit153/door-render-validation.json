@@ -1,0 +1,199 @@
+{
+  "seed": "F1-mw8yvehm",
+  "junctionChecks": [
+    {
+      "state": "closed",
+      "id": "street-3",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-4",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-7",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-9",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-10",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-13",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "closed",
+      "id": "street-15",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-3",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-4",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-7",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-9",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-10",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-13",
+      "pixels": 297,
+      "componentDifferences": 0
+    },
+    {
+      "state": "open",
+      "id": "street-15",
+      "pixels": 297,
+      "componentDifferences": 0
+    }
+  ],
+  "samples": [
+    {
+      "x": 62,
+      "y": 27,
+      "id": "street-3",
+      "home": false,
+      "direction": "horizontal"
+    },
+    {
+      "x": 48,
+      "y": 60,
+      "id": "street-5",
+      "home": false,
+      "direction": "vertical"
+    }
+  ],
+  "changedPixels": 2420,
+  "changesOutsideDoorNeighborhoods": 0,
+  "verticalExamplePixelDifferences": 0,
+  "capChecks": [
+    {
+      "id": "street-3",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-4",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-5",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-6",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-7",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-8",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-9",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-10",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-11",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-12",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-13",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-14",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-15",
+      "direction": "horizontal",
+      "h": 4,
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-16",
+      "direction": "vertical",
+      "h": 4,
+      "pixelDifferences": 0
+    }
+  ],
+  "openAperturePixels": 3570,
+  "openApertureComponentDifferences": 0,
+  "spritesUnchanged": true,
+  "homeAndOtherSceneryPreserved": true,
+  "pageErrors": []
+}

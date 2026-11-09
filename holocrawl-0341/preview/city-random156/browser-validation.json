@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "changedPixels": 5429,
+  "changedOutsideOrdinaryDoorNeighborhoods": 0,
+  "bottomPixelDifferences": 0,
+  "sideJunctionPixelDifferences": 0,
+  "closedOpenToggle": true,
+  "zoom1x": true,
+  "pageErrors": []
+}

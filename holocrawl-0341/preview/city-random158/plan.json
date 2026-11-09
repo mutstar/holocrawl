@@ -1,0 +1,13 @@
+{
+  "revision": 158,
+  "renderer": 157,
+  "seed": "CITY157-13ffd346",
+  "floor": 1,
+  "sourceHashes": {
+    "doors157.js": "2bc01774b8f6b24f11db5a20760acb4384b9fa8e5c0b4a2af02be5d117c8fd7e",
+    "app157.js": "74dc0442cdc35da21f71e447a05cb352a84129fd3770afc8487a1d63ee823006",
+    "generator157.js": "66af6a5c499b86082a526f192c4d3f6d557512c53918295b07205c57f5ed88e4",
+    "materials157.js": "e0b2faaa3e55bfa7c56a8255041283eac17a1e44d0f4d13d9325abdb3b9ae350"
+  },
+  "scope": "Fresh random floor with approved157 renderer; entire door including native sill ends inside32px. Renderer sources frozen."
+}

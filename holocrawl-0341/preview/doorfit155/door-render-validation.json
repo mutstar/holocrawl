@@ -1,0 +1,222 @@
+{
+  "seed": "F1-mw8yvehm",
+  "samples": [
+    {
+      "x": 62,
+      "y": 27,
+      "id": "street-3",
+      "home": false,
+      "direction": "horizontal"
+    },
+    {
+      "x": 48,
+      "y": 60,
+      "id": "street-5",
+      "home": false,
+      "direction": "vertical"
+    }
+  ],
+  "changedPixels": 5845,
+  "changesOutsideDoorNeighborhoods": 0,
+  "sideJunctionPixelChanges": 0,
+  "bottomPixelChanges": 0,
+  "capChecks": [
+    {
+      "id": "street-3",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-4",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-5",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-6",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-7",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-8",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-9",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-10",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-11",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-12",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-13",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-14",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-15",
+      "h": 4,
+      "differences": 0
+    },
+    {
+      "id": "street-16",
+      "h": 4,
+      "differences": 0
+    }
+  ],
+  "joinChecks": [
+    {
+      "id": "street-3",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-3",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-4",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-4",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-7",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-7",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-9",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-9",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-10",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-10",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-13",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-13",
+      "state": "open",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-15",
+      "state": "closed",
+      "mirrorDifferences": 0
+    },
+    {
+      "id": "street-15",
+      "state": "open",
+      "mirrorDifferences": 0
+    }
+  ],
+  "spriteChecks": [
+    {
+      "opened": false,
+      "width": 32,
+      "height": 32,
+      "minY": 0,
+      "maxY": 31,
+      "maxX": 27,
+      "softAlpha": 0,
+      "closedApertureHoles": 0,
+      "leafMirrorDifferences": 0
+    },
+    {
+      "opened": true,
+      "width": 32,
+      "height": 32,
+      "minY": 0,
+      "maxY": 31,
+      "maxX": 27,
+      "softAlpha": 0,
+      "closedApertureHoles": 0,
+      "leafMirrorDifferences": 0
+    }
+  ],
+  "frame": {
+    "w": 28,
+    "h": 32,
+    "canvasW": 32,
+    "xOffset": 0,
+    "yOffset": 0,
+    "leafWidth": 12,
+    "closedSeamWidth": 2,
+    "closedSeamOpaque": true,
+    "mirroredInterior": true,
+    "grayRight": 27,
+    "shadowStart": 28,
+    "shadowWidth": 4,
+    "archRise": 10,
+    "material": "solid iron",
+    "transparentExterior": true,
+    "shadowInSprite": false,
+    "nativeWallReturns": true,
+    "openBottom": true,
+    "flushThreshold": null,
+    "archMaterial": "silver steel",
+    "leafMaterial": "dark iron plate",
+    "bottomAtWallBoundary": true,
+    "wallSill": {
+      "w": 28,
+      "h": "native-wall-cap",
+      "yOffset": 32,
+      "source": "actual native wall pixels; no independent thickness"
+    }
+  },
+  "pageErrors": []
+}

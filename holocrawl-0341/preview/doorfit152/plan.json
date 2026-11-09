@@ -1,0 +1,19 @@
+{
+  "revision": 152,
+  "base": 151,
+  "inputs": {
+    "doors151.js": "916bd7045a2cc82256ef5dff56b312b09e4640c224798df2740954d3f70b0b15",
+    "app151.js": "5bc7e5bfe9f1a56feae1db0a4092ece67aec7e0cca689ee3c3b53a27fe005586",
+    "generator151.js": "1dd37a461154d2d8a3212c993861f10dc60141a115e930ee38fac2f49101d568",
+    "materials151.js": "17fcfe1250ef9756a94fdf707f66c303975f118f43089870a63035da168ab0b5"
+  },
+  "scope": "Horizontal ordinary door wall returns only. Sprite, vertical example, map cells, collision, stairs, home and actual native engine stay unchanged.",
+  "checks": [
+    "same closed/open door sprite",
+    "48 maps geometry and interaction regression",
+    "before/after changes inside horizontal door neighborhoods only",
+    "vertical example pixels unchanged",
+    "native sill profile exact",
+    "horizontal closed/open difference inside door only"
+  ]
+}

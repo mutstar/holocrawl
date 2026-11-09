@@ -1,0 +1,13 @@
+{
+  "revision": 160,
+  "renderer": 159,
+  "seed": "CITY159-8370f8df",
+  "floor": 1,
+  "sourceHashes": {
+    "doors159.js": "3f6da2b2706f3d79433c55386ea222ab65d54a5075b8cfe7932c0b0cd019c70b",
+    "app159.js": "5333a0486410d9793e5ea6080a49b0295978c967a9e05ed1bb0a7977d157ae4b",
+    "generator159.js": "7566d1d052fd2ee5ff22c64d1d953b1d2d509b58b4dcb135f22712c6a28db15f",
+    "materials159.js": "2b366aee850cb71b0acb014e2ecbdc1f5a20e561c312533851f1286f17f014b4"
+  },
+  "scope": "Fresh random floor with approved159 renderer; 32px metal door with independent rail removed and native lower-wall coping continued. Renderer sources frozen."
+}

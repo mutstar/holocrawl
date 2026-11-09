@@ -1,0 +1,214 @@
+{
+  "status": "passed",
+  "revision": 158,
+  "renderer": 157,
+  "seed": "CITY157-13ffd346",
+  "floor": 1,
+  "width": 80,
+  "height": 70,
+  "ordinaryDoors": 15,
+  "horizontal": 7,
+  "vertical": 8,
+  "home": {
+    "id": "holohome",
+    "x": 15,
+    "y": 45,
+    "w": 13,
+    "h": 11
+  },
+  "stairs": 6,
+  "connected": true,
+  "allStairsReachable": true,
+  "deterministic": true,
+  "approvedRendererUnchanged": true,
+  "doorBodyHeight": 32,
+  "sillRows": [
+    28,
+    31
+  ],
+  "boundsChecks": [
+    {
+      "id": "street-3",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-3",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-4",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-4",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-5",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-5",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-6",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-6",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-7",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-7",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-8",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-8",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-9",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-9",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-10",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-10",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-11",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-11",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-12",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-12",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-13",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-13",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-14",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-14",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-15",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-15",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-16",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-16",
+      "opened": true,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-17",
+      "opened": false,
+      "outsideVerticalTile": 0
+    },
+    {
+      "id": "street-17",
+      "opened": true,
+      "outsideVerticalTile": 0
+    }
+  ],
+  "junctionChecks": [
+    {
+      "id": "street-6",
+      "differences": 0
+    },
+    {
+      "id": "street-8",
+      "differences": 0
+    },
+    {
+      "id": "street-11",
+      "differences": 0
+    },
+    {
+      "id": "street-12",
+      "differences": 0
+    },
+    {
+      "id": "street-13",
+      "differences": 0
+    },
+    {
+      "id": "street-16",
+      "differences": 0
+    },
+    {
+      "id": "street-17",
+      "differences": 0
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}
