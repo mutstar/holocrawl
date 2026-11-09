@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "revision": 129,
+  "assets": [
+    {
+      "id": "lantern-string",
+      "w": 128,
+      "h": 32,
+      "opaque": 837,
+      "transparent": 3259
+    },
+    {
+      "id": "nobori",
+      "w": 32,
+      "h": 48,
+      "opaque": 425,
+      "transparent": 1111
+    },
+    {
+      "id": "mask-rack",
+      "w": 64,
+      "h": 48,
+      "opaque": 1167,
+      "transparent": 1905
+    },
+    {
+      "id": "taiko",
+      "w": 32,
+      "h": 32,
+      "opaque": 496,
+      "transparent": 528
+    },
+    {
+      "id": "yagura",
+      "w": 96,
+      "h": 112,
+      "opaque": 6435,
+      "transparent": 4317
+    },
+    {
+      "id": "bench",
+      "w": 64,
+      "h": 32,
+      "opaque": 777,
+      "transparent": 1271
+    },
+    {
+      "id": "festival-cart",
+      "w": 64,
+      "h": 64,
+      "opaque": 2370,
+      "transparent": 1726
+    }
+  ],
+  "hangingDecorations": 1,
+  "groundReservationCells": 25,
+  "reachableFloorCells": 155,
+  "sceneConnected": true,
+  "referenceToggleRestoresPixels": true,
+  "footprintToggleRestoresPixels": true,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "placementIsControlledArtStudy": true,
+  "nativeIntegrated": false
+}

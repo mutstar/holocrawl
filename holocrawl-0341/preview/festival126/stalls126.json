@@ -1,0 +1,7 @@
+[
+ {"id":"takoyaki","name":"타코야키","source":"../festival125/assets/takoyaki-source.png","detail":"빛바랜 붉은 천막 · 문어 표지 · 타코야키 철판"},
+ {"id":"yakisoba","name":"야키소바","source":"assets/yakisoba-source.png","detail":"낡은 노란 천막 · 넓은 철판 · 국수와 뒤집개"},
+ {"id":"ringoame","name":"링고아메","source":"assets/ringoame-source.png","detail":"분홍 줄무늬 천막 · 막대 사과 진열대 · 시럽 냄비"},
+ {"id":"goldfish","name":"금붕어 잡기","source":"assets/goldfish-source.png","detail":"해진 남색 천막 · 푸른 물통 · 금붕어와 종이 뜰채"},
+ {"id":"shooting","name":"사격 놀이","source":"assets/shooting-source.png","detail":"빛바랜 초록 천막 · 두 단 경품 선반 · 코르크 장난감 총"}
+]

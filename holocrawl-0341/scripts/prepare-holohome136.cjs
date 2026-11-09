@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path');const{chromium,executablePath}=require('./portable-browser-tools.cjs');
+const D=path.resolve(__dirname,'../preview/holohome136'),origin=process.env.HOLOCRAWL_PREVIEW_URL||'http://127.0.0.1:8798';
+(async()=>{const b=await chromium.launch({executablePath,headless:true});try{const p=await b.newPage();await p.goto(origin+'/holohome135/');await p.addScriptTag({url:origin+'/city-market124/pixel-reducer.js'});
+ const specs=[{id:'tv',w:64,h:64}];
+ const results=await p.evaluate(async({origin,specs})=>{const out=[];for(const s of specs){const im=new Image();im.src=origin+'/holohome136/assets/'+s.id+'-source.png';await im.decode();const raw=PixelReducer.read(im),bounds=PixelReducer.bounds(raw,230),a=PixelReducer.quantize(PixelReducer.contrast(PixelReducer.area(raw,s.w-4,s.h-4,bounds),.1),28,215),c=document.createElement('canvas');c.width=s.w;c.height=s.h;c.getContext('2d').drawImage(PixelReducer.canvas(a),2,2);out.push({id:s.id,w:s.w,h:s.h,bounds,png:c.toDataURL()});}return out;},{origin,specs});
+ for(const r of results){fs.writeFileSync(path.join(D,'assets',r.id+'-native.png'),Buffer.from(r.png.split(',')[1],'base64'));delete r.png;}fs.copyFileSync(path.resolve(D,'../holohome133/assets/entrance-native.png'),path.join(D,'assets/entrance-native.png'));results.push({id:'entrance',w:96,h:48,unchangedFrom133:true});fs.writeFileSync(path.join(D,'assets136.json'),JSON.stringify(results,null,2)+'\n');console.log(JSON.stringify(results));
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

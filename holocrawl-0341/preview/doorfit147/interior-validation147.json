@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "opened": false,
+      "holes": 0,
+      "mirrorDiff": 0,
+      "opaqueOutside": 0,
+      "exteriorCount": 214,
+      "partialAlpha": 0,
+      "openCentre": 0,
+      "expectedOpen": 502
+    },
+    {
+      "opened": true,
+      "holes": 502,
+      "mirrorDiff": 0,
+      "opaqueOutside": 0,
+      "exteriorCount": 214,
+      "partialAlpha": 0,
+      "openCentre": 502,
+      "expectedOpen": 502
+    }
+  ],
+  "railConnection": {
+    "native": [
+      115,
+      124,
+      128,
+      255
+    ],
+    "joined": [
+      115,
+      124,
+      128,
+      255
+    ]
+  }
+}

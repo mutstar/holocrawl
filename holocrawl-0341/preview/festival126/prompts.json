@@ -1,0 +1,116 @@
+{
+  "tool": "built-in image_gen",
+  "revision": 126,
+  "assets": [
+    {
+      "id": "yakisoba",
+      "name": "야키소바",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated Japanese matsuri yatai game sprite, compatible with an abandoned festival district in a Dungeon Crawl Stone Soup style 32px grid top-down roguelike. Same scale and viewing angle as a compact front-facing wooden food stall, slightly overhead orthographic view with visible counter top, no isometric diamond. Logical sprite size96 wide x64 tall, enlarge uniformly with hard square nearest-neighbor pixels; chunky low resolution pixel clusters, dark1-pixel logical outline, muted limited palette. Compact three-tiles-wide and two-tiles-tall silhouette. Old dusty wood, faded worn cloth, small scuffs and restrained rips; readable and charmingly decrepit, not a pile of rubble. Fully visible sprite with small transparent margin. No people, no scenery, no floor, no drop shadow cloud, no glowing effects, no lanterns, no text, no letters, no logos. No antialiasing, no smooth gradients, no rendered microdetail. Genuinely transparent RGBA background. Subject: an abandoned YAKISOBA noodle stall. A low flat ochre/mustard-yellow canvas awning with worn cream scalloped noren, two plain dark wooden posts, broad black steel griddle visibly covered in a loose brown noodle mound, a small bright red pickled-ginger heap and green cabbage pieces, TWO silver spatulas leaning across the griddle edge. A white oval simple noodle-and-chopsticks pictogram badge on the awning edge instead of lettering. Rusty metal lower counter skirt. Strong yellow-canopy / black-griddle silhouette distinct from a red takoyaki stall.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-e64f1658-dd74-488b-8ea4-664e6aa55317.png"
+    },
+    {
+      "id": "ringoame",
+      "name": "링고아메",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated Japanese matsuri yatai game sprite, compatible with an abandoned festival district in a Dungeon Crawl Stone Soup style 32px grid top-down roguelike. Same scale and viewing angle as a compact front-facing wooden food stall, slightly overhead orthographic view with visible counter top, no isometric diamond. Logical sprite size96 wide x64 tall, enlarge uniformly with hard square nearest-neighbor pixels; chunky low resolution pixel clusters, dark1-pixel logical outline, muted limited palette. Compact three-tiles-wide and two-tiles-tall silhouette. Old dusty wood, faded worn cloth, small scuffs and restrained rips; readable and charmingly decrepit, not a pile of rubble. Fully visible sprite with small transparent margin. No people, no scenery, no floor, no drop shadow cloud, no glowing effects, no lanterns, no text, no letters, no logos. No antialiasing, no smooth gradients, no rendered microdetail. Genuinely transparent RGBA background. Subject: an abandoned RINGO AME candied apple stall. A narrow faded dusty-rose and cream peaked cloth canopy, one short torn fringe and plain old wooden counter. Its unmistakable feature is SIX glossy dark-red candied apples on upright pale wooden sticks displayed at different heights in a stepped rack, with another shallow wooden tray at the front. One apple pictogram on a small cream hanging sign, no writing. A small squat dark-red syrup pot on the counter side. Distinct pink and red confectionery silhouette, avoid noodles or cooking griddle.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-61052008-f669-4948-a126-9f4579d22c15.png"
+    },
+    {
+      "id": "goldfish",
+      "name": "금붕어 잡기",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated Japanese matsuri yatai game sprite, compatible with an abandoned festival district in a Dungeon Crawl Stone Soup style 32px grid top-down roguelike. Same scale and viewing angle as a compact front-facing wooden food stall, slightly overhead orthographic view with visible counter top, no isometric diamond. Logical sprite size96 wide x64 tall, enlarge uniformly with hard square nearest-neighbor pixels; chunky low resolution pixel clusters, dark1-pixel logical outline, muted limited palette. Compact three-tiles-wide and two-tiles-tall silhouette. Old dusty wood, faded worn cloth, small scuffs and restrained rips; readable and charmingly decrepit, not a pile of rubble. Fully visible sprite with small transparent margin. No people, no scenery, no floor, no drop shadow cloud, no glowing effects, no lanterns, no text, no letters, no logos. No antialiasing, no smooth gradients, no rendered microdetail. Genuinely transparent RGBA background. Subject: an abandoned KINGYO SUKUI goldfish-scooping game stall. A faded deep-indigo low cloth canopy with ragged cream fringe over a long conspicuous open shallow turquoise-blue WATER BASIN set in a low worn wooden counter. Visible small RED and orange goldfish silhouettes in the clear water. Three white round paper scooping nets with short handles hang on the right wooden post; two small cream water bowls sit on the left counter edge. An off-white fish pictogram badge centered on the canopy edge. Small partial rip on canvas. Distinct low wide BLUE basin silhouette, no food, no cooking tools, no fish tank glass box.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-a57dbb7c-0b47-4f9e-baf5-9a9db0197444.png"
+    },
+    {
+      "id": "shooting",
+      "name": "사격 놀이",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated Japanese matsuri yatai game sprite, compatible with an abandoned festival district in a Dungeon Crawl Stone Soup style 32px grid top-down roguelike. Same scale and viewing angle as a compact front-facing wooden food stall, slightly overhead orthographic view with visible counter top, no isometric diamond. Logical sprite size96 wide x64 tall, enlarge uniformly with hard square nearest-neighbor pixels; chunky low resolution pixel clusters, dark1-pixel logical outline, muted limited palette. Compact three-tiles-wide and two-tiles-tall silhouette. Old dusty wood, faded worn cloth, small scuffs and restrained rips; readable and charmingly decrepit, not a pile of rubble. Fully visible sprite with small transparent margin. No people, no scenery, no floor, no drop shadow cloud, no glowing effects, no lanterns, no text, no letters, no logos. No antialiasing, no smooth gradients, no rendered microdetail. Genuinely transparent RGBA background. Subject: an abandoned Japanese festival SHATEKI cork shooting game stall. A faded olive-green canvas canopy with worn beige trim, a wide backboard under it containing TWO clearly separated rows of simple colorful toy prizes: small red and yellow toy figures, striped boxes, and tiny stuffed animals, with a few gaps where prizes are missing. Plain wooden front counter with ONE small old-fashioned wooden CORK TOY RIFLE lying sideways and a round red-and-cream target pictogram badge on the canopy. Two vertical wooden posts frame the booth. Distinct green awning and multi-level prize-shelf silhouette. Toy arcade context only; no realistic modern guns, no bullets, no people.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-bbeb9d7c-625c-4aaf-a60b-ec33b8e34bbb.png"
+    }
+  ],
+  "outputs": {
+    "takoyaki": {
+      "png": "assets/takoyaki96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "yakisoba": {
+      "png": "assets/yakisoba96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "ringoame": {
+      "png": "assets/ringoame96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "goldfish": {
+      "png": "assets/goldfish96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "shooting": {
+      "png": "assets/shooting96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    }
+  },
+  "rasterPreparation": {
+    "source": "built-in image_gen RGBA output",
+    "crop": "alpha >=220 bounding box",
+    "resize": "nearest-neighbor fit into96x64 with1px margin",
+    "alphaThreshold": 200,
+    "rgbQuantizationStep": 8
+  },
+  "existingAssets": {
+    "takoyaki": "../festival125/assets/takoyaki-source.png",
+    "wallLighting": "../festival125/festival125.js, wall-light02 renderer",
+    "lantern": "../festival125/assets/lantern-source.png"
+  },
+  "sha256": {
+    "assets/goldfish-source.png": "589353376354873f6021afd09598ab6d811a99f75141678aa04f6754cadd3a22",
+    "assets/goldfish96.png": "49abdd62e6cdb8d0c303b23fe432836190c6641cac4d26b427fb2c07e7e7c6ce",
+    "assets/ringoame-source.png": "2f1448a21b63ec14972094214e77a34fe1d22c9df8301ef6435e5906d5790ab1",
+    "assets/ringoame96.png": "ee37750f0a694b622b30127d3448feb0b37618ff9afb6be8f9dfefac0a9e5f88",
+    "assets/shooting-source.png": "6e74bdfc0c60e4348f735ea1cd1fa224576b691811874123d993e7708f5429f6",
+    "assets/shooting96.png": "6c336d8892036e6e2b2b12df9a94a35b61bdc4d314d5359c3721fe61544b1d16",
+    "assets/takoyaki96.png": "e88bfb8201ed0c827cfffdb5a118000eed59bbb232560230d3d0094af9033ccb",
+    "assets/yakisoba-source.png": "e23d1e6840e289be05964e54b7949617e0d499d446dd6e38012e3fa1a896e34c",
+    "assets/yakisoba96.png": "5b77210168219651de2e8bcdb07c4186e08dc2da2cea8bb5e2bd50ba68117dc2"
+  },
+  "review": {
+    "catalog": "catalog126.png",
+    "screenshots": "samples126.png",
+    "validation": "validation.json",
+    "nativeIntegrated": false
+  }
+}

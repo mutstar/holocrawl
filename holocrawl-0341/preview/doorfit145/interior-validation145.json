@@ -1,0 +1,16 @@
+[
+  {
+    "opened": false,
+    "holes": 0,
+    "mirrorDiff": 0,
+    "outsideDiff": 0,
+    "openCentre": 0
+  },
+  {
+    "opened": true,
+    "holes": 512,
+    "mirrorDiff": 0,
+    "outsideDiff": 0,
+    "openCentre": 512
+  }
+]

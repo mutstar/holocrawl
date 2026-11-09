@@ -1,0 +1,156 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "revision": 128,
+  "assets": [
+    {
+      "id": "goldfish",
+      "name": "구라 · 금붕어 잡기",
+      "member": "gawr-gura",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/goldfish-source.png",
+      "prompt": "Edit the FIRST image, the existing isolated Japanese matsuri game stall. The SECOND image is a character-design reference only; do not place a human vendor in the booth. Preserve the existing counter geometry, slightly-overhead front-facing orthographic view, shape, damaged cloth and old wooden materials, dark pixel outlines and game sprite readability. Target logical96x64 pixels, footprint3x2 tiles in a32px roguelike. Chunky nearest-neighbor pixel clusters, no microdetails. Keep all objects inside the stall silhouette. No writing, letters, scenery, background floor, people, glow or blur. Preserve genuinely transparent RGBA background. Redesign this goldfish-scooping booth for GAWR GURA. A faded ocean-blue canopy with pale icy-blue and ivory trim, small torn paper-like noren fringe, three or four simple shark-tooth triangular white accents on the valance. At canopy center ONE large clear chibi Gura face badge: pale silver/white bob bangs, blue eyes, cute little fang, wearing a blue shark hood with a white face opening and a tiny top fin. Not a generic blue-haired girl; the shark hood must read clearly. A small blue-white round Bloop-style shark mascot ornament can sit on one counter corner, without hiding any fish. Add a restrained simple three-pronged pale-blue trident pictogram on one support post. Preserve the long turquoise water basin, red/orange goldfish, pale bowls and THREE white paper scooping nets. Keep worn and dusty rather than freshly painted.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/gawr-gura.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/gawr-gura/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-aa9daf01-c3c0-4a1e-a614-5731a0ff815a.png"
+    },
+    {
+      "id": "shooting",
+      "name": "츠즈리 · 사격 놀이",
+      "member": "suzuna-tsuzuri",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/shooting-source.png",
+      "prompt": "Edit the FIRST image, the existing isolated Japanese matsuri game stall. The SECOND image is a character-design reference only; do not place a human vendor in the booth. Preserve the existing counter geometry, slightly-overhead front-facing orthographic view, shape, damaged cloth and old wooden materials, dark pixel outlines and game sprite readability. Target logical96x64 pixels, footprint3x2 tiles in a32px roguelike. Chunky nearest-neighbor pixel clusters, no microdetails. Keep all objects inside the stall silhouette. No writing, letters, scenery, background floor, people, glow or blur. Preserve genuinely transparent RGBA background. Redesign this cork shooting arcade booth for SUZUNA TSUZURI, the goat mailwoman in reference image2. Recolor the worn canopy to faded deep mail-red/maroon with ivory and dark charcoal trim, matching her red postal uniform. Replace the central target sign with ONE large simple cute goat/postwoman chibi badge: short pale cream/light silver hair, two small curved tan/brown GOAT HORNS, goat ears to the sides, pale face and a small burgundy postal cap. Be clearly a goat, not sheep, lion, deer or oni. Put a simple cream ENVELOPE pictogram with a small red heart seal as a secondary sign at the side of the canopy. On the TWO existing prize shelves replace TWO generic toys with small cream goat-mascot heads, add one small red POSTBOX-shaped prize with an ivory mail slot and an envelope icon. Preserve the other colorful prize boxes and gaps. Preserve the small wooden CORK TOY RIFLE on the counter. A small plain target pictogram may stay on the lower wooden panel to identify the shooting game. No realistic modern firearms, no cartridges, no text.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/suzuna-tsuzuri.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/suzuna-tsuzuri/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-77e86cbd-cad9-45c2-8518-fc66ed3fcdb2.png"
+    }
+  ],
+  "userChanges": {
+    "goldfish": "Gawr Gura",
+    "shooting": "Suzuna Tsuzuri"
+  },
+  "inheritedFrom127": [
+    "takoyaki",
+    "yakisoba",
+    "ringoame"
+  ],
+  "outputs": {
+    "takoyaki": {
+      "name": "마츠리 · 타코야키",
+      "png": "assets/takoyaki96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "yakisoba": {
+      "name": "스바루 · 야키소바",
+      "png": "assets/yakisoba96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "ringoame": {
+      "name": "아키로제 · 링고아메",
+      "png": "assets/ringoame96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "goldfish": {
+      "name": "구라 · 금붕어 잡기",
+      "png": "assets/goldfish96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "shooting": {
+      "name": "츠즈리 · 사격 놀이",
+      "png": "assets/shooting96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    }
+  },
+  "references": [
+    {
+      "id": "takoyaki",
+      "member": "마츠리",
+      "profile": "https://hololive.hololivepro.com/en/talents/natsuiro-matsuri/",
+      "reason": "축제 콘셉트의 활기와 주황 계열 상징을 타코야키 노점에 연결한 팬 디자인",
+      "original": "../festival125/assets/takoyaki-source.png"
+    },
+    {
+      "id": "yakisoba",
+      "member": "스바루",
+      "profile": "https://hololive.hololivepro.com/en/talents/oozora-subaru/",
+      "reason": "운동부 축제 부스를 연상시키는 배색과 오리 상징을 사용한 팬 디자인",
+      "original": "../festival126/assets/yakisoba-source.png"
+    },
+    {
+      "id": "ringoame",
+      "member": "아키로제",
+      "profile": "https://hololive.hololivepro.com/en/talents/aki-rosenthal/",
+      "reason": "장미·엘프 모티프와 사과 사탕 가게를 결합한 팬 디자인",
+      "original": "../festival126/assets/ringoame-source.png"
+    },
+    {
+      "id": "goldfish",
+      "member": "구라",
+      "profile": "https://hololive.hololivepro.com/en/talents/gawr-gura/",
+      "reason": "사용자 지정: 구라의 상어·바다 모티프를 금붕어 잡기에 사용",
+      "original": "../festival126/assets/goldfish-source.png"
+    },
+    {
+      "id": "shooting",
+      "member": "츠즈리",
+      "profile": "https://hololive.hololivepro.com/en/talents/suzuna-tsuzuri/",
+      "reason": "사용자 지정: 츠즈리의 염소 우편배달부 모티프를 사격 놀이에 사용",
+      "original": "../festival126/assets/shooting-source.png"
+    }
+  ],
+  "rasterPreparation": {
+    "crop": "alpha >=220 bounding box",
+    "resize": "nearest-neighbor fit into96x64 with1px margin",
+    "alphaThreshold": 200,
+    "rgbQuantizationStep": 8
+  },
+  "sha256": {
+    "assets/goldfish-member-source.png": "95c5fea1c3998ae8acb515e3daa4f63d45c1760604ff47d1a6b674fe09ba372c",
+    "assets/goldfish96.png": "98358a36f7f5535fe4ca8b297adf6356831d91734dea1672d8bb5ec194e4e509",
+    "assets/ringoame96.png": "25f2323293a9167cbac2c9b07c2498afb3f8d142de42bc78552c2fcf734d1d81",
+    "assets/shooting-member-source.png": "111542003cc17f3f1044f1b9f1bfee22aa268c3ee3e7bc0d09692194e7973b1c",
+    "assets/shooting96.png": "9a0ee3fc8710082b0c71f2b5b2b13c44c39c51f7d1f8e0205485c513fed16866",
+    "assets/takoyaki96.png": "9dd724f9d5d0987763a75436ce60a41c741d2d82f153b765acdb2747c6081e62",
+    "assets/yakisoba96.png": "5e0fb12c0a3422c3962656d93746e361a841352cd0dcfa55bb339e22abd64c8d"
+  },
+  "review": {
+    "updatedPair": "updated128.png",
+    "catalog": "catalog128.png",
+    "validation": "validation.json",
+    "nativeIntegrated": false
+  }
+}

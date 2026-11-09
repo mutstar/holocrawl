@@ -1,0 +1,12 @@
+[
+  {
+    "opened": false,
+    "minX": 3,
+    "maxX": 28
+  },
+  {
+    "opened": true,
+    "minX": 3,
+    "maxX": 28
+  }
+]

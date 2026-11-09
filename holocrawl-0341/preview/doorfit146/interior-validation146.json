@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "opened": false,
+      "holes": 0,
+      "mirrorDiff": 0,
+      "shadowDiff": 0,
+      "openCentre": 0,
+      "expectedOpen": 502,
+      "seam": [
+        39,
+        62,
+        69,
+        255
+      ]
+    },
+    {
+      "opened": true,
+      "holes": 502,
+      "mirrorDiff": 0,
+      "shadowDiff": 0,
+      "openCentre": 502,
+      "expectedOpen": 502,
+      "seam": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "arch": [
+    10,
+    6,
+    5,
+    4,
+    3,
+    2,
+    2,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    2,
+    2,
+    3,
+    4,
+    5,
+    6,
+    10
+  ]
+}

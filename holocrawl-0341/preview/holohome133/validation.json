@@ -1,0 +1,650 @@
+{
+  "referenceLobby": true,
+  "oldStreetPixelsPreserved": {
+    "changedOutside": 0,
+    "changedInside": 226304
+  },
+  "status": "passed",
+  "revision": 133,
+  "seeds": 24,
+  "floorsChecked": 48,
+  "distinctHomeLocations": 24,
+  "deterministic": true,
+  "connected": true,
+  "homeGuaranteedOnFloor1": true,
+  "homeFootprint": [
+    17,
+    13
+  ],
+  "oneHomeDownstair": true,
+  "sixTotalStairs": true,
+  "nonOverlappingFurniture": true,
+  "assetChecks": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "opaque": 3130,
+      "transparent": 1478,
+      "colors": 28
+    },
+    {
+      "id": "stairs",
+      "w": 32,
+      "h": 32,
+      "opaque": 722,
+      "transparent": 302,
+      "colors": 28
+    },
+    {
+      "id": "planter",
+      "w": 64,
+      "h": 32,
+      "opaque": 1423,
+      "transparent": 625,
+      "colors": 28
+    },
+    {
+      "id": "balcony",
+      "w": 352,
+      "h": 128,
+      "opaque": 28710,
+      "transparent": 16346,
+      "colors": 36
+    },
+    {
+      "id": "sofa",
+      "w": 96,
+      "h": 32,
+      "opaque": 1915,
+      "transparent": 1157,
+      "colors": 28
+    },
+    {
+      "id": "tv",
+      "w": 96,
+      "h": 96,
+      "opaque": 6340,
+      "transparent": 2876,
+      "colors": 28
+    },
+    {
+      "id": "coffee",
+      "w": 64,
+      "h": 32,
+      "opaque": 880,
+      "transparent": 1168,
+      "colors": 28
+    },
+    {
+      "id": "bookcase",
+      "w": 64,
+      "h": 64,
+      "opaque": 3279,
+      "transparent": 817,
+      "colors": 28
+    },
+    {
+      "id": "kotatsu",
+      "w": 96,
+      "h": 64,
+      "opaque": 4261,
+      "transparent": 1883,
+      "colors": 28
+    },
+    {
+      "id": "notice",
+      "w": 32,
+      "h": 64,
+      "opaque": 1538,
+      "transparent": 510,
+      "colors": 28
+    }
+  ],
+  "actions": {
+    "doorTurns": 1,
+    "oldDoors": [
+      "home-8-12"
+    ],
+    "downstairs": true
+  },
+  "roundtripToExactHomeStair": true,
+  "doorStatePreserved": true,
+  "level2SaveReload": true,
+  "sofaCollision": true,
+  "fogToggleRestoresPixels": true,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false,
+  "checks": [
+    {
+      "seed": "HOME-20261109",
+      "floor": 1,
+      "hash": "448ab1753bae67adc42a9ace658adc7e69bb1b11f783120970c82444e35c87a0",
+      "walkable": 2879,
+      "home": {
+        "id": "holohome",
+        "x": 10,
+        "y": 44,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "HOME-20261109",
+      "floor": 2,
+      "hash": "1cad850380540992f69227a6e57c9dd76edece80f84d7cf6226819abf8fe1aee",
+      "walkable": 2840,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-0",
+      "floor": 1,
+      "hash": "a10fe0f8ee9e6d16de8589cec77d74e10a5e979bfe08f93411fa6626630a8891",
+      "walkable": 2600,
+      "home": {
+        "id": "holohome",
+        "x": 52,
+        "y": 33,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "home-audit-0",
+      "floor": 2,
+      "hash": "f7ecbd81bc7965606d52a9637457d7f980bfe68390d7bb6c20e5bb30a7a8fc03",
+      "walkable": 2957,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-1",
+      "floor": 1,
+      "hash": "f7b7b73abc718c236cf92f6ad56e224700fd9dd721e007e13f68853f84903810",
+      "walkable": 2707,
+      "home": {
+        "id": "holohome",
+        "x": 5,
+        "y": 50,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 30
+    },
+    {
+      "seed": "home-audit-1",
+      "floor": 2,
+      "hash": "7e99eb73ac3637b6f3534b477298a2f7b8a1c40b2016cb6ff241376e97449a1f",
+      "walkable": 2931,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-2",
+      "floor": 1,
+      "hash": "b1341b668e7e69298d1f75625fb6846af7d654eb1a55af3f16639f7dd2db2b81",
+      "walkable": 2393,
+      "home": {
+        "id": "holohome",
+        "x": 38,
+        "y": 41,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 29
+    },
+    {
+      "seed": "home-audit-2",
+      "floor": 2,
+      "hash": "a1dd55ae97ee040d8909b33fdce69fe696d4f7f81da44e97d0396f86d6123459",
+      "walkable": 2758,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-3",
+      "floor": 1,
+      "hash": "8496c23c2116c421d87efc7e0ab1891c6a451ec9d61b5e80d4ade237087d72c9",
+      "walkable": 2685,
+      "home": {
+        "id": "holohome",
+        "x": 6,
+        "y": 42,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 22
+    },
+    {
+      "seed": "home-audit-3",
+      "floor": 2,
+      "hash": "4662d664dfc3bc8e8f5bdfd61a6d3161f585d822c34c35d8907e73ea1df7c305",
+      "walkable": 2695,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-4",
+      "floor": 1,
+      "hash": "ca115fbb0efe1403916683b25938179796a4764cfdbea51f55507f53659a2625",
+      "walkable": 2843,
+      "home": {
+        "id": "holohome",
+        "x": 8,
+        "y": 5,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 27
+    },
+    {
+      "seed": "home-audit-4",
+      "floor": 2,
+      "hash": "2b37b1813ca2046bd358a95ba77920380d0ab0f94db40e72a20896dec873f6b9",
+      "walkable": 2615,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-5",
+      "floor": 1,
+      "hash": "a0fb99644d897f6a75741c3eccd8e38f7093a11a46d4b4d57056ecfe5723b2d5",
+      "walkable": 2685,
+      "home": {
+        "id": "holohome",
+        "x": 54,
+        "y": 47,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "home-audit-5",
+      "floor": 2,
+      "hash": "40908a0e067f05eec65d1e96ec647711b10198a262d7e4b040b566fa1d582277",
+      "walkable": 2736,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-6",
+      "floor": 1,
+      "hash": "526dcefb6d577e9070a1305d4fecf6dba0ee9edd05f33a90b390bbfe2a8a801d",
+      "walkable": 2578,
+      "home": {
+        "id": "holohome",
+        "x": 9,
+        "y": 37,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 27
+    },
+    {
+      "seed": "home-audit-6",
+      "floor": 2,
+      "hash": "edd293d93e0534629bf683735c2a69a6fa1cfaa8feae5efd01957d2cd64ba917",
+      "walkable": 2286,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-7",
+      "floor": 1,
+      "hash": "310a5caebea706faa248537554ec74a1476071a18c954074e95db3e6b4fdf342",
+      "walkable": 2611,
+      "home": {
+        "id": "holohome",
+        "x": 56,
+        "y": 51,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 33
+    },
+    {
+      "seed": "home-audit-7",
+      "floor": 2,
+      "hash": "73d63f284ba1b584bb88b7067fd2ece09dbbbda0453dd97cc01b220c59a04550",
+      "walkable": 2680,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-8",
+      "floor": 1,
+      "hash": "181809446edde858358997fa0f2103ee883486077b859cca3be5b97c30716c74",
+      "walkable": 2926,
+      "home": {
+        "id": "holohome",
+        "x": 11,
+        "y": 36,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 37
+    },
+    {
+      "seed": "home-audit-8",
+      "floor": 2,
+      "hash": "63065d1db431bd09526ae30c6f22ea288a24c939a123424030aceaccb9e38d61",
+      "walkable": 2750,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-9",
+      "floor": 1,
+      "hash": "c6b2f8189df1f75fb243c20b841a8db5b486d9301fefd8ec5ca1b9d43b8dff7e",
+      "walkable": 2698,
+      "home": {
+        "id": "holohome",
+        "x": 53,
+        "y": 34,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 17
+    },
+    {
+      "seed": "home-audit-9",
+      "floor": 2,
+      "hash": "f0102aeb33680637fa483af9721de9f6dd14b654317f12aa2bd7ccead15e1b47",
+      "walkable": 2712,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-10",
+      "floor": 1,
+      "hash": "e42cb668221ba47d8a2f02a989357d0efcf4baa74c6c722611263eff110cc9ea",
+      "walkable": 2646,
+      "home": {
+        "id": "holohome",
+        "x": 55,
+        "y": 6,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 20
+    },
+    {
+      "seed": "home-audit-10",
+      "floor": 2,
+      "hash": "de6f07249aaed866bfa07ee7ddb86d191a11bc1d0a47e55c6030f31302f1d7ac",
+      "walkable": 2748,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-11",
+      "floor": 1,
+      "hash": "6aa2532f890510c03ef21095ee546a709c47fea63b71e2c342b28200d3791a27",
+      "walkable": 2767,
+      "home": {
+        "id": "holohome",
+        "x": 44,
+        "y": 9,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 66
+    },
+    {
+      "seed": "home-audit-11",
+      "floor": 2,
+      "hash": "2306636a456bae5c266da774c62269d2164249f8b29bff688077c741e919ce43",
+      "walkable": 2656,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-12",
+      "floor": 1,
+      "hash": "d2fd36e339fe354dae91fd24f968019daad4dbb2480a54198f20d0c9c62ac07e",
+      "walkable": 2681,
+      "home": {
+        "id": "holohome",
+        "x": 35,
+        "y": 26,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 19
+    },
+    {
+      "seed": "home-audit-12",
+      "floor": 2,
+      "hash": "7e34f324697358c7cd3be44f09b59e190410c04d46846e76f9e9e0c259f22ae0",
+      "walkable": 2633,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-13",
+      "floor": 1,
+      "hash": "46c40cf98ae902bfa8667c3f92ad4bc388a1385bb43c385dcaf72211a49ce7fb",
+      "walkable": 2802,
+      "home": {
+        "id": "holohome",
+        "x": 52,
+        "y": 19,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 24
+    },
+    {
+      "seed": "home-audit-13",
+      "floor": 2,
+      "hash": "7adb1f344b8f8d65ce84b0231c8d934294974a7f935025d8186f8c57e27f8b4a",
+      "walkable": 2928,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-14",
+      "floor": 1,
+      "hash": "6333b76b5aa4d917d4c5dc85f42a7b32e0db77af6224d16419dc05ddcc63d05a",
+      "walkable": 2799,
+      "home": {
+        "id": "holohome",
+        "x": 10,
+        "y": 22,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 19
+    },
+    {
+      "seed": "home-audit-14",
+      "floor": 2,
+      "hash": "abde87e07e8438c934ac04040434ff302eba669847620fbc6ad97092127be012",
+      "walkable": 2478,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-15",
+      "floor": 1,
+      "hash": "cbd42818b39ac1c6cad841df036ff8b5bfe30c382d2fc5edbaef493d43ec0a41",
+      "walkable": 2892,
+      "home": {
+        "id": "holohome",
+        "x": 48,
+        "y": 35,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 31
+    },
+    {
+      "seed": "home-audit-15",
+      "floor": 2,
+      "hash": "1ba1f0e16a4b71938c2f3ce90a1a78e3376bcd437812b33fcc61f1f425f2177c",
+      "walkable": 2560,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-16",
+      "floor": 1,
+      "hash": "dd2671cf45a6ffa91ee3feb8f7501fa16d84bf6709741c8c374b76bbc267008e",
+      "walkable": 3015,
+      "home": {
+        "id": "holohome",
+        "x": 28,
+        "y": 15,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "home-audit-16",
+      "floor": 2,
+      "hash": "a80dde211222ded16cd780eaa1e9bcacd0b7599d11064f4edd0482c252272af4",
+      "walkable": 2601,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-17",
+      "floor": 1,
+      "hash": "32b9b7ab74f087be6d5236b989d28add555b6b66e3aabda63fc161bab01e2ba0",
+      "walkable": 2652,
+      "home": {
+        "id": "holohome",
+        "x": 25,
+        "y": 24,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 19
+    },
+    {
+      "seed": "home-audit-17",
+      "floor": 2,
+      "hash": "c8abd3d187c0694845ba61c5a586148807981276e52b1aafcb6109ff1169456a",
+      "walkable": 2754,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-18",
+      "floor": 1,
+      "hash": "a18a22a874c81e6291fc7a4058e9414f573894f7622efcd4c2fbbf23282b260d",
+      "walkable": 2782,
+      "home": {
+        "id": "holohome",
+        "x": 16,
+        "y": 21,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 15
+    },
+    {
+      "seed": "home-audit-18",
+      "floor": 2,
+      "hash": "42d721a9e1d3049b7eeba5ab36baf77774dbc5e2c167ab94e856dcd776de1782",
+      "walkable": 2567,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-19",
+      "floor": 1,
+      "hash": "88d7b7d127a51422d9004b33b885a13bc62956bd9385ddc24dfbce09f3bce83f",
+      "walkable": 2840,
+      "home": {
+        "id": "holohome",
+        "x": 33,
+        "y": 49,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "home-audit-19",
+      "floor": 2,
+      "hash": "af7a7e7d49d61171e83653596941df7089157728838a9cddd513bb45a7ae6310",
+      "walkable": 3052,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-20",
+      "floor": 1,
+      "hash": "f33dba39b7ddc22e36d6b15cf9eecc696b67003a68d0998a20ea02575ef7f264",
+      "walkable": 2641,
+      "home": {
+        "id": "holohome",
+        "x": 5,
+        "y": 15,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 16
+    },
+    {
+      "seed": "home-audit-20",
+      "floor": 2,
+      "hash": "c6afd79e1c92bdfc765053995ddd3c969033558d85472216583f840ee838758b",
+      "walkable": 2809,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-21",
+      "floor": 1,
+      "hash": "7a8c417a8d7a54113f200c5b8a78b49619a3bde690d20d18d499564a4336a19c",
+      "walkable": 2740,
+      "home": {
+        "id": "holohome",
+        "x": 23,
+        "y": 46,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 18
+    },
+    {
+      "seed": "home-audit-21",
+      "floor": 2,
+      "hash": "5433de9512194c586f77a56026dab1323ba32002a67cbc4b170c58cbed4fdd2e",
+      "walkable": 2654,
+      "home": null,
+      "homeDistance": null
+    },
+    {
+      "seed": "home-audit-22",
+      "floor": 1,
+      "hash": "5816d0bad2222afd56eded3f2f8a1bd8dedf7e3768f6f610bc726f7284d86f4a",
+      "walkable": 2516,
+      "home": {
+        "id": "holohome",
+        "x": 7,
+        "y": 12,
+        "w": 17,
+        "h": 13
+      },
+      "homeDistance": 29
+    },
+    {
+      "seed": "home-audit-22",
+      "floor": 2,
+      "hash": "47275de7cddf24028098a158207dd5f720c7be4be3f0fb06da72db831921b2c1",
+      "walkable": 2764,
+      "home": null,
+      "homeDistance": null
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "tool": "built-in image_gen",
+  "revision": 125,
+  "assets": [
+    {
+      "id": "wall",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-80eeaf67-0e33-4a6f-b13d-d61013a40a2b.png",
+      "prompt": "Use case: stylized-concept. Asset type: a single seamless material texture for a 32x32 pixel-art roguelike wall, not a scene. Generate a perfectly square, flat front-on patch filling the entire image edge to edge. Weathered warm gray-brown plaster of an abandoned Japanese festival alley: old cement, restrained pale beige plaster chips, small worn patches revealing dark brown undercoat, low soot and rain stains. Crisp hand-placed chunky pixel clusters on a strict logical 32x32 grid, displayed enlarged with nearest-neighbor pixels. Muted medium-dark taupe with restrained warm sand highlights and dark brown flecks, roughly 12 colors. No large cracks, no brick pattern, no framing, no perspective, no shadows cast by objects, no scenery, no text, no gradient, no blur, no micro-detail. This is a reusable flat material to be clipped onto an existing connected 22-pixel-high wall silhouette; do not draw the wall shape or top edge.",
+      "transparent": false
+    },
+    {
+      "id": "takoyaki",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-60d093bb-707a-4390-ad98-8121e992fb87.png",
+      "prompt": "Use case: stylized-concept. Asset type: one isolated game sprite for a 32px grid top-down roguelike. One abandoned Japanese matsuri TAKOYAKI YATAI street food stall, viewed from the same slightly overhead front-facing 3/4 top-down orthographic viewpoint as Dungeon Crawl Stone Soup game props, NO isometric diamonds. Sprite should have logical pixel dimensions 96 wide x 64 tall, enlarged evenly with hard square nearest-neighbor pixels, coarse clear clusters and a limited muted 16-color palette. A weathered dark wooden counter, faded burgundy-red cloth canopy with small cream edging and torn short noren fringe, narrow pale sign with a simple white octopus pictogram instead of writing, a clearly visible dark takoyaki griddle with several golden brown round dumplings in shallow holes, small sauce bottle and paper serving boat. Two plain thin wooden support posts. Worn, disused but readable, sober dusty colors, restrained highlights. Clear dark 1 logical pixel outline, compact silhouette, darkest grounding pixels directly under wooden feet. No people, no lanterns, no extra props outside stall, no background floor, no scenery, no text or letters, no lettering, no glow, no smooth lighting, no antialiasing. Entire sprite fully visible, small transparent margin, genuinely transparent RGBA background.",
+      "transparent": true
+    },
+    {
+      "id": "lantern",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-7c0bf172-d86f-4367-9d49-5712c0a06fed.png",
+      "prompt": "Use case: stylized-concept. Asset type: one isolated small hanging Japanese festival paper lantern sprite for a 32px-grid top-down roguelike. A battered round-oval chochin paper lantern, body logical 12 pixels wide and 18 pixels tall, within a logical 16x32 pixel canvas. Short dark hanging wire above, dark wooden black cap and base, dusty burnt-orange and faded cream paper with 3 dark restrained ribs, one small torn scuff, pale warm amber luminous center. Clear 1 logical pixel charcoal outline and chunky manually placed pixel clusters; enlarged nearest-neighbor squares, approximately 10 colors, no smooth gradients, no bloom or halo. It should look old and faintly lit, readable on dark cement. Front-on with a tiny hint of top visible compatible with Dungeon Crawl Stone Soup props. No stand, no pole, no floor, no scene, no characters, no writing, no symbols, no other items. Entire sprite visible with transparent margin, genuinely transparent RGBA background.",
+      "transparent": true
+    }
+  ],
+  "outputs": {
+    "wallMaterial": "assets/wall-material64.png",
+    "takoyaki": "assets/takoyaki96.png",
+    "lantern": "assets/lantern16.png",
+    "samples": "asset-samples125.png",
+    "mapExample": "map-example125.png"
+  },
+  "rasterPreparation": {
+    "transparentSpriteCrop": "alpha >= 220 bounding box",
+    "resample": "nearest neighbor, fit within native sprite dimensions",
+    "alphaThreshold": 200,
+    "rgbQuantizationStep": 8,
+    "wallTexture": "central half of generated material sampled to64x64; reflected continuous world-coordinate field; uniform front lighting; original wall121 silhouettes retained",
+    "originalGeometry": "wall121 silhouettes and22px front retained"
+  },
+  "visualReference": {
+    "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m",
+    "purpose": "outline and pixel-cluster readability reference only; no dataset sprites imported into this scene"
+  },
+  "sha256": {
+    "assets/lantern-source.png": "9ed4e5f05fb761b61a689905a969c142a59eecfff063cf492821be4a8e96cbfb",
+    "assets/lantern16.png": "62d64e45489a37881447d5f07e3f01d617fc331788b5596d83d6d58c86463724",
+    "assets/takoyaki-source.png": "f8df9795da4efc8f8ba63e8ee7188489a6222ab0de12b611b09589e119001313",
+    "assets/takoyaki96.png": "e88bfb8201ed0c827cfffdb5a118000eed59bbb232560230d3d0094af9033ccb",
+    "assets/wall-material32.png": "bfa8045bbaceba59e5a5c66bafff992c1fe5e405f6ff24f8c4a0b93731097546",
+    "assets/wall-material64.png": "242aad62bb5c9bd991bc66acc08d44aa6689b912bbfa7871acc2b2ead6975f9e",
+    "assets/wall-source.png": "00b23166c631f28fe431d7232167011282ca120c0095b1072c21e27b5c52a0fd"
+  },
+  "wallLighting02": {
+    "cause": "Per-cell wear brightness and texture phase caused rectangular discontinuities.",
+    "fix": "Constant front lighting, shared map material phase, continuous reflected world-coordinate texture, fixed source geometry material variant.",
+    "previousVersion": "festival125-v1.js",
+    "comparisonSources": [
+      "asset-samples125-v1.png",
+      "map-example125-v1.png"
+    ],
+    "checks": "2048 silhouettes unchanged;22 front-row pixels identical at the continuous mirrored material boundary;browser controls and3 map previews passed."
+  }
+}

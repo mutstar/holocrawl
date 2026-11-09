@@ -1,0 +1,228 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate",
+  "revision": 129,
+  "assets": [
+    {
+      "id": "lantern-string",
+      "name": "낡은 초롱줄",
+      "w": 128,
+      "h": 32,
+      "footprint": [
+        4,
+        0
+      ],
+      "mount": "wall",
+      "description": "벽4칸 장식 · 처진 줄과 빛바랜 초롱",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size128x32, wide horizontal4:1 arrangement. A single slack dark wire running between its far left and right endpoints, bearing FIVE small Japanese chochin paper lanterns spaced along its shallow sag. Paper lanterns alternate dusty red-orange and cream, each with dark cap and two simple ribs; one has a torn lower corner, two are unlit and dim, only two are faint amber inside without any outer halo. Keep the lanterns small enough that the whole string reads as wall decoration, not a row of giant balloons. One short loose dangling cord at an end. Nothing supporting the ends, no poles.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-438bca05-ec1b-453b-89a1-91c7cd7bfeaf.png"
+    },
+    {
+      "id": "nobori",
+      "name": "해진 노보리 깃발",
+      "w": 32,
+      "h": 48,
+      "footprint": [
+        1,
+        1
+      ],
+      "mount": "ground",
+      "description": "바닥1×1칸 · 기울어진 봉과 찢어진 천",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size32x48, upright narrow2:3 arrangement. One weathered Japanese nobori festival flag, deep faded crimson cloth with a simple large ivory five-petal flower pictogram. Small ragged split at the bottom and a few dusty patches. The flag hangs from a short horizontal crossbar on a thin tan bamboo pole, slightly leaning, with its pole seated in one small dark square stone base. Clearly a vertical rectangular festival banner rather than a national flag or medieval battle standard. Entire pole and base fit the sprite.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-7c9b82df-eece-4f93-beba-58ac72184f39.png"
+    },
+    {
+      "id": "mask-rack",
+      "name": "홀로 가면 진열대",
+      "w": 64,
+      "h": 48,
+      "footprint": [
+        2,
+        1
+      ],
+      "mount": "ground",
+      "description": "바닥2×1칸 · 여우탈·오니탈·라덴의 탈",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size64x48, compact4:3 arrangement. ONE low wooden Japanese festival mask display rack, horizontal beam on two thin legs, three clearly separated front-facing masks hanging from hooks, plus one empty hook. LEFT: a white pointed-eared fox mask with small red cheek markings, referencing Shirakami Fubuki. MIDDLE: a red Japanese oni mask with TWO short ivory horns, dark eyebrows and small fang accents, referencing Nakiri Ayame. RIGHT: a pale ivory traditional Noh-woman face mask, smooth oval face, narrow black eyes, dark painted brows and tiny crimson lips, referencing Juufuutei Raden's worn mask. The masks are props, not living heads or people; keep each mask distinct and broad enough to read at small size. Rack is old brown wood, one small chipped paint mark on masks, no backing board or canopy.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-20fba6d1-a1eb-4a1a-8ea1-404de4270bfc.png"
+    },
+    {
+      "id": "taiko",
+      "name": "낡은 태고 북",
+      "w": 32,
+      "h": 32,
+      "footprint": [
+        1,
+        1
+      ],
+      "mount": "ground",
+      "description": "바닥1×1칸 · 닳은 북가죽과 북채",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size32x32, square compact object. One Japanese nagado-daiko barrel drum on a low dark wooden crossed stand. Warm dark reddish-brown barrel, one conspicuous off-white circular drumhead angled toward the viewer with a small worn gray patch, dark metal tack dots along its rim. TWO short light wooden bachi drumsticks rest diagonally against the lower stand. Heavy readable barrel silhouette, entirely inside the32x32 logical square. Not a modern drum kit, not a stool, no huge skin tears.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-a4ebba02-21a8-4722-9aae-0cd8d79c36e5.png"
+    },
+    {
+      "id": "yagura",
+      "name": "낡은 야구라 무대",
+      "w": 96,
+      "h": 112,
+      "footprint": [
+        3,
+        3
+      ],
+      "mount": "ground",
+      "description": "바닥3×3칸 · 붉고 흰 천의 봉오도리 무대",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size96x112, largest asset in this set: a small outdoor BON ODORI YAGURA bandstand with a square raised wooden platform, four slim corner uprights, plain railings and a short FRONT stair with three broad steps. Red and ivory vertical striped cloth skirt wraps the platform edges; the fabric has a few ragged corners, soot stains and faded areas. One small traditional taiko drum sits on the top deck. Two corner uprights carry tiny unlit chochin lanterns. Stage top should be visible and empty around the drum. Ground reservation is3x3 grid cells, with the posts rising slightly above that footprint in the image. Clear compact carpentry, NOT a temple, pagoda, shrine, building, roofed house or tall watchtower; NO roof. Do not add a crowd, characters, signage, fireworks or entire festival scene.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-d3f34cf1-3b3a-4da6-9942-c8de52a2de23.png"
+    },
+    {
+      "id": "bench",
+      "name": "낡은 휴게 벤치",
+      "w": 64,
+      "h": 32,
+      "footprint": [
+        2,
+        1
+      ],
+      "mount": "ground",
+      "description": "바닥2×1칸 · 벗겨진 붉은 칠과 나무 좌판",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size64x32, low wide2:1 arrangement. One simple BACKLESS Japanese festival rest bench with a long flat wooden plank seat, faded dark brick-red paint flaking to warm brown wood, supported by THREE short dark wooden legs. Slightly uneven but still visibly a usable bench. Seat top and front edge visible from the roguelike viewpoint. No backrest, armrests, cushions, table, accessories or people. Keep the entire wide low silhouette inside the logical64x32 rectangle.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-5b201a3e-ace8-4de5-b4e3-771f26064594.png"
+    },
+    {
+      "id": "festival-cart",
+      "name": "멈춘 축제 수레",
+      "w": 64,
+      "h": 64,
+      "footprint": [
+        2,
+        2
+      ],
+      "mount": "ground",
+      "description": "바닥2×2칸 · 나무 바퀴·말린 천·작은 북",
+      "prompt": "Use case: stylized-concept. Asset: ONE isolated environmental game sprite for an abandoned Japanese matsuri district in a Dungeon Crawl Stone Soup style32px-grid roguelike. Slightly overhead FRONT-FACING orthographic viewpoint with visible top surfaces, compatible with compact front-facing yatai sprites, no isometric diamond. Genuine chunky low-resolution pixel art on the specified logical pixel grid, displayed enlarged with hard nearest-neighbor square pixels. Clear dark1-logical-pixel outline, muted dusty16-to24-color palette, restrained highlights. Old worn wood, faded cloth and small scuffs, readable recognizable silhouette. Entire object fully visible with a small transparent margin. No scenery, background, floor tile, people, readable text, letters, logos, glow, bloom, soft lighting, blur, antialiasing or painted microdetails. Genuinely transparent RGBA background. Logical sprite size64x64, square compact Japanese festival hand-pulled wooden cart viewed slightly from above and front. Two clearly visible large dark wooden SPOKED WHEELS, a low brown wooden load bed, and two short narrow wooden pulling shafts extending toward the viewer, all inside the sprite. Load: ONE small off-white-headed taiko drum, a rolled faded indigo cloth cover and a bundled red-and-ivory festival banner. One small damaged paper lantern hangs from the side. Old scratched timber, slightly crooked wheel, sparse faded cloth. The wheels and shafts must be readable so this is a cart, not a food stall, shrine, chest, bed or building. No roof, canopy, sacred ornamentation or statues.",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-8d44f890-0105-4910-8f4a-7e45c4be0a78.png"
+    }
+  ],
+  "outputs": {
+    "lantern-string": {
+      "file": "assets/lantern-string-native.png",
+      "pixels": [
+        128,
+        32
+      ],
+      "floorReservation": [
+        4,
+        0
+      ],
+      "mount": "wall"
+    },
+    "nobori": {
+      "file": "assets/nobori-native.png",
+      "pixels": [
+        32,
+        48
+      ],
+      "floorReservation": [
+        1,
+        1
+      ],
+      "mount": "ground"
+    },
+    "mask-rack": {
+      "file": "assets/mask-rack-native.png",
+      "pixels": [
+        64,
+        48
+      ],
+      "floorReservation": [
+        2,
+        1
+      ],
+      "mount": "ground"
+    },
+    "taiko": {
+      "file": "assets/taiko-native.png",
+      "pixels": [
+        32,
+        32
+      ],
+      "floorReservation": [
+        1,
+        1
+      ],
+      "mount": "ground"
+    },
+    "yagura": {
+      "file": "assets/yagura-native.png",
+      "pixels": [
+        96,
+        112
+      ],
+      "floorReservation": [
+        3,
+        3
+      ],
+      "mount": "ground"
+    },
+    "bench": {
+      "file": "assets/bench-native.png",
+      "pixels": [
+        64,
+        32
+      ],
+      "floorReservation": [
+        2,
+        1
+      ],
+      "mount": "ground"
+    },
+    "festival-cart": {
+      "file": "assets/festival-cart-native.png",
+      "pixels": [
+        64,
+        64
+      ],
+      "floorReservation": [
+        2,
+        2
+      ],
+      "mount": "ground"
+    }
+  },
+  "rasterPreparation": {
+    "crop": "alpha >=220 bounding box",
+    "resize": "nearest-neighbor fit inside target dimensions with1px margin",
+    "alphaThreshold": 200,
+    "rgbQuantizationStep": 8
+  },
+  "placementStudy": {
+    "grid": [
+      20,
+      13
+    ],
+    "mode": "controlled art comparison board on existing floor and wall tiles",
+    "nativeDungeonIntegrated": false,
+    "guraStall": "../festival128/assets/goldfish96.png",
+    "wallRendererSource": "../festival128/festival128.js"
+  },
+  "sha256": {
+    "assets/bench-native.png": "93c0f6ca875f88927b10d18f7345affff49da37e6051bc20805fde84e0b2c661",
+    "assets/bench-source.png": "8b16a090e71fa621753b82607d3967960861be6b77f71b09690a43a884f0d6c9",
+    "assets/festival-cart-native.png": "b1c048b4f55f6bfb47f889dac753266065643970a83b205a531582c54fbf8a94",
+    "assets/festival-cart-source.png": "673f26832144269019823d64a1c947c47511bcca9c17097be6ec349176074ae6",
+    "assets/lantern-string-native.png": "fb340050b642ece1e4dd6e23e6139aae17cf2b80c82fc29c80b88d6c353d6b80",
+    "assets/lantern-string-source.png": "5d52f8495435cca3999c1b0b4e5f6c2dd88d86697a7800c13da653b621c0ccf3",
+    "assets/mask-rack-native.png": "22d1e3a153c347632fb108c65ec2256239c5100e85a70ca6f879cc39c319d3f0",
+    "assets/mask-rack-source.png": "88520549942d2e9fb6072f53dd57de9a74ae5d163ea8c1f735c4c0fcec932c32",
+    "assets/nobori-native.png": "a63d0aab78794003558e32dffa06b571a97248be83ba98e8325bb8900d4dd9ac",
+    "assets/nobori-source.png": "760186a6e44ba1099daa06dff9f0ebdaa0fc7389b3902d92aeb0e927ca27df71",
+    "assets/taiko-native.png": "e7bc73719da130ca7ef859497b55294c21e33438d6f73fdd2d29287f922aedb3",
+    "assets/taiko-source.png": "81db9ee2611868535d192784e2e9d274ce56917f2efa069a6bfd29c3e561c1c7",
+    "assets/yagura-native.png": "78f31ed6b5755bc801803ad8588779770ea873d81123ca3f396d0f146d27b066",
+    "assets/yagura-source.png": "86d2f2f104a21e8d832ece6d7c7dba3d14609c779f8e0843b3a1ef03835b68e1"
+  },
+  "review": {
+    "catalog": "catalog129.png",
+    "placement": "placement129.png",
+    "validation": "validation.json"
+  }
+}

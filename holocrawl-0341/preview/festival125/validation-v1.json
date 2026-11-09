@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "revision": 125,
+  "browserStudyOnly": true,
+  "nativeIntegrated": false,
+  "sourceMaps": 3,
+  "sourceMapsScanned": 12,
+  "sourceMapCandidates": [
+    {
+      "seed": 10786001,
+      "locations": 14
+    },
+    {
+      "seed": 10786002,
+      "locations": 16
+    },
+    {
+      "seed": 10786003,
+      "locations": 0
+    },
+    {
+      "seed": 10786004,
+      "locations": 10
+    },
+    {
+      "seed": 10786005,
+      "locations": 1
+    },
+    {
+      "seed": 10786006,
+      "locations": 28
+    },
+    {
+      "seed": 10786007,
+      "locations": 0
+    },
+    {
+      "seed": 10786008,
+      "locations": 5
+    },
+    {
+      "seed": 10786009,
+      "locations": 0
+    },
+    {
+      "seed": 10786010,
+      "locations": 8
+    },
+    {
+      "seed": 10786011,
+      "locations": 10
+    },
+    {
+      "seed": 10786012,
+      "locations": 10
+    }
+  ],
+  "selectedSeeds": [
+    10786001,
+    10786002,
+    10786004
+  ],
+  "validStallLocations": 40,
+  "wallTiles": 2048,
+  "silhouettePixels": 2097152,
+  "stall": [
+    96,
+    64
+  ],
+  "lantern": [
+    16,
+    32
+  ],
+  "hardAlpha": true,
+  "pageErrors": [],
+  "failedRequests": [],
+  "mobileOverflow": false
+}

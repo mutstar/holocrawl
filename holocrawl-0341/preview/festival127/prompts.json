@@ -1,0 +1,181 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "revision": 127,
+  "assets": [
+    {
+      "id": "takoyaki",
+      "member": "natsuiro-matsuri",
+      "name": "마츠리의 타코야키",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival125/assets/takoyaki-source.png",
+      "prompt": "Edit the FIRST image, an existing isolated96x64-logical-pixel Japanese matsuri stall sprite. The SECOND image is a character-design reference only, identifying the hololive member; do not add a person working at the stall. Preserve the first image's whole object silhouette, exact slightly-overhead front-facing orthographic viewpoint, counter arrangement, footprint, torn and worn materials, readability and coarse square pixel-art style. Keep all cooking goods or game equipment recognizably unchanged. Redesign only canopy palette, one large readable emblem and one or two small decorative details to make it a fan-made member-themed booth. Emblem details must read after reduction to96x64: simple chunky shapes, no fine line art. Keep it old, dusty, faded, slightly abandoned, consistent with the first image's dark outlines and restrained highlights. No scenery, no floor, no new characters, no extra booths, no text or letters, no written names, no blur, no smooth gradients, no glow. Preserve genuinely transparent RGBA background. Theme: Natsuiro Matsuri. Recolor the faded red canopy to weathered warm orange with dark navy trim and small cream festival fringe, echoing her orange/white/navy outfit. Replace the octopus canopy sign with ONE prominent cute EBIFURYAON fried-shrimp-lion mascot badge: a simple cream round lion face in a toasted orange shrimp-breading mane, dot eyes and mouth, tiny reddish-orange shrimp tail tucked to the side, not a tiger or cat. Add one small orange-and-white festival ribbon on a post. The black takoyaki griddle, round golden dumplings, sauce bottle and paper boat must remain clear. No extra faces on the counter.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/natsuiro-matsuri.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/natsuiro-matsuri/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-a8ed5e69-a10c-4771-b629-e8c149138468.png"
+    },
+    {
+      "id": "yakisoba",
+      "member": "oozora-subaru",
+      "name": "스바루의 야키소바",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/yakisoba-source.png",
+      "prompt": "Edit the FIRST image, an existing isolated96x64-logical-pixel Japanese matsuri stall sprite. The SECOND image is a character-design reference only, identifying the hololive member; do not add a person working at the stall. Preserve the first image's whole object silhouette, exact slightly-overhead front-facing orthographic viewpoint, counter arrangement, footprint, torn and worn materials, readability and coarse square pixel-art style. Keep all cooking goods or game equipment recognizably unchanged. Redesign only canopy palette, one large readable emblem and one or two small decorative details to make it a fan-made member-themed booth. Emblem details must read after reduction to96x64: simple chunky shapes, no fine line art. Keep it old, dusty, faded, slightly abandoned, consistent with the first image's dark outlines and restrained highlights. No scenery, no floor, no new characters, no extra booths, no text or letters, no written names, no blur, no smooth gradients, no glow. Preserve genuinely transparent RGBA background. Theme: Oozora Subaru. Keep a faded golden-yellow canopy, add muted sporty green-and-cream trim echoing her green/white athletic outfit. Replace the noodle logo with ONE unmistakable simple white DUCK head with a wide orange bill, black dot eyes, wearing a green cap with a pale front panel. A tiny matching white duck doll sits at one end of the counter without covering the food. Preserve the wide black griddle with brown noodles, red pickled ginger, green cabbage and TWO metal spatulas. Keep duck beak readable and broad, not a chicken beak.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/oozora-subaru.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/oozora-subaru/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-0c4d331e-8474-4e72-ade5-ab749e0ee798.png"
+    },
+    {
+      "id": "ringoame",
+      "member": "aki-rosenthal",
+      "name": "아키로제의 링고아메",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/ringoame-source.png",
+      "prompt": "Edit the FIRST image, an existing isolated96x64-logical-pixel Japanese matsuri stall sprite. The SECOND image is a character-design reference only, identifying the hololive member; do not add a person working at the stall. Preserve the first image's whole object silhouette, exact slightly-overhead front-facing orthographic viewpoint, counter arrangement, footprint, torn and worn materials, readability and coarse square pixel-art style. Keep all cooking goods or game equipment recognizably unchanged. Redesign only canopy palette, one large readable emblem and one or two small decorative details to make it a fan-made member-themed booth. Emblem details must read after reduction to96x64: simple chunky shapes, no fine line art. Keep it old, dusty, faded, slightly abandoned, consistent with the first image's dark outlines and restrained highlights. No scenery, no floor, no new characters, no extra booths, no text or letters, no written names, no blur, no smooth gradients, no glow. Preserve genuinely transparent RGBA background. Theme: Aki Rosenthal, the blonde half-elf in the second image. Keep dusty rose-pink and cream striped canopy with tiny muted pale-gold accents. Add ONE prominent simple chibi HALF-ELF HEAD emblem at the front canopy center: blonde pale-gold hair, long pointed elf ears, small green eyes, two side pigtail/ribbon shapes, pink bow accent; face only, no body. Replace the small side apple-only banner with a simple red ROSE and green-leaf badge in cream frame. Place one tiny rose in a slim vase at the edge of the counter if space allows. Preserve the SIX red candied apples on pale sticks, stepped display rack, serving tray and syrup pot. The apples should still be the most obvious counter contents.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/aki-rosenthal.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/aki-rosenthal/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-6ccdac64-4675-491e-a5c9-a2a27977c9c0.png"
+    },
+    {
+      "id": "goldfish",
+      "member": "nakiri-ayame",
+      "name": "아야메의 금붕어 잡기",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/goldfish-source.png",
+      "prompt": "Edit the FIRST image, an existing isolated96x64-logical-pixel Japanese matsuri stall sprite. The SECOND image is a character-design reference only, identifying the hololive member; do not add a person working at the stall. Preserve the first image's whole object silhouette, exact slightly-overhead front-facing orthographic viewpoint, counter arrangement, footprint, torn and worn materials, readability and coarse square pixel-art style. Keep all cooking goods or game equipment recognizably unchanged. Redesign only canopy palette, one large readable emblem and one or two small decorative details to make it a fan-made member-themed booth. Emblem details must read after reduction to96x64: simple chunky shapes, no fine line art. Keep it old, dusty, faded, slightly abandoned, consistent with the first image's dark outlines and restrained highlights. No scenery, no floor, no new characters, no extra booths, no text or letters, no written names, no blur, no smooth gradients, no glow. Preserve genuinely transparent RGBA background. Theme: Nakiri Ayame, the white-haired red-horned Japanese oni girl in the second image. Recolor the canopy to faded deep crimson/maroon with ivory fringe and a few restrained dark charcoal panels, echoing her red/white/black outfit. Replace the fish emblem with ONE simple cute Ayame head badge: white hair, two clearly visible short RED ONI HORNS, pale face, red dot eyes, no body. Add a short red braided cord with a small pale bell around one support post. Preserve the long bright turquoise water basin with red/orange goldfish, pale bowls and THREE white round paper scooping nets hanging on the side. Keep water vivid enough to distinguish this game stall from a food stall.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/nakiri-ayame.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/nakiri-ayame/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-2b6aed47-3354-4a49-bf6a-0e4832016275.png"
+    },
+    {
+      "id": "shooting",
+      "member": "shishiro-botan",
+      "name": "보탄의 사격 놀이",
+      "source": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/festival126/assets/shooting-source.png",
+      "prompt": "Edit the FIRST image, an existing isolated96x64-logical-pixel Japanese matsuri stall sprite. The SECOND image is a character-design reference only, identifying the hololive member; do not add a person working at the stall. Preserve the first image's whole object silhouette, exact slightly-overhead front-facing orthographic viewpoint, counter arrangement, footprint, torn and worn materials, readability and coarse square pixel-art style. Keep all cooking goods or game equipment recognizably unchanged. Redesign only canopy palette, one large readable emblem and one or two small decorative details to make it a fan-made member-themed booth. Emblem details must read after reduction to96x64: simple chunky shapes, no fine line art. Keep it old, dusty, faded, slightly abandoned, consistent with the first image's dark outlines and restrained highlights. No scenery, no floor, no new characters, no extra booths, no text or letters, no written names, no blur, no smooth gradients, no glow. Preserve genuinely transparent RGBA background. Theme: Shishiro Botan, the silver-haired white lion girl in the second image. Keep a faded dark olive-green canopy with charcoal-black and pale silver trim. Replace the generic target logo with ONE bold white LION-CUB/SHISHIRON mascot head badge, rounded ears, pale silver bangs, black dot eyes and muzzle, tiny black X-shaped hairclip accent at one side. Replace TWO of the generic shelf toys with small white lion-mascot plush heads, keeping other colorful prize boxes and gaps. Preserve TWO separate prize shelves and the small old-fashioned wooden CORK TOY RIFLE on the counter. Small red-white target pictogram can remain on the front counter board as a secondary cue. No realistic modern guns, no ammunition.",
+      "reference": "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/city-market02/assets/members/shishiro-botan.png",
+      "profile": "https://hololive.hololivepro.com/en/talents/shishiro-botan/",
+      "file": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-5fbab69a-5f47-4ab2-aaa2-c42ef34fa2c6.png"
+    }
+  ],
+  "outputs": {
+    "takoyaki": {
+      "name": "마츠리 · 타코야키",
+      "png": "assets/takoyaki96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "yakisoba": {
+      "name": "스바루 · 야키소바",
+      "png": "assets/yakisoba96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "ringoame": {
+      "name": "아키로제 · 링고아메",
+      "png": "assets/ringoame96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "goldfish": {
+      "name": "아야메 · 금붕어 잡기",
+      "png": "assets/goldfish96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    },
+    "shooting": {
+      "name": "보탄 · 사격 놀이",
+      "png": "assets/shooting96.png",
+      "size": [
+        96,
+        64
+      ],
+      "footprint": [
+        3,
+        2
+      ]
+    }
+  },
+  "designAssignment": "Creative fan-made booth/member pairings for this project; review pending.",
+  "references": [
+    {
+      "id": "takoyaki",
+      "member": "마츠리",
+      "profile": "https://hololive.hololivepro.com/en/talents/natsuiro-matsuri/",
+      "reason": "축제 콘셉트의 활기와 주황 계열 상징을 타코야키 노점에 연결한 팬 디자인",
+      "original": "../festival125/assets/takoyaki-source.png"
+    },
+    {
+      "id": "yakisoba",
+      "member": "스바루",
+      "profile": "https://hololive.hololivepro.com/en/talents/oozora-subaru/",
+      "reason": "운동부 축제 부스를 연상시키는 배색과 오리 상징을 사용한 팬 디자인",
+      "original": "../festival126/assets/yakisoba-source.png"
+    },
+    {
+      "id": "ringoame",
+      "member": "아키로제",
+      "profile": "https://hololive.hololivepro.com/en/talents/aki-rosenthal/",
+      "reason": "장미·엘프 모티프와 사과 사탕 가게를 결합한 팬 디자인",
+      "original": "../festival126/assets/ringoame-source.png"
+    },
+    {
+      "id": "goldfish",
+      "member": "아야메",
+      "profile": "https://hololive.hololivepro.com/en/talents/nakiri-ayame/",
+      "reason": "일본풍 오니 장식과 여름 축제 놀이를 연결한 팬 디자인",
+      "original": "../festival126/assets/goldfish-source.png"
+    },
+    {
+      "id": "shooting",
+      "member": "보탄",
+      "profile": "https://hololive.hololivepro.com/en/talents/shishiro-botan/",
+      "reason": "게이밍·사격 놀이 이미지와 흰 사자 모티프를 연결한 팬 디자인",
+      "original": "../festival126/assets/shooting-source.png"
+    }
+  ],
+  "rasterPreparation": {
+    "crop": "alpha >=220 bounding box",
+    "resize": "nearest-neighbor fit into96x64 with1px margin",
+    "alphaThreshold": 200,
+    "rgbQuantizationStep": 8
+  },
+  "sha256": {
+    "assets/goldfish-member-source.png": "f47f1626adea8e8993b6f51367d95b29ec656159fc4447fa56d05f4a103bc462",
+    "assets/goldfish96.png": "959c7d31554b7d913c03de0eb4976edce8172dd51a01d13d2426bd8737a96aeb",
+    "assets/ringoame-member-source.png": "2785ac1e3205211b6ba877b82554a1625dc65744ebd588c151b2c76bbc5387a8",
+    "assets/ringoame96.png": "25f2323293a9167cbac2c9b07c2498afb3f8d142de42bc78552c2fcf734d1d81",
+    "assets/shooting-member-source.png": "023cfa5e9faedaab31134683216935d8add0dc0cbcfb9fdec240c243aa5d34e2",
+    "assets/shooting96.png": "3b07fc7a515a6822532d15d3b2ecddf93cb5fabc6ab9dca566e7232afe9e4809",
+    "assets/takoyaki-member-source.png": "f530bc319bee2cc893605dc8d278c8bd5338473483b4448e275f2ff769af1c42",
+    "assets/takoyaki96.png": "9dd724f9d5d0987763a75436ce60a41c741d2d82f153b765acdb2747c6081e62",
+    "assets/yakisoba-member-source.png": "7639fec4f520093b297de7409356b19275b72d9d2746a6758591325ff52e8729",
+    "assets/yakisoba96.png": "5e0fb12c0a3422c3962656d93746e361a841352cd0dcfa55bb339e22abd64c8d"
+  },
+  "review": {
+    "catalog": "catalog127.png",
+    "originalComparison": "catalog-basic127.png",
+    "validation": "validation.json",
+    "nativeIntegrated": false
+  }
+}

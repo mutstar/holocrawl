@@ -1,0 +1,52 @@
+[
+  {
+    "id": "takoyaki",
+    "name": "마츠리 · 타코야키",
+    "member": "마츠리",
+    "source": "../festival127/assets/takoyaki-member-source.png",
+    "original": "../festival125/assets/takoyaki-source.png",
+    "profile": "https://hololive.hololivepro.com/en/talents/natsuiro-matsuri/",
+    "detail": "주황·남색 천막 · 에비프라이온 간판 · 타코야키 철판",
+    "conceptReason": "축제 콘셉트의 활기와 주황 계열 상징을 타코야키 노점에 연결한 팬 디자인"
+  },
+  {
+    "id": "yakisoba",
+    "name": "스바루 · 야키소바",
+    "member": "스바루",
+    "source": "../festival127/assets/yakisoba-member-source.png",
+    "original": "../festival126/assets/yakisoba-source.png",
+    "profile": "https://hololive.hololivepro.com/en/talents/oozora-subaru/",
+    "detail": "노랑·초록 천막 · 모자 쓴 오리 · 야키소바 철판",
+    "conceptReason": "운동부 축제 부스를 연상시키는 배색과 오리 상징을 사용한 팬 디자인"
+  },
+  {
+    "id": "ringoame",
+    "name": "아키로제 · 링고아메",
+    "member": "아키로제",
+    "source": "../festival127/assets/ringoame-member-source.png",
+    "original": "../festival126/assets/ringoame-source.png",
+    "profile": "https://hololive.hololivepro.com/en/talents/aki-rosenthal/",
+    "detail": "분홍·크림 천막 · 금발 엘프 간판 · 장미와 사과 진열대",
+    "conceptReason": "장미·엘프 모티프와 사과 사탕 가게를 결합한 팬 디자인"
+  },
+  {
+    "id": "goldfish",
+    "name": "구라 · 금붕어 잡기",
+    "member": "구라",
+    "source": "assets/goldfish-member-source.png",
+    "original": "../festival126/assets/goldfish-source.png",
+    "profile": "https://hololive.hololivepro.com/en/talents/gawr-gura/",
+    "detail": "파랑·흰색 천막 · 상어 후드 간판 · 물통과 종이 뜰채",
+    "conceptReason": "사용자 지정: 구라의 상어·바다 모티프를 금붕어 잡기에 사용"
+  },
+  {
+    "id": "shooting",
+    "name": "츠즈리 · 사격 놀이",
+    "member": "츠즈리",
+    "source": "assets/shooting-member-source.png",
+    "original": "../festival126/assets/shooting-source.png",
+    "profile": "https://hololive.hololivepro.com/en/talents/suzuna-tsuzuri/",
+    "detail": "붉은 우편 천막 · 염소 간판 · 편지와 우편함 경품",
+    "conceptReason": "사용자 지정: 츠즈리의 염소 우편배달부 모티프를 사격 놀이에 사용"
+  }
+]

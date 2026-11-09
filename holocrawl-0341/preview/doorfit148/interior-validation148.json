@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "opened": false,
+      "holes": 0,
+      "mirrorDiff": 0,
+      "opaqueOutside": 0,
+      "exteriorCount": 214,
+      "partialAlpha": 0,
+      "openCentre": 0,
+      "expectedOpen": 518
+    },
+    {
+      "opened": true,
+      "holes": 518,
+      "mirrorDiff": 0,
+      "opaqueOutside": 0,
+      "exteriorCount": 214,
+      "partialAlpha": 0,
+      "openCentre": 518,
+      "expectedOpen": 518
+    }
+  ],
+  "apron": {
+    "floor": [
+      63,
+      61,
+      61,
+      255
+    ],
+    "rendered": [
+      63,
+      61,
+      61,
+      255
+    ],
+    "southCellRemainsBlocked": true
+  },
+  "railConnection": {
+    "native": [
+      115,
+      124,
+      128,
+      255
+    ],
+    "joined": [
+      115,
+      124,
+      128,
+      255
+    ]
+  }
+}

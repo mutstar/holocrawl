@@ -1,0 +1,322 @@
+{
+  "cases": [
+    {
+      "id": "street-3",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-4",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 52,
+        "y": 13
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-5",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 49,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-6",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 14,
+        "y": 47
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-7",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 18,
+        "y": 15
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-8",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 40,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-9",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-10",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 9,
+        "y": 50
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-11",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 30,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-12",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 46,
+        "y": 40
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-13",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-14",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 9,
+        "y": 47
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-15",
+      "opened": false,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-16",
+      "opened": false,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-3",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-4",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 52,
+        "y": 13
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-5",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 49,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-6",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 14,
+        "y": 47
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-7",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 18,
+        "y": 15
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-8",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 40,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-9",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-10",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 9,
+        "y": 50
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-11",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 30,
+        "y": 61
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-12",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 46,
+        "y": 40
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-13",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-14",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "adjacent-wall",
+        "x": 9,
+        "y": 47
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-15",
+      "opened": true,
+      "direction": "horizontal",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    },
+    {
+      "id": "street-16",
+      "opened": true,
+      "direction": "vertical",
+      "h": 4,
+      "source": {
+        "kind": "native-wall-atlas"
+      },
+      "pixelDifferences": 0
+    }
+  ],
+  "fallbackHeight": 4,
+  "spritesUnchanged": true
+}

@@ -1,0 +1,35 @@
+{
+  "revision": 136,
+  "mode": "built-in image_gen",
+  "latestUserDirection": "Preserve original arched entrance; only match adjoining wall. Compact TV.",
+  "assets": [
+    {
+      "id": "tv",
+      "prompt": "Edit supplied HoloHome TV corner into a SMALL COMPACT 64x64-native pixel-art furnishing for a DCSS 32px tile top-down roguelike, transparent background. Keep recognizable simple blue TV on low walnut cabinet, with narrow pastel dusty pink storage cabinet on its right, tiny dark microwave on that cabinet. Overall footprint exactly two tiles wide, two tiles high; low compact proportions, flat frontal three-quarter top view consistent with supplied pixel sprite. Shrink television screen relative to cabinet: screen only about 20 native pixels wide, subdued teal-blue not neon cyan; entire arrangement 60x60 native pixel equivalents with 2px transparent padding. Remove gift boxes piled on top, extra cups and tall decorative clutter; at most one tiny green plant at far left. Large coarse readable pixels, narrow dark outline, limited 24-28 colors, no gradients, no glow, no high resolution detailing, no floor or checkerboard. This asset must feel modest beside a 32px player sprite, not a giant entertainment wall.",
+      "reference": "../holohome133/assets/tv-native.png",
+      "source": "assets/tv-source.png",
+      "native": "assets/tv-native.png",
+      "w": 64,
+      "h": 64,
+      "colors": 28
+    },
+    {
+      "id": "entrance",
+      "status": "preserved byte-for-byte",
+      "reference": "../holohome133/assets/entrance-native.png",
+      "native": "assets/entrance-native.png",
+      "w": 96,
+      "h": 48
+    }
+  ],
+  "unusedDrafts": [
+    {
+      "id": "flat-entrance",
+      "status": "user rejected; not loaded by preview",
+      "prompt": "Edit the supplied HoloHome entrance sprite into a LOW PROFILE wall inset for a Dungeon Crawl Stone Soup style 32px top-down roguelike. Output ONLY the isolated facade surround, genuine transparent background and transparent open doorway. Exact final design proportion 96 wide by 32 tall (3:1), coarse deliberate pixel art, no antialiasing. It must look part of a continuous horizontal worn ivory/plaster wall band, NOT a separate grand gate. Completely remove tall pediment, side towers, projecting steps, finials and stacked white cornices. Flat horizontal cap aligned all the way across, low muted navy nameplate with tiny cyan diamond above the central opening, simple muted mint rectangular inset on each side. Dusty warm gray-beige stone around RGB 180,174,151, olive cream edge highlights around RGB 205,197,170, dark charcoal outline, desaturated navy details. No pure white. Central doorway exactly one third the total width, reaching bottom, transparent inside, no door leaves (the game draws them separately). Both outer ends must be flush vertical ends with no side pillar, to continue smoothly into the game's existing beige wall. Front-on orthographic pixel sprite, not isometric, no floor, no room, no shadow outside footprint. Preserve HoloHome's ivory/mint/navy identity while making this a modest integrated entrance occupying just one tile height.",
+      "source": "assets/entrance-flat-unused-source.png",
+      "native": "assets/entrance-flat-unused-native.png"
+    }
+  ],
+  "nativeIntegrated": false
+}

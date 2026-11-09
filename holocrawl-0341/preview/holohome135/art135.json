@@ -1,0 +1,28 @@
+{
+  "revision": 135,
+  "mode": "existing-native-sprites-and-code-native-materials",
+  "reference": "../holohome133/prompts.json",
+  "newImageGeneration": false,
+  "footprint": [
+    13,
+    11
+  ],
+  "kept": [
+    "custom entrance",
+    "mint windows",
+    "aged ivory facade",
+    "two blue sofas",
+    "coffee table",
+    "bookcase",
+    "TV",
+    "planters"
+  ],
+  "omitted": [
+    "grand staircase backdrop",
+    "balcony",
+    "giant columns",
+    "kotatsu",
+    "noticeboard"
+  ],
+  "nativeIntegrated": false
+}

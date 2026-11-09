@@ -1,0 +1,38 @@
+[
+  {
+    "opened": false,
+    "samePixels": true,
+    "bounds": [
+      [
+        16,
+        12,
+        47,
+        47
+      ],
+      [
+        16,
+        12,
+        47,
+        47
+      ]
+    ]
+  },
+  {
+    "opened": true,
+    "samePixels": true,
+    "bounds": [
+      [
+        16,
+        12,
+        47,
+        47
+      ],
+      [
+        16,
+        12,
+        47,
+        47
+      ]
+    ]
+  }
+]

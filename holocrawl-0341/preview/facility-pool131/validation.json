@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "revision": 131,
+  "total": 42,
+  "built": 9,
+  "planned": 33,
+  "campaignSeeds": 1000,
+  "eligibleFloors": 34,
+  "allFacilitiesAppearInAllRegions": true,
+  "affiliationNeverFilters": true,
+  "noRunDuplicates": true,
+  "deterministic": true,
+  "builtModeNeverUsesPlanned": true,
+  "selected": {
+    "JP": 6904,
+    "ID": 3517,
+    "EN": 6550
+  },
+  "available": {
+    "JP": 14000,
+    "ID": 7000,
+    "EN": 13000
+  },
+  "persistedBrowserPlan": true,
+  "imagesLoaded": 9,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false,
+  "geometricPlacementTested": false
+}

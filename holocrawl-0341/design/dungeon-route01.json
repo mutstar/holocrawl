@@ -147,7 +147,9 @@
           "report": "design/NATIVE_PLAY107_REVIEW.md",
           "browserValidation": "preview/native-play107/browser-validation.json",
           "fullCampaignVerified": false
-        }
+        },
+        "campaignPolicy": "sharedFacilities",
+        "nativePolicyStatus": "legacy-native107-JP-only; shared regional pool not yet ported"
       },
       "themes": [
         {
@@ -263,7 +265,44 @@
         "market": "denser contiguous windows/shutters; original service positions reserved",
         "wallAndStructureArtUnchanged": true,
         "nativeIntegrated": false
-      }
+      },
+      "guaranteedFacilities": [
+        {
+          "id": "holohome",
+          "name": "홀로홈",
+          "status": "browser-prototype-user-review",
+          "region": "JP",
+          "floorId": "JP-main-1",
+          "floor": 1,
+          "chance": 1,
+          "count": 1,
+          "footprint": [
+            13,
+            11
+          ],
+          "preview": "../holohome136/",
+          "art": "../holohome136/home136.png",
+          "randomPoolMember": false,
+          "artRevision": 136,
+          "downstairs": {
+            "count": 1,
+            "alwaysInside": true,
+            "localCell": [
+              6,
+              2
+            ],
+            "nativeSize": [
+              32,
+              32
+            ],
+            "sprite": "../holohome133/assets/stairs-native.png",
+            "destination": "JP-main-2",
+            "reciprocal": true
+          },
+          "placement": "seeded-location-near-start; entrance and staircase connected",
+          "nativeIntegrated": false
+        }
+      ]
     },
     "depths": {
       "name": "커튼콜",
@@ -371,5 +410,37 @@
       "allRunes": 15
     }
   ],
-  "currentArtTask": "잔향도시124: 벽121/벽 구조물122 유지,1~7층 바닥 소품 통로 보호·236구조416배치 검증 passed.고정지형9외벽22px 정렬/멤버 장식·문 보존, 실제 지도 이미지 각각 출력.브라우저만·피드백 대기."
+  "currentArtTask": "홀로홈136: 사용자는 기존 아치 입구를 선호한다고 명확히 정정. 기존96x48 입구 도트 그대로 유지, 외벽 면·몰딩만 같은 상아색으로 맞춤. TV 코너96x96→64x64 재제작. 낮은 평문 입구 초안은 미사용.13x11/1층확정/계단왕복·저장,48지도·입구 원본 동일 검사 통과. 사용자 검토 대기·엔진 미적용.",
+  "sharedFacilities": {
+    "status": "approved-policy-browser-planning",
+    "registry": "preview/facility-pool131/registry.json",
+    "planner": "preview/facility-pool131/planner131.js",
+    "preview": "preview/facility-pool131/",
+    "regions": [
+      "JP",
+      "ID",
+      "EN"
+    ],
+    "regionRestriction": false,
+    "chancePerEligibleFloor": 0.5,
+    "maxPerFloor": 1,
+    "uniquenessScope": "entire-campaign",
+    "selection": "uniform-without-replacement",
+    "persistDecision": true,
+    "rerollOnRevisit": false,
+    "exhaustion": "no-facility",
+    "placementFailure": "retry-layout-with-the-same-facility",
+    "eligibleFloors": {
+      "JP": "잔향도시1~14층",
+      "ID": "진입층·3개 분기의 일반층",
+      "EN": "진입층·6개 이계의 일반층"
+    },
+    "specialFloors": "권역 보스·공통 최종 던전은 전용 지형을 유지한다.",
+    "encountersAndRewards": "match-host-floor; exact monsters/items/numbers deferred",
+    "loreAffiliation": "metadata-only; never an eligibility filter",
+    "maxPerFloorAppliesTo": "random-facilities-only; guaranteed HoloHome is separate",
+    "built": 9,
+    "planned": 33,
+    "nativeIntegrated": false
+  }
 }

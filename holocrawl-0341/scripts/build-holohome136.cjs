@@ -1,0 +1,25 @@
+const fs=require('fs'),path=require('path'),R=path.resolve(__dirname,'..'),S=path.join(R,'preview/holohome135'),D=path.join(R,'preview/holohome136');
+fs.mkdirSync(D,{recursive:true});
+let gen=fs.readFileSync(path.join(S,'generator135.js'),'utf8').replaceAll('135','136').replace("prop('tv',9,4,3,2)","prop('tv',9,4,2,2)");
+fs.writeFileSync(path.join(D,'generator136.js'),gen);
+// The original arched entrance is unchanged. Bring the wall faces up to its ivory palette.
+let mat=fs.readFileSync(path.join(S,'materials135.js'),'utf8').replaceAll('135','136');
+mat=mat.replace('[172+l*.11,165+l*.10,144+l*.08]','[204+l*.11,198+l*.10,177+l*.08]').replace('[209,199,172]','[234,226,202]').replace('[129,127,108]','[169,164,140]');
+fs.writeFileSync(path.join(D,'materials136.js'),mat);
+let app=fs.readFileSync(path.join(S,'app135.js'),'utf8').replaceAll('135','136');
+app=app.replace("load('../holohome133/assets/'+k+'-native.png')","load((['entrance','tv'].includes(k)?'assets/':'../holohome133/assets/')+k+'-native.png')");
+fs.writeFileSync(path.join(D,'app136.js'),app);
+let html=fs.readFileSync(path.join(S,'index.html'),'utf8').replaceAll('135','136');
+html=html.replace('홀로홈 · 고유 입구와 아담한 공용 라운지','홀로홈 · 기존 아치 입구 유지·작은 TV').replace('전용 아치 입구·양옆 조명·민트 창틀과 낡은 상아색 외벽을 살렸습니다.','기존 아치 입구는 그대로 유지하고 외벽을 같은 상아색에 맞췄습니다. TV 코너는64×64px로 줄였습니다.');
+html=html.replace('상아색 몰딩과 민트 창틀, 남색 포인트의 전용 아치 입구·작은 벽 조명. 입구와 외벽이 같은 높이로 이어집니다.','기존 아치 입구의 모양과 크기는 그대로입니다. 외벽 면과 몰딩의 색을 입구의 상아색에 맞춰 연결했습니다.');
+html=html.replace('마주 보는 파란 소파·작은 테이블·책장·TV·화분.','소파·테이블·책장·화분 배치는 유지. TV 코너는96×96px에서64×64px로 줄이고 화면·수납장을 작은 도트에 맞춰 다시 그렸습니다.');
+html=html.replace('거대한 양갈래 계단·발코니·기둥은 넣지 않았습니다.','TV 코너의 가로·세로가 기존의2/3입니다.');
+html=html.replace('<a href="../holohome133/">장식이 많았던133</a>','<a href="../holohome135/">수정 전135</a>');
+html=html.replace('../holohome133/prompts.json','prompts.json');
+html=html.replace('<footer>','<p><a href="random-floor-review.html">새 랜덤1층 전체 지도와 홀로홈 주변 보기 →</a></p><footer>');
+fs.writeFileSync(path.join(D,'index.html'),html);
+let check=fs.readFileSync(path.join(R,'scripts/check-holohome135.cjs'),'utf8').replaceAll('135','136');
+check=check.replace('assert.equal(assets.length,7);',"assert.equal(assets.length,7);assert.deepEqual([assets.find(a=>a.id==='entrance').w,assets.find(a=>a.id==='entrance').h],[96,48]);assert.deepEqual([assets.find(a=>a.id==='tv').w,assets.find(a=>a.id==='tv').h],[64,64]);assert.deepEqual(fs.readFileSync(path.join(D,'assets/entrance-native.png')),fs.readFileSync(path.resolve(D,'../holohome133/assets/entrance-native.png')));");
+check=check.replace('balancedFacility:true','balancedFacility:true,originalEntrancePreserved:true,compactTV:true');
+fs.writeFileSync(path.join(R,'scripts/check-holohome136.cjs'),check);
+console.log('Built136: original entrance preserved, matching ivory walls,64px TV.');

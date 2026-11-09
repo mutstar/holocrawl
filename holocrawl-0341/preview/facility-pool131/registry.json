@@ -1,0 +1,902 @@
+{
+  "revision": 131,
+  "policyStatus": "user-approved-browser-planning",
+  "nativeIntegrated": false,
+  "scope": "기존 JP9종 + 메인 섬 EN/ID6종 + 메가스피어16종 + 소다팝 라군11종. 건물·놀이시설을 고정지형으로 재해석한다. 홀로홈·메모리 스탠드와 일반 소품은 별도.",
+  "policy": {
+    "regions": [
+      "JP",
+      "ID",
+      "EN"
+    ],
+    "regionRestriction": false,
+    "chancePerEligibleFloor": 0.5,
+    "maxPerFloor": 1,
+    "uniquenessScope": "entire-campaign",
+    "selection": "uniform-without-replacement",
+    "persistDecision": true,
+    "rerollOnRevisit": false,
+    "exhaustion": "no-facility",
+    "placementFailure": "retry-layout-with-the-same-facility",
+    "eligibleFloors": {
+      "JP": "잔향도시1~14층",
+      "ID": "진입층·3개 분기의 일반층",
+      "EN": "진입층·6개 이계의 일반층"
+    },
+    "specialFloors": "권역 보스·공통 최종 던전은 전용 지형을 유지한다.",
+    "encountersAndRewards": "match-host-floor; exact monsters/items/numbers deferred",
+    "loreAffiliation": "metadata-only; never an eligibility filter",
+    "maxPerFloorAppliesTo": "random-facilities-only; guaranteed HoloHome is separate"
+  },
+  "facilities": [
+    {
+      "id": "holox",
+      "name": "holoX 연구소",
+      "member": "holoX",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/holox-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/holox-open124-2x.png",
+      "originalMap": "../city-facilities106/holox-map.json",
+      "origin": {
+        "x": 22,
+        "y": 5,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "theater",
+      "name": "2기생 극장",
+      "member": "2기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/theater-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/theater-open124-2x.png",
+      "originalMap": "../city-facilities106/theater-map.json",
+      "origin": {
+        "x": 63,
+        "y": 2,
+        "width": 8,
+        "height": 8
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "dev",
+      "name": "DEV_IS 쵸베리바 출장소",
+      "member": "DEV_IS",
+      "affiliation": "DEV_IS",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/dev-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/dev-open124-2x.png",
+      "originalMap": "../city-facilities106/dev-map.json",
+      "origin": {
+        "x": 57,
+        "y": 11,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "dining",
+      "name": "1기생 타라후쿠 저니",
+      "member": "1기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/dining-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/dining-open124-2x.png",
+      "originalMap": "../city-facilities106/dining-map.json",
+      "origin": {
+        "x": 17,
+        "y": 9,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "gamers",
+      "name": "게이머즈 폐역",
+      "member": "게이머즈",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/gamers-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/gamers-open124-2x.png",
+      "originalMap": "../city-facilities106/gamers-map.json",
+      "origin": {
+        "x": 2,
+        "y": 28,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "fantasy",
+      "name": "3기생 도타바타 그라운드",
+      "member": "3기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/fantasy-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/fantasy-open124-2x.png",
+      "originalMap": "../city-facilities106/fantasy-map.json",
+      "origin": {
+        "x": 29,
+        "y": 56,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "wheel",
+      "name": "4기생 기적의 바퀴",
+      "member": "4기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/wheel-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/wheel-open124-2x.png",
+      "originalMap": "../city-facilities106/wheel-map.json",
+      "origin": {
+        "x": 34,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "market",
+      "name": "5기생 네포라보 마트",
+      "member": "5기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/market-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/market-open124-2x.png",
+      "originalMap": "../city-facilities106/market-map.json",
+      "origin": {
+        "x": 5,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "member": "0기생",
+      "affiliation": "JP",
+      "sourceArea": "harmony-garden",
+      "status": "built",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "preview": "../facility-exteriors124/mountain-closed124-2x.png",
+      "openPreview": "../facility-exteriors124/mountain-open124-2x.png",
+      "originalMap": "../city-facilities106/mountain-map.json",
+      "origin": {
+        "x": 3,
+        "y": 8,
+        "width": 9,
+        "height": 9
+      },
+      "geometryStatus": "existing-validated",
+      "artStatus": "existing-review-art",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "promise",
+      "name": "프로미스 타워",
+      "member": "Promise",
+      "affiliation": "EN",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "시계탑의 중앙 기계실과 돌아가는 계단·연결 복도",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "myth",
+      "name": "포춘 네트워크",
+      "member": "Myth",
+      "affiliation": "EN",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "네트워크 중계실과 다섯 멤버의 장치가 있는 연결 허브",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "advent",
+      "name": "The Cell 리턴즈",
+      "member": "Advent",
+      "affiliation": "EN",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "감방·탈출 통로·중앙 보관실이 있는 수용 시설",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "area15",
+      "name": "루추추 모빌15",
+      "member": "ID 1기생",
+      "affiliation": "ID",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "풍선 판매차와 열린 휴게 공간",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "holoro",
+      "name": "토코호로로",
+      "member": "ID 2기생",
+      "affiliation": "ID",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "펜라이트 상점과 토스터 장치",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "h3ro",
+      "name": "h3ro 비클",
+      "member": "ID 3기생",
+      "affiliation": "ID",
+      "sourceArea": "harmony-garden",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "차량 정비 공간과 탐험대 보급 상자",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "capsule-kong",
+      "name": "캡슐 콩",
+      "member": "카엘라",
+      "affiliation": "ID",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "대형 캡슐 머신과 캡슐 보관실",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "robo-crane",
+      "name": "로보로보 크레인",
+      "member": "로보코",
+      "affiliation": "JP",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "크레인 게임기와 경품 창고",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "onigiri-panic",
+      "name": "오니기리 패닉",
+      "member": "오카유",
+      "affiliation": "JP",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "주먹밥 테마 게임 부스와 경품대",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "phoenix-dance",
+      "name": "댄스 댄스 피닉스",
+      "member": "키아라",
+      "affiliation": "EN",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "댄스 발판과 피닉스 장식이 있는 오락실",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "korone-fighting",
+      "name": "시바키아게 파이팅",
+      "member": "코로네",
+      "affiliation": "JP",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "격투 게임기와 작은 대전 공간",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "greed-cards",
+      "name": "카드 오브 그리드",
+      "member": "시오리",
+      "affiliation": "EN",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "카드 테이블과 책장·금고를 갖춘 카드룸",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "raven-bar",
+      "name": "레이븐 BAR",
+      "member": "네리사",
+      "affiliation": "EN",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "바 카운터와 피아노·좌석의 술집",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "haachama-lottery",
+      "name": "로터리 차마차맥스",
+      "member": "하쨔마",
+      "affiliation": "JP",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "복권 판매대와 추첨 장치",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "moon-ace",
+      "name": "문 에이스",
+      "member": "무나",
+      "affiliation": "ID",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "달 장식 카드룸",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "pekora-derby",
+      "name": "페코람블 더비",
+      "member": "페코라",
+      "affiliation": "JP",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "작은 타원형 경마장과 관람·발권 공간",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mega-coaster",
+      "name": "메가코스터",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "끊어진 롤러코스터 선로와 정비 통로",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mega-circuit",
+      "name": "메가서킷",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "장애물 코스와 우회 통로",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mega-photo",
+      "name": "메가프리",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "촬영 부스와 대기 공간",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "pokajan",
+      "name": "포카쟝",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "중앙 게임 테이블과 관전 좌석",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mega-slot",
+      "name": "메가슬롯",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "슬롯 머신 열과 교환 카운터",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "mega-exchange",
+      "name": "메가스피어 코인 교환소",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "mega-sphere",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "교환 창구와 안쪽 보관실",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "fish-blue",
+      "name": "피시 블루",
+      "member": "아오",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "물가 낚시 데크와 작은 관리소",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "bae-tackle",
+      "name": "베즈 비츠 앤드 봅스",
+      "member": "벨즈",
+      "affiliation": "EN",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "낚시용품점과 미끼 진열·보관대",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "ririka-lounge",
+      "name": "이치조 VIP 라운지",
+      "member": "리리카",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "수상 라운지의 카운터와 좌석·교환 창구",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "koyo-marine",
+      "name": "코요라보 해양지부",
+      "member": "코요리",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "해양 실험 장비와 보트 정비 시설",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "lagoon-stage",
+      "name": "소다팝 라군 스테이지",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "물에 둘러싸인 공연 무대와 연결 데크",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "lamy-dome",
+      "name": "라미즈 스노돔",
+      "member": "라미",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "스노돔 안 낚시터와 눈 장식",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "splash-stadium",
+      "name": "스플래시 스타디움",
+      "member": "공용",
+      "affiliation": "mixed",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "작은 수상 경기장과 관전 데크",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "marine-ship",
+      "name": "프린세스 마린호",
+      "member": "마린",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "해적선 갑판·선실·선장실의 서로 다른 동선",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "kobo-beacon",
+      "name": "보코보코 비콘",
+      "member": "코보",
+      "affiliation": "ID",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "비콘 장치와 물가 낚시터",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "upao-heaven",
+      "name": "우파오 헤븐",
+      "member": "카나타",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "라이브 굿즈점과 물총 진열대",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    },
+    {
+      "id": "polka-camp",
+      "name": "포포포 해피 캠프",
+      "member": "폴카",
+      "affiliation": "JP",
+      "sourceArea": "soda-pop-lagoon",
+      "status": "planned",
+      "eligibleRegions": [
+        "JP",
+        "ID",
+        "EN"
+      ],
+      "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "concept": "텐트·모닥불·캠핑 소품이 있는 야외 캠프",
+      "geometryStatus": "not-created",
+      "artStatus": "not-created",
+      "encountersStatus": "deferred"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "checked": "2026-11-09",
+      "type": "unofficial-facility-list"
+    },
+    {
+      "url": "https://www.hololive-dreams.com/news/detail/ydwwnk5rrr1p",
+      "checked": "2026-11-09",
+      "type": "official-area-announcement"
+    }
+  ],
+  "nextArtFacility": "promise",
+  "guaranteedFacilities": [
+    {
+      "id": "holohome",
+      "name": "홀로홈",
+      "status": "browser-prototype-user-review",
+      "region": "JP",
+      "floorId": "JP-main-1",
+      "floor": 1,
+      "chance": 1,
+      "count": 1,
+      "footprint": [
+        13,
+        11
+      ],
+      "preview": "../holohome136/",
+      "art": "../holohome136/home136.png",
+      "randomPoolMember": false,
+      "artRevision": 136,
+      "downstairs": {
+        "count": 1,
+        "alwaysInside": true,
+        "localCell": [
+          6,
+          2
+        ],
+        "nativeSize": [
+          32,
+          32
+        ],
+        "sprite": "../holohome133/assets/stairs-native.png",
+        "destination": "JP-main-2",
+        "reciprocal": true
+      },
+      "placement": "seeded-location-near-start; entrance and staircase connected",
+      "nativeIntegrated": false
+    }
+  ]
+}

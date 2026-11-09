@@ -1,0 +1,18 @@
+const fs=require('fs'),path=require('path'),R=path.resolve(__dirname,'..'),S=path.join(R,'preview/doorfit138'),D=path.join(R,'preview/doorfit141');fs.mkdirSync(path.join(D,'assets'),{recursive:true});
+for(const id of ['entrance','tv'])fs.copyFileSync(path.join(S,'assets',id+'-native.png'),path.join(D,'assets',id+'-native.png'));
+for(const name of ['generator','materials','app'])fs.writeFileSync(path.join(D,name+'141.js'),fs.readFileSync(path.join(S,name+'138.js'),'utf8').replaceAll('138','141'));
+fs.writeFileSync(path.join(D,'doors141.js'),`(function(root){'use strict';const cache=new WeakMap();
+function solids(m){if(cache.has(m))return cache.get(m);const a=Uint8Array.from(m.cells);for(const d of m.doors)if(!d.home&&direction(m,d)==='vertical')a[d.y*m.w+d.x]=0;cache.set(m,a);return a;}
+function direction(m,d){const wall=(x,y)=>x>=0&&y>=0&&x<m.w&&y<m.h&&m.cells[y*m.w+x]===0;return wall(d.x-1,d.y)&&wall(d.x+1,d.y)?'horizontal':'vertical';}
+function draw(q,m,d,opened,im,base){const x=d.x*32,y=d.y*32;
+ if(direction(m,d)==='horizontal'){q.drawImage(opened?im.opened:im.closed,x,y);return;}
+ // Retain the front-facing door. Align the reveals with the connected north/south wall sections.
+ q.fillStyle='#2d3b39';q.fillRect(x,y,32,32);q.drawImage(base,x+2,y+2,28,28,x+2,y+2,28,28);
+ q.fillStyle='#859791';q.fillRect(x,y,32,2);q.fillRect(x,y,2,32);q.fillRect(x+30,y,2,32);
+ q.drawImage(opened?im.opened:im.closed,0,0,32,32,x+2,y,28,32);
+}root.DoorFit141={solids,direction,draw};})(globalThis);`);
+let html=fs.readFileSync(path.join(S,'index.html'),'utf8').replaceAll('138','141').replace('세로벽 사이 문만 · 문틀 연결 수정','세로벽 문 · 위아래 벽 단면 맞추기');const a=html.indexOf('<h2>세로벽 사이 문'),b=html.indexOf('<footer>',a);html=html.slice(0,a)+'<h2>문 모양 유지 · 위아래 벽 단면 수정</h2><p>위쪽 벽의 두꺼운 앞면을 문 연결부에서 잘라내고, 아래쪽도 같은 세로 연결 단면으로 맞췄습니다. 문틀은 두 끝단 사이에 같은 높이로 이어집니다.</p><img src="doors-comparison141.png" style="width:100%;image-rendering:pixelated" alt="기존 단면·위아래 연결 단면 수정·문 열림"><p>정면 문·가로벽 문·홀로홈 고유 입구·실제 지형/통행은 그대로입니다.</p>'+html.slice(b);fs.writeFileSync(path.join(D,'index.html'),html);
+fs.writeFileSync(path.join(D,'door-review.html'),'<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>문 위아래 벽 단면 맞추기</title><style>body{margin:0;background:#17201f;color:#dfe9df;font:16px/1.6 system-ui}main{max-width:1380px;margin:auto;padding:20px}h1{font-size:25px;margin:0}p{color:#b7c8bd;margin:8px 0}a{color:#a3d5c5}img{width:100%;height:auto;image-rendering:pixelated}</style><main><h1>문이 꺼져 보이는 위아래 벽 단면 수정</h1><p>정면 문 모양은 유지하고, 위쪽의 두꺼운 앞면과 아래쪽의 얇은 윗선을 문 연결부에서 같은 단면으로 맞췄습니다.</p><p><a href="./?seed=F1-mw8yvehm&door=vertical">이 문에서 직접 탐험 →</a> · <a href="../doorfit138/door-review.html">기존 벽 단면</a></p><img src="doors-comparison141.png" alt="기존 단면·위아래 연결 단면 수정·열림 비교"><p>문 양옆으로 이동하는 규칙과 지형은 그대로인 브라우저 미술 시안입니다.</p></main></html>');
+let test=fs.readFileSync(path.join(R,'scripts/check-doorfit138.cjs'),'utf8').replaceAll('138','141');fs.writeFileSync(path.join(R,'scripts/check-doorfit141.cjs'),test);
+let exp=fs.readFileSync(path.join(R,'scripts/export-doorfit138.cjs'),'utf8').replaceAll('138','141').replace('for(const rev of [136,141])','for(const rev of [138,141])').replace("rev===136?'holohome136':'doorfit141'","rev===138?'doorfit138':'doorfit141'").replace("['이전 문','벽 높이·연결 수정','수정한 문 · 열림']","['기존 · 위아래 두께 차이','연결부 단면 수정 · 닫힘','연결부 단면 수정 · 열림']").replace("Math.floor(x/32)===d.x&&Math.floor(y/32)===d.y","Math.abs(Math.floor(x/32)-d.x)<=1&&Math.abs(Math.floor(y/32)-d.y)<=1");fs.writeFileSync(path.join(R,'scripts/export-doorfit141.cjs'),exp);
+console.log('Built141 matching wall reveals; front-facing door retained.');

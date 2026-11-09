@@ -1,0 +1,100 @@
+[
+  {
+    "id": "lantern-string",
+    "name": "낡은 초롱줄",
+    "w": 128,
+    "h": 32,
+    "footprint": [
+      4,
+      0
+    ],
+    "mount": "wall",
+    "description": "벽4칸 장식 · 처진 줄과 빛바랜 초롱",
+    "source": "assets/lantern-string-source.png",
+    "native": "assets/lantern-string-native.png"
+  },
+  {
+    "id": "nobori",
+    "name": "해진 노보리 깃발",
+    "w": 32,
+    "h": 48,
+    "footprint": [
+      1,
+      1
+    ],
+    "mount": "ground",
+    "description": "바닥1×1칸 · 기울어진 봉과 찢어진 천",
+    "source": "assets/nobori-source.png",
+    "native": "assets/nobori-native.png"
+  },
+  {
+    "id": "mask-rack",
+    "name": "홀로 가면 진열대",
+    "w": 64,
+    "h": 48,
+    "footprint": [
+      2,
+      1
+    ],
+    "mount": "ground",
+    "description": "바닥2×1칸 · 여우탈·오니탈·라덴의 탈",
+    "source": "assets/mask-rack-source.png",
+    "native": "assets/mask-rack-native.png"
+  },
+  {
+    "id": "taiko",
+    "name": "낡은 태고 북",
+    "w": 32,
+    "h": 32,
+    "footprint": [
+      1,
+      1
+    ],
+    "mount": "ground",
+    "description": "바닥1×1칸 · 닳은 북가죽과 북채",
+    "source": "assets/taiko-source.png",
+    "native": "assets/taiko-native.png"
+  },
+  {
+    "id": "yagura",
+    "name": "낡은 야구라 무대",
+    "w": 96,
+    "h": 112,
+    "footprint": [
+      3,
+      3
+    ],
+    "mount": "ground",
+    "description": "바닥3×3칸 · 붉고 흰 천의 봉오도리 무대",
+    "source": "assets/yagura-source.png",
+    "native": "assets/yagura-native.png"
+  },
+  {
+    "id": "bench",
+    "name": "낡은 휴게 벤치",
+    "w": 64,
+    "h": 32,
+    "footprint": [
+      2,
+      1
+    ],
+    "mount": "ground",
+    "description": "바닥2×1칸 · 벗겨진 붉은 칠과 나무 좌판",
+    "source": "assets/bench-source.png",
+    "native": "assets/bench-native.png"
+  },
+  {
+    "id": "festival-cart",
+    "name": "멈춘 축제 수레",
+    "w": 64,
+    "h": 64,
+    "footprint": [
+      2,
+      2
+    ],
+    "mount": "ground",
+    "description": "바닥2×2칸 · 나무 바퀴·말린 천·작은 북",
+    "source": "assets/festival-cart-source.png",
+    "native": "assets/festival-cart-native.png"
+  }
+]

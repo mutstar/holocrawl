@@ -1,0 +1,25 @@
+{
+  "seed": "F1-mw8yvehm",
+  "samples": [
+    {
+      "x": 48,
+      "y": 60,
+      "id": "street-5",
+      "home": false,
+      "direction": "vertical"
+    },
+    {
+      "x": 62,
+      "y": 27,
+      "id": "street-3",
+      "home": false,
+      "direction": "horizontal"
+    }
+  ],
+  "changedPixels": 10136,
+  "changesOutsideDoorNeighborhoods": 0,
+  "homeAndOtherSceneryPreserved": true,
+  "bothDirectionsSameFrame": true,
+  "equalDoorLeaves": true,
+  "wallRevealsPreserved": true
+}

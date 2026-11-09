@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>잔향도시 8~10층 · 낡은 축제장125</title><link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#17191a;color:#e5ded0;font:15px/1.65 system-ui}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:28px;margin:0}h2{font-size:20px;margin:0 0 8px}p{margin:6px 0 14px;color:#bcb6ac}.tag{color:#d8ae6f;font-size:13px;letter-spacing:.08em}.cards{display:grid;grid-template-columns:1.6fr 1fr .8fr;gap:16px;margin:22px 0}.card,.scene{background:#202323;border:1px solid #48463e;padding:18px;border-radius:8px}.card canvas{display:block;width:100%;image-rendering:pixelated;image-rendering:crisp-edges;background:repeating-conic-gradient(#292c2b 0% 25%,#242726 0% 50%) 50% / 16px 16px}.small{font-size:13px;color:#a8a59b;margin:10px 0 0}.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}button,select{font:inherit;color:#e5ded0;background:#33332e;border:1px solid #6e6858;padding:7px 12px;border-radius:4px;cursor:pointer}button[aria-pressed=true]{background:#6b4d39}label{display:flex;gap:6px;align-items:center}#map{display:block;width:100%;image-rendering:pixelated;border:1px solid #575346;background:#101312}#overview{width:240px;image-rendering:pixelated;border:1px solid #575346}.sceneFoot{display:flex;align-items:flex-start;gap:20px;margin-top:14px}.sceneFoot p{flex:1}a{color:#dbbc81}#status{color:#d9bb8c}.warning{border-left:3px solid #977848;padding-left:12px}footer{color:#9a9a91;font-size:13px;margin-top:20px}@media(max-width:760px){main{padding:14px}h1{font-size:23px}.cards{grid-template-columns:1fr}.card canvas{max-height:300px;object-fit:contain}.sceneFoot{flex-direction:column}}
+</style>
+<main><div class="tag">잔향도시 · 8~10층 미술 샘플125</div><h1>끝나지 않는 축제 — 낡은 벽과 타코야키 포장마차</h1>
+<p>빛바랜 붉은 천막, 손때 묻은 철판, 오래된 회벽과 희미한 초롱. 실제 타일 크기로 정리한 첫 분위기 샘플입니다.</p>
+<div class="cards">
+ <section class="card"><h2>① 낡은 회벽</h2><canvas id="walls" width="224" height="160"></canvas><p class="small">직선·한 칸·ㄱ자 연결. 타일마다 달랐던 밝기를 통일하고 낡은 무늬가 벽 전체에 이어지도록 수정했습니다.</p></section>
+ <section class="card"><h2>② 타코야키 포장마차</h2><canvas id="stall" width="144" height="112"></canvas><p class="small">96×64 · 가로3칸×세로2칸. 낡은 천막·문어 표지·타코야키 철판·소스병·종이 접시.</p></section>
+ <section class="card"><h2>③ 낡은 초롱</h2><canvas id="lantern" width="80" height="112"></canvas><p class="small">16×32 · 벽 부착 시11×22. 꺼진 초롱과 희미하게 켜진 초롱을 비교합니다.</p></section>
+</div>
+<section class="scene"><h2>기존 실제 생성 지도 위 배치 예시</h2><p>DCSS0.34.1에서 추출한 지형에 축제장 미술을 얹은 브라우저 시안입니다. 아래 지도는 새로 생성한8층이 아닙니다.</p>
+<div class="bar"><label>지도 <select id="mapSelect"></select></label><button id="nextSpot">다른 배치 지점</button><button id="aged" aria-pressed="true">낡은 축제 벽</button><button id="original" aria-pressed="false">기존 거리 벽 비교</button><label><input type="checkbox" id="lamps" checked>초롱 점등</label></div>
+<div style="overflow:auto;max-width:100%"><canvas id="map" width="576" height="352"></canvas></div><div id="status">이미지를 준비하는 중…</div>
+<div class="sceneFoot"><canvas id="overview" width="320" height="280"></canvas><div><p>포장마차는 긴 벽을 등지고 놓고, 앞에는 통행 공간을 남겼습니다. 문·계단 주변과 고정지형 내부는 배치 후보에서 제외합니다.</p><p class="warning">이번 검토는 벽·포장마차·초롱의 크기와 분위기입니다.8~10층 전체 생성기·출현 비중·추가 노점은 다음 단계에서 구성합니다.</p><p><a href="../city-street124/">1~3층 검토본124</a> · <a href="../city-market124/">4~7층 검토본124</a> · <a href="prompts.json">생성 프롬프트·원화 기록</a></p></div></div>
+</section><footer>AI 생성 원화를 게임 크기로 축소·정리한 샘플 · 원본PNG와 투명도 보존 · 브라우저 미리보기 · 실제 게임 적용 전 · 미술 승인 대기</footer></main>
+<script src="../wall-height121/wall121.js"></script><script src="festival125.js?v=wall-light02"></script>
+</html>

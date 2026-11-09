@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "revision": 126,
+  "stalls": [
+    {
+      "id": "takoyaki",
+      "opaque": 3580,
+      "transparent": 2564,
+      "outsideFootprintChanges": 0
+    },
+    {
+      "id": "yakisoba",
+      "opaque": 4338,
+      "transparent": 1806,
+      "outsideFootprintChanges": 0
+    },
+    {
+      "id": "ringoame",
+      "opaque": 3834,
+      "transparent": 2310,
+      "outsideFootprintChanges": 0
+    },
+    {
+      "id": "goldfish",
+      "opaque": 4558,
+      "transparent": 1586,
+      "outsideFootprintChanges": 0
+    },
+    {
+      "id": "shooting",
+      "opaque": 4657,
+      "transparent": 1487,
+      "outsideFootprintChanges": 0
+    }
+  ],
+  "spriteDimensions": [
+    96,
+    64
+  ],
+  "distinctSprites": 5,
+  "sourceMapSwitches": 3,
+  "stallMapCombinations": 15,
+  "wallLighting02RendererIdentical": true,
+  "pageErrors": [],
+  "failedRequests": [],
+  "mobileOverflow": false,
+  "nativeIntegrated": false
+}

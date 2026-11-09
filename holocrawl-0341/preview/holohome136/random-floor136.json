@@ -1,0 +1,31 @@
+{
+  "seed": "F1-mw8yvehm",
+  "w": 80,
+  "h": 70,
+  "home": {
+    "id": "holohome",
+    "x": 24,
+    "y": 42,
+    "w": 13,
+    "h": 11
+  },
+  "homeDownstairs": {
+    "id": "down-0",
+    "kind": "down",
+    "pair": 0,
+    "x": 30,
+    "y": 44,
+    "home": true
+  },
+  "doorCount": 15,
+  "stairs": 6,
+  "connected": true,
+  "neighborhood": {
+    "x": 11,
+    "y": 33,
+    "w": 39,
+    "h": 29
+  },
+  "source": "seeded browser StreetGen; native integration pending",
+  "nativeIntegrated": false
+}

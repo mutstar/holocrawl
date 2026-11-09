@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "opened": false,
+      "dir": "vertical",
+      "wrongSillPixels": 0
+    },
+    {
+      "opened": false,
+      "dir": "horizontal",
+      "wrongSillPixels": 0
+    },
+    {
+      "opened": true,
+      "dir": "vertical",
+      "wrongSillPixels": 0
+    },
+    {
+      "opened": true,
+      "dir": "horizontal",
+      "wrongSillPixels": 0
+    }
+  ],
+  "spritesUnchanged": true
+}
