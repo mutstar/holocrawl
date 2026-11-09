@@ -1,0 +1,84 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -497,6 +497,11 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(crawl_state.test && you.props.exists("holo_sopia_gravity_preview") && !flashes.empty()) {
++        const int r=you.props["holo_sopia_gravity_preview"].get_int();
++        if(p==flashes.front()-coord_def(r,r)){span_x=span_y=2*r+1;return effect::gravity;}
++        return effect::none;
++    }
+     if(flash_kind!=effect::lamybanquetcast0 && holo_campaign::active()
+         && holo_worship::current()=="lamy" && holo_batch::s.five_end>you.elapsed_time
+         && p==you.pos()-coord_def(1,1)) {
+@@ -1010,6 +1015,14 @@
+             if(inside && (std::abs(x)>r || std::abs(y)>r))throw std::runtime_error("Sopia effect outside footprint");
+         }
+         if(count!=(2*r+1)*(2*r+1))throw std::runtime_error("Sopia gravity footprint mismatch");
++        int sx=1,sy=1;
++        if(invocation_sprite_at(pos-coord_def(r,r),sx,sy)!=effect::gravity || sx!=2*r+1 || sy!=2*r+1)
++            throw std::runtime_error("Sopia full-field image anchor/span mismatch");
++        int anchors=0;for(int y=-r;y<=r;++y)for(int x=-r;x<=r;++x) {
++            int w=1,h=1;anchors+=invocation_sprite_at(pos+coord_def(x,y),w,h)==effect::gravity;
++        }
++        if(anchors!=1)throw std::runtime_error("Sopia full-field image must be drawn once");
++
+         std::ofstream(path+"-range.json")<<"{\"status\":\"passed\",\"cells\":"<<count<<",\"radius\":"<<r<<"}\n";
+     }
+ 
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -19,6 +19,7 @@
+     m_buf_feat(&im->m_textures[TEX_FEAT]),
+     m_buf_feat_trans(&im->m_textures[TEX_FEAT], 17),
+     m_buf_holo_ground_vfx(&im->m_textures[TEX_FEAT]),
++    m_buf_holo_ground_tint(&im->m_textures[TEX_FEAT]),
+     m_buf_doll(&im->m_textures[TEX_PLAYER], 17),
+     m_buf_main_trans(&im->m_textures[TEX_DEFAULT], 17),
+     m_buf_main(&im->m_textures[TEX_DEFAULT]),
+@@ -159,6 +160,18 @@
+ {
+     if(tileidx) {
+         const auto &inf=tile_feat_info(tileidx);
++        if(tileidx>=TILE_HOLO_FX_SOPIAGRAVITY0 && tileidx<=TILE_HOLO_FX_SOPIAGRAVITY3) {
++            // Full-footprint preview, tinted below actors. Texture alpha and
++            // vertex opacity multiply; do not alter the generated bitmap.
++            const auto *texture=static_cast<const TilesTexture *>(m_buf_holo_ground_tint.current_texture());
++            float sx=x,sy=y,ex,ey,tx,ty,ux,uy;
++            if(texture->get_coords(tileidx,(inf.width-TILE_X)/2,inf.height-TILE_Y,
++                sx,sy,ex,ey,tx,ty,ux,uy,true,-1,-1,float(inf.width)/span_x,float(inf.height)/span_y)) {
++                GLWPrim rect(sx,sy,ex,ey);rect.set_tex(tx,ty,ux,uy);
++                rect.set_col(VColour(255,255,255,105));m_buf_holo_ground_tint.add_primitive(rect);
++            }
++            return;
++        }
+         // Native-size ceremonial sprites keep their detail. For ordinary
+         // 32x32 tiles these offsets/divisors are identical to the old path.
+         auto &buffer=under_actors?m_buf_holo_ground_vfx:m_buf_holo_vfx;
+@@ -321,6 +334,7 @@
+     m_buf_feat.clear();
+     m_buf_feat_trans.clear();
+     m_buf_holo_ground_vfx.clear();
++    m_buf_holo_ground_tint.clear();
+     m_buf_doll.clear();
+     m_buf_main_trans.clear();
+     m_buf_main.clear();
+@@ -340,6 +354,7 @@
+     m_buf_feat_trans.draw();
+     // Large garden bloom belongs below every actor and its status/HP marks.
+     m_buf_holo_ground_vfx.draw();
++    m_buf_holo_ground_tint.draw();
+     m_buf_doll.draw();
+     m_buf_main_trans.draw();
+     m_buf_main.draw();
+--- before/tiledgnbuf.h
++++ after/tiledgnbuf.h
+@@ -57,6 +57,7 @@
+     TileBuffer m_buf_feat;
+     SubmergedTileBuffer m_buf_feat_trans;
+     TileBuffer m_buf_holo_ground_vfx;
++    ColouredTileBuffer m_buf_holo_ground_tint;
+     SubmergedTileBuffer m_buf_doll;
+     SubmergedTileBuffer m_buf_main_trans;
+     TileBuffer m_buf_main;

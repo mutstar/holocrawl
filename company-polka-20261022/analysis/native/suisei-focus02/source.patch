@@ -1,0 +1,209 @@
+--- before/beam.cc
++++ after/beam.cc
+@@ -4861,6 +4861,13 @@
+ 
+     if (beam_hit != AUTOMATIC_HIT)
+     {
++        // Target-specific spell accuracy. Weapon projectiles receive the
++        // bonus through attack::calc_to_hit; never add it a second time here.
++        // Engulfing/explosion and MR attacks have separate native rules.
++        if(source_id==you.mid && origin_spell!=SPELL_NO_SPELL
++            && !is_enchantment() && !engulfs && !is_explosion)
++            beam_hit+=holo_batch::suisei_focus_accuracy(mon);
++
+         if (mon->invisible() && !can_see_invis)
+             beam_hit /= 2;
+ 
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -297,11 +297,21 @@
+     ctx=action_context();
+ }
+ void cancel_attack() { ctx=action_context(); }
++int suisei_focus_accuracy(const actor *target)
++{
++    if(!is(god_id::suisei) || you.piety<50 || !holo_campaign::ordinary_damage()
++        || internal_damage || !target || !target->is_monster() || !target->alive()
++        || target->as_monster()->attitude!=ATT_HOSTILE || target->mid!=s.marked
++        || s.one_end<=you.elapsed_time || s.resource<2)return 0;
++    return 3;
++}
+ int to_hit(const actor *attacker,const actor *defender)
+ {
+     if(!active()) return 0;
+     if(attacker->is_player() && defender->is_monster()) {
+         int bonus=0;
++        if(ctx.ordinary && (ctx.kind==attack_kind::melee || ctx.kind==attack_kind::ranged))
++            bonus+=suisei_focus_accuracy(defender);
+         if(is(god_id::ayame) && ctx.ordinary && ctx.kind==attack_kind::melee && s.marked==defender->mid && s.one_end>you.elapsed_time
+             && adjacent(you.pos(),defender->pos())) bonus+=3+s.inv/6+(five() ? 4 : 0);
+         if(is(god_id::hajime) && ctx.ordinary && ctx.kind==attack_kind::melee) bonus+=ctx.stars_before;
+--- before/holo-batch.h
++++ after/holo-batch.h
+@@ -33,6 +33,7 @@
+ public: explicit waking_spell_scope(bool direct_player_spell);~waking_spell_scope();
+ };
+ void after_move(const coord_def &old,bool voluntary=true);
++int suisei_focus_accuracy(const actor *target);
+ int to_hit(const actor *attacker,const actor *defender);
+ int slaying(const actor *defender,bool aux);
+ int raw_bonus(const actor *defender);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -27,6 +27,8 @@
+ #include "env.h"
+ #include "files.h"
+ #include "fight.h"
++#include "melee-attack.h"
++#include "ranged-attack.h"
+ #include "food.h"
+ #include "item-prop.h"
+ #include "macro.h"
+@@ -173,6 +175,74 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    if(getenv("HOLOCRAWL_SUISEI_FOCUS_RELOAD")) {
++        holo_reset_validation_fixture();reload_disk(dir+"/focus-save");
++        auto *m=monster_by_mid(holo_batch::s.marked);
++        require(you.piety==50 && holo_worship::rank()==2 && m && holo_batch::suisei_focus_accuracy(m)==3,"Suisei focused observation restore");
++        step(10);std::ifstream expected(dir+"/focus-expected.txt");std::string text((std::istreambuf_iterator<char>(expected)),{});
++        require(text==signature(),"Suisei focus native continuation differs");
++        std::ofstream(dir+"/focus-reload.json")<<"{\"status\":\"passed\",\"derivedPassiveRestored\":true,\"piety\":50,\"rank\":2,\"exactContinuation\":true}\n";
++        close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_SUISEI_FOCUS_REVIEW")) {
++        using namespace holo_batch;
++        auto *m=fixture("suisei",50);s.marked=m->mid;s.resource=2;s.one_end=100;
++        const auto stable=signature();require(suisei_focus_accuracy(m)==3 && stable==signature(),"Suisei focus query mutated world/RNG");
++        require(holo_worship::rank()==2,"Suisei faith50 not rank2");
++        you.piety=49;require(suisei_focus_accuracy(m)==0 && holo_worship::rank()==1,"focus unlocked below50");you.piety=50;
++        for(int stars=0;stars<=3;++stars){s.resource=stars;require(suisei_focus_accuracy(m)==(stars>=2?3:0),"focus stack threshold");}
++        s.resource=2;s.one_end=you.elapsed_time;require(suisei_focus_accuracy(m)==0,"expired focus");s.one_end=100;
++        const auto marked=s.marked;s.marked=MID_NOBODY;require(suisei_focus_accuracy(m)==0,"focus affects unmarked foe");s.marked=marked;
++        require(suisei_focus_accuracy(&you)==0,"focus affects player");
++        {damage_scope god_damage(true);require(suisei_focus_accuracy(m)==0,"divine power got focus");}
++        for(int inv:{0,12,27}){s.inv=inv;require(suisei_focus_accuracy(m)==3,"focus scales with Invocations");}
++        s.inv=12;
++        // Inspect the same native weapon attack object before hit randomisation.
++        begin_attack(*m,attack_kind::melee);melee_attack melee(&you,m);
++        s.resource=1;const int melee0=melee.calc_to_hit(false);s.resource=2;const int melee1=melee.calc_to_hit(false);
++        require(to_hit(&you,m)==3 && melee1-melee0>=1 && melee1-melee0<=2,"native melee raw+3 and average delta");cancel_attack();
++        for(int subtype:{MI_STONE,MI_JAVELIN,MI_DART}) {
++            item_def missile;missile.base_type=OBJ_MISSILES;missile.sub_type=subtype;missile.quantity=1;
++            begin_attack(*m,attack_kind::ranged);ranged_attack ranged(&you,m,&missile,false);
++            s.resource=1;const int before=ranged.calc_to_hit(false);s.resource=2;const int after=ranged.calc_to_hit(false);
++            require(to_hit(&you,m)==3 && after-before>=1 && after-before<=2,"native thrown raw+3 and average delta");cancel_attack();
++        }
++        // Native bolt path: use identical seeds on a foe with ordinary EV.
++        // Accuracy5/8 is deliberately low enough to expose the +3 delta.
++        int hits[2]={0},automatic_damage[2]={0},slow_duration[2]={0};
++        std::vector<unsigned char> automatic_rng,slow_rng;
++        for(int focused=0;focused<=1;++focused) {
++            m=fixture("suisei",50);require(m->move_to_pos(you.pos()+coord_def(2,0)),"focus spell target");
++            for(int seed=0;seed<64;++seed) {
++                s.marked=m->mid;s.resource=focused?2:1;s.one_end=100;m->hit_points=10000;
++                command_scope command;bolt beam;beam.name="focus test bolt";beam.origin_spell=SPELL_THROW_FLAME;
++                beam.source=you.pos();beam.target=m->pos();beam.range=5;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++                beam.flavour=BEAM_FIRE;beam.damage=dice_def(4,20);beam.hit=5;rng::seed(71000+seed);
++                beam.fire();you.turn_is_over=true;you.time_taken=10;hits[focused]+=m->hit_points<10000;
++            }
++            m=fixture("suisei",50);require(m->move_to_pos(you.pos()+coord_def(2,0)),"focus auto-hit target");s.marked=m->mid;s.resource=focused?2:1;s.one_end=100;
++            {command_scope command;bolt beam;beam.name="magic dart";beam.origin_spell=SPELL_MAGIC_DART;
++             beam.source=you.pos();beam.target=m->pos();beam.range=5;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++             beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(4,20);beam.hit=AUTOMATIC_HIT;rng::seed(72000);
++             beam.fire();require(beam.hit==AUTOMATIC_HIT,"auto-hit sentinel changed");you.turn_is_over=true;you.time_taken=10;}
++            automatic_damage[focused]=10000-m->hit_points;
++            if(!focused)automatic_rng=rng_bytes();else require(automatic_rng==rng_bytes(),"focus changed auto-hit RNG");
++            m=fixture("suisei",50);require(m->move_to_pos(you.pos()+coord_def(2,0)),"focus MR target");s.marked=m->mid;s.resource=focused?2:1;s.one_end=100;
++            bolt slow;zappy(ZAP_SLOW,40,false,slow);slow.source=you.pos();slow.target=m->pos();slow.range=5;slow.source_id=you.mid;slow.thrower=KILL_YOU;
++            rng::seed(73000);slow.fire();slow_duration[focused]=m->has_ench(ENCH_SLOW)?m->get_ench(ENCH_SLOW).duration:0;
++            if(!focused)slow_rng=rng_bytes();else require(slow_rng==rng_bytes(),"focus changed MR RNG");
++        }
++        require(hits[1]>hits[0],"focused native spell hit checks did not improve");
++        require(automatic_damage[0]==automatic_damage[1] && slow_duration[0]==slow_duration[1],"focus changed auto-hit damage or MR outcome");
++        m=fixture("suisei",50);require(m->move_to_pos(you.pos()+coord_def(2,0)),"focus indicator target");
++        for(int count=1;count<=3;++count){s.marked=m->mid;s.resource=count;s.one_end=100;holo_visual::capture(std::string(shots)+"/focus"+std::to_string(count)+".png");}
++        s.resource=2;const int hp=you.hp,mp=you.magic_points,faith=you.piety,now=you.elapsed_time;const auto query_rng=rng_bytes();
++        for(int n=0;n<10;++n)require(suisei_focus_accuracy(m)==3,"focus query unstable");
++        require(hp==you.hp && mp==you.magic_points && faith==you.piety && now==you.elapsed_time && query_rng==rng_bytes(),"passive query consumed resources/time/RNG");
++        auto prior=Options.save_dir;const bool no_save=Options.no_save;save_disk(dir+"/focus-save");step(10);std::ofstream(dir+"/focus-expected.txt")<<signature();
++        close_save();Options.save_dir=prior;Options.no_save=no_save;
++        std::ofstream proof(dir+"/suisei-focus.json");proof<<"{\"status\":\"passed\",\"piety\":50,\"stars\":2,\"accuracy\":3,\"nativeMeleeDelta\":"<<3<<",\"nativeMeleeAverageDelta\":"<<melee1-melee0<<",\"nativeThrownTypes\":[\"stone\",\"javelin\",\"dart\"],\"nativeSpellTrialsPerCase\":64,\"spellHitsBefore\":"<<hits[0]<<",\"spellHitsAfter\":"<<hits[1]<<",\"autoHitDamageUnchanged\":true,\"mrOutcomeAndRngUnchanged\":true,\"noResourceCost\":true,\"expiryAndFaithControls\":true,\"divineExcluded\":true,\"fixedAcrossInvocations\":true}\n";
+     }
+     if(getenv("HOLOCRAWL_SUISEI_THREE_RELOAD")) {
+         holo_reset_validation_fixture();reload_disk(dir+"/suisei-save");
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -279,7 +279,7 @@
+ void grant(int amount) {
+     if(!active() || amount<=0)return;
+     const int before=you.piety;you.piety=std::min(200,before+amount);you.redraw_title=true;
+-    for(int threshold:{30,75,120})if(before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
++    for(int threshold:{30,50,75,120})if((threshold!=50 || holo_worship::current()=="suisei") && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
+     refresh();
+ }
+ void advance() {
+@@ -380,10 +380,11 @@
+     std::vector<std::string> lines;if(!active())return lines;
+     const auto &s=holo_batch::s;const auto g=holo_worship::current();
+     const int rank=holo_worship::rank();
+-    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks 30 / 75 / 120",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points)));
++    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 120":"30 / 75 / 120"));
+     const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
+     if(g=="suisei")lines.push_back(make_stringf("Constellation stars: %d/3 | next-hit reward: %d (%s)",s.resource,s.three_end>you.elapsed_time?s.offence:0,turns(s.three_end).c_str()));
++    if(g=="suisei")lines.push_back(std::string("2* Focused observation: ")+(you.piety<50?"locked (piety50)":holo_batch::suisei_focus_accuracy(monster_by_mid(s.marked))?"active: accuracy +3 vs marked foe":"ready: needs 2+ stars on marked foe"));
+     lines.push_back("Corner marks: upper-left power; lower-left protection; upper-right wrath; lower-right recovery/resource.");
+     if(g=="sopia")lines.push_back(holo_sopia::status());
+     if(g=="koyori")lines.push_back(holo_koyori::status());
+@@ -456,6 +457,7 @@
+     if(g=="koyori")lines.push_back("1*: passive direct attack spells cycle Heat/Cold/Poison; no extra MP/piety. Heat1d(4+Inv/6), Cold1d(3+Inv/9) and move+15%/2t, Poison(2+Inv/12)x2 ticks. Marks6t. 3*: eligible ranged attack spells +1 range, LOS cap, no blast-radius change. Different reagents react once/cast: fire2d(5+Inv/4) radius1, thermal3d(6+Inv/4) half AC, slime2d(3+Inv/6) radius1 and move+35%/3t. All reaction damage x0.85 rounded down once. No self/ally splash. 5*: MP6/piety10,0.5t;8t or4 successful attack casts;20t cooldown from activation. Pairs thermal/fire/slime/thermal; reaction x1.5 for thermal(ignore AC), x1.35 otherwise; slime move+50%/4t. No tools/clouds/pets/poison followup/recursion. One reagent application per target and one reaction centre per cast. Existing marks and sequence saved.");
+     if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, damaging spells and tools: one chill/target/use. A cloud field plus all spread cells share that use; first positive damage only, no direct+cloud double stack, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/use and per10aut (a cloud field can burst once total):2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/divine/poison-DoT procs. Tool charges and costs remain normal; cloud ticks do not repeatedly stack. Old untagged clouds are excluded.");
+     if(g=="suisei")lines.push_back("1* passive: one star per positive direct attack, max3, expires10 turns since last hit. A marked kill grants next-hit1d(3+4*stars) for3 turns, AC applies. Manual retarget costs1 turn. 3* active: MP3/piety3/1turn, range5 piercing,2d(8+Inv/2)+5 per marked star; consumes stars only on hit. 5* active: MP6/piety10/1turn, range6 fixed3x3, lands2turns after completion;3d(10+Inv/2)+8 per snapshotted marked star, AC applies. No tracking. Allies/self may be hit.");
++    if(g=="suisei")lines.push_back("2* passive Focused observation (piety50): +3 accuracy vs the live marked foe at2+stars. Ordinary melee/ranged and attack spells with normal hit checks only. No damage bonus, MP/piety/turn/star cost or Invocations scaling. Auto-hit, explosion/engulf and MR checks unchanged. Ends when stars fall below2, mark expires, target changes or piety falls below50.");
+     if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+     if(g=="noel")lines.push_back("Taboo: voluntary berserk costs 10 piety and ends Knight's skill / Silver commander.");
+     lines.push_back(holo_wrath::description(g));
+--- before/holo-worship.cc
++++ after/holo-worship.cc
+@@ -130,7 +130,7 @@
+ int rank()
+ {
+     if(!active()) return 0;
+-    return you.piety>=120?5:you.piety>=75?3:you.piety>=30?1:0;
++    return you.piety>=120?5:you.piety>=75?3:current()=="suisei" && you.piety>=50?2:you.piety>=30?1:0;
+ }
+ void validate_save()
+ {
+@@ -231,7 +231,7 @@
+ {
+     Menu menu(MF_SINGLESELECT);
+     menu.set_title(new MenuEntry("HoloCrawl: "+display_name(),MEL_TITLE));
+-    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (30 / 75 / 120).",int(you.piety),rank()),MEL_SUBTITLE));
++    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
+     menu.add_entry(new MenuEntry("Use a to choose invocations. Natural kills grant piety; decay is 1 per 300 turns.",MEL_SUBTITLE));
+     for(const auto &line:holo_campaign::status_lines())menu.add_entry(new MenuEntry(line,MEL_SUBTITLE));
+     if(active())menu.add_entry(new MenuEntry("God description and worship rules",MEL_ITEM,1,'?'));
+@@ -297,9 +297,9 @@
+         const int mp=you.magic_points;
+         require(!join(id,false) && !you.turn_is_over && you.time_taken==0
+             && you.piety==15 && you.magic_points==mp,"same-god join changed resources/time");
+-        for(int p:{0,29,30,74,75,119,120,200}) {
++        for(int p:{0,29,30,49,50,74,75,119,120,200}) {
+             you.piety=p;
+-            const int expected=p>=120?5:p>=75?3:p>=30?1:0;
++            const int expected=p>=120?5:p>=75?3:id=="suisei" && p>=50?2:p>=30?1:0;
+             require(rank()==expected,"unlock boundary");
+             const auto states=rng::get_states();
+             auto bytes=player_tag();
+@@ -320,7 +320,7 @@
+         renounce(false);
+     }
+     require(history_count()==22,"distinct worship history");
+-    fprintf(stderr,"worship01: all 176 player/character tag roundtrips passed\n");
++    fprintf(stderr,"worship01: all %d player/character tag roundtrips passed\n",roundtrips);
+     you.turn_is_over=false;you.time_taken=0;
+     require(!join("unknown",false) && !you.turn_is_over,"unknown god accepted");
+     grd(you.pos())=DNGN_FLOOR;

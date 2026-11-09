@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "archive": "C:\\Users\\071staff\\Desktop\\HOLOCRAWL_HOME_2026-10-21_LAMY_CASTER01.zip",
+  "bytes": 412764134,
+  "sha256": "76C3EDEF1DE76EF0B8205ED4CF57A5F50A334D005212021205CC06DCC3539D79",
+  "files": 34328,
+  "allArchivedHashesVerified": true,
+  "crcVerified": true,
+  "relocatedNativeSmokePassed": true,
+  "previewImagesVerified": 110,
+  "removedOnlyRedundantRawCaptures": true
+}

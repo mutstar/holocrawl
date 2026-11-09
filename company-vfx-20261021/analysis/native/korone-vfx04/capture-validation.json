@@ -1,0 +1,9 @@
+{
+  "scope": "VFX and native state controls, not campaign winrate.",
+  "rawScreenshots": 207,
+  "status": "passed",
+  "binarySha256": "84179BF030A1C12D5B84616D171F1D7640E5AAC5319FE3BC198F25A416862223",
+  "gods": 22,
+  "freshProcessRestore": true,
+  "chocoControls": false
+}

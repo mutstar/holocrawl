@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "revision": "su-five01",
+  "binarySha256": "b7730c3c9305429697683b8ffb2453c12d3e26e014b22dadc986031510c1acd1",
+  "combatChanged": false,
+  "artChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "invocations": 12,
+    "mpCost": 6,
+    "pietyCost": 12,
+    "remainingAfterCastAut": 84,
+    "nativeMovement": true,
+    "movingField": true,
+    "playerGrace": true,
+    "outsideUnaffected": true,
+    "naturalWaterPreserved": true,
+    "expired": true,
+    "damageA": 21,
+    "damageB": 49
+  },
+  "validation": {
+    "gods": 22,
+    "rawScreenshots": 13,
+    "binarySha256": "B7730C3C9305429697683B8FFB2453C12D3E26E014B22DADC986031510C1ACD1",
+    "chocoControls": false,
+    "status": "passed",
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate."
+  }
+}

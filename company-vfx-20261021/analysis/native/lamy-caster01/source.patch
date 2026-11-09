@@ -1,0 +1,553 @@
+--- before/Makefile.obj
++++ after/Makefile.obj
+@@ -7,6 +7,7 @@
+ holo-dungeon-test.o \
+ holocrawl.o \
+ holo-sopia.o \
++holo-lamy.o \
+ holo-batch.o \
+ holo-batch-martial.o \
+ holo-batch-resources.o \
+--- before/spl-cast.cc
++++ after/spl-cast.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-campaign.h"
+ #include "holo-batch.h"
+ 
+@@ -485,6 +486,7 @@
+         power = stepdown_spellpower(power, scale);
+     }
+ 
++    if(!fail_rate_check)power=holo_lamy::power(spell,power);
+     const int cap = spell_power_cap(spell);
+     if (cap > 0 && cap_power)
+         power = min(power, cap * scale);
+@@ -1501,6 +1503,7 @@
+         holo_campaign::beam_target(monster_at(beam.target),true);
+     // Limit ordinary spell attribution to this cast, before world/cloud ticks.
+     holo_batch::waking_spell_scope waking_spell(allow_fail && fail==0 && !evoked_item);
++    holo_lamy::spell_scope lamy_cast(spell,allow_fail && fail==0 && !evoked_item);
+     spret cast_result = _do_cast(spell, powc, spd, beam, god, fail);
+ 
+     switch (cast_result)
+--- before/monster.cc
++++ after/monster.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-batch.h"
+ 
+ #include <algorithm>
+@@ -4469,6 +4470,7 @@
+             amount=holo_batch::waking_damage(*this,agent,amount,kill_type);
+         amount = min(amount, hit_points);
+         hit_points -= amount;
++        holo_lamy::damage(*this,agent,amount,flavour,kill_type);
+ 
+         if (hit_points > max_hit_points)
+         {
+--- before/player.cc
++++ after/player.cc
+@@ -4,6 +4,7 @@
+ **/
+ 
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-wrath.h"
+ #include "holocrawl.h"
+ #include "holo-batch.h"
+@@ -6014,7 +6015,7 @@
+     const int invis_penalty
+         = attacker_invis && !testbits(evit, ev_ignore::helpless) ? 10 : 0;
+ 
+-    return max(0,base_evasion - constrict_penalty - invis_penalty+holo_wrath::evasion());
++    return max(0,base_evasion - constrict_penalty - invis_penalty+holo_wrath::evasion()-holo_lamy::evasion_penalty());
+ }
+ 
+ bool player::heal(int amount)
+--- before/status.cc
++++ after/status.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ 
+ #include "status.h"
+ #include "holo-campaign.h"
+@@ -198,10 +199,13 @@
+         const auto &ls=holo_batch::s;
+         const int amount=max(0,min(100,ls.resource));
+         const int remaining=max(0,(ls.five_end-you.elapsed_time+9)/10);
+-        // Current combat thresholds: new caster design remains a proposal.
+-        const char *stage=remaining>0?"Banquet":amount>60?"Drunk":amount>=20?"Tipsy":"Sober";
+-        inf.light_colour=remaining>0?LIGHTMAGENTA:amount>60?LIGHTRED:amount>=20?LIGHTCYAN:LIGHTGREY;
++        // Caster redesign: 20..69 proper; >=70 overdrunk.
++        const char *stage=remaining>0?"Banquet":amount>=70?"Drunk":amount>=20?"Tipsy":"Sober";
++        inf.light_colour=remaining>0?LIGHTMAGENTA:amount>=70?LIGHTRED:amount>=20?LIGHTCYAN:LIGHTGREY;
+         inf.light_text=remaining>0?make_stringf("Banquet %dt",remaining):make_stringf("%s %d/100",stage,amount);
++        const int bonus=holo_lamy::power_bonus();
++        if(bonus>0)inf.light_text+=make_stringf(" P+%d%%",bonus);
++        if(holo_lamy::evasion_penalty())inf.light_text+=" EV-3";
+         inf.short_text=make_stringf("Lamy: %s, intoxication %d/100",stage,amount);
+         inf.long_text=remaining>0?make_stringf("Snow banquet: %d turns remaining; intoxication %d/100.",remaining,amount):make_stringf("Lamy intoxication: %d/100 (%s).",amount,stage);
+         return true;
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-campaign.h"
+ #include <sstream>
+ #include "holo-batch-internal.h"
+@@ -306,7 +307,7 @@
+         if(is(god_id::hajime) && ctx.ordinary && ctx.kind==attack_kind::melee) bonus+=ctx.stars_before;
+         if(is(god_id::korone)) bonus+=five() ? 6 : s.resource;
+         if(is(god_id::korone) && s.defence) bonus+=6;
+-        if(is(god_id::lamy) && !five()) bonus-=s.resource>80 ? 8 : s.resource>60 ? 4 : 0;
++
+         if(is(god_id::polka) && s.one_end>you.elapsed_time) bonus+=3;
+         if(is(god_id::towa) && ctx.ordinary && ctx.kind==attack_kind::ranged) {
+             if(enemies(you.pos(),1).empty()) bonus+=4+s.inv/6;
+@@ -351,7 +352,7 @@
+     int percent=100;
+     if(is(god_id::vivi) && (s.one_end>you.elapsed_time || five()))
+         percent+=10+s.inv/6+(five() ? 5*ctx.attention : 0);
+-    if(is(god_id::lamy) && !five() && s.resource>60) percent+=15;
++
+     if(is(god_id::polka)) {
+         if(s.one_end>you.elapsed_time) percent+=10;
+         if(s.tertiary>you.elapsed_time) percent+=20;
+@@ -386,7 +387,7 @@
+ int resistance(beam_type flavour)
+ {
+     if(flavour==BEAM_FIRE && is(god_id::mela)) return probe_is("no_fire_ward")?0:(passive()?1:0)+(five()?1:0);
+-    if(flavour==BEAM_COLD && is(god_id::lamy) && ((passive() && s.resource>=20) || five())) return 1;
++
+     return 0;
+ }
+ int natural_regen(int base)
+@@ -399,13 +400,7 @@
+         ctx.element=flavour;note_primary_damage(target,damage);
+     }
+ }
+-int spell_failure(int raw)
+-{
+-    if(!is(god_id::lamy) || five() || s.resource<=60) return raw;
+-    const int target=min(100,failure_rate_to_int(raw)+(s.resource>80?10:5));
+-    while(raw<100 && failure_rate_to_int(raw)<target) ++raw;
+-    return raw;
+-}
++int spell_failure(int raw) { return raw; }
+ int monster_armour(const monster &mon,int base)
+ {
+     base=max(0,base-monster_ac_penalty(mon));
+@@ -464,8 +459,8 @@
+     if(is(god_id::okayu) && mon.mid==s.marked && s.one_end>now
+         && (moving || kind==EUT_ATTACK || kind==EUT_SPELL))
+         percent+=t.stacks*(mental_immune(mon)?4:8);
+-    if(is(god_id::lamy) && moving && t.expires>now)
+-        percent+=t.stacks*(mon.res_cold()>=2?5:10);
++    if(is(god_id::lamy) && moving && t.slowed_until>now)
++        percent=max(percent,150);
+     if(is(god_id::korone) && moving && t.slowed_until>now) percent=max(percent,150);
+     // Native slow already doubles action costs through speed, so keep the stronger effect.
+     if(mon.has_ench(ENCH_SLOW) && percent<=200) return base;
+@@ -621,7 +616,7 @@
+     require(s.hazards.size()==1 && monster_energy(*mon,EUT_MOVE,10)==13
+         && monster_energy(*mon,EUT_ATTACK,10)==10,"water changes attacks or fails to slow movement");
+     holo_reset_validation_fixture();reset("lamy",12);s.resource=80;mon=target();begin_attack(*mon);
+-    require(multiplier(100)==115 && resistance(BEAM_COLD)==1,"high drunkenness has wrong direct damage");
++    require(multiplier(100)==100 && resistance(BEAM_COLD)==0 && holo_lamy::power_bonus()==16 && holo_lamy::evasion_penalty()==3,"Lamy caster retained old melee/resistance modifiers");
+     s.five_end=100;require(multiplier(100)==100,"blizzard retains the high-drunk direct damage bonus");
+     holo_reset_validation_fixture();reset("raden",12);mon=target();you.piety=100;
+     const int mp=you.magic_points;
+--- before/holo-batch-resources.cc
++++ after/holo-batch-resources.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-visual.h"
+ #include "holo-campaign.h"
+ #include "env.h"
+@@ -33,21 +34,10 @@
+     }
+     s.secondary=0;s.marked=MID_NOBODY;s.five_ready=at+100;
+ }
+-void chill(monster &mon,int n,int at) {
+-    auto &t=s.targets[mon.mid];t.stacks=min(4,t.stacks+n);t.expires=at+50;
+-    if(t.stacks==4 && t.immune<=at && mon.res_cold()<3 && mon.res_constrict()<3) {
+-        root(mon,10);t.stacks=2;t.immune=at+60;
+-    }
+-}
+ coord_def direction(monster &mon) {
+     coord_def d=mon.pos()-you.pos();return coord_def((d.x>0)-(d.x<0),(d.y>0)-(d.y<0));
+ }
+-bool cone(const coord_def &pos,const coord_def &dir,int range) {
+-    const coord_def d=pos-you.pos();
+-    for(int r=1;r<=range;++r) for(int w=1-r;w<r;++w)
+-        if(d==coord_def(dir.x*r-dir.y*w,dir.y*r+dir.x*w)) return true;
+-    return false;
+-}
++
+ }
+ int resource_action(monster *target)
+ {
+@@ -148,24 +138,7 @@
+             auto &t=s.targets[s.marked];t.stacks=1;t.next=now+30;t.kind=0;return 10;
+         }
+     }
+-    if(is(god_id::lamy)) {
+-        if(want(5) && !five() && s.resource>=61 && now>=s.five_ready && pay(6,12,120)) {
+-            s.secondary=s.resource;s.resource=0;
+-            const int duration=(60+2*s.inv)*(s.secondary>=61?115:100)/100;
+-            s.five_end=now+10+duration;s.five_ready=s.five_end+150;s.last_event=now+30;return 10;
+-        }
+-        if(want(1) && !five() && s.resource<60 && pay(2,1)) { s.resource=min(100,s.resource+30);return 10; }
+-        if(want(3) && valid(target,4) && (five() || s.resource>=20) && now>=s.three_ready && pay(3,3,75)) {
+-            const bool drunk=!five() && s.resource>=61;if(!five()) s.resource-=20;
+-            const coord_def d=direction(*target);
+-            for(mid_t id:enemies(you.pos(),4)) {
+-                monster *mon=monster_by_mid(id);if(!mon || !mon->alive()) continue;if(!cone(mon->pos(),d,4)) continue;
+-                int raw=roll_dice(2,7+s.inv/3);if(drunk) raw=div_rand_round(raw*115,100);
+-                if(hurt(*mon,raw,BEAM_COLD,false,true)>0 && mon->alive()) chill(*mon,2,now);
+-            }
+-            s.three_ready=now+40;return 10;
+-        }
+-    }
++    if(is(god_id::lamy))return holo_lamy::action();
+     return 0;
+ }
+ void resource_tick(int at)
+@@ -220,17 +193,7 @@
+             }
+         }
+     }
+-    if(is(god_id::lamy)) {
+-        if(at%20==0 && at>=s.five_end) s.resource=max(0,s.resource-5);
+-        if(at<s.five_end && at>=s.last_event) {
+-            s.last_event+=20;
+-            for(mid_t id:enemies(you.pos(),2)) {
+-                monster *mon=monster_by_mid(id);if(!mon || !mon->alive()) continue;
+-                if(hurt(*mon,roll_dice(1,6+s.inv/3)+s.secondary/20,BEAM_COLD,false)>0 && mon->alive()) chill(*mon,1,at);
+-            }
+-        }
+-        for(auto &p:s.targets) if(at>=p.second.expires) p.second.stacks=0;
+-    }
++    if(is(god_id::lamy))holo_lamy::tick(at);
+ }
+ void resource_after_attack(monster *target,int)
+ {
+@@ -252,10 +215,7 @@
+         if(five() && ctx.kind==attack_kind::melee && target && target->alive() && roll_hit(*target,20+s.inv))
+             hurt(*target,roll_dice(1,6+s.inv/2));
+     }
+-    if(is(god_id::lamy) && (passive() || five()) && ctx.damaged && target && target->alive() && (s.resource>=20 || five())) {
+-        int raw=roll_dice(1,3+s.inv/6);if(want(5) && !five() && s.resource>=61) raw=div_rand_round(raw*115,100);
+-        if(hurt(*target,raw,BEAM_COLD,false)>0 && target->alive()) chill(*target,1,now);
+-    }
++
+ }
+ void resource_move(const coord_def &,bool) {}
+ void resource_kill(mid_t mid,int,bool direct,bool ordinary)
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -1,4 +1,5 @@
+ #include "AppHdr.h"
++#include "holo-lamy.h"
+ #include "holo-visual.h"
+ #include "holo-wrath.h"
+ #include "output.h"
+@@ -162,7 +163,7 @@
+     if(g=="pekora")return {{"Plant carrot (MP2, piety1)",1,0,2,you.piety>=75?5:3},{"Detonate carrot (MP2, piety2)",3,0,2,7},{"Delayed fuse (MP2, piety2)",3,1,2,7},{"Pekoland: select three strikes (MP7, piety14)",5,0,2,5},{"Dismantle carrot",-1,0,2,7}};
+     if(g=="watame")return {{"Wool barrier (MP3, piety3)",3,0,0,0},{"Won't die (MP6, piety15)",5,0,0,0}};
+     if(g=="towa")return {{"Covering fire zone (MP4, piety4)",3,0,2,5},{"Crossfire (MP6, piety12)",5,0,0,0}};
+-    if(g=="lamy")return {{"Drink (MP2, piety1)",1,0,0,0},{"Cold breath (MP3, piety3)",3,0,1,4},{"Banquet (MP6, piety12)",5,0,0,0}};
++    if(g=="lamy")return {{"Drink (MP2, piety1)",1,0,0,0},{"Snow banquet (MP6, piety12, intox40)",5,0,0,0}};
+     if(g=="polka")return {{"Performance: strong target (MP1)",1,1,1,6},{"Performance: tightrope (MP1)",1,2,1,6},{"Performance: juggling (MP1)",1,3,1,6},{"Acrobatics (MP3, piety2)",3,0,1,1},{"Acrobatics + 1 applause (MP3, piety2)",3,1,1,1},{"Firework finale (MP6, piety10)",5,0,2,5},{"Curtain call (MP6, piety10)",5,1,0,0},{"Confusion finale (MP6, piety10)",5,2,0,0},{"Abandon performance",-1,0,0,0}};
+     if(g=="koyori")return {{"Prepare poison (MP3)",1,1,0,0},{"Prepare heat (MP3)",1,2,0,0},{"Prepare cold (MP3)",1,3,0,0},{"Throw poison",1,11,1,5},{"Throw heat",1,12,1,5},{"Throw cold",1,13,1,5},{"Coat poison",1,21,0,0},{"Coat heat",1,22,0,0},{"Coat cold",1,23,0,0},{"Toggle automatic reactions",3,0,0,0},{"Critical combustion (MP5, piety8)",5,3,0,0},{"Critical slime (MP5, piety8)",5,4,0,0},{"Critical thermal shock (MP5, piety8)",5,5,0,0}};
+     if(g=="lui")return {{"Summon raven (MP3)",1,0,0,0},{"Hunting command (MP3, piety3)",3,0,1,5},{"Raven host (MP7, piety14)",5,0,0,0}};
+@@ -354,6 +355,9 @@
+     if(g=="raden" && c.tier==1 && holo_batch::five())return "exhibition active";
+     if(g=="raden" && c.tier==3 && !holo_batch::five() && c.option!=s.exhibit)return "requires matching exhibit";
+     if(g=="koyori" && c.tier==1 && c.option>=11 && s.stock[c.option%10-1]<=0)return "no reagent stock";
++    if(g=="lamy" && holo_batch::five())return "banquet active";
++    if(g=="lamy" && c.tier==1 && s.resource>=100)return "intoxication is full";
++    if(g=="lamy" && c.tier==5 && s.resource<40)return "need 40 intoxication";
+     if(g=="okayu" && c.tier==1 && s.resource>=100)return "fullness is full";
+     return "";
+ }
+@@ -393,7 +397,7 @@
+         "A knight's skill temporarily raises fighting and equipment skills. Earn equipment supplies.",
+         "Wool protects you; a barrier and five-star survival power help withstand direct attacks.",
+         "Ranged attacks build pressure. Establish a covering-fire zone and activate crossfire.",
+-        "Manage intoxication through drinking. Cold breath and banquet reward controlled levels.",
++        "Drink for attack-spell power. Direct spells build chill; Snow banquet adds frost bursts. Overdrinking reduces EV by3.",
+         "Complete performances to earn applause; spend it on acrobatics and selectable finales.",
+         "Prepare poison, heat and cold reagents. Throw or coat them and combine elemental reactions.",
+         "Summon ravens, mark a hunting target and call a raven host; bird kills support worship.",
+@@ -418,7 +422,7 @@
+         "Bonus piety: +1 for a strong non-pet kill. At 3*, kills also accumulate knightly equipment supplies.",
+         "Bonus piety: +1 for a strong non-pet kill. Voluntarily spending HP costs 5 piety.",
+         "Bonus piety: +1 for an ordinary ranged kill from more than 1 tile away.",
+-        "Bonus piety: +1 for a direct kill at intoxication 20-60, or during Banquet.",
++        "Bonus piety: +1 for a direct kill at intoxication 20-69, or during Banquet.",
+         "Bonus piety: +1 for a successfully completed performance; finale costs and applause are separate.",
+         "Bonus piety: +3 for each first reaction discovered; +1 for a strong direct reaction kill.",
+         "Bonus piety: +1 for a strong enemy killed by one of your ravens.",
+@@ -438,6 +442,7 @@
+         "Listed costs are charged only on a successful invocation; cancellation costs no turn."};
+     lines.push_back(income[it-ids.begin()]);
+     lines.push_back("Strong means monster HD >= your XL. Direct excludes pet kills; ordinary means your normal attack.");
++    if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, one chill/target/cast, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/cast and per10aut:2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/cloud/poison procs.");
+     if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+     if(g=="noel")lines.push_back("Taboo: voluntary berserk costs 10 piety and ends Knight's skill / Silver commander.");
+     lines.push_back(holo_wrath::description(g));
+@@ -535,7 +540,7 @@
+     if(g=="korone" && ordinary && ctx.kind==attack_kind::melee){if((invoking==3?stored_resource:s.resource)>=4)++extra;if(five()&&strong)++extra;}
+     if(g=="okayu" && direct && invoking==5)++extra;
+     if(g=="towa" && ordinary && ctx.kind==attack_kind::ranged && grid_distance(you.pos(),m.pos())>1)++extra;
+-    if(g=="lamy" && direct && ((s.resource>=20&&s.resource<=60)||five()))++extra;
++    if(g=="lamy" && direct && ((s.resource>=20&&s.resource<=69)||five()))++extra;
+     if(g=="lui" && pet && strong && !invalid_monster_index(killer_index)){for(auto c:s.companions)if(c.mid==menv[killer_index].mid && c.kind==3){++extra;break;}}
+     if(g=="hajime" && strong && ((ordinary && ctx.kind==attack_kind::melee && ctx.stars_before>=2)||(direct && invoking==3 && stored_resource>=2)))++extra;
+     if(g=="su" && direct && invoking==3 && strong && (five() || wide_wave))++extra;
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -1,4 +1,7 @@
+ #include "AppHdr.h"
++#include "holo-lamy.h"
++#include "spl-cast.h"
++#include "spl-util.h"
+ #include "status.h"
+ #include "holo-visual.h"
+ #include "holo-wrath.h"
+@@ -133,18 +136,85 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    // Lamy caster redesign: actual damage attribution, costs, saves and HUD.
++    {
++        using namespace holo_batch;
++        auto *m=fixture("lamy");const auto origin=you.pos();
++        set_skill_level(SK_CONJURATIONS,12);set_skill_level(SK_FIRE_MAGIC,12);set_skill_level(SK_SPELLCASTING,12);
++        s.resource=0;const int base_ev=you.evasion();
++        const int base_power=calc_spell_power(SPELL_FIREBALL,true,false,false);
++        const char *shots=getenv("HOLOCRAWL_LAMY_CASTER_REVIEW");
++        if(shots)holo_visual::capture(std::string(shots)+"/lamy1-before.png");
++        const int mp=you.magic_points,faith=you.piety;
++        require(invoke(1)==10 && s.resource==40 && you.magic_points==mp-2 && you.piety==faith-1,"Lamy drink actual cost/40 intox");
++        require(holo_lamy::power_bonus()==16 && you.evasion()==base_ev,"Lamy proper intox power/EV");
++        const int buff_power=calc_spell_power(SPELL_FIREBALL,true,false,false);
++        require(base_power>0 && buff_power>base_power && buff_power==base_power*116/100,"Lamy native spell power boost");
++        if(shots){for(int f=0;f<2;++f)holo_visual::capture_invocation("lamy",origin,f,std::string(shots)+"/lamy1-cast"+std::to_string(f)+".png",1,false,0);holo_visual::capture(std::string(shots)+"/lamy1-proper.png");}
++        step(10);require(s.resource==39,"Lamy one per ordinary turn decay");
++        require(invoke(1)==10 && s.resource==79 && you.evasion()==base_ev-3,"Lamy second sip overdoses/EV-3");
++        require(calc_spell_power(SPELL_FIREBALL,true,false,false)==buff_power,"Lamy overdose gives no extra power");
++        for(int raw=0;raw<=100;++raw)require(spell_failure(raw)==raw,"Lamy retained old failure penalty");
++        require(to_hit(&you,m)==0 && multiplier(100)==100 && resistance(BEAM_COLD)==0,"Lamy old physical/resist passives survived");
++        if(shots)holo_visual::capture(std::string(shots)+"/lamy1-over.png");
++        roundtrip();require(s.resource==79 && holo_lamy::evasion_penalty()==3,"Lamy intox save/restore");
++        for(int amount:{0,19,20,69,70,100}){s.resource=amount;require((holo_lamy::power_bonus()>0)==(amount>=20) && (holo_lamy::evasion_penalty()==3)==(amount>=70),"Lamy 20/70 boundary");}
++        require(holo_lamy::power(SPELL_FIREBALL,100)==116 && holo_lamy::power(SPELL_BLINK,100)==100 && !holo_lamy::attack_spell(SPELL_FREEZING_CLOUD),"Lamy utility/cloud classifier");
++        for(int I:{0,12,27}){s.inv=I;require(holo_lamy::power(SPELL_FIREBALL,100)==112+I/3,"Lamy invocation scaling");}s.inv=12;
++        const int magic_cap=spell_power_cap(SPELL_MAGIC_DART);require(calc_spell_power(SPELL_MAGIC_DART,true)<=magic_cap,"Lamy bypasses native spell cap");
++        auto hit=[&](monster *victim,int n=1){holo_lamy::spell_scope scope(SPELL_FIREBALL,true);for(int i=0;i<n;++i)victim->hurt(&you,1,BEAM_MAGIC,KILLED_BY_BEAM);};
++        m=fixture("lamy");s.resource=40;const mid_t mid=m->mid;
++        hit(m,4);require(s.targets[mid].stacks==1,"Lamy multi-hit stacks more than once per cast");
++        hit(m);require(s.targets[mid].stacks==2,"Lamy second cast chill");
++        const int hp=m->hit_points;hit(m);require(s.targets[mid].stacks==0 && hp-m->hit_points>=3 && hp-m->hit_points<=11,"Lamy third cast 2d5 cold proc");
++        require(monster_energy(*m,EUT_MOVE,10)==15 && monster_energy(*m,EUT_ATTACK,10)==10,"Lamy slow must affect movement only");
++        roundtrip();m=monster_by_mid(mid);require(s.targets[mid].slowed_until>you.elapsed_time,"Lamy slow save");
++        step(20);require(monster_energy(*m,EUT_MOVE,10)==10,"Lamy slow expiry");
++        hit(m);step(60);require(s.targets[mid].stacks==0,"Lamy chill expiry6turns");
++        m=fixture("lamy");s.resource=40;
++        {holo_lamy::spell_scope scope(SPELL_FIREBALL,true);m->hurt(&you,1,BEAM_POISON,KILLED_BY_POISON);m->hurt(&you,1,BEAM_FIRE,KILLED_BY_CLOUD);m->hurt(m,1,BEAM_MAGIC);{damage_scope divine(false);m->hurt(&you,1,BEAM_MAGIC);}}
++        require(s.targets.empty(),"Lamy pet/poison/cloud/divine incorrectly proc");
++        {holo_lamy::spell_scope scope(SPELL_FIREBALL,false);m->hurt(&you,1,BEAM_MAGIC,KILLED_BY_BEAM);}require(s.targets.empty(),"Lamy evoked/fake spell procs");
++        {holo_lamy::spell_scope scope(SPELL_FIREBALL,true);{holo_lamy::spell_scope shadow(SPELL_FIREBALL,false);m->hurt(&you,1,BEAM_MAGIC,KILLED_BY_BEAM);}}require(s.targets.empty(),"Lamy nested fake cast inherited scope");
++        // Untargeted native casting exercises the real spl-cast.cc scope.
++        set_skill_level(SK_ICE_MAGIC,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;rng::seed(554433);
++        const auto native_result=your_spells(SPELL_OZOCUBUS_REFRIGERATION,40,true);
++        require(native_result==spret::success,"Lamy native area spell cast result="+std::to_string(int(native_result))+" fail="+std::to_string(raw_spell_fail(SPELL_OZOCUBUS_REFRIGERATION))+" reason="+spell_uselessness_reason(SPELL_OZOCUBUS_REFRIGERATION,true,true,false));
++        require(s.targets[m->mid].stacks==1,"Lamy native area spell missing chill");
++        m=fixture("lamy");s.resource=40;const int pre_mp=you.magic_points,pre_faith=you.piety;
++        require(invoke(3,m,&m->pos())==0,"Lamy tier3 still active skill");
++        require(invoke(5)==10 && s.resource==0 && you.magic_points==pre_mp-6 && you.piety==pre_faith-12,"Lamy banquet activation/cost/consume");
++        step(10);require(s.five_end-you.elapsed_time==80 && holo_lamy::power_bonus()==16 && holo_lamy::evasion_penalty()==0,"Lamy banquet8turn maintenance");
++        const int end=s.five_end,ready=s.five_ready;require(ready==end+150,"Lamy banquet cooldown15turns");roundtrip();m=monster_by_mid(m->mid);
++        require(s.five_end==end && s.five_ready==ready,"Lamy banquet save");
++        const int procs=s.totals.procs;hit(m,3);require(s.totals.procs==procs+1 && s.targets[m->mid].stacks==1,"Lamy banquet once/cast and direct+burst chill dedup");
++        hit(m);require(s.totals.procs==procs+1,"Lamy banquet more than once per turn");
++        step(10);hit(m);require(s.totals.procs==procs+2,"Lamy banquet next turn burst missing");
++        const int passive_hp=m->hit_points;step(20);require(m->hit_points==passive_hp,"Lamy old passive damage aura remains");
++        you.elapsed_time=end;resource_tick(end);require(holo_lamy::power_bonus()==0 && s.resource==0 && invoke(5)==0,"Lamy banquet end/empty/cooldown");
++        m=fixture("lamy");require(m->move_to_pos(you.pos()+coord_def(2,0)),"Lamy splash centre setup");
++        auto mg=mgen_data::hostile_at(MONS_ETTIN,false,you.pos()+coord_def(2,1));mg.flags|=MG_FORCE_PLACE;
++        auto *adj=create_monster(mg,false);require(adj,"Lamy splash neighbour setup");adj->speed=adj->speed_increment=0;adj->hit_points=adj->max_hit_points=1000;
++        s.resource=40;require(invoke(5)==10,"Lamy splash banquet activation");step(10);
++        const int centre_hp=m->hit_points,adj_hp=adj->hit_points;hit(m);
++        const int centre_extra=centre_hp-m->hit_points-1;
++        require(centre_extra>=2 && centre_extra<=18 && adj_hp-adj->hit_points==centre_extra/2,"Lamy burst centre2d9 and half splash");
++        require(s.targets[m->mid].stacks==1 && s.targets[adj->mid].stacks==1,"Lamy AoE/direct chill dedup");
++        fixture("towa");require(holo_lamy::power_bonus()==0 && holo_lamy::power(SPELL_FIREBALL,100)==100 && holo_lamy::evasion_penalty()==0,"Lamy changes other god");
++        std::ofstream proof(dir+"/lamy-caster.json");proof<<"{\"status\":\"passed\",\"invocation\":12,\"baseSpellPower\":"<<base_power<<",\"buffSpellPower\":"<<buff_power<<",\"drink\":40,\"overdoseEV\":-3,\"nativeAreaCast\":true,\"perCastDedup\":true,\"dotPetDivineExcluded\":true,\"banquetTurns\":8,\"banquetCooldown\":15,\"saved\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_LAMY_HUD_REVIEW")) {
+         fixture("lamy");const int amounts[]={12,40,80,0};const char *names[]={"sober","tipsy","drunk","banquet"};
+-        const char *labels[]={"Sober 12/100","Tipsy 40/100","Drunk 80/100","Banquet 6t"};
++        const char *labels[]={"Sober 12/100","Tipsy 40/100 P+16%","Drunk 80/100 P+16% EV-3","Banquet 6t P+16%"};
+         const int colours[]={LIGHTGREY,LIGHTCYAN,LIGHTRED,LIGHTMAGENTA};
+         for(int i=0;i<4;++i) {
+             holo_batch::s.resource=amounts[i];holo_batch::s.five_end=i==3?you.elapsed_time+60:0;
+             status_info info;require(fill_status_info(STATUS_HOLO_LAMY,info) && info.light_text==labels[i] && info.light_colour==colours[i],"Lamy HUD label/colour");
+             const auto before=signature();holo_visual::capture(std::string(shots)+"/lamy-"+names[i]+".png");require(before==signature(),"Lamy HUD rendering mutated gameplay");
+         }
+-        you.elapsed_time+=10;status_info info;require(fill_status_info(STATUS_HOLO_LAMY,info) && info.light_text=="Banquet 5t","Lamy HUD live countdown");
++        you.elapsed_time+=10;status_info info;require(fill_status_info(STATUS_HOLO_LAMY,info) && info.light_text=="Banquet 5t P+16%","Lamy HUD live countdown");
+         fixture("towa");require(!fill_status_info(STATUS_HOLO_LAMY,info),"Lamy status leaked to another god");
+-        std::ofstream(dir+"/lamy-hud.json")<<"{\"status\":\"passed\",\"states\":4,\"countdown\":true,\"otherGodHidden\":true,\"renderingStateUnchanged\":true,\"combatRedesignApplied\":false}\n";
++        std::ofstream(dir+"/lamy-hud.json")<<"{\"status\":\"passed\",\"states\":4,\"countdown\":true,\"otherGodHidden\":true,\"renderingStateUnchanged\":true,\"combatRedesignApplied\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_TOWA_CROSSFIRE_REVIEW")) {
+         auto *left=fixture("towa");const auto origin=you.pos();
+@@ -646,7 +716,7 @@
+         } else if(g=="towa"){
+             cast(g,3,nullptr,aim);cast(g,5,nullptr,origin);cast_count+=2;
+         } else if(g=="lamy"){
+-            cast(g,1,nullptr,origin);cast(g,3,m,aim);holo_batch::s.resource=65;cast(g,5,nullptr,origin);cast_count+=3;
++            cast(g,1,nullptr,origin);require(invoke(3,m,&aim)==0,"Lamy tier3 is passive");holo_batch::s.resource=65;cast(g,5,nullptr,origin);cast_count+=2;
+         } else if(g=="polka"){
+             cast(g,1,m,aim,1);cast(g,3,m,aim);holo_batch::s.resource=3;cast(g,5,nullptr,you.pos(),1);cast_count+=3;
+         } else if(g=="koyori"){
+@@ -722,7 +792,7 @@
+     fixture("watame");you.magic_points=20;const int before_blood=you.piety;
+     require(cast_sublimation_of_blood(100,false)==spret::success && you.piety==before_blood-5,"blood sublimation charges Watame conduct once per cast");
+     fixture("lamy",30);cast("lamy",1,nullptr,you.pos());require(you.piety==29 && holo_batch::s.resource>0,"paid drink crosses unlock line");
+-    step(120);require(holo_batch::s.resource==0,"drunkenness stuck below unlock");
++    step(410);require(holo_batch::s.resource==0,"drunkenness stuck below unlock");
+     fixture("pekora",30);coord_def bomb=you.pos()+coord_def(3,0);cast("pekora",1,nullptr,bomb);
+     require(you.piety==29 && combat_active(),"paid bomb disabled below unlock");step(220);
+     require(!combat_active(),"expired bomb leaves the combat core active");
+--- before/holo-lamy.h
++++ after/holo-lamy.h
+@@ -0,0 +1,20 @@
++#pragma once
++#include "spell-type.h"
++#include "beam-type.h"
++#include "ouch.h"
++class monster;
++class actor;
++namespace holo_lamy {
++bool attack_spell(spell_type spell);
++int power_bonus();
++int power(spell_type spell,int base);
++int evasion_penalty();
++int action();
++void tick(int at);
++void damage(monster &mon,const actor *source,int amount,beam_type flavour,kill_method_type kind);
++class spell_scope {
++public: struct context;
++private: context *previous,*cast;
++public: spell_scope(spell_type spell,bool ordinary);~spell_scope();
++};
++}
+--- before/holo-lamy.cc
++++ after/holo-lamy.cc
+@@ -0,0 +1,92 @@
++#include "AppHdr.h"
++#include "holo-lamy.h"
++#include "holo-batch-internal.h"
++#include "holo-campaign.h"
++#include "holo-visual.h"
++#include "mon-util.h"
++#include "monster.h"
++#include "player.h"
++#include "spl-util.h"
++#include "spl-cast.h"
++#include <set>
++namespace holo_lamy {
++using namespace holo_batch;
++namespace {
++bool enabled(){return is(god_id::lamy);}
++bool tipsy(){return enabled() && (five() || s.resource>=20);}
++void redraw(){you.redraw_status_lights=true;you.redraw_evasion=true;}
++void chill(monster &mon) {
++    auto &t=s.targets[mon.mid];const int now=you.elapsed_time;
++    if(t.expires<=now)t.stacks=0;
++    ++t.stacks;t.expires=now+60;
++    if(t.stacks>=3) {
++        t.stacks=0;t.slowed_until=now+20;
++        hurt(mon,roll_dice(2,3+s.inv/6),BEAM_COLD,false);
++    }
++}
++}
++bool attack_spell(spell_type spell) {
++    if(spell==SPELL_NO_SPELL)return false;
++    const auto flags=get_spell_flags(spell);const auto schools=get_spell_disciplines(spell);
++    if(flags & (spflag::helpful|spflag::neutral|spflag::cloud))return false;
++    if(schools & spschool::summoning)return false;
++    if(!(spell_harms_target(spell)||spell_harms_area(spell)))return false;
++    if(spell==SPELL_POISONOUS_VAPOURS || spell==SPELL_OLGREBS_TOXIC_RADIANCE
++        || spell==SPELL_TORNADO || spell==SPELL_FULMINANT_PRISM)return false;
++    return !(schools & spschool::hexes) || (schools & spschool::conjuration);
++}
++int power_bonus(){return tipsy()?12+s.inv/3:0;}
++int power(spell_type spell,int base){return attack_spell(spell)?base*(100+power_bonus())/100:base;}
++int evasion_penalty(){return enabled() && !five() && s.resource>=70?3:0;}
++int action() {
++    if(!enabled())return 0;const int now=you.elapsed_time;
++    if(want(5) && !five() && s.resource>=40 && now>=s.five_ready && pay(6,12,120)) {
++        s.resource=0;s.five_end=now+10+10*(6+s.inv/6);s.five_ready=s.five_end+150;s.proc_ready=now;
++        redraw();return 10;
++    }
++    if(want(1) && !five() && s.resource<100 && pay(2,1)) {
++        s.resource=min(100,s.resource+40);redraw();return 10;
++    }
++    return 0;
++}
++void tick(int at) {
++    if(!enabled())return;
++    if(at%10==0 && at>=s.five_end && s.resource>0){--s.resource;redraw();}
++    for(auto &p:s.targets)if(p.second.expires<=at)p.second.stacks=0;
++}
++struct spell_scope::context { std::vector<std::pair<mid_t,coord_def>> hits;std::set<mid_t> seen; };
++namespace {spell_scope::context *current=nullptr;}
++spell_scope::spell_scope(spell_type spell,bool ordinary):previous(current),cast(nullptr) {
++    if(ordinary && enabled() && attack_spell(spell))cast=new context;
++    // Nested god/shadow/evoked casts must not borrow the player's cast identity.
++    current=cast;
++}
++void damage(monster &mon,const actor *source,int amount,beam_type flavour,kill_method_type kind) {
++    if(!current || !tipsy() || amount<=0 || !source || !source->is_player()
++        || internal_damage || !holo_campaign::ordinary_damage() || mon.attitude!=ATT_HOSTILE
++        || kind==KILLED_BY_POISON || kind==KILLED_BY_CLOUD || flavour==BEAM_SHARED_PAIN
++        || flavour==BEAM_STICKY_FLAME || flavour==BEAM_TORMENT_DAMAGE)return;
++    if(current->seen.insert(mon.mid).second)current->hits.push_back({mon.mid,mon.pos()});
++}
++spell_scope::~spell_scope() {
++    current=nullptr;
++    if(cast && enabled() && tipsy() && !cast->hits.empty()) {
++        std::set<mid_t> chilled;
++        if(you.piety>=75 || five())for(const auto &hit:cast->hits) {
++            auto *m=monster_by_mid(hit.first);if(m && m->alive()){chilled.insert(m->mid);chill(*m);}
++        }
++        if(five() && you.elapsed_time>=s.proc_ready) {
++            s.proc_ready=you.elapsed_time+10;const auto centre=cast->hits.front().second;
++            const int raw=roll_dice(2,5+s.inv/3);++s.totals.procs;
++            const auto victims=enemies(centre,1,false,true);
++            holo_visual::invocation("lamy",3,centre);
++            for(auto id:victims) {
++                auto *m=monster_by_mid(id);if(!m || !m->alive() || !line(centre,m->pos()))continue;
++                hurt(*m,m->pos()==centre?raw:raw/2,BEAM_COLD,false);
++                if(m->alive() && chilled.insert(id).second)chill(*m);
++            }
++        }
++    }
++    delete cast;current=previous;
++}
++}

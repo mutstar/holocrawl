@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "reason": "Delayed detonation diagnostic attempted before native bomb arming time; native rejected action correctly. Added required10aut world step in03. Combat and VFX unchanged.",
+  "gdb": "debug.log",
+  "originalsPreserved": true
+}

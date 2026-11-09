@@ -1,0 +1,106 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -69,8 +69,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    for(int frame=0;frame<2;++frame) {
+-        flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();scaled_delay(55);
++    const int frames=flash_kind==effect::cometfall?6:2;
++    for(int frame=0;frame<frames;++frame) {
++        flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
++        scaled_delay(flash_kind==effect::cometfall?(frame<4?65:100):55);
+     }
+     clear();tiles.invalidate_dungeon_overlays();update_screen();
+ #endif
+@@ -154,6 +156,10 @@
+             }
+         }
+     }
++    // Keep the actual 3x3 strike footprint visible during render-only descent.
++    // No hazard lifetime, damage cell, or gameplay timer is extended.
++    if(flash_kind==effect::cometfall && flash_frame<4 && !flashes.empty()
++        && area(p,flashes.front(),1))result.push_back(effect::urgent);
+     const int wrath=holo_wrath::visual_at(p);
+     if(wrath==1 || wrath==2)result.push_back(wrath==2?effect::urgent:effect::warning);
+     if(wrath==3)result.push_back(effect::fire);
+@@ -171,6 +177,16 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(flash_kind==effect::cometfall && !flashes.empty()) {
++        const auto centre=flashes.front();
++        const bool falling=flash_frame<4;
++        const auto anchor=centre+coord_def(-1,falling?-5+flash_frame:-1);
++        if(p==anchor) {
++            span_x=span_y=3;
++            return falling?effect::cometdrop:effect::cometfall;
++        }
++        if(p==centre)return effect::none;
++    }
+     const bool cut=flash_kind==effect::cut_h || flash_kind==effect::cut_d
+         || flash_kind==effect::cut_v || flash_kind==effect::cut_u;
+     if(cut && !flashes.empty()) {
+@@ -232,7 +248,7 @@
+     if(crawl_state.test) {
+         if(const char *dir=getenv("HOLOCRAWL_SUISEI_REVIEW")) {
+             const auto before=holo_batch::save_campaign();const int hp=you.hp,mp=you.magic_points,piety=you.piety,now=you.elapsed_time;
+-            for(int f=0;f<2;++f)capture_invocation("suisei",p,f,std::string(dir)+"/comet-impact-frame"+std::to_string(f)+".png",5,true);
++            for(int f=0;f<6;++f)capture_invocation("suisei",p,f,std::string(dir)+"/comet-impact-frame"+std::to_string(f)+".png",5,true);
+             if(before!=holo_batch::save_campaign() || hp!=you.hp || mp!=you.magic_points || piety!=you.piety || now!=you.elapsed_time)
+                 throw std::runtime_error("Comet impact capture changed combat state");
+         }
+@@ -303,6 +319,7 @@
+         require(effect_tile(effect(int(effect::foxflame)+i),f)==TILE_HOLO_FX_FOXFLAME_0+2*i+f);
+     require(effect_tile(effect::carrot)==TILE_HOLO_CARROT);
+     require(TILE_HOLO_FX_COMETFALL_1-TILE_HOLO_FX_STARMARK_0==11);
++    require(effect_tile(effect::cometdrop,1)==TILE_HOLO_FX_COMETDROP_1);
+     require(TILE_HOLO_HOUND-TILE_HOLO_ROSE==4);
+     require(TILE_HOLO_HOUND_1-TILE_HOLO_ROSE_1==4);
+     require(TILE_HOLO_STATUS_ACTIVE-TILE_HOLO_STATUS_FIVE==7);
+@@ -313,7 +330,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>1)
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -157,7 +157,11 @@
+         const int before=m->hit_points;
+         cast("suisei",5,nullptr,m->pos());
+         require(m->hit_points==before,"comet dealt damage at designation");
+-        step(20);
++        holo_visual::capture(std::string(shots)+"/comet-warning.png");
++        step(10);
++        require(m->hit_points==before,"comet dealt damage before deadline");
++        holo_visual::capture(std::string(shots)+"/comet-urgent.png");
++        step(10);
+         require(m->hit_points<before,"delayed comet never impacted");
+         holo_visual::capture(std::string(shots)+"/comet-aftermath.png");
+         std::ofstream proof(dir+"/suisei-review.json");
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -88,6 +88,8 @@
+ fx_cut_u_1 HOLO_FX_CUT_U_1
+ fx_cometfall_0 HOLO_FX_COMETFALL_0
+ fx_cometfall_1 HOLO_FX_COMETFALL_1
++fx_cometdrop_0 HOLO_FX_COMETDROP_0
++fx_cometdrop_1 HOLO_FX_COMETDROP_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

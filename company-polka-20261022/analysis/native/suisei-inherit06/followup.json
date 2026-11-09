@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit07",
+  "reason": "New inheritance bank/gameplay/core-RNG checks pass. Keep RNG-preserving synthetic TAG_LEVEL reconstruction opt-in for inheritance only: changing the historical default also changed existing Focus replay fixture RNG. Retain original helper behaviour for previous modules."
+}

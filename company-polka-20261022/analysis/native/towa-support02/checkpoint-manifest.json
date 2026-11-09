@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "revision": "towa-support02",
+  "runtimeSha256": "E4A4C11D3A4D5172EDD0519BA783DB2897DA8FF566FBAC869C88FC8DC8990340",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "allArtAndOtherSourcePreserved": true,
+  "changedHashes": {
+    "holo-visual.h": "654433ceb6d0797e44ae58ef827378223f7614a0cf70e75506d21c671a76f489",
+    "holo-visual.cc": "7bb58f1bb8846ecfb5f4485a0b6c1c6115e11dd4c18f39639c7b42301c3a4581",
+    "holo-batch-space.cc": "a28cc5dd74fef78a635d7b983685edc29c3fe1af8f3b30452d616577fecef848",
+    "holo-campaign-test.cc": "e0d1543e814c26b45722c6b2112a249ebe903af16c44d1a0b92665a2abde1945"
+  },
+  "visual": "Native TILE_BOLT_MAGIC_DART overlay at actual support shot callback; no separate bolt damage simulation",
+  "sequences": {
+    "1": [
+      "towa-demo-1-zone.png",
+      "towa-demo-1-moved.png",
+      "towa-shot-1-flight0.png",
+      "towa-shot-1-flight1.png",
+      "towa-shot-1-flight1.png",
+      "towa-demo-1-after.png"
+    ],
+    "2": [
+      "towa-demo-2-zone.png",
+      "towa-demo-2-moved.png",
+      "towa-shot-2-flight0.png",
+      "towa-shot-2-flight1.png",
+      "towa-shot-2-flight2.png",
+      "towa-demo-2-after.png"
+    ]
+  },
+  "captionOutsideNativePixels": true,
+  "proof": "native/towa-support.json",
+  "regression": "native/validation.json",
+  "freshRestore": "native/reload.json",
+  "feedback": "pending"
+}

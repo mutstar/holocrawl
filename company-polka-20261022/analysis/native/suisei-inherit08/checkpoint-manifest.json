@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "revision": "suisei-inherit08",
+  "runtimeDeployed": true,
+  "combatChanged": true,
+  "binarySha256": "1d6bb71ecfe8a302340840c2dcb2489cd030b88d6c1498d003d8749ef07ce18a",
+  "nativeProof": {
+    "status": "passed",
+    "unlockPiety": 100,
+    "startsAt": 2,
+    "maxStars": 3,
+    "nativeSpellCommands": 6,
+    "nativeMPAndTimeCosts": true,
+    "actualMarkedKill": true,
+    "rewardDamage": 14,
+    "actualNextTargetDamage": 23,
+    "missKeepsReward": true,
+    "oneShotExcluded": true,
+    "rewardOnlyKillNoRecursion": true,
+    "deadMarkCleared": true,
+    "existingStacksOnlyPlus1": true,
+    "expiryAndFaithControls": true,
+    "divineExcluded": true,
+    "tier2ActivatedAt2": true
+  },
+  "freshRestore": {
+    "status": "passed",
+    "bankedRewardAndRngRestoredExactly": true,
+    "actualSpellStartsAt2": true,
+    "actualSpellGameplayContinuationMatches": true,
+    "ordinaryCombatHitAndRngMatch": true,
+    "fullRngAfterUiCastMatches": false,
+    "scope": "Targeting UI RNG replay is diagnostic, isolated from combat and bank restoration checks."
+  },
+  "validation": {
+    "freshProcessRestore": true,
+    "status": "passed",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "rawScreenshots": 20,
+    "gods": 22,
+    "binarySha256": "1D6BB71ECFE8A302340840C2DCB2489CD030B88D6C1498D003D8749EF07CE18A",
+    "chocoControls": false
+  }
+}

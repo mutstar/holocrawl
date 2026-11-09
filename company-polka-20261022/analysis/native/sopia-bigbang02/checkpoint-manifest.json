@@ -1,0 +1,46 @@
+{
+  "revision": "sopia-bigbang02",
+  "previewBinarySha256": "ef35b78fcb9bb812bc54b3f4988ff7bc9bd1bea68906e478d4b82d32d92f2ef8",
+  "runtimeDeployed": false,
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeSDL": true,
+    "renderOnly": true,
+    "gameplayUnchanged": true,
+    "rngStable": true,
+    "chargeStages": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "fieldRadii": [
+      2,
+      3
+    ],
+    "burstRadius": 2
+  },
+  "validation": {
+    "gods": 22,
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "EF35B78FCB9BB812BC54B3F4988FF7BC9BD1BEA68906E478D4B82D32D92F2EF8",
+    "rawScreenshots": 59,
+    "status": "passed",
+    "chocoControls": false
+  },
+  "art": {
+    "tool": "built-in image_gen",
+    "source": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-7257aa06-0754-4bd3-9ccd-ad57881bc52d.png",
+    "alphaCrop": [
+      87,
+      102,
+      1167,
+      1148
+    ],
+    "integration": "Crop alpha>160 bounds; original alpha retained inside; nearest26/30/32/30px in32px. Native span1/3/5/5 and opacity210/210/170/90. Below actors.",
+    "charge": "Approved3star gravity quad, opacity105/125/145/165; native1/2/3gold star marks",
+    "gameplayChanged": false
+  }
+}

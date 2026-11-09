@@ -1,0 +1,80 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -449,3 +449,8 @@
+ fx_vivifinale_edge0 HOLO_FX_VIVIFINALE_EDGE0
+ fx_vivifinale_edge1 HOLO_FX_VIVIFINALE_EDGE1
+ fx_vivifinale_edge2 HOLO_FX_VIVIFINALE_EDGE2
++
++fx_vivicurtrain_open HOLO_FX_VIVICURTAIN_OPEN
++fx_vivicurtrain_drop1 HOLO_FX_VIVICURTAIN_DROP1
++fx_vivicurtrain_drop2 HOLO_FX_VIVICURTAIN_DROP2
++fx_vivicurtrain_closed HOLO_FX_VIVICURTAIN_CLOSED
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -184,7 +184,7 @@
+         for(int phase=0;phase<4;++phase) {
+             you.props["holo_vivi_finale_preview"]=phase;
+             const std::string name=phase==0?"cast":phase==1?"mark":phase==2?"spell":"burst";
+-            for(int f=0;f<(phase==3?3:2);++f)holo_visual::capture_invocation("vivi",aim,f,std::string(shots)+"/finale-"+name+std::to_string(f)+".png",5);
++            for(int f=0;f<(phase==3?6:2);++f)holo_visual::capture_invocation("vivi",aim,f,std::string(shots)+"/finale-"+name+std::to_string(f)+".png",5);
+             require(stable==signature(),"Vivi finale capture changed gameplay/RNG");
+         }
+         you.props.erase("holo_vivi_finale_preview");holo_visual::capture(std::string(shots)+"/finale-ended.png");you.props.erase("holo_vivi_vfx_preview");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -72,7 +72,8 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
+-    if(e==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview"))return 1;
++    if(e==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview"))
++        return you.props["holo_vivi_finale_preview"].get_int()==3 && flash_frame<4?3:1;
+     if(e==effect::night_vivi3 && crawl_state.test && you.props.exists("holo_vivi_encore_preview"))return 1;
+     if(e==effect::night_su3)return 1;
+     if(e==effect::night_raden3 || e==effect::night_radenstone || e==effect::night_radencraft)return 1;
+@@ -426,6 +427,10 @@
+ }
+ effect invocation_at(const coord_def &p) {
+     if(!in_bounds(p) || !you.see_cell(p))return effect::none;
++    // The closing curtain is one native 96px overlay anchored once by
++    // invocation_sprite_at; individual splash cells appear after it closes.
++    if(flash_kind==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")
++        && you.props["holo_vivi_finale_preview"].get_int()==3 && flash_frame<4)return effect::none;
+     if(flash_kind==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")
+         && you.props["holo_vivi_finale_preview"].get_int()==3 && !flashes.empty()
+         && p!=flashes.front() && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return effect::spotlight;
+@@ -859,6 +864,8 @@
+             if(phase<2)return TILE_HOLO_FX_VIVIFINALE_MARK;
+             if(frame<0)frame=flash_frame;
+             if(phase==2)return TILE_HOLO_FX_IMPACT_0+frame%2;
++            if(frame<4)return kind==effect::night_vivi5?TILE_HOLO_FX_VIVICURTAIN_OPEN+std::max(0,frame):0;
++            frame=frame==4?1:2;
+             return (kind==effect::night_vivi5?TILE_HOLO_FX_VIVIFINALE_BURST0:TILE_HOLO_FX_VIVIFINALE_EDGE0)+std::min(2,std::max(0,frame));
+         }
+     }
+@@ -964,13 +971,24 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?2:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview")
++        && you.props["holo_vivi_finale_preview"].get_int()==3 && frame<4) {
++        int sx=1,sy=1;
++        if(invocation_sprite_at(pos-coord_def(1,1),sx,sy)!=effect::night_vivi5 || sx!=3 || sy!=3)
++            throw std::runtime_error("Vivi curtain must be one centred3x3 overlay");
++        int count=0;for(int dx=-1;dx<=1;++dx)for(int dy=-1;dy<=1;++dy) {
++            int x=1,y=1;count+=invocation_sprite_at(pos+coord_def(dx,dy),x,y)==effect::night_vivi5;
++        }
++        if(count!=1)throw std::runtime_error("Vivi curtain drawn more than once");
++        std::ofstream(path+"-curtain.json")<<"{\"status\":\"passed\",\"frame\":"<<frame<<",\"anchors\":1,\"span\":[3,3],\"nativePixels\":[96,96]}\n";
++    }
+     if(god=="su" && tier==3 && frame<int(su_fronts.size())) {
+         for(const auto &cell:su_fronts[frame]) {
+             int sx=1,sy=1;

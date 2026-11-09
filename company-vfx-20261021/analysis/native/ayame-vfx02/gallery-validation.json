@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "review": {
+    "status": "passed",
+    "ordinaryMeleeAura": true,
+    "auraExpiry": true,
+    "duelWidth": 5,
+    "duelExpiry": true,
+    "capturePreservesGameplay": true,
+    "beforeStrikeHp": 10000,
+    "afterStrikeHp": 10000
+  },
+  "preservedPriorArtAndCombatHashes": true,
+  "nativeFrames": {
+    "ayame-aura-expired.png": "a63aeb6b1443d5d701ff4cf6c102b85be2f0287b6b664b07287fbe913155850a",
+    "ayame-aura-frame0.png": "19ca2fcbf61ad3d881fde54eb67fceb87218398b781dc66321dfaf357da0d042",
+    "ayame-aura-frame1.png": "76675f29a4ac053affb4311ef77e644b503a3d6a9c2f116c0f7b9d663a15c881",
+    "ayame-before.png": "657d2f7423e60e4c8360a360be011a39235536a2f5621cbc7e2c848e74f478aa",
+    "ayame-duel-active.png": "3a801bb4767eb91f6654b6651376c6618f9e8672da605d6b4f7bdae2db3148a4",
+    "ayame-duel-expired.png": "d3ca27326fb104df1793fb9e4ddfe951abf0ccf80274165dec0b80c13e4ed5d5",
+    "ayame-tier3-option0-1-frame0.png": "19997751595106d5a9dc389260da567dcb2851cefbfaad0dbaa0420f9e94d744",
+    "ayame-tier3-option0-1-frame1.png": "8e32d38d09f9de7a29214ebc3092cb1090f66d41de002af5427f98eb851d183b",
+    "ayame-tier3-option0-1-state.png": "8bdfde03ff744693228454a2a6c38f6808b0b2d6b7079ce21a77d4b2d27fc3f7",
+    "ayame-tier5-option0-2-frame0.png": "41f1368e91f9e22f10c6899dddf6e275d31c050393ba7e79fc256636e67a5dac",
+    "ayame-tier5-option0-2-frame1.png": "41f1368e91f9e22f10c6899dddf6e275d31c050393ba7e79fc256636e67a5dac",
+    "ayame-tier5-option0-2-state.png": "449f8a1ec08b65acdfd929f1aaa3c94e28422c2e7c2e01ff206331012710c002"
+  },
+  "gallery": "analysis/previews/ayame-vfx02/index.html"
+}

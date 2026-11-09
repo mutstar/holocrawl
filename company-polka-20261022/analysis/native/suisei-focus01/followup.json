@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-focus02",
+  "reason": "calc_to_hit(false) returns average after maybe_random2, so raw +3 yields +1/+2 in this view. Verify raw native bonus exactly+3 and derived average delta+1/+2 instead of incorrectly treating averaged result as raw accuracy."
+}

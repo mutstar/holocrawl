@@ -1,0 +1,94 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -158,6 +158,8 @@
+         holo_reset_validation_fixture();reload_disk(dir+"/su-water-save");
+         const auto p=you.pos()+coord_def(1,0);
+         require(grd(p)==DNGN_SHALLOW_WATER && is_temp_terrain(p),"Su native water missing after fresh restore");
++        const int dry_speed=player_movement_speed();require(you.move_to_pos(p),"Su restored player enters water");
++        require(!you.floundering() && player_movement_speed()==dry_speed && !you.fumbles_attack(),"Su shallow-water immunity missing after restore");
+         timeout_terrain_changes(1000);
+         require(grd(p)==DNGN_FLOOR && !is_temp_terrain(p),"Su restored terrain did not expire");
+         std::ofstream(dir+"/su-water-reload.json")<<"{\"status\":\"passed\",\"nativeTerrainRestored\":true,\"expiryRestored\":true}\n";
+@@ -185,9 +187,10 @@
+         shot("hit");int enemy_fumbles=0;for(int n=0;n<256;++n)enemy_fumbles+=m->fumbles_attack();
+         require(enemy_fumbles>0 && enemy_fumbles<256,"Su water does not use native monster fumbles");
+         require(m->move_to_pos(origin+coord_def(2,1)),"Su target leaves water");shot("water");
+-        require(you.move_to_pos(p),"Su player enters water");require(you.floundering(),"Su water lacks player penalty");
++        const int dry_speed=player_movement_speed();
++        require(you.move_to_pos(p),"Su player enters water");require(!you.floundering() && player_movement_speed()==dry_speed,"Su shallow water immunity lacks movement or stable footing");
+         int player_fumbles=0;for(int n=0;n<256;++n)player_fumbles+=you.fumbles_attack();
+-        require(player_fumbles>0 && player_fumbles<256,"Su water lacks player fumbles");shot("player");
++        require(player_fumbles==0,"Su worshipper fumbles in shallow water");shot("player");
+         require(you.move_to_pos(origin),"Su player leaves water");
+         // Refresh the same puddle without spending world time, then save both
+         // native TAG_LEVEL terrain markers and the campaign ledger.
+@@ -203,7 +206,15 @@
+         require(you.move_to_pos(origin+coord_def(1,0)),"Su five move");holo_batch::after_move(origin,true);
+         require(grd(origin+coord_def(-2,0))==DNGN_FLOOR && grd(origin+coord_def(3,0))==DNGN_SHALLOW_WATER,"Su moving field restoration");
+         timeout_terrain_changes(1000);require(grd(origin)==DNGN_FLOOR && grd(natural)==DNGN_SHALLOW_WATER,"Su expiry removed natural water");
+-        std::ofstream(std::string(shots)+"/water.json")<<"{\"status\":\"passed\",\"nativeMeleeTrigger\":true,\"playerPenalty\":true,\"monsterPenalty\":true,\"noExtraSlow\":true,\"expiry\":true,\"movingFiveField\":true,\"naturalWaterPreserved\":true}\n";
++        require(you.move_to_pos(natural),"Su natural pool entry");you.piety=0;
++        require(!you.floundering() && player_movement_speed()==dry_speed,"Su natural pool or low-piety immunity missing");
++        grd(natural)=DNGN_DEEP_WATER;
++        require(you.floundering() && player_movement_speed()==dry_speed+6 && !you.can_swim(),"Su shallow grace grants deep-water swimming");
++        grd(natural)=DNGN_SHALLOW_WATER;require(holo_worship::renounce(false),"Su immunity departure control");
++        require(you.floundering() && player_movement_speed()==dry_speed+6,"Su immunity persists after renouncing");
++        int departed_fumbles=0;for(int n=0;n<256;++n)departed_fumbles+=you.fumbles_attack();
++        require(departed_fumbles>0 && departed_fumbles<256,"Non-worshipper lost native water fumbles");
++        std::ofstream(std::string(shots)+"/water.json")<<"{\"status\":\"passed\",\"nativeMeleeTrigger\":true,\"playerShallowImmunity\":true,\"naturalPoolImmunity\":true,\"lowPietyImmunity\":true,\"deepWaterUnchanged\":true,\"renounceRemovesImmunity\":true,\"monsterPenalty\":true,\"noExtraSlow\":true,\"expiry\":true,\"movingFiveField\":true,\"naturalWaterPreserved\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_HAJIME_FIVE_REVIEW")) {
+         auto *m=fixture("hajime");const auto origin=you.pos();
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -413,7 +413,7 @@
+         "Summon hawks, mark a hunting target and call a hawk host; bird kills support worship.",
+         "Choose painting, sculpture or craft. Each exhibit has a matching active power and recovery.",
+         "Build rhythm through movement and melee. Dive in; five stars damage adjacent foes on movement.",
+-        "Build water and release waves. High tide empowers the water-based combat cycle.",
++        "Turn floor into shallow water and release waves. Worship grants immunity to shallow-water movement delay and melee fumbling, including natural pools. Deep water is unchanged. High tide empowers the water-based combat cycle.",
+         "Build a dazzling spotlight through combat. Makeup, entrance and runway reward flashy pressure.",
+         "An orbit ring continuously hits nearby foes. Gravity also deals damage; charge and detonate Big Bang.",
+         "Build heat and ember counters. Reverse jet and fire brigade combine fire with physical pressure."};
+--- before/player-act.cc
++++ after/player-act.cc
+@@ -5,6 +5,7 @@
+ 
+ #include "AppHdr.h"
+ #include "holo-campaign.h"
++#include "holo-worship.h"
+ 
+ #include "player.h"
+ 
+@@ -134,7 +135,9 @@
+ 
+ bool player::floundering() const
+ {
+-    return in_water() && !can_swim() && !extra_balanced();
++    return in_water() && !can_swim() && !extra_balanced()
++           && !(grd(pos()) == DNGN_SHALLOW_WATER
++                && holo_worship::current() == "su");
+ }
+ 
+ bool player::extra_balanced() const
+--- before/player.cc
++++ after/player.cc
+@@ -8,6 +8,7 @@
+ #include "holo-wrath.h"
+ #include "holocrawl.h"
+ #include "holo-batch.h"
++#include "holo-worship.h"
+ 
+ #include "player.h"
+ 
+@@ -1882,7 +1883,9 @@
+         mv = 6;
+ 
+     // Wading through water is very slow.
+-    if (you.in_water() && !you.can_swim())
++    if (you.in_water() && !you.can_swim()
++        && !(grd(you.pos()) == DNGN_SHALLOW_WATER
++             && holo_worship::current() == "su"))
+         mv += 6;
+ 
+     // moving on liquefied ground takes longer

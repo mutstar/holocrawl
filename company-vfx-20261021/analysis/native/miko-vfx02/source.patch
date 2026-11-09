@@ -1,0 +1,181 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -53,6 +53,23 @@
+ }
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false) {
+     flashes.clear();flash_kind=invocation_effect(g);
++    if(g=="miko" && tier==3) {
++        flash_kind=effect::mikoflame;
++        const int radius=holo_batch::five()?3:you.piety>=75?2:1;
++        for(int x=-radius;x<=radius;++x)for(int y=-radius;y<=radius;++y) {
++            const auto cell=holo_batch::s.centre+coord_def(x,y);
++            if(in_bounds(cell) && you.see_cell(cell)
++                && grid_distance(cell,holo_batch::s.centre)==radius
++                && area(cell,holo_batch::s.centre,radius))flashes.push_back(cell);
++        }
++        return;
++    }
++    if(g=="miko" && tier==5) {
++        flash_kind=effect::mikoexpand;
++        if(in_bounds(holo_batch::s.centre) && you.see_cell(holo_batch::s.centre))
++            flashes.push_back(holo_batch::s.centre);
++        return;
++    }
+     if(g=="suisei" && impact_phase)flash_kind=effect::cometfall;
+     else if(g=="suisei" && tier==1)flash_kind=effect::starmark;
+     else if(g=="suisei" && tier==3) {
+@@ -69,10 +86,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    const int frames=flash_kind==effect::cometfall?6:2;
++    const int frames=flash_kind==effect::cometfall?6:flash_kind==effect::mikoexpand?4:2;
+     for(int frame=0;frame<frames;++frame) {
+         flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
+-        scaled_delay(flash_kind==effect::cometfall?(frame<4?65:100):55);
++        scaled_delay(flash_kind==effect::cometfall?(frame<4?65:100):flash_kind==effect::mikoexpand?95:55);
+     }
+     clear();tiles.invalidate_dungeon_overlays();update_screen();
+ #endif
+@@ -126,7 +143,9 @@
+         const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
+         effect base=effect::none;
+         if(g=="sopia")base=holo_sopia::visual_at(p);
+-        if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:you.piety>=75?2:1))base=effect::shrine;
++        if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:you.piety>=75?2:1))
++            base=holo_batch::five() && ((std::abs(p.x-s.centre.x)==3 && std::abs(p.y-s.centre.y)==3) || p==s.centre)
++                ?effect::mikodomain:effect::shrine;
+         if(g=="aki" && s.one_end>now && s.one_ready<=now && grd(p)==DNGN_FLOOR && area(p,s.centre,s.three_end>now?3:you.piety>=75?2:1))base=effect::garden;
+         if(g=="towa" && s.one_end>now && area(p,s.centre,2))base=effect::spotlight;
+         if(g=="su" && grd(p)==DNGN_FLOOR && s.five_end>now && area(p,you.pos(),2))base=effect::water;
+@@ -173,10 +192,22 @@
+         const auto *marked=monster_by_mid(holo_batch::s.marked);
+         if(marked && marked->alive() && marked->pos()==p)return effect::starmark;
+     }
++    if(holo_campaign::active() && holo_worship::current()=="miko") {
++        const auto &s=holo_batch::s;const int now=you.elapsed_time;
++        const int radius=holo_batch::five()?3:you.piety>=75?2:1;
++        if(s.one_end>now && s.three_end>now && grid_distance(p,s.centre)==radius
++            && area(p,s.centre,radius))return effect::mikoflame;
++    }
+     return effect::none;
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    if(flash_kind==effect::mikoexpand && !flashes.empty()) {
++        const int radius=std::min(1+flash_frame,3);
++        const auto anchor=flashes.front()-coord_def(radius,radius);
++        if(p==anchor) { span_x=span_y=2*radius+1;return effect::mikoexpand; }
++        if(p==flashes.front())return effect::none;
++    }
+     if(flash_kind==effect::cometfall && !flashes.empty()) {
+         const auto centre=flashes.front();
+         const bool falling=flash_frame<4;
+@@ -240,7 +271,7 @@
+     if(tier<0 || (g=="sopia" && tier==6))return;
+     // A casting cue identifies a successful invocation, not its damage footprint.
+     // Persistent geometry remains sourced from actual saved combat state in at().
+-    if(g=="suisei") { prepare_invocation(g,tier,p);animate_prepared();if(crawl_state.test)clear(); }
++    if(g=="suisei" || g=="miko") { prepare_invocation(g,tier,p);animate_prepared();if(crawl_state.test)clear(); }
+     else flash(invocation_effect(g),p,0);
+ }
+ void comet_impact(const coord_def &p) {
+@@ -320,6 +351,8 @@
+     require(effect_tile(effect::carrot)==TILE_HOLO_CARROT);
+     require(TILE_HOLO_FX_COMETFALL_1-TILE_HOLO_FX_STARMARK_0==11);
+     require(effect_tile(effect::cometdrop,1)==TILE_HOLO_FX_COMETDROP_1);
++    require(effect_tile(effect::mikoflame,1)==TILE_HOLO_FX_MIKOFLAME_1);
++    require(effect_tile(effect::mikodomain,1)==TILE_HOLO_FX_MIKODOMAIN_1);
+     require(TILE_HOLO_HOUND-TILE_HOLO_ROSE==4);
+     require(TILE_HOLO_HOUND_1-TILE_HOLO_ROSE_1==4);
+     require(TILE_HOLO_STATUS_ACTIVE-TILE_HOLO_STATUS_FIVE==7);
+@@ -330,7 +363,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="miko" && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -166,6 +166,35 @@
+         holo_visual::capture(std::string(shots)+"/comet-aftermath.png");
+         std::ofstream proof(dir+"/suisei-review.json");
+         proof<<"{\"status\":\"passed\",\"tiers\":[1,3,5],\"persistentMarker\":true,\"damageOnlyAtImpact\":true,\"cutRange\":5,\"beforeImpactHp\":"<<before<<",\"afterImpactHp\":"<<m->hit_points<<"}\n";
++        close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_MIKO_REVIEW")) {
++        auto has=[](const coord_def &p,holo_visual::effect kind) {
++            const auto fx=holo_visual::at(p);
++            return std::find(fx.begin(),fx.end(),kind)!=fx.end();
++        };
++        fixture("miko",30);cast("miko",1,nullptr,you.pos());
++        require(has(you.pos()+coord_def(1,0),holo_visual::effect::shrine),"low faith shrine missing");
++        require(!has(you.pos()+coord_def(2,0),holo_visual::effect::shrine),"low faith shrine too wide");
++        fixture("miko");cast("miko",1,nullptr,you.pos());
++        cast("miko",3,nullptr,you.pos());
++        require(holo_visual::invocation_at(you.pos()+coord_def(2,0))==holo_visual::effect::mikoflame,"boundary flame missing");
++        require(holo_visual::invocation_at(you.pos()+coord_def(1,0))!=holo_visual::effect::mikoflame,"interior falsely burning");
++        const int fire_end=holo_batch::s.three_end;
++        cast("miko",5,nullptr,you.pos());
++        require(has(you.pos()+coord_def(3,3),holo_visual::effect::mikodomain),"great shrine edge missing");
++        require(holo_visual::invocation_at(you.pos()+coord_def(3,0))==holo_visual::effect::mikoflame,"expanded flame missing");
++        const auto before=signature();
++        for(int f=0;f<4;++f)holo_visual::capture_invocation("miko",you.pos(),f,std::string(shots)+"/miko-domain-frame"+std::to_string(f)+".png",5);
++        require(before==signature(),"domain animation capture changed gameplay");
++        step(std::max(0,fire_end-you.elapsed_time));
++        require(holo_visual::invocation_at(you.pos()+coord_def(3,0))!=holo_visual::effect::mikoflame,"expired fire still rendered");
++        holo_visual::capture(std::string(shots)+"/miko-fire-expired.png");
++        step(std::max(0,holo_batch::s.five_end-you.elapsed_time));
++        require(!has(you.pos()+coord_def(3,3),holo_visual::effect::mikodomain),"expired domain still rendered");
++        holo_visual::capture(std::string(shots)+"/miko-domain-expired.png");
++        std::ofstream proof(dir+"/miko-review.json");
++        proof<<"{\"status\":\"passed\",\"lowFaithWidth\":3,\"highFaithWidth\":5,\"domainWidth\":7,\"boundaryOnlyFire\":true,\"expandedFire\":true,\"expiredFireGone\":true,\"expiredDomainGone\":true,\"capturePreservesGameplay\":true}\n";
+         close_save();return 0;
+     }
+     if(getenv("HOLOCRAWL_VISUAL_CAPTURE")) {
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -81,7 +81,13 @@
+ 
+ void DungeonCellBuffer::add_holo_vfx_tile(int tileidx,int x,int y,int span_x,int span_y)
+ {
+-    if(tileidx)m_buf_holo_vfx.add(tileidx,x,y,0,0,true,-1,float(TILE_X)/span_x,float(TILE_Y)/span_y);
++    if(tileidx) {
++        const auto &inf=tile_feat_info(tileidx);
++        // Native-size ceremonial sprites keep their detail. For ordinary
++        // 32x32 tiles these offsets/divisors are identical to the old path.
++        m_buf_holo_vfx.add(tileidx,x,y,(inf.width-TILE_X)/2,inf.height-TILE_Y,
++            true,-1,float(inf.width)/span_x,float(inf.height)/span_y);
++    }
+ }
+ 
+ void DungeonCellBuffer::add_monster(const monster_info &mon, int x, int y)
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -90,6 +90,12 @@
+ fx_cometfall_1 HOLO_FX_COMETFALL_1
+ fx_cometdrop_0 HOLO_FX_COMETDROP_0
+ fx_cometdrop_1 HOLO_FX_COMETDROP_1
++fx_mikoflame_0 HOLO_FX_MIKOFLAME_0
++fx_mikoflame_1 HOLO_FX_MIKOFLAME_1
++fx_mikodomain_0 HOLO_FX_MIKODOMAIN_0
++fx_mikodomain_1 HOLO_FX_MIKODOMAIN_1
++fx_mikoexpand_0 HOLO_FX_MIKOEXPAND_0
++fx_mikoexpand_1 HOLO_FX_MIKOEXPAND_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

@@ -1,0 +1,12 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -136,7 +136,8 @@
+         std::ofstream proof(dir+"/towa-support.json");proof<<"{\"status\":\"passed\",\"cases\":[";
+         for(int distance=1;distance<=2;++distance) {
+             auto *m=fixture("towa");const auto origin=you.pos();
+-            const auto initial=origin+coord_def(distance==1?0:1,-2),dest=origin+coord_def(0,-distance);
++            const bool diagonal=getenv("HOLOCRAWL_TOWA_DIAGONAL_REVIEW");
++            const auto initial=origin+coord_def(diagonal?1:(distance==1?0:1),-2),dest=origin+coord_def(diagonal?distance:0,-distance);
+             require(m->move_to_pos(initial),"Towa initial enemy position");m->hit_points=m->max_hit_points=40;
+             require(invoke(3,nullptr,&origin)==10,"Towa actual covering zone invocation");step(10);
+             const std::string stem=std::string(shots)+"/towa-demo-"+std::to_string(distance);

@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit06",
+  "reason": "Normalize synthetic native level/LOS/tiles and preserve the RNG restored from TAG_YOU during test-only dgn_reset_level/TAG_LEVEL reconstruction. Add pre-hit bank signatures for strict core comparison; retain separate UI RNG diagnostic."
+}

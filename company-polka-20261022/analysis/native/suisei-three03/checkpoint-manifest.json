@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "revision": "suisei-three03",
+  "runtimeDeployed": true,
+  "combatChanged": true,
+  "binarySha256": "ab374d361bbb5f93dc8e678df504c4f129f026b3242b3b42611c97ab80c28379",
+  "nativeProof": {
+    "status": "passed",
+    "cap": 3,
+    "realDirectHits": 4,
+    "zeroDamageControl": true,
+    "rewardFormulaAndConsumption": true,
+    "cutPerStar": 5,
+    "cometPerStar": 8,
+    "costsAndDelay": true,
+    "legacyMigrationIdempotent": true,
+    "liveVfxWithoutPreviewProp": true,
+    "cutDamage": [
+      25,
+      30,
+      35,
+      40
+    ],
+    "cometDamage": [
+      31,
+      39,
+      47,
+      55
+    ]
+  },
+  "validation": {
+    "rawScreenshots": 10,
+    "chocoControls": false,
+    "gods": 22,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "freshProcessRestore": true,
+    "binarySha256": "AB374D361BBB5F93DC8E678DF504C4F129F026B3242B3B42611C97AB80C28379",
+    "status": "passed"
+  },
+  "suiseiFreshRestore": {
+    "status": "passed",
+    "nativeLevel": true,
+    "stars": 3,
+    "pendingComet": true,
+    "exactContinuation": true
+  },
+  "passive2Implemented": false,
+  "passive4Implemented": false
+}

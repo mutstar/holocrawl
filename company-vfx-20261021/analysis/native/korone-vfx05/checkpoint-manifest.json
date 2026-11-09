@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "revision": "korone-vfx05",
+  "frames": [
+    {
+      "frame": 0,
+      "bounds": [
+        37,
+        40,
+        60,
+        57
+      ],
+      "spriteSize": [
+        24,
+        20
+      ],
+      "sha256": "ab142d59c634a70b4a742d7cf6619d90780321afbb24d532f05d3dec6159d213"
+    },
+    {
+      "frame": 1,
+      "bounds": [
+        35,
+        39,
+        62,
+        59
+      ],
+      "spriteSize": [
+        28,
+        23
+      ],
+      "sha256": "be69bb5153056bd4b8bbd80689b3b542277e77605a54668552b35e692e1427c3"
+    }
+  ],
+  "previousCentre": [
+    48,
+    48
+  ],
+  "newCentre": [
+    48,
+    48
+  ],
+  "bodyShot": true,
+  "frameMilliseconds": 110,
+  "renderAboveActors": true,
+  "changed": [
+    "rltiles/holo/fx_night_korone3_0.png",
+    "rltiles/holo/fx_night_korone3_1.png"
+  ],
+  "numericChanges": false,
+  "runtimeSha256": "134C9D37FF13CAC0670A9FE64676AA67433BDBB16D3FB224B5B405679E519A4B",
+  "otherSourceAndArtHashesPreserved": true,
+  "tests": "22-god native controls and fresh-process restore passed",
+  "feedback": "pending",
+  "prompt": "assets/holocrawl/korone-vfx05/generation.json",
+  "review": "analysis/previews/all-gods-vfx-draft04/index.html#korone"
+}

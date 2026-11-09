@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "revision": "lamy-caster01",
+  "numericChanges": true,
+  "saveFormatChanged": false,
+  "allArtAndOtherSourcePreserved": true,
+  "runtimeSha256": "8F471F33A91328E623651C07CF9B4E6AAFF43E85073F1FE06F7AAD49064FBD15",
+  "proof": {
+    "status": "passed",
+    "invocation": 12,
+    "baseSpellPower": 24,
+    "buffSpellPower": 27,
+    "drink": 40,
+    "overdoseEV": -3,
+    "nativeAreaCast": true,
+    "perCastDedup": true,
+    "dotPetDivineExcluded": true,
+    "banquetTurns": 8,
+    "banquetCooldown": 15,
+    "saved": true
+  },
+  "changedHashes": {
+    "Makefile.obj": "aecce6296b44ee7e4983ca0ed1bf37d9f7c4ce64712a1940d4badd865e877014",
+    "spl-cast.cc": "1767b7e34a6295d98eb7b42948d5d34c101223f97cf955bbc43f3de3e1f3ad88",
+    "monster.cc": "13dbeefb57e34ef13bc65d209385837b056476014f625fceba28306ceea49b48",
+    "player.cc": "b331f58a6a4439f4c5116e517f3205b477423bf967df17ec01676308556063f8",
+    "status.cc": "fd4e3aa36637f0dbebc873916a0a208f06b36dd17298a7840e837a57b13281ea",
+    "holo-batch.cc": "22f8944357a1523383a99d9882e984fdc079eaf9b00c59ff6c531e4f72629de2",
+    "holo-batch-resources.cc": "6f6809845a9bd1f5f7eacde2df52aeab176a72367560e8567ea4f1ee84c96400",
+    "holo-campaign.cc": "81c3ae1c480328a9aaf1e1525b235e03eb27b018fc71969d585e5bf572c0a7f1",
+    "holo-campaign-test.cc": "0768ad4de26223ac07fe7a8c237634c8143945ada846cc64c473c3f93a8102fc",
+    "holo-lamy.h": "159792c87709a24260824a63fd8f58e226643800977bcde1619f11ae74f55df6",
+    "holo-lamy.cc": "dc9f0a5d2248d1cff5ca19c23f7a790ee5862a068344a0ffc9286aaa4acb8a21"
+  },
+  "visualFeedback": "Tier1 pending; tier3/5 mechanics applied, art pending",
+  "scope": "Native feature/damage/save regressions; no campaign winrate claim"
+}

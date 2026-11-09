@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "revision": "korone-vfx06",
+  "tier": 5,
+  "assetReuse": "assets/holocrawl/korone-vfx05/paw.png",
+  "originalGeneration": "assets/holocrawl/korone-vfx05/generation.json",
+  "oldMaxSizes": [
+    116,
+    148
+  ],
+  "newMaxSizes": [
+    32,
+    38
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "bounds": [
+        66,
+        69,
+        96,
+        92
+      ],
+      "spriteSize": [
+        32,
+        26
+      ],
+      "sha256": "50a626d65e74a86cf0dcc7b9b2c684c52909bfb424641ec6f6af1f0025c6c567"
+    },
+    {
+      "frame": 1,
+      "bounds": [
+        63,
+        68,
+        99,
+        95
+      ],
+      "spriteSize": [
+        38,
+        31
+      ],
+      "sha256": "8c6fe48bb6081f896f24becb9966a88f97f1dcd343e8b21b5114c0e6c0f716d0"
+    }
+  ],
+  "centre": [
+    80,
+    80
+  ],
+  "frameMilliseconds": 110,
+  "renderAboveActors": true,
+  "changed": [
+    "holo-visual.cc",
+    "tilereg-dgn.cc",
+    "rltiles/holo/fx_night_korone5_0.png",
+    "rltiles/holo/fx_night_korone5_1.png"
+  ],
+  "numericChanges": false
+}

@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-three03",
+  "reason": "Native rat AC is1, not0. Compare matching seeded attacks on the same native AC<=1 fixture; raw minimum damage exceeds AC, so star delta remains exact. No gameplay changes."
+}

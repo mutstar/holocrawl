@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit08",
+  "reason": "Isolate the real memorised-spell/kill/save sequence in its own process. Run previous Focus/Three/Su-water regressions in their original process order, avoiding test-fixture UI/kill state carryover. Keep strict bank/core-RNG and actual-spell outcome checks."
+}

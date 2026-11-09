@@ -1,0 +1,34 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,31 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_SU_FIVE_REVIEW")) {
++        auto *m=fixture("su");const auto origin=you.pos(),natural=origin+coord_def(0,-1);
++        for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
++        you.trapped=false;you.skills[SK_INVOCATIONS]=12;holo_batch::s.inv=12;
++        require(m->move_to_pos(origin+coord_def(1,1)),"Su five target placement");
++        auto enemy=[&](const coord_def &p){auto mg=mgen_data::hostile_at(MONS_ORC,false,p);mg.flags|=MG_FORCE_PLACE;auto *n=create_monster(mg,false);require(n,"Su five extra target");n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;return n;};
++        auto *near=enemy(origin+coord_def(-1,1)),*outside=enemy(origin+coord_def(4,0));
++        grd(natural)=DNGN_SHALLOW_WATER;
++        auto shot=[&](const std::string &name){const auto before=signature();holo_visual::capture(std::string(shots)+"/tide-"+name+".png");require(before==signature(),"Su tide capture changed RNG/state");};
++        shot("before");const int mp=you.magic_points,faith=you.piety,hp=m->hit_points,near_hp=near->hit_points,out_hp=outside->hit_points;
++        require(invoke(5,nullptr,&origin)==10,"Su five invocation");
++        const auto stable=signature();for(int f=0;f<2;++f)holo_visual::capture_invocation("su",origin,f,std::string(shots)+"/tide-cast"+std::to_string(f)+".png",5);
++        require(stable==signature(),"Su tide activation capture changed RNG/state");step(10);shot("active");
++        const int remaining=holo_batch::s.five_end-you.elapsed_time;
++        require(remaining==84 && you.magic_points==mp-6 && you.piety==faith-12,"Su five cost/duration");
++        require(grd(origin)==DNGN_SHALLOW_WATER && !you.floundering() && player_movement_speed()==10,"Su five field or grace");
++        step(10);shot("pulse");require(near->hit_points<near_hp,"Su five water pulse caused no damage");
++        you.turn_is_over=false;process_command(CMD_MOVE_LEFT);require(you.turn_is_over && you.pos()==origin+coord_def(-1,0),"Su five native left movement");step(you.time_taken);shot("left");
++        require(grd(origin+coord_def(2,0))==DNGN_FLOOR && grd(origin+coord_def(-3,0))==DNGN_SHALLOW_WATER,"Su five field does not follow movement");
++        you.turn_is_over=false;process_command(CMD_MOVE_RIGHT);require(you.turn_is_over && you.pos()==origin,"Su five native return movement");step(you.time_taken);shot("return");
++        require(outside->hit_points==out_hp,"Su five damaged outside field");
++        step(holo_batch::s.five_end-you.elapsed_time);shot("ended");
++        require(!holo_batch::five() && grd(origin)==DNGN_FLOOR && grd(natural)==DNGN_SHALLOW_WATER,"Su five expiry/original terrain restoration");
++        std::ofstream(std::string(shots)+"/tide.json")<<"{\"status\":\"passed\",\"invocations\":12,\"mpCost\":6,\"pietyCost\":12,\"remainingAfterCastAut\":"<<remaining<<",\"nativeMovement\":true,\"movingField\":true,\"playerGrace\":true,\"outsideUnaffected\":true,\"naturalWaterPreserved\":true,\"expired\":true,\"damageA\":"<<hp-m->hit_points<<",\"damageB\":"<<near_hp-near->hit_points<<"}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_SU_WAVE_REVIEW")) {
+         std::ofstream report(std::string(shots)+"/wave.json");report<<"{\"status\":\"passed\",\"scenes\":[";
+         for(int wet=0;wet<2;++wet) {

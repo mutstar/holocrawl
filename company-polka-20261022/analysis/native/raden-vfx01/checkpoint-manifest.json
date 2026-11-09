@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "revision": "raden-vfx01",
+  "binarySha256": "f9154adc7b23d9427e61f52e58c3c50db23eb4eb268bbb6ac91d37d8a1b2c60d",
+  "nativeSize": [
+    14,
+    14
+  ],
+  "position": [
+    18,
+    0
+  ],
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "validation": {
+    "chocoControls": false,
+    "binarySha256": "F9154ADC7B23D9427E61F52E58C3C50DB23EB4EB268BBB6AC91D37D8A1B2C60D",
+    "status": "passed",
+    "rawScreenshots": 9,
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "gods": 22
+  }
+}

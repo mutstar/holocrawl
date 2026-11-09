@@ -1,0 +1,131 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -441,3 +441,11 @@
+ fx_viviencore_echo1 HOLO_FX_VIVIENCORE_ECHO1
+ 
+ fx_viviencore_echo2 HOLO_FX_VIVIENCORE_ECHO2
++
++fx_vivifinale_mark HOLO_FX_VIVIFINALE_MARK
++fx_vivifinale_burst0 HOLO_FX_VIVIFINALE_BURST0
++fx_vivifinale_burst1 HOLO_FX_VIVIFINALE_BURST1
++fx_vivifinale_burst2 HOLO_FX_VIVIFINALE_BURST2
++fx_vivifinale_edge0 HOLO_FX_VIVIFINALE_EDGE0
++fx_vivifinale_edge1 HOLO_FX_VIVIFINALE_EDGE1
++fx_vivifinale_edge2 HOLO_FX_VIVIFINALE_EDGE2
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,23 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_VIVI_FINALE_REVIEW")) {
++        auto *m=fixture("vivi");const auto origin=you.pos(),aim=origin+coord_def(3,0);
++        require(m->move_to_pos(aim),"Vivi finale central placement");
++        auto enemy=[&](const coord_def &p){auto mg=mgen_data::hostile_at(MONS_ORC,false,p);mg.flags|=MG_FORCE_PLACE;auto *n=create_monster(mg,false);require(n,"Vivi finale neighbour placement");n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;return n;};
++        auto *near=enemy(aim+coord_def(0,1)),*outside=enemy(aim+coord_def(0,2));
++        const int hp=m->hit_points,near_hp=near->hit_points,out_hp=outside->hit_points;const auto stable=signature();
++        you.props["holo_vivi_vfx_preview"]=0;holo_visual::capture(std::string(shots)+"/finale-before.png");
++        for(int phase=0;phase<4;++phase) {
++            you.props["holo_vivi_finale_preview"]=phase;
++            const std::string name=phase==0?"cast":phase==1?"mark":phase==2?"spell":"burst";
++            for(int f=0;f<(phase==3?3:2);++f)holo_visual::capture_invocation("vivi",aim,f,std::string(shots)+"/finale-"+name+std::to_string(f)+".png",5);
++            require(stable==signature(),"Vivi finale capture changed gameplay/RNG");
++        }
++        you.props.erase("holo_vivi_finale_preview");holo_visual::capture(std::string(shots)+"/finale-ended.png");you.props.erase("holo_vivi_vfx_preview");
++        require(stable==signature() && m->hit_points==hp && near->hit_points==near_hp && outside->hit_points==out_hp,"Vivi finale staged visuals dealt damage");
++        std::ofstream(std::string(shots)+"/finale.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"stagedVisualPreview\":true,\"stages\":[\"cast\",\"marked\",\"second-hit\",\"surrounding-burst\",\"ended\"],\"combatChanged\":false,\"rngStable\":true,\"targetHpUnchanged\":true,\"previewFlagsRemoved\":true}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_VIVI_ENCORE_REVIEW")) {
+         auto *m=fixture("vivi",100);const auto origin=you.pos(),aim=origin+coord_def(3,0);
+         require(m->move_to_pos(aim),"Vivi encore concept placement");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -72,6 +72,7 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
++    if(e==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview"))return 1;
+     if(e==effect::night_vivi3 && crawl_state.test && you.props.exists("holo_vivi_encore_preview"))return 1;
+     if(e==effect::night_su3)return 1;
+     if(e==effect::night_raden3 || e==effect::night_radenstone || e==effect::night_radencraft)return 1;
+@@ -85,6 +86,7 @@
+ effect night_status(const coord_def &p) {
+     if(p!=you.pos() || !holo_campaign::active() || you.piety<30)return effect::none;
+     const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
++    if(crawl_state.test && g=="vivi" && you.props.exists("holo_vivi_finale_preview"))return effect::night_vivi1;
+     // Staged native-renderer concept review only; no combat state is changed.
+     if(crawl_state.test && g=="vivi" && you.props.exists("holo_vivi_vfx_preview"))
+         return you.props["holo_vivi_vfx_preview"].get_int()>0?effect::night_vivi1:effect::none;
+@@ -204,6 +206,15 @@
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
+     su_fronts.clear();
++    if(g=="vivi" && tier==5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
++        const int phase=you.props["holo_vivi_finale_preview"].get_int();
++        flash_kind=effect::night_vivi5;const auto centre=phase==0?you.pos():p;flashes.push_back(centre);
++        if(phase==3)for(int dx=-1;dx<=1;++dx)for(int dy=-1;dy<=1;++dy) {
++            const auto q=centre+coord_def(dx,dy);
++            if((dx||dy) && in_bounds(q) && !cell_is_solid(q) && holo_batch::seen(q))flashes.push_back(q);
++        }
++        return;
++    }
+     if(g=="vivi" && tier==3 && crawl_state.test && you.props.exists("holo_vivi_encore_preview")) {
+         flash_kind=effect::night_vivi3;
+         flashes.push_back(you.props["holo_vivi_encore_preview"].get_int()==0?you.pos():p);
+@@ -415,6 +426,9 @@
+ }
+ effect invocation_at(const coord_def &p) {
+     if(!in_bounds(p) || !you.see_cell(p))return effect::none;
++    if(flash_kind==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")
++        && you.props["holo_vivi_finale_preview"].get_int()==3 && !flashes.empty()
++        && p!=flashes.front() && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())return effect::spotlight;
+     if(flash_kind==effect::night_su3) {
+         if(flash_frame<0 || flash_frame>=int(su_fronts.size()))return effect::none;
+         const auto &front=su_fronts[flash_frame];
+@@ -838,6 +852,16 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
++        if(kind==effect::night_vivi1)return TILE_HOLO_FX_VIVIFINALE_MARK;
++        if(kind==effect::night_vivi5 || kind==effect::spotlight) {
++            const int phase=you.props["holo_vivi_finale_preview"].get_int();
++            if(phase<2)return TILE_HOLO_FX_VIVIFINALE_MARK;
++            if(frame<0)frame=flash_frame;
++            if(phase==2)return TILE_HOLO_FX_IMPACT_0+frame%2;
++            return (kind==effect::night_vivi5?TILE_HOLO_FX_VIVIFINALE_BURST0:TILE_HOLO_FX_VIVIFINALE_EDGE0)+std::min(2,std::max(0,frame));
++        }
++    }
+     if(kind==effect::night_vivi3 && crawl_state.test && you.props.exists("holo_vivi_encore_preview")) {
+         const int phase=you.props["holo_vivi_encore_preview"].get_int();
+         if(phase==0)return TILE_HOLO_FX_VIVIENCORE_READY;
+@@ -940,7 +964,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?2:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -140,7 +140,7 @@
+         const bool native_backdrop=lui_wings || raden_screen;
+         const bool hajime_notes=tileidx==holo_visual::effect_tile(holo_visual::effect::night_hajime1,0);
+         const bool vivi_gems=(tileidx>=TILE_HOLO_FX_VIVIATTENTION1 && tileidx<=TILE_HOLO_FX_VIVIATTENTION3)
+-            || tileidx==TILE_HOLO_FX_VIVIENCORE_READY;
++            || tileidx==TILE_HOLO_FX_VIVIENCORE_READY || tileidx==TILE_HOLO_FX_VIVIFINALE_MARK;
+         buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+(polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(polka_hat?12:(hajime_notes || vivi_gems)?8:0),
+             true,-1,native_backdrop?32.0f:float(inf.width)/span_x,native_backdrop?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -152,6 +152,7 @@
+                         && cue!=holo_visual::effect::night_watame5
+                         && cue!=holo_visual::effect::night_su3
+                         && !(cue==holo_visual::effect::night_vivi3 && crawl_state.test && you.props.exists("holo_vivi_encore_preview"))
++                        && !(cue==holo_visual::effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview"))
+                           && cue!=holo_visual::effect::night_raden3
+                         && cue!=holo_visual::effect::night_koyori5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft

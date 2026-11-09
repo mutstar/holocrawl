@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "frame": 0,
+      "side": "left",
+      "opaqueSamples": 190,
+      "matchingAfter": 182,
+      "matchingBefore": 161,
+      "visibleFraction": 0.9578947368421052
+    },
+    {
+      "frame": 0,
+      "side": "right",
+      "opaqueSamples": 195,
+      "matchingAfter": 188,
+      "matchingBefore": 29,
+      "visibleFraction": 0.9641025641025641
+    },
+    {
+      "frame": 1,
+      "side": "left",
+      "opaqueSamples": 275,
+      "matchingAfter": 259,
+      "matchingBefore": 243,
+      "visibleFraction": 0.9418181818181818
+    },
+    {
+      "frame": 1,
+      "side": "right",
+      "opaqueSamples": 274,
+      "matchingAfter": 258,
+      "matchingBefore": 34,
+      "visibleFraction": 0.9416058394160584
+    }
+  ],
+  "scope": "Fixed arena sample verifies both opaque paw interiors on top of actors; art/scale/position unchanged."
+}

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "assetReuse": "assets/holocrawl/choco-vfx02/originals/heart-solid.png",
+  "originalGeneration": "assets/holocrawl/choco-vfx02/generation.json",
+  "oldSize": 10,
+  "newMaxSize": 14,
+  "raisedPixels": 5,
+  "returnFrameMilliseconds": 170,
+  "solidCentre": true,
+  "changed": [
+    "rltiles/holo/fx_chocoabsorb0_0.png",
+    "rltiles/holo/fx_chocoabsorb0_1.png",
+    "rltiles/holo/fx_chocoabsorb1_0.png",
+    "rltiles/holo/fx_chocoabsorb1_1.png",
+    "rltiles/holo/fx_chocoabsorb2_0.png",
+    "rltiles/holo/fx_chocoabsorb2_1.png",
+    "rltiles/holo/fx_chocoabsorb3_0.png",
+    "rltiles/holo/fx_chocoabsorb3_1.png",
+    "rltiles/holo/fx_chocoabsorb4_0.png",
+    "rltiles/holo/fx_chocoabsorb4_1.png",
+    "rltiles/holo/fx_chocoabsorb5_0.png",
+    "rltiles/holo/fx_chocoabsorb5_1.png",
+    "rltiles/holo/fx_chocoabsorb6_0.png",
+    "rltiles/holo/fx_chocoabsorb6_1.png",
+    "rltiles/holo/fx_chocoabsorb7_0.png",
+    "rltiles/holo/fx_chocoabsorb7_1.png",
+    "holo-visual.cc"
+  ],
+  "numericChanges": false
+}

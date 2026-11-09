@@ -1,0 +1,27 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -353,6 +353,12 @@
+     if(flash_kind==effect::none && holo_campaign::noel_commander()
+         && p==you.pos()-coord_def(2,2)) {
+         span_x=span_y=5;return effect::night_noel5;
++    }
++    // Song notes and wool cushion follow the actual saved Watame5 buff.
++    if(flash_kind==effect::none && holo_campaign::active()
++        && holo_worship::current()=="watame" && holo_batch::s.five_end>you.elapsed_time
++        && p==you.pos()-coord_def(2,2)) {
++        span_x=span_y=5;return effect::night_watame5;
+     }
+     const int ns=night_span(flash_kind);
+     if(ns>1 && !flashes.empty()) {
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -136,7 +136,8 @@
+                         && (int(cue)-int(holo_visual::effect::night_korone1))%3!=0
+                         && cue!=holo_visual::effect::night_korone3
+                         && cue!=holo_visual::effect::night_okayu5
+-                        && cue!=holo_visual::effect::night_noel5)
++                        && cue!=holo_visual::effect::night_noel5
++                        && cue!=holo_visual::effect::night_watame5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft)
+                     || cue==holo_visual::effect::chocowings || cue==holo_visual::effect::chocobond
+                     || cue==holo_visual::effect::ayameduel || cue==holo_visual::effect::akibloom || cue==holo_visual::effect::foxshift

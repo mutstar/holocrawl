@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "revision": "su-wave03",
+  "binarySha256": "b3e2f6a5295cc31aa244cd0e54a354028384173171ac7fbf3be04fa69cb0c12e",
+  "combatChanged": false,
+  "artChanged": true,
+  "nativeProof": {
+    "status": "passed",
+    "scenes": [
+      {
+        "water": false,
+        "mainDamage": 5,
+        "sideDamage": 0,
+        "push": 1,
+        "mpCost": 3,
+        "pietyCost": 3,
+        "cooldownAfterCastAut": 30
+      },
+      {
+        "water": true,
+        "mainDamage": 10,
+        "sideDamage": 9,
+        "push": 1,
+        "mpCost": 3,
+        "pietyCost": 3,
+        "cooldownAfterCastAut": 30
+      }
+    ],
+    "nativePuddleTrigger": true,
+    "outsideUnaffected": true,
+    "captureRngStable": true
+  },
+  "validation": {
+    "rawScreenshots": 19,
+    "binarySha256": "B3E2F6A5295CC31AA244CD0E54A354028384173171AC7FBF3BE04FA69CB0C12E",
+    "status": "passed",
+    "chocoControls": false,
+    "gods": 22,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "freshProcessRestore": true
+  },
+  "artResize": {
+    "revision": "su-wave03",
+    "source": "assets\\holocrawl\\su-wave02\\wave-source.png",
+    "operation": "Nearest-neighbor resize of existing generated sprite; no new painting.",
+    "previousArtSize": [
+      20,
+      24
+    ],
+    "newArtSize": [
+      24,
+      28
+    ],
+    "nativeTile": [
+      32,
+      32
+    ],
+    "diagonalFitMax": [
+      30,
+      30
+    ],
+    "sha256": {
+      "fx_suwave_e.png": "6524e6bc165c15f6881ab88d918d21c80cef71a2ee4751eb7b5dffff54c9b2c7",
+      "fx_suwave_se.png": "a6be2fb9a3410310433e96e89a6fd0525977e40171dd713c461ed0862d4eb7b7",
+      "fx_suwave_s.png": "32bd20db9dcbe1b5192df782ef0f8f064ba6bfe34c1df34c8f54c71bc8628c04",
+      "fx_suwave_sw.png": "70a135ff5841683ca91902d38522e89c017c9dab6c3bf805644d01120698e2ef",
+      "fx_suwave_w.png": "7db1e1b9b43c7c154d6d7256a011d5e7a69120700b4be7a82f39026d04f7ff37",
+      "fx_suwave_nw.png": "2dcf5dc76cb1e7a16c8d04b893f432a1aeffba38c2bc24500254fedd432178d8",
+      "fx_suwave_n.png": "ffd75f6e1c15114790f6cd99a42a0276bda449dc5629ae02a52583e5abe124bd",
+      "fx_suwave_ne.png": "5b4a355ddcc3274fa5caadba6c2a2ae5cde5cdbfe0c48d50010b13fa161ed4b8"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "status": "passed",
+  "oldCentre": [
+    57,
+    39
+  ],
+  "newCentre": [
+    57,
+    33
+  ],
+  "shiftUpNativePixels": 6,
+  "solidCentre": true,
+  "frames": [
+    {
+      "stack": 1,
+      "frame": 0,
+      "size": [
+        8,
+        7
+      ],
+      "alphaBounds": [
+        54,
+        31,
+        60,
+        36
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart1_0.png",
+      "sha256": "2f7742e968b914953f8fa9ed6c7ad26c9922d3073096ce6f233377f2e5d363ec"
+    },
+    {
+      "stack": 1,
+      "frame": 1,
+      "size": [
+        7,
+        7
+      ],
+      "alphaBounds": [
+        55,
+        31,
+        61,
+        37
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart1_1.png",
+      "sha256": "c6fdd78c7cb84152b15faf463e92034ed304f3542121d1151fd9c2ed42f3af33"
+    },
+    {
+      "stack": 2,
+      "frame": 0,
+      "size": [
+        9,
+        8
+      ],
+      "alphaBounds": [
+        54,
+        30,
+        61,
+        36
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart2_0.png",
+      "sha256": "b674a083c2040c34e12cdb31bd3a5b97d4b8318e16bc75c408e53e5e432e47ba"
+    },
+    {
+      "stack": 2,
+      "frame": 1,
+      "size": [
+        8,
+        7
+      ],
+      "alphaBounds": [
+        54,
+        31,
+        60,
+        36
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart2_1.png",
+      "sha256": "2f7742e968b914953f8fa9ed6c7ad26c9922d3073096ce6f233377f2e5d363ec"
+    },
+    {
+      "stack": 3,
+      "frame": 0,
+      "size": [
+        10,
+        9
+      ],
+      "alphaBounds": [
+        53,
+        30,
+        61,
+        38
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart3_0.png",
+      "sha256": "32bb41da6fe165a85869b0791a08f30118790d733bd45d1524dc2fc90b0506e1"
+    },
+    {
+      "stack": 3,
+      "frame": 1,
+      "size": [
+        9,
+        8
+      ],
+      "alphaBounds": [
+        54,
+        30,
+        61,
+        36
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart3_1.png",
+      "sha256": "b674a083c2040c34e12cdb31bd3a5b97d4b8318e16bc75c408e53e5e432e47ba"
+    },
+    {
+      "stack": 4,
+      "frame": 0,
+      "size": [
+        11,
+        10
+      ],
+      "alphaBounds": [
+        53,
+        29,
+        62,
+        37
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart4_0.png",
+      "sha256": "2fa607447169d9b8fcd24afb9a0ebff6534868051cab4df587dd3bd475c41344"
+    },
+    {
+      "stack": 4,
+      "frame": 1,
+      "size": [
+        10,
+        9
+      ],
+      "alphaBounds": [
+        53,
+        30,
+        61,
+        38
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart4_1.png",
+      "sha256": "32bb41da6fe165a85869b0791a08f30118790d733bd45d1524dc2fc90b0506e1"
+    },
+    {
+      "stack": 5,
+      "frame": 0,
+      "size": [
+        12,
+        11
+      ],
+      "alphaBounds": [
+        52,
+        30,
+        63,
+        38
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart5_0.png",
+      "sha256": "6b1deada6ec90a0b8b805cc2667e5515e66e496eab36f9c89d4aa8071b4e405e"
+    },
+    {
+      "stack": 5,
+      "frame": 1,
+      "size": [
+        11,
+        10
+      ],
+      "alphaBounds": [
+        53,
+        29,
+        62,
+        37
+      ],
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_chocoheart5_1.png",
+      "sha256": "2fa607447169d9b8fcd24afb9a0ebff6534868051cab4df587dd3bd475c41344"
+    }
+  ],
+  "renderLayerUnchanged": true,
+  "renderAboveActors": true
+}

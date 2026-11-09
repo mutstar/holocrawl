@@ -1,0 +1,10 @@
+{
+  "choco": "native-choco/choco-review.json",
+  "nativeValidation": "native/validation.json",
+  "reload": "native/reload.json",
+  "gods": 22,
+  "binarySha256": "72DE4B48B86FE4617FABD85F4B5F7FD4BD3896E2223E6D5979B1A0A7E2A042D8",
+  "status": "passed",
+  "rawScreenshots": 370,
+  "scope": "Native fixed test arena, existing boosted fixtures; VFX drafts and regression, not campaign win rates"
+}

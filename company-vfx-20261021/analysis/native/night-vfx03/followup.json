@@ -1,0 +1,5 @@
+{
+  "nativeValidation": "passed",
+  "runtimeInstalled": false,
+  "reason": "Final visual alignment fix: Sopia upgrade cue must read saved field centre, not ignored new aim.04 adds read-only accessor and centre regression; numerical logic unchanged."
+}

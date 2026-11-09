@@ -1,0 +1,20 @@
+{
+  "scope": "Move only Aki bloom below all actor layers",
+  "sourceFiles": [
+    "tiledgnbuf.cc",
+    "tiledgnbuf.h",
+    "tilereg-dgn.cc"
+  ],
+  "invariants": [
+    "all VFX PNGs unchanged",
+    "all combat and effect logic unchanged",
+    "thorn flight and other transient effects retain foreground layer"
+  ],
+  "checks": [
+    "native bloom actors readable through all4frames",
+    "rose sprite opaque pixels preserved",
+    "player and enemy interior pixels preserved",
+    "native Aki same combat review",
+    "22-god powers and save/reload"
+  ]
+}

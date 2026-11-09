@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "reason": "Capture fixture did not mark the direct spell command as a completed player action, so finish_attack cancelled the context. Add native turn completion flags; no gameplay rule change.",
+  "next": "suisei-stars02"
+}

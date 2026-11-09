@@ -1,0 +1,45 @@
+{
+  "version": "suisei-vfx04",
+  "status": "passed",
+  "checkedAtUtc": "2026-10-20T13:13:11.134163+00:00",
+  "nativeRegressionGods": 22,
+  "numericalBalanceChanges": false,
+  "tier1Tier3AcceptedAndPreserved": true,
+  "nativeDescentFrames": 4,
+  "nativeImpactFrames": 2,
+  "sameDelayedDamageHp": [
+    9986,
+    9964
+  ],
+  "playBinarySha256": "1B07341CB9288EC822724E478EB0ED9DB021C42A9CC875BA6C6FDE7C7019C5F0",
+  "files": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-visual.cc",
+      "sha256": "1665FD02E351F6FB73FA305FF682BD571324A42B4345BCC666D0C9C5646F780A"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-visual.h",
+      "sha256": "330739DC8E58B4AA7DC5EE36EBF517B1A8F392BFB312143C750F5884DA6CB4DC"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-campaign-test.cc",
+      "sha256": "312B5437E6CFA37659F20A29174713806428B6FEBDACC9246B8A1057B736F04B"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/dc-holo-feat.txt",
+      "sha256": "63375139D3AED93BA69FDF0A72D099D406FC7172E5E8B9106192D6E66AD9B303"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometdrop_0.png",
+      "sha256": "D6967D6E2B9BC4A6D648A9E58C1D80CBED75EE22AA6AE96A230C84F7D2EE0A9E"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_cometdrop_1.png",
+      "sha256": "1B5AEF362015161BA651343EB965DE8A069BC2934516A94F757E1A961C3D4175"
+    }
+  ],
+  "gallery": "analysis/previews/suisei-vfx04/index.html",
+  "prompt": "assets/holocrawl/suisei-vfx04/inputs.json",
+  "scope": "Fixed arena, native SDL, not campaign clear rates",
+  "feedback": "Awaiting user review of tier5 warning/descent/impact"
+}

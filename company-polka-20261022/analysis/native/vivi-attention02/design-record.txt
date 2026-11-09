@@ -1,0 +1,35 @@
+
+## 비비 마법형 상세안 승인 / 2026-10-29
+
+{
+  "status": "approved-design-not-implemented",
+  "tier1": {
+    "name": "Spotlight",
+    "stacks": 3,
+    "bonusPerStack": "3+floor(I/12)%",
+    "expireAut": 40,
+    "oneGainPerDamagingCast": true
+  },
+  "tier3": {
+    "name": "Encore",
+    "mp": 2,
+    "piety": 3,
+    "actionAut": 5,
+    "echoPercent": "40+10*consumedStacks+floor(I/6)",
+    "armAut": 40,
+    "cooldownAut": 50
+  },
+  "tier5": {
+    "name": "Grand finale",
+    "mp": 6,
+    "piety": 12,
+    "actionAut": 10,
+    "durationAfterCastAut": "60+2*I",
+    "cooldownAfterEndAut": 150,
+    "burst": "2d(5+floor(I/3))",
+    "radius": 1,
+    "oneBurstDamagePerVictimPerCast": true
+  }
+}
+
+현재는시각초안만제작.전투미적용.

@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit02",
+  "reason": "All native inheritance/normal-spell GIF checks pass; fresh reload starts at2 but exact follow-up signature differs. Add comparison diagnostics before deployment."
+}

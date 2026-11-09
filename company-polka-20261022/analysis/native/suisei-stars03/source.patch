@@ -1,0 +1,109 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -503,3 +503,7 @@
+ fx_meladispatchbeam1 HOLO_FX_MELADISPATCHBEAM1
+ fx_meladispatchbeam2 HOLO_FX_MELADISPATCHBEAM2
+ fx_meladispatchbeam3 HOLO_FX_MELADISPATCHBEAM3
++
++fx_suiseistars1 HOLO_FX_SUISEISTARS1
++fx_suiseistars2 HOLO_FX_SUISEISTARS2
++fx_suiseistars3 HOLO_FX_SUISEISTARS3
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -220,6 +220,36 @@
+         you.props.erase("holo_mela_heat_preview");
+         std::ofstream(std::string(shots)+"/breath.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"direction\":\"east\",\"width\":1,\"range\":5,\"heatCompared\":[0,3]}\n";
+     }
++    if(const char *shots=getenv("HOLOCRAWL_SUISEI_STARS_REVIEW")) {
++        auto *m=fixture("suisei",30);const auto origin=you.pos();
++        require(m->move_to_pos(origin+coord_def(2,0)),"Suisei star target placement");
++        you.props["holo_suisei_stars_preview"]=true;
++        const std::string output(shots);
++        holo_visual::capture(output+"/stars0.png");
++        for(int count=1;count<=3;++count) {
++            const int hp=m->hit_points;
++            { command_scope command;bolt beam;beam.name="magic dart";beam.origin_spell=SPELL_MAGIC_DART;
++              beam.source=you.pos();beam.target=m->pos();beam.range=5;beam.source_id=you.mid;
++              beam.thrower=KILL_YOU;beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(4,20);beam.hit=AUTOMATIC_HIT;
++              beam.fire();you.turn_is_over=true;you.time_taken=10; }
++            require(m->hit_points<hp && holo_batch::s.resource==count,"Suisei native direct hit did not add one star: expected="+std::to_string(count)+" actual="+std::to_string(holo_batch::s.resource)+" damage="+std::to_string(hp-m->hit_points)+" god="+std::to_string(int(holo_batch::s.god))+" piety="+std::to_string(int(you.piety)));
++            int sx=1,sy=1;
++            require(holo_visual::invocation_sprite_at(m->pos(),sx,sy)==holo_visual::effect(int(holo_visual::effect::suiseistars1)+count-1),"Suisei displayed star count mismatch");
++            const auto before=signature();holo_visual::capture(output+"/stars"+std::to_string(count)+".png");
++            require(before==signature(),"Suisei stars render changed world/resources/RNG");
++        }
++        roundtrip();require(holo_batch::s.resource==3,"Suisei native stacks roundtrip");
++        require(m->move_to_pos(origin+coord_def(3,0)),"Suisei moving marked target placement");
++        int sx=1,sy=1;
++        require(holo_visual::invocation_sprite_at(m->pos(),sx,sy)==holo_visual::effect::suiseistars3,"Suisei stars did not follow target");
++        require(holo_visual::invocation_sprite_at(origin+coord_def(2,0),sx,sy)==holo_visual::effect::none,"Suisei stale marker left behind");
++        holo_visual::capture(output+"/stars3-moved.png");
++        holo_batch::s.one_end=you.elapsed_time;
++        require(holo_visual::invocation_sprite_at(m->pos(),sx,sy)!=holo_visual::effect::suiseistars3,"Suisei expired count visible");
++        holo_visual::capture(output+"/stars-expired.png");
++        you.props.erase("holo_suisei_stars_preview");
++        std::ofstream(output+"/stars.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"realDirectHitStacks\":[1,2,3],\"renderRngAndWorldStable\":true,\"followsTarget\":true,\"expires\":true,\"stackSaveRoundtrip\":true,\"combatCapChanged\":false,\"runtimeDeployed\":false}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_MELA_ONIBI_REVIEW")) {
+         auto *m=fixture("mela");const auto aim=you.pos()+coord_def(2,0);
+         require(m->move_to_pos(aim),"Mela onibi target placement");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -529,6 +529,14 @@
+ }
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
++    // Opt-in visual review only: read genuine direct-hit stacks, no gameplay writes.
++    if(crawl_state.test && you.props.exists("holo_suisei_stars_preview")
++        && holo_campaign::active() && holo_worship::current()=="suisei"
++        && holo_batch::s.one_end>you.elapsed_time && holo_batch::s.resource>0) {
++        const auto *marked=monster_by_mid(holo_batch::s.marked);
++        if(marked && marked->alive() && marked->pos()==p && you.see_cell(p))
++            return effect(int(effect::suiseistars1)+std::min(3,holo_batch::s.resource)-1);
++    }
+     if(crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
+         if(p==you.pos()-coord_def(1,1)){span_x=span_y=3;return effect::night_mela5;}
+         if(p==you.pos())return effect::night_mela1;
+@@ -934,6 +942,8 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind>=effect::suiseistars1 && kind<=effect::suiseistars3)
++        return TILE_HOLO_FX_SUISEISTARS1+int(kind)-int(effect::suiseistars1);
+     if(crawl_state.test && you.props.exists("holo_mela_dispatch_preview")) {
+         if(frame<0)frame=flash_frame;
+         if(kind==effect::night_mela5)return TILE_HOLO_FX_MELADISPATCH0+frame%4;
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,koyoriheat,koyoricold,koyoripoison,koyoriblast,koyorithermal,koyorislime,koyoriblastedge,koyorislimeedge,koyoriblastborder,koyorithermalborder,koyorislimeborder,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,ayameaura,ayameslash,ayameduel,chocoheart1,chocoheart2,chocoheart3,chocoheart4,chocoheart5,chocokiss,chocowings,chocobond,chocoabsorb0,chocoabsorb1,chocoabsorb2,chocoabsorb3,chocoabsorb4,chocoabsorb5,chocoabsorb6,chocoabsorb7,night_korone1,night_korone3,night_korone5,night_okayu1,night_okayu3,night_okayu5,night_pekora1,night_pekora3,night_pekora5,night_noel1,night_noel3,night_noel5,night_watame1,night_watame3,night_watame5,night_towa1,night_towa3,night_towa5,night_lamy1,night_lamy3,night_lamy5,night_polka1,night_polka3,night_polka5,night_koyori1,night_koyori3,night_koyori5,night_lui1,night_lui3,night_lui5,night_raden1,night_raden3,night_raden5,night_hajime1,night_hajime3,night_hajime5,night_su1,night_su3,night_su5,night_vivi1,night_vivi3,night_vivi5,night_sopia1,night_sopia3,night_sopia5,night_mela1,night_mela3,night_mela5,night_polkaheal,night_polkachaos,night_radenstone,night_radencraft,lamychill1,lamychill2,lamyslow,lamyburst0,lamyburst1,lamyburst2,lamyburst3,lamybanquetcast0,lamybanquetcast1,lamybanquetactive,lamybanquetburst00,lamybanquetburst01,lamybanquetburst02,lamybanquetburst03,lamybanquetburst04,lamybanquetburst05,lamybanquetburst06,lamybanquetburst07,lamybanquetburst08,lamybanquetburst10,lamybanquetburst11,lamybanquetburst12,lamybanquetburst13,lamybanquetburst14,lamybanquetburst15,lamybanquetburst16,lamybanquetburst17,lamybanquetburst18,lamybanquetburst20,lamybanquetburst21,lamybanquetburst22,lamybanquetburst23,lamybanquetburst24,lamybanquetburst25,lamybanquetburst26,lamybanquetburst27,lamybanquetburst28,lamybanquetburst30,lamybanquetburst31,lamybanquetburst32,lamybanquetburst33,lamybanquetburst34,lamybanquetburst35,lamybanquetburst36,lamybanquetburst37,lamybanquetburst38,koyoriheat,koyoricold,koyoripoison,koyoriblast,koyorithermal,koyorislime,koyoriblastedge,koyorislimeedge,koyoriblastborder,koyorithermalborder,koyorislimeborder,carrot,suiseistars1,suiseistars2,suiseistars3 };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -267,7 +267,8 @@
+             || tileidx==TILE_HOLO_FX_VIVIENCORE_READY || tileidx==TILE_HOLO_FX_VIVIFINALE_MARK;
+         const bool sopia_teacher=tileidx>=TILE_HOLO_FX_SOPIAMANA0 && tileidx<=TILE_HOLO_FX_SOPIABOOK3;
+         const bool mela_heat=tileidx>=TILE_HOLO_FX_MELAHEAT0 && tileidx<=TILE_HOLO_FX_MELAHEAT6;
+-        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+((sopia_teacher || mela_heat)?14:polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(sopia_teacher?24:mela_heat?18:polka_hat?12:(hajime_notes || vivi_gems)?8:0),
++        const bool suisei_stars=tileidx>=TILE_HOLO_FX_SUISEISTARS1 && tileidx<=TILE_HOLO_FX_SUISEISTARS3;
++        buffer.add(tileidx,x,y,native_backdrop?0:(inf.width-TILE_X)/2+((sopia_teacher || mela_heat)?14:polka_hat?4:0),native_backdrop?0:inf.height-TILE_Y-(sopia_teacher?24:mela_heat?18:suisei_stars?10:polka_hat?12:(hajime_notes || vivi_gems)?8:0),
+             true,-1,native_backdrop?32.0f:float(inf.width)/span_x,native_backdrop?32.0f:float(inf.height)/span_y);
+         // Korone's awakening: keep the complete aura beneath actors, then
+         // reveal only the two paw glyphs above actors using the same texture.
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -156,6 +156,8 @@
+             if(map_bounds(gc)) {
+                 int span_x=1,span_y=1;
+                 const auto cue=holo_visual::invocation_sprite_at(gc,span_x,span_y);
++                if(cue>=holo_visual::effect::suiseistars1 && cue<=holo_visual::effect::suiseistars3)
++                    m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(holo_visual::effect::starmark),x,y,1,1,false);
+                 m_buf_dngn.add_holo_vfx_tile(holo_visual::effect_tile(cue),x,y,span_x,span_y,
+                     (cue>=holo_visual::effect::night_korone1 && cue<=holo_visual::effect::night_mela5
+                         && (int(cue)-int(holo_visual::effect::night_korone1))%3!=0

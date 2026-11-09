@@ -1,0 +1,1 @@
+{"status":"passed","scenes":[{"water":false,"mainDamage":5,"sideDamage":0,"push":1,"mpCost":3,"pietyCost":3,"cooldownAfterCastAut":30},{"water":true,"mainDamage":10,"sideDamage":9,"push":1,"mpCost":3,"pietyCost":3,"cooldownAfterCastAut":30}],"nativePuddleTrigger":true,"outsideUnaffected":true,"captureRngStable":true}

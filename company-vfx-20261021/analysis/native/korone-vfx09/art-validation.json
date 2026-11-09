@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "revision": "korone-vfx09",
+  "tier": 5,
+  "bitmapChanges": false,
+  "sourceTexture": "assets/holocrawl/korone-vfx07/awakening.png",
+  "splitLayers": "Whole aura under actors; only two UV-cropped paw glyphs above actors",
+  "pawRegions": [
+    [
+      0,
+      0.39,
+      0.36,
+      0.82
+    ],
+    [
+      0.64,
+      0.39,
+      1,
+      0.82
+    ]
+  ],
+  "sizes": [
+    48,
+    56
+  ],
+  "frameMilliseconds": 110,
+  "activationFrames": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "changed": [
+    "tiledgnbuf.cc"
+  ],
+  "numericChanges": false,
+  "cropCoordinates": "Glyph-relative regions converted to full160px texture; native bounds48x47 or56x55 centered80,80."
+}

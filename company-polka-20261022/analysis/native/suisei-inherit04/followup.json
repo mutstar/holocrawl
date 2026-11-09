@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit05",
+  "reason": "Banked player/actors/RNG restore exactly and real UI-cast outcomes/time match, but post-UI GAMEPLAY RNG uses70 vs94 draws. Separate strict ordinary-combat replay from full targeting/UI replay; retain full UI-RNG mismatch as explicit diagnostic, not claim whole-UI determinism."
+}

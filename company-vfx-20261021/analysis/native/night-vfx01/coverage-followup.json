@@ -1,0 +1,6 @@
+{
+  "status": "needs-expanded-capture",
+  "nativeValidation": "passed",
+  "galleryFirstAttempt": "Noel tier1 real-menu capture missing; stopped before installing runtime.",
+  "followup": "night-vfx02 adds real menu capture and selectable branches; original outputs retained."
+}

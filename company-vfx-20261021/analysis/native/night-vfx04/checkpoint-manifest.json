@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "revision": "night-vfx04",
+  "runtimeSha256": "15d3a01945105a55dbe70e5b0052cba305455074288e09b2c8d9c6aa17c7d8af",
+  "approvedGods": [
+    "suisei",
+    "miko",
+    "aki",
+    "fubuki",
+    "ayame"
+  ],
+  "draftGods": [
+    "korone",
+    "okayu",
+    "pekora",
+    "noel",
+    "watame",
+    "towa",
+    "lamy",
+    "polka",
+    "koyori",
+    "lui",
+    "raden",
+    "hajime",
+    "su",
+    "vivi",
+    "sopia",
+    "mela"
+  ],
+  "cornerNativePixels": "corner-native-validation.json",
+  "combatAudit": "combat-hook-audit.json",
+  "gallery": "analysis/previews/all-gods-vfx-draft04/index.html",
+  "package": "pending"
+}

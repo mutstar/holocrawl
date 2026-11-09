@@ -1,0 +1,1 @@
+{"status":"passed","bankedRewardAndRngRestoredExactly":true,"actualSpellStartsAt2":true,"actualSpellGameplayContinuationMatches":true,"ordinaryCombatHitAndRngMatch":true,"fullRngAfterUiCastMatches":false,"scope":"Targeting UI RNG replay is diagnostic, isolated from combat and bank restoration checks."}

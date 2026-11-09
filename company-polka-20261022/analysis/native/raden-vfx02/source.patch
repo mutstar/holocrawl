@@ -1,0 +1,42 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -164,14 +164,24 @@
+     if(const char *shots=getenv("HOLOCRAWL_RADEN_REVIEW")) {
+         fixture("raden");
+         const auto origin=you.pos();
++        std::vector<int> exhibit_tiles;
++        holo_visual::capture(std::string(shots)+"/raden1-default.png");
+         for(int option:{1,2,0}) {
+             cast("raden",1,nullptr,origin,option);
+             const auto stable=signature();
++#ifdef USE_TILE
++            const int tile=holo_visual::effect_tile(holo_visual::effect::night_raden1);
++            require(std::find(exhibit_tiles.begin(),exhibit_tiles.end(),tile)==exhibit_tiles.end(),"Raden exhibits must have distinct badges");
++            exhibit_tiles.push_back(tile);
++            require(tile==holo_visual::effect_tile(holo_visual::effect::night_raden1,0)
++                && tile==holo_visual::effect_tile(holo_visual::effect::night_raden1,1),"Raden cast and persistent badge differ");
++#endif
+             for(int f=0;f<2;++f)
+                 holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/raden1-"+std::to_string(option)+"-frame"+std::to_string(f)+".png",1,false,option);
+             holo_visual::capture(std::string(shots)+"/raden1-"+std::to_string(option)+"-active.png");
+             require(stable==signature(),"Raden badge capture changed gameplay/RNG");
+         }
++        std::ofstream(std::string(shots)+"/raden-badges.json")<<"{\"status\":\"passed\",\"distinctExhibits\":3,\"castAndPersistentMatch\":true,\"gameplayRngUnchanged\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_LAMY_BANQUET_REVIEW")) {
+         using namespace holo_batch;
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -781,6 +781,12 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    // Saved exhibit selection drives both the cast cue and persistent badge.
++    if(kind==effect::night_raden1) {
++        if(holo_batch::s.exhibit==0)return TILE_HOLO_FX_RADENPAINTING;
++        if(holo_batch::s.exhibit==1)return TILE_HOLO_FX_RADENSCULPTURE;
++        return TILE_HOLO_FX_NIGHT_RADEN1_0;
++    }
+     // Open once on activation; keep the back wings spread for the saved buff.
+     if(kind==effect::night_lui5 && frame<0 && flash_kind!=effect::night_lui5)frame=1;
+     if(kind==effect::carrot)return TILE_HOLO_CARROT;

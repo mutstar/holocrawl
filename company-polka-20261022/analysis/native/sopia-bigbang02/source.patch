@@ -1,0 +1,188 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -459,3 +459,8 @@
+ fx_sopiagravity1 HOLO_FX_SOPIAGRAVITY1
+ fx_sopiagravity2 HOLO_FX_SOPIAGRAVITY2
+ fx_sopiagravity3 HOLO_FX_SOPIAGRAVITY3
++
++fx_sopianova0 HOLO_FX_SOPIANOVA0
++fx_sopianova1 HOLO_FX_SOPIANOVA1
++fx_sopianova2 HOLO_FX_SOPIANOVA2
++fx_sopianova3 HOLO_FX_SOPIANOVA3
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,28 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_SOPIA_BIGBANG_REVIEW")) {
++        auto *m=fixture("sopia");const auto centre=you.pos()+coord_def(3,0);
++        require(m->move_to_pos(centre+coord_def(1,0)),"Sopia Big Bang target placement");
++        for(const auto &d:std::vector<coord_def>{coord_def(-2,1),coord_def(3,2),coord_def(4,0)}) {
++            auto mg=mgen_data::hostile_at(MONS_ORC,false,centre+d);mg.flags|=MG_FORCE_PLACE;
++            auto *n=create_monster(mg,false);require(n,"Sopia Big Bang comparison placement");
++            n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;
++        }
++        const auto stable=signature();
++        for(int radius=2;radius<=3;++radius) {
++            you.props["holo_sopia_gravity_preview"]=radius;
++            for(int phase=0;phase<=4;++phase) {
++                you.props["holo_sopia_bigbang_preview"]=phase;
++                for(int f=0;f<4;++f)holo_visual::capture_invocation("sopia",centre,f,std::string(shots)+"/bigbang-r"+std::to_string(radius)+"-c"+std::to_string(phase)+"-f"+std::to_string(f)+".png",5);
++                require(stable==signature(),"Sopia Big Bang VFX changed world/RNG");
++            }
++            you.props.erase("holo_sopia_bigbang_preview");you.props.erase("holo_sopia_gravity_preview");
++            holo_visual::capture(std::string(shots)+"/bigbang-r"+std::to_string(radius)+"-ended.png");
++        }
++        require(stable==signature(),"Sopia Big Bang fixture state changed");
++        std::ofstream(std::string(shots)+"/bigbang.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"chargeStages\":[0,1,2,3],\"fieldRadii\":[2,3],\"burstRadius\":2}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_SOPIA_GRAVITY_REVIEW")) {
+         auto *m=fixture("sopia");const auto centre=you.pos()+coord_def(3,0);
+         require(m->move_to_pos(centre+coord_def(1,0)),"Sopia core neighbour");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -207,7 +207,7 @@
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
+     su_fronts.clear();
+-    if(g=="sopia" && tier==3 && crawl_state.test && you.props.exists("holo_sopia_gravity_preview")) {
++    if(g=="sopia" && (tier==3 || tier==5) && crawl_state.test && you.props.exists("holo_sopia_gravity_preview")) {
+         flash_kind=effect::gravity;flashes.push_back(p);return;
+     }
+     if(g=="vivi" && tier==5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
+@@ -432,6 +432,9 @@
+     if(!crawl_state.test || !you.props.exists("holo_sopia_gravity_preview")
+         || flash_kind!=effect::gravity || flashes.empty())return false;
+     radius=you.props["holo_sopia_gravity_preview"].get_int();frame=flash_frame;
++    if(you.props.exists("holo_sopia_bigbang_preview") && you.props["holo_sopia_bigbang_preview"].get_int()==4) {
++        radius=2;frame=3-flash_frame;
++    }
+     delta=p-flashes.front();
+     return in_bounds(p) && you.see_cell(p) && !cell_is_solid(p)
+         && std::abs(delta.x)<=radius && std::abs(delta.y)<=radius;
+@@ -498,7 +501,8 @@
+ effect invocation_sprite_at(const coord_def &p,int &span_x,int &span_y) {
+     span_x=span_y=1;
+     if(crawl_state.test && you.props.exists("holo_sopia_gravity_preview") && !flashes.empty()) {
+-        const int r=you.props["holo_sopia_gravity_preview"].get_int();
++        const bool bursting=you.props.exists("holo_sopia_bigbang_preview") && you.props["holo_sopia_bigbang_preview"].get_int()==4;
++        const int r=bursting?std::min(2,flash_frame):you.props["holo_sopia_gravity_preview"].get_int();
+         if(p==flashes.front()-coord_def(r,r)){span_x=span_y=2*r+1;return effect::gravity;}
+         return effect::none;
+     }
+@@ -883,6 +887,9 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::gravity && crawl_state.test && you.props.exists("holo_sopia_bigbang_preview")
++        && you.props["holo_sopia_bigbang_preview"].get_int()==4)
++        return TILE_HOLO_FX_SOPIANOVA0+(frame<0?flash_frame:frame)%4;
+     if(kind==effect::gravity && crawl_state.test && you.props.exists("holo_sopia_gravity_preview"))
+         return TILE_HOLO_FX_SOPIAGRAVITY0+(frame<0?flash_frame:frame)%4;
+     if(crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
+@@ -999,24 +1006,25 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>((god=="sopia" && tier==3 && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>((god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
+-    if(god=="sopia" && tier==3 && you.props.exists("holo_sopia_gravity_preview")) {
+-        const int r=you.props["holo_sopia_gravity_preview"].get_int();int count=0;
++    if(god=="sopia" && (tier==3 || tier==5) && you.props.exists("holo_sopia_gravity_preview")) {
++        const bool bursting=you.props.exists("holo_sopia_bigbang_preview") && you.props["holo_sopia_bigbang_preview"].get_int()==4;
++        const int r=bursting?2:you.props["holo_sopia_gravity_preview"].get_int();int count=0;
+         for(int y=-4;y<=4;++y)for(int x=-4;x<=4;++x) {
+             coord_def d;int radius=0,f=0;
+             const bool inside=sopia_gravity_preview_cell(pos+coord_def(x,y),d,radius,f);
+-            if(inside){++count;if(radius!=r || f!=frame)throw std::runtime_error("Sopia preview radius/frame mismatch");}
++            if(inside){++count;if(radius!=r || f!=(bursting?3-frame:frame))throw std::runtime_error("Sopia preview radius/frame mismatch");}
+             if(inside && (std::abs(x)>r || std::abs(y)>r))throw std::runtime_error("Sopia effect outside footprint");
+         }
+         if(count!=(2*r+1)*(2*r+1))throw std::runtime_error("Sopia gravity footprint mismatch");
+-        int sx=1,sy=1;
+-        if(invocation_sprite_at(pos-coord_def(r,r),sx,sy)!=effect::gravity || sx!=2*r+1 || sy!=2*r+1)
++        int sx=1,sy=1;const int sprite_r=bursting?std::min(2,frame):r;
++        if(invocation_sprite_at(pos-coord_def(sprite_r,sprite_r),sx,sy)!=effect::gravity || sx!=2*sprite_r+1 || sy!=2*sprite_r+1)
+             throw std::runtime_error("Sopia full-field image anchor/span mismatch");
+         int anchors=0;for(int y=-r;y<=r;++y)for(int x=-r;x<=r;++x) {
+             int w=1,h=1;anchors+=invocation_sprite_at(pos+coord_def(x,y),w,h)==effect::gravity;
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -12,6 +12,9 @@
+ #include "tilemcache.h"
+ #include "tilepick.h"
+ #include "tiletex.h"
++#include "player.h"
++#include "state.h"
++#include "store.h"
+ 
+ DungeonCellBuffer::DungeonCellBuffer(ImageManager *im) :
+     m_buf_floor(&im->m_textures[TEX_FLOOR]),
+@@ -94,7 +97,17 @@
+         if(dy==-radius)m_buf_holo_range.add(x+i*p,y+p,x+(i+4)*p,y+2*p,rim);
+         if(dy==radius)m_buf_holo_range.add(x+i*p,y+30*p,x+(i+4)*p,y+31*p,rim);
+     }
+-    if(!dx && !dy)return;
++    if(!dx && !dy) {
++        if(crawl_state.test && you.props.exists("holo_sopia_bigbang_preview")) {
++            const int charge=you.props["holo_sopia_bigbang_preview"].get_int();
++            if(charge>=1 && charge<=3)for(int i=0;i<charge;++i) {
++                const int u=7+8*i,v=5;
++                m_buf_holo_range.add(x+(u-2)*p,y+v*p,x+(u+3)*p,y+(v+1)*p,star);
++                m_buf_holo_range.add(x+u*p,y+(v-2)*p,x+(u+1)*p,y+(v+3)*p,star);
++            }
++        }
++        return;
++    }
+     const int sx=(dx>0)-(dx<0),sy=(dy>0)-(dy<0);
+     // Four discrete positions travel toward the nucleus, below every actor.
+     const int shift=12-8*frame;
+@@ -160,7 +173,8 @@
+ {
+     if(tileidx) {
+         const auto &inf=tile_feat_info(tileidx);
+-        if(tileidx>=TILE_HOLO_FX_SOPIAGRAVITY0 && tileidx<=TILE_HOLO_FX_SOPIAGRAVITY3) {
++        const bool nova=tileidx>=TILE_HOLO_FX_SOPIANOVA0 && tileidx<=TILE_HOLO_FX_SOPIANOVA3;
++        if(nova || (tileidx>=TILE_HOLO_FX_SOPIAGRAVITY0 && tileidx<=TILE_HOLO_FX_SOPIAGRAVITY3)) {
+             // Full-footprint preview, tinted below actors. Texture alpha and
+             // vertex opacity multiply; do not alter the generated bitmap.
+             const auto *texture=static_cast<const TilesTexture *>(m_buf_holo_ground_tint.current_texture());
+@@ -168,7 +182,30 @@
+             if(texture->get_coords(tileidx,(inf.width-TILE_X)/2,inf.height-TILE_Y,
+                 sx,sy,ex,ey,tx,ty,ux,uy,true,-1,-1,float(inf.width)/span_x,float(inf.height)/span_y)) {
+                 GLWPrim rect(sx,sy,ex,ey);rect.set_tex(tx,ty,ux,uy);
+-                rect.set_col(VColour(255,255,255,105));m_buf_holo_ground_tint.add_primitive(rect);
++                int opacity=105;
++                if(crawl_state.test && you.props.exists("holo_sopia_bigbang_preview")) {
++                    const int stage=you.props["holo_sopia_bigbang_preview"].get_int();
++                    if(nova) { const int alpha[]={210,210,170,90};opacity=alpha[tileidx-TILE_HOLO_FX_SOPIANOVA0]; }
++                    else opacity=105+20*std::min(3,stage);
++                }
++                rect.set_col(VColour(255,255,255,opacity));m_buf_holo_ground_tint.add_primitive(rect);
++                // Readable charge stars sit above the large tinted disc but
++                // below actors. Reuse only the generated nova's star core UV.
++                if(!nova && crawl_state.test && you.props.exists("holo_sopia_bigbang_preview")) {
++                    const int charge=you.props["holo_sopia_bigbang_preview"].get_int();
++                    if(charge>=1 && charge<=3) {
++                        float a=0,b=0,c,d,u,v,w,z;
++                        if(texture->get_coords(TILE_HOLO_FX_SOPIANOVA2,0,0,a,b,c,d,u,v,w,z,true)) {
++                            const float du=w-u,dv=z-v;
++                            for(int i=0;i<charge;++i) {
++                                const float gx=(sx+ex)/2-0.40f+0.28f*i,gy=(sy+ey)/2-0.60f;
++                                GLWPrim mark(gx,gy,gx+0.22f,gy+0.22f);
++                                mark.set_tex(u+du*0.34f,v+dv*0.34f,u+du*0.66f,v+dv*0.66f);
++                                mark.set_col(VColour(255,255,255,245));m_buf_holo_ground_tint.add_primitive(mark);
++                            }
++                        }
++                    }
++                }
+             }
+             return;
+         }

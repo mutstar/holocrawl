@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "revision": "towa-diagonal01",
+  "runtimeSha256": "A941AC4EF1940790271883630981A32E802FC6EC7F6AA90E0E56FE1DFFAFD06B",
+  "numericChanges": false,
+  "saveFormatChanged": false,
+  "allArtAndOtherSourcePreserved": true,
+  "changedHashes": {
+    "holo-campaign-test.cc": "b52273c6df347787be8788b42369e12422747d98afc2945b57f2027a6b265653",
+    "rltiles/holo/fx_towa_bullet_e.png": "dd8efe7ff70d71121bc90220fd6c8803a58cdcc9c8361114a0c9a4ecbe07ad27",
+    "rltiles/holo/fx_towa_bullet_n.png": "910af560cc95407164e436361d2bf5dc08ba72697e0615fe7118dd7deed88cd4",
+    "rltiles/holo/fx_towa_bullet_ne.png": "87c1669b782f7cf6fa5f2d3e7efa81c2763950a48e8381d624d81f3ff0d5e029",
+    "rltiles/holo/fx_towa_bullet_nw.png": "f29e9df8032475b65840615853f6fcbaca502983d088105b2d3dde319c4fbe84",
+    "rltiles/holo/fx_towa_bullet_s.png": "33975b529f124d6e7d45037939bd772b94d38d47e03960f6cfa5653beb8c30db",
+    "rltiles/holo/fx_towa_bullet_se.png": "a88c970bda223670a48527ce9d1d693a902aa2afa9dd6ead5c2f300cac25b7a1",
+    "rltiles/holo/fx_towa_bullet_sw.png": "d0407c7864ba60cd40b4b006e47393ef327a10ebc6bd76ed2f20b71ea1e72137",
+    "rltiles/holo/fx_towa_bullet_w.png": "a017f7453d55b92c79a885e0d36263a6e60ac6873fb41874e8b8ec620190d959"
+  },
+  "visual": "Generated short purple devil arrow with hooked spearhead, 8 directional main-atlas tiles; native support callback",
+  "sequences": {
+    "1": [
+      "towa-demo-1-zone.png",
+      "towa-demo-1-moved.png",
+      "towa-shot-1-flight0.png",
+      "towa-shot-1-flight1.png",
+      "towa-shot-1-flight1.png",
+      "towa-demo-1-after.png"
+    ],
+    "2": [
+      "towa-demo-2-zone.png",
+      "towa-demo-2-moved.png",
+      "towa-shot-2-flight0.png",
+      "towa-shot-2-flight1.png",
+      "towa-shot-2-flight2.png",
+      "towa-demo-2-after.png"
+    ]
+  },
+  "captionOutsideNativePixels": true,
+  "proof": "native/towa-support.json",
+  "regression": "native/validation.json",
+  "freshRestore": "native/reload.json",
+  "feedback": "pending",
+  "projectileSize": [
+    24,
+    12
+  ],
+  "visibility": "Thicker shaft, broad pale lavender core and larger hooked head for separation from magenta zone",
+  "artSlotNote": "Historical bullet slot names retained for stable atlas IDs; art is now a short purple devil arrow."
+}

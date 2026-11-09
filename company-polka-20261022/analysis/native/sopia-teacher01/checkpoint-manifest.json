@@ -1,0 +1,61 @@
+{
+  "revision": "sopia-teacher01",
+  "previewBinarySha256": "3d58bacb5a3b3761e244dc280a257719f7d90de18cb5a97a3dd5927d47805217",
+  "runtimeDeployed": false,
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeSDL": true,
+    "renderOnly": true,
+    "gameplayUnchanged": true,
+    "rngStable": true,
+    "mpUnchanged": true,
+    "spellGiftNotApplied": true
+  },
+  "validation": {
+    "binarySha256": "3D58BACB5A3B3761E244DC280A257719F7D90DE18CB5A97A3DD5927D47805217",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "rawScreenshots": 70,
+    "status": "passed",
+    "chocoControls": false,
+    "freshProcessRestore": true,
+    "gods": 22
+  },
+  "art": {
+    "tool": "built-in image_gen",
+    "bookSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-f583e95d-4f26-43f6-816b-9893f96bac1b.png",
+    "alphaCrop": [
+      245,
+      300,
+      1118,
+      869
+    ],
+    "bookSizes": [
+      [
+        14,
+        10
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        24,
+        16
+      ],
+      [
+        22,
+        15
+      ]
+    ],
+    "manaSource": "../sopia-bigbang01/nova2.png",
+    "manaCrop": [
+      11,
+      11,
+      21,
+      21
+    ],
+    "integration": "Nearest resize/canvas placement only; original alpha preserved. Native offset(+14,-24), one player anchor. Mana star10/10/8/6px approaches head diagonally; book pop14x10\u219224x16px.",
+    "gameplayChanged": false
+  }
+}

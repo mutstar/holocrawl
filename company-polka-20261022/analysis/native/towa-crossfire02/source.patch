@@ -1,0 +1,12 @@
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -564,7 +564,8 @@
+         if(!in_bounds(p) || !you.see_cell(p))continue;
+         tiles.clear_overlays();const int dx=(delta.x>0)-(delta.x<0),dy=(delta.y>0)-(delta.y<0);
+             const int direction=dy<0?(dx>0?1:dx<0?3:2):dy>0?(dx>0?7:dx<0?5:6):(dx<0?4:0);
+-            tiles.add_overlay(p,TILE_HOLO_TOWA_BULLET_E+direction);
++            const int projectile=holo_batch::s.five_end>you.elapsed_time?TILE_HOLO_TOWA_CROSSFIRE_E:TILE_HOLO_TOWA_BULLET_E;
++            tiles.add_overlay(p,projectile+direction);
+         if(shots)capture(stem+"-flight"+std::to_string(i)+".png",false);
+         else {update_screen();scaled_delay(i==steps?90:65);}
+     }

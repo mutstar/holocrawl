@@ -1,0 +1,1 @@
+{"status":"passed","cap":3,"realDirectHits":4,"zeroDamageControl":true,"rewardFormulaAndConsumption":true,"cutPerStar":5,"cometPerStar":8,"costsAndDelay":true,"legacyMigrationIdempotent":true,"liveVfxWithoutPreviewProp":true,"cutDamage":[25,30,35,40],"cometDamage":[31,39,47,55]}

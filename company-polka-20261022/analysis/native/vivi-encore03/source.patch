@@ -1,0 +1,40 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -439,3 +439,5 @@
+ fx_viviencore_ready HOLO_FX_VIVIENCORE_READY
+ fx_viviencore_echo0 HOLO_FX_VIVIENCORE_ECHO0
+ fx_viviencore_echo1 HOLO_FX_VIVIENCORE_ECHO1
++
++fx_viviencore_echo2 HOLO_FX_VIVIENCORE_ECHO2
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -183,7 +183,7 @@
+         for(int phase=0;phase<3;++phase) {
+             you.props["holo_vivi_encore_preview"]=phase;
+             const std::string name=phase==0?"ready":phase==1?"spell":"echo";
+-            for(int f=0;f<2;++f)holo_visual::capture_invocation("vivi",aim,f,std::string(shots)+"/encore-"+name+std::to_string(f)+".png",3);
++            for(int f=0;f<(phase==2?3:2);++f)holo_visual::capture_invocation("vivi",aim,f,std::string(shots)+"/encore-"+name+std::to_string(f)+".png",3);
+             require(stable==signature(),"Vivi encore visual changed gameplay/RNG");
+         }
+         you.props.erase("holo_vivi_encore_preview");holo_visual::capture(std::string(shots)+"/encore-ended.png");you.props.erase("holo_vivi_vfx_preview");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -842,7 +842,8 @@
+         const int phase=you.props["holo_vivi_encore_preview"].get_int();
+         if(phase==0)return TILE_HOLO_FX_VIVIENCORE_READY;
+         if(frame<0)frame=flash_frame;
+-        return (phase==1?TILE_HOLO_FX_IMPACT_0:TILE_HOLO_FX_VIVIENCORE_ECHO0)+frame%2;
++        return phase==1?TILE_HOLO_FX_IMPACT_0+frame%2:
++            frame>=2?TILE_HOLO_FX_VIVIENCORE_ECHO2:TILE_HOLO_FX_VIVIENCORE_ECHO0+frame%2;
+     }
+     if(kind==effect::night_vivi1 && crawl_state.test && you.props.exists("holo_vivi_vfx_preview"))
+         return TILE_HOLO_FX_VIVIATTENTION1+std::max(0,std::min(2,you.props["holo_vivi_vfx_preview"].get_int()-1));
+@@ -939,7 +940,7 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");

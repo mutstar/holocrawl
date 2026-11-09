@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "revision": "suisei-focus02",
+  "runtimeDeployed": true,
+  "combatChanged": true,
+  "binarySha256": "7057c43cd082aa22fb5f5e2f4f29489be28fde18c4eb0b747c53040ec5ffb2ea",
+  "nativeProof": {
+    "status": "passed",
+    "piety": 50,
+    "stars": 2,
+    "accuracy": 3,
+    "nativeMeleeDelta": 3,
+    "nativeMeleeAverageDelta": 2,
+    "nativeThrownTypes": [
+      "stone",
+      "javelin",
+      "dart"
+    ],
+    "nativeSpellTrialsPerCase": 64,
+    "spellHitsBefore": 62,
+    "spellHitsAfter": 63,
+    "autoHitDamageUnchanged": true,
+    "mrOutcomeAndRngUnchanged": true,
+    "noResourceCost": true,
+    "expiryAndFaithControls": true,
+    "divineExcluded": true,
+    "fixedAcrossInvocations": true
+  },
+  "validation": {
+    "status": "passed",
+    "chocoControls": false,
+    "gods": 22,
+    "binarySha256": "7057C43CD082AA22FB5F5E2F4F29489BE28FDE18C4EB0B747C53040EC5FFB2EA",
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "freshProcessRestore": true,
+    "rawScreenshots": 13
+  },
+  "freshRestore": {
+    "status": "passed",
+    "derivedPassiveRestored": true,
+    "piety": 50,
+    "rank": 2,
+    "exactContinuation": true
+  },
+  "tier4Implemented": false
+}

@@ -1,0 +1,60 @@
+{
+  "revision": "vivi-attention01",
+  "previewBinarySha256": "48e66406c1bbb440bb91f1adccdd7809766338d2ca492d270964cf265a29c1b2",
+  "runtimeDeployed": false,
+  "combatChanged": false,
+  "nativeProof": {
+    "status": "passed",
+    "nativeSDL": true,
+    "stagedVisualPreview": true,
+    "stages": [
+      0,
+      1,
+      2,
+      3,
+      0
+    ],
+    "combatChanged": false,
+    "rngStable": true,
+    "previewFlagRemoved": true
+  },
+  "validation": {
+    "rawScreenshots": 10,
+    "gods": 22,
+    "chocoControls": false,
+    "binarySha256": "48E66406C1BBB440BB91F1ADCCDD7809766338D2CA492D270964CF265A29C1B2",
+    "freshProcessRestore": true,
+    "status": "passed",
+    "scope": "VFX and native state controls, not campaign winrate."
+  },
+  "design": {
+    "status": "approved-design-not-implemented",
+    "tier1": {
+      "name": "Spotlight",
+      "stacks": 3,
+      "bonusPerStack": "3+floor(I/12)%",
+      "expireAut": 40,
+      "oneGainPerDamagingCast": true
+    },
+    "tier3": {
+      "name": "Encore",
+      "mp": 2,
+      "piety": 3,
+      "actionAut": 5,
+      "echoPercent": "40+10*consumedStacks+floor(I/6)",
+      "armAut": 40,
+      "cooldownAut": 50
+    },
+    "tier5": {
+      "name": "Grand finale",
+      "mp": 6,
+      "piety": 12,
+      "actionAut": 10,
+      "durationAfterCastAut": "60+2*I",
+      "cooldownAfterEndAut": 150,
+      "burst": "2d(5+floor(I/3))",
+      "radius": 1,
+      "oneBurstDamagePerVictimPerCast": true
+    }
+  }
+}

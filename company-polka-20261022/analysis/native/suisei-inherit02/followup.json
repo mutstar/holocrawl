@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit03",
+  "reason": "Diagnostic comparison shows identical HP/MP/piety/stars/reward/actors; reload elapsed40 vs expected50. cast_a_spell relies on process_command default you.time_taken=10, which the standalone reload fixture did not initialise. Set the same default action time and turn flag before both native casts."
+}

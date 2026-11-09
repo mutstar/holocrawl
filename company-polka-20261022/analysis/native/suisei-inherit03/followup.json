@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-inherit04",
+  "reason": "After default action-time fix, all gameplay fields/actor HP/MP/piety/clock match; only RNG differs after real UI cast. Compare bank signatures and warm restored native view to match uninterrupted pre-cast screenshot."
+}

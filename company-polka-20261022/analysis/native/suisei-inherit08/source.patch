@@ -1,0 +1,270 @@
+--- before/holo-batch-internal.h
++++ after/holo-batch-internal.h
+@@ -34,6 +34,7 @@
+ };
+ struct action_context {
+     bool ordinary=false,primary=false,damaged=false,double_hit=false,eligible=false,reward_kill=false;
++    bool star_inheritance=false; // Per-action only; the banked reward uses existing saved fields.
+     bool dream_sleep=false;mid_t dream_target=MID_NOBODY;
+     attack_kind kind=attack_kind::melee;
+     beam_type element=BEAM_MAGIC;
+--- before/holo-batch-resources.cc
++++ after/holo-batch-resources.cc
+@@ -200,7 +200,10 @@
+     const int now=you.elapsed_time;
+     if(is(god_id::suisei) && ctx.damaged && target && target->alive()) {
+         if(s.marked==MID_NOBODY || s.one_end<=now) { s.resource=0;s.marked=ctx.target; }
+-        if(s.marked==ctx.target) { s.resource=min(3,s.resource+1);s.one_end=now+100; }
++        if(s.marked==ctx.target) {
++            const bool inherited=ctx.star_inheritance && s.resource==0 && target->attitude==ATT_HOSTILE;
++            s.resource=min(3,s.resource+(inherited?2:1));s.one_end=now+100;
++        }
+     }
+     if(is(god_id::choco) && ctx.damaged && s.secondary>=0 && target && target->alive()
+         && target->mid==s.marked && s.one_end>now) {
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -278,7 +278,10 @@
+         if(is(god_id::suisei) && ctx.bonus>0) {
+             monster *mon=monster_by_mid(ctx.target);
+             const int bonus=ctx.bonus;ctx.bonus=0;s.three_end=0;s.offence=0;
+-            if(mon && mon->alive()) { hurt(*mon,bonus);ctx.reward_kill=!mon->alive(); }
++            if(mon && mon->alive()) {
++                ctx.damaged|=hurt(*mon,bonus)>0;ctx.reward_kill=!mon->alive();
++                ctx.star_inheritance=you.piety>=100 && ctx.stars_before==0 && ctx.damaged && !ctx.reward_kill;
++            }
+         }
+     }
+ }
+@@ -288,9 +291,14 @@
+     monster *target=monster_by_mid(ctx.target);
+     if(is(god_id::suisei) && ctx.primary && ctx.bonus>0) {
+         const int bonus=ctx.bonus;ctx.bonus=0;s.three_end=0;s.offence=0;
+-        if(target && target->alive()) { hurt(*target,bonus);ctx.reward_kill=!target->alive(); }
++        if(target && target->alive()) {
++            ctx.damaged|=hurt(*target,bonus)>0;ctx.reward_kill=!target->alive();
++            ctx.star_inheritance=you.piety>=100 && ctx.stars_before==0 && ctx.damaged && !ctx.reward_kill;
++        }
+     }
+     if(ctx.damaged && ctx.eligible && !ctx.reward_kill && (!target || !target->alive())) on_kill(ctx.target,ctx.hd,true,true);
++    // A reward-only kill must clear the dead mark without earning a new reward.
++    if(is(god_id::suisei) && ctx.reward_kill && s.marked==ctx.target) {s.marked=MID_NOBODY;s.resource=0;}
+     martial_after_attack(target,aut);resource_after_attack(target,aut);
+     experiment_after_attack(target);
+     space_after_attack(target,aut);summon_after_attack(target,aut);
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -123,13 +123,17 @@
+     {writer out(you.save,level_id::current().describe());marshallUByte(out,TAG_MAJOR_VERSION);marshallUByte(out,TAG_MINOR_VERSION);tag_write(TAG_LEVEL,out);}
+     you.save->commit();delete you.save;you.save=nullptr;
+ }
+-void reload_disk(const std::string &dir) {
++void reload_disk(const std::string &dir,bool preserve_player_rng=false) {
+     close_save();you=player();Options.no_save=false;Options.save_dir=dir;crawl_state.bypassed_startup_menu=true;
+     require(restore_game(get_save_filename("HoloAbilities01")),"public restore of active abilities");
+     calc_hp();
++    // Synthetic fixture teardown/tile reconstruction is not a gameplay turn.
++    // Keep the exact RNG restored by TAG_YOU while replacing the old test level.
++    const auto restored_rng=rng::generators_to_vector();
+     const auto name=level_id::current().describe();
+     dgn_reset_level(false);
+     reader in(you.save,name,TAG_MINOR_VERSION);require(unmarshallUByte(in)==TAG_MAJOR_VERSION,"level major version");require(unmarshallUByte(in)==TAG_MINOR_VERSION,"level minor version");tag_read(in,TAG_LEVEL);
++    if(preserve_player_rng)rng::load_generators(restored_rng);
+ }
+ }
+ bool test_requested(){const char *v=getenv("HOLOCRAWL_CAMPAIGN_TEST");return crawl_state.test && v && std::string(v)=="1";}
+@@ -174,6 +178,115 @@
+         step(10);std::ifstream expected(dir+"/expected-step.txt");std::string data((std::istreambuf_iterator<char>(expected)),{});
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
++        close_save();return 0;
++    }
++    if(getenv("HOLOCRAWL_SUISEI_INHERIT_RELOAD")) {
++        holo_reset_validation_fixture();reload_disk(dir+"/inherit-save",true);
++        auto *m=monster_by_mid(you.props["inherit_test_mid"].get_int());
++        require(m && holo_worship::rank()==4 && holo_batch::s.offence>0,"inheritance bank not restored");
++        // The uninterrupted replay had a framebuffer capture just before
++        // casting. Warm the restored native view identically, without RNG use.
++        holo_visual::capture(dir+"/inherit-reloaded-ready.png");
++        std::ofstream(dir+"/inherit-bank-actual.txt")<<signature();
++        std::ifstream bank_file(dir+"/inherit-bank-expected.txt");std::string bank_text((std::istreambuf_iterator<char>(bank_file)),{});
++        require(bank_text==signature(),"banked reward/player/actors/RNG were not restored exactly");
++        // process_command normally supplies the default action time before casting.
++        you.time_taken=10;you.turn_is_over=false;
++        {command_scope command;you.prev_targ=m->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++         require(cast_a_spell(false,SPELL_MAGIC_DART),"restored inheritance native spell");}
++        require(holo_batch::s.marked==m->mid && holo_batch::s.resource==2 && holo_batch::s.offence==0,"restored reward did not start at2");
++        step(you.time_taken);std::ifstream expected(dir+"/inherit-expected.txt");std::string text((std::istreambuf_iterator<char>(expected)),{});
++        const bool full_ui_rng_match=text==signature();
++        if(!full_ui_rng_match)std::ofstream(dir+"/inherit-actual.txt")<<signature();
++        auto gameplay=[](const std::string &value){size_t start=0;for(int n=0;n<3;++n){start=value.find('|',start);if(start==std::string::npos)throw std::runtime_error("bad signature");++start;}const auto end=value.find('|',start);return value.substr(0,start)+(end==std::string::npos?std::string():value.substr(end));};
++        require(gameplay(text)==gameplay(signature()),"actual UI spell outcome/time/resources/actors differ after restore");
++        // Separately replay the ordinary combat hit without targeting/UI,
++        // preserving the strict full-state and RNG invariant for combat code.
++        reload_disk(dir+"/inherit-save",true);m=monster_by_mid(you.props["inherit_test_mid"].get_int());require(m,"restored combat probe target");
++        holo_visual::capture(dir+"/inherit-combat-ready-actual.png");
++        std::ofstream(dir+"/inherit-combat-bank-actual.txt")<<signature();
++        you.time_taken=10;you.turn_is_over=false;
++        {command_scope command;bolt beam;beam.name="inheritance probe";beam.origin_spell=SPELL_MAGIC_DART;
++         beam.source=you.pos();beam.target=m->pos();beam.range=6;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++         beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(4,20);beam.hit=AUTOMATIC_HIT;beam.fire();you.turn_is_over=true;you.time_taken=10;}
++        require(holo_batch::s.resource==2 && holo_batch::s.offence==0,"restored ordinary combat inheritance");
++        std::ifstream core_file(dir+"/inherit-combat-expected.txt");std::string core_text((std::istreambuf_iterator<char>(core_file)),{});
++        if(core_text!=signature())std::ofstream(dir+"/inherit-combat-actual.txt")<<signature();
++        require(core_text==signature(),"ordinary combat hit/RNG continuation differs after restore");
++        std::ofstream(dir+"/inherit-reload.json")<<"{\"status\":\"passed\",\"bankedRewardAndRngRestoredExactly\":true,\"actualSpellStartsAt2\":true,\"actualSpellGameplayContinuationMatches\":true,\"ordinaryCombatHitAndRngMatch\":true,\"fullRngAfterUiCastMatches\":"<<(full_ui_rng_match?"true":"false")<<",\"scope\":\"Targeting UI RNG replay is diagnostic, isolated from combat and bank restoration checks.\"}\n";
++        close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_SUISEI_INHERIT_REVIEW")) {
++        using namespace holo_batch;
++        auto hit=[&](monster *m,int sides=20,int accuracy=AUTOMATIC_HIT) {
++            command_scope command;bolt beam;beam.name="inheritance probe";beam.origin_spell=SPELL_MAGIC_DART;
++            beam.source=you.pos();beam.target=m->pos();beam.range=6;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++            beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(4,sides);beam.hit=accuracy;
++            beam.fire();you.turn_is_over=true;you.time_taken=10;
++        };
++        for(int faith:{99,100}) {
++            auto *m=fixture("suisei",faith);require(m->move_to_pos(you.pos()+coord_def(2,0)),"inheritance faith target");
++            s.offence=13;s.three_end=100;hit(m);
++            require(s.resource==(faith==100?2:1) && s.offence==0 && you.piety==faith,"inheritance faith99/100 or free-resource rule");
++            require(holo_worship::rank()==(faith==100?4:3),"Suisei four-star rank");
++        }
++        auto *m=fixture("suisei",100);require(m->move_to_pos(you.pos()+coord_def(2,0)),"inheritance miss target");
++        bool missed=false;
++        for(int trial=0;trial<64 && !missed;++trial){s.marked=MID_NOBODY;s.resource=0;s.offence=13;s.three_end=100;m->hit_points=10000;rng::seed(81000+trial);hit(m,20,0);missed=m->hit_points==10000;}
++        require(missed && s.offence==13 && s.three_end==100 && s.resource==0,"native miss consumed reward or inherited stars");
++        m=fixture("suisei",100);m->type=MONS_RAT;m->set_hit_dice(1);m->hit_points=m->max_hit_points=1;s.offence=13;s.three_end=100;hit(m);
++        require(!m->alive() && s.resource==0 && s.offence==0,"one-shot inherited stars or renewed reward");
++        m=fixture("suisei",100);m->type=MONS_RAT;m->set_hit_dice(1);m->hit_points=m->max_hit_points=3;
++        s.marked=m->mid;s.resource=2;s.one_end=100;s.offence=13;s.three_end=100;
++        {command_scope command;bolt beam;beam.name="small inheritance probe";beam.origin_spell=SPELL_MAGIC_DART;
++         beam.source=you.pos();beam.target=m->pos();beam.range=6;beam.source_id=you.mid;beam.thrower=KILL_YOU;
++         beam.flavour=BEAM_MMISSILE;beam.damage=dice_def(1,1);beam.hit=AUTOMATIC_HIT;beam.fire();you.turn_is_over=true;you.time_taken=10;}
++        require(!m->alive() && s.resource==0 && s.marked==MID_NOBODY && s.offence==0,"reward-only kill recursed or retained dead mark");
++        for(int prior:{1,2}){m=fixture("suisei",100);s.marked=m->mid;s.resource=prior;s.one_end=100;s.offence=13;s.three_end=100;hit(m);require(s.resource==prior+1,"inheritance doubled existing stacks");}
++        m=fixture("suisei",100);s.offence=13;s.three_end=you.elapsed_time;hit(m);require(s.resource==1,"expired reward inherited stars");
++        m=fixture("suisei",100);hit(m);require(s.resource==1,"ordinary hit inherited without reward");
++        m=fixture("suisei",100);s.offence=13;s.three_end=100;const auto aim=m->pos();
++        require(invoke(3,m,&aim)==10 && s.offence==13 && s.three_end==100 && s.resource==0,"divine power consumed inheritance");
++        // Actual memorised Magic Dart commands, with native MP and action cost.
++        auto *a_target=fixture("suisei",100);a_target->type=MONS_ORC;a_target->set_hit_dice(1);a_target->inv.init(NON_ITEM);
++        require(a_target->move_to_pos(you.pos()+coord_def(2,0)),"inheritance actor A placement");
++        auto mg=mgen_data::hostile_at(MONS_GOBLIN,false,you.pos()+coord_def(4,0));mg.flags|=MG_FORCE_PLACE;
++        auto *b_target=create_monster(mg,false);require(b_target,"inheritance actor B");b_target->inv.init(NON_ITEM);b_target->speed=b_target->speed_increment=0;b_target->hit_points=b_target->max_hit_points=1000;
++        require(a_target->armour_class()==0 && b_target->armour_class()==0,"inheritance display zero-AC targets");
++        set_skill_level(SK_CONJURATIONS,27);set_skill_level(SK_SPELLCASTING,27);you.duration[DUR_BRILLIANCE]=100;
++        require(add_spell_to_memory(SPELL_MAGIC_DART),"inheritance learn native spell");
++        auto normal_cast=[&](monster *target) {
++            const int mp=you.magic_points;
++            you.time_taken=10;you.turn_is_over=false;
++            {command_scope command;you.prev_targ=target->mindex();macro_buf_add_cmd(CMD_TARGET_SELECT);
++             require(cast_a_spell(false,SPELL_MAGIC_DART),"inheritance normal spell command");}
++            require(you.magic_points==mp-1 && you.turn_is_over && you.time_taken>0,"inheritance changed spell MP/action cost");
++            step(you.time_taken);
++        };
++        const std::string folder(shots);holo_visual::capture(folder+"/inherit-before.png");
++        for(int count=1;count<=3;++count){normal_cast(a_target);require(s.marked==a_target->mid && s.resource==count,"native spell did not build A stars");holo_visual::capture(folder+"/inherit-a"+std::to_string(count)+".png");}
++        a_target->hit_points=a_target->max_hit_points=1;normal_cast(a_target);
++        require(!a_target->alive() && s.offence>0 && s.three_end>you.elapsed_time && s.resource==0,"native kill did not bank reward");
++        const int reward=s.offence;holo_visual::capture(folder+"/inherit-bank.png");
++        // Save between real kill and real next-hit reward consumption.
++        you.props["inherit_test_mid"]=int(b_target->mid);auto prior_dir=Options.save_dir;const bool no_save=Options.no_save;
++        save_disk(dir+"/inherit-save");close_save();Options.save_dir=prior_dir;Options.no_save=no_save;
++        std::ofstream(dir+"/inherit-bank-expected.txt")<<signature();
++        const int hp=b_target->hit_points;normal_cast(b_target);
++        require(b_target->alive() && b_target->hit_points<hp && s.marked==b_target->mid && s.resource==2 && s.offence==0 && s.three_end==0,"real reward spell did not start B at2");
++        require(suisei_focus_accuracy(b_target)==3,"inherited stars did not activate tier2");
++        std::ofstream(dir+"/inherit-expected.txt")<<signature();holo_visual::capture(folder+"/inherit-b2.png");
++        normal_cast(b_target);require(s.resource==3,"next normal hit did not cap B at3");holo_visual::capture(folder+"/inherit-b3.png");
++        // Replay from the same native bank save without the targeting UI.
++        const int ui_followup_total_damage=hp-b_target->hit_points;
++        reload_disk(dir+"/inherit-save",true);auto *probe=monster_by_mid(you.props["inherit_test_mid"].get_int());require(probe,"ordinary combat probe target");
++        holo_visual::capture(dir+"/inherit-combat-ready-expected.png");
++        std::ofstream(dir+"/inherit-combat-bank-expected.txt")<<signature();
++        you.time_taken=10;you.turn_is_over=false;hit(probe);
++        require(s.resource==2 && s.offence==0,"ordinary combat probe inheritance");
++        std::ofstream(dir+"/inherit-combat-expected.txt")<<signature();close_save();Options.save_dir=prior_dir;Options.no_save=no_save;
++        std::ofstream proof(dir+"/suisei-inherit.json");proof<<"{\"status\":\"passed\",\"unlockPiety\":100,\"startsAt\":2,\"maxStars\":3,\"nativeSpellCommands\":6,\"nativeMPAndTimeCosts\":true,\"actualMarkedKill\":true,\"rewardDamage\":"<<reward<<",\"actualNextTargetDamage\":"<<ui_followup_total_damage<<",\"missKeepsReward\":true,\"oneShotExcluded\":true,\"rewardOnlyKillNoRecursion\":true,\"deadMarkCleared\":true,\"existingStacksOnlyPlus1\":true,\"expiryAndFaithControls\":true,\"divineExcluded\":true,\"tier2ActivatedAt2\":true}\n";
++        // Keep real spell/menu/kill fixture state isolated from older regressions.
+         close_save();return 0;
+     }
+     if(getenv("HOLOCRAWL_SUISEI_FOCUS_RELOAD")) {
+@@ -283,11 +396,11 @@
+             require(s.offence==expected && s.three_end==you.elapsed_time+30,"Suisei reward formula/window");cancel_attack();
+         }
+         // Genuine ordinary spell kill grants and consumes the reward once.
+-        m=fixture("suisei");m->type=MONS_RAT;m->max_hit_points=m->hit_points=1;s.marked=m->mid;s.resource=3;s.one_end=100;direct(m,200);
++        m=fixture("suisei",99);m->type=MONS_RAT;m->max_hit_points=m->hit_points=1;s.marked=m->mid;s.resource=3;s.one_end=100;direct(m,200);
+         require(!m->alive() && s.offence>=1 && s.offence<=15 && s.three_end==you.elapsed_time+30,"Suisei actual kill reward");
+         const auto p=you.pos()+coord_def(2,0);auto mg=mgen_data::hostile_at(MONS_RAT,false,p);mg.flags|=MG_FORCE_PLACE;
+         auto *next=create_monster(mg,false);require(next,"Suisei next enemy");next->hit_points=next->max_hit_points=10000;next->speed=next->speed_increment=0;
+-        direct(next);require(s.offence==0 && s.three_end==0 && s.resource==1,"Suisei reward consumption or unapproved inheritance");
++        you.piety=99;direct(next);require(s.offence==0 && s.three_end==0 && s.resource==1,"Suisei reward consumption below tier4");
+         // Compare raw post-AC deltas on a native low-AC rat, with identical
+         // RNG/Invocations. Covers both active formulas, costs and consumption.
+         int cut[4]={0},comet[4]={0};
+--- before/holo-campaign.cc
++++ after/holo-campaign.cc
+@@ -279,7 +279,7 @@
+ void grant(int amount) {
+     if(!active() || amount<=0)return;
+     const int before=you.piety;you.piety=std::min(200,before+amount);you.redraw_title=true;
+-    for(int threshold:{30,50,75,120})if((threshold!=50 || holo_worship::current()=="suisei") && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
++    for(int threshold:{30,50,75,100,120})if(((threshold!=50 && threshold!=100) || holo_worship::current()=="suisei") && before<threshold && you.piety>=threshold)mprf(MSGCH_GOD,"%s grants a new tier of abilities.",holo_worship::display_name().c_str());
+     refresh();
+ }
+ void advance() {
+@@ -380,11 +380,12 @@
+     std::vector<std::string> lines;if(!active())return lines;
+     const auto &s=holo_batch::s;const auto g=holo_worship::current();
+     const int rank=holo_worship::rank();
+-    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 120":"30 / 75 / 120"));
++    lines.push_back(make_stringf("[%s%s] Piety %d/200 | MP %d | unlocks %s",std::string(rank,'*').c_str(),std::string(5-rank,'.').c_str(),int(you.piety),int(you.magic_points),g=="suisei"?"30 / 50 / 75 / 100 / 120":"30 / 75 / 120"));
+     const char *resource=g=="suisei"?"Stars":g=="ayame"?"Combo":g=="choco"?"Temptation":g=="korone"?"Momentum":g=="okayu"?"Fullness":g=="lamy"?"Intoxication":g=="polka"?"Applause":g=="hajime"?"Rhythm":g=="su"?"Water":g=="vivi"?"Spotlight":g=="mela"?"Heat":g=="koyori"?"Cycle":"Resource";
+     lines.push_back(make_stringf("%s %d | Shield %d | 1*/3*/5* duration %s / %s / %s",resource,s.resource,s.shield,turns(g=="noel"?value("noel_skill_end"):s.one_end).c_str(),turns(s.three_end).c_str(),turns(g=="noel"?value("noel_command_end"):s.five_end).c_str()));
+     if(g=="suisei")lines.push_back(make_stringf("Constellation stars: %d/3 | next-hit reward: %d (%s)",s.resource,s.three_end>you.elapsed_time?s.offence:0,turns(s.three_end).c_str()));
+     if(g=="suisei")lines.push_back(std::string("2* Focused observation: ")+(you.piety<50?"locked (piety50)":holo_batch::suisei_focus_accuracy(monster_by_mid(s.marked))?"active: accuracy +3 vs marked foe":"ready: needs 2+ stars on marked foe"));
++    if(g=="suisei")lines.push_back(std::string("4* Star inheritance: ")+(you.piety<100?"locked (piety100)":s.offence>0 && s.three_end>you.elapsed_time?"ready: reward hit starts new foe at2 stars":"waiting for a marked-kill reward"));
+     lines.push_back("Corner marks: upper-left power; lower-left protection; upper-right wrath; lower-right recovery/resource.");
+     if(g=="sopia")lines.push_back(holo_sopia::status());
+     if(g=="koyori")lines.push_back(holo_koyori::status());
+@@ -458,6 +459,7 @@
+     if(g=="lamy")lines.push_back("1*: MP2/piety1, +40 intoxication, decay1/turn; >=20 attack spell power +(12+Inv/3)%, capped normally. >=70 EV-3; no failure penalty. 3*: passive, damaging spells and tools: one chill/target/use. A cloud field plus all spread cells share that use; first positive damage only, no direct+cloud double stack, expires6turns; third stack:2d(3+Inv/6) cold and movement +50% for2turns. 5*: requires40, consumes all; MP6/piety12,1turn; aftercast6+Inv/6 turns, treats intoxication as20. One burst/use and per10aut (a cloud field can burst once total):2d(5+Inv/3) cold at first hit, half adjacent, once-per-target chill. Cooldown15turns after end. No recursive/pet/divine/poison-DoT procs. Tool charges and costs remain normal; cloud ticks do not repeatedly stack. Old untagged clouds are excluded.");
+     if(g=="suisei")lines.push_back("1* passive: one star per positive direct attack, max3, expires10 turns since last hit. A marked kill grants next-hit1d(3+4*stars) for3 turns, AC applies. Manual retarget costs1 turn. 3* active: MP3/piety3/1turn, range5 piercing,2d(8+Inv/2)+5 per marked star; consumes stars only on hit. 5* active: MP6/piety10/1turn, range6 fixed3x3, lands2turns after completion;3d(10+Inv/2)+8 per snapshotted marked star, AC applies. No tracking. Allies/self may be hit.");
+     if(g=="suisei")lines.push_back("2* passive Focused observation (piety50): +3 accuracy vs the live marked foe at2+stars. Ordinary melee/ranged and attack spells with normal hit checks only. No damage bonus, MP/piety/turn/star cost or Invocations scaling. Auto-hit, explosion/engulf and MR checks unchanged. Ends when stars fall below2, mark expires, target changes or piety falls below50.");
++    if(g=="suisei")lines.push_back("4* passive Star inheritance (piety100): consume a marked-kill next-hit reward on a fresh marked foe; if that ordinary direct hit deals positive damage and the foe survives, start at2 stars instead of1. No extra MP/piety/time cost. Miss keeps reward. One-shot/reward-only kill grants no inherited stars or recursive reward. Existing stars just gain the normal1. Original3-turn reward window and max3 stars unchanged.");
+     if(g=="okayu")lines.push_back("3*: A foe put to sleep by Nap takes +30% on the first positive ordinary direct hit (minimum +1, cap 8 + Invocations/3). Melee, ranged and attack spells qualify. Pets, poison, clouds and divine powers do not. Dream eater keeps its own sleep bonus without stacking this one.");
+     if(g=="noel")lines.push_back("Taboo: voluntary berserk costs 10 piety and ends Knight's skill / Silver commander.");
+     lines.push_back(holo_wrath::description(g));
+--- before/holo-worship.cc
++++ after/holo-worship.cc
+@@ -130,7 +130,7 @@
+ int rank()
+ {
+     if(!active()) return 0;
+-    return you.piety>=120?5:you.piety>=75?3:current()=="suisei" && you.piety>=50?2:you.piety>=30?1:0;
++    return you.piety>=120?5:current()=="suisei" && you.piety>=100?4:you.piety>=75?3:current()=="suisei" && you.piety>=50?2:you.piety>=30?1:0;
+ }
+ void validate_save()
+ {
+@@ -231,7 +231,7 @@
+ {
+     Menu menu(MF_SINGLESELECT);
+     menu.set_title(new MenuEntry("HoloCrawl: "+display_name(),MEL_TITLE));
+-    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
++    menu.add_entry(new MenuEntry(make_stringf("Piety %d/200; unlocked tier %d (%s).",int(you.piety),rank(),current()=="suisei"?"30 / 50 / 75 / 100 / 120":"30 / 75 / 120"),MEL_SUBTITLE));
+     menu.add_entry(new MenuEntry("Use a to choose invocations. Natural kills grant piety; decay is 1 per 300 turns.",MEL_SUBTITLE));
+     for(const auto &line:holo_campaign::status_lines())menu.add_entry(new MenuEntry(line,MEL_SUBTITLE));
+     if(active())menu.add_entry(new MenuEntry("God description and worship rules",MEL_ITEM,1,'?'));
+@@ -297,9 +297,9 @@
+         const int mp=you.magic_points;
+         require(!join(id,false) && !you.turn_is_over && you.time_taken==0
+             && you.piety==15 && you.magic_points==mp,"same-god join changed resources/time");
+-        for(int p:{0,29,30,49,50,74,75,119,120,200}) {
++        for(int p:{0,29,30,49,50,74,75,99,100,119,120,200}) {
+             you.piety=p;
+-            const int expected=p>=120?5:p>=75?3:id=="suisei" && p>=50?2:p>=30?1:0;
++            const int expected=p>=120?5:id=="suisei" && p>=100?4:p>=75?3:id=="suisei" && p>=50?2:p>=30?1:0;
+             require(rank()==expected,"unlock boundary");
+             const auto states=rng::get_states();
+             auto bytes=player_tag();

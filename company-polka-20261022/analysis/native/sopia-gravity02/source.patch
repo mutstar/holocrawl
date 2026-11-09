@@ -1,0 +1,183 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -454,3 +454,8 @@
+ fx_vivicurtrain_drop1 HOLO_FX_VIVICURTAIN_DROP1
+ fx_vivicurtrain_drop2 HOLO_FX_VIVICURTAIN_DROP2
+ fx_vivicurtrain_closed HOLO_FX_VIVICURTAIN_CLOSED
++
++fx_sopiagravity0 HOLO_FX_SOPIAGRAVITY0
++fx_sopiagravity1 HOLO_FX_SOPIAGRAVITY1
++fx_sopiagravity2 HOLO_FX_SOPIAGRAVITY2
++fx_sopiagravity3 HOLO_FX_SOPIAGRAVITY3
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -174,6 +174,24 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_SOPIA_GRAVITY_REVIEW")) {
++        auto *m=fixture("sopia");const auto centre=you.pos()+coord_def(3,0);
++        require(m->move_to_pos(centre+coord_def(1,0)),"Sopia core neighbour");
++        for(const auto &d:std::vector<coord_def>{coord_def(-2,1),coord_def(3,2),coord_def(4,0)}) {
++            auto mg=mgen_data::hostile_at(MONS_ORC,false,centre+d);mg.flags|=MG_FORCE_PLACE;
++            auto *n=create_monster(mg,false);require(n,"Sopia range comparison placement");
++            n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;
++        }
++        const auto stable=signature();
++        for(int radius=1;radius<=3;++radius) {
++            you.props["holo_sopia_gravity_preview"]=radius;
++            for(int f=0;f<4;++f)holo_visual::capture_invocation("sopia",centre,f,std::string(shots)+"/gravity-r"+std::to_string(radius)+"-f"+std::to_string(f)+".png",3);
++            require(stable==signature(),"Sopia gravity VFX changed world/RNG");
++        }
++        you.props.erase("holo_sopia_gravity_preview");
++        require(stable==signature(),"Sopia gravity fixture state changed");
++        std::ofstream(std::string(shots)+"/gravity.json")<<"{\"status\":\"passed\",\"nativeSDL\":true,\"renderOnly\":true,\"gameplayUnchanged\":true,\"rngStable\":true,\"radii\":[1,2,3]}\n";
++    }
+     if(const char *shots=getenv("HOLOCRAWL_VIVI_FINALE_REVIEW")) {
+         auto *m=fixture("vivi");const auto origin=you.pos(),aim=origin+coord_def(3,0);
+         require(m->move_to_pos(aim),"Vivi finale central placement");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -207,6 +207,9 @@
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
+     su_fronts.clear();
++    if(g=="sopia" && tier==3 && crawl_state.test && you.props.exists("holo_sopia_gravity_preview")) {
++        flash_kind=effect::gravity;flashes.push_back(p);return;
++    }
+     if(g=="vivi" && tier==5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
+         const int phase=you.props["holo_vivi_finale_preview"].get_int();
+         flash_kind=effect::night_vivi5;const auto centre=phase==0?you.pos():p;flashes.push_back(centre);
+@@ -372,7 +375,7 @@
+     if(holo_campaign::active()) {
+         const auto g=holo_worship::current();const auto &s=holo_batch::s;const int now=you.elapsed_time;
+         effect base=effect::none;
+-        if(g=="sopia")base=holo_sopia::visual_at(p);
++        if(g=="sopia" && !(crawl_state.test && you.props.exists("holo_sopia_gravity_preview")))base=holo_sopia::visual_at(p);
+         if(g=="miko" && s.one_end>now && area(p,s.centre,holo_batch::five()?3:you.piety>=75?2:1))
+             base=holo_batch::five() && ((std::abs(p.x-s.centre.x)==3 && std::abs(p.y-s.centre.y)==3) || p==s.centre)
+                 ?effect::mikodomain:effect::shrine;
+@@ -425,6 +428,14 @@
+     if(wrath==4)result.push_back(effect::slime);
+     return result;
+ }
++bool sopia_gravity_preview_cell(const coord_def &p,coord_def &delta,int &radius,int &frame) {
++    if(!crawl_state.test || !you.props.exists("holo_sopia_gravity_preview")
++        || flash_kind!=effect::gravity || flashes.empty())return false;
++    radius=you.props["holo_sopia_gravity_preview"].get_int();frame=flash_frame;
++    delta=p-flashes.front();
++    return in_bounds(p) && you.see_cell(p) && !cell_is_solid(p)
++        && std::abs(delta.x)<=radius && std::abs(delta.y)<=radius;
++}
+ bool vivi_finale_cell(const coord_def &p) {
+     return crawl_state.test && flash_kind==effect::night_vivi5
+         && you.props.exists("holo_vivi_finale_preview")
+@@ -434,6 +445,8 @@
+ }
+ effect invocation_at(const coord_def &p) {
+     if(!in_bounds(p) || !you.see_cell(p))return effect::none;
++    if(crawl_state.test && you.props.exists("holo_sopia_gravity_preview"))
++        return !flashes.empty() && p==flashes.front()?effect::gravity:effect::none;
+     // The closing curtain is one native 96px overlay anchored once by
+     // invocation_sprite_at; individual splash cells appear after it closes.
+     if(flash_kind==effect::night_vivi5 && crawl_state.test && you.props.exists("holo_vivi_finale_preview")
+@@ -865,6 +878,8 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::gravity && crawl_state.test && you.props.exists("holo_sopia_gravity_preview"))
++        return TILE_HOLO_FX_SOPIAGRAVITY0+(frame<0?flash_frame:frame)%4;
+     if(crawl_state.test && you.props.exists("holo_vivi_finale_preview")) {
+         if(kind==effect::night_vivi1)return TILE_HOLO_FX_VIVIFINALE_MARK;
+         if(kind==effect::night_vivi5 || kind==effect::spotlight) {
+@@ -979,13 +994,25 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>((god=="sopia" && tier==3 && you.props.exists("holo_sopia_gravity_preview"))?3:impact_phase?5:(god=="su" && tier==3)?4:(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview"))?5:(god=="vivi" && tier==3 && you.props.exists("holo_vivi_encore_preview"))?2:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="sopia" && tier==3 && you.props.exists("holo_sopia_gravity_preview")) {
++        const int r=you.props["holo_sopia_gravity_preview"].get_int();int count=0;
++        for(int y=-4;y<=4;++y)for(int x=-4;x<=4;++x) {
++            coord_def d;int radius=0,f=0;
++            const bool inside=sopia_gravity_preview_cell(pos+coord_def(x,y),d,radius,f);
++            if(inside){++count;if(radius!=r || f!=frame)throw std::runtime_error("Sopia preview radius/frame mismatch");}
++            if(inside && (std::abs(x)>r || std::abs(y)>r))throw std::runtime_error("Sopia effect outside footprint");
++        }
++        if(count!=(2*r+1)*(2*r+1))throw std::runtime_error("Sopia gravity footprint mismatch");
++        std::ofstream(path+"-range.json")<<"{\"status\":\"passed\",\"cells\":"<<count<<",\"radius\":"<<r<<"}\n";
++    }
++
+     if(god=="vivi" && tier==5 && you.props.exists("holo_vivi_finale_preview")
+         && you.props["holo_vivi_finale_preview"].get_int()==3 && frame<4) {
+         int sx=1,sy=1;
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -23,6 +23,7 @@
+ void rose_thorn_cell(const coord_def &from,const coord_def &to,const coord_def &cell);
+ bool lamy_banquet_cell(const coord_def &pos);
+ bool vivi_finale_cell(const coord_def &pos);
++bool sopia_gravity_preview_cell(const coord_def &pos,coord_def &delta,int &radius,int &frame);
+ void lamy_banquet_burst(const coord_def &pos);
+ void lamy_chill_burst(const coord_def &pos);
+ void koyori_reaction(const coord_def &pos,int pair,bool critical=false);
+--- before/tiledgnbuf.cc
++++ after/tiledgnbuf.cc
+@@ -78,6 +78,29 @@
+         else
+             // Otherwise render it normally with full transparency
+              m_buf_main.add(cloud_idx, x, y);
++    }
++}
++
++void DungeonCellBuffer::add_sopia_gravity_cell(int x,int y,int dx,int dy,int radius,int frame)
++{
++    const float p=1.0f/32;
++    const VColour haze(123,96,196,30),rim(196,163,249,145),star(247,224,157,210);
++    m_buf_holo_range.add(x,y,x+1,y+1,haze);
++    // Broken perimeter defines the square gameplay footprint without a full grid.
++    for(int i=3;i<30;i+=8) {
++        if(dx==-radius)m_buf_holo_range.add(x+p,y+i*p,x+2*p,y+(i+4)*p,rim);
++        if(dx==radius)m_buf_holo_range.add(x+30*p,y+i*p,x+31*p,y+(i+4)*p,rim);
++        if(dy==-radius)m_buf_holo_range.add(x+i*p,y+p,x+(i+4)*p,y+2*p,rim);
++        if(dy==radius)m_buf_holo_range.add(x+i*p,y+30*p,x+(i+4)*p,y+31*p,rim);
++    }
++    if(!dx && !dy)return;
++    const int sx=(dx>0)-(dx<0),sy=(dy>0)-(dy<0);
++    // Four discrete positions travel toward the nucleus, below every actor.
++    const int shift=12-8*frame;
++    const int u=16+sx*shift/2,v=16+sy*shift/2;
++    for(int k=0;k<4;++k) {
++        const int a=u+sx*k,b=v+sy*k;
++        m_buf_holo_range.add(x+a*p,y+b*p,x+(a+2)*p,y+(b+2)*p,k==0?star:rim);
+     }
+ }
+ 
+--- before/tiledgnbuf.h
++++ after/tiledgnbuf.h
+@@ -24,6 +24,7 @@
+     void add(const packed_cell &cell, int x, int y);
+     void add_monster(const monster_info &mon, int x, int y);
+     void add_vivi_impact_cell(int x,int y);
++    void add_sopia_gravity_cell(int x,int y,int dx,int dy,int radius,int frame);
+     void add_holo_range_cell(int x,int y,bool left_edge,bool top_edge,
+                              bool right_edge,bool bottom_edge);
+     void add_holo_vfx_tile(int tileidx,int x,int y,int span_x=1,int span_y=1,bool under_actors=false);
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -134,6 +134,9 @@
+             // so its friendly halo remains visible throughout the strike.
+             if(map_bounds(gc) && holo_visual::mask_hawk_at(gc))display_cell.fg &= ~TILE_FLAG_MASK;
+             m_buf_dngn.add(display_cell, x, y);
++            coord_def sopia_delta;int sopia_radius=0,sopia_frame=0;
++            if(map_bounds(gc) && holo_visual::sopia_gravity_preview_cell(gc,sopia_delta,sopia_radius,sopia_frame))
++                m_buf_dngn.add_sopia_gravity_cell(x,y,sopia_delta.x,sopia_delta.y,sopia_radius,sopia_frame);
+             if(map_bounds(gc) && holo_visual::vivi_finale_cell(gc))
+                 m_buf_dngn.add_vivi_impact_cell(x,y);
+             if(map_bounds(gc) && holo_visual::lamy_banquet_cell(gc))

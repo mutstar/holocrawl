@@ -1,0 +1,21 @@
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -161,6 +161,18 @@
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
+     }
++    if(const char *shots=getenv("HOLOCRAWL_RADEN_REVIEW")) {
++        fixture("raden");
++        const auto origin=you.pos();
++        for(int option:{1,2,0}) {
++            cast("raden",1,nullptr,origin,option);
++            const auto stable=signature();
++            for(int f=0;f<2;++f)
++                holo_visual::capture_invocation("raden",origin,f,std::string(shots)+"/raden1-"+std::to_string(option)+"-frame"+std::to_string(f)+".png",1,false,option);
++            holo_visual::capture(std::string(shots)+"/raden1-"+std::to_string(option)+"-active.png");
++            require(stable==signature(),"Raden badge capture changed gameplay/RNG");
++        }
++    }
+     if(const char *shots=getenv("HOLOCRAWL_LAMY_BANQUET_REVIEW")) {
+         using namespace holo_batch;
+         auto *m=fixture("lamy");const auto origin=you.pos();const auto centre=origin+coord_def(2,0);

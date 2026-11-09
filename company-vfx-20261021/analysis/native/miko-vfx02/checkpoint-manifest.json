@@ -1,0 +1,95 @@
+{
+  "version": "miko-vfx02",
+  "status": "passed",
+  "checkedAtUtc": "2026-10-20T13:45:25.366850+00:00",
+  "nativeRegressionGods": 22,
+  "numericalBalanceChanges": false,
+  "suiseiAcceptedAndPreserved": true,
+  "review": {
+    "status": "passed",
+    "lowFaithWidth": 3,
+    "highFaithWidth": 5,
+    "domainWidth": 7,
+    "boundaryOnlyFire": true,
+    "expandedFire": true,
+    "expiredFireGone": true,
+    "expiredDomainGone": true,
+    "capturePreservesGameplay": true
+  },
+  "playBinarySha256": "AC51AAE6627B8F25071EA4E82F04113E7A35B9E7593AA25807C27F7AD8BC33D6",
+  "files": [
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-visual.cc",
+      "sha256": "75132C961E7CB5DB0B4A547BAF015BCB8E5155798637D912978A633A736AA87D"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-visual.h",
+      "sha256": "46CA0C8E8855C58B017735CA2639B3064D00B2A6DE0C40C74760D625DB3F7E71"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/holo-campaign-test.cc",
+      "sha256": "9BAF3B8F9CF1BFC9A9BC251C1B2A5AFF32EDB4AE310766CD8B3836AAB1CF5C3D"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/tiledgnbuf.cc",
+      "sha256": "C6F2BB5646B850138B679AFA338D48CC58C1588A409050286819A17176A10C65"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/dc-holo-feat.txt",
+      "sha256": "905CE734C7C4E24474CC00783CEE903A21A77CC4CFF333549AA2C2A6BEE58E3F"
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_0.png",
+      "sha256": "26A1F3FBB7A09684C33DC8E601C7F67E82174BEF49455341C3368AE7797A075D",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikodomain_1.png",
+      "sha256": "2CFF4AAA81816E235BE30ED0F079A20EFCC9A626485D4F28ADCF93C02F2801EF",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoexpand_0.png",
+      "sha256": "3B6751468FDE2D97C3200B0A4D93D4BEB62B45DBD9D257C9D07FE097500326E4",
+      "size": [
+        224,
+        224
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoexpand_1.png",
+      "sha256": "E8E44A647179694FDD6A9A272992AD5314E2E06A3EFDEF3D4F80945F4CBDCD7C",
+      "size": [
+        224,
+        224
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_0.png",
+      "sha256": "B2264DFD150397C8AF9C8F20FAED648D3D0D5781A429D8E9204913AE85D6A747",
+      "size": [
+        32,
+        32
+      ]
+    },
+    {
+      "path": "engine/campaign-crawl/crawl-ref/source/rltiles/holo/fx_mikoflame_1.png",
+      "sha256": "6E4D898F74A8E8914462772D8828F45C73815B5E47FADC39913DF1135B6028C2",
+      "size": [
+        32,
+        32
+      ]
+    }
+  ],
+  "gallery": "analysis/previews/miko-vfx02/index.html",
+  "prompt": "assets/holocrawl/miko-vfx01/inputs.json",
+  "coarseCandidatePreserved": "analysis/native/miko-vfx01",
+  "scope": "Fixed arena, native SDL. Not campaign clear-rate validation.",
+  "feedback": "Awaiting user review of Miko tier3 flames and tier5 domain"
+}

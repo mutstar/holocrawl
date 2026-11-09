@@ -1,0 +1,1 @@
+{"status": "passed", "canvas": [32, 32], "coreSizes": [28, 30, 32, 30], "comparison": "Cross-process screenshot pixel equality not used: native floor variants and UI pixels vary between launches. Native footprint and state tests passed separately."}

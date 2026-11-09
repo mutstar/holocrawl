@@ -1,0 +1,109 @@
+--- before/holo-batch-summons.cc
++++ after/holo-batch-summons.cc
+@@ -157,8 +157,16 @@
+                     // Remove the image from the grid while moving the player, preserving its lifetime.
+                     mgrd(dest)=NON_MONSTER;you.move_to_pos(dest);fox->moveto(old);mgrd(old)=fox->mindex();
+                     you.apply_location_effects(old);
+-                    for(mid_t id:enemies(old,1)) { monster *mon=monster_by_mid(id);if(mon && mon->alive()) foxfire(*fox,*mon,roll_dice(1,6+s.inv/3),true); }
+-                    s.three_ready=now+5+30;holo_visual::fox_swap(old,dest);return 5;
++                    std::vector<coord_def> hit_positions;
++                    for(mid_t id:enemies(old,1)) {
++                        monster *mon=monster_by_mid(id);
++                        if(mon && mon->alive()) {
++                            const int before_hp=mon->hit_points;const coord_def hit_pos=mon->pos();
++                            foxfire(*fox,*mon,roll_dice(1,6+s.inv/3),true);
++                            if(mon->hit_points<before_hp)hit_positions.push_back(hit_pos);
++                        }
++                    }
++                    s.three_ready=now+5+30;holo_visual::fox_swap(old,dest,hit_positions);return 5;
+                 }
+             }
+         }
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -54,13 +54,14 @@
+ int flash_frame=0;
+ int fox_scene=0,fox_frame=0;
+ coord_def fox_from,fox_to;
+-std::vector<coord_def> fox_arrivals;
++std::vector<coord_def> fox_arrivals,fox_hits;
+ bool area(const coord_def &p,const coord_def &centre,int radius) {
+     return grid_distance(p,centre)<=radius && holo_batch::line(centre,p);
+ }
+ effect fox_cue_at(const coord_def &p) {
+     if(fox_scene==1) {
+         if(fox_frame<2 && (p==fox_from || p==fox_to))return effect::foxshift;
++        if(fox_frame>=2 && std::find(fox_hits.begin(),fox_hits.end(),p)!=fox_hits.end())return effect::foxhit;
+         if(fox_frame>=2 && area(p,fox_from,1))return effect::foxflame;
+     }
+     if(fox_scene==2 && !fox_arrivals.empty()
+@@ -102,7 +103,7 @@
+             // Read the exact actor-refresh path used in normal animation.
+             capture(stem+".png",false);
+             std::ofstream meta(stem+"-scene.json");
+-            meta<<"{\"frame\":"<<f<<",\"scene\":"<<fox_scene<<",\"from\":["<<fox_from.x<<','<<fox_from.y<<"],\"to\":["<<fox_to.x<<','<<fox_to.y<<"],\"newFoxes\":"<<fox_arrivals.size()<<",\"revealed\":"<<(fox_scene==2?(f+1)/2:0)<<"}\n";
++            meta<<"{\"frame\":"<<f<<",\"scene\":"<<fox_scene<<",\"from\":["<<fox_from.x<<','<<fox_from.y<<"],\"to\":["<<fox_to.x<<','<<fox_to.y<<"],\"hitTargets\":"<<fox_hits.size()<<",\"newFoxes\":"<<fox_arrivals.size()<<",\"revealed\":"<<(fox_scene==2?(f+1)/2:0)<<"}\n";
+         }
+ #ifdef USE_TILE_LOCAL
+         else if(!crawl_state.test) {
+@@ -188,7 +189,7 @@
+ #endif
+ }
+ }
+-void clear(){flashes.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();}
++void clear(){flashes.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
+ void bind_altar(const std::string &god) {
+     if(holo_benchmark_active() || !feat_is_altar(grd(you.pos())))return;
+     if(!env.properties.exists(altar_key))env.properties[altar_key].new_table();
+@@ -399,9 +400,9 @@
+     tiles.invalidate_dungeon_overlays();
+ #endif
+ }
+-void fox_swap(const coord_def &from,const coord_def &to) {
++void fox_swap(const coord_def &from,const coord_def &to,const std::vector<coord_def> &hits) {
+     if(holo_benchmark_active() || (crawl_state.test && !getenv("HOLOCRAWL_FUBUKI_REVIEW")))return;
+-    clear();fox_scene=1;fox_from=from;fox_to=to;play_fox_scene();
++    clear();fox_scene=1;fox_from=from;fox_to=to;fox_hits=hits;play_fox_scene();
+ }
+ void fox_gather(const std::vector<coord_def> &positions) {
+     if(positions.empty() || holo_benchmark_active() || (crawl_state.test && !getenv("HOLOCRAWL_FUBUKI_REVIEW")))return;
+@@ -432,7 +433,7 @@
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
+     if(kind==effect::carrot)return TILE_HOLO_CARROT;
+-    if(frame<0 && ((fox_scene==1 && (kind==effect::foxshift || kind==effect::foxflame))
++    if(frame<0 && ((fox_scene==1 && (kind==effect::foxshift || kind==effect::foxflame || kind==effect::foxhit))
+         || (fox_scene==2 && kind==effect::foxcircle)))frame=fox_frame%2;
+     if(frame<0)frame=flash_kind!=effect::none && kind==flash_kind?flash_frame:(you.elapsed_time/10)%2;
+     return TILE_HOLO_FX_WARNING_0+(int(kind)-1)*2+(frame%2);
+--- before/holo-visual.h
++++ after/holo-visual.h
+@@ -7,7 +7,7 @@
+ struct dolls_data;
+ namespace holo_visual {
+ enum class effect { none,warning,urgent,shrine,garden,water,gravity,orbit,
+-    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,carrot };
++    fire,exhibit,spotlight,frost,rhythm,shield,slime,impact,comet,foxflame,oni,charm,punch,sleep,carrotburst,devil,circus,reagent,ravenflight,starmark,cut_h,cut_d,cut_v,cut_u,cometfall,cometdrop,mikoflame,mikodomain,mikoexpand,thorn_e,thorn_se,thorn_s,thorn_sw,thorn_w,thorn_nw,thorn_n,thorn_ne,akibloom,foxshift,foxcircle,foxhit,carrot };
+ enum class sprite { none,rose,fox,raven,swordsman,hound };
+ enum class badge { five,shield,warning,urgent,wrath,cooldown,resource,active };
+ std::vector<badge> badges();
+@@ -24,7 +24,7 @@
+ void impact(const coord_def &pos,int radius,bool fire=false);
+ effect invocation_at(const coord_def &pos);
+ effect invocation_sprite_at(const coord_def &pos,int &span_x,int &span_y);
+-void fox_swap(const coord_def &from,const coord_def &to);
++void fox_swap(const coord_def &from,const coord_def &to,const std::vector<coord_def> &hits);
+ void fox_gather(const std::vector<coord_def> &positions);
+ bool mask_fox_at(const coord_def &pos);
+ void clear();
+--- before/rltiles/dc-holo-feat.txt
++++ after/rltiles/dc-holo-feat.txt
+@@ -118,6 +118,8 @@
+ fx_foxshift_1 HOLO_FX_FOXSHIFT_1
+ fx_foxcircle_0 HOLO_FX_FOXCIRCLE_0
+ fx_foxcircle_1 HOLO_FX_FOXCIRCLE_1
++fx_foxflame_0 HOLO_FX_FOXHIT_0
++fx_foxflame_1 HOLO_FX_FOXHIT_1
+ carrot HOLO_CARROT
+ 
+ altar_suisei HOLO_ALTAR_SUISEI

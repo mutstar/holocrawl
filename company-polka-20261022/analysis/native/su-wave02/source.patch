@@ -1,0 +1,159 @@
+--- before/dc-holo-feat.txt
++++ after/dc-holo-feat.txt
+@@ -422,3 +422,12 @@
+ fx_radenfive_open HOLO_FX_RADENFIVE_OPEN
+ fx_hajimerhythm2 HOLO_FX_HAJIMERHYTHM2
+ fx_hajimerhythm3 HOLO_FX_HAJIMERHYTHM3
++
++fx_suwave_e HOLO_FX_SUWAVE_E
++fx_suwave_se HOLO_FX_SUWAVE_SE
++fx_suwave_s HOLO_FX_SUWAVE_S
++fx_suwave_sw HOLO_FX_SUWAVE_SW
++fx_suwave_w HOLO_FX_SUWAVE_W
++fx_suwave_nw HOLO_FX_SUWAVE_NW
++fx_suwave_n HOLO_FX_SUWAVE_N
++fx_suwave_ne HOLO_FX_SUWAVE_NE
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -181,9 +181,11 @@
+             for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
+             you.trapped=false;you.skills[SK_INVOCATIONS]=12;holo_batch::s.inv=12;
+             if(wet) {
+-                const auto puddle=origin+coord_def(1,0);require(m->pos()==puddle || m->move_to_pos(puddle),"Su wave puddle target");
++                const auto puddle=origin+coord_def(2,0);require(m->pos()==puddle || m->move_to_pos(puddle),"Su wave puddle target");
++                require(you.move_to_pos(origin+coord_def(1,0)),"Su wave puddle setup approach");
+                 for(int n=0;n<40 && grd(puddle)==DNGN_FLOOR;++n){bool hit=false;fight_melee(&you,m,&hit);finish_attack();step(std::max(1,you.time_taken));}
+                 require(grd(puddle)==DNGN_SHALLOW_WATER,"Su wave lacks ordinary-attack puddle");
++                require(you.move_to_pos(origin),"Su wave puddle setup return");
+             }
+             require(m->move_to_pos(aim),"Su wave centre target");
+             auto enemy=[&](const coord_def &p){auto mg=mgen_data::hostile_at(MONS_ORC,false,p);mg.flags|=MG_FORCE_PLACE;auto *n=create_monster(mg,false);require(n,"Su wave side target");n->speed=n->speed_increment=0;n->hit_points=n->max_hit_points=10000;return n;};
+@@ -192,7 +194,7 @@
+             const std::string stem=std::string(shots)+(wet?"/wave-wet":"/wave-dry");
+             auto shot=[&](const std::string &name){const auto before=signature();holo_visual::capture(stem+"-"+name+".png");require(before==signature(),"Su wave capture changed RNG/state");};
+             shot("before");require(invoke(3,m,&aim)==10,"Su wave invocation");
+-            const auto stable=signature();for(int f=0;f<2;++f)holo_visual::capture_invocation("su",aim,f,stem+"-cast"+std::to_string(f)+".png",3);
++            const auto stable=signature();for(int f=0;f<5;++f)holo_visual::capture_invocation("su",aim,f,stem+"-cast"+std::to_string(f)+".png",3);
+             require(stable==signature(),"Su wave invocation capture changed RNG/state");
+             step(10);shot("after");
+             require(you.magic_points==mp-3 && you.piety==faith-3,"Su wave costs");
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -51,6 +51,8 @@
+ const char *altar_key="holocrawl_altar_art";
+ std::string position(const coord_def &p){return make_stringf("%d,%d",p.x,p.y);}
+ std::vector<coord_def> flashes;
++std::vector<std::vector<coord_def>> su_fronts;
++int su_direction=0;
+ effect flash_kind=effect::none;
+ int flash_frame=0;
+ bool koyori_compact=false;
+@@ -70,6 +72,7 @@
+     return effect(int(effect::night_korone1)+3*int(it-night_gods.begin())+(tier==1?0:tier==3?1:2));
+ }
+ int night_span(effect e) {
++    if(e==effect::night_su3)return 1;
+     if(e==effect::night_raden3 || e==effect::night_radenstone || e==effect::night_radencraft)return 1;
+     if(e==effect::night_koyori5 || e==effect::night_lui5 || e==effect::night_raden5)return 1; // Compact player-relative badges.
+ 
+@@ -196,6 +199,26 @@
+ }
+ void prepare_invocation(const std::string &g,int tier,const coord_def &p,bool impact_phase=false,int option=0) {
+     flashes.clear();flash_kind=invocation_effect(g);
++    su_fronts.clear();
++    if(g=="su" && tier==3) {
++        flash_kind=effect::night_su3;
++        const auto delta=p-you.pos();const coord_def d((delta.x>0)-(delta.x<0),(delta.y>0)-(delta.y<0));
++        su_direction=d.x>0?(d.y>0?1:d.y<0?7:0):d.x<0?(d.y>0?3:d.y<0?5:4):d.y>0?2:6;
++        if(d==coord_def(0,0))return;
++        bool wide=holo_batch::five();
++        for(int n=1;n<=5;++n) {
++            const auto cell=you.pos()+d*n;
++            if(!in_bounds(cell) || cell_is_solid(cell) || !holo_batch::line(you.pos(),cell))break;
++            wide|=feat_is_water(grd(cell)) && holo_batch::seen(cell);
++            std::vector<coord_def> front={cell};
++            if(wide)for(int side:{-1,1}) {
++                const auto q=cell+coord_def(-d.y*side,d.x*side);
++                if(in_bounds(q) && holo_batch::seen(q))front.push_back(q);
++            }
++            su_fronts.push_back(front);flashes.insert(flashes.end(),front.begin(),front.end());
++        }
++        return;
++    }
+     if(g=="raden" && tier==3) {
+         flash_kind=night_effect(g,tier,option);
+         if(option==1) {
+@@ -264,9 +287,10 @@
+ void animate_prepared() {
+ #ifdef USE_TILE_LOCAL
+     if(crawl_state.test || holo_benchmark_active() || flashes.empty())return;
+-    const int frames=flash_kind==effect::night_raden5?4:flash_kind==effect::night_radenstone?3:flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
++    const int frames=flash_kind==effect::night_su3?int(su_fronts.size()):flash_kind==effect::night_raden5?4:flash_kind==effect::night_radenstone?3:flash_kind==effect::lamybanquetcast0?4:flash_kind==effect::night_korone5?4:flash_kind==effect::cometfall?6:(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?4:2;
+     for(int frame=0;frame<frames;++frame) {
+         flash_frame=frame;tiles.invalidate_dungeon_overlays();update_screen();
++        if(flash_kind==effect::night_su3){scaled_delay(105);continue;}
+         if(flash_kind==effect::night_raden5){scaled_delay(frame==2?140:95);continue;}
+         if(flash_kind==effect::night_raden3 || flash_kind==effect::night_radenstone || flash_kind==effect::night_radencraft){scaled_delay(105);continue;}
+         scaled_delay(flash_kind==effect::lamybanquetcast0?105:flash_kind==effect::night_okayu5?110:flash_kind==effect::night_korone3 || flash_kind==effect::night_korone5?110:flash_kind==effect::ayameslash || flash_kind==effect::ayameduel?110:flash_kind==effect::cometfall?(frame<4?65:100):(flash_kind==effect::mikoexpand || flash_kind==effect::akibloom)?95:55);
+@@ -294,7 +318,7 @@
+ #endif
+ }
+ }
+-void clear(){koyori_compact=false;flashes.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
++void clear(){koyori_compact=false;flashes.clear();su_fronts.clear();flash_kind=effect::none;flash_frame=0;fox_scene=0;fox_frame=0;fox_arrivals.clear();fox_hits.clear();}
+ void bind_altar(const std::string &god) {
+     if(holo_benchmark_active() || !feat_is_altar(grd(you.pos())))return;
+     if(!env.properties.exists(altar_key))env.properties[altar_key].new_table();
+@@ -382,6 +406,11 @@
+ }
+ effect invocation_at(const coord_def &p) {
+     if(!in_bounds(p) || !you.see_cell(p))return effect::none;
++    if(flash_kind==effect::night_su3) {
++        if(flash_frame<0 || flash_frame>=int(su_fronts.size()))return effect::none;
++        const auto &front=su_fronts[flash_frame];
++        return std::find(front.begin(),front.end(),p)!=front.end()?flash_kind:effect::none;
++    }
+     if(flash_kind==effect::night_radenstone
+         && std::find(flashes.begin(),flashes.end(),p)!=flashes.end())
+         return p==flashes[std::min(int(flashes.size())-1,flash_frame)]?flash_kind:effect::none;
+@@ -800,6 +829,7 @@
+ }
+ int effect_tile(effect kind,int frame) {
+     if(kind==effect::none)return 0;
++    if(kind==effect::night_su3)return TILE_HOLO_FX_SUWAVE_E+su_direction;
+     if(kind==effect::night_hajime1) {
+         const int rhythm=holo_batch::s.resource;
+         return rhythm>=3?TILE_HOLO_FX_HAJIMERHYTHM3:rhythm==2?TILE_HOLO_FX_HAJIMERHYTHM2:TILE_HOLO_FX_NIGHT_HAJIME1_0;
+@@ -891,13 +921,21 @@
+ }
+ void capture_invocation(const std::string &god,const coord_def &pos,int frame,const std::string &path,int tier,bool impact_phase,int option) {
+ #ifdef USE_TILE_LOCAL
+-    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
++    if(!crawl_state.test || frame<0 || frame>(impact_phase?5:(god=="su" && tier==3)?4:(god=="raden" && tier==3 && option==1)?2:((god=="miko" || god=="aki" || god=="lamy" || god=="raden") && tier==5)?3:1))
+         throw std::runtime_error("Invocation frame capture requires native test mode");
+     if(!in_bounds(pos) || !you.see_cell(pos))
+         throw std::runtime_error("Invocation capture position is not visible");
+     // Same routing and overlay path as flash(); expose one frame for a native
+     // framebuffer read without advancing time or redrawing the VFX in Python.
+     prepare_invocation(god,tier,pos,impact_phase,option);flash_frame=frame;
++    if(god=="su" && tier==3 && frame<int(su_fronts.size())) {
++        for(const auto &cell:su_fronts[frame]) {
++            int sx=1,sy=1;
++            if(invocation_sprite_at(cell,sx,sy)!=effect::night_su3 || sx!=1 || sy!=1)
++                throw std::runtime_error("Su wave front must use one native tile per affected lane");
++        }
++        std::ofstream(path+"-front.json")<<"{\"frame\":"<<frame<<",\"lanes\":"<<su_fronts[frame].size()<<",\"direction\":"<<su_direction<<",\"nativeTileSpan\":1}\n";
++    }
+     if(god=="koyori" && tier==5){
+         int anchors=0;
+         for(int y=-2;y<=2;++y)for(int x=-2;x<=2;++x){
+--- before/tilereg-dgn.cc
++++ after/tilereg-dgn.cc
+@@ -148,6 +148,7 @@
+                         && cue!=holo_visual::effect::night_okayu5
+                         && cue!=holo_visual::effect::night_noel5
+                         && cue!=holo_visual::effect::night_watame5
++                        && cue!=holo_visual::effect::night_su3
+                           && cue!=holo_visual::effect::night_raden3
+                         && cue!=holo_visual::effect::night_koyori5)
+                     || (cue>=holo_visual::effect::night_polkaheal && cue<=holo_visual::effect::night_radencraft

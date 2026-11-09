@@ -1,0 +1,5 @@
+{
+  "status": "superseded",
+  "next": "suisei-three02",
+  "reason": "Native kill fixture awarded inflated Ettin XP and waited for attribute_increase at level-up, confirmed with debugger/addr2line. Use a genuine 1HP/1maxHP rat for kill-reward test; no gameplay-rule change."
+}

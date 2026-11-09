@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "revision": "ayame-vfx02",
+  "runtimeSha256": "7ad0a858929dc2c2008e4f7473c51f7d240c225bf56f2bf7fb55dfb502a5a501",
+  "combatAndPriorArtPreserved": true,
+  "feedback": "pending",
+  "prompts": "assets/holocrawl/ayame-vfx01/inputs.json"
+}

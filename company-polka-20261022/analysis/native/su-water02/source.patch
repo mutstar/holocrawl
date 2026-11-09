@@ -1,0 +1,186 @@
+--- before/holo-batch-space.cc
++++ after/holo-batch-space.cc
+@@ -8,15 +8,35 @@
+ #include "fight.h"
+ #include "holocrawl.h"
+ #include "mon-util.h"
++#include "mapmark.h"
+ #include "player.h"
+ #include "terrain.h"
+ namespace holo_batch {
+ namespace {
+ bool water(const coord_def &pos,int at) {
+-    if(grd(pos)!=DNGN_FLOOR || !seen(pos)) return false;
+-    if(s.five_end>at && grid_distance(you.pos(),pos)<=2) return true;
+-    for(const auto &h:s.hazards) if(h.kind==20 && h.pos==pos && h.end>at) return true;
++    return in_bounds(pos) && seen(pos) && feat_is_water(grd(pos));
++}
++bool su_terrain(const coord_def &pos,terrain_change_type type) {
++    for(map_marker *m:env.markers.get_markers_at(pos))
++        if(m->get_type()==MAT_TERRAIN_CHANGE
++           && static_cast<map_terrain_change_marker *>(m)->change_type==type) return true;
+     return false;
++}
++void su_field() {
++    const int remaining=s.five_end-you.elapsed_time;
++    std::vector<coord_def> outside;
++    for(map_marker *m:env.markers.get_all(MAT_TERRAIN_CHANGE))
++        if(static_cast<map_terrain_change_marker *>(m)->change_type==TERRAIN_CHANGE_SU_FIELD
++           && (remaining<=0 || grid_distance(you.pos(),m->pos)>2 || !seen(m->pos))) outside.push_back(m->pos);
++    for(const auto &p:outside) revert_terrain_change(p,TERRAIN_CHANGE_SU_FIELD);
++    if(remaining<=0)return;
++    for(int dx=-2;dx<=2;++dx)for(int dy=-2;dy<=2;++dy) {
++        const coord_def p=you.pos()+coord_def(dx,dy);
++        if(!in_bounds(p) || !seen(p))continue;
++        if((grd(p)==DNGN_FLOOR && !is_temp_terrain(p))
++           || su_terrain(p,TERRAIN_CHANGE_SU_PUDDLE) || su_terrain(p,TERRAIN_CHANGE_SU_FIELD))
++            temp_change_terrain(p,DNGN_SHALLOW_WATER,remaining,TERRAIN_CHANGE_SU_FIELD);
++    }
+ }
+ // extra: 0=pressure trigger, 1=legacy delayed fuse, 130/150=boost percent.
+ int bomb_multiplier(const hazard &h) { return h.extra==1 || h.extra==150?150:h.extra==130?130:100; }
+@@ -81,7 +101,7 @@
+     const int now=you.elapsed_time;
+     if(is(god_id::su)) {
+         if(want(5) && !five() && now>=s.five_ready && pay(6,12,120)) {
+-            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;s.last_event=now+20;return 10;
++            s.five_end=now+10+60+2*s.inv;s.five_ready=s.five_end+150;s.last_event=now+20;su_field();return 10;
+         }
+         if(want(3) && (target || (manual() && manual_aim!=you.pos())) && now>=s.three_ready && grid_distance(you.pos(),manual()?manual_aim:target->pos())<=5) {
+             coord_def d=(manual()?manual_aim:target->pos())-you.pos();d.x=(d.x>0)-(d.x<0);d.y=(d.y>0)-(d.y<0);
+@@ -228,12 +248,19 @@
+ }
+ void space_after_attack(monster *,int)
+ {
+-    if(!is(god_id::su) || !ctx.damaged || grd(ctx.position)!=DNGN_FLOOR) return;
++    if(!is(god_id::su) || !ctx.damaged) return;
++    const auto p=ctx.position;
++    if(!((grd(p)==DNGN_FLOOR && !is_temp_terrain(p))
++         || su_terrain(p,TERRAIN_CHANGE_SU_PUDDLE) || su_terrain(p,TERRAIN_CHANGE_SU_FIELD))) return;
+     s.hazards.erase(std::remove_if(s.hazards.begin(),s.hazards.end(),[](const hazard &h){return h.pos==ctx.position || h.end<=you.elapsed_time;}),s.hazards.end());
+-    if(s.hazards.size()>=12) s.hazards.erase(s.hazards.begin());
++    if(s.hazards.size()>=12) {
++        revert_terrain_change(s.hazards.front().pos,TERRAIN_CHANGE_SU_PUDDLE);
++        s.hazards.erase(s.hazards.begin());
++    }
+     hazard h;h.pos=ctx.position;h.kind=20;h.end=you.elapsed_time+50+s.inv;s.hazards.push_back(h);
+-}
+-void space_move(const coord_def &,bool) {}
++    temp_change_terrain(p,DNGN_SHALLOW_WATER,50+s.inv,TERRAIN_CHANGE_SU_PUDDLE);
++}
++void space_move(const coord_def &,bool) { if(is(god_id::su) && five())su_field(); }
+ void space_monster(monster &mon,const coord_def &old)
+ {
+     holo_campaign::slime_moved(mon,old);
+@@ -264,8 +291,6 @@
+ {
+     if(kind!=EUT_MOVE && kind!=EUT_SWIM) return base;
+     int percent=100;
+-    if(is(god_id::su) && !mon.airborne() && mons_habitat(mon,true)!=HT_AMPHIBIOUS
+-        && mons_habitat(mon,true)!=HT_WATER && mon.res_constrict()<3 && water(mon.pos(),you.elapsed_time)) percent=125;
+     if(is(god_id::towa) && s.targets[mon.mid].slowed_until>you.elapsed_time) percent=150;
+     if(mon.has_ench(ENCH_SLOW)) return base;
+     return (base*percent+99)/100;
+--- before/holo-batch.cc
++++ after/holo-batch.cc
+@@ -613,8 +613,9 @@
+     holo_reset_validation_fixture();reset("su",12);mon=target();
+     begin_attack(*mon);note_primary_damage(mon,0);end_attack(10);require(s.hazards.empty(),"zero damage creates water");
+     begin_attack(*mon);note_primary_damage(mon,1);end_attack(10);
+-    require(s.hazards.size()==1 && monster_energy(*mon,EUT_MOVE,10)==13
+-        && monster_energy(*mon,EUT_ATTACK,10)==10,"water changes attacks or fails to slow movement");
++    require(s.hazards.size()==1 && grd(mon->pos())==DNGN_SHALLOW_WATER
++        && monster_energy(*mon,EUT_MOVE,10)==10 && monster_energy(*mon,EUT_ATTACK,10)==10,
++        "Su lacks native shallow water or retains extra movement cost");
+     holo_reset_validation_fixture();reset("lamy",12);s.resource=80;mon=target();begin_attack(*mon);
+     require(multiplier(100)==100 && resistance(BEAM_COLD)==0 && holo_lamy::power_bonus()==16 && holo_lamy::evasion_penalty()==3,"Lamy caster retained old melee/resistance modifiers");
+     s.five_end=100;require(multiplier(100)==100,"blizzard retains the high-drunk direct damage bonus");
+--- before/holo-campaign-test.cc
++++ after/holo-campaign-test.cc
+@@ -43,6 +43,8 @@
+ #include "skills.h"
+ #include "spl-other.h"
+ #include "tags.h"
++#include "terrain.h"
++#include "timed-effects.h"
+ 
+ extern void process_command(command_type cmd);
+ namespace holo_campaign {
+@@ -152,6 +154,15 @@
+         close_save();return 0;
+     }
+     const char *mode=getenv("HOLOCRAWL_CAMPAIGN_RELOAD");
++    if(getenv("HOLOCRAWL_SU_WATER_RELOAD")) {
++        holo_reset_validation_fixture();reload_disk(dir+"/su-water-save");
++        const auto p=you.pos()+coord_def(1,0);
++        require(grd(p)==DNGN_SHALLOW_WATER && is_temp_terrain(p),"Su native water missing after fresh restore");
++        timeout_terrain_changes(1000);
++        require(grd(p)==DNGN_FLOOR && !is_temp_terrain(p),"Su restored terrain did not expire");
++        std::ofstream(dir+"/su-water-reload.json")<<"{\"status\":\"passed\",\"nativeTerrainRestored\":true,\"expiryRestored\":true}\n";
++        close_save();return 0;
++    }
+     if(mode && std::string(mode)=="1") {
+         holo_reset_validation_fixture();reload_disk(dir);
+         require(holo_worship::current()=="lui" && holo_batch::s.companions.size()==6,"native companions restored");
+@@ -160,6 +171,39 @@
+         require(data==signature(),"fresh-process native world continuation differs");
+         std::ofstream proof(dir+"/reload.json");proof<<"{\"status\":\"passed\",\"nativeLevel\":true,\"companions\":6,\"nextWorldStepExact\":true}\n";
+         close_save();return 0;
++    }
++    if(const char *shots=getenv("HOLOCRAWL_SU_WATER_REVIEW")) {
++        auto *m=fixture("su",50);const auto origin=you.pos(),p=origin+coord_def(1,0);
++        for(int x=25;x<=45;++x)for(int y=25;y<=45;++y)env.pgrid(coord_def(x,y))|=FPROP_SEEN_OR_NOEXP;
++        you.trapped=false;you.skills[SK_INVOCATIONS]=12;holo_batch::s.inv=12;
++        m->type=MONS_ORC;require(m->pos()==p || m->move_to_pos(p),"Su target placement");
++        auto shot=[&](const std::string &name){holo_visual::capture(std::string(shots)+"/water-"+name+".png");};
++        shot("before");
++        for(int n=0;n<40 && grd(p)==DNGN_FLOOR;++n){bool hit=false;fight_melee(&you,m,&hit);finish_attack();step(std::max(1,you.time_taken));}
++        require(grd(p)==DNGN_SHALLOW_WATER && m->floundering(),"Su ordinary attack did not produce native floundering terrain");
++        require(holo_batch::monster_energy(*m,EUT_MOVE,10)==10,"Su double-counts native water movement");
++        shot("hit");int enemy_fumbles=0;for(int n=0;n<256;++n)enemy_fumbles+=m->fumbles_attack();
++        require(enemy_fumbles>0 && enemy_fumbles<256,"Su water does not use native monster fumbles");
++        require(m->move_to_pos(origin+coord_def(2,1)),"Su target leaves water");shot("water");
++        require(you.move_to_pos(p),"Su player enters water");require(you.floundering(),"Su water lacks player penalty");
++        int player_fumbles=0;for(int n=0;n<256;++n)player_fumbles+=you.fumbles_attack();
++        require(player_fumbles>0 && player_fumbles<256,"Su water lacks player fumbles");shot("player");
++        require(you.move_to_pos(origin),"Su player leaves water");
++        // Refresh the same puddle without spending world time, then save both
++        // native TAG_LEVEL terrain markers and the campaign ledger.
++        holo_batch::begin_attack(*m);holo_batch::note_primary_damage(m,1);holo_batch::end_attack(10);
++        const auto prior=Options.save_dir;const bool no_save=Options.no_save;
++        save_disk(dir+"/su-water-save");close_save();Options.save_dir=prior;Options.no_save=no_save;
++        timeout_terrain_changes(1000);require(grd(p)==DNGN_FLOOR,"Su puddle did not restore original floor");shot("ended");
++        // Native water also widens the 3-star wave; 5-star water follows the
++        // player and removes only its own marker outside the moving field.
++        you.piety=180;const auto natural=origin+coord_def(0,-1);grd(natural)=DNGN_SHALLOW_WATER;
++        require(invoke(5,nullptr,&origin)==10,"Su five activation");
++        require(grd(origin)==DNGN_SHALLOW_WATER && grd(origin+coord_def(-2,0))==DNGN_SHALLOW_WATER,"Su five field terrain");
++        require(you.move_to_pos(origin+coord_def(1,0)),"Su five move");holo_batch::after_move(origin,true);
++        require(grd(origin+coord_def(-2,0))==DNGN_FLOOR && grd(origin+coord_def(3,0))==DNGN_SHALLOW_WATER,"Su moving field restoration");
++        timeout_terrain_changes(1000);require(grd(origin)==DNGN_FLOOR && grd(natural)==DNGN_SHALLOW_WATER,"Su expiry removed natural water");
++        std::ofstream(std::string(shots)+"/water.json")<<"{\"status\":\"passed\",\"nativeMeleeTrigger\":true,\"playerPenalty\":true,\"monsterPenalty\":true,\"noExtraSlow\":true,\"expiry\":true,\"movingFiveField\":true,\"naturalWaterPreserved\":true}\n";
+     }
+     if(const char *shots=getenv("HOLOCRAWL_HAJIME_FIVE_REVIEW")) {
+         auto *m=fixture("hajime");const auto origin=you.pos();
+--- before/holo-visual.cc
++++ after/holo-visual.cc
+@@ -333,9 +333,7 @@
+                 ?effect::mikodomain:effect::shrine;
+         if(g=="aki" && s.one_end>now && s.one_ready<=now && grd(p)==DNGN_FLOOR && area(p,s.centre,s.three_end>now?3:you.piety>=75?2:1))base=effect::garden;
+         if(g=="towa" && s.one_end>now && area(p,s.centre,2))base=effect::spotlight;
+-        if(g=="su" && grd(p)==DNGN_FLOOR && s.five_end>now && area(p,you.pos(),2))base=effect::water;
+         for(const auto &h:s.hazards) {
+-            if(g=="su" && h.kind==20 && h.end>now && h.pos==p)base=effect::water;
+             if(g=="koyori" && h.kind==4 && h.end>now && area(p,h.pos,h.extra))base=effect::slime;
+         }
+         if(s.five_end>now && g=="hajime" && grid_distance(p,you.pos())==1 && area(p,you.pos(),1))base=effect::rhythm;
+--- before/terrain-change-type.h
++++ after/terrain-change-type.h
+@@ -8,5 +8,7 @@
+     TERRAIN_CHANGE_IMPRISON,
+     TERRAIN_CHANGE_DOOR_SEAL,
+     TERRAIN_CHANGE_FORESTED,
++    TERRAIN_CHANGE_SU_PUDDLE,
++    TERRAIN_CHANGE_SU_FIELD,
+     NUM_TERRAIN_CHANGE_TYPES
+ };

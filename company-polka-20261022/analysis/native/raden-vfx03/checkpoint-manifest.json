@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "revision": "raden-vfx03",
+  "binarySha256": "4dc4089f03b68a0d03dfa86b3019c98dd8e71bb6ca9834928fc8f90ad8565219",
+  "painting": "red-handled brush",
+  "nativeSize": [
+    14,
+    14
+  ],
+  "position": [
+    18,
+    0
+  ],
+  "otherExhibitsPreserved": true,
+  "combatNumbersChanged": false,
+  "saveFormatChanged": false,
+  "validation": {
+    "gods": 22,
+    "binarySha256": "4DC4089F03B68A0D03DFA86B3019C98DD8E71BB6CA9834928FC8F90AD8565219",
+    "chocoControls": false,
+    "rawScreenshots": 10,
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "status": "passed"
+  },
+  "exhibitProof": {
+    "status": "passed",
+    "distinctExhibits": 3,
+    "castAndPersistentMatch": true,
+    "gameplayRngUnchanged": true
+  }
+}

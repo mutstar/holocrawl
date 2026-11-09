@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "revision": "su-wave02",
+  "binarySha256": "847af796527387845d458031e5dee95ee5ef0200eaa60923aab49cb120d72d31",
+  "combatChanged": false,
+  "artChanged": true,
+  "nativeProof": {
+    "status": "passed",
+    "scenes": [
+      {
+        "water": false,
+        "mainDamage": 5,
+        "sideDamage": 0,
+        "push": 1,
+        "mpCost": 3,
+        "pietyCost": 3,
+        "cooldownAfterCastAut": 30
+      },
+      {
+        "water": true,
+        "mainDamage": 10,
+        "sideDamage": 9,
+        "push": 1,
+        "mpCost": 3,
+        "pietyCost": 3,
+        "cooldownAfterCastAut": 30
+      }
+    ],
+    "nativePuddleTrigger": true,
+    "outsideUnaffected": true,
+    "captureRngStable": true
+  },
+  "validation": {
+    "gods": 22,
+    "freshProcessRestore": true,
+    "scope": "VFX and native state controls, not campaign winrate.",
+    "binarySha256": "847AF796527387845D458031E5DEE95EE5EF0200EAA60923AAB49CB120D72D31",
+    "rawScreenshots": 19,
+    "chocoControls": false,
+    "status": "passed"
+  }
+}
