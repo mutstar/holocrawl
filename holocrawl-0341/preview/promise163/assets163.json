@@ -1,0 +1,168 @@
+{
+  "revision": 163,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "label": "프로미스 타워 · 시계 문틀",
+      "native": [
+        96,
+        48
+      ],
+      "colors": 27,
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceBounds": [
+        19,
+        76,
+        1755,
+        824
+      ],
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        46
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "clockwork",
+      "label": "크로니 · 천문 시계장치",
+      "native": [
+        96,
+        96
+      ],
+      "colors": 27,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        82,
+        49,
+        1170,
+        1233
+      ],
+      "visibleBounds": [
+        5,
+        2,
+        90,
+        94
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "nature",
+      "label": "파우나 · 생명의 나무",
+      "native": [
+        32,
+        64
+      ],
+      "colors": 22,
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceBounds": [
+        18,
+        138,
+        869,
+        1686
+      ],
+      "visibleBounds": [
+        2,
+        11,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "civilization",
+      "label": "무메이 · 부엉이 기록대",
+      "native": [
+        32,
+        64
+      ],
+      "colors": 22,
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceBounds": [
+        40,
+        42,
+        847,
+        1738
+      ],
+      "visibleBounds": [
+        2,
+        3,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "chaos",
+      "label": "벨즈 · 혼돈의 주사위",
+      "native": [
+        32,
+        32
+      ],
+      "colors": 21,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        152,
+        68,
+        1164,
+        1215
+      ],
+      "visibleBounds": [
+        3,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "hope",
+      "label": "아이리스 · 희망의 수정",
+      "native": [
+        32,
+        32
+      ],
+      "colors": 18,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        26,
+        94,
+        1239,
+        1184
+      ],
+      "visibleBounds": [
+        2,
+        5,
+        30,
+        30
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "revision": 166,
+  "mode": "repo-native Canvas spatial composition; no new image generation",
+  "artSource": "../fortune165/references.json",
+  "unchangedSprites": "See plan.json: seven native PNG hashes preserved",
+  "request": "Reduce the feeling of standalone member exhibits placed in an empty room",
+  "spatialChanges": [
+    "Calli/common desk/Kiara share one rear stage and front service rail",
+    "Ina and Amelia share a wall-attached workbench",
+    "Gura is mounted in an east reception counter with storage",
+    "Diagram floor links removed; three-cell approach aisle stays open"
+  ],
+  "nativeIntegrated": false
+}

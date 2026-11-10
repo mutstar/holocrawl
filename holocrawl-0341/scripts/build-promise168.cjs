@@ -1,0 +1,24 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const R=path.resolve(__dirname,'..'),old=path.join(R,'preview/promise164'),D=path.join(R,'preview/promise168');
+fs.mkdirSync(D,{recursive:true});
+const read=n=>fs.readFileSync(path.join(old,n),'utf8');
+let app=read('app164.js').replaceAll('PromiseWall164','PromiseWall168').replaceAll('PromiseArt164','PromiseArt168').replaceAll('promise164Ready','promise168Ready');
+// Fill the actual transparent opening of the simplified frame, including side pixels.
+const fortune=fs.readFileSync(path.join(R,'preview/fortune167/app167.js'),'utf8');
+let gate=fortune.slice(fortune.indexOf('const entryMask='),fortune.indexOf('function drawEntrance()'));
+for(const [a,b]of Object.entries({'#3c626b':'#2e405f','#203b43':'#1d293e','#93c2bd':'#b2965c','#577e84':'#506581','#86b5af':'#a98c54','#2a4d57':'#24364f','#ddcf9a':'#d0b77b'}))gate=gate.replaceAll(a,b);
+app=app.slice(0,app.indexOf('const entryMask='))+gate+app.slice(app.indexOf('function drawEntrance()'));
+fs.writeFileSync(path.join(D,'app168.js'),app);
+fs.writeFileSync(path.join(D,'walls168.js'),read('walls164.js').replaceAll('PromiseWall164','PromiseWall168'));
+let html=read('index.html').replaceAll('164','168');
+html=html.replace('석조 외벽과 프로미스 문양','간결한 석조 외벽과 다섯 문양');
+html=html.replace('낡은 석조 외벽·남색 기둥·황동 테두리로 바꾸고, 입구와 북쪽 벽에 나무·부엉이·주사위·수정을 넣었습니다. 중앙 장치의 시계도 줄여 다섯 멤버 문양을 함께 담았습니다.','포춘167과 비슷한 도트 밀도로 장식을 줄였습니다. 나무·부엉이·주사위·수정과 작은 시계는 남기고, 중앙 장치·입구·석조 벽의 잔무늬를 큰 색면으로 정리했습니다. 기존 구조와 소품 배치는 유지했습니다.');
+html=html.replace('href="../promise163/">이전163 비교','href="../promise164/">이전164 비교</a> · <a href="../fortune167/">같은 밀도의 포춘167');
+html=html.replace('168의 외벽 텍스처·북쪽 부조는 새 원화, 입구·중앙 장치는163 원화를 수정해 내장 imagegen으로 만들었습니다. 원화는 built-in image_gen으로 생성했고, 실제 크기 PNG는 팔레트와 알파를 정리해 별도 보관했습니다.','168은164의 8종 그림을 포춘167의 간결한 색면에 맞춰 내장 imagegen으로 수정했습니다. 실제 크기 PNG는 제한 팔레트·하드 알파·2배 정수 확대 규칙으로 내보냈습니다.');
+fs.writeFileSync(path.join(D,'index.html'),html);
+fs.writeFileSync(path.join(D,'assets.html'),read('assets.html').replaceAll('164','168').replace('외벽과 공용 문양','간결해진 외벽과 공용 문양'));
+fs.copyFileSync(path.join(old,'references.json'),path.join(D,'references.json'));
+const previous=JSON.parse(read('plan.json')),hashes={};
+for(const n of ['app164.js','walls164.js','index.html','plan.json',...fs.readdirSync(path.join(old,'assets')).filter(n=>n.endsWith('-native.png')).map(n=>'assets/'+n)])hashes[n]=crypto.createHash('sha256').update(fs.readFileSync(path.join(old,n))).digest('hex');
+fs.writeFileSync(path.join(D,'plan.json'),JSON.stringify({revision:168,base:164,status:'user-review',geometryChanged:false,collisionsChanged:false,baseSourceHashes:previous.baseSourceHashes,approved164Hashes:hashes,entry:{native:[96,48],anchor:[-32,-14],passage:[1,1],leaves:'actual transparent frame opening mask'},artManifest:'assets168.json',styleReference:'../fortune167/native-sprites167.png',scope:'Simplify eight artwork assets while retaining approved spatial layout',generation:'built-in image_gen edits',nativeIntegrated:false},null,2)+'\n');
+console.log(JSON.stringify({revision:168,retainedLayout:162,newAISprites:8}));

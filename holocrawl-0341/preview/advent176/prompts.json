@@ -1,0 +1,26 @@
+{
+  "mode": "built-in image_gen",
+  "revision": 176,
+  "reusedAssets": "../advent175/assets/*-native.png",
+  "renderSizing": {
+    "shiori": "64→48px (-25%)",
+    "fuwawa": "32→48px (+50%)",
+    "mococo": "32→48px (+50%)"
+  },
+  "assets": [
+    {
+      "id": "cot",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: stylized-concept. A single isolated prop sprite for a compact pixel roguelike prison, true transparent background. Image 1 is only a STYLE reference for chunky simplified shapes and a small palette. Slight front/top view like the props on the style sheet. Large square pixels, hard dark outline, no antialiasing, no glow, no tiny noise, no scenery, no people, no text. 10-12 flat colors, 2 shades per material, readable on a 16x32 logical pixel grid. A narrow simple prison cot oriented vertically in the image, head at top, feet toward bottom. Dark iron bed frame, thin muted dusty gray-blue mattress, one off-white rectangular pillow, folded charcoal blanket near foot. Four short iron legs. Practical old jail bunk, no rails obscuring mattress, no luxury headboard. Solid clear rectangular silhouette."
+    },
+    {
+      "id": "locker",
+      "w": 32,
+      "h": 32,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. A single isolated prop sprite for a compact pixel roguelike prison, true transparent background. Image 1 is only a STYLE reference for chunky simplified shapes and a small palette. Slight front/top view like the props on the style sheet. Large square pixels, hard dark outline, no antialiasing, no glow, no tiny noise, no scenery, no people, no text. 10-12 flat colors, 2 shades per material, readable on a 16x32 logical pixel grid. One short square prison storage trunk, squat old iron box with a flat hinged lid, dark gray blue metal, two broad reinforcement bands and one small dull brass lock. Small worn corner on lid, broad planes, not detailed panels or vents. Fit 16x16 logical pixels. No other objects."
+    }
+  ]
+}

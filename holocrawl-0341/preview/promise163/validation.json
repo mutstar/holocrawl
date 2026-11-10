@@ -1,0 +1,91 @@
+{
+  "revision": 163,
+  "status": "passed",
+  "scope": "Browser artwork and local facility structure",
+  "native": [
+    {
+      "id": "entrance",
+      "width": 96,
+      "height": 48,
+      "colors": 27,
+      "transparent": 1894,
+      "opaque": 2714,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "clockwork",
+      "width": 96,
+      "height": 96,
+      "colors": 27,
+      "transparent": 2818,
+      "opaque": 6398,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "nature",
+      "width": 32,
+      "height": 64,
+      "colors": 22,
+      "transparent": 1284,
+      "opaque": 764,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "civilization",
+      "width": 32,
+      "height": 64,
+      "colors": 22,
+      "transparent": 887,
+      "opaque": 1161,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "chaos",
+      "width": 32,
+      "height": 32,
+      "colors": 21,
+      "transparent": 507,
+      "opaque": 517,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "hope",
+      "width": 32,
+      "height": 32,
+      "colors": 18,
+      "transparent": 744,
+      "opaque": 280,
+      "soft": 0,
+      "edge": 0
+    }
+  ],
+  "geometryMatches162": true,
+  "baseSourcesUnchanged": true,
+  "door": {
+    "maskCount": 787,
+    "closedHoles": 0,
+    "openTransparent": 596,
+    "changedOutsideMask": 0
+  },
+  "actions": {
+    "loop": {
+      "player": {
+        "x": 7,
+        "y": 12
+      },
+      "opened": true,
+      "turns": 29
+    },
+    "centralPropBlocks": true
+  },
+  "mobileOverflow": false,
+  "assetGalleryLoaded": true,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

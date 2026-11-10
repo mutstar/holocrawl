@@ -1,0 +1,34 @@
+{
+  "revision": 166,
+  "base": 165,
+  "status": "user-review",
+  "scope": "Spatial composition and integrated fixtures; no sprite regeneration",
+  "footprint": [
+    13,
+    11
+  ],
+  "boundaryCellsChanged": false,
+  "collisionsChangedForFixtures": true,
+  "approvedPromise164SourceHashes": {
+    "app164.js": "939dd9bf04c40f4d7d64e1eae74df818c3099b28db780603ddbc9f86c7fc7d45",
+    "walls164.js": "2bf6986ea9f83167e75eb21548ea902f792d996502ae42f627f20e78f015f25f",
+    "index.html": "d719061fc3301c2193b36d27d0f7e3459d0b0ff6116fb75e88f978aca9449343"
+  },
+  "unchangedNativeSprites": {
+    "entrance-native.png": "7fc382196098ad7a2a326ac32b67f2fe141990323d6a3066b852d1f8c723001f",
+    "hub-native.png": "090251aaae4e3c1f595b9cb6538b90096d0c883ca3c3fdbce9a1e3692244af0d",
+    "calli-native.png": "6c0b0add4cfb970dddbac34bb609c12fb979fe78508173f914f170f304cee8ea",
+    "kiara-native.png": "2e57be16b51c18d041bfffee0f1d9e29dab3e8fa883a24885e0e9f1b02cd45b0",
+    "ina-native.png": "26f924e6f9354a9e8ec4d305ba622859a51b36a11846310b9500060ad94cf9de",
+    "ame-native.png": "459ad4b97ee35635785599202a71228e4a1100429a73c861d937e6df7fece87c",
+    "gura-native.png": "32995ca511268d84d55645d30bb042f8cf104acdd7b22a37113340e752a2ad81"
+  },
+  "zones": [
+    "shared rear stage: calli/hub/kiara",
+    "shared west workbench: ina/ame",
+    "east reception: gura",
+    "open three-cell main aisle"
+  ],
+  "removed": "floor network diagram and detached five-corner arrangement",
+  "nativeIntegrated": false
+}

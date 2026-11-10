@@ -1,0 +1,21 @@
+{
+  "revision": 182,
+  "status": "user-review",
+  "previous": "../holoro181/",
+  "rug": false,
+  "counterProps": [
+    32,
+    32
+  ],
+  "newRasterEdits": [
+    "ollie",
+    "reine"
+  ],
+  "reusedSprites": [
+    "entrance",
+    "penlights",
+    "anya"
+  ],
+  "nativeCounterDecoration": "crimson patch / keris blade / peacock eyes",
+  "nativeIntegrated": false
+}

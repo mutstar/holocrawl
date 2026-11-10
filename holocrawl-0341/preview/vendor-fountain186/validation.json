@@ -1,0 +1,57 @@
+{
+  "revision": 186,
+  "results": [
+    {
+      "key": "attached",
+      "footprint": [
+        15,
+        15
+      ],
+      "threeVendors": true,
+      "centerFountain": true,
+      "commonFurniture": true,
+      "fountainRing": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "standalone",
+      "footprint": [
+        15,
+        15
+      ],
+      "threeVendors": true,
+      "centerFountain": true,
+      "commonFurniture": true,
+      "fountainRing": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    }
+  ],
+  "differentInteriorPixels": 0,
+  "nativeIntegrated": false,
+  "preservation": [
+    {
+      "mode": "attached",
+      "changedInside": 2656,
+      "changedOutside": 0
+    },
+    {
+      "mode": "standalone",
+      "changedInside": 2656,
+      "changedOutside": 0
+    }
+  ],
+  "originalReferenceWidth": 600,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

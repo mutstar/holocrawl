@@ -1,0 +1,27 @@
+{
+  "revision": 167,
+  "base": 166,
+  "status": "user-review",
+  "scope": "Simplified member sprites matching earlier fixed facilities; unchanged spatial composition",
+  "footprint": [
+    13,
+    11
+  ],
+  "geometryChanged": false,
+  "collisionsChanged": false,
+  "sourceHashes": {
+    "fortune166/layout166.js": "cf9f19349eaf4c1b5140e2e13ec0a90d0f011bf5b38e4fdd17f30cff62e186fa",
+    "fortune166/fixtures166.js": "e6c75306f3aa7ff44dc4afe3abb1da35c10f5e7d449cea5a57c45ef988be90f2",
+    "fortune166/app166.js": "f1e9215148191f79a13c263b49127a736066bea08b920d8a734211e4f669f95f",
+    "fortune166/index.html": "b56070a67b95b9f7c9507046762ceb701a2f35a786eca2617d3d86b42995574c",
+    "fortune165/walls165.js": "32650c18b70f8946dfcaccecd79def838736bbf895543c09b6af19991b84c835"
+  },
+  "approvedPromise164SourceHashes": {
+    "app164.js": "939dd9bf04c40f4d7d64e1eae74df818c3099b28db780603ddbc9f86c7fc7d45",
+    "walls164.js": "2bf6986ea9f83167e75eb21548ea902f792d996502ae42f627f20e78f015f25f",
+    "index.html": "d719061fc3301c2193b36d27d0f7e3459d0b0ff6116fb75e88f978aca9449343"
+  },
+  "artManifest": "assets167.json",
+  "generation": "built-in image_gen edits",
+  "nativeIntegrated": false
+}

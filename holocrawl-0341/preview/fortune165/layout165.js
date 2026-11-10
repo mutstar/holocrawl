@@ -1,0 +1,10 @@
+(function(root){'use strict';
+function generate(){const w=17,h=15,origin={x:2,y:1,w:13,h:11},entry={x:8,y:11},cells=new Uint8Array(w*h).fill(1),inside=(x,y)=>(x>=1&&x<=11&&y>=1&&y<=6)||(x>=5&&x<=7&&y>=7&&y<=9);
+for(let y=0;y<11;y++)for(let x=0;x<13;x++){if(inside(x,y))continue;let wall=false;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)if(inside(x+dx,y+dy))wall=true;if(wall)cells[(y+1)*w+x+2]=0;}cells[entry.y*w+entry.x]=1;
+const props=[{id:'hub',label:'공용 · 라이브 중계 데스크',x:7,y:2,w:3,h:2},{id:'calli',label:'칼리오페 · 사신 레코드',x:3,y:2,w:2,h:2},{id:'kiara',label:'키아라 · 피닉스 송신기',x:12,y:2,w:2,h:2},{id:'ina',label:'이나 · 고서 중계대',x:3,y:5,w:2,h:2},{id:'ame',label:'아메 · 탐정 통신대',x:12,y:5,w:2,h:2},{id:'gura',label:'구라 · 상어 신호기',x:7,y:6,w:2,h:2}],open=Uint8Array.from(cells);
+for(const p of props)for(let y=p.y;y<p.y+p.h;y++)for(let x=p.x;x<p.x+p.w;x++)open[y*w+x]=0;
+return{w,h,origin,entry,start:{x:8,y:12},cells,open,props,doors:[{id:'fortune-entry',...entry,home:false}],node:{x:8,y:5},ports:[{id:'calli',x:4,y:4,color:'#ae6978'},{id:'kiara',x:13,y:4,color:'#bd875b'},{id:'ina',x:4,y:7,color:'#9477ac'},{id:'ame',x:13,y:7,color:'#baa671'},{id:'gura',x:7,y:8,color:'#6599bc'}],policy:{footprint:[13,11],shape:'wide-lobby-with-short-entry-corridor',artReview:true,nativeIntegrated:false}};}
+function distances(m,start){const out=new Int32Array(m.w*m.h).fill(-1),s=start.y*m.w+start.x,q=[s];out[s]=0;for(let n=0;n<q.length;n++){const i=q[n],x=i%m.w,y=Math.floor(i/m.w);for(const [dx,dy]of [[0,-1],[1,0],[0,1],[-1,0]]){const xx=x+dx,yy=y+dy,j=yy*m.w+xx;if(xx>=0&&yy>=0&&xx<m.w&&yy<m.h&&m.open[j]&&out[j]<0){out[j]=out[i]+1;q.push(j);}}}return out;}
+function route(m,start,target){const d=distances(m,target),out=[{...start}];let p={...start};if(d[p.y*m.w+p.x]<0)return[];while(p.x!==target.x||p.y!==target.y){const n=d[p.y*m.w+p.x],[dx,dy]=[[0,-1],[1,0],[0,1],[-1,0]].find(([dx,dy])=>{const x=p.x+dx,y=p.y+dy;return x>=0&&y>=0&&x<m.w&&y<m.h&&d[y*m.w+x]===n-1;});p={x:p.x+dx,y:p.y+dy};out.push(p);}return out;}
+const api={generate,distances,route};root.FortuneLayout165=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(globalThis);

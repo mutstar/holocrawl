@@ -1,0 +1,31 @@
+{
+  "revision": 184,
+  "mode": "built-in image_gen penlight kiosk; earlier generated carts re-exported at 64px",
+  "assets": [
+    {
+      "id": "candy",
+      "w": 64,
+      "h": 64,
+      "colors": 14,
+      "source": "../h3ro183/assets/vehicle-source.png",
+      "operation": "64px integer-grid re-export of existing generated vehicle; no redesign"
+    },
+    {
+      "id": "penlights",
+      "w": 64,
+      "h": 64,
+      "colors": 14,
+      "prompt": "Use case: stylized-concept / precise-object redesign. Image 1 is the original concert-penlight merchandise cabinet to adapt; image 2 is the approved STYLE reference only. Turn the cabinet into one SMALL MOBILE PENLIGHT KIOSK for an outdoor plaza. A squat wooden pushcart with two visible little dark wheels, a shallow plum canopy with cream trim, and one open display rack holding six thick concert penlights in red, green, gold, pink, blue and white. Keep handles dark, colors flat, no glow. No character motifs, plush toys, swords, toaster, feathers, people, text, floor or scenery. True transparent background. Deliberately chunky pixel art, broad hard square pixels, at most14 flat colors, no antialiasing or gradients. Designed for a 32x32 logical grid; prioritize a readable compact cart silhouette and clearly separated rods. Modest practical stall, not a building or elaborate fantasy shop.",
+      "source": "assets/penlights-source.png",
+      "operation": "built-in image_gen cabinet-to-pushcart redesign"
+    },
+    {
+      "id": "balloon",
+      "w": 64,
+      "h": 64,
+      "colors": 14,
+      "source": "../area15-178/assets/cart-source.png",
+      "operation": "64px integer-grid re-export of existing generated vehicle; no redesign"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "HoloDori cyan tunnel/LED lobby adapted to dungeon tiles; original Myth member stations",
+  "assets": [
+    {
+      "id": "entrance",
+      "label": "Myth · 포춘 네트워크 입구",
+      "w": 96,
+      "h": 48,
+      "colors": 28,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical96x48 wide2:1 FORTUNE NETWORK entrance FRAME inspired by HoloDori's cyan rounded tunnel. Original dungeon-scale reinterpretation. Rounded cool ivory and muted turquoise metal arch, charcoal inner edge, tiny cyan light strips, dull brass screws. CENTER EMPTY ARCH PASSAGE must be transparent, about28px wide from x34..61, native y17..47 reaching bottom, absolutely NO door leaves. Game adds doors. Left side an integrated purple tentacle swirl around a red music-note/skull badge; right side orange phoenix feather and blue shark-fin medallion; small brass magnifying-glass crest on upper lintel. FIVE member colors balanced, no giant face or dominant mascot. Avoid generic stone clocktower or gothic arch. No clocks/gears. Thin low profile, no roof, floor, whole building, tall statues or stairs."
+    },
+    {
+      "id": "hub",
+      "label": "공용 · 라이브 중계 데스크",
+      "w": 96,
+      "h": 64,
+      "colors": 28,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical96x64 wide3:2 futuristic LIVE NETWORK RELAY CONSOLE, inspired by HoloDori Fortune Network LED stage. Low semicircular white/silver desk with muted cyan edge rails, one wide central charcoal LCD showing FIVE simple connected colored nodes (rose-red, orange, purple, tan-gold, shark-blue), two compact dark speakers at sides. Five ports along desk front, a central round transmission button. Shared ensemble hub, no single member motif or portraits. Large simple readable screen and sturdy feet. Worn gray-white metal, cyan accents, no luminous cloud or floor projection, no text, no humanoid."
+    },
+    {
+      "id": "calli",
+      "label": "칼리오페 · 사신 레코드",
+      "w": 64,
+      "h": 64,
+      "colors": 26,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical64x64 Mori Calliope themed NETWORK MUSIC TERMINAL. A charcoal and muted rose-red gramophone/record console with one large ivory SKULL badge, a small BLACK SCYTHE-shaped antenna curling behind it, round dark vinyl platter at lower front. One clear rose-red status lamp and cyan cable port on low metal plinth. Functional retro-futuristic music prop, not a person or a standing skeleton. Skull, vinyl disc and scythe are recognizable. Compact isolated silhouette, subtle wear, same64x64 scale as companion stations."
+    },
+    {
+      "id": "kiara",
+      "label": "키아라 · 피닉스 송신기",
+      "w": 64,
+      "h": 64,
+      "colors": 26,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical64x64 Takanashi Kiara themed PHOENIX SIGNAL TRANSMITTER. Compact orange and cream futuristic radio/console with broad elegant orange PHOENIX WINGS attached to both sides, small teal jewel center and short feather-shaped antenna at top. Orange feather/fan shapes are main silhouette, no literal fire, flames, chicken mascot face or humanoid. Low shared gray-metal base with cyan network socket. One integrated slightly worn prop, not a shrine or full building."
+    },
+    {
+      "id": "ina",
+      "label": "이나 · 고서 중계대",
+      "w": 64,
+      "h": 64,
+      "colors": 26,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical64x64 Ninomae Ina'nis themed OCCULT BOOK NETWORK TERMINAL. A huge OPEN PURPLE GRIMOIRE on a low charcoal brass-edged angled stand, TWO chunky deep-purple tentacle-shaped cable arms curl around its sides, gold circular rune inset on backrest, pale pages, small orange octopus seal on console front. No eyeball monster or humanoid, no readable writing. Hybrid old book and futuristic relay console with one cyan cable socket, clear silhouette, restrained purple/gold, mild wear."
+    },
+    {
+      "id": "ame",
+      "label": "아메 · 탐정 통신대",
+      "w": 64,
+      "h": 64,
+      "colors": 26,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical64x64 Watson Amelia themed DETECTIVE COMMUNICATION DESK. Compact tan-brown brass radio transmitter with a LARGE MAGNIFYING GLASS mounted at angle above front panel, little brown detective cap resting on left, one ivory file folder on right, old brass switches, one cyan network connector at lower base. Dominant motifs magnifying lens and detective cap, NOT a clock, time-machine or gears. Functional slightly worn retro-modern investigation prop, no person, no lettering."
+    },
+    {
+      "id": "gura",
+      "label": "구라 · 상어 신호기",
+      "w": 64,
+      "h": 64,
+      "colors": 26,
+      "prompt": "Use case: stylized-concept. ONE isolated low-resolution pixel-art environmental asset for HoloCrawl, a Dungeon Crawl Stone Soup32px tile roguelike. Coarse deliberate square clusters,24-28flat colors, crisp dark contour, readable silhouettes at the stated native size. Front view with shallow top plane, mild scuffs and aging, restrained accents on gray dungeon floor. No fine writing, letters, watermark, blur, photorealism, gradients or bloom. True transparent background, including openings, no ground or cast shadow. Full object with small transparent margin. Logical64x64 Gawr Gura themed SHARK SIGNAL TERMINAL. Blue-and-white rounded monitor casing with clear small shark fin on top and two triangular side-fin panels, one bold blue TRIDENT-shaped antenna alongside. Dark rectangular screen with simple stylized white three-tooth wave symbol, low pale metal base with cyan cable port. A compact machine inspired by shark shapes, not a whole live shark or character portrait. Readable playful silhouette, mildly scuffed, matches other64px music/network devices."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 28,
+      "transparent": true,
+      "prompt": "Strict low resolution pixel art for a Dungeon Crawl Stone Soup style32px tile roguelike. Big square pixel clusters, limited flat colors, dark contours, minimal highlights, no blur, antialias, glossy bloom, fine text or photorealism. Mildly old and weathered, still clear on dark concrete. EDIT the provided entry-frame artwork. Keep the exact wide2:1 silhouette,96x48 logical size, all structural posts and the CENTER EMPTY TRANSPARENT doorway opening in the same shape and location. The opening must reach the bottom edge. NO leaves or door painted into the opening. Change ONLY the ornamental face panels and outer masonry: replace giant left CLOCK with a large green LEAF/TREE medallion on ivory stone, replace right GEARS/CRESCENT with a large tan OWL face medallion. Integrate a small bright crimson DIE and a magenta CRYSTAL with contrasting ivory/black wing motifs on the two lower side panels. Four motifs should have comparable readability. The top connecting arch carries one simple brass five-link knot. Weathered gray-beige ashlar stone surround, navy metal posts, restrained tarnished brass moldings. This is now a shared Promise group gate, NOT a Kronii clock gate. Absolutely NO clocks, clock hands, hourglasses, gear wheels or crescents anywhere. True transparent background and exact empty central transparent opening. Keep the passage and proportions, do not add floor/steps or a whole building.",
+      "reference": "../promise163/assets/entrance-source.png",
+      "label": "프로미스 공용 입구"
+    },
+    {
+      "id": "clockwork",
+      "w": 96,
+      "h": 96,
+      "colors": 28,
+      "transparent": true,
+      "prompt": "Strict low resolution pixel art for a Dungeon Crawl Stone Soup style32px tile roguelike. Big square pixel clusters, limited flat colors, dark contours, minimal highlights, no blur, antialias, glossy bloom, fine text or photorealism. Mildly old and weathered, still clear on dark concrete. EDIT this navy-and-brass mechanism into a SHARED Promise group centerpiece. Keep its square-ish footprint, stable low octagonal navy base and96x96 logical native sprite size. Reduce the enormous ivory CLOCK to one modest CENTRAL dial about22% of the total image width. Give the FOUR other motifs equal visible area around it: green branching tree/antlers at upper left, large tan owl face at upper right, crimson cube DIE with black pips at lower left, magenta CRYSTAL flanked by ivory and dark wings at lower right. Each should be an integrated mechanical RELIEF/PANEL, not a live animal or humanoid. Five motifs share the same apparatus with roughly comparable visual weight; clock must NOT dominate. Remove extra exposed gears and giant hourglass. A few brass braces connect the five motifs. Clear restrained colors, not a pile of decorative objects. True transparent background, isolated one prop, no scenery or characters.",
+      "reference": "../promise163/assets/clockwork-source.png",
+      "label": "다섯 문양의 중앙 장치"
+    },
+    {
+      "id": "frieze",
+      "w": 96,
+      "h": 32,
+      "colors": 28,
+      "transparent": true,
+      "prompt": "Strict low resolution pixel art for a Dungeon Crawl Stone Soup style32px tile roguelike. Big square pixel clusters, limited flat colors, dark contours, minimal highlights, no blur, antialias, glossy bloom, fine text or photorealism. Mildly old and weathered, still clear on dark concrete. ONE isolated96x32 logical pixel WALL FRIEZE for an aged stone Promise group tower. Wide3:1 horizontal strip with FOUR equally prominent simple inset relief badges: LEFT green branching leaf, then tan owl face with two dark eyes, then crimson die cube with black pips, then magenta crystal with one ivory and one dark tiny wing. Ivory-gray ashlar backing is shallow, continuous navy/brass horizontal trim joins all four plaques, at most one narrow molding above and below. No heavy picture frames. Absolutely NO clocks, clock hands, hourglasses, crescents or gear wheels. No text or people. Exactly flat front view, fits a single32pixel wall height, no roof or protruding floor. True transparent background around strip.",
+      "label": "북쪽 공용 부조"
+    },
+    {
+      "id": "wall",
+      "w": 128,
+      "h": 64,
+      "colors": 24,
+      "transparent": false,
+      "prompt": "Strict low resolution pixel art for a Dungeon Crawl Stone Soup style32px tile roguelike. Big square pixel clusters, limited flat colors, dark contours, minimal highlights, no blur, antialias, glossy bloom, fine text or photorealism. Mildly old and weathered, still clear on dark concrete. A flat SEAMLESS TILEABLE old CLOCK TOWER ASHLAR STONE material swatch, not a building.2:1 aspect, logical native128x64 pixels. Cool gray-beige rectangular limestone blocks in offset horizontal courses; about four block widths across swatch, and six courses high. Subtle chips, sparse natural hairline cracks and mottled age, visibly cut STONE rather than concrete. Narrow dark blue-gray mortar, understated warm-gray faces. Uniform frontal ambient light with only1-2pixel bright top edges per block. Moderate value, no black voids, no huge white highlights. Absolutely no clocks, emblems, foliage, gears, text, doors or borders. OPAQUE texture fills entire rectangular image edge to edge; joints should repeat seamlessly. Coarse deliberate pixels,24flat colors.",
+      "label": "시계탑 석조 재질"
+    }
+  ]
+}

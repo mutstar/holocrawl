@@ -1,0 +1,107 @@
+{
+  "revision": 184,
+  "results": [
+    {
+      "key": "candy-attached",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "candy-standalone",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "penlights-attached",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "penlights-standalone",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "balloon-attached",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "balloon-standalone",
+      "footprint": [
+        9,
+        9
+      ],
+      "oneSmallVendor": true,
+      "onlyCommonFurniture": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "centerClear": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    }
+  ],
+  "differentInteriorPixels": 0,
+  "differentPixelsOutsideVendor": 0,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

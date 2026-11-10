@@ -1,0 +1,26 @@
+{
+  "revision": 162,
+  "status": "passed",
+  "scope": "Local facility structure, not campaign insertion",
+  "footprint": [
+    11,
+    11
+  ],
+  "shape": "chamfered clock-tower chamber",
+  "walkable": 171,
+  "connected": true,
+  "entranceReachable": true,
+  "rewardReserveReachable": true,
+  "centralMechanismFourSidesReachable": true,
+  "nonOverlappingProps": true,
+  "props": [
+    "clockwork",
+    "nature",
+    "civilization",
+    "chaos",
+    "hope"
+  ],
+  "deterministic": true,
+  "artStatus": "Existing clock33 mural plus editable code-native structure markers; bespoke assets pending",
+  "nativeIntegrated": false
+}

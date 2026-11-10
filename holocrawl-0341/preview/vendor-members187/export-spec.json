@@ -1,0 +1,40 @@
+{
+  "assets": [
+    {
+      "id": "zeta",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "source": "../h3ro183/assets/zeta-source.png"
+    },
+    {
+      "id": "kaela",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "source": "../h3ro183/assets/kaela-source.png"
+    },
+    {
+      "id": "kobo",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "source": "../h3ro183/assets/kobo-source.png"
+    },
+    {
+      "id": "moona",
+      "w": 32,
+      "h": 48,
+      "colors": 12,
+      "source": "../area15-178/assets/moona-source.png"
+    },
+    {
+      "id": "iofi",
+      "w": 48,
+      "h": 32,
+      "colors": 12,
+      "source": "../area15-178/assets/iofi-source.png"
+    }
+  ],
+  "method": "Reuse existing generated sprite sources; palette/alpha/integer-grid export only; no new generation."
+}

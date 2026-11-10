@@ -1,0 +1,63 @@
+{
+  "mode": "built-in image_gen edit",
+  "styleReference": "../facility-exteriors124/holox-closed124-2x.png",
+  "base": "../fortune166/",
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. A low wide gray and muted teal metal arch. Keep its EMPTY transparent center passage reaching bottom; absolutely no door leaves, floor, steps or building. Five member emblems reduced to bold small patches: red skull, orange feather, purple curl, tan lens, blue fin. Remove ornate gold medallion rings, bevel layers, screws, scuff texture. Logical48x24, final96x48. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-833b2d27-4e7c-416f-a698-4cbdcf170042.png"
+    },
+    {
+      "id": "hub",
+      "w": 96,
+      "h": 64,
+      "colors": 14,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Simple squat gray/teal broadcast desk with one large dark rectangular screen showing five red/orange/purple/tan/blue dots. Keep broad silhouette; simplify to screen, casing, two feet. Remove side speakers, little ports, buttons, vents, rivets and tiny wires. Logical48x32, final96x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-769098c4-344d-4120-9c0e-b1f4571c0648.png"
+    },
+    {
+      "id": "calli",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Compact charcoal and dusty red record station: one clear ivory skull badge, one dark vinyl circle, one simple scythe silhouette. Keep overall gramophone shape. Remove buttons, grilles, dangling cable, rose trim, tiny bevels, rivets. Logical32x32, final64x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-93d71656-89e1-4a53-82c6-23b60bc373c3.png"
+    },
+    {
+      "id": "kiara",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Compact muted orange phoenix receiver. Two simple bold wings, at most THREE broad feather masses per wing, one orange feather crest, simple dark screen in squat casing. Remove switches, ports, button arrays, individual tiny feathers and bevels. Logical32x32, final64x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-c36187ea-4ca4-44e4-b014-b65bb65a5a2f.png"
+    },
+    {
+      "id": "ina",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Compact purple open-book station, broad pale pages bearing ONE bold gold rune; two thick purple tentacle curves beside the book, simple dark plinth. Remove page scribbles, ornate filigree, rings, buttons, cords and tiny notches. Logical32x32, final64x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-e3a010a5-b7b3-4fff-8dc4-2777dc666584.png"
+    },
+    {
+      "id": "ame",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Compact tan detective communication station: ONE large turquoise magnifying glass and a simple tan desk/case. Keep magnifying-glass silhouette. Remove hat checker pattern, tiny switches, buttons, grilles, gauge dials, rivets, brass lace trim. Logical32x32, final64x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-3985c6b3-f028-46f9-8150-a76851bcd97a.png"
+    },
+    {
+      "id": "gura",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "prompt": "Use case: style-transfer. Edit ONE transparent pixel-art environmental sprite. Image1 is edit target, image2 is STYLE REFERENCE only (older approved game facility). The current sprite is too intricate for this roguelike. REDRAW with the same overall object identity, orientation, palette family and low front-view perspective, but radically SIMPLER internals matching the large flat pixel clusters of furniture in image2. Compact blue/white shark receiver with bold shark fin silhouette and one simple trident alongside. One dark screen with ONE broad white wave. Reduce mouth to simple zigzag edge, no individual tiny teeth. Remove ports, vents, buttons, tiny cables and micro trim. Logical32x32, final64x64. Maximum12-14 flat colors TOTAL, only two or three shades per material, large contiguous color areas, dark outline. Actual coarse pixel art designed at the stated logical grid, enlarged with nearest-neighbor square pixels. No gradients, antialiasing, painterly brushwork, glowing cloud, fine texture, speckled highlights or stray single-pixel greebles. Full object centered on true transparent background, transparent outer margin; NO ground, cast shadow, character, writing, watermark, extra props or whole scene. Keep readable at native game scale. Simplicity over decorative detail.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-658a398d-59b0-479c-9922-f2416791fb29.png"
+    }
+  ]
+}

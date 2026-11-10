@@ -1,0 +1,72 @@
+{
+  "mode": "built-in image_gen",
+  "revision": 175,
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/cell-bg02.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 is mood reference only: underground chained prison. Make a low wide iron and charcoal stone prison arch, sparse dark red seal at top, two short broken chain sections on shoulders. Opening completely empty and transparent through to bottom; no door leaves, no threshold across bottom. Symmetric chunky gray uprights. Arch spans 48x24 logical pixels. Restrained practical dungeon architecture, not grand cathedral."
+    },
+    {
+      "id": "shiori",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/shiori.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 supplies Shiori black/white identity colors only. A small prison archive lectern: one large open book with left white and right charcoal cover/pages, red bookmark, one tiny green eye-shaped clasp; dark purple simple base. Bold readable book silhouette. No portrait or face."
+    },
+    {
+      "id": "bijou",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/bijou.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 supplies Bijou crystal/lavender colors only. A large lavender faceted gem imprisoned in a broken dark iron containment brace on squat stone plinth. Three broad gem facets, pale violet highlight, small magenta diamond center. Clear gem identity, not detailed chandelier. No portrait."
+    },
+    {
+      "id": "nerissa",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/nerissa.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 supplies Nerissa blue/black feather and asymmetric horn colors only. A compact standing microphone in a blue-black horn frame, left horn longer, right horn broken short, one cobalt feather attached. Simple dark blue square base. Big clear microphone silhouette. No portrait."
+    },
+    {
+      "id": "fuwawa",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/fuwawa.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 is Fuwawa palette reference only. A compact guard-dog station: cream fluffy dog-ear shaped cushion with large blue bow and black collar bearing tiny blue diamond, on small blue bed. Simple symmetrical ears, no face, no character or body. Broad clear blue and cream shapes. Fit 16x16 logical pixels."
+    },
+    {
+      "id": "mococo",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/advent175/references/mococo.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite for a compact top-down roguelike dungeon, viewed from slight front/top, same chunky simplicity as image 1 (style reference sheet). One isolated object, true transparent background. Deliberately coarse pixel art: large square pixels, hard edges, 2-3 flat shades per material, dark outline. No gradients, glow, antialiasing, micro-detail, pedestal shadow outside silhouette, text, people, scenery. Designed to remain readable on a 16x32 logical pixel grid. Image 2 is Mococo palette reference only. A compact guard-dog station: cream fluffy dog-ear shaped cushion with large pink bow and black collar bearing tiny pink diamond, on small pink bed. Small pink X accent at one ear, no face, no character or body. Broad clear pink and cream shapes. Match twin blue guard station proportions. Fit 16x16 logical pixels."
+    }
+  ]
+}

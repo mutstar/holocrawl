@@ -1,0 +1,14 @@
+{
+  "assets": [
+    {
+      "id": "penlights",
+      "w": 64,
+      "h": 32,
+      "colors": 18,
+      "prompt": "Use case: precise-object-edit. Redraw the referenced Toko Holoro penlight kiosk as ONE compact WIDE LOW production pixel sprite. CRITICAL silhouette bounding box must be exactly TWO TIMES as wide as it is tall, not a thin strip. Design it on a strict 32-wide by16-high LOGICAL pixel grid and FILL its full height: the bear ears must reach logical row0, the bottom counter at row15, left/right stall edges near columns0 and31. Make the PATCHWORK BEAR HEAD large and clearly recognizable: approx12logical pixels wide and10logical pixels high, centered in the upper portion with round ears, teal face and navy/pink panels, two dark simple eyes and mouth, yellow stitches. The wide ivory bow with gold center directly below the bear must remain recognizable, not a tiny unreadable yellow speck. A simple short counter occupies the bottom4logical rows across almost the full width, with navy front and gold trim. Put just TWO colored thick penlights on each SIDE of the bear, each4logical pixels tall, rather than many micro sticks. Overall silhouette like a compact rectangular sign-bearing kiosk: 32logical pixels wide,16high. NOT a nearly-flat long shelf. NO open empty margins inside the object bounds. Preserve the bear-head identity, ivory ribbon and penlight shop concept from the reference; redraw clean broad shapes rather than squeezing a tall image. One sprite only. True transparent background, hard square pixel edges, 18flatcolors maximum. No gradients, noise, glow, antialiasing, text, whole bear body, extra objects, perspective floor, environmental shadow or background."
+    }
+  ],
+  "reference": "../vendor-members187/assets/penlights-native.png",
+  "method": "built-in image_gen edit; low wide kiosk redrawn to fit 2x1 tiles",
+  "iteration": "Second pass enlarged bear and bow after first pass became a thin shelf."
+}

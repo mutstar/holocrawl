@@ -322,7 +322,7 @@
         {
           "id": "holohome",
           "name": "홀로홈",
-          "status": "browser-prototype-user-review",
+          "status": "browser-final-check-passed",
           "region": "JP",
           "floorId": "JP-main-1",
           "floor": 1,
@@ -352,7 +352,11 @@
             "reciprocal": true
           },
           "placement": "seeded-location-near-start; entrance and staircase connected",
-          "nativeIntegrated": false
+          "nativeIntegrated": false,
+          "finalCheckPreview": "../holohome-final161/",
+          "finalCheckReport": "../holohome-final161/validation.json",
+          "finalCheckDate": "2026-11-10",
+          "finalCheckStatus": "browser-check-passed"
         }
       ]
     },
@@ -462,7 +466,7 @@
       "allRunes": 15
     }
   ],
-  "currentArtTask": "일반문159의32px 금속문·별도밑선제거·실제아래벽선연결승인.160새랜덤1층80x70/문13/홀로홈1/계단6,닫힘열림26문상태수직돌출0·좌우접합/연결/재현통과.전체맵피드백대기.",
+  "currentArtTask": "arcade-plaza191:사용자방향변경—게임센터 멤버고유시설5개를큰광장하나로.21x19비정형광장,로보코크레인/카엘라캡슐콩/오카유오니기리/키아라댄스/코로네격투,중앙9x7비움,3방향3칸입구,벤치4화단2.새도트4개+builtin기존콩재사용.두배치6서비스점/각기계앞줄/전체통행/고립겹침0/모바일/팝업검증passed.191시각검토대기.실제랜덤추첨은5별개가아닌공용광장1선택단위로묶는연결이후속필요.카지노5시설은이번광장에미포함.엔진/캠페인미연결.",
   "sharedFacilities": {
     "status": "approved-policy-browser-planning",
     "registry": "preview/facility-pool131/registry.json",
@@ -494,5 +498,124 @@
     "built": 9,
     "planned": 33,
     "nativeIntegrated": false
+  },
+  "smallVendorPolicy": {
+    "revision": 189,
+    "status": "user-approved189; campaign integration pending",
+    "kind": "combined-fountain-plaza",
+    "compositeId": "vendor-fountain-plaza",
+    "facilities": [
+      "h3ro",
+      "holoro",
+      "area15"
+    ],
+    "footprint": [
+      15,
+      15
+    ],
+    "vendorsPerPlaza": 3,
+    "fountainFootprint": [
+      3,
+      3
+    ],
+    "fountainWalkwayTiles": 2,
+    "commonFurniture": {
+      "bench": 4,
+      "planter": 2
+    },
+    "memberDecorations": true,
+    "specialBuildingEntrance": false,
+    "examplesAreAlternatives": false,
+    "candidateSelectionUnits": 1,
+    "selectorGroupingStatus": "design-only; selector grouping pending",
+    "nativeIntegrated": false,
+    "campaignInserted": false,
+    "randomFacilitySelectionPolicyChanged": false,
+    "memberPropsPerVendor": 3,
+    "memberPropGroups": {
+      "candy": [
+        "zeta",
+        "kaela",
+        "kobo"
+      ],
+      "penlights": [
+        "ollie",
+        "anya",
+        "reine"
+      ],
+      "balloon": [
+        "risu",
+        "moona",
+        "iofi"
+      ]
+    },
+    "memberDecorationPlacement": "small props near each vendor; center fountain walkway kept clear",
+    "vendorFootprintsByKind": {
+      "candy": [
+        2,
+        2
+      ],
+      "penlights": [
+        3,
+        2
+      ],
+      "balloon": [
+        2,
+        2
+      ]
+    }
+  },
+  "arcadePlazaPolicy": {
+    "revision": 191,
+    "status": "direction-requested; visual-review-pending",
+    "compositeId": "arcade-plaza",
+    "facilities": [
+      "capsule-kong",
+      "robo-crane",
+      "onigiri-panic",
+      "phoenix-dance",
+      "korone-fighting"
+    ],
+    "footprint": [
+      21,
+      19
+    ],
+    "centralClear": [
+      9,
+      7
+    ],
+    "stationFootprints": {
+      "capsule-kong": [
+        3,
+        3
+      ],
+      "robo-crane": [
+        3,
+        3
+      ],
+      "onigiri-panic": [
+        2,
+        3
+      ],
+      "phoenix-dance": [
+        3,
+        3
+      ],
+      "korone-fighting": [
+        3,
+        2
+      ]
+    },
+    "entrances": 3,
+    "entranceWidth": 3,
+    "commonFurniture": {
+      "bench": 4,
+      "planter": 2
+    },
+    "candidateSelectionUnits": 1,
+    "selectorGroupingStatus": "design-only; selector grouping pending",
+    "nativeIntegrated": false,
+    "campaignInserted": false,
+    "randomFacilitySelectionPolicyChanged": false
   }
 }

@@ -1,0 +1,29 @@
+{
+  "revision": 177,
+  "base": "../advent176/",
+  "mode": "canvas display sizing; original raster assets unchanged",
+  "cot": [
+    32,
+    64
+  ],
+  "shiori": [
+    32,
+    32
+  ],
+  "bijou": [
+    20,
+    40
+  ],
+  "nerissa": [
+    20,
+    40
+  ],
+  "fuwawa": [
+    28,
+    28
+  ],
+  "mococo": [
+    28,
+    28
+  ]
+}

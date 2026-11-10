@@ -1,0 +1,48 @@
+{
+  "grassPixelsOutsideField": 0,
+  "grassPixelsOnDungeonWall": 0,
+  "trackPixels": 14214,
+  "trackChanges": 0,
+  "nonRectangularPlans": [
+    {
+      "id": "home",
+      "emptyCornerCells": 14
+    },
+    {
+      "id": "mountain",
+      "emptyCornerCells": 16
+    },
+    {
+      "id": "dining",
+      "emptyCornerCells": 14
+    },
+    {
+      "id": "theater",
+      "emptyCornerCells": 5
+    },
+    {
+      "id": "fantasy",
+      "emptyCornerCells": 12
+    },
+    {
+      "id": "wheel",
+      "emptyCornerCells": 13
+    },
+    {
+      "id": "market",
+      "emptyCornerCells": 26
+    },
+    {
+      "id": "gamers",
+      "emptyCornerCells": 16
+    },
+    {
+      "id": "holox",
+      "emptyCornerCells": 32
+    },
+    {
+      "id": "dev",
+      "emptyCornerCells": 19
+    }
+  ]
+}

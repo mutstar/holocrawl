@@ -1,0 +1,13 @@
+{
+  "revision": 180,
+  "status": "user-review",
+  "previous": "../area15-179/",
+  "scope": "stone enclosure using wall121 geometry and existing material171 rock texture; old curb removed",
+  "newRasterAssets": false,
+  "footprint": [
+    11,
+    11
+  ],
+  "entries": 3,
+  "nativeIntegrated": false
+}

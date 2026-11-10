@@ -1,0 +1,58 @@
+{
+  "assets": [
+    {
+      "id": "crane",
+      "w": 96,
+      "h": 96,
+      "colors": 16,
+      "subject": "A compact Robo-Robo CLAW CRANE machine, one wide glass prize cabinet with a chunky hot-pink header, charcoal lower base and ivory/brass frame, a clearly visible hanging three-prong steel claw and three broad small round silver/cyan robot plush heads behind the glass. Two large oval buttons on the lower front. Use the game screenshot only for subject silhouette and pink/black/metal palette; omit letters, player and UI. Keep glass a flat dark teal interior with one light stripe rather than complicated transparency.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/arcade-plaza191/references/crane-original.webp",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/capsule-kong190/native-sprites190.png"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production pixel-art sprite for a top-down32px-tile roguelike arcade plaza. Input1 is SUBJECT reference only; input2 is STYLE reference: match its coarse chunky low-detail shapes. A compact Robo-Robo CLAW CRANE machine, one wide glass prize cabinet with a chunky hot-pink header, charcoal lower base and ivory/brass frame, a clearly visible hanging three-prong steel claw and three broad small round silver/cyan robot plush heads behind the glass. Two large oval buttons on the lower front. Use the game screenshot only for subject silhouette and pink/black/metal palette; omit letters, player and UI. Keep glass a flat dark teal interior with one light stripe rather than complicated transparency. Fit the entire machine into a48x48logical pixel grid, final96x96native. Slight front/top view, broad1logical-pixel outlines, 2shades per material,16flatcolors maximum. Actual transparent background. No gradients, glow, antialiasing, noise, micro patterns, floor, outside cast shadow, text, UI or unrelated props. Do not draw a sprite sheet or multiple views."
+    },
+    {
+      "id": "onigiri",
+      "w": 64,
+      "h": 96,
+      "colors": 16,
+      "subject": "One upright ONIGIRI PANIC arcade cabinet: black/deep purple body with lavender edge trim, a broad dark screen, one clear ivory triangular rice ball with dark nori rectangle on side/front header, mint-green joystick and two round buttons. At the very top one compact cyan circular radar hoop/dish on a short support, matching the screenshot's teal loop motif. Do not use lettering or reproduce the player, screenshot UI or environment. Make the rice-ball emblem readable, not a cat or whole person.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/arcade-plaza191/references/onigiri-original.webp",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/capsule-kong190/native-sprites190.png"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production pixel-art sprite for a top-down32px-tile roguelike arcade plaza. Input1 is SUBJECT reference only; input2 is STYLE reference: match its coarse chunky low-detail shapes. One upright ONIGIRI PANIC arcade cabinet: black/deep purple body with lavender edge trim, a broad dark screen, one clear ivory triangular rice ball with dark nori rectangle on side/front header, mint-green joystick and two round buttons. At the very top one compact cyan circular radar hoop/dish on a short support, matching the screenshot's teal loop motif. Do not use lettering or reproduce the player, screenshot UI or environment. Make the rice-ball emblem readable, not a cat or whole person. Fit the entire machine into a32x48logical pixel grid, final64x96native. Slight front/top view, broad1logical-pixel outlines, 2shades per material,16flatcolors maximum. Actual transparent background. No gradients, glow, antialiasing, noise, micro patterns, floor, outside cast shadow, text, UI or unrelated props. Do not draw a sprite sheet or multiple views."
+    },
+    {
+      "id": "phoenix",
+      "w": 96,
+      "h": 96,
+      "colors": 16,
+      "subject": "ONE connected Dance Dance Phoenix arcade station: a green-and-yellow back console with a broad ivory monitor showing a simple orange phoenix wing/flame emblem instead of text, two black speakers, and an attached short dance-pad platform projecting in front with four clearly separated colored arrow panels and one short safety bar. Match the screenshot's green/yellow upper machine and dark dance stage. The console and pad form one compact3x3tile object, NOT a giant stage, separate building or glowing ring. No letters, UI or people.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/arcade-plaza191/references/phoenix-original.webp",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/capsule-kong190/native-sprites190.png"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production pixel-art sprite for a top-down32px-tile roguelike arcade plaza. Input1 is SUBJECT reference only; input2 is STYLE reference: match its coarse chunky low-detail shapes. ONE connected Dance Dance Phoenix arcade station: a green-and-yellow back console with a broad ivory monitor showing a simple orange phoenix wing/flame emblem instead of text, two black speakers, and an attached short dance-pad platform projecting in front with four clearly separated colored arrow panels and one short safety bar. Match the screenshot's green/yellow upper machine and dark dance stage. The console and pad form one compact3x3tile object, NOT a giant stage, separate building or glowing ring. No letters, UI or people. Fit the entire machine into a48x48logical pixel grid, final96x96native. Slight front/top view, broad1logical-pixel outlines, 2shades per material,16flatcolors maximum. Actual transparent background. No gradients, glow, antialiasing, noise, micro patterns, floor, outside cast shadow, text, UI or unrelated props. Do not draw a sprite sheet or multiple views."
+    },
+    {
+      "id": "fighting",
+      "w": 96,
+      "h": 64,
+      "colors": 16,
+      "subject": "ONE compact Korone fighting-game arcade station made of TWO matching side-by-side charcoal and amber-brown game cabinets, red/blue stylized boxing gloves on dark screens and small red/yellow joystick buttons. Each cabinet's small header includes the approved KORONESUKI mascot's cream round bald head with a simple short dark eye line and protruding curved chin; the mascot is the cream simple shape shown on the bench input, NOT a dog face, NOT dog ears or full human. The supplied bench picture is mascot identity reference ONLY, do not copy bench or floor. No lettering or people. These are a game-inspired redesign rather than a confirmed exact recreation of original cabinet geometry.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/gamers-station64/koronesuki-bench.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/capsule-kong190/native-sprites190.png"
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE production pixel-art sprite for a top-down32px-tile roguelike arcade plaza. Input1 is SUBJECT reference only; input2 is STYLE reference: match its coarse chunky low-detail shapes. ONE compact Korone fighting-game arcade station made of TWO matching side-by-side charcoal and amber-brown game cabinets, red/blue stylized boxing gloves on dark screens and small red/yellow joystick buttons. Each cabinet's small header includes the approved KORONESUKI mascot's cream round bald head with a simple short dark eye line and protruding curved chin; the mascot is the cream simple shape shown on the bench input, NOT a dog face, NOT dog ears or full human. The supplied bench picture is mascot identity reference ONLY, do not copy bench or floor. No lettering or people. These are a game-inspired redesign rather than a confirmed exact recreation of original cabinet geometry. Fit the entire machine into a48x32logical pixel grid, final96x64native. Slight front/top view, broad1logical-pixel outlines, 2shades per material,16flatcolors maximum. Actual transparent background. No gradients, glow, antialiasing, noise, micro patterns, floor, outside cast shadow, text, UI or unrelated props. Do not draw a sprite sheet or multiple views."
+    }
+  ],
+  "mode": "built-in image_gen",
+  "reusedAssets": {
+    "kong": "../capsule-kong190/assets/kong-native.png",
+    "rack": "../capsule-kong190/assets/rack-native.png"
+  },
+  "referenceScope": "Four new machines use original photo motifs where available; fighting cabinet is an interpretation based on Koronesuki console description and approved mascot."
+}

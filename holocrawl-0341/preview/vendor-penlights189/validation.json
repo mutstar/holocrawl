@@ -1,0 +1,79 @@
+{
+  "revision": 189,
+  "results": [
+    {
+      "key": "attached",
+      "footprint": [
+        15,
+        15
+      ],
+      "threeVendors": true,
+      "centerFountain": true,
+      "commonFurniture": true,
+      "fountainRing": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "standalone",
+      "footprint": [
+        15,
+        15
+      ],
+      "threeVendors": true,
+      "centerFountain": true,
+      "commonFurniture": true,
+      "fountainRing": true,
+      "serviceReachable": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    }
+  ],
+  "differentInteriorPixels": 0,
+  "nativeIntegrated": false,
+  "preservation": [
+    {
+      "mode": "attached",
+      "memberCount": 9,
+      "groups": [
+        3,
+        3,
+        3
+      ],
+      "changedInside": 4864,
+      "changedOutside": 0,
+      "penlightFootprint": [
+        3,
+        2
+      ],
+      "visibleSpriteInsideFootprint": true
+    },
+    {
+      "mode": "standalone",
+      "memberCount": 9,
+      "groups": [
+        3,
+        3,
+        3
+      ],
+      "changedInside": 4864,
+      "changedOutside": 0,
+      "penlightFootprint": [
+        3,
+        2
+      ],
+      "visibleSpriteInsideFootprint": true
+    }
+  ],
+  "originalReferenceWidth": 600,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

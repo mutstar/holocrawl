@@ -1,0 +1,52 @@
+{
+  "revision": 190,
+  "results": [
+    {
+      "key": "attached",
+      "footprint": [
+        13,
+        11
+      ],
+      "mainMachine": true,
+      "twoCapsuleRacks": true,
+      "kaelaProp": true,
+      "serviceReachable": true,
+      "doorClosesAccess": true,
+      "threeTileEntrance": true,
+      "machineWalkRing": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "standalone",
+      "footprint": [
+        13,
+        11
+      ],
+      "mainMachine": true,
+      "twoCapsuleRacks": true,
+      "kaelaProp": true,
+      "serviceReachable": true,
+      "doorClosesAccess": true,
+      "threeTileEntrance": true,
+      "machineWalkRing": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    }
+  ],
+  "differentInteriorPixels": 0,
+  "entranceVisibleWidth": 92,
+  "transparentEntryCenter": true,
+  "nativeIntegrated": false,
+  "doorPixels": {
+    "changed": 1724,
+    "outside": 0
+  },
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

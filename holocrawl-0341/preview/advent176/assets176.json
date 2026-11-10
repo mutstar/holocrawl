@@ -1,0 +1,46 @@
+{
+  "revision": 176,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "cot",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        28,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "locker",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 10,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        8,
+        30,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

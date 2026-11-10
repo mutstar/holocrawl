@@ -1,0 +1,40 @@
+{
+  "revision": 186,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "penlights",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 18,
+      "hardAlpha": true,
+      "visibleBounds": [
+        8,
+        2,
+        56,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ],
+  "reusedAssets": [
+    {
+      "id": "candy",
+      "source": "../vendor-fountain185/assets/candy-native.png"
+    },
+    {
+      "id": "balloon",
+      "source": "../vendor-fountain185/assets/balloon-native.png"
+    },
+    {
+      "id": "fountain",
+      "source": "../vendor-fountain185/assets/fountain-native.png"
+    }
+  ]
+}

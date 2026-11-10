@@ -1,0 +1,52 @@
+{
+  "revision": 185,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "fountain",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        14,
+        94,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ],
+  "reusedAssets": [
+    {
+      "id": "candy",
+      "native": [
+        64,
+        64
+      ],
+      "source": "../vendor-plazas184/assets/candy-native.png"
+    },
+    {
+      "id": "penlights",
+      "native": [
+        64,
+        64
+      ],
+      "source": "../vendor-plazas184/assets/penlights-native.png"
+    },
+    {
+      "id": "balloon",
+      "native": [
+        64,
+        64
+      ],
+      "source": "../vendor-plazas184/assets/balloon-native.png"
+    }
+  ]
+}

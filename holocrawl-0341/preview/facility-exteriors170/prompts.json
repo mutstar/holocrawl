@@ -1,0 +1,60 @@
+{
+  "mode": "built-in image_gen",
+  "styleReference": "../promise168/assets/wall-native.png",
+  "assets": [
+    {
+      "id": "metal",
+      "label": "금속 패널",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Dull gray steel wall panels. Four broad panel widths across and two courses vertically, sparse straight inset seams, one broad shade change per panel. No buttons, cables, machines, displays, hazard stripes or lettering. Neutral blue-gray, aged but restrained. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-04053cbe-21e1-4d90-bb91-4aa1e81c3140.png"
+    },
+    {
+      "id": "brick",
+      "label": "낡은 벽돌",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Worn muted gray-brown fired brick, eight brick widths across and four staggered courses high. Broad flat brick faces, thin desaturated dark mortar, just2or3small chips on whole sample. No ornate masonry, graffiti, plant growth or heavy cracks. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-fccd0b4d-420e-4fa8-aa0d-41b31ce09740.png"
+    },
+    {
+      "id": "plaster",
+      "label": "회벽",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Old warm gray-ivory plaster wall. Large quiet flat areas, very sparse shallow wear patches made of chunky pixel clusters, small worn lower edge marks but NO border or framing. No bricks, no mottled noise, no holes, no wallpaper. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-a255340d-cd0c-48d2-a48f-431f7c226766.png"
+    },
+    {
+      "id": "tile",
+      "label": "타일 벽",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Aged off-white/gray ceramic wall tiles. Eight tile widths across and four rows high, thin gray grout, quiet flat faces, rare small corner chips, understated highlight at tile top. No glossy reflections, no mosaics or decorative pictures. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-8d65c591-4951-427b-902d-22d081b340aa.png"
+    },
+    {
+      "id": "concrete",
+      "label": "콘크리트",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Aged neutral gray precast concrete wall. Four broad slab widths across, two courses high. Thin panel joints, sparse short subdued crack clusters, quiet flat faces. No pebble noise, heavy black cracks or graffiti. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-0aad668b-df81-461f-b822-0fee3448106a.png"
+    },
+    {
+      "id": "rock",
+      "label": "암석 벽",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "prompt": "Use case: stylized-concept. Create ONE flat seamless tileable OPAQUE material swatch for a low-resolution32px-tile dungeon roguelike. Image1 shows the accepted SIMPLE texture/detail density. Image2 shows the basic game walls and surroundings for style only; do NOT draw a whole room. Subject: Gray-beige natural rock blocks, broad interlocking irregular stone shapes with shallow dark joints, roughly4stone widths across and3rows high. Flat readable faces, two or three shades, sparse rounded chips. No rubble piles, perspective rocks, caves or black holes. Logical64x32 coarse pixel art enlarged nearest-neighbor to128x64. Maximum10flat colors, large contiguous color clusters, 2-3shades/material. Subdued moderate values, uniform ambient frontal lighting. Absolutely no gradients, blur, antialiasing, photographic detail, grain, speckles, bloom, text, emblems, doors, windows, isolated objects, perspective, framing or decorative border. The material fills the whole rectangular image edge-to-edge with no transparency. Keep pattern repeatable left-right and top-bottom. This is only a material sample to be mapped onto EXISTING wall connection masks; no new wall geometry.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-b9c5e665-a340-4e6f-bf75-809149545e32.png"
+    }
+  ]
+}

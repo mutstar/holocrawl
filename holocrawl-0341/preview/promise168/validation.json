@@ -1,0 +1,114 @@
+{
+  "revision": 168,
+  "status": "passed",
+  "scope": "Simplified artwork at Fortune167 detail density; unchanged approved layout",
+  "native": [
+    {
+      "id": "entrance",
+      "width": 96,
+      "height": 48,
+      "colors": 14,
+      "transparent": 2348,
+      "opaque": 2260,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "clockwork",
+      "width": 96,
+      "height": 96,
+      "colors": 14,
+      "transparent": 2384,
+      "opaque": 6832,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "nature",
+      "width": 32,
+      "height": 64,
+      "colors": 12,
+      "transparent": 1260,
+      "opaque": 788,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "civilization",
+      "width": 32,
+      "height": 64,
+      "colors": 12,
+      "transparent": 816,
+      "opaque": 1232,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "chaos",
+      "width": 32,
+      "height": 32,
+      "colors": 10,
+      "transparent": 448,
+      "opaque": 576,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "hope",
+      "width": 32,
+      "height": 32,
+      "colors": 12,
+      "transparent": 672,
+      "opaque": 352,
+      "soft": 0,
+      "edge": 0
+    }
+  ],
+  "geometryMatches162": true,
+  "baseSourcesUnchanged": true,
+  "approved164Preserved": true,
+  "wallChecks": {
+    "autotilePhases": 2048,
+    "alphaDifferences": 0,
+    "changedPixels": 43140,
+    "changedOutsideRequestedAreas": 0,
+    "material": [
+      {
+        "id": "wall",
+        "w": 128,
+        "h": 64,
+        "soft": 0,
+        "opaque": 8192
+      },
+      {
+        "id": "frieze",
+        "w": 96,
+        "h": 32,
+        "soft": 0,
+        "opaque": 2160
+      }
+    ]
+  },
+  "door": {
+    "maskCount": 1048,
+    "closedHoles": 0,
+    "openTransparent": 856,
+    "changedOutsideMask": 0
+  },
+  "actions": {
+    "loop": {
+      "player": {
+        "x": 7,
+        "y": 12
+      },
+      "opened": true,
+      "turns": 29
+    },
+    "centralPropBlocks": true
+  },
+  "mobileOverflow": false,
+  "assetGalleryLoaded": true,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

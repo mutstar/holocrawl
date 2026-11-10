@@ -1,0 +1,60 @@
+{
+  "mode": "built-in image_gen",
+  "revision": 178,
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down roguelike. Image 1 is a STYLE reference: match its chunky shapes and low detail. Slight front/top view, true transparent background. Hard square pixels, broad planes, dark outline, about 12 flat colors, 2 shades per material. No gradients, glow, antialiasing, fine texture, tiny knobs, background, people, labels or text. Designed to survive very low resolution. One compact balloon-cart station entrance: low pale sage steel arch with cream trim and two short posts, a small muted purple crescent and coral balloon emblem on top. Arch opening is entirely transparent from arch down to bottom edge. No door leaves, no floor, no threshold. 48x24 logical pixel design; practical little park entrance, not grand fantasy architecture."
+    },
+    {
+      "id": "cart",
+      "w": 96,
+      "h": 96,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/area15-178/references/holodori-cart.webp"
+      ],
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down roguelike. Image 1 is a STYLE reference: match its chunky shapes and low detail. Slight front/top view, true transparent background. Hard square pixels, broad planes, dark outline, about 12 flat colors, 2 shades per material. No gradients, glow, antialiasing, fine texture, tiny knobs, background, people, labels or text. Designed to survive very low resolution. Image 2 is a SUBJECT reference of the original balloon vending cart. Adapt the coral-pink cream-faced round camper van into a front three-quarter sprite: oversized bright green oval eyes on the nose, cream lower face, tiny cheerful mouth, short dark wheels, rounded coral body and pale violet side roof, a single oversized paintbrush fixed along one side, small visible side sales window. Do not copy the foreground pink-haired person, scenery, photo realism or screenshot UI. Compact little parked vending vehicle, not a character standing on legs. Fit a 48x48 logical pixel grid, prioritize clean recognizable cart silhouette."
+    },
+    {
+      "id": "risu",
+      "w": 32,
+      "h": 32,
+      "colors": 10,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/area15-178/references/risu.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down roguelike. Image 1 is a STYLE reference: match its chunky shapes and low detail. Slight front/top view, true transparent background. Hard square pixels, broad planes, dark outline, about 12 flat colors, 2 shades per material. No gradients, glow, antialiasing, fine texture, tiny knobs, background, people, labels or text. Designed to survive very low resolution. Image 2 supplies Risu brown-and-cream squirrel identity colors only. One small wooden stock crate containing two big acorn-shaped brown balloon heads with light cream caps and short folded strings. Bold acorn silhouette and one small green ribbon. No squirrel character, face or portrait. A small stall accessory on a 16x16 logical pixel grid."
+    },
+    {
+      "id": "moona",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/area15-178/references/moona.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down roguelike. Image 1 is a STYLE reference: match its chunky shapes and low detail. Slight front/top view, true transparent background. Hard square pixels, broad planes, dark outline, about 12 flat colors, 2 shades per material. No gradients, glow, antialiasing, fine texture, tiny knobs, background, people, labels or text. Designed to survive very low resolution. Image 2 supplies Moona violet and navy colors only. One small display stand for a gold crescent-shaped balloon and a round violet balloon tied beside it. Short black strings, small navy weighted foot, one tiny star on violet balloon. Clear moon shape. No person, no face, not a monument; a practical balloon shop rack. 16x32 logical pixel grid."
+    },
+    {
+      "id": "iofi",
+      "w": 64,
+      "h": 48,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/area15-178/references/iofi.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down roguelike. Image 1 is a STYLE reference: match its chunky shapes and low detail. Slight front/top view, true transparent background. Hard square pixels, broad planes, dark outline, about 12 flat colors, 2 shades per material. No gradients, glow, antialiasing, fine texture, tiny knobs, background, people, labels or text. Designed to survive very low resolution. Image 2 supplies Iofi pastel pink mint yellow painter colors only. One squat compact balloon-painting workbench, sage metal legs, plain gray worktop holding a chunky pink paint pot, two short broad brushes in a cup, and a little wooden artist palette bearing only three large color spots. No easel or canvas, no person, no floating symbols. Simple workshop furniture on a 32x24 logical pixel grid; avoid clutter."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+(async()=>{'use strict';
+const $=id=>document.getElementById(id),cv=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h}),load=async u=>{const im=new Image();im.src=u;await im.decode();return im;},dirs=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]],W=23,H=21;
+const ready=()=>new Promise((resolve,reject)=>{const check=()=>{if(window.material171Error)reject(Error(window.material171Error));else if(window.material171Ready)resolve();else requestAnimationFrame(check);};check();});
+const [data,source,floor,atlas,rects,planes,homeGate]=await Promise.all([fetch('catalog.json').then(r=>r.json()),fetch('../native-play107/maps/map-10786001-1.json').then(r=>r.json()),load('../native-play107/assets/floor.png'),load('../wall-height121/wall22.png'),fetch('../wall-height121/rects121.json').then(r=>r.json()),fetch('../wall-height121/planes121.json').then(r=>r.json()),load('../doorfit159/assets/entrance-native.png'),ready(),WallHeight121.load(),FortuneWall165.load(),PromiseWall168.load()]);
+const counts=new Map();for(const i of source.floors)counts.set(i,(counts.get(i)||0)+1);const ids=[...counts].sort((a,b)=>b[1]-a[1]).map(a=>a[0]).filter(i=>source.palette[i].atlas==='floor').slice(0,4),floors=[];
+for(const id of ids)for(let r=0;r<4;r++){const c=cv(32,32),q=c.getContext('2d'),t=source.palette[id];q.translate(16,16);q.rotate(r*Math.PI/2);q.drawImage(floor,t.sx,t.sy,32,32,-16,-16,32,32);floors.push(c);}
+HomeMaterial159.configure({wall:atlas,rects,planes,floorTiles:floors});
+const native=(im,s=1)=>{if(s===1)return im;const c=cv(im.width/s,im.height/s),q=c.getContext('2d');q.imageSmoothingEnabled=false;q.drawImage(im,0,0,c.width,c.height);return c;},assets=new Map(),scenes=[];
+await Promise.all(data.cards.map(async f=>{const out={};await Promise.all(['sourceClosed','sourceOpen','decal','gateClosed','gateOpen','frieze'].filter(k=>f[k]).map(async k=>out[k]=native(await load(f[k]),k.startsWith('source')?(f.sourceScale||1):1)));assets.set(f.id,out);}));
+
+const grass=await load('../facility-shapes172/assets/grass-native.png');
+const grassColors=new Set(['74,87,63','75,88,63','71,84,60','73,86,61','83,90,66','85,91,66','81,88,64','83,89,64']);
+for(const f of data.cards){if(!f.shaped)continue;const a=assets.get(f.id),[sx,sy]=f.sourceOffset;
+ const sample=cv(32,32);sample.getContext('2d').drawImage(a.sourceClosed,sx+f.floorSample[0]*32,sy+f.floorSample[1]*32,32,32,0,0,32,32);a.floorTile=sample;
+ for(const state of ['sourceClosed','sourceOpen']){const original=a[state],clean=cv(original.width,original.height),q=clean.getContext('2d');q.drawImage(original,0,0);
+  if(f.fenceField){const d=q.getImageData(0,0,clean.width,clean.height);for(let y=0;y<f.oldH*32;y++)for(let x=0;x<f.oldW*32;x++){const i=((sy+y)*clean.width+sx+x)*4;if(grassColors.has(d.data[i]+','+d.data[i+1]+','+d.data[i+2]))d.data[i+3]=0;}q.putImageData(d,0,0);}
+  else if(f.kind==='home')q.clearRect(sx+(f.oldEntry.x-1)*32,sy+f.oldEntry.y*32-16,96,16);
+  a[state+'Clean']=clean;
+ }
+ if(f.kind==='legacy'&&!f.fenceField){const original=a.sourceClosed,oldY=f.oldEntry.y*32,gateTop=f.sourceOpenMap[(f.oldEntry.y)*f.oldW+f.oldEntry.x]===1?14:0;
+  // Transfer only the actual entrance span, leaving neighboring member props intact.
+  a.gateTop=f.doorWidth===2||f.id==='holox'||f.id==='gamers'?14:0;
+  for(const state of ['sourceClosed','sourceOpen']){const gate=cv((f.doorWidth||1)*32,32+a.gateTop);gate.getContext('2d').drawImage(a[state],sx+f.oldEntry.x*32,sy+oldY-a.gateTop,gate.width,gate.height,0,0,gate.width,gate.height);a[state+'Gate']=gate;if(a.gateTop)a[state+'Clean'].getContext('2d').clearRect(sx+f.oldEntry.x*32,sy+oldY-a.gateTop,gate.width,a.gateTop);}
+ }
+}
+function terrain(q,f,o,a){for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(f.inside[y*f.w+x]){if(f.fenceField)q.drawImage(grass,((o.x+x)%2)*32,((o.y+y)%2)*32,32,32,(o.x+x)*32,(o.y+y)*32,32,32);else q.drawImage(a.floorTile,(o.x+x)*32,(o.y+y)*32);}}
+function fence(q,f,o){const inside=(x,y)=>x>=0&&y>=0&&x<f.w&&y<f.h&&f.inside[y*f.w+x];q.lineWidth=1;for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(inside(x,y))for(const[dx,dy]of [[0,-1],[1,0],[0,1],[-1,0]])if(!inside(x+dx,y+dy)){if(x+dx===f.entry.x&&y+dy===f.entry.y)continue;const px=(o.x+x)*32+(dx===1?32:0),py=(o.y+y)*32+(dy===1?32:0);q.fillStyle='#303d35';if(dy){q.fillRect(px,py-3,32,5);q.fillStyle='#7c8d77';q.fillRect(px,py-3,32,1);q.fillRect(px,py,32,1);for(const k of [0,16,30]){q.fillStyle='#445640';q.fillRect(px+k,py-8,2,9);q.fillStyle='#9aa38c';q.fillRect(px+k,py-8,2,1);}}else{q.fillRect(px-1,py,3,32);q.fillStyle='#7c8d77';q.fillRect(px-1,py,1,32);for(const k of [0,16,30]){q.fillStyle='#455740';q.fillRect(px-3,py+k,5,3);q.fillStyle='#96a38c';q.fillRect(px-3,py+k,1,2);}}}}
+function decals(q,f,m,a){if(!a.decal)return;const raw=cv(a.decal.width,a.decal.height),g=raw.getContext('2d');g.drawImage(a.decal,0,0);const d=g.getImageData(0,0,raw.width,raw.height).data,[bx,by]=f.contentShift,candidates=[];for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(m.kind[(m.o.y+y)*W+m.o.x+x]===2)candidates.push({x,y});
+ for(let y=0;y<f.oldH;y++)for(let x=0;x<f.oldW;x++){let opaque=false;for(let yy=0;yy<32&&!opaque;yy++)for(let xx=0;xx<32;xx++)if(d[((y*32+yy)*raw.width+x*32+xx)*4+3]){opaque=true;break;}if(!opaque)continue;let tx=x+bx,ty=y+by;if(y>=f.oldH-2){tx=f.entry.x+(x-f.oldEntry.x);ty=f.entry.y;}let c={x:tx,y:ty};if(!candidates.some(p=>p.x===tx&&p.y===ty))c=candidates.reduce((a,b)=>(a.x-tx)**2+(a.y-ty)**2<(b.x-tx)**2+(b.y-ty)**2?a:b);q.drawImage(a.decal,x*32,y*32,32,32,(m.o.x+c.x)*32,(m.o.y+c.y)*32,32,32);}}
+function path(m,start,target){const a=start.y*W+start.x,b=target.y*W+target.x,prev=new Int32Array(W*H).fill(-1),q=[a];prev[a]=a;for(let n=0;n<q.length&&prev[b]<0;n++){const i=q[n],x=i%W,y=Math.floor(i/W);for(const[dx,dy]of [[0,-1],[1,0],[0,1],[-1,0]]){const xx=x+dx,yy=y+dy,j=yy*W+xx;if(xx>=0&&yy>=0&&xx<W&&yy<H&&m.walkable[j]&&prev[j]<0){prev[j]=i;q.push(j);}}}if(prev[b]<0)return[];const out=[];for(let i=b;;i=prev[i]){out.push({x:i%W,y:Math.floor(i/W)});if(i===a)break;}return out.reverse();}
+function mapFor(f,mode){const ox=Math.floor((W-f.w)/2),oy=Math.floor((H-f.h)/2),o={x:ox,y:oy,w:f.w,h:f.h},kind=new Uint8Array(W*H),solid=new Uint8Array(W*H).fill(1),walkable=new Uint8Array(W*H).fill(1),doors=[];
+ if(mode==='attached')for(let y=0;y<=oy;y++)for(let x=0;x<W;x++){const i=y*W+x;kind[i]=1;solid[i]=walkable[i]=0;}
+ for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++){const j=y*f.w+x,i=(oy+y)*W+ox+x,c=f.rows[y][x],edge=x===0||y===0||x===f.w-1||y===f.h-1,masonry=c==='#'&&(edge||f.kind!=='legacy'||f.shaped),fence=c==='G'&&(edge||f.fenceField);
+ if(f.inside[j]){kind[i]=0;solid[i]=1;walkable[i]=f.open[j];}
+ if(masonry||fence){kind[i]=fence?(mode==='attached'&&y===0?1:3):2;solid[i]=walkable[i]=0;}
+ if(f.kind==='legacy'&&!f.shaped&&edge&&'.+'.includes(c))doors.push({x,y});}
+ if(f.kind!=='legacy'||f.shaped)for(let i=0;i<(f.doorWidth||1);i++)doors.push({x:f.entry.x+i,y:f.entry.y});
+ for(const d of doors){const i=(oy+d.y)*W+ox+d.x;kind[i]=0;solid[i]=0;walkable[i]=1;}
+ const target=dataPoint(f),entry={x:ox+f.entry.x,y:oy+f.entry.y},start={x:entry.x,y:entry.y+2};
+ const m={o,kind,solid,walkable,doors,entry,start,target:{x:ox+target.x,y:oy+target.y}};m.route=path(m,start,m.target);return m;}
+function dataPoint(f){const out=[];for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(f.inside[y*f.w+x]&&f.open[y*f.w+x])out.push({x,y,d:(x-f.w/2)**2+(y-f.h/2)**2});out.sort((a,b)=>a.d-b.d);return out[0];}
+function maskAt(m,x,y){let mask=0;dirs.forEach(([dx,dy],b)=>{const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<W&&yy<H&&m.solid[yy*W+xx]===0)mask|=1<<b;});return mask;}
+function draw(scene){const{f,mode,m,c}=scene,q=c.getContext('2d'),a=assets.get(f.id),open=$('doors').checked,im=a[open?'sourceOpen':'sourceClosed'],o=m.o;q.imageSmoothingEnabled=false;
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++)q.drawImage(floors[RandomFloor.index('FACILITY171',0,x,y)%floors.length],x*32,y*32);
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){const k=m.kind[y*W+x];if(k===1)WallHeight121.wall(q,m.solid,W,H,x,y,32,0);else if(k===2){const mask=maskAt(m,x,y);if(f.courtWall)WallHeight121.wall(q,m.solid,W,H,x,y,32,0);else if(f.kind==='legacy')q.drawImage(FacilityMaterial171.tile(mask,x,y,f.theme),x*32,y*32);else if(f.kind==='home')q.drawImage(HomeMaterial159.wall(mask),x*32,y*32);else if(f.kind==='promise')q.drawImage(PromiseWall168.tile(mask,x,y),x*32,y*32);else q.drawImage(FortuneWall165.tile(mask,x,y),x*32,y*32);}}
+
+ if(f.shaped){terrain(q,f,o,a);if(f.kind==='home'){q.save();q.beginPath();for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(m.kind[y*W+x]===2)q.rect(x*32,y*32,32,32);q.clip();HomeMaterial159.paint(q,{home:o});q.restore();}
+  const [sx,sy]=f.sourceOffset,[bx,by]=f.contentShift,clean=a[(open?'sourceOpen':'sourceClosed')+'Clean'];
+  for(let y=0;y<f.oldH;y++)for(let x=0;x<f.oldW;x++)if(f.sourceInside[y*f.oldW+x])q.drawImage(clean,sx+x*32,sy+y*32,32,32,(o.x+x+bx)*32,(o.y+y+by)*32,32,32);
+  if(f.fenceField){CourtEdge173.paint(q,f,m,floors);}else if(f.kind==='home'){q.drawImage(HomeMaterial159.door(open),m.entry.x*32,m.entry.y*32);q.drawImage(homeGate,(m.entry.x-1)*32,m.entry.y*32-16);}else{decals(q,f,m,a);const gate=a[(open?'sourceOpen':'sourceClosed')+'Gate'];q.drawImage(gate,m.entry.x*32,m.entry.y*32-a.gateTop);}
+ }else{
+ const [sx,sy]=f.sourceOffset;for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(f.inside[y*f.w+x])q.drawImage(im,sx+x*32,sy+y*32,32,32,(o.x+x)*32,(o.y+y)*32,32,32);
+ if(a.frieze)q.drawImage(a.frieze,(o.x+4)*32,o.y*32);q.drawImage(a[open?'gateOpen':'gateClosed'],(m.entry.x-1)*32,m.entry.y*32-14);
+ }
+ if($('grid').checked){q.strokeStyle='rgba(180,213,196,.28)';q.lineWidth=1;for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(m.walkable[y*W+x])q.strokeRect(x*32+.5,y*32+.5,31,31);}
+ if($('routes').checked&&m.route.length){q.strokeStyle='#b6ddcb';q.lineWidth=2;q.setLineDash([5,5]);q.beginPath();m.route.forEach((p,i)=>i?q.lineTo(p.x*32+16,p.y*32+16):q.moveTo(p.x*32+16,p.y*32+16));q.stroke();q.setLineDash([]);}
+}
+function zoom(scene){$('title').textContent=scene.f.name+' · '+(scene.mode==='attached'?'벽붙임':'독립 배치');const z=$('zoom'),q=z.getContext('2d');z.width=scene.c.width*2;z.height=scene.c.height*2;q.imageSmoothingEnabled=false;q.drawImage(scene.c,0,0,z.width,z.height);$('detail').showModal();}
+for(const f of data.cards){const section=document.createElement('section');section.className='facility';section.id=f.id;const header=document.createElement('header'),h=document.createElement('h2'),meta=document.createElement('span');h.textContent=f.name;meta.className='meta';meta.textContent=f.w+'×'+f.h+'칸 · '+f.shapeName;header.append(h,meta);const pair=document.createElement('div');pair.className='pair';for(const mode of ['attached','standalone']){const figure=document.createElement('figure'),caption=document.createElement('figcaption'),b=document.createElement('button'),c=cv(W*32,H*32),m=mapFor(f,mode),scene={f,mode,m,c};caption.textContent=mode==='attached'?'벽붙임 · 뒤쪽 던전 벽과 연결':'독립 배치 · 사방 통로';b.className='scene';b.setAttribute('aria-label',f.name+' '+(mode==='attached'?'벽붙임':'독립 배치')+' 확대');c.dataset.facility=f.id;c.dataset.mode=mode;b.append(c);b.onclick=()=>zoom(scene);figure.append(caption,b);pair.append(figure);scenes.push(scene);draw(scene);}const footer=document.createElement('footer');footer.textContent=f.id==='fantasy'?'운동장만 수정 · 기본 벽과 같은 콘크리트 담 / 안쪽 회색 테두리 / 평평한 진입로':'주변 벽에 맞춰 외곽 연결을 다시 계산했습니다.';section.append(header,pair,footer);$('list').append(section);const option=document.createElement('option');option.value=f.id;option.textContent=f.name;$('jump').append(option);}
+function redraw(){for(const s of scenes)draw(s);}
+$('doors').onchange=$('grid').onchange=$('routes').onchange=redraw;$('view').onchange=()=>document.body.classList.toggle('compact',$('view').value==='compact');function filter(){const group=$('group').value;for(const [i,f]of data.cards.entries())document.getElementById(f.id).hidden=(group==='1'&&i>=6)||(group==='2'&&i<6)||(!!$('jump').value&&f.id!==$('jump').value);const n=[...document.querySelectorAll('.facility')].filter(s=>!s.hidden).length;$('ready').textContent=n+'곳 × 2가지 배치 · 그림을 누르면 크게 볼 수 있어요.';} $('jump').onchange=()=>{if($('jump').value)$('group').value='all';filter();};$('group').onchange=()=>{$('jump').value='';filter();};$('close').onclick=()=>$('detail').close();$('detail').onclick=e=>{if(e.target===$('detail'))$('detail').close();};
+const params=new URLSearchParams(location.search),initial=params.get('facility');if(['1','2'].includes(params.get('group')))$('group').value=params.get('group');if(data.cards.some(f=>f.id===initial)){$('jump').value=initial;$('jump').onchange();$('view').value='compare';}
+document.body.classList.toggle('compact',$('view').value==='compact');filter();window.FacilityCourt173={data,scenes,redraw,path,assets,floors,grass};window.court173Ready=true;
+})().catch(e=>{document.getElementById('ready').textContent='불러오기 실패: '+e.message;console.error(e);});

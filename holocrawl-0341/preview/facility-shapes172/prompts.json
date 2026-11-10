@@ -1,0 +1,19 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "grass",
+      "prompt": "Use case: stylized-concept. ONE flat seamless tileable GRASS material swatch for a simple32px-tile dungeon roguelike sports field. Moderately dark desaturated natural green, very sparse short grass tufts in small2x2or3x2pixel clusters and a few muted bare-earth clusters, quiet broad flat areas. Logical32x32 pixel art enlarged nearest-neighbor. Limited8flat colors, 2-3shades, low contrast so a beige running track remains legible. Natural worn turf, NOT smooth olive felt, NOT speckled sand, not dense individual blades. Uniform top-down ambient view. OPAQUE rectangular texture fills edge-to-edge, tileable both axes. No border, no ground edge, no fence, no objects, no characters, no perspective, no text, no gradient, no blur, no antialiasing, no photorealism, no bloom.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-d89b5fec-ba5a-4ce2-b98d-7f8cbb7b42bf.png",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 8
+    }
+  ]
+}

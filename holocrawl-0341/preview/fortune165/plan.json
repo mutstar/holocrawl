@@ -1,0 +1,42 @@
+{
+  "revision": 165,
+  "status": "user-review",
+  "facility": "myth",
+  "name": "포춘 네트워크",
+  "footprint": [
+    13,
+    11
+  ],
+  "shape": "wide-lobby-with-short-entry-corridor",
+  "entry": {
+    "native": [
+      96,
+      48
+    ],
+    "anchor": [
+      -32,
+      -14
+    ],
+    "passage": [
+      1,
+      1
+    ]
+  },
+  "memberStations": [
+    "calli",
+    "kiara",
+    "ina",
+    "ame",
+    "gura"
+  ],
+  "allMemberStationsNative": [
+    64,
+    64
+  ],
+  "approvedPromise164SourceHashes": {
+    "app164.js": "939dd9bf04c40f4d7d64e1eae74df818c3099b28db780603ddbc9f86c7fc7d45",
+    "walls164.js": "2bf6986ea9f83167e75eb21548ea902f792d996502ae42f627f20e78f015f25f",
+    "index.html": "d719061fc3301c2193b36d27d0f7e3459d0b0ff6116fb75e88f978aca9449343"
+  },
+  "nativeIntegrated": false
+}

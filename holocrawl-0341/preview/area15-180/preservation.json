@@ -1,0 +1,32 @@
+{
+  "previousRevision": 179,
+  "revision": 180,
+  "modes": [
+    {
+      "mode": "attached",
+      "unchanged": {
+        "cells": true,
+        "inner": true,
+        "open": true,
+        "props": true,
+        "furniture": true,
+        "entrances": true,
+        "openings": true,
+        "servicePoints": true
+      }
+    },
+    {
+      "mode": "standalone",
+      "unchanged": {
+        "cells": true,
+        "inner": true,
+        "open": true,
+        "props": true,
+        "furniture": true,
+        "entrances": true,
+        "openings": true,
+        "servicePoints": true
+      }
+    }
+  ]
+}

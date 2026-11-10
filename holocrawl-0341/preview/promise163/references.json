@@ -1,0 +1,72 @@
+{
+  "checkedDate": "2026-11-10",
+  "interpretation": "Original dungeon-scale reinterpretation of the time-changing Promise attraction; not a claim that the five invented interior props exist in HoloDori.",
+  "references": [
+    {
+      "url": "https://www.hololive-dreams.com/en/park/",
+      "kind": "official",
+      "role": "General HoloDori park material and prop language; downloaded official screenshots01-12 and inspection contact in references/"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=b_doJBhYF9s",
+      "kind": "official-talent-video",
+      "title": "Ouro Kronii: Change Time At The Promise Tower",
+      "role": "Time-changing tower motif; saved thumbnail is promotional context, not an architectural tower exterior reference",
+      "local": "references/kronii-official-short.jpg"
+    },
+    {
+      "url": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+      "kind": "unofficial-wiki",
+      "role": "Facility listing: Promise Tower, time change"
+    },
+    {
+      "url": "https://shop.hololivepro.com/products/hololiveen_thebrokenpromise",
+      "kind": "official-shop",
+      "role": "Existing project's five-member Promise motifs; not a live membership change"
+    }
+  ],
+  "mode": "built-in image_gen",
+  "sourceArtwork": [
+    {
+      "id": "entrance",
+      "generatedFile": "exec-31ca3e40-4aa2-4ec3-92f0-b979464536eb.png",
+      "original": "assets/entrance-source.png",
+      "native": "assets/entrance-native.png"
+    },
+    {
+      "id": "clockwork",
+      "generatedFile": "exec-ebde781f-0e7d-43cf-a933-64011ccc41fa.png",
+      "original": "assets/clockwork-source.png",
+      "native": "assets/clockwork-native.png"
+    },
+    {
+      "id": "nature",
+      "generatedFile": "exec-ff3b4154-fb25-44bf-b959-a1b645ce2e03.png",
+      "original": "assets/nature-source.png",
+      "native": "assets/nature-native.png"
+    },
+    {
+      "id": "civilization",
+      "generatedFile": "exec-e08b998c-bcfd-4dac-86a6-002f7deb3cb3.png",
+      "original": "assets/civilization-source.png",
+      "native": "assets/civilization-native.png"
+    },
+    {
+      "id": "chaos",
+      "generatedFile": "exec-472f2399-c82e-4ed0-ae82-6e98e43ca4a5.png",
+      "original": "assets/chaos-source.png",
+      "native": "assets/chaos-native.png"
+    },
+    {
+      "id": "hope",
+      "generatedFile": "exec-65673f48-6b29-46ef-81a8-d235aead4ae6.png",
+      "original": "assets/hope-source.png",
+      "native": "assets/hope-native.png"
+    }
+  ],
+  "codeAssets": {
+    "doorLeaves": "Editable procedural metal-door system extended for the generated frame; the frame raster remains unchanged.",
+    "geometry": "../promise162/layout162.js"
+  },
+  "nativeIntegrated": false
+}

@@ -1,0 +1,28 @@
+{
+  "assets": [
+    {
+      "id": "kong",
+      "w": 96,
+      "h": 96,
+      "colors": 16,
+      "prompt": "Use case: stylized-concept. ONE compact production pixel-art sprite for a top-down tile roguelike, a GORILLA-SHAPED CAPSULE GACHA MACHINE inspired by Capsule Kong in hololive Dreams. Input1 SUBJECT reference is a small game screenshot: use the dark gorilla machine with red cap and round brass goggle-like eyes behind the player; do not copy player, UI or yellow circle. Input2 STYLE reference only: match its chunky low-detail sprite language. Machine silhouette: squat dark charcoal gorilla torso with two thick arms, clear beige muzzle and two large round brass eye rings, red flat cap at top, and a small transparent chest hopper holding three chunky colored capsules. In lower front a large pale crank/coin panel and a clearly dark capsule retrieval slot. Red and brass base trim echoes Kaela. Friendly mechanical gorilla, no threatening living animal pose. Simple broad silhouette and distinct control panel readable on48x48logical grid, final96x96, occupies3x3tiles. Slight front/top camera; no tall wall or scenery. True transparent background.16 flat colors max,2-3shades per material, hard square pixel outlines, no gradients, glow, antialiasing, noise, tiny texture, text or lettering. No extra props, pedestal floor, characters, UI, shadow outside object or background."
+    },
+    {
+      "id": "rack",
+      "w": 64,
+      "h": 32,
+      "colors": 12,
+      "prompt": "Use case: stylized-concept. ONE small pixel roguelike prop, a low stock rack for a capsule toy arcade, STYLE reference is the provided chunky simple sprite board. Make a broad warm gray metal tray with a dark red lower shelf and brass front lip, containing three clearly separated chunky round two-tone capsule balls (cyan/ivory, pink/ivory, yellow/ivory), with one square sealed spare carton at one side. No tiny toys inside. Fits a32x16logical grid, exported64x32native,2x1game tiles. Slight front/top view, simple large pixel clusters,12flat colors max, no gradients, glow, antialiasing, text, people, floor or outside shadow. Actual transparent background, only one complete prop."
+    },
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 12,
+      "prompt": "Use case: precise-object-edit. Correct ONLY the doorway frame proportions from the reference: make it MUCH WIDER while keeping short height. This is a horizontal THREE-TILE-WIDE arcade entrance,96pixels wide by48pixels high native, a48x24logical grid. CRITICAL: the outer left jamb must sit near logical column1, the outer right jamb near column46, with almost the full46pixel width used. The lintel is a LONG FLAT red steel beam from logicalx1tox46 at y5toy9. Short charcoal jambs drop at both far ends fromy9toy22, each3logical pixels thick. A SMALL brass gorilla-face medallion sits centered above the long lintel aroundx24,y3. Thus the entire silhouette is twice as wide as high, NEVER a tall square doorway; do not add tall posts or huge crest. The center under beam is a BIG OPEN TRANSPARENT passage, bottom open with no threshold bar. Keep the same simple charcoal/red/brass materials and coarse pixel outline.2shades per material,12flatcolors total, no texture, tiny ornaments, gradients, glow, antialiasing, text, background, floor, extra objects or panels. True transparent background and transparent inner opening. One sprite only."
+    }
+  ],
+  "mode": "built-in image_gen",
+  "reusedAsset": "kaela-native.png from vendor-members187",
+  "entranceIteration": "Widened short doorway frame to join3tile opening"
+}

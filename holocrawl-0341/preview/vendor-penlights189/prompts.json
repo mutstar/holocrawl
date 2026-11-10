@@ -1,0 +1,13 @@
+{
+  "assets": [
+    {
+      "id": "penlights",
+      "w": 96,
+      "h": 64,
+      "colors": 18,
+      "prompt": "Use case: precise-object-edit. Modify the referenced original tall patchwork bear penlight kiosk by ADDING WIDTH ONLY. Original is2x2game tiles64x64native; desired is3x2tiles96x64native. KEEP THE ORIGINAL HEIGHT and original large prominent patchwork bear head/ivory bow scale. Do NOT make a short low shelf and do NOT squash or shrink the bear. Redraw on48logical pixels wide by32logical pixels high. Keep a big recognizable central teal/navy/magenta bear face with round ears, two simple dark eyes and mouth and yellow patch stitches, with a large ivory bow and gold center directly beneath it. Extend the warm-brown penlight counter equally LEFT and RIGHT, with three thick colored penlights on each side of the central bow and a dark navy scalloped front valance with gold trim. Head and bow remain centered and retain the visual height of reference; only counter width and side display space increase. Entire object should have a3:2width:height silhouette, filling most of those bounds, ears near top and counter base near bottom. Coarse pixel roguelike sprite with slight front/top view and broad simple shapes;18flat colors max,2shades per material. No mini intricate patterns, gradients, glow, anti-aliasing, letters, people, toaster, surrounding objects, floor, extra shadows or background. True transparent background. ONE standalone production sprite only."
+    }
+  ],
+  "reference": "../vendor-members187/assets/penlights-native.png",
+  "method": "built-in image_gen edit; original2x2 height retained, counter extended horizontally to3x2; replaces misinterpreted2x1 revision188"
+}

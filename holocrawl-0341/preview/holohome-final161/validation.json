@@ -1,0 +1,45 @@
+{
+  "revision": 161,
+  "status": "passed",
+  "checkedDateKST": "2026-11-10",
+  "scope": "Browser artwork and prototype interactions only; not native game validation",
+  "artRevision": 136,
+  "renderer": 159,
+  "floorsChecked": 48,
+  "distinctHomeLocations": 24,
+  "connected": true,
+  "allStairsReachable": true,
+  "oneHomeOnFloor1": true,
+  "footprint": [
+    13,
+    11
+  ],
+  "oneDedicatedDownstair": true,
+  "downstairLocalCell": [
+    6,
+    2
+  ],
+  "sixStairsPerFloor": true,
+  "originalArtSources": {
+    "doorfit159/generator159.js": "7566d1d052fd2ee5ff22c64d1d953b1d2d509b58b4dcb135f22712c6a28db15f",
+    "doorfit159/app159.js": "5333a0486410d9793e5ea6080a49b0295978c967a9e05ed1bb0a7977d157ae4b",
+    "doorfit159/materials159.js": "2b366aee850cb71b0acb014e2ecbdc1f5a20e561c312533851f1286f17f014b4",
+    "doorfit159/doors159.js": "3f6da2b2706f3d79433c55386ea222ab65d54a5075b8cfe7932c0b0cd019c70b",
+    "doorfit159/assets/entrance-native.png": "9a4bdf1e3f24c274672fdf916e084cc709d2bd198a9124d970579c9a10b275be",
+    "doorfit159/assets/tv-native.png": "bc579076629356e6eeb03579c0e6ad5e5f450bfc5781648460b71c54336f7358"
+  },
+  "observedBrowserCheck": {
+    "seed": "CITY159-8370f8df",
+    "entranceOpenedVisually": true,
+    "walkToHomeStair": true,
+    "downToFloor2": true,
+    "reloadRestoredFloor2": true,
+    "returnedToSameHomeStair": [
+      47,
+      53
+    ],
+    "observedAt": "2026-11-10",
+    "method": "Visible in-app browser controls and status text"
+  },
+  "nativeIntegrated": false
+}

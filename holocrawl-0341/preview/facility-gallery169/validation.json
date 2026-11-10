@@ -1,0 +1,77 @@
+{
+  "revision": 169,
+  "count": 12,
+  "latestPromise": 168,
+  "latestFortune": 167,
+  "images": [
+    {
+      "src": "../holohome-final161/home.png",
+      "w": 1216,
+      "h": 960
+    },
+    {
+      "src": "../facility-exteriors124/mountain-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/dining-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/theater-closed124-2x.png",
+      "w": 640,
+      "h": 640
+    },
+    {
+      "src": "../facility-exteriors124/fantasy-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/wheel-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/market-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/gamers-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/holox-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../facility-exteriors124/dev-closed124-2x.png",
+      "w": 704,
+      "h": 704
+    },
+    {
+      "src": "../promise168/field-closed168.png",
+      "w": 480,
+      "h": 480
+    },
+    {
+      "src": "../fortune167/field-closed167.png",
+      "w": 544,
+      "h": 480
+    }
+  ],
+  "modalAndDoorChecks": [
+    "home",
+    "holox",
+    "promise",
+    "myth"
+  ],
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": []
+}

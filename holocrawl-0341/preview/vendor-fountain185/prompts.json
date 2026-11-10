@@ -1,0 +1,16 @@
+{
+  "assets": [
+    {
+      "id": "fountain",
+      "w": 96,
+      "h": 96,
+      "colors": 14,
+      "prompt": "Use case: stylized-concept. A single production sprite for a compact top-down pixel roguelike town plaza. Input image is an approved STYLE reference only: match its chunky broad shapes and low-detail flat palette. Make a modest public-square FOUNTAIN with a broad octagonal warm gray stone basin, clearly visible deep turquoise water surface, a short thick central stone pedestal, a small upper bowl and only two broad light-cyan streams spilling into the basin. Slight front/top view; substantial dark stone rim and a short grounded front face. Keep most of the shape as water basin, not tall monument. No statue or characters, no logos, no text, no magic circle, no flowers, no floor or cast shadow outside the object. True transparent background. Hard square pixel edges, 14 flat colors max, 2-3 shades each for stone and water, no gradients, glow, antialiasing, noisy texture or micro-detail. Designed for a 48x48 logical pixel grid, to occupy3x3 game tiles."
+    }
+  ],
+  "reusedAssets": {
+    "candy": "../vendor-plazas184/assets/candy-native.png",
+    "penlights": "../vendor-plazas184/assets/penlights-native.png",
+    "balloon": "../vendor-plazas184/assets/balloon-native.png"
+  }
+}

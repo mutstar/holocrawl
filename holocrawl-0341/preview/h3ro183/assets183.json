@@ -1,0 +1,126 @@
+{
+  "revision": 183,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        4,
+        126,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "vehicle",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        12,
+        94,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "zeta",
+      "native": [
+        64,
+        48
+      ],
+      "logical": [
+        32,
+        24
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        58,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "kaela",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        58,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "kobo",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        10,
+        2,
+        54,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "maps",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 10,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

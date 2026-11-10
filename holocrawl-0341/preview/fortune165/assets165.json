@@ -1,0 +1,195 @@
+{
+  "revision": 165,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "label": "Myth · 포춘 네트워크 입구",
+      "native": [
+        96,
+        48
+      ],
+      "colors": 27,
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceBounds": [
+        125,
+        24,
+        1636,
+        871
+      ],
+      "visibleBounds": [
+        9,
+        2,
+        87,
+        46
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "hub",
+      "label": "공용 · 라이브 중계 데스크",
+      "native": [
+        96,
+        64
+      ],
+      "colors": 28,
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBounds": [
+        35,
+        104,
+        1502,
+        995
+      ],
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "calli",
+      "label": "칼리오페 · 사신 레코드",
+      "native": [
+        64,
+        64
+      ],
+      "colors": 24,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        95,
+        60,
+        1071,
+        1224
+      ],
+      "visibleBounds": [
+        7,
+        2,
+        57,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "kiara",
+      "label": "키아라 · 피닉스 송신기",
+      "native": [
+        64,
+        64
+      ],
+      "colors": 25,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        4,
+        105,
+        1250,
+        1156
+      ],
+      "visibleBounds": [
+        2,
+        11,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "ina",
+      "label": "이나 · 고서 중계대",
+      "native": [
+        64,
+        64
+      ],
+      "colors": 24,
+      "sourceSize": [
+        1266,
+        1242
+      ],
+      "sourceBounds": [
+        27,
+        24,
+        1241,
+        1206
+      ],
+      "visibleBounds": [
+        2,
+        4,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "ame",
+      "label": "아메 · 탐정 통신대",
+      "native": [
+        64,
+        64
+      ],
+      "colors": 24,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        47,
+        93,
+        1207,
+        1209
+      ],
+      "visibleBounds": [
+        2,
+        4,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "gura",
+      "label": "구라 · 상어 신호기",
+      "native": [
+        64,
+        64
+      ],
+      "colors": 24,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        48,
+        56,
+        1174,
+        1188
+      ],
+      "visibleBounds": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    }
+  ]
+}

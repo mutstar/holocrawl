@@ -1,0 +1,13 @@
+const fs=require('fs'),path=require('path');const P=path.resolve(__dirname,'../preview'),D=path.join(P,'facility-exteriors170'),old=path.join(P,'facility-gallery169');
+const source=JSON.parse(fs.readFileSync(path.join(old,'catalog.json'),'utf8')),manifest=JSON.parse(fs.readFileSync(path.join(D,'manifest.json'),'utf8'));
+const cards=source.cards.map(f=>{const m=manifest.maps.find(m=>m.facility===f.id);return m?{...f,image:f.id+'-closed170-2x.png',open:f.id+'-open170-2x.png',oldImage:f.image,oldOpen:f.open,themeLabel:m.theme.label,detail:'../facility-exteriors124/',revision:170}:f;});
+fs.writeFileSync(path.join(D,'catalog.json'),JSON.stringify({revision:170,count:12,changedExteriorCount:9,scope:'Nine concept exteriors; HoloHome161, Promise168, Fortune167 retained',cards},null,2)+'\n');
+let html=fs.readFileSync(path.join(old,'index.html'),'utf8').replaceAll('gallery169.js','gallery170.js');
+html=html.replace('지금까지 만든 고정지형 · 12곳','시설별 외벽 · 고정지형12곳').replace('지금까지 만든 고정지형 12곳','컨셉에 맞춘 외벽 · 고정지형 12곳');
+html=html.replace('홀로홈 + 기존 시설 9곳 + 프로미스 타워 + 포춘 네트워크. 시계탑과 포춘은 방금 간소화한 도트로 모았습니다.','공통 벽을 쓰던 9곳에 시설별 재질을 입혔습니다. 기본 벽의 회색 테두리와 연결은 유지했습니다. 홀로홈·프로미스·포춘은 기존 고유 외벽 그대로입니다.');
+html=html.replace('<span>그림을 누르면 크게 열립니다.</span>','<label><input id="before" type="checkbox"> 수정 전 외벽</label><span>그림을 누르면 크게 열립니다.</span>');
+html=html.replace('<button id="door">문을 연 모습</button>','<button id="door">문을 연 모습</button><button id="compare">수정 전 보기</button>');
+html=html.replace('전체 보기는 축소 화면입니다.','9곳의 내부 소품·문·바닥·구조는 유지했습니다. 운동장은 펜스를 보존하고 바깥 기존 벽에만 재질을 적용했습니다. 전체 보기는 축소 화면입니다.');
+html=html.replace('<a href="catalog.json">이미지 출처 목록</a>','<a href="catalog.json">이미지 출처 목록</a> · <a href="prompts.json">재질 제작 프롬프트</a> · <a href="../facility-gallery169/">이전 전체 보기</a>');
+fs.writeFileSync(path.join(D,'index.html'),html);
+console.log(JSON.stringify({gallery:170,count:cards.length,exteriorsUpdated:9}));

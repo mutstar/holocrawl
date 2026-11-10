@@ -1,0 +1,112 @@
+{
+  "revision": 165,
+  "status": "passed",
+  "scope": "Browser facility art and local layout only",
+  "footprint": [
+    13,
+    11
+  ],
+  "walkable": 186,
+  "connected": true,
+  "nonOverlappingProps": true,
+  "deterministic": true,
+  "allFivePortsReachable": true,
+  "approvedPromise164SourcesUnchanged": true,
+  "native": [
+    {
+      "id": "entrance",
+      "width": 96,
+      "height": 48,
+      "colors": 27,
+      "opaque": 2000,
+      "transparent": 2608,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "hub",
+      "width": 96,
+      "height": 64,
+      "colors": 28,
+      "opaque": 4148,
+      "transparent": 1996,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "calli",
+      "width": 64,
+      "height": 64,
+      "colors": 24,
+      "opaque": 1874,
+      "transparent": 2222,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "kiara",
+      "width": 64,
+      "height": 64,
+      "colors": 25,
+      "opaque": 1680,
+      "transparent": 2416,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "ina",
+      "width": 64,
+      "height": 64,
+      "colors": 24,
+      "opaque": 2476,
+      "transparent": 1620,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "ame",
+      "width": 64,
+      "height": 64,
+      "colors": 24,
+      "opaque": 2463,
+      "transparent": 1633,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "gura",
+      "width": 64,
+      "height": 64,
+      "colors": 24,
+      "opaque": 2160,
+      "transparent": 1936,
+      "soft": 0,
+      "edge": 0
+    }
+  ],
+  "door": {
+    "maskPixels": 1001,
+    "closedHoles": 0,
+    "openTransparent": 815,
+    "changedOutsideMask": 0
+  },
+  "movement": {
+    "visits": [
+      "calli",
+      "kiara",
+      "ina",
+      "ame",
+      "gura"
+    ],
+    "returnPosition": {
+      "x": 8,
+      "y": 12
+    },
+    "doorOpened": true,
+    "hubCollision": true
+  },
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

@@ -1,0 +1,146 @@
+{
+  "revision": 167,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        14,
+        2,
+        82,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "hub",
+      "native": [
+        96,
+        64
+      ],
+      "logical": [
+        48,
+        32
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "calli",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        8,
+        2,
+        54,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "kiara",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        18,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "ina",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "ame",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        58,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "gura",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

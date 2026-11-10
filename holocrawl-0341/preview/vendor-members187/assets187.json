@@ -1,0 +1,157 @@
+{
+  "revision": 187,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "zeta",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        30,
+        30
+      ],
+      "mode": "Existing image_gen source reused; palette/alpha/integer-grid export only"
+    },
+    {
+      "id": "kaela",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        28,
+        30
+      ],
+      "mode": "Existing image_gen source reused; palette/alpha/integer-grid export only"
+    },
+    {
+      "id": "kobo",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        26,
+        30
+      ],
+      "mode": "Existing image_gen source reused; palette/alpha/integer-grid export only"
+    },
+    {
+      "id": "moona",
+      "native": [
+        32,
+        48
+      ],
+      "logical": [
+        16,
+        24
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        26,
+        46
+      ],
+      "mode": "Existing image_gen source reused; palette/alpha/integer-grid export only"
+    },
+    {
+      "id": "iofi",
+      "native": [
+        48,
+        32
+      ],
+      "logical": [
+        24,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        40,
+        30
+      ],
+      "mode": "Existing image_gen source reused; palette/alpha/integer-grid export only"
+    }
+  ],
+  "copiedAssets": [
+    {
+      "id": "ollie",
+      "source": "../holoro182/assets/ollie-native.png"
+    },
+    {
+      "id": "anya",
+      "source": "../holoro182/assets/anya-native.png"
+    },
+    {
+      "id": "reine",
+      "source": "../holoro182/assets/reine-native.png"
+    },
+    {
+      "id": "risu",
+      "source": "../area15-178/assets/risu-native.png"
+    },
+    {
+      "id": "candy",
+      "source": "../vendor-fountain186/assets/candy-native.png"
+    },
+    {
+      "id": "penlights",
+      "source": "../vendor-fountain186/assets/penlights-native.png"
+    },
+    {
+      "id": "balloon",
+      "source": "../vendor-fountain186/assets/balloon-native.png"
+    },
+    {
+      "id": "fountain",
+      "source": "../vendor-fountain186/assets/fountain-native.png"
+    }
+  ],
+  "memberGroups": {
+    "candy": [
+      "zeta",
+      "kaela",
+      "kobo"
+    ],
+    "penlights": [
+      "ollie",
+      "anya",
+      "reine"
+    ],
+    "balloon": [
+      "risu",
+      "moona",
+      "iofi"
+    ]
+  }
+}

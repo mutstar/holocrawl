@@ -1,0 +1,54 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "New facade and five member props; original dungeon reinterpretation, not an exact HoloDori asset copy",
+  "assets": [
+    {
+      "id": "entrance",
+      "label": "프로미스 타워 · 시계 문틀",
+      "w": 96,
+      "h": 48,
+      "colors": 28,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native96x48 pixel architectural facade, wide 2:1 silhouette. Hololive Dreams Promise time-changing clock-tower inspired entrance, ORIGINAL dungeon-scale reinterpretation. Weathered NAVY metal with warm BRASS trim. Center an EMPTY arched doorway, clear transparent passage from x34..61 and y17..47 in native coordinates, opening reaches BOTTOM edge. Absolutely NO door leaves and NO dark opaque backing in this opening; the game adds moving double doors separately. Two narrow navy structural posts border this opening. Left side dominated by a large cream CLOCK face with bold dark-blue hands and only four hour marks, brass ring, readable at20px. Right side has two chunky exposed brass gears and a small crescent. Simple thin upper connecting cornice, sober clockmaker workshop, no tall tower, no roof or giant spire. All ornament stays in the96x48 facade, no floor or stairs. Outer frame should meet neighboring blue-gray industrial walls."
+    },
+    {
+      "id": "clockwork",
+      "label": "크로니 · 천문 시계장치",
+      "w": 96,
+      "h": 96,
+      "colors": 28,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native96x96 square central CLOCKWORK apparatus, Ouro Kronii TIME motif. Low blue-navy octagonal metal pedestal, huge ivory clock face tilted slightly toward viewer occupies upper left half, bold navy hour/minute hands and four brass ticks, large two exposed interlocking brass gears lower right, tiny blue glass hourglass integrated front center. Metallic rim, readable functional clockmaking engine. Broad stable square-ish footprint fitting3x3 tiles, depth is low not a tall cabinet. One integrated prop, not a sheet. Clear warm cream against navy, old brass, subdued blue accent. No numerals, no fine etching."
+    },
+    {
+      "id": "nature",
+      "label": "파우나 · 생명의 나무",
+      "w": 32,
+      "h": 64,
+      "colors": 24,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native32x64 tall narrow Ceres Fauna inspired living TREE RELIQUARY. A little leafy green tree with unmistakable two upward ANTLER-like pale branches, chunky healthy emerald leaf clusters, one small pink apple hanging below, emerging from a cream ceramic pot on a short aged brass base. Leaf silhouette broad in upper half but fits one32px tile wide; foliage NOT a rectangular cabinet. Pale green and ivory main colors, dark green outlines. No face or humanoid. Large simple shapes survive32px width."
+    },
+    {
+      "id": "civilization",
+      "label": "무메이 · 부엉이 기록대",
+      "w": 32,
+      "h": 64,
+      "colors": 24,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native32x64 tall narrow Nanashi Mumei inspired OWL ARCHIVE PERCH. One clearly recognizable round tan and cream OWL with TWO large dark eyes, two short owl ear tufts and small yellow beak, perched above two thick stacked old books on a low wooden archive stand. Wings form a small tan mantle at sides, no person. Big cream owl face is the main focal point, NOT just a bookshelf. Warm walnut and sand beige, pale feathers with dark outlines, muted teal single book spine. Robust readable silhouette at32px width."
+    },
+    {
+      "id": "chaos",
+      "label": "벨즈 · 혼돈의 주사위",
+      "w": 32,
+      "h": 32,
+      "colors": 22,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native32x32 compact Hakos Baelz inspired CHAOS DICE mechanism. One large RED six-sided die resting askew on a very low charcoal metal plinth, strong black pips, ONE pair of tiny rounded mouse-ear fittings on top corners and small brass tuning lever at right. Die is a cubic OBJECT, not a mascot face: black pips should read as dice dots, no eyes/mouth. Red and black dominant with cream edge highlights, one old brass detail. Big broad readable cube occupying most silhouette, mild chips not destruction."
+    },
+    {
+      "id": "hope",
+      "label": "아이리스 · 희망의 수정",
+      "w": 32,
+      "h": 32,
+      "colors": 22,
+      "prompt": "Use case: stylized-concept. Create ONE isolated environment prop for HoloCrawl, a Dungeon Crawl Stone Soup style 32px tile roguelike. Strict deliberately LOW resolution pixel art, large square clusters, 20-26 flat colors, dark one-pixel contours at logical native size, restrained bright highlights. Front-facing with only a very shallow top plane, same readable perspective as DCSS dungeon furniture. Design for the stated logical native size, not a high resolution painting. Mild wear and old brass, still identifiable on dark gray concrete. No people, no letters, no tiny text, no scenery, no ground plane, no cast shadow outside the object, no bloom, blur, gradients or photorealism. True transparent background, including internal openings. Keep full isolated silhouette with a small transparent margin. Logical native32x32 compact IRyS inspired NEPHILIM CRYSTAL RELIC. Large rose-pink faceted crystal suspended just above a low plum-black metal pedestal, framed by TWO distinct small wings attached to pedestal, left ivory angel wing and right near-black purple bat wing. White and black wings must read as a pair of opposing silhouettes, clear bright pink central crystal. Subtle ruby point, no bloom or colored cloud. No person, no character head. Readable few facets and wing feather shapes at32px."
+    }
+  ]
+}

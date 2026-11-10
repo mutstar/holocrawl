@@ -1,0 +1,13 @@
+{
+  "revision": 181,
+  "status": "user-review",
+  "footprint": [
+    13,
+    11
+  ],
+  "entry": "front 1-tile door within 3-tile generated facade",
+  "newAssets": 5,
+  "countertopProps": 3,
+  "nativeIntegrated": false,
+  "campaignInserted": false
+}

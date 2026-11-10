@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "checkedDateKST": "2026-11-10",
+  "method": "Visible in-app browser button controls and status text",
+  "initialState": {
+    "turns": 0,
+    "x": 5,
+    "y": 11,
+    "door": "closed"
+  },
+  "doorOpenAndEntry": true,
+  "eastCorridorToNorth": {
+    "turns": 13,
+    "x": 7,
+    "y": 1
+  },
+  "westCorridorReturnToEntrance": {
+    "turns": 29,
+    "x": 5,
+    "y": 11
+  },
+  "movementLoopVerified": true,
+  "nativeIntegrated": false
+}

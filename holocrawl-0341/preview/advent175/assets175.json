@@ -1,0 +1,126 @@
+{
+  "revision": 175,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        12,
+        2,
+        82,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "shiori",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        58,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "bijou",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        12,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "nerissa",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "fuwawa",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "mococo",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

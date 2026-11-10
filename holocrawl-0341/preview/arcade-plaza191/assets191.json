@@ -1,0 +1,97 @@
+{
+  "revision": 191,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "crane",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        90,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "onigiri",
+      "native": [
+        64,
+        96
+      ],
+      "logical": [
+        32,
+        48
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        10,
+        2,
+        54,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "phoenix",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        12,
+        2,
+        84,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "fighting",
+      "native": [
+        96,
+        64
+      ],
+      "logical": [
+        48,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        12,
+        2,
+        82,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ],
+  "reusedAssets": [
+    {
+      "id": "kong",
+      "source": "../capsule-kong190/assets/kong-native.png"
+    },
+    {
+      "id": "rack",
+      "source": "../capsule-kong190/assets/rack-native.png"
+    }
+  ],
+  "nativeIntegrated": false
+}

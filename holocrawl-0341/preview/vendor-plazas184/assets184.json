@@ -1,0 +1,66 @@
+{
+  "revision": 184,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "candy",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        8,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "penlights",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        8,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "balloon",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

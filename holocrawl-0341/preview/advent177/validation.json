@@ -1,0 +1,79 @@
+{
+  "revision": 177,
+  "results": [
+    {
+      "mode": "attached",
+      "rooms": [
+        {
+          "id": "shiori",
+          "reachable": true
+        },
+        {
+          "id": "bijou",
+          "reachable": true
+        },
+        {
+          "id": "nerissa",
+          "reachable": true
+        },
+        {
+          "id": "fuwawa",
+          "reachable": true
+        },
+        {
+          "id": "mococo",
+          "reachable": true
+        }
+      ],
+      "entryReachable": true,
+      "gatesReachable": true,
+      "blockedBars": true,
+      "outerTwoTileRing": true,
+      "furnitureCount": 8,
+      "overlaps": 0,
+      "outsideRoom": 0,
+      "unblockedFurniture": 0,
+      "strandedInterior": 0
+    },
+    {
+      "mode": "standalone",
+      "rooms": [
+        {
+          "id": "shiori",
+          "reachable": true
+        },
+        {
+          "id": "bijou",
+          "reachable": true
+        },
+        {
+          "id": "nerissa",
+          "reachable": true
+        },
+        {
+          "id": "fuwawa",
+          "reachable": true
+        },
+        {
+          "id": "mococo",
+          "reachable": true
+        }
+      ],
+      "entryReachable": true,
+      "gatesReachable": true,
+      "blockedBars": true,
+      "outerTwoTileRing": true,
+      "furnitureCount": 8,
+      "overlaps": 0,
+      "outsideRoom": 0,
+      "unblockedFurniture": 0,
+      "strandedInterior": 0
+    }
+  ],
+  "differingInteriorPixels": 0,
+  "doorOpeningPixels": 1272,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

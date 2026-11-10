@@ -1,0 +1,87 @@
+{
+  "mode": "built-in image_gen edit",
+  "styleReference": "../fortune167/native-sprites167.png",
+  "base": "../promise164/",
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "label": "프로미스 공용 입구",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum14flat colors, two or three shades/material, matching the simple props on image2. A low wide stone and navy-metal doorway FRAME. Keep the same96x48 proportions, two posts, and center EMPTY TRANSPARENT opening in the exact same position reaching bottom; absolutely NO painted door leaves or floor. Gray-beige stone, navy borders, sparse muted brass. Large flat tree emblem on left and simple owl emblem on right; one tiny red die and pink crystal patch below. Remove round medallion rings, decorative lace, repeated bolts, filigree and layered moldings. Design at48x24 logical pixels. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-e28692ef-44a5-4084-94b6-f09879391fdb.png"
+    },
+    {
+      "id": "clockwork",
+      "w": 96,
+      "h": 96,
+      "colors": 14,
+      "label": "다섯 문양의 중앙 장치",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum14flat colors, two or three shades/material, matching the simple props on image2. One squat navy shared Promise apparatus on low octagonal base. Keep SMALL pale clock at center, green tree upper left, tan owl face upper right, red die lower left, pink crystal with white and dark wing lower right, comparable visual weight. Only ONE simple brass outer edge and simple dividers. Tree has3branches, owl two eyes/beak, die few broad pips, crystal diamond and2wing silhouettes. Remove ornate scrolls, repeated bolts, gear teeth, layered moldings, dangling pendants. Preserve square footprint and all5motifs, no giant dominant clock. Logical48x48 pixels, final96x96. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-36e13fbc-1628-45ae-9fd4-e7a152803892.png"
+    },
+    {
+      "id": "frieze",
+      "w": 96,
+      "h": 32,
+      "colors": 14,
+      "label": "북쪽 공용 부조",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum14flat colors, two or three shades/material, matching the simple props on image2. Shallow horizontal stone wall strip carrying4simple emblems: green leaf, tan owl face, red die, pink crystal/wing. One muted navy/brass border only. Remove circular medallion rings, tiny etching, writing, cracks and elaborate molding. Keep wide3:1 shape with4equal readable motifs; no clock. Logical48x16 pixels, final96x32. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-c23e9992-8f56-4cfb-b2b7-af69de39aeb4.png"
+    },
+    {
+      "id": "wall",
+      "w": 128,
+      "h": 64,
+      "colors": 10,
+      "label": "시계탑 석조 재질",
+      "transparent": false,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum10flat colors, two or three shades/material, matching the simple props on image2. A flat tileable stone material swatch filling full rectangle OPAQUE. Keep gray-beige limestone ashlar masonry and offset courses, but replace noisy mottling, tiny cracks and specks with broad flat gray-beige blocks,3shades/material, sparse small chips, thin dark blue-gray mortar. About4block widths across and6courses high. Same overall value and color as target; no logos, objects, raised borders, framing, gold ornament or perspective. Logical64x32, final128x64. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. Opaque texture edge-to-edge, no transparency. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-f074e03d-ae05-4234-a7dc-ede77de4d733.png"
+    },
+    {
+      "id": "nature",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "label": "파우나 · 생명의 나무",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum12flat colors, two or three shades/material, matching the simple props on image2. One slender green magical tree in a pale pot. Keep tall1:2 footprint. Broad green canopy with3leaf masses, simple branch/antler silhouette above, one winding trunk, simple round pale pot. Remove individual tiny leaves, hanging vine curls, pot filigree, fine texture and speckled highlights. Logical16x32 pixels, final32x64. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-877d2f17-b34f-49e5-bc15-48f9e4f43ff5.png"
+    },
+    {
+      "id": "civilization",
+      "w": 32,
+      "h": 64,
+      "colors": 12,
+      "label": "무메이 · 부엉이 기록대",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum12flat colors, two or three shades/material, matching the simple props on image2. One tan owl statue standing on simple wood archive pedestal. Tall1:2 footprint. Bold round head with2dark eyes and little beak; one tan body/wing mass, low simple brown stool with2legs and one shelf. Remove individual tiny feathers, stacked book detail, woodgrain and ornate carving. Logical16x32 pixels, final32x64. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-4f1a4886-4d2c-4e0f-8b36-4f268d130a06.png"
+    },
+    {
+      "id": "chaos",
+      "w": 32,
+      "h": 32,
+      "colors": 10,
+      "label": "벨즈 · 혼돈의 주사위",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum10flat colors, two or three shades/material, matching the simple props on image2. One crimson die prop with simple dark pips on short dark pedestal. Preserve small cube silhouette and tiny ear-like corners; show2or3faces in original slight perspective. Bold flat red faces, dark contour, few broad black pips. Remove metal rings, dangling chains, fine highlights and tiny trim. Logical16x16 pixels, final32x32. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-9e26a62c-d8f3-4b9c-8ed5-a6a9804567e3.png"
+    },
+    {
+      "id": "hope",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "label": "아이리스 · 희망의 수정",
+      "transparent": true,
+      "prompt": "Use case: style-transfer. Simplify ONE pixel-art game asset. Image1 is the existing asset EDIT TARGET; Image2 is the APPROVED simplicity/style reference (Fortune167 asset board). Keep target identity, overall silhouette/orientation, dimensions and gray/navy/brass palette family. Redraw with LARGE contiguous flat color clusters, crisp dark contour, maximum12flat colors, two or three shades/material, matching the simple props on image2. One magenta crystal diamond with a simple ivory left wing and dark-purple right wing, short dark base. Keep compact square silhouette. Large pink facets using3shades, each wing2or3broad feather masses. Remove tiny feather lines, jewelry, filigree and little highlight speckles. Logical16x16 pixels, final32x32. Do not copy Fortune objects. No gradient, antialiasing, bloom, blur, fine texture, single-pixel greebles, text, watermark, characters, surrounding scenery or cast shadow. True transparent background, full isolated object, transparent outer margin; no ground. This is low-detail roguelike tile art intended for integer nearest-neighbor enlargement.",
+      "generatedSource": "C:\\Users\\071staff\\.codex\\generated_images\\01a151bb-0451-7ca0-9c5c-46a9c60d09e0\\exec-c339686e-21dd-4cca-aaf3-86ade88ec8cb.png"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "originalScreenshots": {
+    "crane": "https://appmedia.jp/wp-content/uploads/2026/07/191728_z30ti.webp",
+    "onigiri": "https://appmedia.jp/wp-content/uploads/2026/07/191942_6ehfs.webp",
+    "phoenix": "https://appmedia.jp/wp-content/uploads/2026/07/191519_i5pjb.webp",
+    "kong": "https://blog-imgs-183.fc2.com/a/r/k/arkwright1/holodori_69.jpg"
+  },
+  "screenshotPages": [
+    "https://appmedia.jp/hololive-dreams/80253832",
+    "https://arkwright1.blog.fc2.com/blog-entry-1680.html"
+  ],
+  "fighting": {
+    "description": "https://fav.useonlyasdirected.org/hololive-dreams-hidden-achievements/",
+    "mascotReference": "../gamers-station64/koronesuki-bench.png",
+    "scope": "paired cabinet interpretation; exact original photo not obtained"
+  },
+  "style": "../capsule-kong190/native-sprites190.png"
+}

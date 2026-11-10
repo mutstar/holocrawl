@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "groups": [
+    {
+      "group": "1",
+      "names": [
+        "홀로홈",
+        "0기생 페이스 마운틴",
+        "1기생 타라후쿠 저니",
+        "2기생 극장",
+        "3기생 도타바타 그라운드",
+        "4기생 기적의 바퀴"
+      ]
+    },
+    {
+      "group": "2",
+      "names": [
+        "5기생 네포라보 마트",
+        "게이머즈 폐역",
+        "holoX 연구소",
+        "DEV_IS 쵸베리바 출장소",
+        "프로미스 타워",
+        "포춘 네트워크"
+      ]
+    }
+  ],
+  "scale": 2,
+  "groupAndFacilityFilters": true,
+  "detailZoom": true,
+  "pageErrors": []
+}

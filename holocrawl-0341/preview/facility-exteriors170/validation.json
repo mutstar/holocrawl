@@ -1,0 +1,237 @@
+{
+  "revision": 170,
+  "status": "passed",
+  "scope": "Nine browser-only concept exterior materials; approved normal wall geometry and rim preserved",
+  "geometryUnchanged": true,
+  "originalSourcesUnchanged": true,
+  "checks": [
+    {
+      "id": "holox",
+      "changedPixels": 29260,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "laplus",
+          "diff": 0
+        },
+        {
+          "id": "lui",
+          "diff": 0
+        },
+        {
+          "id": "koyori",
+          "diff": 0
+        },
+        {
+          "id": "chloe",
+          "diff": 0
+        },
+        {
+          "id": "iroha",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "theater",
+      "changedPixels": 23142,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "ayame",
+          "diff": 0
+        },
+        {
+          "id": "choco",
+          "diff": 0
+        },
+        {
+          "id": "subaru",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "dev",
+      "changedPixels": 29648,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "kanade",
+          "diff": 0
+        },
+        {
+          "id": "ririka",
+          "diff": 0
+        },
+        {
+          "id": "raden",
+          "diff": 0
+        },
+        {
+          "id": "hajime",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "changedPixels": 29855,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "aki",
+          "diff": 0
+        },
+        {
+          "id": "haato",
+          "diff": 0
+        },
+        {
+          "id": "fubuki",
+          "diff": 0
+        },
+        {
+          "id": "matsuri",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "gamers",
+      "changedPixels": 27062,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "fubuki",
+          "diff": 0
+        },
+        {
+          "id": "mio",
+          "diff": 0
+        },
+        {
+          "id": "korone",
+          "checked": false
+        },
+        {
+          "id": "okayu",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "fantasy",
+      "changedPixels": 29596,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "noel",
+          "diff": 0
+        },
+        {
+          "id": "marine",
+          "diff": 0
+        },
+        {
+          "id": "pekora",
+          "diff": 0
+        },
+        {
+          "id": "flare",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "wheel",
+      "changedPixels": 28917,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "kanata",
+          "diff": 0
+        },
+        {
+          "id": "luna",
+          "diff": 0
+        },
+        {
+          "id": "watame",
+          "diff": 0
+        },
+        {
+          "id": "towa",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "market",
+      "changedPixels": 29826,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "lamy",
+          "diff": 0
+        },
+        {
+          "id": "nene",
+          "diff": 0
+        },
+        {
+          "id": "botan",
+          "diff": 0
+        },
+        {
+          "id": "polka",
+          "diff": 0
+        }
+      ]
+    },
+    {
+      "id": "mountain",
+      "changedPixels": 25354,
+      "changedOutsideShell": 0,
+      "doorPixelChanges": 0,
+      "memberDetails": [
+        {
+          "id": "sora",
+          "diff": 0
+        },
+        {
+          "id": "roboco",
+          "diff": 0
+        },
+        {
+          "id": "azki",
+          "diff": 0
+        },
+        {
+          "id": "miko",
+          "diff": 0
+        },
+        {
+          "id": "suisei",
+          "diff": 0
+        }
+      ]
+    }
+  ],
+  "masks": {
+    "phases": 2048,
+    "alphaChanges": 0,
+    "commonRimChanges": 0
+  },
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

@@ -1,0 +1,71 @@
+{
+  "revision": 183,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 128,
+      "h": 64,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. A squat wide open garage portal, dark teal steel lintel with dull brass edge bands and two chunky steel posts. Small simple crossed wrench-and-hammer badge centered on lintel, no lettering. This is a garage service gate, not a castle arch or decorative shop awning. Completely transparent central opening extending down to bottom, no door leaves, no shutter, no floor, no lower threshold. Design 64x32 logical pixels, uprights about 6 pixels wide each and opening about 48 pixels wide. Keep the silhouette low and rectangular, compatible with roguelike stone walls."
+    },
+    {
+      "id": "vehicle",
+      "w": 96,
+      "h": 96,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/h3ro183/references/original-vehicle.webp"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. Image 2 is SUBJECT reference of the actual h3ro vending vehicle; exclude all people and UI. Adapt it into a squat parked teal-blue van with a rounded WATER-DROP mascot nose, very large round pale goggles with a dark red strap, tiny cheerful mouth, a dark brown tool belt across the front, little red tassels, one big blue windshield behind the mascot nose and short dark wheels. A small side vending window holds just three flat candy colors. Do not turn it into a walking creature. Vehicle silhouette must dominate, not a human character. Fit a 48x48 logical pixel grid, keep the broad goggles and water-blue body unmistakable."
+    },
+    {
+      "id": "zeta",
+      "w": 64,
+      "h": 48,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/h3ro183/references/zeta.png"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. Image 2 supplies Zeta silver white charcoal identity palette only. A small field-intelligence console: one broad dark monitor with a large pale mint radar circle and a single bright mint dot, mounted on a squat silver-white desk with black side panels. One closed gray field briefcase tucked against the base. Only one large screen, no miniature buttons or text. Practical secret-agent equipment, no person, no cat, no floating hologram. Fit a 32x24 logical grid."
+    },
+    {
+      "id": "kaela",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/h3ro183/references/kaela.png"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. Image 2 supplies Kaela gold black red smith colors only. One compact blacksmith work station: a broad silver-gray anvil with a clear horn, one oversized gold-handled dark steel hammer resting diagonally across it, squat black and dark red workbench base. A single pair of round brass goggles hangs on front. No fire, no person, no extra tool clutter, no flying particles. Bold anvil and hammer silhouette on a 32x32 logical pixel grid."
+    },
+    {
+      "id": "kobo",
+      "w": 64,
+      "h": 64,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/h3ro183/references/kobo.png"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. Image 2 supplies Kobo blue white cyan rain colors only. A compact rainwater collection station: one big blue barrel with a white droplet emblem and a short bent gray drain pipe, a small open blue-and-white umbrella mounted above one side. Broad simple umbrella segments, clear round barrel body. It stands on a low dark blue foot. No person, no floating clouds, no animated rain, no extra scenery. Fit a 32x32 logical grid."
+    },
+    {
+      "id": "maps",
+      "w": 32,
+      "h": 32,
+      "colors": 10,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/h3ro183/references/map-box.webp"
+      ],
+      "prompt": "Use case: stylized-concept. One isolated production sprite for a compact top-down pixel roguelike, slight front/top view, true transparent background. Image 1 is approved STYLE reference only: very chunky hard square pixels, broad silhouette, 12-14 flat colors, 2 shades per material, dark outline. No gradient, glow, antialiasing, noisy texture, tiny machinery details, text, people or scene. Make it readable at a very coarse logical pixel grid. Image 2 is SUBJECT reference for the wooden map crate beside h3ro vehicle; exclude all people and scenery. One small open slatted brown wooden crate holding two broad rolled cream-and-gray maps, one partly unrolled with a single black X. Simple three horizontal slats, no tiny writing, no magical glow, no treasure chest lid. Fit a 16x16 logical pixel grid."
+    }
+  ]
+}

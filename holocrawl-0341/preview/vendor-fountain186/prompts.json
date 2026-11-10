@@ -1,0 +1,16 @@
+{
+  "assets": [
+    {
+      "id": "penlights",
+      "w": 64,
+      "h": 64,
+      "colors": 18,
+      "prompt": "Use case: stylized-concept. Create ONE tiny production pixel-art sprite for a top-down tile roguelike: a compact penlight vendor kiosk inspired by Toko Holoro. Input image 1 is SUBJECT reference: use ONLY the shop at its RIGHT (not the toaster, people, photo markings, floor or environment). Input image 2 is STYLE and SCALE reference only: retain the same coarse low-resolution pixel density and small 2x2-tile kiosk proportions, but replace its purple canopy design. Main identity: a very large round PATCHWORK BEAR FACE above the stall, with round ears, a teal central face, navy and magenta side patches joined by two thick yellow stitch marks, simple dark closed or wink eyes and friendly black mouth. Bear head is the sign/roof, NOT a full bear body. Immediately under its chin a BIG IVORY BOW with two broad loops and a gold round center, physically attached to the kiosk. Below the bow a short warm-brown sales counter with 5 thick upright brightly colored penlights, finished with a dark navy scalloped front valance and small gold trim. Make bear face and bow clearly readable at 32x32 LOGICAL pixels: very broad simple shapes, chunky 1-logical-pixel outlines and no tiny embroidery. Slight front/top view matching the existing sprite. Keep object square/compact, low-detail and grounded. True transparent background. Hard square pixel edges, at most 18 flat colors, 2 shades per material. No text, logo, background, characters, toaster, plants, glow, lighting beams, gradients, anti-aliasing or extra props. No canopy hiding the bear or ribbon. Entire asset including ears fits 32x32 logical pixels and will be exported to 64x64 native."
+    }
+  ],
+  "reusedAssets": {
+    "candy": "../vendor-fountain185/assets/candy-native.png",
+    "balloon": "../vendor-fountain185/assets/balloon-native.png",
+    "fountain": "../vendor-fountain185/assets/fountain-native.png"
+  }
+}

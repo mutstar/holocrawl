@@ -1,0 +1,15 @@
+{
+  "subjectReference": {
+    "page": "https://appmedia.jp/hololive-dreams/80253832",
+    "image": "https://appmedia.jp/wp-content/uploads/2026/07/184519_wsmko.webp",
+    "local": "references/original-shop-front.webp",
+    "view": "partial front; upper head cropped",
+    "usedFeatures": [
+      "patchwork bear face",
+      "ivory bow",
+      "multicolor penlights",
+      "navy-gold front trim"
+    ]
+  },
+  "nativeIntegrated": false
+}

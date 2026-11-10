@@ -1,0 +1,13 @@
+{
+  "revision": 183,
+  "status": "user-review",
+  "footprint": [
+    15,
+    13
+  ],
+  "entranceWidthTiles": 3,
+  "sourceVehicle": "original candy shop vehicle",
+  "newAssets": 6,
+  "nativeIntegrated": false,
+  "campaignInserted": false
+}

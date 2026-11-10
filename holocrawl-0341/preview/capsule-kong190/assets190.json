@@ -1,0 +1,73 @@
+{
+  "revision": 190,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "kong",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "rack",
+      "native": [
+        64,
+        32
+      ],
+      "logical": [
+        32,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        62,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "entrance",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        14,
+        94,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ],
+  "reusedAssets": [
+    {
+      "id": "kaela",
+      "source": "../vendor-members187/assets/kaela-native.png"
+    }
+  ],
+  "nativeIntegrated": false
+}

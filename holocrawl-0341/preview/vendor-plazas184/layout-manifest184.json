@@ -1,0 +1,29 @@
+{
+  "revision": 184,
+  "status": "direction-requested; visual-review-pending",
+  "kind": "small-vendor-plaza",
+  "facilities": [
+    "h3ro",
+    "holoro",
+    "area15"
+  ],
+  "footprint": [
+    9,
+    9
+  ],
+  "vendorFootprint": [
+    2,
+    2
+  ],
+  "maxVendorsInThisTemplate": 1,
+  "commonFurniture": {
+    "bench": 1,
+    "planter": 1
+  },
+  "memberDecorations": false,
+  "specialBuildingEntrance": false,
+  "examplesAreAlternatives": true,
+  "nativeIntegrated": false,
+  "campaignInserted": false,
+  "randomFacilitySelectionPolicyChanged": false
+}

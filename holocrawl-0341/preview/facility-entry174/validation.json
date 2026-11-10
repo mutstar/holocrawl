@@ -1,0 +1,245 @@
+{
+  "revision": 174,
+  "status": "passed",
+  "facilities": 12,
+  "placementScenes": 24,
+  "scope": "Court entrance only; concrete enclosure and other eleven facilities retained",
+  "sourceArtworkUnchanged": true,
+  "checks": [
+    {
+      "id": "home",
+      "footprint": [
+        13,
+        13
+      ],
+      "attachedEntryRoute": 9,
+      "standaloneEntryRoute": 9,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "mountain",
+      "footprint": [
+        11,
+        10
+      ],
+      "attachedEntryRoute": 9,
+      "standaloneEntryRoute": 9,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        12,
+        13,
+        12
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "dining",
+      "footprint": [
+        11,
+        10
+      ],
+      "attachedEntryRoute": 10,
+      "standaloneEntryRoute": 10,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        12,
+        13,
+        12
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "theater",
+      "footprint": [
+        8,
+        10
+      ],
+      "attachedEntryRoute": 8,
+      "standaloneEntryRoute": 8,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        10,
+        12,
+        10,
+        12
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "fantasy",
+      "footprint": [
+        11,
+        11
+      ],
+      "attachedEntryRoute": 10,
+      "standaloneEntryRoute": 10,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "wheel",
+      "footprint": [
+        11,
+        10
+      ],
+      "attachedEntryRoute": 8,
+      "standaloneEntryRoute": 8,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        12,
+        13,
+        12
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "market",
+      "footprint": [
+        13,
+        10
+      ],
+      "attachedEntryRoute": 9,
+      "standaloneEntryRoute": 9,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        15,
+        12,
+        15,
+        12
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "gamers",
+      "footprint": [
+        11,
+        11
+      ],
+      "attachedEntryRoute": 11,
+      "standaloneEntryRoute": 11,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "holox",
+      "footprint": [
+        13,
+        11
+      ],
+      "attachedEntryRoute": 10,
+      "standaloneEntryRoute": 10,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        15,
+        13,
+        15,
+        13
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "dev",
+      "footprint": [
+        11,
+        11
+      ],
+      "attachedEntryRoute": 10,
+      "standaloneEntryRoute": 10,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "promise",
+      "footprint": [
+        11,
+        11
+      ],
+      "attachedEntryRoute": 10,
+      "standaloneEntryRoute": 10,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "backWallGaps": 0
+    },
+    {
+      "id": "myth",
+      "footprint": [
+        13,
+        11
+      ],
+      "attachedEntryRoute": 8,
+      "standaloneEntryRoute": 8,
+      "interiorPixelDifferences": 0,
+      "oldBackgroundPixelsOutsideStandalone": 0,
+      "blockedInTwoCellOuterRing": 0,
+      "perimeterRoutes": [
+        15,
+        13,
+        15,
+        13
+      ],
+      "backWallGaps": 0
+    }
+  ],
+  "detailZoom": true,
+  "doorGridRouteToggles": true,
+  "facilityFilter": true,
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

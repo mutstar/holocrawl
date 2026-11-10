@@ -1,0 +1,160 @@
+{
+  "revision": 168,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        88,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "clockwork",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        90,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "frieze",
+      "native": [
+        96,
+        32
+      ],
+      "logical": [
+        48,
+        16
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "wall",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaqueTexture": true,
+      "hardAlpha": true
+    },
+    {
+      "id": "nature",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "civilization",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "chaos",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 10,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "hope",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        8,
+        30,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

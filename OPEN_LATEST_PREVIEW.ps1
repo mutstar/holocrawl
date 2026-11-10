@@ -1,4 +1,4 @@
-﻿param([switch]$NoBrowser,[int]$PreferredPort=8797)
+param([switch]$NoBrowser,[int]$PreferredPort=8797)
 $ErrorActionPreference='Stop'
 $bundleRoot=$PSScriptRoot
 $previewRoot=Join-Path $bundleRoot 'holocrawl-0341/preview'
@@ -39,7 +39,7 @@ if (-not $running) {
     if (-not $ready) { throw "Preview server failed. Read $stateDir/server.stderr.log" }
     $processId=$serverProcess.Id
 } else { $processId=$null }
-$url="http://127.0.0.1:$port/city-random160/"
+$url="http://127.0.0.1:$port/arcade-plaza191/"
 @{url=$url;port=$port;processId=$processId;root=$previewRoot} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $stateDir 'server-state.json') -Encoding UTF8
 Write-Output $url
 if (-not $NoBrowser) { Start-Process $url }

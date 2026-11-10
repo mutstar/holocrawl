@@ -1,0 +1,48 @@
+{
+  "revision": 168,
+  "base": 164,
+  "status": "user-review",
+  "geometryChanged": false,
+  "collisionsChanged": false,
+  "baseSourceHashes": {
+    "app162.js": "fe7a33b75acb5d5b4c1c51ed20aac5df9d361e628c56df11503aa8d50845873d",
+    "layout162.js": "8c5dd9bddba8a7d1e01c6c7a8a537d4899cad489511a6dd5a81d9281ebb4204d",
+    "index.html": "846ed1cafb68bdc613144bc6ce8a996d7d783c2e806a1c0cdca1eb735818db43"
+  },
+  "approved164Hashes": {
+    "app164.js": "939dd9bf04c40f4d7d64e1eae74df818c3099b28db780603ddbc9f86c7fc7d45",
+    "walls164.js": "2bf6986ea9f83167e75eb21548ea902f792d996502ae42f627f20e78f015f25f",
+    "index.html": "d719061fc3301c2193b36d27d0f7e3459d0b0ff6116fb75e88f978aca9449343",
+    "plan.json": "c458392e6df6ede38aeb16e4cd071a7075f7ea6c856ea0e901571acb934a8f2d",
+    "assets/chaos-native.png": "be7a60060efcbc1dd87fde334169fbe6576c96cdb7f1be2d9c10c00ec3d28fd1",
+    "assets/civilization-native.png": "6240bb9a2905dfdba1dfd44a98ee944538d154156c2a1242b7e57ff54ccc1ac9",
+    "assets/clockwork-native.png": "c9580a1e1afebd0a7a88a14f729d4012729fc4d2b4a54755df2f18394033a72d",
+    "assets/entrance-closed-native.png": "3b5bef2f9d2988a007b1e6047d51fa1b96cae6465b9ac1b21af25a43d30aef0b",
+    "assets/entrance-native.png": "789408a7a63fccaea07227bb074efe2e766be130225fa903184e90ecd3c64be7",
+    "assets/entrance-open-native.png": "4f507414d69b7d6cb63a60483da796d2318f96ba4250031e6ed57a06e2bf5f0a",
+    "assets/frieze-native.png": "310166954dfc138f8cba46cf06c91556485d21dc53d40c0e1d28bd8129be267b",
+    "assets/hope-native.png": "e69bbaba1fd9695be5243436d4ad74d60c90c65c0a74e5284beb511779e6833b",
+    "assets/nature-native.png": "b7b0aaaee3e597312d09b7120cf8b62e645e92d30a70396406288dde1b5f7622",
+    "assets/wall-native.png": "9bd1ff8f8b6c1a0edbeb30da19300b51c710487a04d7c5db19a5ba845276f74d"
+  },
+  "entry": {
+    "native": [
+      96,
+      48
+    ],
+    "anchor": [
+      -32,
+      -14
+    ],
+    "passage": [
+      1,
+      1
+    ],
+    "leaves": "actual transparent frame opening mask"
+  },
+  "artManifest": "assets168.json",
+  "styleReference": "../fortune167/native-sprites167.png",
+  "scope": "Simplify eight artwork assets while retaining approved spatial layout",
+  "generation": "built-in image_gen edits",
+  "nativeIntegrated": false
+}

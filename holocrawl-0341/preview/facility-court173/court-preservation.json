@@ -1,0 +1,26 @@
+{
+  "revision": 173,
+  "status": "passed",
+  "unchangedOtherScenes": 22,
+  "unchangedOtherFacilities": 11,
+  "trackPixels": 14214,
+  "trackChanges": 0,
+  "members": [
+    {
+      "checked": 800,
+      "changed": 0
+    },
+    {
+      "checked": 785,
+      "changed": 0
+    },
+    {
+      "checked": 757,
+      "changed": 0
+    },
+    {
+      "checked": 696,
+      "changed": 0
+    }
+  ]
+}

@@ -1,0 +1,2098 @@
+{
+  "revision": 170,
+  "maps": [
+    {
+      "seed": 1889185305,
+      "depth": 1,
+      "facility": "holox",
+      "name": "holoX 연구소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 22,
+        "y": 5,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 28,
+          "y": 13
+        }
+      ],
+      "focus": {
+        "x": 26.5,
+        "y": 9.5
+      },
+      "images": {
+        "new106": "holox-closed106.png",
+        "previous105": "holox-previous105.png"
+      },
+      "map": "holox-map.json",
+      "mapSha256": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b",
+      "openImage": "holox-open106.png",
+      "doors": [
+        {
+          "x": 25,
+          "y": 7,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 28,
+          "y": 13,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 25,
+          "y": 7,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 28,
+          "y": 13,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 26.5,
+        "y": 9.5
+      },
+      "basicDoors": [],
+      "memberDetails": [
+        {
+          "id": "laplus",
+          "name": "라플라스 · 뿔·사슬 봉인 격납고",
+          "box": [
+            32,
+            32,
+            96,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "lui",
+          "name": "루이 · 붉은 매 관제 단말",
+          "box": [
+            160,
+            32,
+            192,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "koyori",
+          "name": "코요리 · 분홍 시약 연구대",
+          "box": [
+            128,
+            128,
+            192,
+            160
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "chloe",
+          "name": "클로에 · 잠수 장비 거치대",
+          "box": [
+            32,
+            160,
+            64,
+            224
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "iroha",
+          "name": "이로하 · 카타나·검문기",
+          "box": [
+            160,
+            224,
+            192,
+            256
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 25,
+          "y": 7,
+          "width": 1,
+          "placementAxis": "vertical",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": true
+        },
+        {
+          "x": 28,
+          "y": 13,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/holox-decal124.png",
+      "closed": "holox-closed170.png",
+      "open": "holox-open170.png",
+      "theme": {
+        "material": "metal",
+        "label": "남색·보라 금속 패널",
+        "face": [
+          85,
+          77,
+          103
+        ],
+        "top": [
+          34,
+          33,
+          46
+        ],
+        "accent": [
+          142,
+          113,
+          170
+        ]
+      },
+      "sourceMap": "../city-facilities106/holox-map.json",
+      "sourceClosed": "../facility-exteriors124/holox-closed124.png",
+      "sourceOpen": "../facility-exteriors124/holox-open124.png"
+    },
+    {
+      "seed": 737511672,
+      "depth": 1,
+      "facility": "theater",
+      "name": "2기생 극장",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 63,
+        "y": 2,
+        "width": 8,
+        "height": 8
+      },
+      "entrances": [
+        {
+          "x": 66,
+          "y": 9
+        }
+      ],
+      "focus": {
+        "x": 67,
+        "y": 6
+      },
+      "images": {
+        "new106": "theater-closed106.png",
+        "previous105": "theater-previous105.png"
+      },
+      "map": "theater-map.json",
+      "mapSha256": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7",
+      "openImage": "theater-open106.png",
+      "doors": [
+        {
+          "x": 30,
+          "y": 22,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "width": 1
+        },
+        {
+          "x": 66,
+          "y": 9,
+          "width": 2,
+          "vertical": false
+        }
+      ],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 66,
+          "y": 9,
+          "width": 2,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 30.5,
+        "y": 22.5
+      },
+      "basicDoors": [
+        {
+          "x": 30,
+          "y": 22,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 37,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "ayame",
+          "name": "아야메 · 오니 가면과 소품 검 거치대",
+          "cell": [
+            1,
+            3
+          ],
+          "size": [
+            1,
+            1
+          ],
+          "interior": true,
+          "usesExistingBlockedCells": true
+        },
+        {
+          "id": "choco",
+          "name": "초코 · 날개 하트 분장대",
+          "cell": [
+            6,
+            3
+          ],
+          "size": [
+            1,
+            1
+          ],
+          "interior": true,
+          "usesExistingBlockedCells": true
+        },
+        {
+          "id": "subaru",
+          "name": "스바루 · 오리 등받이 감독 의자",
+          "cell": [
+            1,
+            5
+          ],
+          "size": [
+            1,
+            1
+          ],
+          "interior": true,
+          "usesExistingBlockedCells": true
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 66,
+          "y": 9,
+          "width": 2,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/theater-decal124.png",
+      "closed": "theater-closed170.png",
+      "open": "theater-open170.png",
+      "theme": {
+        "material": "brick",
+        "label": "낡은 자주빛 벽돌·황동 띠",
+        "face": [
+          111,
+          82,
+          80
+        ],
+        "top": [
+          43,
+          34,
+          39
+        ],
+        "accent": [
+          151,
+          128,
+          90
+        ]
+      },
+      "sourceMap": "../city-facilities106/theater-map.json",
+      "sourceClosed": "../facility-exteriors124/theater-closed124.png",
+      "sourceOpen": "../facility-exteriors124/theater-open124.png"
+    },
+    {
+      "seed": 1457612763,
+      "depth": 1,
+      "facility": "dev",
+      "name": "DEV_IS 쵸베리바 출장소",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 57,
+        "y": 11,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 63,
+          "y": 19
+        }
+      ],
+      "focus": {
+        "x": 61.5,
+        "y": 15.5
+      },
+      "images": {
+        "new106": "dev-closed106.png",
+        "previous105": "dev-previous105.png"
+      },
+      "map": "dev-map.json",
+      "mapSha256": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed",
+      "openImage": "dev-open106.png",
+      "doors": [
+        {
+          "x": 24,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 38,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 16,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 26,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 56,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 28,
+          "width": 1
+        },
+        {
+          "x": 12,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 31,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 39,
+          "width": 1
+        },
+        {
+          "x": 14,
+          "y": 49,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 17,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 62,
+          "y": 17,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 24.5,
+        "y": 9.5
+      },
+      "basicDoors": [
+        {
+          "x": 24,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 38,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 16,
+          "width": 1
+        },
+        {
+          "x": 24,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 10,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 26,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 56,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 28,
+          "width": 1
+        },
+        {
+          "x": 12,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 31,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 39,
+          "width": 1
+        },
+        {
+          "x": 14,
+          "y": 49,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "kanade",
+          "name": "카나데 · 연주용 건반",
+          "box": [
+            32,
+            160,
+            64,
+            192
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "ririka",
+          "name": "리리카 · CEO 접수대",
+          "box": [
+            32,
+            224,
+            64,
+            256
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "raden",
+          "name": "라덴 · 노멘 전시대",
+          "box": [
+            224,
+            96,
+            256,
+            128
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "hajime",
+          "name": "하지메 · 반펜 연습 코너",
+          "box": [
+            224,
+            160,
+            256,
+            192
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 62,
+          "y": 17,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/dev-decal124.png",
+      "closed": "dev-closed170.png",
+      "open": "dev-open170.png",
+      "theme": {
+        "material": "metal",
+        "label": "청보라 방음 금속 패널",
+        "face": [
+          76,
+          75,
+          100
+        ],
+        "top": [
+          33,
+          33,
+          46
+        ],
+        "accent": [
+          129,
+          123,
+          158
+        ]
+      },
+      "sourceMap": "../city-facilities106/dev-map.json",
+      "sourceClosed": "../facility-exteriors124/dev-closed124.png",
+      "sourceOpen": "../facility-exteriors124/dev-open124.png"
+    },
+    {
+      "seed": 1019072782,
+      "depth": 1,
+      "facility": "dining",
+      "name": "1기생 타라후쿠 저니",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 17,
+        "y": 9,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 23,
+          "y": 17
+        }
+      ],
+      "focus": {
+        "x": 21.5,
+        "y": 13.5
+      },
+      "images": {
+        "new106": "dining-closed106.png",
+        "previous105": "dining-previous105.png"
+      },
+      "map": "dining-map.json",
+      "mapSha256": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19",
+      "openImage": "dining-open106.png",
+      "doors": [
+        {
+          "x": 21,
+          "y": 12,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 21,
+          "y": 12,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 21.5,
+        "y": 13.5
+      },
+      "basicDoors": [],
+      "memberDetails": [
+        {
+          "id": "aki",
+          "name": "아키로제 · 장미 꽃병",
+          "box": [
+            64,
+            160,
+            96,
+            224
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "haato",
+          "name": "하쨔마 · 거미 라면",
+          "box": [
+            96,
+            80,
+            128,
+            128
+          ],
+          "auditDecision": "visibility-improved"
+        },
+        {
+          "id": "fubuki",
+          "name": "후부키 · 흰여우 찻주전자",
+          "box": [
+            160,
+            160,
+            192,
+            224
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "matsuri",
+          "name": "마츠리 · 에비프라이온 접시",
+          "box": [
+            192,
+            80,
+            224,
+            128
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 21,
+          "y": 12,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/dining-decal124.png",
+      "closed": "dining-closed170.png",
+      "open": "dining-open170.png",
+      "theme": {
+        "material": "plaster",
+        "label": "따뜻한 회벽·목재 하단",
+        "face": [
+          155,
+          143,
+          119
+        ],
+        "top": [
+          48,
+          47,
+          42
+        ],
+        "accent": [
+          160,
+          133,
+          94
+        ],
+        "wood": true
+      },
+      "sourceMap": "../city-facilities106/dining-map.json",
+      "sourceClosed": "../facility-exteriors124/dining-closed124.png",
+      "sourceOpen": "../facility-exteriors124/dining-open124.png"
+    },
+    {
+      "seed": 121319900,
+      "depth": 1,
+      "facility": "gamers",
+      "name": "게이머즈 폐역",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 2,
+        "y": 28,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 8,
+          "y": 36
+        }
+      ],
+      "focus": {
+        "x": 6.5,
+        "y": 32.5
+      },
+      "images": {
+        "new106": "gamers-closed106.png",
+        "previous105": "gamers-previous105.png"
+      },
+      "map": "gamers-map.json",
+      "mapSha256": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d",
+      "openImage": "gamers-open106.png",
+      "doors": [
+        {
+          "x": 31,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 11,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 12,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 33,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 34,
+          "width": 1
+        },
+        {
+          "x": 7,
+          "y": 31,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 8,
+          "y": 34,
+          "width": 1,
+          "vertical": false
+        },
+        {
+          "x": 8,
+          "y": 36,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "openPortals": 0,
+      "facilityDoors": [
+        {
+          "x": 7,
+          "y": 31,
+          "width": 1,
+          "vertical": true
+        },
+        {
+          "x": 8,
+          "y": 34,
+          "width": 1,
+          "vertical": false
+        },
+        {
+          "x": 8,
+          "y": 36,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 31.5,
+        "y": 9.5
+      },
+      "basicDoors": [
+        {
+          "x": 31,
+          "y": 9,
+          "width": 1
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 11,
+          "width": 1
+        },
+        {
+          "x": 53,
+          "y": 12,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 33,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 34,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "fubuki",
+          "name": "후부키 · 승강장 흰여우 신호등",
+          "cell": [
+            4,
+            1
+          ],
+          "size": [
+            1,
+            2
+          ],
+          "interior": true,
+          "usesExistingBlockedCells": true
+        },
+        {
+          "id": "mio",
+          "name": "미오 · 역무실 늑대 문장 타로 보관대",
+          "cell": [
+            6,
+            4
+          ],
+          "size": [
+            2,
+            1
+          ],
+          "interior": true,
+          "usesExistingBlockedCells": true
+        },
+        {
+          "id": "korone",
+          "name": "코로네 · 코로네스키 벤치",
+          "unchanged": true
+        },
+        {
+          "id": "okayu",
+          "name": "오카유 · 주먹밥 자판기",
+          "unchanged": true
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 7,
+          "y": 31,
+          "width": 1,
+          "placementAxis": "vertical",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": true
+        },
+        {
+          "x": 8,
+          "y": 34,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        },
+        {
+          "x": 8,
+          "y": 36,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/gamers-decal124.png",
+      "closed": "gamers-closed170.png",
+      "open": "gamers-open170.png",
+      "theme": {
+        "material": "tile",
+        "label": "낡은 회녹색 역 타일",
+        "face": [
+          112,
+          128,
+          123
+        ],
+        "top": [
+          37,
+          48,
+          48
+        ],
+        "accent": [
+          127,
+          165,
+          150
+        ]
+      },
+      "sourceMap": "../city-facilities106/gamers-map.json",
+      "sourceClosed": "../facility-exteriors124/gamers-closed124.png",
+      "sourceOpen": "../facility-exteriors124/gamers-open124.png"
+    },
+    {
+      "seed": 480427526,
+      "depth": 1,
+      "facility": "fantasy",
+      "name": "3기생 도타바타 그라운드",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 29,
+        "y": 56,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 35,
+          "y": 64
+        }
+      ],
+      "focus": {
+        "x": 33.5,
+        "y": 60.5
+      },
+      "images": {
+        "new106": "fantasy-closed106.png",
+        "previous105": "fantasy-previous105.png"
+      },
+      "map": "fantasy-map.json",
+      "mapSha256": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d",
+      "openImage": "fantasy-open106.png",
+      "doors": [
+        {
+          "x": 21,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 19,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 44,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 60,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 41,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 45,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 9,
+          "y": 49,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 49,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 21.5,
+        "y": 14.5
+      },
+      "basicDoors": [
+        {
+          "x": 21,
+          "y": 14,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 15,
+          "width": 1
+        },
+        {
+          "x": 13,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 27,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 40,
+          "y": 17,
+          "width": 1
+        },
+        {
+          "x": 19,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 19,
+          "width": 1
+        },
+        {
+          "x": 44,
+          "y": 24,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 60,
+          "y": 32,
+          "width": 1
+        },
+        {
+          "x": 43,
+          "y": 41,
+          "width": 1
+        },
+        {
+          "x": 37,
+          "y": 45,
+          "width": 1
+        },
+        {
+          "x": 46,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 9,
+          "y": 49,
+          "width": 1
+        },
+        {
+          "x": 41,
+          "y": 49,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "noel",
+          "name": "노엘 · 방패 타격 연습대",
+          "box": [
+            32,
+            128,
+            64,
+            160
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "marine",
+          "name": "마린 · 해적기 결승 표지",
+          "box": [
+            224,
+            128,
+            256,
+            160
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "pekora",
+          "name": "페코라 · 노우사기 훈련 표적",
+          "box": [
+            32,
+            192,
+            64,
+            224
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "flare",
+          "name": "후레아 · 궁술 연습대",
+          "box": [
+            224,
+            192,
+            256,
+            224
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [],
+      "decal": "../facility-exteriors124/fantasy-decal124.png",
+      "closed": "fantasy-closed170.png",
+      "open": "fantasy-open170.png",
+      "theme": {
+        "material": "concrete",
+        "label": "올리브색 운동장 콘크리트",
+        "face": [
+          109,
+          116,
+          103
+        ],
+        "top": [
+          39,
+          45,
+          39
+        ],
+        "accent": [
+          144,
+          153,
+          114
+        ]
+      },
+      "sourceMap": "../city-facilities106/fantasy-map.json",
+      "sourceClosed": "../facility-exteriors124/fantasy-closed124.png",
+      "sourceOpen": "../facility-exteriors124/fantasy-open124.png"
+    },
+    {
+      "seed": 1189374571,
+      "depth": 1,
+      "facility": "wheel",
+      "name": "4기생 기적의 바퀴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 34,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 40,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 38.5,
+        "y": 6.5
+      },
+      "images": {
+        "new106": "wheel-closed106.png",
+        "previous105": "wheel-previous105.png"
+      },
+      "map": "wheel-map.json",
+      "mapSha256": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4",
+      "openImage": "wheel-open106.png",
+      "doors": [
+        {
+          "x": 40,
+          "y": 7,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [
+        {
+          "x": 40,
+          "y": 7,
+          "width": 1,
+          "vertical": false
+        }
+      ],
+      "doorFocus": {
+        "x": 38.5,
+        "y": 6.5
+      },
+      "basicDoors": [],
+      "memberDetails": [
+        {
+          "id": "kanata",
+          "name": "카나타 · 천사 날개·고리 곤돌라",
+          "box": [
+            77,
+            70,
+            124,
+            112
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "luna",
+          "name": "루나 · 왕관 곤돌라",
+          "box": [
+            139,
+            70,
+            171,
+            112
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "watame",
+          "name": "와타메 · 양뿔·양 귀 곤돌라",
+          "box": [
+            79,
+            136,
+            123,
+            170
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "towa",
+          "name": "토와 · 악마 귀·날개 곤돌라",
+          "box": [
+            136,
+            136,
+            180,
+            170
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [
+        {
+          "x": 40,
+          "y": 7,
+          "width": 1,
+          "placementAxis": "horizontal",
+          "spriteFacing": "front",
+          "rotationApplied": false,
+          "legacyRotationRemoved": false
+        }
+      ],
+      "decal": "../facility-exteriors124/wheel-decal124.png",
+      "closed": "wheel-closed170.png",
+      "open": "wheel-open170.png",
+      "theme": {
+        "material": "metal",
+        "label": "바랜 보랏빛 놀이시설 패널",
+        "face": [
+          111,
+          103,
+          120
+        ],
+        "top": [
+          42,
+          38,
+          48
+        ],
+        "accent": [
+          154,
+          128,
+          155
+        ]
+      },
+      "sourceMap": "../city-facilities106/wheel-map.json",
+      "sourceClosed": "../facility-exteriors124/wheel-closed124.png",
+      "sourceOpen": "../facility-exteriors124/wheel-open124.png"
+    },
+    {
+      "seed": 535482548,
+      "depth": 1,
+      "facility": "market",
+      "name": "5기생 네포라보 마트",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 5,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 11,
+          "y": 10
+        }
+      ],
+      "focus": {
+        "x": 9.5,
+        "y": 6.5
+      },
+      "images": {
+        "new106": "market-closed106.png",
+        "previous105": "market-previous105.png"
+      },
+      "map": "market-map.json",
+      "mapSha256": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613",
+      "openImage": "market-open106.png",
+      "doors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 23.5,
+        "y": 13.5
+      },
+      "basicDoors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "lamy",
+          "name": "라미 · 설야월 술병·눈꽃 라벨",
+          "box": [
+            32,
+            32,
+            64,
+            96
+          ],
+          "auditDecision": "visibility-improved"
+        },
+        {
+          "id": "nene",
+          "name": "네네 · 복숭아 젤리",
+          "box": [
+            32,
+            160,
+            96,
+            192
+          ],
+          "auditDecision": "visibility-improved"
+        },
+        {
+          "id": "botan",
+          "name": "보탄 · 흰 사자 컵라면",
+          "box": [
+            192,
+            64,
+            224,
+            128
+          ],
+          "auditDecision": "visibility-improved"
+        },
+        {
+          "id": "polka",
+          "name": "폴카 · 서커스 팝콘",
+          "box": [
+            128,
+            128,
+            160,
+            160
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [],
+      "decal": "../facility-exteriors124/market-decal124.png",
+      "closed": "market-closed170.png",
+      "open": "market-open170.png",
+      "theme": {
+        "material": "tile",
+        "label": "세이지색 마트 타일",
+        "face": [
+          107,
+          129,
+          114
+        ],
+        "top": [
+          36,
+          47,
+          42
+        ],
+        "accent": [
+          151,
+          167,
+          132
+        ]
+      },
+      "sourceMap": "../city-facilities106/market-map.json",
+      "sourceClosed": "../facility-exteriors124/market-closed124.png",
+      "sourceOpen": "../facility-exteriors124/market-open124.png"
+    },
+    {
+      "seed": 1750758918,
+      "depth": 1,
+      "facility": "mountain",
+      "name": "0기생 페이스 마운틴",
+      "width": 80,
+      "height": 70,
+      "origin": {
+        "x": 3,
+        "y": 8,
+        "width": 9,
+        "height": 9
+      },
+      "entrances": [
+        {
+          "x": 9,
+          "y": 16
+        }
+      ],
+      "focus": {
+        "x": 7.5,
+        "y": 12.5
+      },
+      "images": {
+        "new106": "mountain-closed106.png",
+        "previous105": "mountain-previous105.png"
+      },
+      "map": "mountain-map.json",
+      "mapSha256": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664",
+      "openImage": "mountain-open106.png",
+      "doors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "openPortals": 1,
+      "facilityDoors": [],
+      "doorFocus": {
+        "x": 23.5,
+        "y": 13.5
+      },
+      "basicDoors": [
+        {
+          "x": 23,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 13,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 18,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 23,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 47,
+          "width": 1
+        },
+        {
+          "x": 18,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 28,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 52,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 62,
+          "y": 52,
+          "width": 1
+        },
+        {
+          "x": 23,
+          "y": 57,
+          "width": 1
+        },
+        {
+          "x": 57,
+          "y": 57,
+          "width": 1
+        }
+      ],
+      "memberDetails": [
+        {
+          "id": "sora",
+          "name": "소라 · 암벽 부조 · 긴 머리와 별 장식",
+          "box": [
+            64,
+            0,
+            96,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "roboco",
+          "name": "로보코 · 암벽 부조 · 단발과 안경",
+          "box": [
+            96,
+            0,
+            128,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "azki",
+          "name": "AZKi · 암벽 부조 · 긴 생머리",
+          "box": [
+            128,
+            0,
+            160,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "miko",
+          "name": "미코 · 암벽 부조 · 분홍 머리와 무녀 옷",
+          "box": [
+            160,
+            0,
+            192,
+            64
+          ],
+          "auditDecision": "retained"
+        },
+        {
+          "id": "suisei",
+          "name": "스이세이 · 암벽 부조 · 푸른 머리와 체크 의상",
+          "box": [
+            192,
+            0,
+            224,
+            64
+          ],
+          "auditDecision": "retained"
+        }
+      ],
+      "doorFacingChecks": [],
+      "decal": "../facility-exteriors124/mountain-decal124.png",
+      "closed": "mountain-closed170.png",
+      "open": "mountain-open170.png",
+      "theme": {
+        "material": "rock",
+        "label": "회갈색 암석 외벽",
+        "face": [
+          131,
+          125,
+          108
+        ],
+        "top": [
+          47,
+          48,
+          42
+        ],
+        "accent": [
+          157,
+          148,
+          119
+        ]
+      },
+      "sourceMap": "../city-facilities106/mountain-map.json",
+      "sourceClosed": "../facility-exteriors124/mountain-closed124.png",
+      "sourceOpen": "../facility-exteriors124/mountain-open124.png"
+    }
+  ],
+  "normalWall": 121,
+  "frontHeight": 22,
+  "geometryChanged": false,
+  "interiorChanged": false,
+  "sourceHashes": {
+    "../city-facilities106/holox-map.json": "619bf3ac9ce8bc5919cda40b2ba19be08ed3e4afba937d1467f4d2969344961b",
+    "../facility-exteriors124/holox-closed124.png": "69e99a4a06c4e242c6758e2f2d93c710d39a6b2d61afca51b8940b1787559b76",
+    "../facility-exteriors124/holox-open124.png": "71bde27018b3cc1a3ec6ec1ebe67beb3a27ce337171d9dc46f343ad417e043fe",
+    "../facility-exteriors124/holox-decal124.png": "f179963c94cec20a9cdcb67af96b2beae1042fa82a01c517ae4095077ae7bde7",
+    "../city-facilities106/theater-map.json": "fc3db3a6b9f7aa8f145750ce6c93eb992e2478476a6513dca804b6424085c0e7",
+    "../facility-exteriors124/theater-closed124.png": "81ad504f5cc6fe6658a81634da2636ccd6ac2a1af50be7913e9484903a1075f5",
+    "../facility-exteriors124/theater-open124.png": "07300bd66e8768f0ffd705e0f135ae3bbc662c4237c7efe107d2f58598410a69",
+    "../facility-exteriors124/theater-decal124.png": "e35d5ed498a655c517d81565495096c61bf9e95ab2e0e5e134c8d6ebdee8e8ba",
+    "../city-facilities106/dev-map.json": "a901a665a1e5006d96f8af13c29dc2a5c9b4bdfbacf5935765ae06663da3c3ed",
+    "../facility-exteriors124/dev-closed124.png": "eb55654cc5461721a3a3d19c03193dd5407deb7c050b874290d2872e9f8b186b",
+    "../facility-exteriors124/dev-open124.png": "34d73771012093bc0556626a2ddf074d475877b87526485e066809f89229567f",
+    "../facility-exteriors124/dev-decal124.png": "cc31c1240d3235d8382d48bd2fec2f6bf569792f99b5977a794e4e59bbc6c986",
+    "../city-facilities106/dining-map.json": "4da331db6df19409adaf25bad5b73a9a355a1a992ab9e775b2e7f649cce54d19",
+    "../facility-exteriors124/dining-closed124.png": "540a9c15e0785d86b54e140d354400f075d7d4f1de2dd405a632eef1cf9b3a71",
+    "../facility-exteriors124/dining-open124.png": "197232e5257c57a3e2d19532a242692070cdfa799b3f63fda2cc07d6013f7ba9",
+    "../facility-exteriors124/dining-decal124.png": "adbc69a85d7e8cf21ebc34ba9d09633c99623aac7cfcc946c610f57508f6ee5a",
+    "../city-facilities106/gamers-map.json": "7efef031e40ad53ac83e7d25bf47f98e21f5f7559ea0139f7bef972bcd36d57d",
+    "../facility-exteriors124/gamers-closed124.png": "a3d113a0defc0de5dce5cd4d46a67bb68f55873ef5c7619f37a4f486623d18b9",
+    "../facility-exteriors124/gamers-open124.png": "0ea1af508443c6a6e658c4690dcfacc236f91dc211d14db1997f83b8c363c066",
+    "../facility-exteriors124/gamers-decal124.png": "2f4bdb1e18cae8c05dc87b4c0d5e2aa8a89d71ad3f8a33b955a037f0478d7c93",
+    "../city-facilities106/fantasy-map.json": "7e6bd1d1beb4113f1aebe93fc18d127e2ff64c3b6ababb715365f018fff8719d",
+    "../facility-exteriors124/fantasy-closed124.png": "74f17cf22cc7546b5e324c762a5fbb821659b1b20adf9c965e36f39789541e25",
+    "../facility-exteriors124/fantasy-open124.png": "74f17cf22cc7546b5e324c762a5fbb821659b1b20adf9c965e36f39789541e25",
+    "../facility-exteriors124/fantasy-decal124.png": "66eb66b979da9da100c1bfef6e71db40ced9b7562fcd9ac0211947d4506098c9",
+    "../city-facilities106/wheel-map.json": "30c7a27e0ae19e6b102e9aa6d2c9d26aeaaa69fcbc007e3fb9af3f1d4b2530c4",
+    "../facility-exteriors124/wheel-closed124.png": "3ef60c16f60993ec7cd6c6b6a833fac59790b78602039bbd1b08649efe1a7a56",
+    "../facility-exteriors124/wheel-open124.png": "b4d5785198c61d40257ff2f282fafebea5a4bc14db8b9f2640b20b0a49c53ea9",
+    "../facility-exteriors124/wheel-decal124.png": "271e8d02a22348a28181d1a454cb2dcd0a66468a680b17c3c10e0afac344514e",
+    "../city-facilities106/market-map.json": "49229939ca4c3441cb6687f32be615706efffd73750d56d1dee686bd8e618613",
+    "../facility-exteriors124/market-closed124.png": "5fe0953a721b71141d0c3df9938eeb63601297ee363c1c9e8eb50fccd3b1b385",
+    "../facility-exteriors124/market-open124.png": "5fe0953a721b71141d0c3df9938eeb63601297ee363c1c9e8eb50fccd3b1b385",
+    "../facility-exteriors124/market-decal124.png": "31fb4fabefd32be7c8a1ff8ace34e2268ed10f8878209fbe7f79f613f3a65e38",
+    "../city-facilities106/mountain-map.json": "369ff84cc78164bdd0046cd1cd2e620ea0a12a1296972c94347777fb7be7b664",
+    "../facility-exteriors124/mountain-closed124.png": "99402a4cef8161fd6bf9240cd348234a82a0274644b0019f944942b39d855762",
+    "../facility-exteriors124/mountain-open124.png": "99402a4cef8161fd6bf9240cd348234a82a0274644b0019f944942b39d855762",
+    "../facility-exteriors124/mountain-decal124.png": "30317d09c62bc289273d6e42b5a393a6ae9533215999e0d7a5d4400d32b76c3b"
+  },
+  "nativeIntegrated": false
+}

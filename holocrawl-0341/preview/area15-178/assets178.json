@@ -1,0 +1,106 @@
+{
+  "revision": 178,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        14,
+        2,
+        80,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "cart",
+      "native": [
+        96,
+        96
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        94,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "risu",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 10,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        26,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "moona",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        30,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "iofi",
+      "native": [
+        64,
+        48
+      ],
+      "logical": [
+        32,
+        24
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        58,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

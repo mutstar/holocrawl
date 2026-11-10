@@ -1,0 +1,19 @@
+{
+  "revision": 179,
+  "status": "user-review",
+  "footprint": [
+    11,
+    11
+  ],
+  "previousFootprint": [
+    15,
+    13
+  ],
+  "entries": 3,
+  "center": "3x3 tiles unobstructed",
+  "benches": 2,
+  "planters": 2,
+  "reusedSprites": "../area15-178/assets/; ../holohome133/assets/planter-native.png",
+  "newRasterAssets": false,
+  "nativeIntegrated": false
+}

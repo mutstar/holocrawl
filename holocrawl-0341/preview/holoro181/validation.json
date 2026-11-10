@@ -1,0 +1,69 @@
+{
+  "revision": 181,
+  "results": [
+    {
+      "mode": "attached",
+      "rooms": [
+        {
+          "id": "penlights",
+          "reachable": true
+        },
+        {
+          "id": "ollie",
+          "reachable": true
+        },
+        {
+          "id": "anya",
+          "reachable": true
+        },
+        {
+          "id": "reine",
+          "reachable": true
+        }
+      ],
+      "entryReachable": true,
+      "outerTwoTileRing": true,
+      "furnitureCount": 5,
+      "mountedPropsInFixtures": true,
+      "overlaps": 0,
+      "outsideRoom": 0,
+      "unblockedFurniture": 0,
+      "strandedInterior": 0
+    },
+    {
+      "mode": "standalone",
+      "rooms": [
+        {
+          "id": "penlights",
+          "reachable": true
+        },
+        {
+          "id": "ollie",
+          "reachable": true
+        },
+        {
+          "id": "anya",
+          "reachable": true
+        },
+        {
+          "id": "reine",
+          "reachable": true
+        }
+      ],
+      "entryReachable": true,
+      "outerTwoTileRing": true,
+      "furnitureCount": 5,
+      "mountedPropsInFixtures": true,
+      "overlaps": 0,
+      "outsideRoom": 0,
+      "unblockedFurniture": 0,
+      "strandedInterior": 0
+    }
+  ],
+  "differingInteriorPixels": 0,
+  "doorOpeningPixels": 976,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

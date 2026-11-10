@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');const P=path.resolve(__dirname,'../preview'),S=path.join(P,'facility-court173'),D=path.join(P,'facility-entry174');fs.mkdirSync(D,{recursive:true});
+const catalog=JSON.parse(fs.readFileSync(path.join(S,'catalog.json'),'utf8'));catalog.revision=174;catalog.scope='Court entrance junction only; accepted concrete enclosure retained';catalog.cards.find(f=>f.id==='fantasy').shapeName='담과 맞춘 문기둥·트랙 진입로';fs.writeFileSync(path.join(D,'catalog.json'),JSON.stringify(catalog,null,2)+'\n');
+for(const n of ['materials171.js','promise-walls171.js'])fs.copyFileSync(path.join(S,n),path.join(D,n));
+let edge=fs.readFileSync(path.join(S,'court-edge173.js'),'utf8');const a=edge.indexOf(' // The access path'),b=edge.indexOf(' // Only paint inward',a);edge=edge.slice(0,a)+edge.slice(b);fs.writeFileSync(path.join(D,'court-edge174.js'),edge.replaceAll('CourtEdge173','CourtEdge174'));
+let app=fs.readFileSync(path.join(S,'placements173.js'),'utf8').replaceAll('FacilityCourt173','FacilityEntry174').replaceAll('court173Ready','entry174Ready').replaceAll('CourtEdge173','CourtEdge174');
+const prep="\nfor(const f of data.cards)if(f.courtWall)CourtEntrance174.prepare(f,assets.get(f.id));\n";app=app.replace('function terrain(q,f,o,a)',prep+'function terrain(q,f,o,a)');
+app=app.replace('CourtEdge174.paint(q,f,m,floors);','CourtEdge174.paint(q,f,m,floors);CourtEntrance174.paint(q,f,m);');
+app=app.replace('운동장만 수정 · 기본 벽과 같은 콘크리트 담 / 안쪽 회색 테두리 / 평평한 진입로','입구만 수정 · 트랙에서 이어지는 황토길 / 담과 같은 문기둥 / 평평한 문턱');
+fs.writeFileSync(path.join(D,'placements174.js'),app);
+let html=fs.readFileSync(path.join(S,'index.html'),'utf8').replaceAll('court-edge173.js','court-edge174.js').replaceAll('placements173.js','placements174.js').replace('<script src="placements174.js">','<script src="court-entrance174.js"></script><script src="placements174.js">');
+html=html.replace('운동장 경계 수정 · 벽붙임 / 독립 배치','운동장 입구 · 트랙과 담을 잇는 진입로');html=html.replace('잔디 안쪽에는 좁은 회색 테두리를 두고, 입구는 거리 바닥과 평평하게 이었습니다.','잔디 안쪽의 회색 테두리는 유지하고, 트랙에서 이어지는 황토색 길·작은 콘크리트 문기둥·얇은 문턱으로 입구를 정리했습니다.');fs.writeFileSync(path.join(D,'index.html'),html);
+console.log(JSON.stringify({revision:174,scope:'court entrance only',newRasterArtwork:0}));

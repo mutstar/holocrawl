@@ -1,0 +1,46 @@
+{
+  "revision": 182,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "ollie",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        28,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "reine",
+      "native": [
+        32,
+        32
+      ],
+      "logical": [
+        16,
+        16
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        4,
+        30,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "revision": 174,
+  "status": "passed",
+  "unchangedOtherScenes": 22,
+  "walkabilityUnchanged": true,
+  "checks": [
+    {
+      "mode": "attached",
+      "changedPixels": 2842,
+      "changedOutsideEntrance": 0,
+      "roi": {
+        "x": 408,
+        "y": 408,
+        "w": 48,
+        "bottom": 512
+      }
+    },
+    {
+      "mode": "standalone",
+      "changedPixels": 2842,
+      "changedOutsideEntrance": 0,
+      "roi": {
+        "x": 408,
+        "y": 408,
+        "w": 48,
+        "bottom": 512
+      }
+    }
+  ]
+}

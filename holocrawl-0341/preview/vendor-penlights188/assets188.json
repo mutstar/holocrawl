@@ -1,0 +1,80 @@
+{
+  "revision": 188,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "penlights",
+      "native": [
+        64,
+        32
+      ],
+      "logical": [
+        32,
+        16
+      ],
+      "colors": 18,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        60,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ],
+  "reusedAssets": [
+    {
+      "id": "candy",
+      "source": "../vendor-members187/assets/candy-native.png"
+    },
+    {
+      "id": "balloon",
+      "source": "../vendor-members187/assets/balloon-native.png"
+    },
+    {
+      "id": "fountain",
+      "source": "../vendor-members187/assets/fountain-native.png"
+    },
+    {
+      "id": "zeta",
+      "source": "../vendor-members187/assets/zeta-native.png"
+    },
+    {
+      "id": "kaela",
+      "source": "../vendor-members187/assets/kaela-native.png"
+    },
+    {
+      "id": "kobo",
+      "source": "../vendor-members187/assets/kobo-native.png"
+    },
+    {
+      "id": "ollie",
+      "source": "../vendor-members187/assets/ollie-native.png"
+    },
+    {
+      "id": "anya",
+      "source": "../vendor-members187/assets/anya-native.png"
+    },
+    {
+      "id": "reine",
+      "source": "../vendor-members187/assets/reine-native.png"
+    },
+    {
+      "id": "risu",
+      "source": "../vendor-members187/assets/risu-native.png"
+    },
+    {
+      "id": "moona",
+      "source": "../vendor-members187/assets/moona-native.png"
+    },
+    {
+      "id": "iofi",
+      "source": "../vendor-members187/assets/iofi-native.png"
+    }
+  ],
+  "footprint": [
+    2,
+    1
+  ]
+}

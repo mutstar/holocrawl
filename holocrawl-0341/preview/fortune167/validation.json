@@ -1,0 +1,116 @@
+{
+  "revision": 167,
+  "status": "passed",
+  "scope": "Simplified browser artwork; spatial composition retained",
+  "layoutAndFixturesUnchanged": true,
+  "mainAisleWidth": 3,
+  "boundaryCellsUnchanged": true,
+  "fixtureMountsVerified": true,
+  "footprint": [
+    13,
+    11
+  ],
+  "walkable": 184,
+  "connected": true,
+  "nonOverlappingProps": true,
+  "deterministic": true,
+  "allFivePortsReachable": true,
+  "approvedPromise164SourcesUnchanged": true,
+  "native": [
+    {
+      "id": "entrance",
+      "width": 96,
+      "height": 48,
+      "colors": 14,
+      "opaque": 1688,
+      "transparent": 2920,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "hub",
+      "width": 96,
+      "height": 64,
+      "colors": 14,
+      "opaque": 3972,
+      "transparent": 2172,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "calli",
+      "width": 64,
+      "height": 64,
+      "colors": 12,
+      "opaque": 1788,
+      "transparent": 2308,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "kiara",
+      "width": 64,
+      "height": 64,
+      "colors": 12,
+      "opaque": 1480,
+      "transparent": 2616,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "ina",
+      "width": 64,
+      "height": 64,
+      "colors": 12,
+      "opaque": 2440,
+      "transparent": 1656,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "ame",
+      "width": 64,
+      "height": 64,
+      "colors": 12,
+      "opaque": 2056,
+      "transparent": 2040,
+      "soft": 0,
+      "edge": 0
+    },
+    {
+      "id": "gura",
+      "width": 64,
+      "height": 64,
+      "colors": 12,
+      "opaque": 2108,
+      "transparent": 1988,
+      "soft": 0,
+      "edge": 0
+    }
+  ],
+  "door": {
+    "maskPixels": 976,
+    "closedHoles": 0,
+    "openTransparent": 784,
+    "changedOutsideMask": 0
+  },
+  "movement": {
+    "visits": [
+      "calli",
+      "kiara",
+      "ina",
+      "ame",
+      "gura"
+    ],
+    "returnPosition": {
+      "x": 8,
+      "y": 12
+    },
+    "doorOpened": true,
+    "hubCollision": true
+  },
+  "mobileOverflow": false,
+  "pageErrors": [],
+  "failedRequests": [],
+  "nativeIntegrated": false
+}

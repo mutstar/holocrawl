@@ -1,0 +1,32 @@
+{
+  "revision": 182,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "ollie",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/assets/ollie-native.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/ollie.png"
+      ],
+      "prompt": "Use case: stylized-concept / readability revision. True transparent background. Image 1 is the small current sprite to redesign; image 2 is the approved chunky pixel-art STYLE reference; image 3 supplies member palette only. Output one isolated modest tabletop merchandise sprite. It must remain obvious on a 16x16 logical pixel grid: very broad silhouette, 10-12 flat colors, dark hard outline, no gradients, glow, antialiasing, micro-detail, text, people, scenery or tall pedestal. Use wide simple shapes rather than thin stems or tiny ornaments. Replace the skinny unreadable toy with a squat WIDE seated red patchwork teddy bear. A large round head, two unmistakable round bear ears, one large yellow button eye, one cream X-shaped eye, charcoal right cheek patch, broad cream belly patch and two chunky feet. Saturated crimson dominates, cream face patches clearly separate the face from dark counter. One simple diagonal seam only. No long limbs, no rabbit ears, no knife, no zombie human. Nearly square silhouette, fill most of the 16x16 grid."
+    },
+    {
+      "id": "reine",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/assets/reine-native.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/reine.png"
+      ],
+      "prompt": "Use case: stylized-concept / readability revision. True transparent background. Image 1 is the small current sprite to redesign; image 2 is the approved chunky pixel-art STYLE reference; image 3 supplies member palette only. Output one isolated modest tabletop merchandise sprite. It must remain obvious on a 16x16 logical pixel grid: very broad silhouette, 10-12 flat colors, dark hard outline, no gradients, glow, antialiasing, micro-detail, text, people, scenery or tall pedestal. Use wide simple shapes rather than thin stems or tiny ornaments. Replace the thin almost invisible feather with a broad cobalt PEACOCK FEATHER FAN on a low navy gift stand. Only three large rounded feathers forming a wide fan, each with a bold turquoise-and-gold eye spot. One small white teacup with a gold handle sits in front of the fan. Cobalt and turquoise dominate upper silhouette; white cup is the secondary detail. No tiny feather strands, no actual bird, no character or face. Nearly square silhouette filling most of the 16x16 logical grid."
+    }
+  ],
+  "reused": "../holoro181/assets/entrance-native.png, penlights-native.png, anya-native.png",
+  "render": "three counter props displayed at 32x32; tabletop centered; rug removed; native counter emblems strengthened"
+}

@@ -1,0 +1,29 @@
+{
+  "revision": 164,
+  "mode": "built-in image_gen",
+  "sourceReferences": "../promise163/references.json",
+  "requestedChanges": "Tower-appropriate outer wall; reduce Kronii-heavy repetition and distribute Promise motifs",
+  "editedAssets": {
+    "entrance": {
+      "source": "../promise163/assets/entrance-source.png",
+      "changes": "clock/gears replaced by nature/civilization/chaos/hope; same empty portal"
+    },
+    "clockwork": {
+      "source": "../promise163/assets/clockwork-source.png",
+      "changes": "large clock reduced; four equally visible group motifs"
+    }
+  },
+  "newAssets": [
+    "frieze",
+    "wall"
+  ],
+  "unchangedNativeProps": {
+    "nature": "b7b0aaaee3e597312d09b7120cf8b62e645e92d30a70396406288dde1b5f7622",
+    "civilization": "6240bb9a2905dfdba1dfd44a98ee944538d154156c2a1242b7e57ff54ccc1ac9",
+    "chaos": "be7a60060efcbc1dd87fde334169fbe6576c96cdb7f1be2d9c10c00ec3d28fd1",
+    "hope": "e69bbaba1fd9695be5243436d4ad74d60c90c65c0a74e5284beb511779e6833b"
+  },
+  "nativeExport": "prepare-promise164.py; hard alpha, no dither, same native sizes",
+  "material": "walls164.js applies new stone to the native121 silhouette and face ownership; no geometry change",
+  "nativeIntegrated": false
+}

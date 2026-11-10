@@ -1,0 +1,84 @@
+{
+  "revision": 170,
+  "mode": "built-in image_gen; palette/size export",
+  "assets": [
+    {
+      "id": "metal",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    },
+    {
+      "id": "brick",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    },
+    {
+      "id": "plaster",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    },
+    {
+      "id": "tile",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    },
+    {
+      "id": "concrete",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    },
+    {
+      "id": "rock",
+      "native": [
+        128,
+        64
+      ],
+      "logical": [
+        64,
+        32
+      ],
+      "colors": 10,
+      "opaque": true
+    }
+  ]
+}

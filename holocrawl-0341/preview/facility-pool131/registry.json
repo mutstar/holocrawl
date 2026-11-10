@@ -41,8 +41,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/holox-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/holox-open124-2x.png",
+      "preview": "../facility-exteriors170/holox-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/holox-open170-2x.png",
       "originalMap": "../city-facilities106/holox-map.json",
       "origin": {
         "x": 22,
@@ -51,8 +51,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/holox-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/holox-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "남색·보라 금속 패널",
+      "placementPreview": "../facility-shapes172/?facility=holox",
+      "previousPlacementPreview": "../facility-placement171/?facility=holox",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "theater",
@@ -66,8 +79,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/theater-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/theater-open124-2x.png",
+      "preview": "../facility-exteriors170/theater-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/theater-open170-2x.png",
       "originalMap": "../city-facilities106/theater-map.json",
       "origin": {
         "x": 63,
@@ -76,8 +89,21 @@
         "height": 8
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/theater-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/theater-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "낡은 자주빛 벽돌·황동 띠",
+      "placementPreview": "../facility-shapes172/?facility=theater",
+      "previousPlacementPreview": "../facility-placement171/?facility=theater",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "dev",
@@ -91,8 +117,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/dev-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/dev-open124-2x.png",
+      "preview": "../facility-exteriors170/dev-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/dev-open170-2x.png",
       "originalMap": "../city-facilities106/dev-map.json",
       "origin": {
         "x": 57,
@@ -101,8 +127,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/dev-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/dev-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "청보라 방음 금속 패널",
+      "placementPreview": "../facility-shapes172/?facility=dev",
+      "previousPlacementPreview": "../facility-placement171/?facility=dev",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "dining",
@@ -116,8 +155,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/dining-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/dining-open124-2x.png",
+      "preview": "../facility-exteriors170/dining-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/dining-open170-2x.png",
       "originalMap": "../city-facilities106/dining-map.json",
       "origin": {
         "x": 17,
@@ -126,8 +165,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/dining-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/dining-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "따뜻한 회벽·목재 하단",
+      "placementPreview": "../facility-shapes172/?facility=dining",
+      "previousPlacementPreview": "../facility-placement171/?facility=dining",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "gamers",
@@ -141,8 +193,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/gamers-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/gamers-open124-2x.png",
+      "preview": "../facility-exteriors170/gamers-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/gamers-open170-2x.png",
       "originalMap": "../city-facilities106/gamers-map.json",
       "origin": {
         "x": 2,
@@ -151,8 +203,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/gamers-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/gamers-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "낡은 회녹색 역 타일",
+      "placementPreview": "../facility-shapes172/?facility=gamers",
+      "previousPlacementPreview": "../facility-placement171/?facility=gamers",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "fantasy",
@@ -166,8 +231,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/fantasy-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/fantasy-open124-2x.png",
+      "preview": "../facility-exteriors170/fantasy-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/fantasy-open170-2x.png",
       "originalMap": "../city-facilities106/fantasy-map.json",
       "origin": {
         "x": 29,
@@ -176,8 +241,36 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/fantasy-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/fantasy-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "올리브색 운동장 콘크리트",
+      "placementPreview": "../facility-entry174/?facility=fantasy",
+      "previousPlacementPreview": "../facility-placement171/?facility=fantasy",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      },
+      "candidateBoundary": {
+        "revision": 173,
+        "preview": "../facility-court173/?facility=fantasy",
+        "status": "user-approved",
+        "material": "same native concrete walls121; inward curb",
+        "nativeIntegrated": false,
+        "enclosureApprovalDate": "2026-11-10"
+      },
+      "candidateEntrance": {
+        "revision": 174,
+        "preview": "../facility-entry174/?facility=fantasy",
+        "status": "user-approved",
+        "nativeIntegrated": false,
+        "approvalDate": "2026-11-10"
+      }
     },
     {
       "id": "wheel",
@@ -191,8 +284,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/wheel-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/wheel-open124-2x.png",
+      "preview": "../facility-exteriors170/wheel-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/wheel-open170-2x.png",
       "originalMap": "../city-facilities106/wheel-map.json",
       "origin": {
         "x": 34,
@@ -201,8 +294,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/wheel-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/wheel-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "바랜 보랏빛 놀이시설 패널",
+      "placementPreview": "../facility-shapes172/?facility=wheel",
+      "previousPlacementPreview": "../facility-placement171/?facility=wheel",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "market",
@@ -216,8 +322,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/market-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/market-open124-2x.png",
+      "preview": "../facility-exteriors170/market-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/market-open170-2x.png",
       "originalMap": "../city-facilities106/market-map.json",
       "origin": {
         "x": 5,
@@ -226,8 +332,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/market-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/market-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "세이지색 마트 타일",
+      "placementPreview": "../facility-shapes172/?facility=market",
+      "previousPlacementPreview": "../facility-placement171/?facility=market",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "mountain",
@@ -241,8 +360,8 @@
         "ID",
         "EN"
       ],
-      "preview": "../facility-exteriors124/mountain-closed124-2x.png",
-      "openPreview": "../facility-exteriors124/mountain-open124-2x.png",
+      "preview": "../facility-exteriors170/mountain-closed170-2x.png",
+      "openPreview": "../facility-exteriors170/mountain-open170-2x.png",
       "originalMap": "../city-facilities106/mountain-map.json",
       "origin": {
         "x": 3,
@@ -251,8 +370,21 @@
         "height": 9
       },
       "geometryStatus": "existing-validated",
-      "artStatus": "existing-review-art",
-      "encountersStatus": "deferred"
+      "artStatus": "concept exterior material review170; common wall121 rim and geometry retained",
+      "encountersStatus": "deferred",
+      "previousPreview": "../facility-exteriors124/mountain-closed124-2x.png",
+      "previousOpenPreview": "../facility-exteriors124/mountain-open124-2x.png",
+      "artRevision": 170,
+      "artManifest": "../facility-exteriors170/manifest.json",
+      "exteriorConcept": "회갈색 암석 외벽",
+      "placementPreview": "../facility-shapes172/?facility=mountain",
+      "previousPlacementPreview": "../facility-placement171/?facility=mountain",
+      "candidateGeometry": {
+        "revision": 172,
+        "status": "user-review",
+        "source": "../facility-shapes172/catalog.json",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "promise",
@@ -268,9 +400,21 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "시계탑의 중앙 기계실과 돌아가는 계단·연결 복도",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "geometryStatus": "local-layout-user-approved; campaign insertion pending",
+      "artStatus": "simplified 10-14 color sprites matching Fortune167; user review pending; prior approved164 preserved",
+      "encountersStatus": "deferred",
+      "draftPreview": "../promise168/",
+      "artRevision": 168,
+      "artManifest": "../promise168/assets168.json",
+      "browserApproval": {
+        "revision": 164,
+        "date": "2026-11-10",
+        "preview": "../promise164/",
+        "campaignInserted": false,
+        "nativeIntegrated": false
+      },
+      "placementPreview": "../facility-shapes172/?facility=promise",
+      "previousPlacementPreview": "../facility-placement171/?facility=promise"
     },
     {
       "id": "myth",
@@ -286,9 +430,14 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "네트워크 중계실과 다섯 멤버의 장치가 있는 연결 허브",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "geometryStatus": "same outer footprint; stage/workbench/reception fixtures; campaign insertion pending",
+      "artStatus": "simplified 12-14 color coarse-grid sprites matching earlier facilities; user review pending",
+      "encountersStatus": "deferred",
+      "draftPreview": "../fortune167/",
+      "artRevision": 167,
+      "artManifest": "../fortune167/assets167.json",
+      "placementPreview": "../facility-shapes172/?facility=myth",
+      "previousPlacementPreview": "../facility-placement171/?facility=myth"
     },
     {
       "id": "advent",
@@ -303,10 +452,24 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "감방·탈출 통로·중앙 보관실이 있는 수용 시설",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "5개 감방에 철제 침상·보관함·벽걸이 사슬·선반 추가. 시오리25% 축소, 후와모코50% 확대.",
+      "geometryStatus": "browser-validated; campaign insertion pending",
+      "artStatus": "user-approved-browser177; campaign insertion pending",
+      "encountersStatus": "deferred",
+      "draftPreview": "../advent177/",
+      "artRevision": 177,
+      "artManifest": "../advent177/sizing.json",
+      "candidateGeometry": {
+        "revision": 177,
+        "status": "user-approved-browser",
+        "source": "../advent177/layout177.js",
+        "nativeIntegrated": false
+      },
+      "browserApproval": {
+        "revision": 177,
+        "date": "2026-11-10",
+        "preview": "../advent177/"
+      }
     },
     {
       "id": "area15",
@@ -321,10 +484,44 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "풍선 판매차와 열린 휴게 공간",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "15x15 통합 분수광장. 중앙3x3 분수와 판매시설3개, 벤치4·화단2. 각 판매시설 주변 기수멤버 소품3개씩 배치, 중앙2칸 통로 유지.",
+      "geometryStatus": "browser-approved189; campaign insertion pending",
+      "artStatus": "user-approved189; combined vendor fountain plaza",
+      "encountersStatus": "deferred",
+      "draftPreview": "../vendor-penlights189/",
+      "artRevision": 189,
+      "artManifest": "../vendor-penlights189/assets189.json",
+      "candidateGeometry": {
+        "revision": 189,
+        "status": "user-review",
+        "source": "../vendor-penlights189/layout189.js",
+        "nativeIntegrated": false
+      },
+      "previousBrowserApproval": {
+        "revision": 180,
+        "date": "2026-11-10",
+        "preview": "../area15-180/"
+      },
+      "previousDraftPreview": "../area15-180/",
+      "facilityType": "combined-vendor-plaza",
+      "vendorKind": "balloon",
+      "memberDecorations": true,
+      "candidateSelectionGroup": "vendor-fountain-plaza",
+      "memberProps": [
+        "risu",
+        "moona",
+        "iofi"
+      ],
+      "vendorFootprint": [
+        2,
+        2
+      ],
+      "browserApproval": {
+        "revision": 189,
+        "date": "2026-11-10",
+        "preview": "../vendor-penlights189/",
+        "scope": "browser-art-and-layout; campaign not integrated"
+      }
     },
     {
       "id": "holoro",
@@ -339,10 +536,44 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "펜라이트 상점과 토스터 장치",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "15x15 통합 분수광장. 중앙3x3 분수와 판매시설3개, 벤치4·화단2. 각 판매시설 주변 기수멤버 소품3개씩 배치, 중앙2칸 통로 유지.",
+      "geometryStatus": "browser-approved189; campaign insertion pending",
+      "artStatus": "user-approved189; combined vendor fountain plaza",
+      "encountersStatus": "deferred",
+      "draftPreview": "../vendor-penlights189/",
+      "artRevision": 189,
+      "artManifest": "../vendor-penlights189/assets189.json",
+      "candidateGeometry": {
+        "revision": 189,
+        "status": "user-review",
+        "source": "../vendor-penlights189/layout189.js",
+        "nativeIntegrated": false
+      },
+      "previousBrowserApproval": {
+        "revision": 182,
+        "date": "2026-11-10",
+        "preview": "../holoro182/"
+      },
+      "previousDraftPreview": "../holoro182/",
+      "facilityType": "combined-vendor-plaza",
+      "vendorKind": "penlights",
+      "memberDecorations": true,
+      "candidateSelectionGroup": "vendor-fountain-plaza",
+      "memberProps": [
+        "ollie",
+        "anya",
+        "reine"
+      ],
+      "vendorFootprint": [
+        3,
+        2
+      ],
+      "browserApproval": {
+        "revision": 189,
+        "date": "2026-11-10",
+        "preview": "../vendor-penlights189/",
+        "scope": "browser-art-and-layout; campaign not integrated"
+      }
     },
     {
       "id": "h3ro",
@@ -357,10 +588,39 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "차량 정비 공간과 탐험대 보급 상자",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "15x15 통합 분수광장. 중앙3x3 분수와 판매시설3개, 벤치4·화단2. 각 판매시설 주변 기수멤버 소품3개씩 배치, 중앙2칸 통로 유지.",
+      "geometryStatus": "browser-approved189; campaign insertion pending",
+      "artStatus": "user-approved189; combined vendor fountain plaza",
+      "encountersStatus": "deferred",
+      "draftPreview": "../vendor-penlights189/",
+      "artRevision": 189,
+      "artManifest": "../vendor-penlights189/assets189.json",
+      "candidateGeometry": {
+        "revision": 189,
+        "status": "user-review",
+        "source": "../vendor-penlights189/layout189.js",
+        "nativeIntegrated": false
+      },
+      "previousDraftPreview": "../h3ro183/",
+      "facilityType": "combined-vendor-plaza",
+      "vendorKind": "candy",
+      "memberDecorations": true,
+      "candidateSelectionGroup": "vendor-fountain-plaza",
+      "memberProps": [
+        "zeta",
+        "kaela",
+        "kobo"
+      ],
+      "vendorFootprint": [
+        2,
+        2
+      ],
+      "browserApproval": {
+        "revision": 189,
+        "date": "2026-11-10",
+        "preview": "../vendor-penlights189/",
+        "scope": "browser-art-and-layout; campaign not integrated"
+      }
     },
     {
       "id": "capsule-kong",
@@ -375,10 +635,27 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "대형 캡슐 머신과 캡슐 보관실",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
+      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
+      "artStatus": "user-review191",
+      "encountersStatus": "deferred",
+      "draftPreview": "../arcade-plaza191/",
+      "artRevision": 191,
+      "artManifest": "../arcade-plaza191/assets191.json",
+      "candidateGeometry": {
+        "revision": 191,
+        "status": "user-review",
+        "source": "../arcade-plaza191/layout191.js",
+        "nativeIntegrated": false,
+        "isSharedPlaza": true
+      },
+      "facilityType": "arcade-station-in-shared-plaza",
+      "previousDraftPreview": "../capsule-kong190/",
+      "stationFootprint": [
+        3,
+        3
+      ],
+      "candidateSelectionGroup": "arcade-plaza"
     },
     {
       "id": "robo-crane",
@@ -393,10 +670,26 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "크레인 게임기와 경품 창고",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
+      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
+      "artStatus": "user-review191",
+      "encountersStatus": "deferred",
+      "draftPreview": "../arcade-plaza191/",
+      "artRevision": 191,
+      "artManifest": "../arcade-plaza191/assets191.json",
+      "candidateGeometry": {
+        "revision": 191,
+        "status": "user-review",
+        "source": "../arcade-plaza191/layout191.js",
+        "nativeIntegrated": false,
+        "isSharedPlaza": true
+      },
+      "facilityType": "arcade-station-in-shared-plaza",
+      "stationFootprint": [
+        3,
+        3
+      ],
+      "candidateSelectionGroup": "arcade-plaza"
     },
     {
       "id": "onigiri-panic",
@@ -411,10 +704,26 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "주먹밥 테마 게임 부스와 경품대",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
+      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
+      "artStatus": "user-review191",
+      "encountersStatus": "deferred",
+      "draftPreview": "../arcade-plaza191/",
+      "artRevision": 191,
+      "artManifest": "../arcade-plaza191/assets191.json",
+      "candidateGeometry": {
+        "revision": 191,
+        "status": "user-review",
+        "source": "../arcade-plaza191/layout191.js",
+        "nativeIntegrated": false,
+        "isSharedPlaza": true
+      },
+      "facilityType": "arcade-station-in-shared-plaza",
+      "stationFootprint": [
+        2,
+        3
+      ],
+      "candidateSelectionGroup": "arcade-plaza"
     },
     {
       "id": "phoenix-dance",
@@ -429,10 +738,26 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "댄스 발판과 피닉스 장식이 있는 오락실",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
+      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
+      "artStatus": "user-review191",
+      "encountersStatus": "deferred",
+      "draftPreview": "../arcade-plaza191/",
+      "artRevision": 191,
+      "artManifest": "../arcade-plaza191/assets191.json",
+      "candidateGeometry": {
+        "revision": 191,
+        "status": "user-review",
+        "source": "../arcade-plaza191/layout191.js",
+        "nativeIntegrated": false,
+        "isSharedPlaza": true
+      },
+      "facilityType": "arcade-station-in-shared-plaza",
+      "stationFootprint": [
+        3,
+        3
+      ],
+      "candidateSelectionGroup": "arcade-plaza"
     },
     {
       "id": "korone-fighting",
@@ -447,10 +772,26 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "격투 게임기와 작은 대전 공간",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
+      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
+      "artStatus": "user-review191",
+      "encountersStatus": "deferred",
+      "draftPreview": "../arcade-plaza191/",
+      "artRevision": 191,
+      "artManifest": "../arcade-plaza191/assets191.json",
+      "candidateGeometry": {
+        "revision": 191,
+        "status": "user-review",
+        "source": "../arcade-plaza191/layout191.js",
+        "nativeIntegrated": false,
+        "isSharedPlaza": true
+      },
+      "facilityType": "arcade-station-in-shared-plaza",
+      "stationFootprint": [
+        3,
+        2
+      ],
+      "candidateSelectionGroup": "arcade-plaza"
     },
     {
       "id": "greed-cards",
@@ -861,12 +1202,12 @@
       "type": "official-area-announcement"
     }
   ],
-  "nextArtFacility": "promise",
+  "nextArtFacility": "capsule-kong",
   "guaranteedFacilities": [
     {
       "id": "holohome",
       "name": "홀로홈",
-      "status": "browser-prototype-user-review",
+      "status": "browser-final-check-passed",
       "region": "JP",
       "floorId": "JP-main-1",
       "floor": 1,
@@ -896,7 +1237,223 @@
         "reciprocal": true
       },
       "placement": "seeded-location-near-start; entrance and staircase connected",
+      "nativeIntegrated": false,
+      "finalCheckPreview": "../holohome-final161/",
+      "finalCheckReport": "../holohome-final161/validation.json",
+      "finalCheckDate": "2026-11-10",
+      "finalCheckStatus": "browser-check-passed"
+    }
+  ],
+  "placementComparison": {
+    "revision": 174,
+    "preview": "../facility-entry174/",
+    "facilities": 12,
+    "modes": [
+      "attached",
+      "standalone"
+    ],
+    "scope": "Existing twelve facilities approved at browser art level; Advent175 is the next separate review.",
+    "nativeIntegrated": false,
+    "campaignInsertionImplemented": false
+  },
+  "currentArtReview": {
+    "id": "arcade-plaza",
+    "ids": [
+      "capsule-kong",
+      "robo-crane",
+      "onigiri-panic",
+      "phoenix-dance",
+      "korone-fighting"
+    ],
+    "revision": 191,
+    "preview": "../arcade-plaza191/",
+    "modes": [
+      "attached",
+      "standalone"
+    ],
+    "nativeIntegrated": false,
+    "nextAfterApproval": "greed-cards"
+  },
+  "smallVendorPolicy": {
+    "revision": 189,
+    "status": "user-approved189; campaign integration pending",
+    "kind": "combined-fountain-plaza",
+    "compositeId": "vendor-fountain-plaza",
+    "facilities": [
+      "h3ro",
+      "holoro",
+      "area15"
+    ],
+    "footprint": [
+      15,
+      15
+    ],
+    "vendorsPerPlaza": 3,
+    "fountainFootprint": [
+      3,
+      3
+    ],
+    "fountainWalkwayTiles": 2,
+    "commonFurniture": {
+      "bench": 4,
+      "planter": 2
+    },
+    "memberDecorations": true,
+    "specialBuildingEntrance": false,
+    "examplesAreAlternatives": false,
+    "candidateSelectionUnits": 1,
+    "selectorGroupingStatus": "design-only; selector grouping pending",
+    "nativeIntegrated": false,
+    "campaignInserted": false,
+    "randomFacilitySelectionPolicyChanged": false,
+    "memberPropsPerVendor": 3,
+    "memberPropGroups": {
+      "candy": [
+        "zeta",
+        "kaela",
+        "kobo"
+      ],
+      "penlights": [
+        "ollie",
+        "anya",
+        "reine"
+      ],
+      "balloon": [
+        "risu",
+        "moona",
+        "iofi"
+      ]
+    },
+    "memberDecorationPlacement": "small props near each vendor; center fountain walkway kept clear",
+    "vendorFootprintsByKind": {
+      "candy": [
+        2,
+        2
+      ],
+      "penlights": [
+        3,
+        2
+      ],
+      "balloon": [
+        2,
+        2
+      ]
+    }
+  },
+  "previousSmallVendorPolicy": {
+    "revision": 184,
+    "status": "direction-requested; visual-review-pending",
+    "kind": "small-vendor-plaza",
+    "facilities": [
+      "h3ro",
+      "holoro",
+      "area15"
+    ],
+    "footprint": [
+      9,
+      9
+    ],
+    "vendorFootprint": [
+      2,
+      2
+    ],
+    "maxVendorsInThisTemplate": 1,
+    "commonFurniture": {
+      "bench": 1,
+      "planter": 1
+    },
+    "memberDecorations": false,
+    "specialBuildingEntrance": false,
+    "examplesAreAlternatives": true,
+    "nativeIntegrated": false,
+    "campaignInserted": false,
+    "randomFacilitySelectionPolicyChanged": false
+  },
+  "candidateFacilityGroups": [
+    {
+      "id": "vendor-fountain-plaza",
+      "members": [
+        "h3ro",
+        "holoro",
+        "area15"
+      ],
+      "revision": 189,
+      "status": "browser-approved189; selector integration pending",
+      "preview": "../vendor-penlights189/",
+      "nativeIntegrated": false,
+      "browserApproval": {
+        "revision": 189,
+        "date": "2026-11-10",
+        "preview": "../vendor-penlights189/",
+        "scope": "browser-art-and-layout; campaign not integrated"
+      }
+    },
+    {
+      "id": "arcade-plaza",
+      "members": [
+        "capsule-kong",
+        "robo-crane",
+        "onigiri-panic",
+        "phoenix-dance",
+        "korone-fighting"
+      ],
+      "revision": 191,
+      "status": "visual-review; selector integration pending",
+      "preview": "../arcade-plaza191/",
       "nativeIntegrated": false
     }
-  ]
+  ],
+  "arcadePlazaPolicy": {
+    "revision": 191,
+    "status": "direction-requested; visual-review-pending",
+    "compositeId": "arcade-plaza",
+    "facilities": [
+      "capsule-kong",
+      "robo-crane",
+      "onigiri-panic",
+      "phoenix-dance",
+      "korone-fighting"
+    ],
+    "footprint": [
+      21,
+      19
+    ],
+    "centralClear": [
+      9,
+      7
+    ],
+    "stationFootprints": {
+      "capsule-kong": [
+        3,
+        3
+      ],
+      "robo-crane": [
+        3,
+        3
+      ],
+      "onigiri-panic": [
+        2,
+        3
+      ],
+      "phoenix-dance": [
+        3,
+        3
+      ],
+      "korone-fighting": [
+        3,
+        2
+      ]
+    },
+    "entrances": 3,
+    "entranceWidth": 3,
+    "commonFurniture": {
+      "bench": 4,
+      "planter": 2
+    },
+    "candidateSelectionUnits": 1,
+    "selectorGroupingStatus": "design-only; selector grouping pending",
+    "nativeIntegrated": false,
+    "campaignInserted": false,
+    "randomFacilitySelectionPolicyChanged": false
+  }
 }

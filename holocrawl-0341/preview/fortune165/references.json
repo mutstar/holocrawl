@@ -1,0 +1,78 @@
+{
+  "revision": 165,
+  "checkedDate": "2026-11-10",
+  "mode": "built-in image_gen",
+  "interpretation": "Original dungeon-scale relay lobby inspired by the observed cyan tunnel and LED interior; bespoke stations are not claimed to be original HoloDori props.",
+  "sources": [
+    {
+      "url": "https://www.inside-games.jp/article/2026/07/22/184921.html",
+      "type": "first-hand preview report with in-game screenshots",
+      "images": [
+        {
+          "url": "https://www.inside-games.jp/imgs/zoom/1756243.jpg",
+          "local": "references/1756243.jpg"
+        },
+        {
+          "url": "https://www.inside-games.jp/imgs/zoom/1756244.jpg",
+          "local": "references/1756244.jpg"
+        },
+        {
+          "url": "https://www.inside-games.jp/imgs/zoom/1756245.jpg",
+          "local": "references/1756245.jpg"
+        },
+        {
+          "url": "https://www.inside-games.jp/imgs/zoom/1756246.jpg",
+          "local": "references/1756246.jpg"
+        }
+      ],
+      "observed": "Fortune Network exterior, cyan rounded entry tunnel, LED stage/lobby"
+    }
+  ],
+  "memberScope": "Project's existing five-member Myth motif: Calliope, Kiara, Ina, Amelia, Gura; no current roster substitution",
+  "assets": [
+    {
+      "id": "entrance",
+      "generatedFile": "exec-4c005a0e-d716-4f69-bc82-d26ecf6118b6.png",
+      "original": "assets/entrance-source.png",
+      "native": "assets/entrance-native.png"
+    },
+    {
+      "id": "hub",
+      "generatedFile": "exec-4e3a5d00-60b1-4956-8642-31a93d18ee5c.png",
+      "original": "assets/hub-source.png",
+      "native": "assets/hub-native.png"
+    },
+    {
+      "id": "calli",
+      "generatedFile": "exec-55dea76e-4b95-4a81-b2a6-f49aaf2ff68c.png",
+      "original": "assets/calli-source.png",
+      "native": "assets/calli-native.png"
+    },
+    {
+      "id": "kiara",
+      "generatedFile": "exec-97fb1637-b633-41e5-ad5b-e138200e9c4e.png",
+      "original": "assets/kiara-source.png",
+      "native": "assets/kiara-native.png"
+    },
+    {
+      "id": "ina",
+      "generatedFile": "exec-dba8325e-ea0c-4b48-8172-201ebe2e9922.png",
+      "original": "assets/ina-source.png",
+      "native": "assets/ina-native.png"
+    },
+    {
+      "id": "ame",
+      "generatedFile": "exec-78e470da-8ad0-40e3-a0fd-f3c2784a8f80.png",
+      "original": "assets/ame-source.png",
+      "native": "assets/ame-native.png"
+    },
+    {
+      "id": "gura",
+      "generatedFile": "exec-f919d122-3389-41c7-8225-72afd9549272.png",
+      "original": "assets/gura-source.png",
+      "native": "assets/gura-native.png"
+    }
+  ],
+  "paletteExport": "Hard alpha, no dithering,24-28 colors; weighted source-color selection preserves five colored nodes on the common relay",
+  "nativeIntegrated": false
+}

@@ -1,0 +1,61 @@
+{
+  "mode": "built-in image_gen",
+  "revision": 181,
+  "assets": [
+    {
+      "id": "entrance",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/original-shop.webp"
+      ],
+      "prompt": "Use case: stylized-concept. A single isolated production sprite for a compact top-down pixel roguelike, slight front/top view. Image 1 is a STYLE reference only: same chunky simplicity, very limited palette, broad hard square pixels, 2 shades per material. True transparent background. No gradients, glow, antialiasing, fine filigree, noisy texture, photo-realism, scene, people or text. Clear silhouette at very low resolution. Image 2 is architectural mood reference only: cream fabric frills and indigo striped poles. Make a modest low wide shop entrance with navy-and-cream short striped posts, a shallow plum awning trimmed with one row of broad cream scallops, and a single small gold diamond sign. Opening below awning is fully transparent all the way down to bottom, no door leaves or floor. 48x24 logical pixel design. Practical small souvenir shop, not a cathedral or palace."
+    },
+    {
+      "id": "penlights",
+      "w": 96,
+      "h": 64,
+      "colors": 14,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single isolated production sprite for a compact top-down pixel roguelike, slight front/top view. Image 1 is a STYLE reference only: same chunky simplicity, very limited palette, broad hard square pixels, 2 shades per material. True transparent background. No gradients, glow, antialiasing, fine filigree, noisy texture, photo-realism, scene, people or text. Clear silhouette at very low resolution. A wide shallow wooden merchandise cabinet with a simple plum backing and cream trim, displaying only six thick handheld concert penlights in two groups. Penlight rods are flat red, gold and cobalt blue, with dark handles; no glow. Compact squared cabinet on two short feet. Bold clearly countable rods, empty space between groups, no little labels or shelves of clutter. Fit a 48x32 logical pixel grid. Front three-quarter furniture view."
+    },
+    {
+      "id": "ollie",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/ollie.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single isolated production sprite for a compact top-down pixel roguelike, slight front/top view. Image 1 is a STYLE reference only: same chunky simplicity, very limited palette, broad hard square pixels, 2 shades per material. True transparent background. No gradients, glow, antialiasing, fine filigree, noisy texture, photo-realism, scene, people or text. Clear silhouette at very low resolution. Image 2 supplies Ollie red, charcoal, cream and yellow identity colors only. One small seated stitched teddy-bear plush souvenir, mostly red and charcoal patchwork, yellow button eye on one side and pale stitched X eye on the other, one broad cream belly patch, simple round bear ears. No person, no zombie body, no blood, no extra symbols or pedestal. Designed as a counter-top plush on a 16x16 logical pixel grid."
+    },
+    {
+      "id": "anya",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/toaster.webp",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/anya.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single isolated production sprite for a compact top-down pixel roguelike, slight front/top view. Image 1 is a STYLE reference only: same chunky simplicity, very limited palette, broad hard square pixels, 2 shades per material. True transparent background. No gradients, glow, antialiasing, fine filigree, noisy texture, photo-realism, scene, people or text. Clear silhouette at very low resolution. Image 2 is the actual TOASTER SUBJECT reference; image 3 supplies Anya warm gold and cream colors only. One small cream rounded toaster appliance with two horizontal sleepy black eyes, pink cheek marks and one golden toast slice emerging from the top. A very small dark lever on its right side, dark simple feet. No person, no scenery, no crown, no other objects. 16x16 logical pixel design. Readable tabletop appliance, not giant mascot or a standing character."
+    },
+    {
+      "id": "reine",
+      "w": 32,
+      "h": 32,
+      "colors": 12,
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/fortune167/native-sprites167.png",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/holoro181/references/reine.png"
+      ],
+      "prompt": "Use case: stylized-concept. A single isolated production sprite for a compact top-down pixel roguelike, slight front/top view. Image 1 is a STYLE reference only: same chunky simplicity, very limited palette, broad hard square pixels, 2 shades per material. True transparent background. No gradients, glow, antialiasing, fine filigree, noisy texture, photo-realism, scene, people or text. Clear silhouette at very low resolution. Image 2 supplies Reine cobalt blue, white and gold identity colors only. One small souvenir gift set on a short navy tray: a single white teacup with gold handle and one upright cobalt peacock feather behind it, feather has one broad turquoise eye marking. Simple broad shapes, no detailed feather strands. No person, no face, no tall pedestal. 16x16 logical pixel design, a modest countertop gift."
+    }
+  ]
+}

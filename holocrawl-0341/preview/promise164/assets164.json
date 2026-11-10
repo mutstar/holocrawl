@@ -1,0 +1,96 @@
+{
+  "revision": 164,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "entrance",
+      "label": "프로미스 공용 입구",
+      "native": [
+        96,
+        48
+      ],
+      "colors": 26,
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceBounds": [
+        20,
+        74,
+        1755,
+        825
+      ],
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        46
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "clockwork",
+      "label": "다섯 문양의 중앙 장치",
+      "native": [
+        96,
+        96
+      ],
+      "colors": 26,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": [
+        77,
+        45,
+        1178,
+        1239
+      ],
+      "visibleBounds": [
+        5,
+        2,
+        90,
+        94
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "frieze",
+      "label": "북쪽 공용 부조",
+      "native": [
+        96,
+        32
+      ],
+      "colors": 28,
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceBounds": [
+        34,
+        109,
+        2138,
+        610
+      ],
+      "visibleBounds": [
+        2,
+        8,
+        94,
+        30
+      ],
+      "mode": "built-in image_gen; native palette/size export",
+      "hardAlpha": true
+    },
+    {
+      "id": "wall",
+      "native": [
+        128,
+        64
+      ],
+      "opaqueTexture": true,
+      "hardAlpha": true
+    }
+  ]
+}
