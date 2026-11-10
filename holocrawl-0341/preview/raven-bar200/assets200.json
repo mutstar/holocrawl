@@ -1,0 +1,34 @@
+{
+  "revision": 200,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "raven-perch",
+      "native": [
+        48,
+        64
+      ],
+      "logical": [
+        24,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        4,
+        46,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/raven-perch-native.png",
+      "sourcePath": "assets/raven-perch-source.png"
+    }
+  ],
+  "inheritedAssets": "../raven-bar199/assets199.json",
+  "codeNativeDetails": [
+    "score stand",
+    "blue feather/asymmetric horn/music crest",
+    "wall-mounted penlight holder"
+  ]
+}

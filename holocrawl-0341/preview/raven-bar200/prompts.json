@@ -1,0 +1,18 @@
+{
+  "revision": 200,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "raven-perch",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art furniture sprite for a gritty32px-tile top-down roguelike. Reference1 is SUBJECT and PALETTE only: use the clearly black raven with cobalt-blue wing/tail highlights sitting on Nerissa Ravencroft shoulder; ignore the human. Reference2 is PIXEL FURNITURE STYLE only: coarse chunky hard pixels matching those bar/piano props. Subject: a prominent BLACK RAVEN perched on one short solid dark-wood T-perch with a small sturdy rectangular base. The BIRD must dominate the upper TWO THIRDS of the object, not a tiny bird on a tall pole. Big clearly pointed beak, readable black head with small ivory eye, broad folded wing with distinct cobalt-blue feather shapes, long pointed dark-blue tail. Bird side view facing viewer right, wings folded, and both feet visibly touching the horizontal perch. No microphone. Entire single integrated raven-and-perch visible,48x64native(24x32logical),16flatcolors maximum,2shades per material, slightly elevated frontal/top-down game view, hard stepped outlines. True transparent background. No human, floor, outside shadow, cage, glow, gradients, blur, antialiasing, micro-detail, words or sprite sheet.",
+      "transparentBackground": true,
+      "refs": [
+        "../advent175/references/nerissa.png",
+        "../raven-bar199/native-sprites199.png"
+      ]
+    }
+  ]
+}

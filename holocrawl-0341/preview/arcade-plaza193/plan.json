@@ -1,0 +1,11 @@
+{
+  "revision": 193,
+  "base": 192,
+  "scope": "Accepted exterior192 preserved. Add96x32 main entrance sliding double glass door only. Side entrances remain open. Other plazas unchanged. Door collision is a browser review overlay, not native integration.",
+  "inputs": {
+    "app192.js": "564579e862b567d0480bd4bf8dcc60824c2c6d45668dd90451550079c81211ec",
+    "wall192.js": "3eb9e7782187ca44805aed7fd1158e632fb4c9c0556b394929962ea95bb82818",
+    "index.html": "4040e060669da07b06816d220b247ec20352f38034618c8440c64ea420f50005"
+  },
+  "nativeIntegrated": false
+}

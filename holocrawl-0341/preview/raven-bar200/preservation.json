@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "changedPixels": 3861,
+      "changesOutsideNewDecorations": 0,
+      "roomGeometryUnchanged": true,
+      "originalPropsUnchanged": true,
+      "originalFurnitureUnchanged": true,
+      "collisionChanges": 5
+    },
+    {
+      "mode": "standalone",
+      "changedPixels": 3861,
+      "changesOutsideNewDecorations": 0,
+      "roomGeometryUnchanged": true,
+      "originalPropsUnchanged": true,
+      "originalFurnitureUnchanged": true,
+      "collisionChanges": 5
+    }
+  ]
+}

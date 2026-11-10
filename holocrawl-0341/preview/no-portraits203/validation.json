@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "revision": 203,
+  "results": [
+    {
+      "id": "shiori",
+      "checks": [
+        {
+          "mode": "attached",
+          "changedPixels": 1792,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        },
+        {
+          "mode": "standalone",
+          "changedPixels": 1792,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        }
+      ],
+      "originalSourcesPreserved": true,
+      "portraitLoaded": false
+    },
+    {
+      "id": "haachama",
+      "checks": [
+        {
+          "mode": "attached",
+          "changedPixels": 2248,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        },
+        {
+          "mode": "standalone",
+          "changedPixels": 2248,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        }
+      ],
+      "originalSourcesPreserved": true,
+      "portraitLoaded": false
+    },
+    {
+      "id": "moona",
+      "checks": [
+        {
+          "mode": "attached",
+          "changedPixels": 2356,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        },
+        {
+          "mode": "standalone",
+          "changedPixels": 2356,
+          "outsidePortraitPixels": 0,
+          "releasedFloorCells": 4,
+          "geometryPreserved": true,
+          "otherPropsPreserved": true,
+          "furniturePreserved": true,
+          "servicesPreserved": true,
+          "remainingServicesReachable": true,
+          "closedBlocksServices": true
+        }
+      ],
+      "originalSourcesPreserved": true,
+      "portraitLoaded": false
+    }
+  ],
+  "errors": [],
+  "nativeIntegrated": false
+}

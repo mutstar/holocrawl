@@ -1,0 +1,114 @@
+{
+  "revision": 203,
+  "scope": "Remove only portrait prop/image/service point from Shiori198,Haachama201,Moona202; restore four passable floor cells each; preserve other art, geometry and source assets.",
+  "facilities": [
+    {
+      "id": "shiori",
+      "dir": "greed-cards203",
+      "from": "greed-cards198",
+      "old": 198,
+      "global": "Greed",
+      "layout": 196,
+      "name": "시오리 · 카드 오브 그리드",
+      "desc": "와인색 카지노 실내에 녹색 카드 테이블, 흑백 장서와 깃펜 독서대를 남겼습니다. 시오리 초상 진열대를 빼고 옆 통로를 넓혔습니다.",
+      "assets": [
+        [
+          "카드 테이블",
+          "../greed-cards195/assets/table-native.png",
+          288,
+          192
+        ],
+        [
+          "흑백 장서",
+          "../greed-cards195/assets/archive-native.png",
+          192,
+          192
+        ],
+        [
+          "칩·기록 교환대",
+          "../greed-cards195/assets/counter-native.png",
+          192,
+          96
+        ]
+      ],
+      "inputHashes": {
+        "app198.js": "097f86f04302c3640f3e86502dd7b6bc8c985154dd41c17349464b8b58b7f5d9",
+        "index.html": "0acc26984f6dc9db76e9fe4e147d48a578565b3cc4823233322777b86474d15c",
+        "wine198.js": "306a2ea9cf2926b101f0cf999755ef78b4f74ddf20e0c9bf05f37d193bd52824"
+      }
+    },
+    {
+      "id": "haachama",
+      "dir": "haachama-lottery203",
+      "from": "haachama-lottery201",
+      "old": 201,
+      "global": "Chama",
+      "layout": 201,
+      "name": "하쨔마 · 로터리 차마차맥스",
+      "desc": "하트 복권기와 체크무늬 창구, 스크래치 책상은 유지하고 초상 진열대를 뺐습니다. 붉은 하트와 리본으로 하쨔마의 특징을 살렸습니다.",
+      "assets": [
+        [
+          "하트 복권기",
+          "../haachama-lottery201/assets/machine-native.png",
+          192,
+          288
+        ],
+        [
+          "판매 창구",
+          "../haachama-lottery201/assets/counter-native.png",
+          288,
+          96
+        ],
+        [
+          "스크래치 책상",
+          "../haachama-lottery201/assets/scratch-desk-native.png",
+          192,
+          96
+        ]
+      ],
+      "inputHashes": {
+        "app201.js": "1169048fd8dca3fbbf9a1ae876c4a222e301a5424655c8c362488c8fbe9a001a",
+        "fixtures201.js": "e90e7496308dab9b698b47166714f2408f6fbf9d6c6926354905feaaba7fe41c",
+        "index.html": "4243bd6b5c8a1602083b63ccb234e92f3f5c4bbaa977ede334c4599ee823aff6",
+        "layout201.js": "54e865a1d18a32dddfdb6e1236714bc6e44d0a7e5ad4b0aef92b79b82d0713fa"
+      }
+    },
+    {
+      "id": "moona",
+      "dir": "moon-ace203",
+      "from": "moon-ace202",
+      "old": 202,
+      "global": "Moon",
+      "layout": 202,
+      "name": "무나 · 문에이스",
+      "desc": "초상 진열대를 빼고 은빛 초승달, 달 문양 테이블과 칩 교환대를 남겼습니다. 남보라색 실내와 은빛 테두리는 유지했습니다.",
+      "assets": [
+        [
+          "달 문양 테이블",
+          "../moon-ace202/assets/table-native.png",
+          288,
+          192
+        ],
+        [
+          "칩 교환대",
+          "../moon-ace202/assets/counter-native.png",
+          288,
+          144
+        ],
+        [
+          "은빛 초승달",
+          "../moon-ace202/assets/moon-display-native.png",
+          192,
+          192
+        ]
+      ],
+      "inputHashes": {
+        "app202.js": "d8c60ffd6d8b4a40a9d04be93ef846c6223be3b9da88c3a9057c3141c1b692a0",
+        "fixtures202.js": "663fe7e0b260b82db5ce9350666c0270ef6abec54c04ac9e9f0a8790a0629483",
+        "index.html": "68fdd3200490979ad3f31e4fb4ef2b785fd48beb0082881ff264ed51b88d2106",
+        "layout202.js": "0ef7274700d22741fe84123a23b040b0577c2418eeabf2e349e5e17d0d7db080"
+      }
+    }
+  ],
+  "nativeIntegrated": false
+}

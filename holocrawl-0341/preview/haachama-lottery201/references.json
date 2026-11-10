@@ -1,0 +1,10 @@
+{
+  "officialProfile": "https://hololive.hololivepro.com/talents/akai-haato",
+  "officialImage": "https://hololive.hololivepro.com/wp-content/uploads/2020/06/Akai-Haato_pr-img_01.webp",
+  "lotteryScreenshot": "https://www.horodori.com/images/gameplay/daily-routine-lottery-location.webp",
+  "screenshotPage": "https://www.horodori.com/articles/daily-routine",
+  "facilitySource": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+  "verified": "Original game lottery uses scratch tickets. The screenshot shows red/cream checker and a rosy coloured-ball dome.",
+  "adaptation": "Custom HoloCrawl room, props and heart/ribbon decoration, not an exact original building model. UI/people omitted.",
+  "style": "../greed-cards195/native-sprites195.png"
+}

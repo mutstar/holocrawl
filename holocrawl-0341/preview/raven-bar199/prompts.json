@@ -1,0 +1,40 @@
+{
+  "revision": 199,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "counter",
+      "w": 128,
+      "h": 48,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art bar counter sprite for a gritty32px-tile top-down roguelike. Match chunky low-detail DCSS furniture: slightly elevated frontal/top view,64x16logical pixel grid,128x32native,16flatcolors maximum, hard stepped edges and2shades per material. Subject: a low wide four-tile bar counter, almost-black navy wood with worn silver-blue metal rim, deep indigo inset front panels with small cobalt feather inlays. On the long top put three chunky blue/teal/amber bottle silhouettes, two simple ivory glasses, and a folded white cocktail napkin. Integrated low cabinet body and short feet. Clearly a bar counter, not an arcade or altar. Full object visible, wide horizontal silhouette. Actual transparent background. No people, floor, outside cast shadow, glow, gradients, blur, antialiasing, tiny ornamental noise, text or sprite sheet.",
+      "exportNote": "Original generation request retained. Export128x48 to preserve bottle height and wide counter silhouette;4x2-cell footprint.",
+      "refs": [
+        "../greed-cards195/native-sprites195.png"
+      ],
+      "transparentBackground": true
+    },
+    {
+      "id": "piano",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art piano furniture sprite for a gritty32px-tile top-down roguelike. Compact black grand piano with raised angular dark navy lid, clearly visible broad ivory keyboard with chunky black keys along the front, short legs, muted worn silver edge and one small cobalt-blue feather-shaped inlay on its side. Slightly elevated frontal/top view,32x32logical pixels,64x64native,16flatcolors maximum,2shades per material, very chunky hard pixel shapes. Whole piano visible, compact two-tile square footprint, do not make it huge. Actual transparent background. No person, bench, microphone, floor, cast shadow, glow, gradients, blur, antialiasing, photorealism, fine detail, words, multiple objects or sprite sheet.",
+      "refs": [
+        "../greed-cards195/native-sprites195.png"
+      ],
+      "transparentBackground": true
+    },
+    {
+      "id": "raven-mic",
+      "w": 32,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art music-lounge furniture sprite for a gritty32px-tile top-down roguelike. One narrow vintage SILVER MICROPHONE STAND on a heavy round charcoal base. A small BLACK RAVEN with cobalt-blue wing and tail feathers perches on a short side arm of the same stand, with a clearly pointed raven beak and compact bird silhouette. The microphone has a chunky oval silver grille, black pole, and one short cable attached to its base. The raven and microphone are physically attached to the same integrated furniture piece. Nerissa Ravencroft music-and-raven theme. Slightly elevated frontal/top view,16x32logical pixels,32x64native,16flatcolors maximum,2shades per material, hard chunky stepped pixels. Entire object visible. Actual transparent background. No person, human face, horns, floor, outside cast shadow, glow, gradients, blur, antialiasing, tiny details, words or sprite sheet.",
+      "refs": [
+        "../greed-cards195/native-sprites195.png"
+      ],
+      "transparentBackground": true
+    }
+  ]
+}

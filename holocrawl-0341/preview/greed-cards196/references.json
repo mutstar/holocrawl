@@ -1,0 +1,10 @@
+{
+  "identity": {
+    "profile": "https://hololive.hololivepro.com/en/talents/shiori-novella/",
+    "image": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/advent_icon01.png",
+    "local": "references/shiori-official.png",
+    "role": "identity reference, black-white hair and amber eyes"
+  },
+  "interpretation": "Room decorations are HoloCrawl reinterpretations, not official casino assets.",
+  "existingAssets": "../greed-cards195/assets195.json"
+}

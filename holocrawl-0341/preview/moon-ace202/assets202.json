@@ -1,0 +1,101 @@
+{
+  "revision": 202,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "table",
+      "native": [
+        96,
+        64
+      ],
+      "logical": [
+        48,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/table-native.png",
+      "sourcePath": "assets/table-source.png"
+    },
+    {
+      "id": "counter",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        8,
+        94,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/counter-native.png",
+      "sourcePath": "assets/counter-source.png"
+    },
+    {
+      "id": "moon-display",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        12,
+        2,
+        50,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/moon-display-native.png",
+      "sourcePath": "assets/moon-display-source.png"
+    },
+    {
+      "id": "portrait",
+      "native": [
+        48,
+        64
+      ],
+      "logical": [
+        24,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        44,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/portrait-native.png",
+      "sourcePath": "assets/portrait-source.png"
+    }
+  ],
+  "codeNativeDetails": [
+    "moon/star plaques inside wall face",
+    "32px upright two-cell MOON ACE door",
+    "violet rugs and crescent entrance runner",
+    "chairs, waiting benches and safe",
+    "matching wall121 contour with indigo panels"
+  ]
+}

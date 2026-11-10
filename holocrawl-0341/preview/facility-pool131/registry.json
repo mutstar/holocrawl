@@ -636,16 +636,16 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
-      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
-      "artStatus": "user-review191",
+      "geometryStatus": "browser-validated194; selector/campaign insertion pending",
+      "artStatus": "user-approved-browser194",
       "encountersStatus": "deferred",
-      "draftPreview": "../arcade-plaza191/",
-      "artRevision": 191,
+      "draftPreview": "../arcade-plaza194/",
+      "artRevision": 194,
       "artManifest": "../arcade-plaza191/assets191.json",
       "candidateGeometry": {
-        "revision": 191,
-        "status": "user-review",
-        "source": "../arcade-plaza191/layout191.js",
+        "revision": 194,
+        "status": "user-approved-browser",
+        "source": "../arcade-plaza194/layout194.js",
         "nativeIntegrated": false,
         "isSharedPlaza": true
       },
@@ -655,7 +655,14 @@
         3,
         3
       ],
-      "candidateSelectionGroup": "arcade-plaza"
+      "candidateSelectionGroup": "arcade-plaza",
+      "acceptedExteriorRevision": 192,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     },
     {
       "id": "robo-crane",
@@ -671,16 +678,16 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
-      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
-      "artStatus": "user-review191",
+      "geometryStatus": "browser-validated194; selector/campaign insertion pending",
+      "artStatus": "user-approved-browser194",
       "encountersStatus": "deferred",
-      "draftPreview": "../arcade-plaza191/",
-      "artRevision": 191,
+      "draftPreview": "../arcade-plaza194/",
+      "artRevision": 194,
       "artManifest": "../arcade-plaza191/assets191.json",
       "candidateGeometry": {
-        "revision": 191,
-        "status": "user-review",
-        "source": "../arcade-plaza191/layout191.js",
+        "revision": 194,
+        "status": "user-approved-browser",
+        "source": "../arcade-plaza194/layout194.js",
         "nativeIntegrated": false,
         "isSharedPlaza": true
       },
@@ -689,7 +696,14 @@
         3,
         3
       ],
-      "candidateSelectionGroup": "arcade-plaza"
+      "candidateSelectionGroup": "arcade-plaza",
+      "acceptedExteriorRevision": 192,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     },
     {
       "id": "onigiri-panic",
@@ -705,16 +719,16 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
-      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
-      "artStatus": "user-review191",
+      "geometryStatus": "browser-validated194; selector/campaign insertion pending",
+      "artStatus": "user-approved-browser194",
       "encountersStatus": "deferred",
-      "draftPreview": "../arcade-plaza191/",
-      "artRevision": 191,
+      "draftPreview": "../arcade-plaza194/",
+      "artRevision": 194,
       "artManifest": "../arcade-plaza191/assets191.json",
       "candidateGeometry": {
-        "revision": 191,
-        "status": "user-review",
-        "source": "../arcade-plaza191/layout191.js",
+        "revision": 194,
+        "status": "user-approved-browser",
+        "source": "../arcade-plaza194/layout194.js",
         "nativeIntegrated": false,
         "isSharedPlaza": true
       },
@@ -723,7 +737,14 @@
         2,
         3
       ],
-      "candidateSelectionGroup": "arcade-plaza"
+      "candidateSelectionGroup": "arcade-plaza",
+      "acceptedExteriorRevision": 192,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     },
     {
       "id": "phoenix-dance",
@@ -739,16 +760,16 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
-      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
-      "artStatus": "user-review191",
+      "geometryStatus": "browser-validated194; selector/campaign insertion pending",
+      "artStatus": "user-approved-browser194",
       "encountersStatus": "deferred",
-      "draftPreview": "../arcade-plaza191/",
-      "artRevision": 191,
+      "draftPreview": "../arcade-plaza194/",
+      "artRevision": 194,
       "artManifest": "../arcade-plaza191/assets191.json",
       "candidateGeometry": {
-        "revision": 191,
-        "status": "user-review",
-        "source": "../arcade-plaza191/layout191.js",
+        "revision": 194,
+        "status": "user-approved-browser",
+        "source": "../arcade-plaza194/layout194.js",
         "nativeIntegrated": false,
         "isSharedPlaza": true
       },
@@ -757,7 +778,14 @@
         3,
         3
       ],
-      "candidateSelectionGroup": "arcade-plaza"
+      "candidateSelectionGroup": "arcade-plaza",
+      "acceptedExteriorRevision": 192,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     },
     {
       "id": "korone-fighting",
@@ -773,16 +801,16 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "21x19 공용 게임센터 광장에 5기계를 한꺼번에 배치.중앙9x7 비움,3방향진입,벤치4·화단2.각시설은독립건물대신광장안기계1종.",
-      "geometryStatus": "browser-validated191; shared plaza selector/campaign insertion pending",
-      "artStatus": "user-review191",
+      "geometryStatus": "browser-validated194; selector/campaign insertion pending",
+      "artStatus": "user-approved-browser194",
       "encountersStatus": "deferred",
-      "draftPreview": "../arcade-plaza191/",
-      "artRevision": 191,
+      "draftPreview": "../arcade-plaza194/",
+      "artRevision": 194,
       "artManifest": "../arcade-plaza191/assets191.json",
       "candidateGeometry": {
-        "revision": 191,
-        "status": "user-review",
-        "source": "../arcade-plaza191/layout191.js",
+        "revision": 194,
+        "status": "user-approved-browser",
+        "source": "../arcade-plaza194/layout194.js",
         "nativeIntegrated": false,
         "isSharedPlaza": true
       },
@@ -791,7 +819,14 @@
         3,
         2
       ],
-      "candidateSelectionGroup": "arcade-plaza"
+      "candidateSelectionGroup": "arcade-plaza",
+      "acceptedExteriorRevision": 192,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     },
     {
       "id": "greed-cards",
@@ -807,9 +842,44 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "카드 테이블과 책장·금고를 갖춘 카드룸",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "geometryStatus": "browser-validated196; native insertion pending",
+      "artStatus": "user-review203-no-portrait",
+      "encountersStatus": "deferred",
+      "draftPreview": "../greed-cards203/",
+      "artRevision": 203,
+      "artManifest": "../greed-cards196/assets196.json",
+      "candidateGeometry": {
+        "revision": 196,
+        "status": "visual-review-pending",
+        "source": "../greed-cards203/layout203.js",
+        "nativeIntegrated": false
+      },
+      "candidateEntrance": {
+        "revision": 197,
+        "width": 2,
+        "renderHeight": 32,
+        "rotation": 0,
+        "status": "user-approved-browser198",
+        "nativeIntegrated": false,
+        "concept": "burgundy card panels; brass CASINO marquee; wall-face suit plaques; passable exterior runner"
+      },
+      "exteriorConcept": "그을린 벽돌·아이보리/황동 테두리·카드/깃펜 벽패",
+      "sourceEvidence": "../greed-cards195/references.json",
+      "interiorPalette": {
+        "rug": "wine with aged brass piping",
+        "seating": "wine cushions and black/ivory accents",
+        "lowerInwardWalls": "faded burgundy",
+        "floor": "preserved grey",
+        "table": "preserved green"
+      },
+      "browserApproval": {
+        "revision": 198,
+        "date": "2026-11-10",
+        "preview": "../greed-cards198/",
+        "scope": "browser-art-layout-and-doors; native/campaign integration pending"
+      },
+      "portraitRemoved": true,
+      "portraitRemovalValidation": "../no-portraits203/validation.json"
     },
     {
       "id": "raven-bar",
@@ -825,9 +895,45 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "바 카운터와 피아노·좌석의 술집",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "geometryStatus": "browser-validated200; native/campaign insertion pending",
+      "artStatus": "user-approved-browser200",
+      "encountersStatus": "deferred",
+      "artRevision": 200,
+      "draftPreview": "../raven-bar200/",
+      "artManifest": "../raven-bar200/assets200.json",
+      "candidateGeometry": {
+        "revision": 200,
+        "status": "user-approved-browser200",
+        "source": "../raven-bar200/layout200.js",
+        "nativeIntegrated": false,
+        "footprint": [
+          15,
+          13
+        ]
+      },
+      "candidateEntrance": {
+        "revision": 199,
+        "width": 2,
+        "renderHeight": 32,
+        "rotation": 0,
+        "status": "user-review",
+        "nativeIntegrated": false
+      },
+      "sourceEvidence": "../raven-bar199/references.json",
+      "memberDetails": [
+        "large blue-black raven on dedicated perch",
+        "existing raven microphone retained",
+        "score stand",
+        "asymmetric horn/blue feather/music crest",
+        "penlight wall holder",
+        "cobalt feather counter/piano"
+      ],
+      "browserApproval": {
+        "revision": 200,
+        "date": "2026-11-10",
+        "preview": "../raven-bar200/",
+        "scope": "browser art/layout; native/campaign integration pending"
+      }
     },
     {
       "id": "haachama-lottery",
@@ -842,10 +948,36 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "복권 판매대와 추첨 장치",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "스크래치 복권 판매 창구·하트 복권기·하쨔마 초상",
+      "geometryStatus": "browser-candidate201",
+      "artStatus": "user-review203-no-portrait",
+      "encountersStatus": "deferred",
+      "artRevision": 203,
+      "draftPreview": "../haachama-lottery203/",
+      "assetsManifest": "../haachama-lottery201/assets201.json",
+      "candidateGeometry": {
+        "source": "../haachama-lottery203/layout203.js",
+        "footprint": [
+          13,
+          11
+        ],
+        "status": "visual-review-pending",
+        "nativeIntegrated": false
+      },
+      "candidateEntrance": {
+        "width": 2,
+        "height": 32,
+        "rotation": 0
+      },
+      "sourceEvidence": "../haachama-lottery201/references.json",
+      "browserApproval": {
+        "revision": 201,
+        "date": "2026-11-10",
+        "preview": "../haachama-lottery201/",
+        "scope": "browser art/layout; native/campaign pending"
+      },
+      "portraitRemoved": true,
+      "portraitRemovalValidation": "../no-portraits203/validation.json"
     },
     {
       "id": "moon-ace",
@@ -861,9 +993,29 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "달 장식 카드룸",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "geometryStatus": "browser-candidate202",
+      "artStatus": "user-review203-no-portrait",
+      "encountersStatus": "deferred",
+      "artRevision": 203,
+      "draftPreview": "../moon-ace203/",
+      "assetsManifest": "../moon-ace202/assets202.json",
+      "candidateGeometry": {
+        "source": "../moon-ace203/layout203.js",
+        "footprint": [
+          15,
+          13
+        ],
+        "status": "visual-review-pending",
+        "nativeIntegrated": false
+      },
+      "candidateEntrance": {
+        "width": 2,
+        "height": 32,
+        "rotation": 0
+      },
+      "sourceEvidence": "../moon-ace202/references.json",
+      "portraitRemoved": true,
+      "portraitRemovalValidation": "../no-portraits203/validation.json"
     },
     {
       "id": "pekora-derby",
@@ -1202,7 +1354,7 @@
       "type": "official-area-announcement"
     }
   ],
-  "nextArtFacility": "capsule-kong",
+  "nextArtFacility": "moon-ace",
   "guaranteedFacilities": [
     {
       "id": "holohome",
@@ -1257,22 +1409,16 @@
     "campaignInsertionImplemented": false
   },
   "currentArtReview": {
-    "id": "arcade-plaza",
     "ids": [
-      "capsule-kong",
-      "robo-crane",
-      "onigiri-panic",
-      "phoenix-dance",
-      "korone-fighting"
+      "greed-cards",
+      "haachama-lottery",
+      "moon-ace"
     ],
-    "revision": 191,
-    "preview": "../arcade-plaza191/",
-    "modes": [
-      "attached",
-      "standalone"
-    ],
-    "nativeIntegrated": false,
-    "nextAfterApproval": "greed-cards"
+    "revision": 203,
+    "preview": "../no-portraits203/",
+    "status": "visual-review-pending",
+    "nextAfterApproval": "pekora-derby",
+    "nativeIntegrated": false
   },
   "smallVendorPolicy": {
     "revision": 189,
@@ -1397,10 +1543,16 @@
         "phoenix-dance",
         "korone-fighting"
       ],
-      "revision": 191,
-      "status": "visual-review; selector integration pending",
-      "preview": "../arcade-plaza191/",
-      "nativeIntegrated": false
+      "revision": 194,
+      "status": "browser-approved194; selector integration pending",
+      "preview": "../arcade-plaza194/",
+      "nativeIntegrated": false,
+      "browserApproval": {
+        "revision": 194,
+        "date": "2026-11-10",
+        "preview": "../arcade-plaza194/",
+        "scope": "browser-art-layout-and-three-doors; selector/native/campaign integration pending"
+      }
     }
   ],
   "arcadePlazaPolicy": {
@@ -1454,6 +1606,20 @@
     "selectorGroupingStatus": "design-only; selector grouping pending",
     "nativeIntegrated": false,
     "campaignInserted": false,
-    "randomFacilitySelectionPolicyChanged": false
+    "randomFacilitySelectionPolicyChanged": false,
+    "acceptedExteriorRevision": 192,
+    "mainDoorReview": {
+      "revision": 194,
+      "doorWidths": {
+        "main": 3,
+        "left": 1,
+        "right": 1
+      },
+      "renderHeight": 32,
+      "rotation": 0,
+      "independentOpenClose": true,
+      "status": "user-approved-browser194",
+      "nativeIntegrated": false
+    }
   }
 }

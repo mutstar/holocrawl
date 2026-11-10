@@ -1,0 +1,12 @@
+{
+  "officialProfile": "https://hololive.hololivepro.com/en/talents/nerissa-ravencroft/",
+  "officialImage": "https://hololive.hololivepro.com/wp-content/uploads/2023/07/advent_icon03.png",
+  "identity": "black/cobalt feathers, raven and music motifs; official character reference in references/nerissa-official.png",
+  "facilityNameSource": "https://seesaawiki.jp/hololivetv/d/DREAMS",
+  "architecture": "Original HoloCrawl bar/lounge adaptation. No verified original Raven BAR building model claimed.",
+  "sourceShioriApproval": "../greed-cards198/",
+  "originalGameFunctionSource": {
+    "url": "https://appmedia.jp/hololive-dreams/80253832",
+    "support": "Raven BAR drink-related achievement; not a source for the recreated building shape."
+  }
+}

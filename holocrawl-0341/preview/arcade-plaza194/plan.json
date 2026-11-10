@@ -1,0 +1,11 @@
+{
+  "revision": 194,
+  "base": 193,
+  "scope": "Add upright, unrotated matching glass double doors on left/right. Side openings become one cell wide with original arcade wall caps above/below. Main96x32 door unchanged. Interior, furniture, machines and other plazas preserved. Each of the3 doors independently toggles browser collision.",
+  "inputs": {
+    "app193.js": "7fc2e185efed242a4e5935d54bae43116bc2cc18aef753ffdb9f919c5dbc5120",
+    "door193.js": "66691539963d6a4c99dfeeb7f1dff1b38105f94614a456c1e7aa6612d672f1cd",
+    "index.html": "0961b760664698f30818c509082f9c22ac8143c3aaa5fd2d3a621a9253298988"
+  },
+  "nativeIntegrated": false
+}

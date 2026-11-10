@@ -1,0 +1,22 @@
+{
+  "revision": 195,
+  "scope": "New Shiori card room.13x13 nonrectangular outline, central3x2 card table, wall archive, cashier, safe, independent closed/open unrotated2-cell double door. Wall121 silhouette with soot brick/ivory-brass trim. Existing facilities untouched. Attached and standalone placement, circulation, collision and source evidence checked.",
+  "artStatus": "visual-review-pending",
+  "nativeIntegrated": false,
+  "validation": "validation.json",
+  "newAssetNativeSizes": {
+    "table": [
+      96,
+      64
+    ],
+    "archive": [
+      64,
+      64
+    ],
+    "counter": [
+      64,
+      32
+    ]
+  },
+  "referenceStatus": "source confirms member and mini-game; exact building not obtained"
+}

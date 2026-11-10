@@ -1,0 +1,14 @@
+(function(){'use strict';const cache=new Map(),theme={material:'brick',face:[85,79,84],top:[33,36,43],accent:[156,143,117]};
+function tile(mask,x,y){const key=[mask,x%4,y%2].join(':');if(cache.has(key))return cache.get(key);const c=document.createElement('canvas');c.width=c.height=32;const q=c.getContext('2d');q.drawImage(FacilityMaterial171.tile(mask,x,y,theme),0,0);const a=q.getImageData(0,0,32,32);for(let i=0;i<a.data.length;i+=4){const l=(a.data[i]+a.data[i+1]+a.data[i+2])/3;if(l>112){const col=l>140?[165,159,145]:[112,111,113];for(let k=0;k<3;k++)a.data[i+k]=col[k];}}q.putImageData(a,0,0);cache.set(key,c);return c;}
+function fixtures(q,m){const f=(col,x,y,w,h)=>{q.fillStyle=col;q.fillRect(x,y,w,h);};
+ for(const p of m.furniture){const x=p.x*32,y=p.y*32;if(p.id==='safe'){f('#1e242d',x+3,y+5,27,26);f('#6c7077',x+3,y+3,25,25);f('#8d8e8a',x+4,y+3,23,2);f('#3c424b',x+6,y+7,19,18);f('#a69b79',x+11,y+13,8,3);f('#c3b593',x+14,y+10,2,9);f('#212a34',x+21,y+10,2,10);}else if(p.id==='chair'){f('#212631',x+7,y+25,19,5);f('#3b3038',x+8,y+9,16,20);f('#ad9c7c',x+8,y+8,16,2);f('#6c4652',x+10,y+12,12,13);f('#8c6970',x+10,y+21,12,3);f('#978b76',x+7,y+25,2,5);f('#978b76',x+23,y+25,2,5);}else{f('#24232c',x+3,y+25,58,5);f('#59434b',x+3,y+12,58,14);f('#8f6870',x+5,y+13,54,8);f('#b4a184',x+2,y+10,60,3);f('#89785d',x+4,y+26,3,4);f('#89785d',x+57,y+26,3,4);}}
+ // Small card-and-quill plaque is mounted on the actual rear wall face.
+ const x=(m.origin.x+6)*32,y=m.origin.y*32;f('#262833',x-9,y+11,50,20);f('#a79a7e',x-9,y+11,50,1);f('#5a5354',x-9,y+30,50,1);f('#d2c9ad',x-3,y+15,12,12);f('#31303a',x+1,y+18,4,5);f('#31303a',x-1,y+20,8,2);f('#d2c9ad',x+13,y+15,12,12);f('#714650',x+17,y+18,4,5);f('#714650',x+15,y+20,8,2);f('#a99c7b',x+30,y+16,2,10);f('#ddd2b7',x+31,y+16,4,2);f('#ddd2b7',x+29,y+18,4,2);f('#b7ab92',x+28,y+20,3,2);
+}
+function door(q,m,opened){const x=m.entry.x*32,y=m.entry.y*32;const f=(c,a,b,w,h)=>{q.fillStyle=c;q.fillRect(x+a,y+b,w,h);};
+ f('#242731',0,0,64,4);f('#b6b0a0',0,0,64,1);f('#7d7b78',0,1,64,2);f('#d0c5a8',0,3,3,27);f('#555360',61,3,3,27);
+ q.save();q.beginPath();q.rect(x+3,y+4,58,26);q.clip();
+ if(!opened){for(const right of [false,true]){q.save();q.translate(right?x+64:x,y);if(right)q.scale(-1,1);const p=(col,a,b,w,h)=>{q.fillStyle=col;q.fillRect(a,b,w,h);};p('#41414b',3,4,29,26);p('#b7ae95',4,5,26,1);p('#292d38',6,8,22,13);p('#c6bda6',8,10,8,9);p('#656475',18,10,7,9);p('#ad9b76',6,23,22,1);p('#c7b792',27,14,2,7);p('#202530',31,4,1,26);q.restore();}}else{f('#41414b',3,4,3,26);f('#41414b',58,4,3,26);}q.restore();f('#827e76',0,30,64,1);f('#41454f',0,31,64,1);
+}
+function collision(m,opened){const open=m.open.slice();if(!opened)for(let dx=0;dx<2;dx++)open[m.entry.y*m.w+m.entry.x+dx]=0;return{...m,open};}
+window.GreedFixtures195={tile,fixtures,door,collision};})();

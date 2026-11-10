@@ -1,0 +1,71 @@
+{
+  "revision": 199,
+  "results": [
+    {
+      "mode": "attached",
+      "footprint": [
+        15,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    },
+    {
+      "mode": "standalone",
+      "footprint": [
+        15,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "counter",
+      "w": 128,
+      "h": 48,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "piano",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "raven-mic",
+      "w": 32,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    }
+  ],
+  "doorChangedPixels": 1160,
+  "doorOutsidePixels": 0,
+  "interiorDifference": 0,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "approvedShiori198Preserved": true,
+  "status": "passed",
+  "errors": []
+}

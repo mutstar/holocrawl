@@ -1,0 +1,15 @@
+{
+  "revision": 202,
+  "scope": "Moona moon-themed card room: violet/silver trim, two card tables, chip counter, member portrait and crescent display. Custom adaptation; upright32px two-cell entrance; browser art/layout only. Preserve approved Haachama201.",
+  "inputHashes": {
+    "app201.js": "1169048fd8dca3fbbf9a1ae876c4a222e301a5424655c8c362488c8fbe9a001a",
+    "layout201.js": "54e865a1d18a32dddfdb6e1236714bc6e44d0a7e5ad4b0aef92b79b82d0713fa",
+    "fixtures201.js": "e90e7496308dab9b698b47166714f2408f6fbf9d6c6926354905feaaba7fe41c",
+    "index.html": "4243bd6b5c8a1602083b63ccb234e92f3f5c4bbaa977ede334c4599ee823aff6"
+  },
+  "nativeIntegrated": false,
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "validationStatus": "passed",
+  "completedDate": "2026-11-11"
+}

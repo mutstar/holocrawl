@@ -1,0 +1,14 @@
+{
+  "revision": 198,
+  "base": 197,
+  "scope": "Wine-colour interior upholstery only: central rug with aged brass piping, chairs/benches in wine with black/ivory accents, faded burgundy lower panels on inward-facing wall fronts. Keep grey floor, green table, all Shiori assets, exterior/entrance, map and collision unchanged.",
+  "inputs": {
+    "app197.js": "3cd4e2a50700ddf6489e4fb2aa8e99bed3e5fedec496dfb8fddd76bd9a8d699d",
+    "entrance197.js": "dec47a207212c6afb876692e1d80c3a593c9546360baa892f1038abb0588b164",
+    "index.html": "45d02df8ec2b3e4de39f1519fa6a4e6894207234b18454360a5a26172bc346b5"
+  },
+  "nativeIntegrated": false,
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "preservation": "preservation.json"
+}

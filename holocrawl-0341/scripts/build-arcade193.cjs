@@ -1,0 +1,17 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..'),src=path.join(root,'preview/arcade-plaza192'),out=path.join(root,'preview/arcade-plaza193');fs.mkdirSync(out,{recursive:true});
+const inputs=Object.fromEntries(['app192.js','wall192.js','index.html'].map(f=>[f,crypto.createHash('sha256').update(fs.readFileSync(path.join(src,f))).digest('hex')]));
+fs.writeFileSync(path.join(out,'plan.json'),JSON.stringify({revision:193,base:192,scope:'Accepted exterior192 preserved. Add96x32 main entrance sliding double glass door only. Side entrances remain open. Other plazas unchanged. Door collision is a browser review overlay, not native integration.',inputs,nativeIntegrated:false},null,2)+'\n');
+let app=fs.readFileSync(path.join(src,'app192.js'),'utf8').replaceAll('ArcadeArt192','ArcadeArt193').replaceAll('arcade192Ready','arcade193Ready');
+app=app.replace('const theme=', 'let opened=false;\nconst theme=');
+app=app.replace("if($('grid').checked)","ArcadeDoor193.draw(q,m,opened);\nif($('grid').checked)");
+app=app.replace("$('status').textContent='21×19칸 광장 · 멤버별 게임기5종 · 중앙9×7칸 비움';","$('status').textContent='정면 유리 양개문 · '+(opened?'열림':'닫힘')+' · 양옆 통로 개방';$('door').textContent=opened?'정문 닫기':'정문 열기';");
+app=app.replace("$('grid').onchange=$('labels').onchange=drawAll;","$('grid').onchange=$('labels').onchange=drawAll;$('door').onclick=()=>{opened=!opened;drawAll();};");
+app=app.replace('={maps,canvases,images,drawAll};','={maps,canvases,images,drawAll,getState:()=>({opened}),setDoor:value=>{opened=!!value;drawAll();},collisionMap:mode=>ArcadeDoor193.collision(maps[mode],opened)};');
+fs.writeFileSync(path.join(out,'app193.js'),app);
+let html=fs.readFileSync(path.join(src,'index.html'),'utf8').replace('외벽 검토192','정문 검토193').replace('게임센터 광장 · 전용 외벽</h1>','게임센터 · 유리 양개문</h1>').replace('남보라 금속 패널 · 청록/분홍 소형 조명 · 벽면 ARCADE 간판. 게임기·바닥·입구·통행 구조는191 그대로입니다.','승인한 외벽은 유지하고, 정면3칸 입구에 청록 유리 양개문을 넣었습니다. 문은 가운데에서 양옆으로 들어가는 형태입니다. 좌우 입구와 다른 광장은 그대로입니다.').replace('<span id="status">','<button id="door">정문 열기</button><span id="status">').replace('src="wall192.js"','src="../arcade-plaza192/wall192.js"').replace('src="app192.js"','src="door193.js"></script><script src="app193.js"');
+html=html.replace('<a href="validation.json">배치 검사</a>','<a href="../arcade-plaza192/">승인한 외벽192</a> · <a href="validation.json">배치 검사</a>');
+fs.writeFileSync(path.join(out,'index.html'),html);
+let check=fs.readFileSync(path.join(root,'scripts/check-arcade192.cjs'),'utf8').replaceAll('arcade-plaza192','arcade-plaza193').replaceAll('arcade192Ready','arcade193Ready').replaceAll('ArcadeArt192','ArcadeArt193').replaceAll('revision:192','revision:193').replaceAll("+'192.png'","+'193.png'").replaceAll('page192.png','page193.png');
+fs.writeFileSync(path.join(root,'scripts/check-arcade193.cjs'),check);
+console.log('Prepared193 main door; accepted exterior192 untouched.');

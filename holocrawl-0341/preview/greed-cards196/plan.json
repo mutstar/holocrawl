@@ -1,0 +1,26 @@
+{
+  "revision": 196,
+  "base": 195,
+  "scope": "Add recognizable Shiori interior details: one small freestanding framed portrait (2x2 footprint,48x64native), one book/quill lectern(1x1), native golden-eye rear plaque/safe clasp and black/ivory chair upholstery. Preserve room shell, floor, carpet, original props, door and other facilities. Verify new circulation and closed-door behavior.",
+  "inputHashes": {
+    "layout195.js": "fc778dfa5e5bdd63f593b5cf75ee7a705ceadf511c27931560fe6a6cf07a4044",
+    "app195.js": "ad78cf460391dd1e5e3b3593de0e5ff5bceb18aca30b11cc1ba351749ecdb91b",
+    "fixtures195.js": "f317b7fe809d926d6ea892a7cd51245805a296873c34126bffb48dc0deb97575",
+    "index.html": "751fa58f8221ebcf27e9edafc4d1c6cddfdd4282087a3fdabf33d1ccc6628d69"
+  },
+  "nativeIntegrated": false,
+  "portraitPlacement": {
+    "x": 1,
+    "y": 4,
+    "w": 2,
+    "h": 2,
+    "actualSprite": [
+      48,
+      64
+    ],
+    "reason": "face legibility; table circulation unchanged"
+  },
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "preservation": "preservation.json"
+}

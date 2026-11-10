@@ -1,0 +1,17 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..'),src=path.join(root,'preview/arcade-plaza191'),out=path.join(root,'preview/arcade-plaza192');
+fs.mkdirSync(out,{recursive:true});
+const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(path.join(src,f))).digest('hex');
+fs.writeFileSync(path.join(out,'plan.json'),JSON.stringify({revision:192,base:191,scope:'Arcade exterior only. Preserve map, interior, machines, floors, furniture and three open entrances. Native wall121 corner silhouettes with graphite blue-purple metal, muted cyan/magenta inset lights and a small pixel ARCADE fascia.',inputs:Object.fromEntries(['app191.js','layout191.js','index.html'].map(f=>[f,hash(f)])),nativeIntegrated:false},null,2)+'\n');
+let app=fs.readFileSync(path.join(src,'app191.js'),'utf8').replaceAll('ArcadeArt191','ArcadeArt192').replaceAll('arcade191Ready','arcade192Ready');
+app=app.replace("'assets/'+k+'-native.png'","'../arcade-plaza191/assets/'+k+'-native.png'");
+app=app.replace('FacilityMaterial171.tile(mask(m,x,y),x,y,theme)','ArcadeWall192.tile(mask(m,x,y),x,y)');
+app=app.replace('fixtures(q,m);','ArcadeWall192.fascia(q,m);fixtures(q,m);');
+fs.writeFileSync(path.join(out,'app192.js'),app);
+let html=fs.readFileSync(path.join(src,'index.html'),'utf8').replaceAll('초안191','외벽 검토192').replaceAll('src="assets/','src="../arcade-plaza191/assets/').replaceAll('src="references/','src="../arcade-plaza191/references/').replace('src="layout191.js"','src="../arcade-plaza191/layout191.js"').replace('src="app191.js"','src="wall192.js"></script><script src="app192.js"');
+html=html.replace('<h1>게임센터 광장 · 멤버별 시설5종</h1>','<h1>게임센터 광장 · 전용 외벽</h1><p>남보라 금속 패널 · 청록/분홍 소형 조명 · 벽면 ARCADE 간판. 게임기·바닥·입구·통행 구조는191 그대로입니다.</p>');
+html=html.replace('이전 개별 캡슐 콩190</a>','이전 개별 캡슐 콩190</a> · <a href="../arcade-plaza191/">이전 회색 외벽191</a>');
+fs.writeFileSync(path.join(out,'index.html'),html);
+let check=fs.readFileSync(path.join(root,'scripts/check-arcade191.cjs'),'utf8').replaceAll('arcade-plaza191','arcade-plaza192').replaceAll('arcade191Ready','arcade192Ready').replaceAll('ArcadeArt191','ArcadeArt192').replaceAll('revision:191','revision:192').replaceAll("+'191.png'","+'192.png'").replaceAll('page191.png','page192.png');
+fs.writeFileSync(path.join(root,'scripts/check-arcade192.cjs'),check);
+console.log('Prepared exterior review192;191 inputs preserved.');

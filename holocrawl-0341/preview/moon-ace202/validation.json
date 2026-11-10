@@ -1,0 +1,81 @@
+{
+  "revision": 202,
+  "results": [
+    {
+      "mode": "attached",
+      "footprint": [
+        15,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "tableSidePaths": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    },
+    {
+      "mode": "standalone",
+      "footprint": [
+        15,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "tableSidePaths": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "table",
+      "w": 96,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "counter",
+      "w": 96,
+      "h": 48,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "moon-display",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    }
+  ],
+  "doorChangedPixels": 1160,
+  "doorOutsidePixels": 0,
+  "interiorDifference": 0,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "approvedHaachama201Preserved": true,
+  "status": "passed",
+  "errors": []
+}

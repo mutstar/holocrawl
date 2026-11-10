@@ -1,0 +1,72 @@
+{
+  "revision": 195,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "table",
+      "native": [
+        96,
+        64
+      ],
+      "logical": [
+        48,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        10,
+        94,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/table-native.png",
+      "sourcePath": "assets/table-source.png"
+    },
+    {
+      "id": "archive",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        8,
+        2,
+        54,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/archive-native.png",
+      "sourcePath": "assets/archive-source.png"
+    },
+    {
+      "id": "counter",
+      "native": [
+        64,
+        32
+      ],
+      "logical": [
+        32,
+        16
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        2,
+        62,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/counter-native.png",
+      "sourcePath": "assets/counter-source.png"
+    }
+  ]
+}

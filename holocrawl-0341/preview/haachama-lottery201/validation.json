@@ -1,0 +1,79 @@
+{
+  "revision": 201,
+  "results": [
+    {
+      "mode": "attached",
+      "footprint": [
+        13,
+        11
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    },
+    {
+      "mode": "standalone",
+      "footprint": [
+        13,
+        11
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "centralTwoTileHall": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "outerRing": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "machine",
+      "w": 64,
+      "h": 96,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "counter",
+      "w": 96,
+      "h": 32,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "scratch-desk",
+      "w": 64,
+      "h": 32,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    }
+  ],
+  "doorChangedPixels": 1160,
+  "doorOutsidePixels": 0,
+  "interiorDifference": 0,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "approvedNerissa200Preserved": true,
+  "status": "passed",
+  "errors": []
+}

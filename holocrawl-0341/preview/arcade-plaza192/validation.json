@@ -1,0 +1,47 @@
+{
+  "revision": 192,
+  "results": [
+    {
+      "key": "attached",
+      "footprint": [
+        21,
+        19
+      ],
+      "fiveDistinctStations": true,
+      "spritesFit": true,
+      "frontRowsClear": true,
+      "centralClear": true,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    },
+    {
+      "key": "standalone",
+      "footprint": [
+        21,
+        19
+      ],
+      "fiveDistinctStations": true,
+      "spritesFit": true,
+      "frontRowsClear": true,
+      "centralClear": true,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "entrancesReachable": true,
+      "strandedInterior": 0,
+      "overlaps": 0,
+      "invalidFurniture": 0,
+      "outerTwoTileRing": true
+    }
+  ],
+  "differentInteriorPixels": 0,
+  "nativeIntegrated": false,
+  "campaignInserted": false,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}

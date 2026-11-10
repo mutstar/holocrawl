@@ -1,0 +1,37 @@
+{
+  "revision": 195,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "table",
+      "w": 96,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art prop sprite for a gritty top-down32px-tile roguelike. Low-detail Dungeon Crawl Stone Soup furniture style, slightly elevated frontal/top view, coarse48x32logical pixel grid, hard stepped edges,16flatcolors,2shades per material. Subject: broad horizontal oval poker/card-game table. Deep desaturated green felt, thick almost-black walnut rim, worn muted brass edge, short solid dark wood pedestal visible below. Three chunky ivory playing cards: black spade, red diamond, black-white split card back. Two short stacks of burgundy/ivory chips. Tiny closed black book and broad ivory feather quill resting on the rear rim. Entire single table visible, wide landscape silhouette. No chairs, people, floor, outside cast shadow, glow, gradients, readable text, blur, microdetail, or scenery. True transparent background. Not a sprite sheet. Designed to be exported as96x64native pixels.",
+      "promptRole": "Exact built-in image_gen request",
+      "designPrompt": "Use case: game-asset. Create ONE production pixel-art prop sprite for a gritty top-down32px-tile roguelike. Match low-detail Dungeon Crawl Stone Soup furniture: slightly elevated frontal/top view, very coarse pixel grid, hard stepped edges, limited16flat colors,2shades per material, no glow, no gradients, no blur, no antialiasing, no microdetail, no outside shadow, no ground/floor, no people, no readable words. Actual transparent background. Entire object in frame. This is ONE object, not a sprite sheet. Subject: compact broad horizontal oval poker/card-game table. Deep desaturated green felt top, thick almost-black walnut rim, tiny worn muted brass edge, short solid dark wood pedestal visible below. Three ivory playing cards with one large simple black spade, one red diamond, and one face-down black-white split card. Two short stacks of burgundy/ivory chips. A small ivory feather quill rests against a tiny closed black book at the back rim. The cards are oversized enough to read at final48x32logical pixels. Keep the table48logical pixels wide and32logical pixels tall. No chairs attached; no casino scenery. Avoid luxury shine.",
+      "transparentBackground": true
+    },
+    {
+      "id": "archive",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. ONE production pixel-art furniture sprite for a gritty32px-tile top-down roguelike, matching DCSS pixel furniture. A short dark-charcoal wooden archive cabinet, two shelves with7chunky alternating ivory and black books. Subtle worn brass hinges. Large open ivory book on its bottom ledge with broad black feather quill and a small ivory inkpot, tiny aged-gold eye-shaped clasp on upper panel. Plain rectangular silhouette, sturdy plinth, slightly elevated frontal/top view. Final32x32logical pixel grid,64x64native,16flatcolors maximum,2shades per material. Actual transparent background. No detached props, people, floor, external cast shadow, glow, gradients, blur, anti-aliasing, noise, tiny details, text or sprite sheet. Entire object in frame.",
+      "promptRole": "Exact built-in image_gen request",
+      "designPrompt": "Use case: game-asset. Create ONE production pixel-art prop sprite for a gritty top-down32px-tile roguelike. Match low-detail Dungeon Crawl Stone Soup furniture: slightly elevated frontal/top view, very coarse pixel grid, hard stepped edges, limited16flat colors,2shades per material, no glow, no gradients, no blur, no antialiasing, no microdetail, no outside shadow, no ground/floor, no people, no readable words. Actual transparent background. Entire object in frame. This is ONE object, not a sprite sheet. Subject: one short dark charcoal wooden archive book cabinet for Shiori Novella themed card room, two shelves with just7chunky books in alternating ivory and black covers, subtle aged brass hinges. Large small open ivory book on bottom ledge with a broad black feather quill and ivory inkpot, and tiny muted gold eye-shaped clasp on top panel. Straight frontal top-down-game furniture perspective, plain rectangular silhouette, sturdy plinth touching the ground line. Final32x32logical pixels. No floating badges or detached objects.",
+      "transparentBackground": true
+    },
+    {
+      "id": "counter",
+      "w": 64,
+      "h": 32,
+      "colors": 16,
+      "prompt": "Use case: game-asset. ONE low horizontal card-dealer cashier counter sprite for a gritty32px top-down roguelike, DCSS coarse pixel furniture. Dark walnut/charcoal body, worn muted brass trim and ivory corner caps. Two shallow trays with chunky ivory and burgundy chips, one closed black ledger book with thick ivory diagonal bookmark. Small broad dull metal lockbox integrated into the back counter. One gold keyhole on simple solid front panel. Short wide silhouette final32x16logical pixels,64x32native. Slight elevated frontal/top view,16flatcolors maximum,2shades per material. Actual transparent background. No people, floor, outside cast shadow, glow, gradients, blur, antialiasing, micro patterns, text or sprite sheet. Whole object visible.",
+      "promptRole": "Exact built-in image_gen request",
+      "designPrompt": "Use case: game-asset. Create ONE production pixel-art prop sprite for a gritty top-down32px-tile roguelike. Match low-detail Dungeon Crawl Stone Soup furniture: slightly elevated frontal/top view, very coarse pixel grid, hard stepped edges, limited16flat colors,2shades per material, no glow, no gradients, no blur, no antialiasing, no microdetail, no outside shadow, no ground/floor, no people, no readable words. Actual transparent background. Entire object in frame. This is ONE object, not a sprite sheet. Subject: one low horizontal cashier/card-dealer counter, dark walnut/charcoal body, worn brass trim and ivory corner caps. Two shallow trays containing chunky ivory and burgundy chip discs, a closed black ledger book with one thick ivory diagonal bookmark and a small broad metal lockbox integrated behind the counter. Simple solid front panel with one gold keyhole. No glowing money, no dollar signs, no text, no people. Final32x16logical pixels,64x32native pixels, very short and wide silhouette.",
+      "transparentBackground": true
+    }
+  ],
+  "export": "Source PNG preserved, existing project export pipeline:16colour palette,2x nearest-neighbour logical grid,hard alpha. No new semantic content added during export."
+}

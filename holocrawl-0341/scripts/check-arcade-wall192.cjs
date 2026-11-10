@@ -1,0 +1,13 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),assert=require('assert/strict');
+const {chromium,executablePath,previewURL}=require('./portable-browser-tools.cjs');
+const out=path.resolve(__dirname,'../preview/arcade-plaza192');
+(async()=>{const b=await chromium.launch({executablePath,headless:true});try{
+ const p=await b.newPage();
+ async function capture(rev){await p.goto(previewURL+'/arcade-plaza'+rev+'/');await p.waitForFunction(r=>window['arcade'+r+'Ready'],rev);return p.evaluate(r=>{const a=window['ArcadeArt'+r],maps=a.maps;return Object.fromEntries(Object.entries(maps).map(([k,m])=>{const c=a.canvases[k];return[k,{map:m,w:c.width,h:c.height,png:c.toDataURL(),pixels:Array.from(c.getContext('2d').getImageData(0,0,c.width,c.height).data)}];}));},rev);}
+ const old=await capture(191),now=await capture(192),checks=[];
+ for(const mode of ['attached','standalone']){const a=old[mode],z=now[mode];assert.deepEqual(a.map,z.map);let changed=0,outside=0;for(let y=0;y<z.h;y++)for(let x=0;x<z.w;x++){const i=(y*z.w+x)*4;if([0,1,2,3].every(k=>a.pixels[i+k]===z.pixels[i+k]))continue;changed++;const cell=Math.floor(y/32)*z.map.w+Math.floor(x/32);if(z.map.cells[cell]||!z.map.building[cell])outside++;}assert(changed>0);assert.equal(outside,0);checks.push({mode,geometryUnchanged:true,changedWallPixels:changed,changedOutsideActualWalls:outside});}
+ const plan=JSON.parse(fs.readFileSync(path.join(out,'plan.json'),'utf8'));for(const [name,hash]of Object.entries(plan.inputs))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.resolve(out,'../arcade-plaza191',name))).digest('hex'),hash);
+ const sheet=await p.evaluate(async data=>{const ims=[];for(const s of data){const im=new Image();im.src=s;await im.decode();ims.push(im);}const c=document.createElement('canvas');c.width=1376;c.height=700;const q=c.getContext('2d');q.fillStyle='#172126';q.fillRect(0,0,c.width,c.height);q.imageSmoothingEnabled=false;q.font='18px system-ui';q.fillStyle='#dfe9e5';q.fillText('191 · 기존 회색 외벽',12,26);q.fillText('192 · 게임센터 전용 외벽',700,26);for(let i=0;i<2;i++)q.drawImage(ims[i],128,128,672,608,i*688+12,46,672,608);return c.toDataURL().split(',')[1];},[old.standalone.png,now.standalone.png]);
+ fs.writeFileSync(path.join(out,'wall-comparison192.png'),Buffer.from(sheet,'base64'));
+ const report={status:'passed',checks,original191SourcesPreserved:true,interiorFloorMachinesFurnitureAndEntrancesUnchanged:true};fs.writeFileSync(path.join(out,'wall-preservation.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+ }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

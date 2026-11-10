@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "mapUnchanged": true,
+      "changedPixels": 4168,
+      "changedOutsideEntrance": 0,
+      "toggleChanged": 2222,
+      "toggleOutside": 0,
+      "collisionDifferences": 3,
+      "mainClosed": true,
+      "mainOpen": true,
+      "sixSideCellsOpen": true,
+      "servicesReachableWhenClosed": true
+    },
+    {
+      "mode": "standalone",
+      "mapUnchanged": true,
+      "changedPixels": 4168,
+      "changedOutsideEntrance": 0,
+      "toggleChanged": 2222,
+      "toggleOutside": 0,
+      "collisionDifferences": 3,
+      "mainClosed": true,
+      "mainOpen": true,
+      "sixSideCellsOpen": true,
+      "servicesReachableWhenClosed": true
+    }
+  ],
+  "buttonTogglesDoor": true,
+  "accepted192SourcesPreserved": true,
+  "nativeIntegrated": false
+}

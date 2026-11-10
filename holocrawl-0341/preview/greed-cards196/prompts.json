@@ -1,0 +1,19 @@
+{
+  "revision": 196,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE pixel-art interior furniture sprite for a gritty32px-tile top-down roguelike. Reference1 is Shiori Novella IDENTITY: preserve her distinctive white-silver hair on the VIEWER LEFT and black hair on VIEWER RIGHT, straight bangs, bright amber-gold eyes, black gothic collar and small white ribbon. Reference2 is STYLE only: match its chunky low-detail hard-edged pixel furniture, no smooth anime illustration. Subject: a small framed bust PORTRAIT of Shiori displayed on a short dark wooden floor easel, worn muted brass rectangular frame with ivory corner caps, integrated two short feet at bottom. The portrait should clearly show black/white split hair, pale face, two tiny gold eyes, dark collar. Entire object visible,32x48native pixels (16x24logical pixels),16flatcolors maximum,2shades per material. Slight raised frontal/top-down game perspective; broad readable shapes. Actual transparent background. No letters, text, extra objects, floor, outside cast shadow, gradients, glow, blur, antialiasing, fine detail, multiple views or sprite sheet. A framed picture on a stand, not a living character or full-size statue.",
+      "transparentBackground": true,
+      "refs": [
+        "../advent175/references/shiori.png",
+        "../greed-cards195/native-sprites195.png"
+      ],
+      "exportNote": "Generation request preserved verbatim. Final production export enlarged to48x64native/24x32logical for recognizable face; portrait stand occupies2x2 cells."
+    }
+  ]
+}

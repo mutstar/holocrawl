@@ -1,0 +1,79 @@
+{
+  "revision": 199,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "counter",
+      "native": [
+        128,
+        48
+      ],
+      "logical": [
+        64,
+        24
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        126,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/counter-native.png",
+      "sourcePath": "assets/counter-source.png"
+    },
+    {
+      "id": "piano",
+      "native": [
+        64,
+        64
+      ],
+      "logical": [
+        32,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        60,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/piano-native.png",
+      "sourcePath": "assets/piano-source.png"
+    },
+    {
+      "id": "raven-mic",
+      "native": [
+        32,
+        64
+      ],
+      "logical": [
+        16,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        24,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/raven-mic-native.png",
+      "sourcePath": "assets/raven-mic-source.png"
+    }
+  ],
+  "codeNativeDetails": [
+    "wall bottle rack",
+    "feather/music wall plaques",
+    "silver-blue double door and RAVEN BAR marquee",
+    "indigo stage/rugs",
+    "booths/stools/cocktail tables"
+  ]
+}

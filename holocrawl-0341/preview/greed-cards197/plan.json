@@ -1,0 +1,12 @@
+{
+  "revision": 197,
+  "base": 196,
+  "scope": "Casino entrance only:64x32 burgundy double door, brass marquee CASINO, playing-card panels, flanking suit plaques and short passable burgundy exterior runner. Preserve Shiori interior, wall geometry and all collision cells.",
+  "inputs": {
+    "app196.js": "414053df81d8f68dc4db4b8d9274c2078c6540ff3c9140bfa7f1e3cd85842415",
+    "fixtures196.js": "73d31c77663f006f39527259c3d9efa7570708649eeced845bc2a34c30d7a210",
+    "layout196.js": "49756038953dea334a98325aa7ea18f71a077657eb92a9edb0ead611f5a8d9b2",
+    "index.html": "16328361ba2298fe056f767401fc516ae5912f9503901e7740f2b03ff0d2f6e8"
+  },
+  "nativeIntegrated": false
+}

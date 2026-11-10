@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "allMapArraysUnchanged": true,
+      "changedPixels": 18116,
+      "changedOutsideUpholsteryAndPanels": 0,
+      "originalVisiblePropPixelChanges": 0
+    },
+    {
+      "mode": "standalone",
+      "allMapArraysUnchanged": true,
+      "changedPixels": 18116,
+      "changedOutsideUpholsteryAndPanels": 0,
+      "originalVisiblePropPixelChanges": 0
+    }
+  ],
+  "original197SourcesPreserved": true
+}

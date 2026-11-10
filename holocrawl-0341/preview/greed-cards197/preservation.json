@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "changedPixels": 4786,
+      "changedOutsideEntrance": 0,
+      "interiorPixelChanges": 0,
+      "allMapArraysUnchanged": true
+    },
+    {
+      "mode": "standalone",
+      "changedPixels": 4786,
+      "changedOutsideEntrance": 0,
+      "interiorPixelChanges": 0,
+      "allMapArraysUnchanged": true
+    }
+  ],
+  "original196SourcesPreserved": true
+}

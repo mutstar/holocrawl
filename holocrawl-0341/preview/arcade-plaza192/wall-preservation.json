@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "geometryUnchanged": true,
+      "changedWallPixels": 67360,
+      "changedOutsideActualWalls": 0
+    },
+    {
+      "mode": "standalone",
+      "geometryUnchanged": true,
+      "changedWallPixels": 67360,
+      "changedOutsideActualWalls": 0
+    }
+  ],
+  "original191SourcesPreserved": true,
+  "interiorFloorMachinesFurnitureAndEntrancesUnchanged": true
+}

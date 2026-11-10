@@ -1,0 +1,11 @@
+{
+  "revision": 192,
+  "base": 191,
+  "scope": "Arcade exterior only. Preserve map, interior, machines, floors, furniture and three open entrances. Native wall121 corner silhouettes with graphite blue-purple metal, muted cyan/magenta inset lights and a small pixel ARCADE fascia.",
+  "inputs": {
+    "app191.js": "ad63341e8c690ab88c8b2a3153e3f0c8919a02a2fc380fccb258bc1dfc1f3e63",
+    "layout191.js": "7bbbeff2b56959f9238a5d9a47ebaaac6053b56c0e77114324b6cab4f605bdd4",
+    "index.html": "2127687713e5529c25c77c7bbb4182f3c4ec5f91fea92ff685ff818cfc43bbaf"
+  },
+  "nativeIntegrated": false
+}

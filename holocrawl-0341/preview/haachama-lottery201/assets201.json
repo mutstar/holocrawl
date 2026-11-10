@@ -1,0 +1,101 @@
+{
+  "revision": 201,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "machine",
+      "native": [
+        64,
+        96
+      ],
+      "logical": [
+        32,
+        48
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        58,
+        94
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/machine-native.png",
+      "sourcePath": "assets/machine-source.png"
+    },
+    {
+      "id": "counter",
+      "native": [
+        96,
+        32
+      ],
+      "logical": [
+        48,
+        16
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        12,
+        2,
+        82,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/counter-native.png",
+      "sourcePath": "assets/counter-source.png"
+    },
+    {
+      "id": "scratch-desk",
+      "native": [
+        64,
+        32
+      ],
+      "logical": [
+        32,
+        16
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        56,
+        30
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/scratch-desk-native.png",
+      "sourcePath": "assets/scratch-desk-source.png"
+    },
+    {
+      "id": "portrait",
+      "native": [
+        48,
+        64
+      ],
+      "logical": [
+        24,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        44,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/portrait-native.png",
+      "sourcePath": "assets/portrait-source.png"
+    }
+  ],
+  "codeNativeDetails": [
+    "32px upright two-cell LOTTERY door",
+    "heart and ribbon signage",
+    "red/cream checker rug",
+    "stools, benches and ticket case",
+    "wall material matching existing wall121 silhouette"
+  ]
+}

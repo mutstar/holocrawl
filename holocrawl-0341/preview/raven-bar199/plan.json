@@ -1,0 +1,24 @@
+{
+  "revision": 199,
+  "scope": "New Nerissa Raven BAR.15x13 asymmetric bar/lounge with a four-cell counter, piano alcove, raven microphone, cocktail seating, indigo/silver feather wall details and unrotated2-cell door. Existing approved Shiori198 preserved; enemies/rewards/bar interaction deferred.",
+  "inputHashes": {
+    "app198.js": "097f86f04302c3640f3e86502dd7b6bc8c985154dd41c17349464b8b58b7f5d9",
+    "wine198.js": "306a2ea9cf2926b101f0cf999755ef78b4f74ddf20e0c9bf05f37d193bd52824",
+    "index.html": "0acc26984f6dc9db76e9fe4e147d48a578565b3cc4823233322777b86474d15c"
+  },
+  "nativeIntegrated": false,
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "referenceStatus": "Official character identity and facility/member name verified; architecture is an original HoloCrawl adaptation.",
+  "counterExport": {
+    "native": [
+      128,
+      48
+    ],
+    "footprint": [
+      4,
+      2
+    ],
+    "reason": "Preserve bottle height and counter silhouette"
+  }
+}

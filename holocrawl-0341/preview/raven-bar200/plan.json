@@ -1,0 +1,16 @@
+{
+  "revision": 200,
+  "base": 199,
+  "scope": "Strengthen Nerissa interior identity without moving bar/piano/microphone/lounge. Add clearly readable raven on a short wooden perch(2x2 footprint,48x64sprite) near counter, score stand1x1 beside piano, and improved blue-feather/asymmetric-horn back-wall music crest. Preserve central two-cell hall, room shell, floors and door.",
+  "inputHashes": {
+    "app199.js": "ac0def796f4224d2a3a29c725eacc46082cae18b1e94ec0fb54390e48ab4c8be",
+    "layout199.js": "b8f5ba384e5545e4ab9962ac9786c9145ad9e3547197ec1168f96ff67dea1bc8",
+    "fixtures199.js": "8804dc27c3c66795a44c3e7e6756983b42095bcd9d741bb88e7a30f17f38d56a",
+    "index.html": "69da20f399b905f8855a8e3563f102712d4b6737878b40e8a902316fe93768ef"
+  },
+  "nativeIntegrated": false,
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "preservation": "preservation.json",
+  "extraWallDetail": "Penlight holder inspired by official Nerissa profile mentioning idol songs and penlights."
+}

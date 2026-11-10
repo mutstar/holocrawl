@@ -1,0 +1,148 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "sameInterior": true,
+      "changedCells": 4,
+      "sideCaps": 4,
+      "changedPixels": 7816,
+      "changedOutsideSideJunctions": 0,
+      "toggleOutsideDoors": 0
+    },
+    {
+      "mode": "standalone",
+      "sameInterior": true,
+      "changedCells": 4,
+      "sideCaps": 4,
+      "changedPixels": 7816,
+      "changedOutsideSideJunctions": 0,
+      "toggleOutsideDoors": 0
+    }
+  ],
+  "doorStateCases": [
+    {
+      "mode": "attached",
+      "bits": 0,
+      "serviceReachable4": false,
+      "serviceReachable8": false,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 0,
+      "serviceReachable4": false,
+      "serviceReachable8": false,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 1,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 1,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 2,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 2,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 3,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 3,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 4,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 4,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 5,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 5,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 6,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 6,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "attached",
+      "bits": 7,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    },
+    {
+      "mode": "standalone",
+      "bits": 7,
+      "serviceReachable4": true,
+      "serviceReachable8": true,
+      "closedThresholdsBlocked": true
+    }
+  ],
+  "independentButtons": true,
+  "original193Preserved": true,
+  "unrotatedSideSprites": [
+    32,
+    32
+  ],
+  "mainSpriteUnchanged": [
+    96,
+    32
+  ],
+  "nativeIntegrated": false
+}

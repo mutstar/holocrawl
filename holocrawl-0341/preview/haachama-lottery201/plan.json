@@ -1,0 +1,14 @@
+{
+  "revision": 201,
+  "scope": "New Haachama lottery/scratch-ticket shop.13x11 compact chamfered room, portrait and heart ticket machine at rear, sales counter, two scratch desks, red/cream ribbon/heart decor and unrotated2-cell door. Preserve approved Nerissa200, enemies/rewards/ticket economy deferred.",
+  "inputHashes": {
+    "app200.js": "bfdf8b99128ff2b99107bbb48741d35deaf8bfe8b08561797ca93f76e08638c4",
+    "layout200.js": "1c8869b68ec6860c8f912a836a882f1aeb6c62a7b631132e198a90f36d192576",
+    "fixtures200.js": "8db7bfc79e276e6538f4413015a8d42f473fa831db2262ac03cbe9132b3e29a7",
+    "index.html": "9b6b77b9f677b53d4bdc12a9b4b9f4d3e20389dd32eb75e56105f03ce1a807ac"
+  },
+  "nativeIntegrated": false,
+  "artStatus": "visual-review-pending",
+  "validation": "validation.json",
+  "validationStatus": "passed"
+}

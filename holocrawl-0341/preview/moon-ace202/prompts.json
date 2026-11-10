@@ -1,0 +1,64 @@
+{
+  "revision": 202,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "table",
+      "w": 96,
+      "h": 64,
+      "colors": 16,
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/greed-cards195/native-sprites195.png"
+      ],
+      "prompt": "Use case: game-asset. Create ONE production pixel-art card-game table for a gritty32px-tile top-down roguelike. Input image is pixel furniture STYLE reference only. A compact oval dark-indigo felt card table, silver rim, dark-plum pedestal, small crescent-moon silver inlay on felt. Three chunky ivory playing cards and two short stacks of lavender and muted-gold chips visible on top. No chairs. Slight elevated frontal/top-down perspective like reference.48x32 logical pixels,96x64 native,16 flat colours maximum,2 shades per material, coarse hard edges. Entire single table visible, true transparent background. No floor, cast shadow outside, people, text, glow, gradient, blur, antialiasing, microdetail, sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "counter",
+      "w": 96,
+      "h": 48,
+      "colors": 16,
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/greed-cards195/native-sprites195.png"
+      ],
+      "prompt": "Use case: game-asset. Create ONE production pixel-art chip exchange counter for a gritty32px-tile top-down roguelike. Input image is pixel furniture STYLE only. Low wide navy and muted violet cabinet with silver top/rim, one large ivory crescent moon inlaid on front. On top: two short stacks of lavender and pale-gold casino chips, small closed card deck, one flat ledger. Three broad chunky shapes, no tiny clutter. Slight elevated frontal/top-down view.48x24 logical pixels,96x48 native,16 flat colours maximum,2 shades per material, hard pixel edges. Entire single cabinet visible on true transparent background. No background,floor,outside cast shadow,people,text,words,glow,gradients,blur,antialiasing,microdetail,sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "moon-display",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/greed-cards195/native-sprites195.png"
+      ],
+      "prompt": "Use case: game-asset. Create ONE production pixel-art standing crescent-moon ornament for a gritty32px-tile top-down roguelike card lounge. Input image is pixel furniture STYLE reference only. A large broad pale-silver crescent sculpture mounted upright on a short dark-indigo plinth, tiny muted gold diamond star pendant in the crescent opening. Stout stable base. Silver trim and one muted violet panel on plinth. Moon made of solid material, NOT glowing.32x32 logical grid,64x64 native,16 flat colours maximum,2 shades per material, chunky hard edges. Slight elevated frontal/top-down game view, entire single ornament visible, true transparent background. No floor,people,external cast shadow,text,glow,gradients,blur,antialiasing,microdetail,sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "refs": [
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/moon-ace202/references/moona-official.webp",
+        "C:/Users/IN/Documents/ChatGPT/Game/HoloCrawl/holocrawl-0341/preview/greed-cards195/native-sprites195.png"
+      ],
+      "prompt": "Use case: game-asset. Create ONE production pixel-art framed bust portrait prop of Moona Hoshinova for a gritty32px-tile top-down roguelike. Reference1 SUBJECT identity only: long lavender hair with pale-gold inner hair, golden-yellow eyes, white jacket over black top, blue-and-gold ribbon with star at collar. Reference2 STYLE only: coarse low-detail pixel furniture. Bust portrait in small dark-violet standing frame with silver trim and tiny crescent ornament at top, two short feet. Face should remain readable and hair lavender.24x32 logical grid,48x64 native,16 flat colours maximum,2shades per material. Flat game sprite, slight top-down view of frame. Full single framed portrait visible, true transparent background. No floor, external shadow, additional portraits,people outside frame,text,glow,gradient,blur,antialiasing,microdetail,sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "references/moona-official.webp",
+        "../greed-cards195/native-sprites195.png"
+      ]
+    }
+  ]
+}

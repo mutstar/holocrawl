@@ -1,0 +1,3 @@
+(function(){'use strict';function generate(mode){const m=RavenLayout199.generate(mode),o=m.origin;
+const raven={id:'raven-perch',asset:'raven-perch',label:'네리사 · 푸른 깃털 까마귀',x:o.x+1,y:o.y+6,w:2,h:2},score={id:'score',label:'네리사 · 악보대',x:o.x+10,y:o.y+6,w:1,h:1};m.props.push(raven);m.furniture.push(score);for(const p of [raven,score])for(let y=p.y;y<p.y+p.h;y++)for(let x=p.x;x<p.x+p.w;x++)m.open[y*m.w+x]=0;m.servicePoints.push({id:'raven-perch',x:o.x+3,y:o.y+6},{id:'score',x:o.x+9,y:o.y+6});return m;}
+window.RavenLayout200={generate,distances:RavenLayout199.distances,dirs:RavenLayout199.dirs};})();

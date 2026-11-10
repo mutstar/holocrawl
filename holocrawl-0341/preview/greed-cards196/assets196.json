@@ -1,0 +1,35 @@
+{
+  "revision": 196,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "portrait",
+      "native": [
+        48,
+        64
+      ],
+      "logical": [
+        24,
+        32
+      ],
+      "colors": 16,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        42,
+        62
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export",
+      "nativePath": "assets/portrait-native.png",
+      "sourcePath": "assets/portrait-source.png"
+    }
+  ],
+  "inheritedAssets": "../greed-cards195/assets195.json",
+  "codeNativeDetails": [
+    "gold-eye wall plaque",
+    "gold-eye safe clasp",
+    "black/ivory chair upholstery",
+    "book-and-quill lectern"
+  ]
+}

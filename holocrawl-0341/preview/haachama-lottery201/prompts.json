@@ -1,0 +1,53 @@
+{
+  "revision": 201,
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "machine",
+      "w": 64,
+      "h": 96,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE production pixel-art LOTTERY TICKET MACHINE for a gritty32px-tile top-down roguelike. Reference1 is SUBJECT PALETTE only: the red/cream lottery stall and rosy dome of coloured balls in the game screenshot. Omit all people, UI and background. Reference2 is pixel FURNITURE STYLE only: match its coarse hard-edged low-detail sprites. Subject: a compact upright red-and-cream cabinet with a round pale rose GLASS DOME holding five chunky red/blue/green/yellow lottery balls. A large RED HEART ornament with a tiny ivory ribbon is integrated at the top. Worn brass rim, one ticket dispensing slot and short ivory paper ticket near the lower front, stout low base. Glass uses a flat muted pale-rose fill and one simple ivory highlight stripe, not complex transparency.32x48logical pixels,64x96native,16flatcolours maximum,2shades per material. Entire single machine visible. Slight elevated frontal/top-down game view. True transparent background. No people, floor, outside shadow, text, words, slots777, roulette, gradients, glow, blur, antialiasing, microdetail or sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "references/lottery-original.webp",
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "counter",
+      "w": 96,
+      "h": 32,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE low wide lottery sales COUNTER sprite for a gritty32px-tile top-down roguelike. Reference1 is subject palette only: red/cream checker pattern of the lottery stall. Reference2 is STYLE only: coarse hard-edged pixel furniture. A dark burgundy wood counter with ivory top, broad red-and-cream checkerboard panels on its front, tiny worn brass edging. On the top sit two chunky rolls of ivory lottery tickets with red edges and a small flat tray of red paper tickets. One large red heart badge is built into the front center.48x16logical grid,96x32native,16flatcolors maximum,2shades per material. Short wide silhouette, slight elevated frontal/top view. Full object visible, true transparent background. No people, stand-up sign, text, floor, outside cast shadow, gradients, glow, blur, antialiasing, fine detail or sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "references/lottery-original.webp",
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "scratch-desk",
+      "w": 64,
+      "h": 32,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE SCRATCH TICKET DESK furniture sprite for a gritty32px-tile top-down roguelike. Reference image is STYLE only: coarse chunky pixel furniture. One low rectangular two-tile desk with dark burgundy legs, cream tabletop and red edge trim. One oversized ivory SCRATCH CARD on its top has a clearly readable3-by-3 arrangement of square dull-silver panels; one small muted brass coin lies next to it. A small red ribbon is tied around one front corner.32x16logical pixels,64x32native,16flatcolors maximum,2shades per material. Slight elevated frontal/top view so tabletop visible, whole single object visible, true transparent background. No people, chair, words, numbers, floor, outside cast shadow, gradients, glow, blur, antialiasing, microdetail or sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "../greed-cards195/native-sprites195.png"
+      ]
+    },
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "prompt": "Use case: game-asset. Create ONE small framed character PORTRAIT on a short wooden floor display easel for a gritty32px-tile top-down roguelike. Reference1 is IDENTITY only: Akai Haato/Haachama, blonde fringe and long blonde side ponytail, bright blue eyes, red heart hair ornament and red ribbon on white sailor collar with blue trim. Preserve the clear blonde/red-heart/blue-eye appearance, bust portrait only. Reference2 is PIXEL FURNITURE STYLE only: coarse hard-edged low-detail sprites. Worn dark burgundy frame with muted brass edge and ivory corner caps, two short sturdy feet. One clear red ribbon/heart decoration on top of frame. Entire single framed portrait/easel visible,24x32logical pixels,48x64native,16flatcolors maximum,2shades per material. True transparent background. No full-size person standing outside the frame, no text, floor, outside cast shadow, gradients, glow, blur, antialiasing, microdetail or sprite sheet.",
+      "transparentBackground": true,
+      "referencedImages": [
+        "references/haato-official.webp",
+        "../greed-cards195/native-sprites195.png"
+      ]
+    }
+  ]
+}

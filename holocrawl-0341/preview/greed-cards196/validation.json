@@ -1,0 +1,80 @@
+{
+  "revision": 196,
+  "results": [
+    {
+      "mode": "attached",
+      "footprint": [
+        13,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "tableCirculation": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "twoEntranceCellsOpen": true,
+      "outerRing": true
+    },
+    {
+      "mode": "standalone",
+      "footprint": [
+        13,
+        13
+      ],
+      "overlaps": 0,
+      "outside": 0,
+      "strandedInterior": 0,
+      "serviceReachable": true,
+      "serviceAdjacent": true,
+      "tableCirculation": true,
+      "closedBlocks4": true,
+      "closedBlocks8": true,
+      "twoEntranceCellsOpen": true,
+      "outerRing": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "table",
+      "w": 96,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "archive",
+      "w": 64,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "counter",
+      "w": 64,
+      "h": 32,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    },
+    {
+      "id": "portrait",
+      "w": 48,
+      "h": 64,
+      "colors": 16,
+      "softAlpha": 0,
+      "gridErrors": 0
+    }
+  ],
+  "doorChangedPixels": 1356,
+  "doorOutsidePixels": 0,
+  "interiorDifference": 0,
+  "nativeIntegrated": false,
+  "mobileOverflow": 0,
+  "errors": [],
+  "status": "passed"
+}
