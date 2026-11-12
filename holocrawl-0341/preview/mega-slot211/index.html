@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>메가슬롯</title><link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#19212d;color:#e0e5ed;font:15px/1.6 system-ui}main{max-width:1500px;margin:auto;padding:22px}h1{font-size:28px;margin:0}p{color:#b4bece}.bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:16px 0}button{background:#35415d;border:1px solid #899ab7;color:#e3e8f0;padding:7px 14px;font:inherit;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;border:1px solid #5e6b85;background:#242d40;min-width:0}figcaption{padding:10px 14px}.field{padding:0;border:0;display:block;background:none;width:100%}canvas{display:block;width:100%;height:auto;image-rendering:pixelated}a{color:#b2c5e8}dialog{background:#1c2638;border:1px solid #8b9fbd;color:#e0e7f3;max-width:98vw;max-height:95vh}.scroll{overflow:auto;max-height:80vh}#zoom{width:auto;max-width:none}.sprites{display:flex;gap:26px;flex-wrap:wrap;padding:16px}.sprites img{image-rendering:pixelated;max-width:100%;height:auto}.small{font-size:13px}#sprites{max-width:100%;height:auto;image-rendering:pixelated}@media(max-width:800px){.pair{grid-template-columns:1fr}main{padding:12px}}
+</style>
+<main>
+<h1>메가슬롯</h1>
+<p>양옆에 늘어선 슬롯머신 6대, 안쪽의 대형 3릴 기기, 입구 옆 코인 교환대와 대기석. 회보라 벽과 낡은 황동 테두리로 꾸민 메가슬롯 게임실입니다.</p>
+<div class="bar">
+  <button id="door" type="button">문 열기</button>
+  <label><input id="grid" type="checkbox"> 칸 표시</label>
+  <label><input id="labels" type="checkbox"> 소품 이름</label>
+  <span id="status" role="status">준비 중…</span>
+</div>
+<div class="pair">
+  <figure><figcaption>기존 벽에 붙인 배치</figcaption><button class="field" data-mode="attached" aria-label="벽붙임 확대"><canvas id="attached"></canvas></button></figure>
+  <figure><figcaption>독립 배치</figcaption><button class="field" data-mode="standalone" aria-label="독립 배치 확대"><canvas id="standalone"></canvas></button></figure>
+</div>
+<p class="small">그림을 누르면 2배로 확대됩니다.</p>
+<p class="small"><a href="../pokajan210/">이전 시설: 포카쟝</a> · <a href="https://cover-corp.com/news/detail/20260529-01">홀로도리 메가스피어 참고</a></p>
+</main>
+<dialog id="detail"><div class="bar"><strong id="title"></strong><button id="close" type="button">닫기</button></div><div class="scroll"><canvas id="zoom"></canvas></div></dialog>
+<script src="../wall-height121/wall121.js"></script>
+<script src="../city-market124/random-floor.js"></script>
+<script src="../facility-placement171/materials171.js"></script>
+<script src="layout211.js"></script>
+<script src="sprites211.js"></script>
+<script src="app211.js"></script>
+</html>

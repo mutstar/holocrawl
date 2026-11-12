@@ -1,0 +1,22 @@
+{
+  "revision": "209-garage10",
+  "mapTiles": [
+    29,
+    19
+  ],
+  "props": 24,
+  "walkable": 350,
+  "isolated": 0,
+  "overlaps": 0,
+  "newArtOutsideFootprint": 0,
+  "access": {
+    "chargingLeft": true,
+    "chargingRight": true,
+    "workbench": true,
+    "tyres": true,
+    "reception": true,
+    "waiting": true,
+    "exit": true
+  },
+  "nativeIntegrated": false
+}

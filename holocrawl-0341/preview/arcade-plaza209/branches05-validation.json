@@ -1,0 +1,74 @@
+{
+  "revision": "209-branches05",
+  "maps": [
+    {
+      "id": "coaster",
+      "size": [
+        27,
+        22
+      ],
+      "walkable": 102,
+      "isolated": 0,
+      "overlaps": 0,
+      "exitReachable": true,
+      "gateReachable": true,
+      "beaconReachable": true
+    },
+    {
+      "id": "bumper",
+      "size": [
+        29,
+        19
+      ],
+      "walkable": 408,
+      "isolated": 0,
+      "overlaps": 0,
+      "exitReachable": true,
+      "gateReachable": true,
+      "beaconReachable": true
+    },
+    {
+      "id": "maze",
+      "size": [
+        29,
+        21
+      ],
+      "walkable": 275,
+      "isolated": 0,
+      "overlaps": 0,
+      "exitReachable": true,
+      "gateReachable": true,
+      "beaconReachable": true
+    }
+  ],
+  "nativeIntegrated": false,
+  "navigation": [
+    {
+      "id": "coaster",
+      "clickRouting": true,
+      "walkEntry": true,
+      "walkReturn": true,
+      "correctReturnGate": true,
+      "reloadPreservesPosition": true,
+      "reentryPreservesProgress": true
+    },
+    {
+      "id": "bumper",
+      "clickRouting": true,
+      "walkEntry": true,
+      "walkReturn": true,
+      "correctReturnGate": true,
+      "reloadPreservesPosition": true,
+      "reentryPreservesProgress": true
+    },
+    {
+      "id": "maze",
+      "clickRouting": true,
+      "walkEntry": true,
+      "walkReturn": true,
+      "correctReturnGate": true,
+      "reloadPreservesPosition": true,
+      "reentryPreservesProgress": true
+    }
+  ]
+}

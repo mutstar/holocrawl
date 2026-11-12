@@ -1,0 +1,13 @@
+{
+  "revision": "209-racing04",
+  "terrain": [
+    "wall",
+    "grass",
+    "track"
+  ],
+  "connectedTrackTiles": 156,
+  "completeLaps": 2,
+  "backtrackingFalseLap": false,
+  "infieldBlocked": true,
+  "firstLapMoves": 63
+}

@@ -843,14 +843,14 @@
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "카드 테이블과 책장·금고를 갖춘 카드룸",
       "geometryStatus": "browser-validated196; native insertion pending",
-      "artStatus": "user-review203-no-portrait",
+      "artStatus": "user-approved-browser203",
       "encountersStatus": "deferred",
       "draftPreview": "../greed-cards203/",
       "artRevision": 203,
       "artManifest": "../greed-cards196/assets196.json",
       "candidateGeometry": {
-        "revision": 196,
-        "status": "visual-review-pending",
+        "revision": 203,
+        "status": "user-approved-browser203",
         "source": "../greed-cards203/layout203.js",
         "nativeIntegrated": false
       },
@@ -873,13 +873,19 @@
         "table": "preserved green"
       },
       "browserApproval": {
+        "revision": 203,
+        "date": "2026-11-11",
+        "preview": "../greed-cards203/",
+        "scope": "browser art and layout"
+      },
+      "portraitRemoved": true,
+      "portraitRemovalValidation": "../no-portraits203/validation.json",
+      "previousBrowserApproval": {
         "revision": 198,
         "date": "2026-11-10",
         "preview": "../greed-cards198/",
         "scope": "browser-art-layout-and-doors; native/campaign integration pending"
-      },
-      "portraitRemoved": true,
-      "portraitRemovalValidation": "../no-portraits203/validation.json"
+      }
     },
     {
       "id": "raven-bar",
@@ -950,7 +956,7 @@
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "스크래치 복권 판매 창구·하트 복권기·하쨔마 초상",
       "geometryStatus": "browser-candidate201",
-      "artStatus": "user-review203-no-portrait",
+      "artStatus": "user-approved-browser203",
       "encountersStatus": "deferred",
       "artRevision": 203,
       "draftPreview": "../haachama-lottery203/",
@@ -961,8 +967,9 @@
           13,
           11
         ],
-        "status": "visual-review-pending",
-        "nativeIntegrated": false
+        "status": "user-approved-browser203",
+        "nativeIntegrated": false,
+        "revision": 203
       },
       "candidateEntrance": {
         "width": 2,
@@ -971,13 +978,19 @@
       },
       "sourceEvidence": "../haachama-lottery201/references.json",
       "browserApproval": {
+        "revision": 203,
+        "date": "2026-11-11",
+        "preview": "../haachama-lottery203/",
+        "scope": "browser art and layout"
+      },
+      "portraitRemoved": true,
+      "portraitRemovalValidation": "../no-portraits203/validation.json",
+      "previousBrowserApproval": {
         "revision": 201,
         "date": "2026-11-10",
         "preview": "../haachama-lottery201/",
         "scope": "browser art/layout; native/campaign pending"
-      },
-      "portraitRemoved": true,
-      "portraitRemovalValidation": "../no-portraits203/validation.json"
+      }
     },
     {
       "id": "moon-ace",
@@ -994,7 +1007,7 @@
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "달 장식 카드룸",
       "geometryStatus": "browser-candidate202",
-      "artStatus": "user-review203-no-portrait",
+      "artStatus": "user-approved-browser203",
       "encountersStatus": "deferred",
       "artRevision": 203,
       "draftPreview": "../moon-ace203/",
@@ -1005,8 +1018,9 @@
           15,
           13
         ],
-        "status": "visual-review-pending",
-        "nativeIntegrated": false
+        "status": "user-approved-browser203",
+        "nativeIntegrated": false,
+        "revision": 203
       },
       "candidateEntrance": {
         "width": 2,
@@ -1015,7 +1029,13 @@
       },
       "sourceEvidence": "../moon-ace202/references.json",
       "portraitRemoved": true,
-      "portraitRemovalValidation": "../no-portraits203/validation.json"
+      "portraitRemovalValidation": "../no-portraits203/validation.json",
+      "browserApproval": {
+        "revision": 203,
+        "date": "2026-11-11",
+        "preview": "../moon-ace203/",
+        "scope": "browser art and layout"
+      }
     },
     {
       "id": "pekora-derby",
@@ -1030,10 +1050,24 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "작은 타원형 경마장과 관람·발권 공간",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "17×13칸 노우사기 경주 시설. 7×5칸 타원형 경주로와 발권대, 관람 벤치, 당근 트로피.",
+      "geometryStatus": "browser-validated204",
+      "artStatus": "user-approved-browser205",
+      "encountersStatus": "deferred",
+      "artRevision": 205,
+      "draftPreview": "../pekora-derby205/",
+      "previousDraftPreview": "../pekora-derby204/",
+      "artManifest": "../pekora-derby204/assets204.json",
+      "candidateGeometry": {
+        "revision": 204,
+        "source": "../pekora-derby204/layout204.js",
+        "footprint": [
+          17,
+          13
+        ],
+        "status": "user-approved-browser205",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "mega-coaster",
@@ -1048,10 +1082,24 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "끊어진 롤러코스터 선로와 정비 통로",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
-      "encountersStatus": "deferred"
+      "concept": "메가서킷 1번 문으로 들어가는 롤러코스터 독립 층. 기존206의 급강하 레일·정차 차량·탑승장 재사용.",
+      "randomPoolMember": false,
+      "hostFacility": "mega-circuit",
+      "facilityType": "child-branch-floor",
+      "geometryStatus": "browser-validated206",
+      "artStatus": "user-review206",
+      "encountersStatus": "deferred",
+      "artRevision": 206,
+      "draftPreview": "../arcade-plaza209/#coaster",
+      "previousStandalonePreview": "../mega-coaster206/",
+      "artManifest": "../mega-coaster206/sprites206.js",
+      "candidateGeometry": {
+        "revision": 206,
+        "source": "../mega-coaster206/layout206.js",
+        "footprint": [19, 14],
+        "status": "visual-review-pending",
+        "nativeIntegrated": false
+      }
     },
     {
       "id": "mega-circuit",
@@ -1066,9 +1114,16 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "장애물 코스와 우회 통로",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
+      "concept": "게임센터 대문에 연결된 레이싱 트랙 허브 1층. 북쪽 문 3개는 롤러코스터·범퍼카 차고·네온 미로의 독립 층으로 연결.",
+      "childFloors": ["coaster", "bumper", "maze"],
+      "facilityType": "permanent-side-branch",
+      "randomPoolMember": false,
+      "hostFacility": "arcade-plaza",
+      "branchSpecification": "../../design/mega-circuit-branch209.json",
+      "geometryStatus": "browser-validated209",
+      "artStatus": "user-approved-racing04-and-separate-branch",
+      "artRevision": 209,
+      "draftPreview": "../arcade-plaza209/#circuit",
       "encountersStatus": "deferred"
     },
     {
@@ -1084,9 +1139,11 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "촬영 부스와 대기 공간",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
+      "concept": "게임센터 안의 3×3칸 스티커 사진 부스",
+      "geometryStatus": "browser-validated209",
+      "artStatus": "user-review209",
+      "artRevision": 209,
+      "draftPreview": "../arcade-plaza209/",
       "encountersStatus": "deferred"
     },
     {
@@ -1102,9 +1159,12 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "중앙 게임 테이블과 관전 좌석",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
+      "concept": "18×14칸 포카쟝 게임실: 중앙 4인 카드 테이블, 카드 보관장, 접수대, 관전석과 음료 선반",
+      "geometryStatus": "browser-validated210",
+      "artStatus": "user-approved210",
+      "artRevision": 210,
+      "draftPreview": "../pokajan210/",
+      "layoutModes": ["attached", "standalone"],
       "encountersStatus": "deferred"
     },
     {
@@ -1120,9 +1180,12 @@
         "EN"
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
-      "concept": "슬롯 머신 열과 교환 카운터",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
+      "concept": "20×14칸 메가슬롯: 일반 기기 6대, 대형 3릴 기기, 코인 교환 카운터와 대기석",
+      "geometryStatus": "browser-validated211",
+      "artStatus": "user-approved211",
+      "artRevision": 211,
+      "draftPreview": "../mega-slot211/",
+      "layoutModes": ["attached", "standalone"],
       "encountersStatus": "deferred"
     },
     {
@@ -1139,8 +1202,11 @@
       ],
       "source": "https://seesaawiki.jp/hololivetv/d/DREAMS",
       "concept": "교환 창구와 안쪽 보관실",
-      "geometryStatus": "not-created",
-      "artStatus": "not-created",
+      "geometryStatus": "browser-validated212",
+      "artStatus": "user-review212",
+      "artRevision": 212,
+      "draftPreview": "../mega-exchange212/",
+      "layoutModes": ["attached", "standalone"],
       "encountersStatus": "deferred"
     },
     {
@@ -1354,7 +1420,13 @@
       "type": "official-area-announcement"
     }
   ],
-  "nextArtFacility": "moon-ace",
+  "nextArtFacility": "fish-blue",
+  "lagoonRegionPreview": {
+    "revision": 213,
+    "status": "concept-reference-only",
+    "preview": "../soda-pop-lagoon213/",
+    "landmarks": ["fish-blue", "lagoon-stage", "marine-ship"]
+  },
   "guaranteedFacilities": [
     {
       "id": "holohome",
@@ -1409,15 +1481,10 @@
     "campaignInsertionImplemented": false
   },
   "currentArtReview": {
-    "ids": [
-      "greed-cards",
-      "haachama-lottery",
-      "moon-ace"
-    ],
-    "revision": 203,
-    "preview": "../no-portraits203/",
+    "id": "arcade-plaza",
+    "revision": 209,
+    "preview": "../arcade-plaza209/",
     "status": "visual-review-pending",
-    "nextAfterApproval": "pekora-derby",
     "nativeIntegrated": false
   },
   "smallVendorPolicy": {
@@ -1555,6 +1622,26 @@
       }
     }
   ],
+  "megaCoasterPlazaReview": {
+    "id": "mega-coaster-plaza",
+    "members": ["mega-coaster", "capsule-kong", "robo-crane"],
+    "revision": 207,
+    "footprint": [29, 19],
+    "preview": "../mega-plaza207/",
+    "validation": "../mega-plaza207/validation.json",
+    "status": "superseded-by208",
+    "nativeIntegrated": false
+  },
+  "megaGamePlazaReview": {
+    "id": "mega-game-plaza",
+    "members": ["capsule-kong", "robo-crane"],
+    "revision": 208,
+    "footprint": [25, 16],
+    "preview": "../mega-game-plaza208/",
+    "validation": "../mega-game-plaza208/validation.json",
+    "status": "superseded-by-existing-arcade-plaza194",
+    "nativeIntegrated": false
+  },
   "arcadePlazaPolicy": {
     "revision": 191,
     "status": "direction-requested; visual-review-pending",

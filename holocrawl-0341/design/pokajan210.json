@@ -1,0 +1,19 @@
+{
+  "id": "pokajan",
+  "revision": 210,
+  "name": "포카쟝 게임실",
+  "sourceArea": "mega-sphere",
+  "source": "https://cover-corp.com/news/detail/20260529-01",
+  "interpretation": "Original HoloCrawl dungeon room inspired by the Pokajan card game, not a reproduction of the original building layout.",
+  "artStatus": "user-approved210",
+  "footprintTiles": [18, 14],
+  "nativeTilePixels": 32,
+  "placementModes": ["attached", "standalone"],
+  "zones": ["four-player-card-table", "card-storage-and-match-board", "reception", "spectator-and-waiting-seats", "refreshments"],
+  "propCount": 13,
+  "interiorWalkableTiles": 129,
+  "doorWidth": 2,
+  "preview": "../preview/pokajan210/",
+  "validation": "../preview/pokajan210/validation210.json",
+  "implementation": {"browserArtAndDoorStates": true, "nativeIntegration": false, "cardGameRules": false, "encounters": false, "rewards": false}
+}

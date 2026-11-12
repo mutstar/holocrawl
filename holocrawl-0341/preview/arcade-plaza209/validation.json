@@ -1,0 +1,32 @@
+{
+  "revision": 209,
+  "layouts": [
+    {
+      "mode": "attached",
+      "overlap": 0,
+      "photo": true,
+      "portalsMounted": true,
+      "unreachable": [],
+      "isolated": 0
+    },
+    {
+      "mode": "standalone",
+      "overlap": 0,
+      "photo": true,
+      "portalsMounted": true,
+      "unreachable": [],
+      "isolated": 0
+    }
+  ],
+  "course": {
+    "gapBlocked": true,
+    "jumpWorks": true,
+    "beltPushes": true,
+    "sweeperHits": true,
+    "hurdleJump": true
+  },
+  "finishedWithKeyboard": true,
+  "turnsToFinish": 26,
+  "gateAndReturn": true,
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "revision": "209-long08",
+  "mapTiles": [
+    35,
+    22
+  ],
+  "rideFootprintTiles": [
+    27,
+    9
+  ],
+  "walkable": 382,
+  "isolated": 0,
+  "exitReachable": true,
+  "artOutsideFootprint": 0,
+  "drawCalls": 13212,
+  "nativeIntegrated": false
+}

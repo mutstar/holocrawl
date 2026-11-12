@@ -1,0 +1,66 @@
+{
+  "revision": 204,
+  "status": "user-review",
+  "assets": [
+    {
+      "id": "track",
+      "native": [
+        224,
+        160
+      ],
+      "logical": [
+        112,
+        80
+      ],
+      "colors": 18,
+      "hardAlpha": true,
+      "visibleBounds": [
+        4,
+        2,
+        220,
+        158
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "ticket-counter",
+      "native": [
+        96,
+        48
+      ],
+      "logical": [
+        48,
+        24
+      ],
+      "colors": 14,
+      "hardAlpha": true,
+      "visibleBounds": [
+        2,
+        6,
+        94,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    },
+    {
+      "id": "carrot-trophy",
+      "native": [
+        32,
+        48
+      ],
+      "logical": [
+        16,
+        24
+      ],
+      "colors": 12,
+      "hardAlpha": true,
+      "visibleBounds": [
+        6,
+        2,
+        24,
+        46
+      ],
+      "mode": "built-in image_gen; palette and integer-grid export"
+    }
+  ]
+}

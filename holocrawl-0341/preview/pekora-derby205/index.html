@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>페코람블 더비</title><link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#19212d;color:#e0e5ed;font:15px/1.6 system-ui}main{max-width:1500px;margin:auto;padding:22px}h1{font-size:28px;margin:0}p{color:#b4bece}.bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:16px 0}button{background:#35415d;border:1px solid #899ab7;color:#e3e8f0;padding:7px 14px;font:inherit;cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0;border:1px solid #5e6b85;background:#242d40;min-width:0}figcaption{padding:10px 14px}.field{padding:0;border:0;display:block;background:none;width:100%}canvas{display:block;width:100%;height:auto;image-rendering:pixelated}a{color:#b2c5e8}dialog{background:#1c2638;border:1px solid #8b9fbd;color:#e0e7f3;max-width:98vw;max-height:95vh}.scroll{overflow:auto;max-height:80vh}#zoom{width:auto;max-width:none}.sprites{display:flex;gap:26px;flex-wrap:wrap;padding:16px}.sprites img{image-rendering:pixelated;max-width:100%;height:auto}.small{font-size:13px}#sprites{max-width:100%;height:auto;image-rendering:pixelated}@media(max-width:800px){.pair{grid-template-columns:1fr}main{padding:12px}}
+</style>
+<main>
+<h1>페코람블 더비</h1>
+<p>아이보리 벽과 황동 몰딩, 노우사기 문양과 결승선 체크무늬가 있는 입구입니다.</p>
+<div class="bar">
+  <button id="door" type="button">문 열기</button>
+  <label><input id="grid" type="checkbox"> 칸 표시</label>
+  <label><input id="labels" type="checkbox"> 소품 이름</label>
+  <span id="status" role="status">준비 중…</span>
+</div>
+<div class="pair">
+  <figure><figcaption>기존 벽에 붙인 배치</figcaption><button class="field" data-mode="attached" aria-label="벽붙임 확대"><canvas id="attached"></canvas></button></figure>
+  <figure><figcaption>독립 배치</figcaption><button class="field" data-mode="standalone" aria-label="독립 배치 확대"><canvas id="standalone"></canvas></button></figure>
+</div>
+<p class="small">그림을 누르면 2배로 확대됩니다.</p>
+<details><summary>소품 도트</summary><img id="sprites" src="../pekora-derby204/native-sprites204.png" alt="경주로, 발권대, 당근 트로피 도트"></details>
+<details><summary>원작 참고 화면</summary><img src="../pekora-derby204/references/original-derby.webp" alt="노우사기 아치 아래 원작 경주로" style="max-width:100%;height:auto"><p><a href="https://appmedia.jp/hololive-dreams/80253832">원작 화면 출처</a></p></details>
+<p class="small"><a href="../pekora-derby204/">이전 외벽 보기</a> · <a href="validation.json">배치 검사</a></p>
+</main>
+<dialog id="detail"><div class="bar"><strong id="title"></strong><button id="close" type="button">닫기</button></div><div class="scroll"><canvas id="zoom"></canvas></div></dialog>
+<script src="../wall-height121/wall121.js"></script>
+<script src="../city-market124/random-floor.js"></script>
+<script src="../facility-placement171/materials171.js"></script>
+<script src="../pekora-derby204/layout204.js"></script>
+<script src="app205.js"></script>
+</html>

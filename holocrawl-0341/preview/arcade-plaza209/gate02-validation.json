@@ -1,0 +1,10 @@
+{
+  "revision": "209-gate02",
+  "gateTiles": [4, 3],
+  "nativePixels": [128, 96],
+  "layouts": [
+    {"mode": "attached", "propOverlaps": 0, "unreachableServices": 0, "reachableApproachTiles": 4},
+    {"mode": "standalone", "propOverlaps": 0, "unreachableServices": 0, "reachableApproachTiles": 4}
+  ],
+  "syntax": "passed"
+}

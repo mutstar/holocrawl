@@ -1,0 +1,21 @@
+{
+  "id": "mega-slot",
+  "name": "메가슬롯",
+  "revision": 211,
+  "sourceArea": "mega-sphere",
+  "interpretation": "Original HoloCrawl dungeon room for the Mega Slot facility; its layout and cabinet sprites are newly drawn, not a replica of the original building.",
+  "artStatus": "user-approved211",
+  "footprintTiles": [20, 14],
+  "nativeTilePixels": 32,
+  "placementModes": ["attached", "standalone"],
+  "regularMachines": 6,
+  "largeMachines": 1,
+  "stools": 6,
+  "zones": ["rear-large-three-reel-machine", "side-machine-banks", "two-tile-central-aisle", "coin-counter", "waiting-bench"],
+  "propCount": 18,
+  "interiorWalkableTiles": 135,
+  "doorWidth": 2,
+  "preview": "../preview/mega-slot211/",
+  "validation": "../preview/mega-slot211/validation211.json",
+  "implementation": {"browserArtAndDoorStates": true, "nativeIntegration": false, "slotGameRules": false, "encounters": false, "rewards": false}
+}

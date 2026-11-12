@@ -1,0 +1,24 @@
+{
+  "revision": 210,
+  "facility": "pokajan",
+  "modes": {
+    "attached": {
+      "propCount": 13,
+      "walkableInterior": 129,
+      "doorWidth": 2,
+      "allInteriorReachable": true,
+      "closedEntranceSeparatesRoom": true,
+      "propOverlap": false,
+      "allServicePointsReachable": true
+    },
+    "standalone": {
+      "propCount": 13,
+      "walkableInterior": 129,
+      "doorWidth": 2,
+      "allInteriorReachable": true,
+      "closedEntranceSeparatesRoom": true,
+      "propOverlap": false,
+      "allServicePointsReachable": true
+    }
+  }
+}

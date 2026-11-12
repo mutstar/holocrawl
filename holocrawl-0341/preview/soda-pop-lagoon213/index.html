@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>소다팝 라군</title>
+<link rel="icon" href="data:,">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#142127; color:#dfe8e2; font:15px/1.55 system-ui,sans-serif; }
+  main { max-width:1280px; margin:auto; padding:18px 22px 22px; }
+  h1 { margin:0 0 8px; font-size:28px; }
+  .controls { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; margin:0 0 12px; }
+  button { padding:6px 12px; border:1px solid #70938d; background:#253e43; color:inherit; font:inherit; cursor:pointer; }
+  .legend { display:flex; gap:16px; flex-wrap:wrap; margin:10px 0; color:#bdcfc8; }
+  .legend i { display:inline-block; width:12px; height:12px; margin-right:6px; border:1px solid #cadbd280; }
+  canvas { display:block; width:100%; height:auto; image-rendering:pixelated; border:1px solid #5f7e80; }
+  canvas:focus-visible { outline:2px solid #f4c375; outline-offset:2px; }
+  a { color:#a9cfc5; }
+  p { margin:8px 0; }
+  #status { color:#c7d9d1; }
+</style>
+<main>
+  <h1>소다팝 라군</h1>
+  <div class="controls">
+    <button id="tide" type="button" disabled>밀물로 전환</button>
+    <button id="reset" type="button" disabled>입구로</button>
+    <label><input id="labels" type="checkbox" checked> 시설 이름</label>
+    <span id="status" role="status">지도 불러오는 중…</span>
+  </div>
+  <canvas id="coast" tabindex="0" aria-label="소다팝 라군 해안 지도" aria-describedby="help"></canvas>
+  <div class="legend">
+    <span><i style="background:#b69c73"></i>모래섬</span>
+    <span><i style="background:#498c94"></i>걸을 수 있는 얕은 물</span>
+    <span><i style="background:#214b67"></i>건널 수 없는 깊은 물</span>
+    <span><i style="background:#84624e"></i>나무 데크</span>
+  </div>
+  <p id="help">지도를 선택한 뒤 방향키로 이동. 썰물에는 북쪽 섬 사이에 지름길이 열려요.</p>
+  <a href="../mega-exchange212/">메가스피어 코인 교환소</a>
+</main>
+<script src="map213.js"></script>
+<script src="art213.js"></script>
+<script src="app213.js"></script>
+</html>

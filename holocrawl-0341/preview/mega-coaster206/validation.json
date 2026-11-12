@@ -1,0 +1,24 @@
+{
+  "revision": 206,
+  "status": "passed",
+  "records": [
+    {
+      "mode": "attached",
+      "isolated": 0,
+      "closedLeaks": 0,
+      "reachablePoints": 7,
+      "overlap": 0
+    },
+    {
+      "mode": "standalone",
+      "isolated": 0,
+      "closedLeaks": 0,
+      "reachablePoints": 7,
+      "overlap": 0
+    }
+  ],
+  "doorToggle": true,
+  "zoom": true,
+  "mobile": true,
+  "errors": []
+}

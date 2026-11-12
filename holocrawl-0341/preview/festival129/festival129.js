@@ -1,5 +1,6 @@
 (async()=>{
  'use strict';
+ const {props:propCatalog,stall:stallArt}=document.currentScript.dataset;
  const load=u=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Image failed: '+u));im.src=u;});
  const json=async u=>{const r=await fetch(u);if(!r.ok)throw Error(u);return r.json();};
  const canvas=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c;};
@@ -11,8 +12,12 @@
   const out=canvas(w,h),b=g(out),sw=x1-x0+1,sh=y1-y0+1,s=Math.min((w-2)/sw,(h-2)/sh),dw=Math.round(sw*s),dh=Math.round(sh*s);b.drawImage(im,x0,y0,sw,sh,Math.floor((w-dw)/2),h-dh-1,dw,dh);
   const d=b.getImageData(0,0,w,h);for(let i=0;i<d.data.length;i+=4){d.data[i+3]=d.data[i+3]>=200?255:0;if(!d.data[i+3])d.data[i]=d.data[i+1]=d.data[i+2]=0;else for(let k=0;k<3;k++)d.data[i+k]=Math.round(d.data[i+k]/8)*8;}b.putImageData(d,0,0);return out;
  }
- const specs=await json('props129.json'),props=await Promise.all(specs.map(async s=>({...s,sprite:normalize(await load(s.source),s.w,s.h)})));
- const [wall,material,rects,planes,map,shop]=await Promise.all([load('../wall-height121/wall22.png'),load('../festival125/assets/wall-source.png'),json('../wall-height121/rects121.json'),json('../wall-height121/planes121.json'),json('../native-play107/maps/map-10786001-1.json'),load('../festival128/assets/goldfish96.png')]);
+ const specs=await json(propCatalog || 'props129.json');
+ const props=await Promise.all(specs.map(async s=>{
+  const art=await load(propCatalog ? s.native : s.source);
+  return {...s,sprite:propCatalog ? art : normalize(art,s.w,s.h)};
+ }));
+ const [wall,material,rects,planes,map,shop]=await Promise.all([load('../wall-height121/wall22.png'),load('../festival125/assets/wall-source.png'),json('../wall-height121/rects121.json'),json('../wall-height121/planes121.json'),json('../native-play107/maps/map-10786001-1.json'),load(stallArt || '../festival128/assets/goldfish96.png')]);
  const texture=canvas(64,64);g(texture).drawImage(material,material.width/4,material.height/4,material.width/2,material.height/2,0,0,64,64);const tex=g(texture).getImageData(0,0,64,64).data;
  const agedWall=createFestivalWall129({canvas,g,wall,rects,planes,tex}),floor=await load('../native-play107/assets/floor.png'),actor={};await Promise.all(['body','boots','armour','helmet','sword'].map(async k=>actor[k]=await load(`../city-market02/assets/${k}.png`)));
  const catalog=document.getElementById('catalog'),select=document.getElementById('propSelect'),field=document.getElementById('scene'),ctx=g(field);let selected='mask-rack';

@@ -1,0 +1,30 @@
+{
+  "revision": 211,
+  "facility": "mega-slot",
+  "modes": {
+    "attached": {
+      "propCount": 18,
+      "regularMachines": 6,
+      "largeMachines": 1,
+      "stools": 6,
+      "walkableInterior": 135,
+      "allInteriorReachable": true,
+      "closedEntranceSeparatesRoom": true,
+      "propOverlap": false,
+      "allServicePointsReachable": true,
+      "centralAisleClear": true
+    },
+    "standalone": {
+      "propCount": 18,
+      "regularMachines": 6,
+      "largeMachines": 1,
+      "stools": 6,
+      "walkableInterior": 135,
+      "allInteriorReachable": true,
+      "closedEntranceSeparatesRoom": true,
+      "propOverlap": false,
+      "allServicePointsReachable": true,
+      "centralAisleClear": true
+    }
+  }
+}

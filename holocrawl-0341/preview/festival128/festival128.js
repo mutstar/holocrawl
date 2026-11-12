@@ -1,5 +1,6 @@
 (async()=>{
  'use strict';
+ const catalogUrl=document.currentScript.dataset.catalog || 'stalls128.json';
  const load=u=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Image failed: '+u));im.src=u;});
  const json=async u=>{const r=await fetch(u);if(!r.ok)throw Error(u);return r.json();};
  const canvas=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c;};
@@ -19,7 +20,12 @@
   const d=b.getImageData(0,0,w,h);for(let i=0;i<d.data.length;i+=4){d.data[i+3]=d.data[i+3]>=200?255:0;if(!d.data[i+3]){d.data[i]=d.data[i+1]=d.data[i+2]=0;}else for(let j=0;j<3;j++)d.data[i+j]=Math.round(d.data[i+j]/8)*8;}
   b.putImageData(d,0,0);return out;
  }
- const stock=await Promise.all((await json('stalls128.json')).map(async s=>{const [themed,generic]=await Promise.all([load(s.source),load(s.original)]);return{...s,sprite:normalize(themed,96,64),generic:normalize(generic,96,64)};}));
+ const stock=await Promise.all((await json(catalogUrl)).map(async s=>{
+  const [themed,generic]=await Promise.all([load(s.native || s.source),load(s.original)]);
+  const sprite=s.native ? canvas(96,64) : normalize(themed,96,64);
+  if(s.native) g(sprite).drawImage(themed,0,0);
+  return {...s,sprite,generic:normalize(generic,96,64)};
+ }));
  let stall=stock.find(s=>s.id==='goldfish').sprite,selectedId='goldfish',themeEnabled=true;
  const lantern=normalize(lanternSource,16,32),texture=canvas(64,64);g(texture).drawImage(material,material.width/4,material.height/4,material.width/2,material.height/2,0,0,64,64);const tex=g(texture).getImageData(0,0,64,64).data;
  // One reflected material field spans the wall; lighting never changes per cell.

@@ -1,0 +1,20 @@
+{
+  "revision": "209-station09",
+  "mapTiles": [
+    35,
+    22
+  ],
+  "props": 15,
+  "walkable": 326,
+  "isolated": 0,
+  "overlaps": 0,
+  "newArtOutsideFootprint": 0,
+  "access": {
+    "ticket": true,
+    "platform": true,
+    "lockers": true,
+    "workbench": true,
+    "exit": true
+  },
+  "nativeIntegrated": false
+}

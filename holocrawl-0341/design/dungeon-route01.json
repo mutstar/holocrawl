@@ -466,7 +466,21 @@
       "allRunes": 15
     }
   ],
-  "currentArtTask": "no-portraits203:시오리198/하쨔마201/무나202에서 초상 진열대만 제거.기타 도트·벽·문·바닥·소품 위치 유지,각4칸 통로 복구.두 배치 픽셀 변경은 초상 영역 내부만,서비스 접근/문개폐/모바일 검사 passed.시각 검토 대기.",
+  "currentArtTask": "게임센터209·레이싱 트랙racing04 승인. 메가서킷 북쪽 문 3개를 롤러코스터·범퍼카 차고·네온 미로의 독립 층으로 연결한 branches05 미리보기. 트랙 허브 1층+자식 3층. 엔진 통합은 후속 작업.",
+  "facilityBranches": {
+    "mega-circuit": {
+      "specification": "mega-circuit-branch209.json",
+      "kind": "permanent-side-branch",
+      "hostFacility": "arcade-plaza",
+      "initialFloors": 1,
+      "childFloors": 3,
+      "totalFloors": 4,
+      "children": ["coaster", "bumper", "maze"],
+      "returnToSameHostGate": true,
+      "floorBudgetStatus": "pending-reallocation-within-60; existing-route-totals-exclude-this-branch",
+      "nativeIntegrated": false
+    }
+  },
   "sharedFacilities": {
     "status": "approved-policy-browser-planning",
     "registry": "preview/facility-pool131/registry.json",
@@ -710,6 +724,59 @@
     "revision": 203,
     "preview": "preview/no-portraits203/",
     "validation": "preview/no-portraits203/validation.json",
+    "nativeIntegrated": false,
+    "status": "user-approved-browser203",
+    "approvalDate": "2026-11-11"
+  },
+  "pekoraDerbyReview": {
+    "revision": 205,
+    "preview": "../preview/pekora-derby205/",
+    "footprint": [17, 13],
+    "status": "user-approved-browser205",
+    "approvalDate": "2026-11-11",
+    "nativeIntegrated": false
+  },
+  "megaCoasterReview": {
+    "revision": 206,
+    "preview": "../preview/mega-coaster206/",
+    "validation": "../preview/mega-coaster206/validation.json",
+    "footprint": [19, 14],
+    "status": "visual-review-pending",
+    "nativeIntegrated": false
+  },
+  "megaCoasterPlazaReview": {
+    "revision": 207,
+    "preview": "../preview/mega-plaza207/",
+    "validation": "../preview/mega-plaza207/validation.json",
+    "footprint": [29, 19],
+    "members": ["mega-coaster", "capsule-kong", "robo-crane"],
+    "status": "superseded-by208",
+    "nativeIntegrated": false
+  },
+  "arcadeExpansionReview": {
+    "revision": 209,
+    "baseRevision": 194,
+    "preview": "../preview/arcade-plaza209/",
+    "validation": "../preview/arcade-plaza209/branches05-validation.json",
+    "photoBoothFootprint": [3, 3],
+    "circuitDoorWidth": 4,
+    "circuitDoorHeight": 3,
+    "circuitStyle": "oval-racing-track-racing04",
+    "circuitFloorSize": [29, 21],
+    "circuitEntranceRevision": "209-forecourt06",
+    "childDoorCount": 3,
+    "childFloorCount": 3,
+    "branchSpecification": "mega-circuit-branch209.json",
+    "status": "user-approved-art-and-separate-branch-direction",
+    "nativeIntegrated": false
+  },
+  "megaGamePlazaReview": {
+    "revision": 208,
+    "preview": "../preview/mega-game-plaza208/",
+    "validation": "../preview/mega-game-plaza208/validation.json",
+    "footprint": [25, 16],
+    "members": ["capsule-kong", "robo-crane"],
+    "status": "superseded-by-existing-arcade-plaza194",
     "nativeIntegrated": false
   }
 }

@@ -1,0 +1,26 @@
+{
+  "revision": 204,
+  "status": "passed",
+  "checks": [
+    {
+      "mode": "attached",
+      "overlaps": 0,
+      "outOfBounds": 0,
+      "disconnected": 0,
+      "reachable": true,
+      "closedBlocksRoom": true,
+      "assetsFit": true
+    },
+    {
+      "mode": "standalone",
+      "overlaps": 0,
+      "outOfBounds": 0,
+      "disconnected": 0,
+      "reachable": true,
+      "closedBlocksRoom": true,
+      "assetsFit": true
+    }
+  ],
+  "overflow": false,
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "revision": 207,
+  "status": "passed",
+  "records": [
+    {
+      "mode": "attached",
+      "interior": 250,
+      "isolated": 0,
+      "unreachable": [],
+      "overlap": 0
+    },
+    {
+      "mode": "standalone",
+      "interior": 250,
+      "isolated": 0,
+      "unreachable": [],
+      "overlap": 0
+    }
+  ],
+  "overlay": true,
+  "zoom": true,
+  "mobile": true,
+  "errors": []
+}

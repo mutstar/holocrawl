@@ -1,0 +1,26 @@
+{
+  "id": "soda-pop-lagoon",
+  "name": "소다팝 라군",
+  "revision": 213,
+  "status": "concept-only-production-deferred",
+  "mapAndTileDirection": "Use Shoals as a reference for the coastal concept. Design original Soda Pop Lagoon terrain, layout, and tiles when production resumes.",
+  "preview": "../preview/soda-pop-lagoon213/",
+  "reference": "Dungeon Crawl Stone Soup Shoals, bundled reference source and RLTiles assets",
+  "size": [43, 25],
+  "entry": [5, 21],
+  "exit": [35, 7],
+  "traversal": {
+    "passable": ["sand", "shallow", "deck", "ship"],
+    "blocked": ["deep", "rock", "fixture"],
+    "tidePreview": ["low", "high"],
+    "floodedShortcut": "northern sandbar between the small rock island and the stage island",
+    "reachableTiles": {"low": 702, "high": 556}
+  },
+  "previewLandmarks": ["fish-blue", "lagoon-stage", "marine-ship"],
+  "remainingLandmarks": [
+    "bae-tackle", "ririka-lounge", "koyo-marine", "lamy-dome",
+    "splash-stadium", "kobo-beacon", "upao-heaven", "polka-camp"
+  ],
+  "campaignPlacement": "pending",
+  "nativeIntegration": false
+}

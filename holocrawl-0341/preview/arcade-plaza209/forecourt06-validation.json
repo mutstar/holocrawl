@@ -1,0 +1,37 @@
+{
+  "revision": "209-forecourt06",
+  "mapTiles": [
+    29,
+    21
+  ],
+  "gateApronEndsY": 128,
+  "outerKerbBeginsY": 192,
+  "grassGapPixels": 64,
+  "gates": [
+    {
+      "id": "coaster",
+      "reachable": true,
+      "returnReachable": true,
+      "steps": 38
+    },
+    {
+      "id": "bumper",
+      "reachable": true,
+      "returnReachable": true,
+      "steps": 31
+    },
+    {
+      "id": "maze",
+      "reachable": true,
+      "returnReachable": true,
+      "steps": 38
+    }
+  ],
+  "completedLaps": 2,
+  "savedStateMigration": {
+    "trackShiftedOnce": true,
+    "gateApproachPreserved": true,
+    "childProgressPreserved": true
+  },
+  "nativeIntegrated": false
+}

@@ -1,0 +1,34 @@
+{
+  "revision": 208,
+  "status": "passed",
+  "records": [
+    {
+      "mode": "attached",
+      "props": [
+        "capsule",
+        "crane",
+        "bench",
+        "bench"
+      ],
+      "invalidProps": 0,
+      "isolated": 0,
+      "unreachable": []
+    },
+    {
+      "mode": "standalone",
+      "props": [
+        "capsule",
+        "crane",
+        "bench",
+        "bench"
+      ],
+      "invalidProps": 0,
+      "isolated": 0,
+      "unreachable": []
+    }
+  ],
+  "overlay": true,
+  "zoom": true,
+  "mobile": true,
+  "errors": []
+}

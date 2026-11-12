@@ -1,0 +1,13 @@
+{
+  "id": "mega-exchange",
+  "name": "메가스피어 코인 교환소",
+  "revision": 212,
+  "artStatus": "awaiting-user-review",
+  "footprintTiles": [19, 12],
+  "nativeTilePixels": 32,
+  "placementModes": ["attached", "standalone"],
+  "zones": ["coin-exchange-and-prize-counters", "queue-and-bench", "stockroom-with-vault"],
+  "interiorWalkableTiles": 102,
+  "preview": "../preview/mega-exchange212/",
+  "implementation": {"browserArtAndDoorStates": true, "nativeIntegration": false, "transactions": false}
+}

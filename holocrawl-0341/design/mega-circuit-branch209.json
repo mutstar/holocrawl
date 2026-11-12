@@ -1,0 +1,72 @@
+{
+  "id": "mega-circuit",
+  "name": "메가서킷",
+  "kind": "permanent-hub-with-three-child-floors",
+  "decision": "user-approved-separate-dungeon-floor",
+  "artStatus": "user-approved-racing04",
+  "floors": 4,
+  "hubFloors": 1,
+  "childFloors": 3,
+  "floorCountStatus": "one-approved-racing-hub-plus-three-user-requested-destination-floors",
+  "children": [
+    {"id":"coaster","name":"롤러코스터","levelId":"mega-coaster:1","door":1,"hubDoorCell":[6,0],"hubReturnCell":[7,3],"size":[35,22],"source":"extended-native-pixel-ride209-long08-with-206-platform-art","rideFootprint":[27,9],"rideArtStatus":"user-approved-long08","furnitureRevision":"209-station09","zones":["ticket-entry","baggage-and-rest","serpentine-queue","boarding-platform","maintenance"],"artStatus":"user-approved-station09","preview":"../preview/arcade-plaza209/#coaster"},
+    {"id":"bumper","name":"범퍼카 차고","levelId":"bumper-garage:1","door":2,"hubDoorCell":[13,0],"hubReturnCell":[14,3],"size":[29,19],"source":"original-holocrawl-concept","furnitureRevision":"209-garage10","zones":["four-charging-bays","central-inspection","wall-tools-tyres-and-batteries","reception-and-waiting"],"artStatus":"user-approved-garage10","preview":"../preview/arcade-plaza209/#bumper"},
+    {"id":"maze","name":"네온 미로","levelId":"neon-maze:1","door":3,"hubDoorCell":[20,0],"hubReturnCell":[21,3],"size":[29,21],"source":"original-holocrawl-concept","wallArtRevision":"209-glass11","wallStyle":"continuous-cyan-violet-neon-glass; translucent-floor-pattern-and-diagonal-reflections","artStatus":"user-approved-glass11","preview":"../preview/arcade-plaza209/#maze"}
+  ],
+  "childConnections": "parallel-one-floor-destinations; each returns to its own door on mega-circuit:1",
+  "entry": {
+    "hostFacility": "arcade-plaza",
+    "feature": "mega-circuit-gate",
+    "randomPoolMember": false,
+    "region": "inherit-host-floor",
+    "parentBinding": "persist-exact-host-floor-and-gate-instance",
+    "destination": "mega-circuit:1"
+  },
+  "return": {
+    "destination": "bound-host-floor",
+    "arrival": "walkable-approach-of-the-same-arcade-gate",
+    "reciprocal": true,
+    "requiresRaceCompletion": false
+  },
+  "persistencePlan": {
+    "separateLevelIdentity": true,
+    "separateExplorationMemory": true,
+    "generateOncePerCampaign": true,
+    "rerollOnRevisit": false,
+    "preserveTerrainItemsAndMonsters": true,
+    "timedPortal": false
+  },
+  "layout": {
+    "style": "oval-asphalt-racing-track",
+    "previewTiles": [29, 21],
+    "entranceRevision": "209-forecourt06",
+    "doorArtRevision": "209-themed07",
+    "doorArtStatus": "awaiting-user-review",
+    "visibleGateLabels": false,
+    "doorThemes": {"coaster":"purple-rail-arch-and-small-car","bumper":"industrial-shutter-and-bumper-car-emblem","maze":"faceted-neon-glass-and-maze-lines"},
+    "northForecourtTiles": [23, 2],
+    "forecourtToTrackGapTiles": 2,
+    "trackOffsetTiles": [0, 4],
+    "trackShapeAndScalePreserved": true,
+    "artRevision": "209-racing04",
+    "preview": "../preview/arcade-plaza209/#circuit"
+  },
+  "floorBudget": {
+    "countsAsSeparateFloor": true,
+    "campaignCap": 60,
+    "allocation": "pending-reallocation-within-existing-cap",
+    "existingRouteTotals": "base-route-totals-exclude-this-pending-side-branch"
+  },
+  "encountersStatus": "deferred",
+  "rewardsStatus": "deferred",
+  "runesStatus": "undecided",
+  "implementation": {
+    "browserSeparateView": true,
+    "browserChildFloors": 3,
+    "browserDoorClickAndWalkThrough": true,
+    "browserStateStorage": "versioned-sessionStorage; independent per-floor state",
+    "nativeLevelTransition": false,
+    "nativeSaveIntegration": false,
+    "campaignInserted": false
+  }
+}

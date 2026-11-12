@@ -1,0 +1,21 @@
+{
+  "revision": 205,
+  "status": "passed",
+  "records": [
+    {
+      "mode": "attached",
+      "wallPixels": 43904,
+      "entrancePixels": 1098,
+      "outside": 0
+    },
+    {
+      "mode": "standalone",
+      "wallPixels": 42254,
+      "entrancePixels": 1098,
+      "outside": 0
+    }
+  ],
+  "doorToggle": true,
+  "zoom": true,
+  "errors": []
+}

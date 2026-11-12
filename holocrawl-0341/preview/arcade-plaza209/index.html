@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>게임센터 광장 · 메가서킷</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#182126;color:#e1e9e5;font:15px/1.55 system-ui}
+main{max-width:1280px;margin:auto;padding:18px}h1{font-size:27px;margin:0}p{color:#b8c9c4;margin:8px 0}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0}
+button,.action{background:#34494f;border:1px solid #7b9592;color:#e1e9e5;padding:6px 10px;font:inherit;cursor:pointer}
+a{color:#c6b4e8}.action{background:#275457;border-color:#75a6a0;text-decoration:none}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}figure{margin:0;border:1px solid #526266;background:#202b30;min-width:0}
+figcaption{padding:6px 10px}.field{position:relative}.field button{padding:0;border:0;display:block;background:none;width:100%;cursor:zoom-in}
+canvas{display:block;width:100%;height:auto;image-rendering:pixelated}.gate{position:absolute;display:block;border:1px solid transparent}
+.gate:hover,.gate:focus-visible{border-color:#c1eee6;box-shadow:0 0 8px #93c9b5}
+dialog{background:#162127;border:1px solid #8b9e9b;color:#e5ebe5;max-width:98vw;max-height:95vh}
+.scroll{overflow:auto;max-height:78vh}#zoom{width:auto;max-width:none}
+#course{max-width:928px;margin:auto;border:1px solid #526266}#course:focus-visible{outline:2px solid #9cd9cc}
+#course-wrap{position:relative;max-width:928px;margin:auto}.branch-gate{position:absolute;display:block;top:0;height:9.52381%;width:10.3448%;border:1px solid transparent;text-decoration:none}
+.branch-gate:hover,.branch-gate:focus-visible{border-color:#c6e8df;outline:1px solid #91b6bf}
+#branch-canvas{max-width:100%;margin:auto;border:1px solid #526266}#branch-canvas:focus-visible{outline:2px solid #9cd9cc}
+#course-message{min-height:1.55em}.key{min-width:40px}.key[aria-pressed=true]{background:#607c6d}
+@media(max-width:760px){.pair{grid-template-columns:1fr}main{padding:12px}}
+</style>
+<main>
+  <section id="plaza">
+    <h1>게임센터 광장</h1>
+    <p>안쪽에 메가프리 사진 부스와 메가서킷 대문이 있습니다. 오른쪽 위 체크무늬·CIRCUIT 간판이 있는 큰 양문을 누르면 경기장 층으로 들어갑니다.</p>
+    <div class="bar">
+      <a id="enter" class="action" href="#circuit">메가서킷 들어가기</a>
+      <label><input type="checkbox" id="grid"> 칸 표시</label>
+      <label><input type="checkbox" id="labels"> 시설 이름</label>
+      <button id="door-main">정면 문 열기</button>
+      <button id="door-left">왼쪽 문 열기</button>
+      <button id="door-right">오른쪽 문 열기</button>
+      <span id="status" role="status">도트 준비 중…</span>
+    </div>
+    <div class="pair">
+      <figure>
+        <figcaption>기존 벽에 붙인 배치</figcaption>
+        <div class="field">
+          <button data-mode="attached" aria-label="벽붙임 배치 확대"><canvas id="attached"></canvas></button>
+          <a class="gate" data-gate="attached" href="#circuit" aria-label="벽붙임 배치의 메가서킷 문" title="메가서킷 들어가기"></a>
+        </div>
+      </figure>
+      <figure>
+        <figcaption>독립 배치</figcaption>
+        <div class="field">
+          <button data-mode="standalone" aria-label="독립 배치 확대"><canvas id="standalone"></canvas></button>
+          <a class="gate" data-gate="standalone" href="#circuit" aria-label="독립 배치의 메가서킷 문" title="메가서킷 들어가기"></a>
+        </div>
+      </figure>
+    </div>
+    <p><a href="../arcade-plaza194/">기존 게임센터 194</a></p>
+  </section>
+  <section id="circuit-floor" hidden>
+    <h1>메가서킷 · 레이싱 트랙과 세 갈래 문</h1>
+    <p>트랙 북쪽의 대기 공간에 문 3개가 있습니다. 가운데 연결 통로로 이동하거나 문을 클릭하면 각각 다른 층으로 들어갑니다.</p>
+    <div class="bar">
+      <a class="action" href="#plaza">게임센터로 돌아가기</a>
+      <button id="reset">처음부터</button>
+      <span id="score"></span>
+    </div>
+    <div id="course-wrap">
+      <canvas id="course" width="928" height="672" tabindex="0" aria-label="메가서킷 레이싱 트랙"></canvas>
+      <a class="branch-gate" style="left:20.6897%" href="#coaster" aria-label="롤러코스터 층 들어가기"></a>
+      <a class="branch-gate" style="left:44.8276%" href="#bumper" aria-label="범퍼카 차고 층 들어가기"></a>
+      <a class="branch-gate" style="left:68.9655%" href="#maze" aria-label="네온 미로 층 들어가기"></a>
+    </div>
+    <p>각 층의 아래 문으로 돌아오면 들어갔던 메가서킷 문 앞에 도착합니다.</p>
+    <div class="bar" aria-label="이동 조작">
+      <button class="key" data-move="left" aria-label="왼쪽 이동">←</button>
+      <button class="key" data-move="up" aria-label="위쪽 이동">↑</button>
+      <button class="key" data-move="down" aria-label="아래쪽 이동">↓</button>
+      <button class="key" data-move="right" aria-label="오른쪽 이동">→</button>
+      <span id="course-message" role="status"></span>
+    </div>
+  </section>
+  <section id="branch-floor" hidden>
+    <h1 id="branch-title"></h1>
+    <p id="branch-description"></p>
+    <div class="bar"><a class="action" href="#circuit">메가서킷 문 앞으로 돌아가기</a><button id="branch-reset">이 층 입구로</button><span id="branch-score"></span></div>
+    <canvas id="branch-canvas" width="928" height="608" tabindex="0" aria-label="별도 분기 층"></canvas>
+    <div class="bar" aria-label="분기 층 이동 조작">
+      <button class="key" data-branch-move="left" aria-label="분기 층 왼쪽 이동">←</button>
+      <button class="key" data-branch-move="up" aria-label="분기 층 위쪽 이동">↑</button>
+      <button class="key" data-branch-move="down" aria-label="분기 층 아래쪽 이동">↓</button>
+      <button class="key" data-branch-move="right" aria-label="분기 층 오른쪽 이동">→</button>
+      <span id="branch-message" role="status"></span>
+    </div>
+  </section>
+</main>
+<dialog id="detail"><div class="bar"><strong id="title"></strong><button id="close">닫기</button></div><div class="scroll"><canvas id="zoom"></canvas></div></dialog>
+<script src="../wall-height121/wall121.js"></script>
+<script src="../city-market124/random-floor.js"></script>
+<script src="../facility-placement171/materials171.js"></script>
+<script src="../arcade-plaza191/layout191.js"></script>
+<script src="../arcade-plaza192/wall192.js"></script>
+<script src="../arcade-plaza193/door193.js"></script>
+<script src="../arcade-plaza194/layout194.js"></script>
+<script src="../arcade-plaza194/door194.js"></script>
+<script src="layout209.js?v=gate02"></script>
+<script src="art209.js?v=gate02"></script>
+<script src="floor209.js?v=floor03"></script>
+<script src="app209.js?v=floor03"></script>
+<script src="../mega-coaster206/layout206.js"></script>
+<script src="../mega-coaster206/sprites206.js"></script>
+<script src="coaster-long209.js?v=long08"></script>
+<script src="coaster-props209.js?v=station09"></script>
+<script src="bumper-garage209.js?v=garage10"></script>
+<script src="maze-glass209.js?v=glass11"></script>
+<script src="branches209.js?v=glass11"></script>
+<script src="circuit209.js?v=forecourt06"></script>
+<script src="controls209.js?v=long08"></script>
+</html>

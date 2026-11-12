@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "id": "track",
+      "w": 224,
+      "h": 160,
+      "colors": 18,
+      "prompt": "Use case: stylized-concept. ONE coherent sprite of a miniature Pekorumble Derby race-track machine for a tile roguelike, final224x160 native,112x80 logical. Input 1 subject reference only, actual game has an ivory rabbit-shaped shell with a glimpse of green racetrack under it; omit its UI, player, pink annotations. Input 2 style reference only. Main form is a wide clearly legible oval with THREE separated pale tan lanes around a dark muted green infield, a short checkerboard finish stripe, little cream rail and subdued bronze low plinth. On the BACK EDGE only, a large stylized ivory Nousagi rabbit-face open arch with two short ears, tiny coral inner ears and dark simple eyes, with a wide dark opening over the rear lane, so most of the oval is visible. Three small white rabbit racers with muted red, blue, yellow scarves spaced on the track, not human. Slight top/front camera like pixel dungeon furniture, broad square pixel clusters, low detail, 18 flat colors, 2 shades per material. True transparent background. No text, UI, portraits, glow, gradients, antialias, scattered props, floor outside the plinth or separate sprite sheet.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/pekora-derby204/references/original-derby.webp",
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/moon-ace202/native-sprites202.png"
+      ]
+    },
+    {
+      "id": "ticket-counter",
+      "w": 96,
+      "h": 48,
+      "colors": 14,
+      "prompt": "Use case: stylized-concept. One coarse pixel roguelike ticket counter for a bunny race arcade, 48x24 logical sprite. STYLE reference only. Broad simple low honey-colored counter with pale blue front panels, a tiny cream ticket stack on the countertop, a muted carrot-orange small geometric badge, dark trim and grounded legs. Slight top/front view. No lettering, people, portrait, other objects, floor, glow or gradients. Hard pixel edges and actual transparent background. 14 flat colors max.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/moon-ace202/native-sprites202.png"
+      ]
+    },
+    {
+      "id": "carrot-trophy",
+      "w": 32,
+      "h": 48,
+      "colors": 12,
+      "prompt": "Use case: stylized-concept. One tiny carrot-shaped racing trophy on a short navy plinth, for a tile roguelike. 16x24 logical coarse pixels. Broad carrot-orange silhouette with two muted green leaf tips and a brass band, readable at game scale. Match the simple pixel sprite STYLE reference. No text, human portrait, glow, gradients, floor or outside shadow. Hard pixel edges and actual transparent background.12 flat colors maximum.",
+      "refs": [
+        "C:/Users/071staff/Documents/ChatGPT/HoloCrawl/holocrawl-0341/preview/moon-ace202/native-sprites202.png"
+      ]
+    }
+  ],
+  "mode": "built-in image_gen"
+}
