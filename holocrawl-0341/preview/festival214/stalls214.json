@@ -8,7 +8,7 @@
     "profile": "https://hololive.hololivepro.com/en/talents/natsuiro-matsuri/",
     "detail": "주황·남색 천막 · 에비프라이온 간판 · 타코야키 철판",
     "conceptReason": "축제 콘셉트의 활기와 주황 계열 상징을 타코야키 노점에 연결한 팬 디자인",
-    "native": "../festival128/assets/takoyaki96.png"
+    "native": "assets/takoyaki-simple96.png"
   },
   {
     "id": "yakisoba",
@@ -19,7 +19,7 @@
     "profile": "https://hololive.hololivepro.com/en/talents/oozora-subaru/",
     "detail": "노랑·초록 천막 · 모자 쓴 오리 · 야키소바 철판",
     "conceptReason": "운동부 축제 부스를 연상시키는 배색과 오리 상징을 사용한 팬 디자인",
-    "native": "../festival128/assets/yakisoba96.png"
+    "native": "assets/yakisoba-simple96.png"
   },
   {
     "id": "ringoame",
@@ -29,8 +29,8 @@
     "original": "../festival126/assets/ringoame-source.png",
     "profile": "https://hololive.hololivepro.com/en/talents/aki-rosenthal/",
     "detail": "분홍·크림 천막 · 장미 사과 마스코트 · 사과 사탕 진열대",
-    "conceptReason": "기존 포장마차의 천막과 소품을 보존하고 중앙 간판을 단순한 마스코트로 교체.",
-    "native": "assets/ringoame-mascot96.png"
+    "conceptReason": "기존 포장마차의 배색과 마스코트를 큰 색면으로 정리한 팬 디자인.",
+    "native": "assets/ringoame-simple96.png"
   },
   {
     "id": "goldfish",
@@ -40,8 +40,8 @@
     "original": "../festival126/assets/goldfish-source.png",
     "profile": "https://hololive.hololivepro.com/en/talents/gawr-gura/",
     "detail": "파랑·흰색 천막 · 꼬마 상어 마스코트 · 물통과 종이 뜰채",
-    "conceptReason": "기존 포장마차의 천막과 소품을 보존하고 중앙 간판을 단순한 마스코트로 교체.",
-    "native": "assets/goldfish-mascot96.png"
+    "conceptReason": "기존 포장마차의 배색과 마스코트를 큰 색면으로 정리한 팬 디자인.",
+    "native": "assets/goldfish-simple96.png"
   },
   {
     "id": "shooting",
@@ -51,7 +51,37 @@
     "original": "../festival126/assets/shooting-source.png",
     "profile": "https://hololive.hololivepro.com/en/talents/suzuna-tsuzuri/",
     "detail": "붉은 우편 천막 · 편지를 든 염소 마스코트 · 편지와 우편함 경품",
-    "conceptReason": "기존 포장마차의 천막과 소품을 보존하고 중앙 간판을 단순한 마스코트로 교체.",
-    "native": "assets/shooting-mascot96.png"
+    "conceptReason": "기존 포장마차의 배색과 마스코트를 큰 색면으로 정리한 팬 디자인.",
+    "native": "assets/shooting-simple96.png"
+  },
+  {
+    "id": "shaved-ice",
+    "name": "라미 · 빙수",
+    "detail": "하늘색 천막 · 얼음 간판 · 빙수 기계와 시럽병",
+    "native": "assets/shaved-ice96.png"
+  },
+  {
+    "id": "cotton-candy",
+    "name": "와타메 · 솜사탕",
+    "detail": "살구색 천막 · 양털처럼 둥근 솜사탕과 회전통",
+    "native": "assets/cotton-candy96.png"
+  },
+  {
+    "id": "grilled-onigiri",
+    "name": "오카유 · 구운 주먹밥",
+    "detail": "보라색 천막 · 석쇠 위에 줄지어 놓인 삼각 주먹밥",
+    "native": "assets/grilled-onigiri96.png"
+  },
+  {
+    "id": "ring-toss",
+    "name": "폴카 · 고리 던지기",
+    "detail": "빨강·파랑 천막 · 높이가 다른 말뚝과 색색의 고리",
+    "native": "assets/ring-toss96.png"
+  },
+  {
+    "id": "omikuji",
+    "name": "미코 · 오미쿠지",
+    "detail": "붉은 지붕 · 나무 운세통과 종이를 묶어 둔 줄",
+    "native": "assets/omikuji96.png"
   }
 ]

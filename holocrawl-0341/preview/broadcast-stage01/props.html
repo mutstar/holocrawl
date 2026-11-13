@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>방송 지하무대 1~2층 · 소품</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #171b21; color: #e3e8eb; font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 1180px; padding: 22px; margin: auto; }
+  h1 { margin: 0 0 16px; font-size: 24px; }
+  h2 { margin: 14px 0 8px; font-size: 17px; }
+  .samples { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  figure { margin: 0; background: #20272e; border: 1px solid #3a4751; }
+  .sprite { display: grid; place-items: center; min-height: 100px; padding: 4px; background: #14191e; }
+  canvas { display: block; max-width: 100%; height: auto; image-rendering: pixelated; }
+  figcaption { padding: 7px 9px; overflow-wrap: anywhere; }
+  small { display: block; color: #aebbc4; }
+  @media (max-width: 760px) { .samples { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+<main>
+  <h1>방송 지하무대 1~2층 · 소품 시안</h1>
+  <h2>벽 매립</h2>
+  <div class="samples" id="wall"></div>
+  <h2>리허설 무대</h2>
+  <div class="samples" id="ground"></div>
+</main>
+<script src="studio-props.js"></script>
+<script>
+  for (const [kind, props] of Object.entries(createStudioProps())) {
+    const section = document.getElementById(kind);
+    for (const {name, width, height, tile} of props) {
+      const figure = document.createElement('figure');
+      const sprite = document.createElement('div');
+      sprite.className = 'sprite';
+      tile.style.width = tile.width * 2 + 'px';
+      tile.setAttribute('aria-hidden', 'true');
+      sprite.append(tile);
+      const caption = document.createElement('figcaption');
+      caption.textContent = name;
+      const dimensions = document.createElement('small');
+      dimensions.textContent = width + '×' + height + '칸';
+      caption.append(dimensions);
+      figure.append(sprite, caption);
+      section.append(figure);
+    }
+  }
+</script>
+</html>

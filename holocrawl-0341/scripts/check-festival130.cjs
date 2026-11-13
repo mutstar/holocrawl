@@ -1,14 +1,18 @@
 const fs=require('fs'),path=require('path'),assert=require('assert/strict'),crypto=require('crypto');
 const G=require('../preview/festival130/generator130.js');
+const stallCatalog=require('../preview/festival214/stalls214.json');
 const{chromium,executablePath}=require('./portable-browser-tools.cjs');
 const D=path.resolve(__dirname,'../preview/festival130'),url=process.env.HOLOCRAWL_PREVIEW_URL||'http://127.0.0.1:8798';
 const hash=m=>crypto.createHash('sha256').update(Buffer.from(m.cells)).update(JSON.stringify([m.structures,m.loose,m.lanterns,m.doors,m.stairs])).digest('hex');
-const results=[],fingerprints=new Set(),geometryHashes=new Set();
+const results=[],fingerprints=new Set(),geometryHashes=new Set(),stallIds=new Set(stallCatalog.map(s=>s.id)),seenStalls=new Set();
 for(const seed of ['20261109-8',...Array.from({length:23},(_,i)=>'festival-audit-'+i)]){
  const m=G.generate(seed),occupied=new Set(),h=hash(m);fingerprints.add(h);geometryHashes.add(crypto.createHash('sha256').update(Buffer.from(m.cells)).digest('hex'));
  const reachable=G.distances(m,m.open,m.start);assert.equal(reachable.filter(d=>d>=0).length,m.floorTiles,seed+' disconnected');
  for(const p of [...m.structures,...m.loose])for(const i of G.rectCells(m,p)){assert.equal(m.cells[i],1);assert.equal(m.open[i],0);assert.ok(!occupied.has(i),'object overlap');occupied.add(i);if(m.loose.includes(p))assert.equal(m.protectedCells[i],0,'protected corridor occupied');}
- for(const type of ['takoyaki','yakisoba','ringoame','goldfish','shooting'])assert.ok(m.structures.some(p=>p.type===type));
+ const stalls=m.structures.filter(p=>p.kind==='stall').map(p=>p.type);
+ assert.ok(stalls.length>=5&&stalls.length<=7);
+ assert.equal(new Set(stalls).size,stalls.length);
+ for(const type of stalls){assert.ok(stallIds.has(type),type);seenStalls.add(type);}
  for(const type of ['yagura','lantern-string','festival-cart','mask-rack','bench','nobori','taiko'])assert.ok([...m.structures,...m.loose,...m.lanterns].some(p=>p.type===type));
  assert.equal(m.stairs.filter(p=>p.kind==='up').length,3);assert.equal(m.stairs.filter(p=>p.kind==='down').length,3);
  for(const a of m.stairs){assert.ok(reachable[a.y*m.w+a.x]>=0);for(const b of m.stairs)if(a!==b)assert.ok(Math.max(Math.abs(a.x-b.x),Math.abs(a.y-b.y))>=9);}
@@ -18,6 +22,8 @@ for(const seed of ['20261109-8',...Array.from({length:23},(_,i)=>'festival-audit
  assert.equal(hash(G.generate(seed)),h,'seed not deterministic');results.push({seed,hash:h,attempts:m.generatorAttempts,stalls:m.structures.length-1,loose:m.loose.length,lanterns:m.lanterns.length,doors:m.doors.length,floor:m.floorTiles,stairDistance:m.stairDistance,detour:m.placementAudit.maxAnchorDetour});
 }
 assert.equal(fingerprints.size,results.length);assert.equal(geometryHashes.size,results.length);
+assert.equal(stallIds.size,10);
+assert.deepEqual(seenStalls,stallIds);
 (async()=>{const b=await chromium.launch({executablePath,headless:true});try{
  const p=await b.newPage({viewport:{width:1440,height:1100},deviceScaleFactor:1}),errors=[],failed=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)failed.push([r.status(),r.url()]);});
  await p.goto(url+'/festival130/');await p.waitForFunction(()=>window.festivalReady);
@@ -38,6 +44,6 @@ assert.equal(fingerprints.size,results.length);assert.equal(geometryHashes.size,
  for(const seed of ['festival-browser-1','festival-browser-2']){await p.fill('#seed',seed);await p.click('#generate');await p.waitForFunction(()=>festivalReady);}
  await p.fill('#seed','20261109-8');await p.click('#generate');await p.waitForFunction(()=>festivalReady);await p.screenshot({path:path.join(D,'page130.png'),fullPage:true});
  await p.setViewportSize({width:390,height:844});assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile overflow');assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
- const report={status:'passed',revision:130,generatedSeeds:results,deterministic:true,distinctGeometryHashes:fingerprints.size,allFiveStallsAndSevenProps:true,nonOverlapping:true,connected:true,stairsPerFloor:6,minStairChebyshev:9,maxLooseDetour:2,actions,focusVisits:visits,mobileOverflow:false,pageErrors:errors,failedRequests:failed,nativeIntegrated:false};fs.writeFileSync(path.join(D,'validation.json'),JSON.stringify(report,null,2)+'\n');
+ const report={status:'passed',revision:130,generatedSeeds:results,deterministic:true,distinctGeometryHashes:fingerprints.size,stallTypesSeen:seenStalls.size,allSevenPropTypes:true,nonOverlapping:true,connected:true,stairsPerFloor:6,minStairChebyshev:9,maxLooseDetour:2,actions,focusVisits:visits,mobileOverflow:false,pageErrors:errors,failedRequests:failed,nativeIntegrated:false};fs.writeFileSync(path.join(D,'validation.json'),JSON.stringify(report,null,2)+'\n');
  const m=G.generate('20261109-8');fs.writeFileSync(path.join(D,'map130.json'),JSON.stringify({...m,cells:Array.from(m.cells),open:Array.from(m.open),baselineOpen:Array.from(m.baselineOpen),protectedCells:Array.from(m.protectedCells)},null,2)+'\n');console.log(JSON.stringify({status:report.status,seeds:results.length,default:results[0],actions,focusVisits:visits,pageErrors:errors,failedRequests:failed}));
 }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

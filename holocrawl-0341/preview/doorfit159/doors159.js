@@ -37,30 +37,43 @@ function capProfile(m,d,base){if(!base)return fallbackCap();let entries=capCache
  for(const yy of [d.y+1,d.y,d.y+2,d.y-1])for(const dx of [1,-1,2,-2,0]){const xx=d.x+dx;if(xx<1||xx>=m.w-1||yy<1||yy>=m.h-1||m.cells[yy*m.w+xx]!==0||m.cells[(yy-1)*m.w+xx]===0||(m.home&&xx>=m.home.x&&xx<m.home.x+m.home.w&&yy>=m.home.y&&yy<m.home.y+m.home.h))continue;const p=measure(base,xx*32+16,yy*32,{kind:'adjacent-wall',x:xx,y:yy});if(p){entries.set(key,p);return p;}}
  const p=fallbackCap();entries.set(key,p);return p;
 }
-function horizontalReturns(q,m,d,base){
+function horizontalReturns(q,m,d,base,xOffset=0){
  if(!base||direction(m,d)!=='horizontal')return;
- const x=d.x*32,y=d.y*32,left=document.createElement('canvas');left.width=22;left.height=32;
+ const x=d.x*32,y=d.y*32,left=document.createElement('canvas');left.width=22+xOffset;left.height=32;
  const g=left.getContext('2d');g.imageSmoothingEnabled=false;
  // Eight pixels of real wall plus the left half of the arch shoulder.
  // Use the same dimensions/source for both sides, including the reveal shading.
  g.drawImage(base,x-8,y,8,32,0,0,8,32);
+ if(xOffset)g.drawImage(base,x-1,y,1,32,8,0,xOffset,32);
  for(let px=0;px<14;px++){
   const top=archTop(px);
-  if(top>0)g.drawImage(base,x-1,y,1,top,px+8,0,1,top);
+  if(top>0)g.drawImage(base,x-1,y,1,top,px+8+xOffset,0,1,top);
  }
  q.drawImage(left,x-8,y);
- // Mirror around the actual arch center13.5; the32px tile includes4px padding.
- q.save();q.translate(x+36,y);q.scale(-1,1);q.drawImage(left,0,0);q.restore();
+ // Mirror the wall returns around the center of the arch.
+ q.save();q.translate(x+36+xOffset*2,y);q.scale(-1,1);q.drawImage(left,0,0);q.restore();
+}
+function drawWallReturns(q,m,d,base,xOffset=0){
+ if(direction(m,d)==='horizontal'){
+  horizontalReturns(q,m,d,base,xOffset);
+  return;
+ }
+ const x=d.x*32+xOffset,y=d.y*32;
+ // Carry the upper wall face into the space beside the curved frame.
+ if(base)for(let px=0;px<28;px++){
+  const height=archTop(px);
+  if(height>0)q.drawImage(base,x+px,y-1,1,1,x+px,y,1,height);
+ }
+ for(let dx=0;dx<4-xOffset;dx++){
+  q.fillStyle='rgba(0,0,0,'+(.28-dx*.05)+')';
+  q.fillRect(x+28+dx,y+10,1,22);
+  if(dx<xOffset)q.fillRect(x-1-dx,y+10,1,22);
+ }
 }
 function draw(q,m,d,opened,im,base){const x=d.x*32,y=d.y*32;
- horizontalReturns(q,m,d,base);
- // Wall shoulders belong to the map, not the transparent door asset. Extend only the real rails.
- if(direction(m,d)==='vertical'&&base){for(let px=0;px<28;px++){const h=archTop(px);if(h>0)q.drawImage(base,x+px,y-1,1,1,x+px,y,1,h);}}
- // The door ends at the original wall boundary. Never paint a floor strip beneath the closed leaves.
- // A translucent cast shadow follows the side post, never an opaque rectangular matte.
- if(direction(m,d)!=='horizontal')for(let dx=0;dx<4;dx++){q.fillStyle='rgba(0,0,0,'+(.28-dx*.05)+')';q.fillRect(x+28+dx,y+10,1,22);}
+ drawWallReturns(q,m,d,base);
  q.drawImage(sprite(opened),x,y);
  // The native rail replaces the final rows INSIDE the32px tile. Never append it below the wall.
  // Native wall coping is already in base; do not paint a second rail across the door.
 }
-root.DoorFit159={solids,wallCells,direction,draw,sprite,horizontalReturns,capProfile,archTop,openingTop,frame:{w:28,h:32,canvasW:32,xOffset:0,yOffset:0,leafWidth:12,closedSeamWidth:2,closedSeamOpaque:true,mirroredInterior:true,grayRight:27,shadowStart:28,shadowWidth:4,archRise:10,material:'solid iron',transparentExterior:true,shadowInSprite:false,nativeWallReturns:true,openBottom:true,flushThreshold:null,archMaterial:'silver steel',leafMaterial:'dark iron plate',bottomAtWallBoundary:true,wallSill:null,wallLineSource:"adjacent native wall in base; no independent door sill"}};})(globalThis);
+root.DoorFit159={solids,wallCells,direction,draw,drawWallReturns,sprite,horizontalReturns,capProfile,archTop,openingTop,frame:{w:28,h:32,canvasW:32,xOffset:0,yOffset:0,leafWidth:12,closedSeamWidth:2,closedSeamOpaque:true,mirroredInterior:true,grayRight:27,shadowStart:28,shadowWidth:4,archRise:10,material:'solid iron',transparentExterior:true,shadowInSprite:false,nativeWallReturns:true,openBottom:true,flushThreshold:null,archMaterial:'silver steel',leafMaterial:'dark iron plate',bottomAtWallBoundary:true,wallSill:null,wallLineSource:"adjacent native wall in base; no independent door sill"}};})(globalThis);

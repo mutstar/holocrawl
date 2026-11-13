@@ -8,7 +8,8 @@
     "EN"
   ],
   "floorCap": 60,
-  "runeTotal": 15,
+  "runeTarget": 15,
+  "runeTotal": 13,
   "jp": {
     "main": {
       "name": "잔향도시",
@@ -223,7 +224,12 @@
             8,
             10
           ],
-          "name": "끝나지 않는 축제"
+          "name": "끝나지 않는 축제",
+          "layout": "8~10층 공통 랜덤 생성",
+          "stallFloors": [8, 9],
+          "brokenStallFloor": 10,
+          "debrisFloor": 10,
+          "preview": "preview/festival130/index.html"
         },
         {
           "floors": [
@@ -362,7 +368,7 @@
     },
     "depths": {
       "name": "커튼콜",
-      "floors": 7,
+      "floors": 5,
       "themes": [
         {
           "floors": [
@@ -374,26 +380,60 @@
         {
           "floors": [
             3,
-            5
+            4
           ],
           "name": "뒤섞인 리허설 구역"
         },
         {
           "floors": [
-            6,
-            7
+            5,
+            5
           ],
           "name": "무대 뒤편"
         }
       ],
-      "bossRune": 1
+      "runes": 0
+    },
+    "branchHub": {
+      "provisionalName": "방송 지하무대",
+      "status": "draft",
+      "floors": 5,
+      "runes": 0,
+      "concept": "방송국 아래에 이어진 리허설 스튜디오와 무대 설비 구역",
+      "entry": {
+        "fromBranch": "main",
+        "floorRange": [11, 12],
+        "count": 1,
+        "selection": "uniform-per-run",
+        "appearance": "방송 거리의 열린 바닥 한 칸에 놓이는 정사각형 지하 계단. 낮은 청회색 철제 테두리 양옆에 황색 주의 표시가 있다."
+      },
+      "themes": [
+        {
+          "floors": [1, 2],
+          "name": "리허설 스튜디오",
+          "layout": "방음벽이 둘러싼 연습실과 장비 카트가 지나는 넓은 연결 통로"
+        },
+        {
+          "floors": [3, 4],
+          "name": "무대 설비층",
+          "layout": "조명 제어실과 케이블 덕트, 세트 보관실 사이를 잇는 통로"
+        },
+        {
+          "floors": [5, 5],
+          "name": "지하 세트 하역장",
+          "layout": "대형 세트 운반 리프트와 적재장, 금지된 굿즈 창고로 이어지는 셔터"
+        }
+      ]
     },
     "dangerBranches": {
       "candidates": 4,
       "generated": 2,
       "selection": "One fromA/B and one fromC/D per run",
+      "entries": {
+        "fromBranch": "branchHub",
+        "floors": [2, 3]
+      },
       "floorsEach": 3,
-      "oneRequired": true,
       "runesEach": 1,
       "provisionalNames": [
         "백귀야시장",
@@ -402,20 +442,28 @@
         "폭죽유원지"
       ]
     },
-    "optionalChallenge": {
+    "goodsWarehouse": {
       "provisionalName": "금지된 굿즈 창고",
       "floors": 3,
-      "runes": 1
+      "runes": 1,
+      "entry": {
+        "fromBranch": "branchHub",
+        "fromFloor": 5
+      }
     },
     "regionalFinale": {
       "provisionalName": "끝나지 않는 앙코르",
       "floors": 3,
-      "runes": 1,
-      "entry": "CurtainCall boss rune plus one danger branch rune"
+      "runes": 0,
+      "entry": {
+        "fromBranch": "depths",
+        "fromFloor": 5,
+        "requiredRunes": 3
+      }
     },
-    "runes": 5,
-    "requiredFloorsBeforeSharedFinal": 27,
-    "allFloorsBeforeSharedFinal": 33,
+    "runes": 3,
+    "requiredFloorsBeforeSharedFinal": 36,
+    "allFloorsBeforeSharedFinal": 36,
     "events": "Rescue,temple,shop events placed inside main floors; no extra floor count."
   },
   "id": {
@@ -446,24 +494,24 @@
   "routes": [
     {
       "ending": "JP",
-      "minimumFloors": 30,
-      "allOptionalFloors": 36,
+      "minimumFloors": 39,
+      "allOptionalFloors": 39,
       "minimumRunes": 3,
-      "allRunes": 5
+      "allRunes": 3
     },
     {
       "ending": "JP+ID",
-      "minimumFloors": 38,
-      "allOptionalFloors": 44,
+      "minimumFloors": 47,
+      "allOptionalFloors": 47,
       "minimumRunes": 6,
-      "allRunes": 8
+      "allRunes": 6
     },
     {
       "ending": "JP+ID+EN",
-      "minimumFloors": 54,
-      "allOptionalFloors": 60,
+      "minimumFloors": 63,
+      "allOptionalFloors": 63,
       "minimumRunes": 13,
-      "allRunes": 15
+      "allRunes": 13
     }
   ],
   "currentArtTask": "게임센터209·레이싱 트랙racing04 승인. 메가서킷 북쪽 문 3개를 롤러코스터·범퍼카 차고·네온 미로의 독립 층으로 연결한 branches05 미리보기. 트랙 허브 1층+자식 3층. 엔진 통합은 후속 작업.",

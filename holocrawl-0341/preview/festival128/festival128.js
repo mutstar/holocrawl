@@ -21,10 +21,10 @@
   b.putImageData(d,0,0);return out;
  }
  const stock=await Promise.all((await json(catalogUrl)).map(async s=>{
-  const [themed,generic]=await Promise.all([load(s.native || s.source),load(s.original)]);
+  const [themed,generic]=await Promise.all([load(s.native || s.source),s.original?load(s.original):null]);
   const sprite=s.native ? canvas(96,64) : normalize(themed,96,64);
   if(s.native) g(sprite).drawImage(themed,0,0);
-  return {...s,sprite,generic:normalize(generic,96,64)};
+  return {...s,sprite,generic:generic?normalize(generic,96,64):null};
  }));
  let stall=stock.find(s=>s.id==='goldfish').sprite,selectedId='goldfish',themeEnabled=true;
  const lantern=normalize(lanternSource,16,32),texture=canvas(64,64);g(texture).drawImage(material,material.width/4,material.height/4,material.width/2,material.height/2,0,0,64,64);const tex=g(texture).getImageData(0,0,64,64).data;
@@ -105,8 +105,30 @@
  select.onchange=changeMap;document.getElementById('nextSpot').onclick=()=>{spotIndex++;draw();};document.getElementById('aged').onclick=()=>{aged=true;draw();};document.getElementById('original').onclick=()=>{aged=false;draw();};document.getElementById('lamps').onchange=draw;
  const catalog=document.getElementById('stalls'),stallSelect=document.getElementById('stallSelect');
  for(const s of stock){const button=document.createElement('button');button.className='stall-card';button.dataset.stall=s.id;button.setAttribute('aria-label',s.name+' 포장마차 선택');button.innerHTML=`<strong>${s.name}</strong><canvas width="96" height="80"></canvas><small>${s.detail}</small>`;g(button.querySelector('canvas')).drawImage(s.sprite,0,8);button.onclick=()=>selectStall(s.id);catalog.append(button);stallSelect.add(new Option(s.name,s.id));}
- function selectStall(id){const s=stock.find(s=>s.id===id);if(!s)throw Error('Unknown stall: '+id);selectedId=id;stall=themeEnabled?s.sprite:s.generic;stallSelect.value=id;document.getElementById('activeStallTitle').textContent=s.name+(themeEnabled?' · 멤버 테마':' · 기본형 비교');document.getElementById('activeStallDescription').textContent=themeEnabled?s.detail:'멤버 장식을 넣기 전의 기본 포장마차입니다.';document.querySelectorAll('[data-stall]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stall===id)));draw();}
- document.getElementById('memberTheme').onchange=()=>{themeEnabled=document.getElementById('memberTheme').checked;for(const s of stock){const c=document.querySelector(`[data-stall="${s.id}"] canvas`),q=g(c);q.clearRect(0,0,c.width,c.height);q.drawImage(themeEnabled?s.sprite:s.generic,0,8);}selectStall(selectedId);};
+ function selectStall(id){
+  const s=stock.find(s=>s.id===id);
+  if(!s)throw Error('Unknown stall: '+id);
+  selectedId=id;
+  const compare=!themeEnabled&&s.generic;
+  const themeToggle=document.getElementById('memberTheme');
+  themeToggle.disabled=!s.generic;
+  themeToggle.checked=!compare;
+  stall=compare?s.generic:s.sprite;
+  stallSelect.value=id;
+  document.getElementById('activeStallTitle').textContent=s.name+(compare?' · 기본형 비교':' · 멤버 테마');
+  document.getElementById('activeStallDescription').textContent=compare?'멤버 장식을 넣기 전의 기본 포장마차입니다.':s.detail;
+  document.querySelectorAll('[data-stall]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stall===id)));
+  draw();
+ }
+ document.getElementById('memberTheme').onchange=()=>{
+  themeEnabled=document.getElementById('memberTheme').checked;
+  for(const s of stock){
+   const c=document.querySelector(`[data-stall="${s.id}"] canvas`),q=g(c);
+   q.clearRect(0,0,c.width,c.height);
+   q.drawImage(!themeEnabled&&s.generic?s.generic:s.sprite,0,8);
+  }
+  selectStall(selectedId);
+ };
  stallSelect.onchange=()=>selectStall(stallSelect.value);
  function fitCanvases(){for(const c of document.querySelectorAll('.stall-card canvas,#map')){const isCard=c.parentElement.classList.contains('stall-card'),available=c.parentElement.clientWidth-(isCard?28:0),scale=Math.max(1,Math.min(isCard?3:10,Math.floor(available/c.width)));c.style.width=c.width*scale+'px';c.style.height=c.height*scale+'px';c.style.maxWidth='none';c.style.marginInline='auto';}}
  window.addEventListener('resize',fitCanvases);fitCanvases();

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>잔향도시 11층 · 뒤틀린 방송 거리</title>
+<style>
+ *{box-sizing:border-box}body{margin:0;background:#161a1e;color:#e1e6e8;font:15px/1.5 system-ui}
+ main{max-width:1250px;margin:auto;padding:20px}h1{font-size:26px;margin:0 0 12px}h2{font-size:18px;margin:22px 0 9px}
+ .toolbar,.samples{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.toolbar{margin-bottom:10px}
+ button,input,select{font:inherit;border:1px solid #54616b;border-radius:4px;background:#242e35;color:inherit;padding:6px 10px}
+ button{cursor:pointer}button[aria-pressed=true]{background:#3a5360}input{max-width:10rem}
+ .frame{background:#111619;border:1px solid #46515b}canvas{display:block;image-rendering:pixelated}
+ #map{width:100%;height:auto;cursor:crosshair}#hint{min-height:1.5em;color:#b1c2c9;margin:6px 0}
+ figure{margin:0;background:#20272e;border:1px solid #3c4a54;padding:8px}figure canvas{width:128px;height:64px}figcaption{margin-top:5px}
+ .prop-samples figure canvas{width:192px;height:128px}
+ @media(max-width:600px){main{padding:12px}h1{font-size:21px}}
+</style>
+<main>
+ <h1 id="floor-title">잔향도시 11층 · 뒤틀린 방송 거리</h1>
+ <form class="toolbar" id="generator">
+  <label>층 <select id="floor"><option>11</option><option>12</option><option>13</option><option>14</option></select></label>
+  <label>시드 <input id="seed" maxlength="64" value="studio-11"></label>
+  <button>이 시드 생성</button><button id="random" type="button">새 랜덤 맵</button>
+  <button id="overview" type="button" aria-pressed="false">전체 지도</button>
+  <button id="front" type="button">방송국 앞</button>
+  <button id="door-focus" type="button" disabled>방음문 보기</button>
+  <button id="stage-focus" type="button" hidden>방송 지하무대 입구</button>
+  <button id="curtain-focus" type="button" hidden>커튼콜 입구</button>
+ </form>
+ <div class="frame"><canvas id="map" width="1152" height="576" aria-label="잔향도시 11층 지도"></canvas></div>
+ <p id="hint" role="status">도트를 불러오는 중…</p>
+ <h2>기본 타일</h2>
+ <div class="samples" id="samples"></div>
+ <section id="wall-prop-review" class="prop-samples">
+  <h2>벽에 붙는 요소</h2>
+  <div class="samples" id="wall-props"></div>
+ </section>
+ <section id="ground-prop-review" class="prop-samples">
+  <h2>거리에 놓는 소품</h2>
+  <div class="samples" id="ground-props"></div>
+ </section>
+</main>
+<script src="../city-market124/generator.js?v=2"></script>
+<script src="../passage-safe124/passage124.js"></script>
+<script src="../doorfit159/doors159.js?v=2"></script>
+<script src="art.js?v=3"></script>
+<script src="props.js?v=3"></script>
+<script src="placement.js?v=6"></script>
+<script src="wear.js?v=2"></script>
+<script src="curtain-entrance.js?v=2"></script>
+<script src="stage-entrance.js?v=3"></script>
+<script src="preview.js?v=14"></script>
+</html>

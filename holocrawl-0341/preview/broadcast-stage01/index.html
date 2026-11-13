@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>방송 지하무대 · 리허설 스튜디오</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #161a20; color: #e3e8eb; font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 1192px; margin: auto; padding: 20px; }
+  h1 { font-size: 25px; margin: 0 0 12px; }
+  form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
+  input, button, select { font: inherit; color: inherit; background: #253039; border: 1px solid #4a5b66; border-radius: 4px; padding: 5px 9px; }
+  button { cursor: pointer; }
+  button[aria-pressed=true] { background: #415b63; }
+  input { width: 9rem; }
+  #map { display: block; width: 100%; height: auto; background: #11151a; border: 1px solid #414d58; image-rendering: pixelated; }
+  #status { color: #b7c6cb; margin: 7px 0; }
+  @media (max-width: 600px) { main { padding: 12px; } h1 { font-size: 20px; } }
+</style>
+<main>
+  <h1 id="title">방송 지하무대 1층 · 리허설 스튜디오</h1>
+  <form>
+    <label>층 <select id="floor"><option>1</option><option>2</option></select></label>
+    <label>시드 <input id="seed" maxlength="64" value="rehearsal-01"></label>
+    <button>이 시드 생성</button>
+    <button type="button" id="random">새 랜덤 맵</button>
+    <button type="button" id="overview" aria-pressed="false">전체 지도</button>
+    <button type="button" id="studio" aria-pressed="true">리허설실 확대</button>
+    <button type="button" id="booth" aria-pressed="false" hidden>유리 방송실</button>
+    <button type="button" id="rehearsal" aria-pressed="false" hidden>카메라 리허설 세트</button>
+    <button type="button" id="storage" aria-pressed="false" hidden>소품 보관실</button>
+  </form>
+  <canvas id="map" width="1152" height="576" role="img" aria-label="방송 지하무대 지도"></canvas>
+  <p id="status" role="status">지도를 불러오는 중…</p>
+</main>
+<script src="../city-market124/generator.js?v=2"></script>
+<script src="../doorfit159/doors159.js?v=2"></script>
+<script src="../broadcast-street01/art.js?v=3"></script>
+<script src="studio-art.js?v=2"></script>
+<script src="studio-props.js"></script>
+<script src="glass-studio.js?v=3"></script>
+<script src="studio-vaults.js?v=3"></script>
+<script src="preview.js?v=5"></script>
+</html>

@@ -11,7 +11,7 @@
     "mount": "wall",
     "description": "벽4칸 장식 · 처진 줄과 빛바랜 초롱",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/lantern-string-native.png"
+    "native": "assets/lantern-string-simple.png"
   },
   {
     "id": "nobori",
@@ -25,7 +25,7 @@
     "mount": "ground",
     "description": "바닥1×1칸 · 붉은 천과 밝은 문양",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/nobori-native.png"
+    "native": "assets/nobori-simple.png"
   },
   {
     "id": "mask-rack",
@@ -39,7 +39,7 @@
     "mount": "ground",
     "description": "바닥2×1칸 · 여우탈·오니탈·라덴의 탈",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/mask-rack-native.png"
+    "native": "assets/mask-rack-simple.png"
   },
   {
     "id": "taiko",
@@ -53,7 +53,7 @@
     "mount": "ground",
     "description": "바닥1×1칸 · 둥근 북과 나무 받침",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/taiko-native.png"
+    "native": "assets/taiko-simple.png"
   },
   {
     "id": "yagura",
@@ -67,7 +67,7 @@
     "mount": "ground",
     "description": "바닥3×3칸 · 붉고 흰 천의 봉오도리 무대",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/yagura-native.png"
+    "native": "assets/yagura-simple.png"
   },
   {
     "id": "bench",
@@ -81,7 +81,7 @@
     "mount": "ground",
     "description": "바닥2×1칸 · 붉은 좌판과 나무 다리",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/bench-native.png"
+    "native": "assets/bench-simple.png"
   },
   {
     "id": "festival-cart",
@@ -95,6 +95,6 @@
     "mount": "ground",
     "description": "바닥2×2칸 · 나무 바퀴·말린 천·작은 북",
     "source": "assets/props-sheet-source.png",
-    "native": "assets/festival-cart-native.png"
+    "native": "assets/festival-cart-simple.png"
   }
 ]

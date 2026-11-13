@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>축제 뒷길 1~2층 · 벽 매립 구조물</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #171916; color: #e3dfd3; font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 1040px; margin: auto; padding: 20px; }
+  h1 { font-size: 24px; margin: 0 0 16px; }
+  h2 { font-size: 17px; margin: 0 0 8px; }
+  #floors { display: grid; gap: 20px; }
+  .room { display: block; width: 100%; height: auto; border: 1px solid #50483a; }
+  canvas { image-rendering: pixelated; }
+  .tiles { display: flex; gap: 14px; margin-top: 10px; }
+  figure { display: flex; align-items: center; gap: 8px; margin: 0; }
+  figure canvas { width: 64px; height: 64px; }
+  figcaption { color: #c7c0ad; }
+  .structures { display: flex; flex-wrap: wrap; gap: 4px 16px; padding: 0; margin: 8px 0 0; list-style: none; color: #d5c5a5; }
+  @media (max-width: 720px) { main { padding: 12px; } }
+</style>
+<main>
+  <h1>축제 뒷길 1~2층 · 벽 매립 구조물</h1>
+  <p id="status" role="status">타일을 불러오는 중…</p>
+  <div id="floors"></div>
+</main>
+<template id="floor-preview">
+  <section>
+    <h2></h2>
+    <canvas class="room" role="img"></canvas>
+    <ul class="structures" aria-label="왼쪽부터 벽 구조물"></ul>
+    <div class="tiles">
+      <figure><canvas width="32" height="32"></canvas><figcaption>바닥</figcaption></figure>
+      <figure><canvas width="32" height="32"></canvas><figcaption>외벽</figcaption></figure>
+    </div>
+  </section>
+</template>
+<script src="surfaces.js"></script>
+<script src="wall-structures.js"></script>
+<script src="preview.js"></script>
+</html>

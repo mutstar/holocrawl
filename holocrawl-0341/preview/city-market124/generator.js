@@ -42,11 +42,12 @@ function generate(seed,w=80,h=70,exitMode="auto",profile={}){
  map.upstairs={x:arrivals[0].x,y:arrivals[0].y};map.start={x:map.upstairs.x,y:map.upstairs.y+1};
  const b=distances(map,map.start);let far=0;for(let i=0;i<b.dist.length;i++)if(b.dist[i]>b.dist[far])far=i;map.exit={x:far%w,y:Math.floor(far/w)};
  // A reachable threshold beneath a solid 3x2 facade replaces the floor stair icon.
- const doors=[];for(let y=2;y<h-3;y++)for(let x=2;x<w-4;x++){
-  let ok=true;for(let yy=y;yy<y+2;yy++)for(let xx=x;xx<x+3;xx++)if(cells[yy*w+xx]!==WALL)ok=false;
-  for(let xx=x;xx<x+3;xx++)if(cells[(y+2)*w+xx]!==FLOOR)ok=false;
-  const p=map.prefab;if(x<p.x+p.w+1&&x+3>p.x-1&&y<p.y+p.h+1&&y+2>p.y-1)ok=false;
-  const distance=b.dist[(y+2)*w+x+1];if(ok&&distance>=18)doors.push({x,y,w:3,h:2,distance});
+ const facadeWidth=(profile.wallExitWidth??1)+2;
+ const doors=[];for(let y=2;y<h-3;y++)for(let x=2;x<w-facadeWidth-1;x++){
+  let ok=true;for(let yy=y;yy<y+2;yy++)for(let xx=x;xx<x+facadeWidth;xx++)if(cells[yy*w+xx]!==WALL)ok=false;
+  for(let xx=x;xx<x+facadeWidth;xx++)if(cells[(y+2)*w+xx]!==FLOOR)ok=false;
+  const p=map.prefab;if(x<p.x+p.w+1&&x+facadeWidth>p.x-1&&y<p.y+p.h+1&&y+2>p.y-1)ok=false;
+  const distance=b.dist[(y+2)*w+x+1];if(ok&&distance>=18)doors.push({x,y,w:facadeWidth,h:2,distance});
  }
  
  const floors=[];for(let y=2;y<h-2;y++)for(let x=2;x<w-2;x++){let open=true;for(let yy=y-1;yy<=y+1;yy++)for(let xx=x-1;xx<=x+1;xx++)if(cells[yy*w+xx]!==FLOOR)open=false;if(open&&b.dist[y*w+x]>=18)floors.push({x,y,distance:b.dist[y*w+x],type:'floor'});}
