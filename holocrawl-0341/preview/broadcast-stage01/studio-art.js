@@ -1,5 +1,5 @@
 function createStudioArt(atlas, rects, planes) {
-  const {sprite} = createBroadcastArt(atlas, rects, planes);
+  const {sprite, doors} = createBroadcastArt(atlas, rects, planes);
   const paving = new Map();
   const walls = new Map();
 
@@ -93,5 +93,5 @@ function createStudioArt(atlas, rects, planes) {
     });
   }
 
-  return {sprite, floorTile, wallTile, wallBay};
+  return {sprite, floorTile, wallTile, wallBay, doors};
 }
