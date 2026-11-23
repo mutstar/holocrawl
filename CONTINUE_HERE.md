@@ -1,3 +1,7 @@
+# 회사에서 확인할 참고 자료
+
+- [오픈소스 게임 개발 도구 10개](holocrawl-0341/design/references/open-source-game-tools.md) · 잔향도시 바닥 변형에 쓸 Material Maker부터 검토.
+
 # 최신 진행 / 2026-11-12 · 메가스피어 교환소와 소다팝 라군
 
 - 8층 축제장 가로문 224: 문틀을 통로 폭 32px에 맞추고 옆 벽선이 문틀 안으로 겹치지 않게 정리. `F8-301866137`의 (10,11)에서 열기·통과·닫기 확인. 비교 이미지 `preview/festival130/festival-door224.png`.
