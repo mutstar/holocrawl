@@ -19,7 +19,8 @@ for(const p of m.furniture){const x=p.x*32,y=p.y*32,w=p.w*32;
 for(const[x,y,sx,sy]of [[2,1,1,1],[7,1,-1,1],[2,6,1,-1],[7,6,-1,-1]]){const px=(o.x+x)*32,py=(o.y+y)*32;f('#9e956e',px+(sx<0?-12:0),py,12,2);f('#9e956e',px,py+(sy<0?-12:0),2,12);}
 }
 function draw(mode){const m=maps[mode],c=canvases[mode],q=c.getContext('2d');q.imageSmoothingEnabled=false;for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const i=y*m.w+x;q.drawImage(floors[RandomFloor.index('H3RO183',0,x,y)%floors.length],x*32,y*32);if(m.inner[i]){q.fillStyle='rgba(72,98,107,.12)';q.fillRect(x*32,y*32,32,32);}if(!m.cells[i]){if(m.building[i])q.drawImage(FacilityMaterial171.tile(mask(m,x,y),x,y,theme),x*32,y*32);else WallHeight121.wall(q,m.cells,m.w,m.h,x,y,32);}}
-fixtures(q,m);for(const p of [...m.props].sort((a,b)=>(a.y+a.h)-(b.y+b.h))){const im=images[p.id],w=p.drawW||im.width,h=p.drawH||im.height,x=p.x*32+(p.w*32-w)/2,y=p.fixture?p.y*32+p.anchorBottom-h:(p.y+p.h)*32-h;q.fillStyle='rgba(0,0,0,.23)';q.fillRect(x+3,y+h-3,w-6,3);q.drawImage(im,x,y,w,h);}
+FloorOvergrowth.room(q,m,'h3ro183','metal');
+  fixtures(q,m);for(const p of [...m.props].sort((a,b)=>(a.y+a.h)-(b.y+b.h))){const im=images[p.id],w=p.drawW||im.width,h=p.drawH||im.height,x=p.x*32+(p.w*32-w)/2,y=p.fixture?p.y*32+p.anchorBottom-h:(p.y+p.h)*32-h;q.fillStyle='rgba(0,0,0,.23)';q.fillRect(x+3,y+h-3,w-6,3);q.drawImage(im,x,y,w,h);}
 
 q.drawImage(entranceSprite(opened),m.entry.x*32+16-64,m.entry.y*32-30);
 // Same thickness as the standard wall coping, joining both jambs.

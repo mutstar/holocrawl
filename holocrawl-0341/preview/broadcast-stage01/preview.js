@@ -14,9 +14,13 @@
     if (!response.ok) throw Error(url);
     return response.json();
   };
-  const [atlas, rects, planes, up, down] = await Promise.all([
+  const query = new URLSearchParams(location.search);
+  const useArchiveConcrete = query.get('material') === 'concrete';
+  const [atlas, rects, planes, up, down, deepWater, gardenSprites, archiveConcrete] = await Promise.all([
     load(wallRoot + 'wall22.png'), json(wallRoot + 'rects121.json'), json(wallRoot + 'planes121.json'),
     load(stairsRoot + 'crawl-stairs-up-mirrored32.png'), load(stairsRoot + 'crawl-stairs-down-mirrored32.png'),
+    load('../native-water02/assets/water-deep128.png'), load('garden-scenery.png?v=4'),
+    useArchiveConcrete ? load('archive-concrete.png') : null,
   ]);
   const art = createStudioArt(atlas, rects, planes);
   const bayArt = ['window', 'rack', 'shutter'].map(art.wallBay);
@@ -49,13 +53,13 @@
   ctx.imageSmoothingEnabled = false;
   const seedInput = byId('seed');
   const floorSelect = byId('floor');
-  const query = new URLSearchParams(location.search);
   seedInput.value = (query.get('seed') || seedInput.value).slice(0, seedInput.maxLength);
   const requestedFloor = query.get('floor');
   if (['1', '2', '3', '4', '5'].includes(requestedFloor)) floorSelect.value = requestedFloor;
   const views = ['overview', 'studio', 'booth', 'rehearsal', 'storage', 'lighting', 'cable', 'loading',
     'fan', 'curtain-roll', 'power-lever', 'service', 'freight', 'warehouse', 'goods-gate', 'wall-decor', 'work-area', 'door', 'ending'];
   let map, rendered, points, decorations;
+  let setOfficeExit, exitOpen;
   let focus = views.includes(query.get('view')) ? query.get('view') : 'studio';
 
   function buildLayout(seed) {
@@ -119,7 +123,13 @@
     return doors;
   }
 
-  function renderBase(map, surface, doorSprite, isPlatform, wallDecorations, reserved, decorate) {
+  // The vault renderer chooses the material after painting its water, paths and room floors.
+  function endingWalkableSurface(vault, x, y) {
+    const tile = endingTile(vault.ending, x - vault.x, y - vault.y);
+    return tile !== ' ' && tile !== '#';
+  }
+
+  function renderBase(map, surface, doorSprite, isPlatform, wallDecorations, reserved, decorate, endingVault) {
     const {w, h, cells} = map;
     const {decorations} = wallDecorations;
     map.doors = placeDoors(map, reserved, decorations);
@@ -136,7 +146,12 @@
             wall(x + dx, y + dy, walls) ? bits | (1 << bit) : bits, 0);
           tile = surface.wallTile(mask, x, y);
         } else {
-          tile = surface.floorTile(x, y, isPlatform(x, y));
+          const platform = isPlatform(x, y);
+          tile = surface.floorTile(x, y, platform);
+          layer.drawImage(tile, x * 32, y * 32);
+          const inVault = endingVault && endingWalkableSurface(endingVault, x, y);
+          if (!inVault) FloorOvergrowth.draw(layer, platform ? 'wood' : 'tile', map.seed, x, y);
+          continue;
         }
         layer.drawImage(tile, x * 32, y * 32);
       }
@@ -237,9 +252,9 @@
     const wallDecorations = createWallDecorationPlan(map, dockWallChoices, reserved);
     const workAreas = placeStageWorkAreas(map, {lift, warehouse, shutter: shutterArea}, workAreaArt, [vault]);
     const source = renderBase(map, dockArt, doors.dock, () => false, wallDecorations, reserved, layer => {
-      drawLoadingDock(layer, dockArt, layout);
+      drawLoadingDock(layer, dockArt, layout, deepWater, gardenSprites, archiveConcrete);
       drawStageWorkAreas(layer, workAreas, workAreaArt);
-    });
+    }, vault);
     const points = {
       freight: {x: lift.x + (lift.width - 1) / 2, y: lift.y + 1},
       warehouse: {x: warehouse.x + 3.5, y: warehouse.y + 2},
@@ -247,10 +262,14 @@
       ending: {x: vault.x + (vault.width - 1) / 2, y: vault.y + (vault.depth - 1) / 2,
         width: vault.width, depth: vault.depth},
     };
-    return {map, source, points, decorations: wallDecorations.decorations, workAreas, vault};
+    const officeExit = vault.exitDoor && officeExitControl(source, map, vault.exitDoor);
+    return {map, source, points, decorations: wallDecorations.decorations, workAreas, vault, officeExit};
   }
 
   function draw() {
+    const latch = byId('office-latch');
+    latch.hidden = !(setOfficeExit && focus === 'ending');
+    latch.textContent = exitOpen ? '사무실 문 닫기' : '사무실 안쪽 빗장 열기';
     const overview = focus === 'overview';
     const point = points[focus] || map.start;
     const endingScale = points.ending && Math.min(1, field.width / ((points.ending.width + 4) * 32),
@@ -286,6 +305,8 @@
     const isEquipment = floor === 3 || floor === 4;
     const result = renderFloor(seed, floor);
     const {workAreas = [], vault} = result;
+    setOfficeExit = result.officeExit;
+    exitOpen = false;
     ({map, source: rendered, points, decorations} = result);
     if (decorations.length) {
       const {x, y, width} = decorations[0];
@@ -297,6 +318,9 @@
     }
     if (map.doors.length) points.door = map.doors[0];
     if (vault) byId('ending').textContent = vault.ending.name;
+    const goodsEntry = byId('goods-entry');
+    goodsEntry.hidden = !isDock;
+    if (isDock) goodsEntry.href = '../forbidden-goods01/?' + new URLSearchParams({ seed, view: 'arrival' });
     for (const id of views.slice(1)) byId(id).hidden = !points[id];
     if (focus !== 'overview' && !points[focus]) focus = Object.keys(points)[0] || 'overview';
     seedInput.value = seed;
@@ -304,7 +328,9 @@
     const title = `방송 지하무대 ${floor}층 · ${theme}`;
     byId('title').textContent = document.title = title;
     field.setAttribute('aria-label', title + ' 지도');
-    history.replaceState(null, '', '?' + new URLSearchParams({seed, floor, view: focus}));
+    const params = new URLSearchParams({seed, floor, view: focus});
+    if (useArchiveConcrete) params.set('material','concrete');
+    history.replaceState(null, '', '?' + params);
     const props = isDock ? '화물 리프트, 세트 보관창고, 금지된 굿즈 창고 셔터'
       : isEquipment ? '조명 제어, 매립 덕트, 승강기, 조명 정비 구역' : '목재 리허설 바닥과 흡음 패널 벽';
     const workAreaStatus = isDock || isEquipment ? ` · 보조 작업 구역 ${workAreas.length}곳` : '';
@@ -324,6 +350,12 @@
   }
   document.querySelector('form').onsubmit = event => { event.preventDefault(); refresh(); };
   floorSelect.onchange = refresh;
+  byId('office-latch').onclick = () => {
+    if (!setOfficeExit) return;
+    exitOpen = !exitOpen;
+    setOfficeExit(exitOpen);
+    draw();
+  };
   byId('random').onclick = () => {
     seedInput.value = 'rehearsal-' + Math.floor(Math.random() * 1e9);
     refresh();

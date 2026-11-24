@@ -11,8 +11,13 @@
  function save(){try{const out={version:159,seed,current,levels:{}};for(const[k,v]of Object.entries(levels))out.levels[k]={player:v.player,opened:[...v.opened],explored:Array.from(v.explored),turns:v.turns};localStorage.setItem(stateKey(),JSON.stringify(out));}catch{}}
  function makeLevel(n){const m=HoloHomeGen159.generate(seed,n),v={map:m,player:{...m.start},opened:new Set(),explored:new Uint8Array(m.w*m.h),turns:0,base:null};levels[n]=v;v.base=background(m);return v;}
  function background(m){const structural=DoorFit159.solids(m);const c=canvas(m.w*32,m.h*32),q=context(c);q.fillStyle='#17201d';q.fillRect(0,0,c.width,c.height);
-  for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const inside=HoloHomeGen159.isHome(m,x,y);if(m.cells[y*m.w+x]===0){if(inside){let mask=0;wallDirs.forEach(([dx,dy],i)=>{const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<m.w&&yy<m.h&&m.cells[yy*m.w+xx]===0)mask|=1<<i;});q.drawImage(homeWall(mask),x*32,y*32);}else WallHeight121.wall(q,DoorFit159.wallCells(m,x,y),m.w,m.h,x,y,32,0);}else q.drawImage(inside?homeFloor[RandomFloor.index(seed,1,x,y)%homeFloor.length]:floorTiles[RandomFloor.index(seed,0,x,y)],x*32,y*32);}
+  for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const inside=HoloHomeGen159.isHome(m,x,y);if(m.cells[y*m.w+x]===0){if(inside){let mask=0;wallDirs.forEach(([dx,dy],i)=>{const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<m.w&&yy<m.h&&m.cells[yy*m.w+xx]===0)mask|=1<<i;});q.drawImage(homeWall(mask),x*32,y*32);}else WallHeight121.wall(q,DoorFit159.wallCells(m,x,y),m.w,m.h,x,y,32,0);}else {q.drawImage(inside?homeFloor[RandomFloor.index(seed,1,x,y)%homeFloor.length]:floorTiles[RandomFloor.index(seed,0,x,y)],x*32,y*32);
+    FloorOvergrowth.draw(q,inside?"tile":"stone",seed,x,y);
+  }}
   HomeMaterial159.paint(q,m);
+  if(m.home) for(let y=m.home.y+4;y<m.home.y+9;y++)for(let x=m.home.x+2;x<m.home.x+7;x++){
+    FloorOvergrowth.draw(q,'carpet',seed,x,y);
+  }
   for(const s of m.stairs)q.drawImage(s.home?im.stairs:s.kind==='up'?im.up:im.down,s.x*32,s.y*32);return c;
  }
  function opacity(x,y){const v=get(),m=v.map;if(x<0||y<0||x>=m.w||y>=m.h||!m.cells[y*m.w+x])return 2;const d=m.doors.find(d=>d.x===x&&d.y===y);return d&&!v.opened.has(d.id)?2:0;}

@@ -9,7 +9,8 @@ for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const i=y*m.w+x;q.drawImage(floors[
 WineRoom198.runner(q,m);
 // A shallow woven rug stays passable; no large decals or floating symbols.
 WineRoom198.rug(q,m);
-WineRoom198.fixtures(q,m);for(const p of [...m.props].sort((a,b)=>a.y+a.h-b.y-b.h)){const im=images[p.asset],x=p.x*32+(p.w*32-im.width)/2,y=(p.y+p.h)*32-im.height;q.fillStyle='rgba(0,0,0,.28)';q.fillRect(x+7,(p.y+p.h)*32-4,im.width-14,4);q.drawImage(im,x,y);}
+FloorOvergrowth.room(q,m,'greed-cards203','carpet');
+  WineRoom198.fixtures(q,m);for(const p of [...m.props].sort((a,b)=>a.y+a.h-b.y-b.h)){const im=images[p.asset],x=p.x*32+(p.w*32-im.width)/2,y=(p.y+p.h)*32-im.height;q.fillStyle='rgba(0,0,0,.28)';q.fillRect(x+7,(p.y+p.h)*32-4,im.width-14,4);q.drawImage(im,x,y);}
 // Paint the doorway floor first; opening never erases canvas alpha.
 for(let dx=0;dx<2;dx++){const x=m.entry.x+dx,y=m.entry.y;q.drawImage(floors[RandomFloor.index('GREED195',0,x,y)%floors.length],x*32,y*32);}WineRoom198.door(q,m,opened);
 if($('grid').checked){q.strokeStyle='rgba(204,204,189,.22)';for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++)q.strokeRect(x*32+.5,y*32+.5,31,31);}if($('labels').checked){q.font='11px system-ui';q.textAlign='center';for(const p of m.props){const cx=(p.x+p.w/2)*32;q.fillStyle='#20262d';q.fillRect(cx-65,p.y*32-16,130,15);q.fillStyle='#e1d8c6';q.fillText(p.label,cx,p.y*32-5);}}

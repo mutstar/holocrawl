@@ -57,7 +57,10 @@
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
    const i=y*map.width+x,dx=ox+x*32*s,dy=oy+y*32*s;if(dx<-32*s||dy<-32*s||dx>canvas.width||dy>canvas.height||(fog&&!state.explored[i]))continue;
    const d=doorMap.get(key(x,y)),open=fog&&!seen[i]?state.knownOpen[i]:state.opened.has(key(x,y));
-   tile(map.palette[map.floors[i]],dx,dy,s);tile(map.palette[d&&open?d.opened:map.features[i]],dx,dy,s);
+   tile(map.palette[map.floors[i]],dx,dy,s);
+   const feature=map.palette[d&&open?d.opened:map.features[i]];
+   tile(feature,dx,dy,s);
+   if(map.passable[i] && feature.atlas==='floor' && !d) FloorOvergrowth.draw(g,'stone',map.seed,x,y,dx,dy,32*s);
    if(!Facility124.drawOverlay(g,map,x,y,dx,dy,s)&&map.overlays[i]>=0)tile(map.palette[map.overlays[i]],dx,dy,s);
    if(fog&&!seen[i]){g.fillStyle='rgba(0,0,0,.77)';g.fillRect(dx,dy,32*s+.5,32*s+.5)}
   }

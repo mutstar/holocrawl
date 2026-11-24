@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>금지된 굿즈 창고 1층 · 봉인품 검수층</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #17181b; color: #eee8e7; font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 1152px; margin: auto; padding: 20px; }
+  h1 { margin: 0 0 12px; font-size: clamp(21px, 4vw, 27px); }
+  form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
+  button, input, a { border: 1px solid #655460; border-radius: 4px; padding: 5px 9px; background: #302931; color: inherit; font: inherit; }
+  a { text-decoration: none; }
+  button { cursor: pointer; }
+  button[aria-pressed="true"] { background: #544554; }
+  input { width: 9rem; }
+  canvas { display: block; width: 100%; height: auto; border: 1px solid #4c414b; image-rendering: pixelated; }
+  #status { margin: 7px 0; color: #c9bbc2; }
+  @media (max-width: 600px) { main { padding: 12px; } }
+</style>
+<main>
+  <h1>금지된 굿즈 창고 1층 · 봉인품 검수층</h1>
+  <form>
+    <label>시드 <input id="seed" value="rehearsal-01" maxlength="64"></label>
+    <button>이 시드 생성</button>
+    <button type="button" data-view="overview">전체 지도</button>
+    <button type="button" data-view="arrival">입구 계단</button>
+    <button type="button" data-view="inspection">반입 검수실</button>
+    <button type="button" data-view="quarantine">격리 적재장</button>
+    <button type="button" data-view="returns">반송 분류실</button>
+    <button type="button" data-view="shutter">하행 셔터</button>
+    <a id="return" href="../broadcast-stage01/?floor=5&amp;view=goods-gate">지하무대 5층으로 돌아가기</a>
+  </form>
+  <canvas id="map" width="1100" height="660" role="img" aria-label="금지된 굿즈 창고 1층 지도"></canvas>
+  <p id="status" role="status">지도를 불러오는 중…</p>
+</main>
+<script src="../city-market124/generator.js?v=2"></script>
+<script src="../broadcast-stage01/wall-decoration.js?v=3"></script>
+<script src="layout.js?v=1"></script>
+<script src="../floor-overgrowth.js"></script>
+<script src="art.js?v=2"></script>
+<script src="preview.js?v=2"></script>
+</html>

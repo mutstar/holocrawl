@@ -54,6 +54,13 @@ function draw(scene){const{f,mode,m,c}=scene,q=c.getContext('2d'),a=assets.get(f
  const [sx,sy]=f.sourceOffset;for(let y=0;y<f.h;y++)for(let x=0;x<f.w;x++)if(f.inside[y*f.w+x])q.drawImage(im,sx+x*32,sy+y*32,32,32,(o.x+x)*32,(o.y+y)*32,32,32);
  if(a.frieze)q.drawImage(a.frieze,(o.x+4)*32,o.y*32);q.drawImage(a[open?'gateOpen':'gateClosed'],(m.entry.x-1)*32,m.entry.y*32-14);
  }
+ const surfaces={mountain:'earth',fantasy:'earth',theater:'carpet',dining:'wood',gamers:'metal',holox:'metal'};
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  if(!m.walkable[y*W+x] || m.doors.some(d=>d.x===x && d.y===y))continue;
+  const lx=x-o.x,ly=y-o.y;
+  const inside=lx>=0&&ly>=0&&lx<f.w&&ly<f.h&&f.inside[ly*f.w+lx];
+  FloorOvergrowth.draw(q,inside?(surfaces[f.id]||'tile'):'stone',f.id,x,y);
+ }
  if($('grid').checked){q.strokeStyle='rgba(180,213,196,.28)';q.lineWidth=1;for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(m.walkable[y*W+x])q.strokeRect(x*32+.5,y*32+.5,31,31);}
  if($('routes').checked&&m.route.length){q.strokeStyle='#b6ddcb';q.lineWidth=2;q.setLineDash([5,5]);q.beginPath();m.route.forEach((p,i)=>i?q.lineTo(p.x*32+16,p.y*32+16):q.moveTo(p.x*32+16,p.y*32+16));q.stroke();q.setLineDash([]);}
 }

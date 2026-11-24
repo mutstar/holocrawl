@@ -4,7 +4,53 @@ const assets='../city-layout07/assets/',images={},floorPatches=[[270,150,32,32],
 const labels={layout_basic:'방과 복도',layout_gridville:'불규칙한 격자',layout_roguey:'구획을 잇는 방',layout_small_grid:'작은 격자'};
 let selected=0,overview=false,doorMode='fit',wallOld=false,focusDoor=0,center={x:40,y:35},tiles=[],transform={},opened=new Set();
 const wallRuns=new Map();
-function drawWater(c,m,x,y,px,py,t){const f=feature(m,x,y),deep=f==='deep_water',s=t/32,h=hash(m.seed,x,y);c.save();c.globalAlpha=deep?1:.90;c.drawImage(deep?images.deep:images.shallow,(h%4)*32,(Math.floor(h/4)%4)*32,32,32,px,py,t,t);c.restore();const dirs=[[0,-1,0,0,32,2],[0,1,0,30,32,2],[-1,0,0,0,2,32],[1,0,30,0,2,32]];for(const[dx,dy,rx,ry,rw,rh]of dirs){const n=feature(m,x+dx,y+dy);if(!isWater(n)){c.fillStyle='rgba(19,40,43,.68)';c.fillRect(px+rx*s,py+ry*s,rw*s,rh*s);c.fillStyle='rgba(135,162,153,.50)';if(dx)c.fillRect(px+(dx<0?2:29)*s,py+(5+h%9)*s,s,10*s);else c.fillRect(px+(4+h%11)*s,py+(dy<0?2:29)*s,10*s,s);}else if(deep&&n==='shallow_water'){c.fillStyle='rgba(85,143,145,.65)';c.fillRect(px+rx*s,py+ry*s,rw*s,rh*s);}}for(const[dx,dy]of[[-1,-1],[1,-1],[-1,1],[1,1]])if(isWater(feature(m,x+dx,y))&&isWater(feature(m,x,y+dy))&&!isWater(feature(m,x+dx,y+dy))){c.fillStyle='rgba(23,48,48,.65)';c.fillRect(px+(dx<0?0:29)*s,py+(dy<0?0:29)*s,3*s,3*s);}}
+const waterSides = [[0, -1, 0, 0, 32, 2], [0, 1, 0, 30, 32, 2], [-1, 0, 0, 0, 2, 32], [1, 0, 30, 0, 2, 32]];
+const waterCorners = [[-1, -1], [1, -1], [-1, 1], [1, 1]];
+
+function drawWater(c, m, x, y, px, py, t) {
+ const deep = feature(m, x, y) === 'deep_water';
+ const scale = t / 32;
+ const patch = hash(m.seed, x, y);
+ c.save();
+ c.globalAlpha = deep ? 1 : .90;
+ c.drawImage(deep ? images.deep : images.shallow, (patch % 4) * 32, (Math.floor(patch / 4) % 4) * 32, 32, 32, px, py, t, t);
+ FloorOvergrowth.draw(c,deep?'deep':'water',m.seed,x,y,px,py,t);
+ c.restore();
+
+ const depthEdges = [];
+ for (const [dx, dy, left, top, width, height] of waterSides) {
+  const neighbor = feature(m, x + dx, y + dy);
+  if (!isWater(neighbor)) {
+   c.fillStyle = 'rgba(19,40,43,.68)';
+   c.fillRect(px + left * scale, py + top * scale, width * scale, height * scale);
+   c.fillStyle = 'rgba(135,162,153,.50)';
+   if (dx) c.fillRect(px + (dx < 0 ? 2 : 29) * scale, py + (5 + patch % 9) * scale, scale, 10 * scale);
+   else c.fillRect(px + (4 + patch % 11) * scale, py + (dy < 0 ? 2 : 29) * scale, 10 * scale, scale);
+  } else if (!deep && neighbor === 'deep_water') depthEdges.push([dx, dy]);
+ }
+ for (const [dx, dy] of waterCorners) {
+  const diagonal = feature(m, x + dx, y + dy);
+  if (!deep && diagonal === 'deep_water') depthEdges.push([dx, dy]);
+  if (isWater(feature(m, x + dx, y)) && isWater(feature(m, x, y + dy)) && !isWater(diagonal)) {
+   c.fillStyle = 'rgba(23,48,48,.65)';
+   c.fillRect(px + (dx < 0 ? 0 : 29) * scale, py + (dy < 0 ? 0 : 29) * scale, 3 * scale, 3 * scale);
+  }
+ }
+ if (depthEdges.length) drawDepthShade(c, depthEdges, px, py, scale);
+}
+
+function drawDepthShade(c, edges, px, py, scale) {
+ for (const thickness of [2, 1]) {
+  c.beginPath();
+  for (const [dx, dy] of edges) {
+   c.rect(px + (dx > 0 ? 32 - thickness : 0) * scale,
+    py + (dy > 0 ? 32 - thickness : 0) * scale,
+    (dx ? thickness : 32) * scale, (dy ? thickness : 32) * scale);
+  }
+  c.fillStyle = 'rgba(8,31,39,.19)';
+  c.fill();
+ }
+}
 function waterDemos(){for(const deep of[false,true]){const m={seed:'WATER-DEMO01',w:7,h:7,palette:['floor','shallow_water','deep_water'],rows:Array.from({length:7},()=>Array(7).fill(0))};for(let y=1;y<=5;y++)for(let x=1;x<=5;x++)if(!(x===1&&y===1||x===5&&y===5))m.rows[y][x]=deep&&x>=2&&x<=4&&y>=2&&y<=4?2:1;const c=$(deep?'deepDemo':'shallowDemo').getContext('2d');c.imageSmoothingEnabled=false;for(let y=0;y<7;y++)for(let x=0;x<7;x++)tile(c,m,x,y,x*64,y*64,64);}}
 function waterFocus(){const m=maps[selected],points=[];for(let y=1;y<m.h-1;y++)for(let x=1;x<m.w-1;x++)if(isWater(feature(m,x,y)))points.push({x,y});if(!points.length){$('focusInfo').textContent='이 지도에는 물이 없습니다. 지도2 또는6에서 확인하세요.';return;}center=points[Math.floor(points.length/2)];overview=false;draw();$('focusInfo').textContent='원본 지도 속 물 · '+points.length+'칸 · 지형 위치 그대로';}
 const feature=(m,x,y)=>x<0||y<0||x>=m.w||y>=m.h?'rock_wall':m.palette[m.rows[y][x]];
@@ -40,6 +86,7 @@ function tile(c,m,gx,gy,px,py,t,style='fit',forceState=null,oldWall=wallOld){
   if(f==='granite_statue'){c.fillStyle='#9a9e97';c.fillRect(px+t*.3,py+t*.12,t*.4,t*.73);}return;
  }
  c.drawImage(tiles[RandomFloor.index(m.seed,0,gx,gy)],px,py,t,t);
+ FloorOvergrowth.draw(c,'stone',m.seed,gx,gy,px,py,t);
  if(isDoor(f)){
   const open=forceState===null?isOpened(gx,gy):forceState;
   const s=t/32;

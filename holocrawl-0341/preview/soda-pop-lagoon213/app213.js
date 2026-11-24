@@ -51,11 +51,13 @@
       const px=x*tile, py=y*tile, variant=map.hash(x,y);
       if (type === 'deck' || type === 'fixture') {
         art.deck(ground,px,py,(x>=23 && y<=8) || (y===12 && x>=6 && x<=8),variant);
+        FloorOvergrowth.draw(ground,'wood','soda-pop-lagoon',x,y);
         return;
       }
       if (type === 'sand' || type === 'rock') {
         ground.drawImage(sand[variant%sand.length],px,py,tile,tile);
         if (type === 'rock') ground.drawImage(rocks[variant%rocks.length],px,py,tile,tile);
+        FloorOvergrowth.draw(ground,type === 'rock' ? 'stone' : 'sand','soda-pop-lagoon',x,y);
         return;
       }
       ground.save();
@@ -64,6 +66,7 @@
       ground.drawImage(type==='deep'?deep:shallow,-16,-16,tile,tile);
       ground.restore();
       if (type === 'shallow') shore(tilemap,x,y);
+      FloorOvergrowth.draw(ground,type === 'deep' ? 'deep' : 'water','soda-pop-lagoon',x,y);
     }));
     for (const point of map.landmarks) art.landmark(ground,point);
     ground.drawImage(up,map.entry[0]*tile,map.entry[1]*tile,tile,tile);

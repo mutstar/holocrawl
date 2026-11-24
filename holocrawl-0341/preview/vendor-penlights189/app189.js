@@ -12,7 +12,8 @@ for(const p of m.furniture){const x=p.x*32,y=p.y*32;if(p.id==='bench'){f('#282f3
 
 }
 function draw(mode){const m=maps[mode],c=canvases[mode],q=c.getContext('2d');q.imageSmoothingEnabled=false;for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){const i=y*m.w+x;q.drawImage(floors[RandomFloor.index('FOUNTAIN-PLAZA185',0,x,y)%floors.length],x*32,y*32);if(m.inner[i]){q.fillStyle='rgba(137,124,102,.13)';q.fillRect(x*32,y*32,32,32);}if(!m.cells[i]){if(m.building[i]){q.drawImage(FacilityMaterial171.tile(mask(m,x,y),x,y,theme),x*32,y*32);}else WallHeight121.wall(q,m.cells,m.w,m.h,x,y,32);}}
-fixtures(q,m);for(const p of [...m.props].sort((a,b)=>(a.y+a.h)-(b.y+b.h))){const im=images[p.id],w=p.drawW||im.width,h=p.drawH||im.height,x=p.x*32+(p.w*32-w)/2,y=(p.y+p.h)*32-h;q.fillStyle='rgba(0,0,0,.23)';q.fillRect(x+3,(p.y+p.h)*32-4,w-6,4);q.drawImage(im,x,y,w,h);}
+FloorOvergrowth.room(q,m,'vendor-penlights189','stone');
+  fixtures(q,m);for(const p of [...m.props].sort((a,b)=>(a.y+a.h)-(b.y+b.h))){const im=images[p.id],w=p.drawW||im.width,h=p.drawH||im.height,x=p.x*32+(p.w*32-w)/2,y=(p.y+p.h)*32-h;q.fillStyle='rgba(0,0,0,.23)';q.fillRect(x+3,(p.y+p.h)*32-4,w-6,4);q.drawImage(im,x,y,w,h);}
 
 if($('grid').checked){q.strokeStyle='rgba(196,211,205,.25)';for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++)q.strokeRect(x*32+.5,y*32+.5,31,31);}
 if($('labels').checked){q.font='11px system-ui';q.textAlign='center';for(const p of m.props){const cx=(p.x+p.w/2)*32;q.fillStyle='#182028';q.fillRect(cx-61,p.y*32-16,122,15);q.fillStyle='#e0e7e6';q.fillText(p.label,cx,p.y*32-5);}}

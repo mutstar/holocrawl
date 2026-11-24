@@ -10,7 +10,8 @@ const entryMask=(()=>{const cv=document.createElement('canvas');cv.width=96;cv.h
 const entrySprites=new Map();function entranceSprite(open){if(entrySprites.has(open))return entrySprites.get(open);const out=document.createElement('canvas');out.width=96;out.height=48;const g=out.getContext('2d');for(let y=14;y<46;y++){const xs=[];for(let x=24;x<=72;x++)if(entryMask[y*96+x])xs.push(x);if(!xs.length)continue;const lo=xs[0],hi=xs[xs.length-1];for(const x of xs){const side=Math.min(x-lo,hi-x);if(open&&side>2)continue;let col='#2e405f';if(x===47||x===48)col='#1d293e';else if(side===0)col='#b2965c';else if(side===1)col='#506581';if(y===25||y===41)col='#a98c54';if(y>=29&&y<=37&&((x>=36&&x<=42)||(x>=53&&x<=59)))col='#24364f';if(y>=34&&y<=36&&(x===45||x===50))col='#d0b77b';g.fillStyle=col;g.fillRect(x,y,1,1);}}g.drawImage(images.entrance,0,0);entrySprites.set(open,out);return out;}
 function drawEntrance(){q.drawImage(entranceSprite(opened),(m.entry.x-1)*32,m.entry.y*32-14);}
 function draw(){q.imageSmoothingEnabled=false;fill('#151d20',0,0,480,480);for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){if(m.cells[y*m.w+x]===0)PromiseWall168.wall(q,structural,m.w,m.h,x,y,32);else{q.drawImage(floors[RandomFloor.index('PROMISE162',0,x,y)%floors.length],x*32,y*32);if(x>2&&x<12&&y>1&&y<11){q.fillStyle='rgba(52,67,82,.17)';q.fillRect(x*32,y*32,32,32);}}}
-// Four shared Promise motifs replace the repeated Kronii clock on the back wall.
+FloorOvergrowth.room(q,m,'promise168','tile');
+  // Four shared Promise motifs replace the repeated Kronii clock on the back wall.
 q.drawImage(images.frieze,6*32,1*32);drawEntrance();
 for(const p of m.props)drawProp(p);for(const k of ['body','boots','armour','helmet','sword'])q.drawImage(images[k],player.x*32,player.y*32,32,32);
 if($('grid').checked){q.strokeStyle='rgba(193,210,196,.3)';q.lineWidth=1;for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++)if(m.open[y*m.w+x])q.strokeRect(x*32+.5,y*32+.5,31,31);}

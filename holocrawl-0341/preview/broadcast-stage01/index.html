@@ -10,7 +10,8 @@
   main { max-width: 1192px; margin: auto; padding: 20px; }
   h1 { font-size: 25px; margin: 0 0 12px; }
   form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
-  input, button, select { font: inherit; color: inherit; background: #253039; border: 1px solid #4a5b66; border-radius: 4px; padding: 5px 9px; }
+  input, button, select, a { font: inherit; color: inherit; background: #253039; border: 1px solid #4a5b66; border-radius: 4px; padding: 5px 9px; }
+  a { text-decoration: none; }
   button { cursor: pointer; }
   button[aria-pressed=true] { background: #415b63; }
   input { width: 9rem; }
@@ -43,7 +44,9 @@
     <button type="button" id="freight" aria-pressed="false" hidden>화물 리프트와 지게차</button>
     <button type="button" id="warehouse" aria-pressed="false" hidden>세트 보관창고</button>
     <button type="button" id="goods-gate" aria-pressed="false" hidden>굿즈 창고 셔터</button>
+    <a id="goods-entry" href="../forbidden-goods01/" hidden>금지된 굿즈 창고 1층으로</a>
     <button type="button" id="ending" aria-pressed="false" hidden>보상 고정지형</button>
+    <button type="button" id="office-latch" hidden>사무실 안쪽 빗장 열기</button>
   </form>
   <canvas id="map" width="1152" height="576" role="img" aria-label="방송 지하무대 지도"></canvas>
   <p id="status" role="status">지도를 불러오는 중…</p>
@@ -54,15 +57,23 @@
 <script src="studio-art.js?v=3"></script>
 <script src="studio-props.js?v=2"></script>
 <script src="glass-studio.js?v=3"></script>
+<script src="../floor-overgrowth.js"></script>
 <script src="studio-vaults.js?v=3"></script>
 <script src="equipment-floor.js?v=11"></script>
 <script src="loading-dock-art.js?v=4"></script>
-<script src="ending-layouts.js?v=2"></script>
-<script src="ending-fixtures.js?v=1"></script>
-<script src="ending-vaults.js?v=4"></script>
-<script src="loading-dock-layout.js?v=6"></script>
+<script src="ending-layouts.js?v=50"></script>
+<script src="holo-server-art.js?v=2"></script>
+<script src="ending-fixtures.js?v=18"></script>
+<script src="street-set-art.js?v=8"></script>
+<script src="live-show-art.js?v=4"></script>
+<script src="office-art.js?v=9"></script>
+<script src="tower-art.js?v=8"></script>
+<script src="garden-art.js?v=9"></script>
+<script src="film-archive-art.js?v=4"></script>
+<script src="ending-vaults.js?v=32"></script>
+<script src="loading-dock-layout.js?v=11"></script>
 <script src="wall-decoration.js?v=3"></script>
 <script src="work-areas.js?v=2"></script>
 <script src="stage-doors.js?v=2"></script>
-<script src="preview.js?v=22"></script>
+<script src="preview.js?v=32"></script>
 </html>

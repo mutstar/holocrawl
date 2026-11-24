@@ -110,6 +110,10 @@
     fill('#424d5c',14*32,4*32-3,32,2*32+3);
     fill('#89959b',14*32,4*32,2,2*32);fill('#89959b',15*32-2,4*32,2,2*32);
     for(const y of [4,5])fill('#657480',14*32+6,y*32+15,20,2);
+    for(let y=1;y<height-1;y++)for(let x=1;x<width-1;x++){
+      const ground=terrain(x,y);
+      if(ground!=='gate') FloorOvergrowth.draw(q,ground==='grass'?'earth':'stone','mega-circuit',x,y);
+    }
     return canvas;
   }
   function draw(canvas,state) {

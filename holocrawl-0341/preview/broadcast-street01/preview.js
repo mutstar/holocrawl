@@ -136,6 +136,7 @@
           }
         } else {
           stamp(art.floorTile(seed, x, y), x, y);
+          FloorOvergrowth.draw(layer, 'tile', seed+':'+floor, x, y);
           if (age) {
             const random = StreetGen.random(`${seed}:${floor}:paving-wear:${x},${y}`);
             if (random() < age * .16) {

@@ -235,6 +235,9 @@
     if(id==='maze')MazeGlass209.draw(q,m);
     if(id==='bumper')BumperGarage209.ground(q,m);
     if(id==='coaster')CoasterProps209.ground(q);
+    for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){
+      if(m.floor[cell(m,x,y)]) FloorOvergrowth.draw(q,id==='bumper'?'carpet':id==='coaster'?'metal':'tile',id,x,y);
+    }
     for(const p of m.props){
       if(p.id==='coaster-long')LongCoaster209.draw(q,p);
       else if(id==='coaster'&&CoasterProps209.has(p.id))CoasterProps209.draw(q,p);

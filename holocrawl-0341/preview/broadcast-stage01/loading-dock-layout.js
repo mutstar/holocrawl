@@ -71,7 +71,7 @@ function findDockSite(map, width, depth, reserved, anchors, random) {
   return best;
 }
 
-function drawLoadingDock(layer, art, {lift, warehouse, shutter, vault}) {
+function drawLoadingDock(layer, art, {map, lift, warehouse, shutter, vault}, deepWater, gardenSprites, archiveConcrete) {
   const draw = (sprite, zone, dx, dy) => layer.drawImage(art[sprite], zone.x * 32 + dx, zone.y * 32 + dy);
   draw('railsTowardLift', lift, 80, 24);
   draw('freightLift', lift, 32, -32);
@@ -90,5 +90,5 @@ function drawLoadingDock(layer, art, {lift, warehouse, shutter, vault}) {
   draw('inspectionWindow', shutter, 192, -32);
   draw('palletScale', shutter, 224, 22);
   draw('cargoCrate', shutter, 128, 32);
-  drawStageEnding(layer, vault.ending, vault.x, vault.y);
+  drawStageEnding(layer, vault.ending, vault.x, vault.y, deepWater, map.seed, gardenSprites, archiveConcrete);
 }

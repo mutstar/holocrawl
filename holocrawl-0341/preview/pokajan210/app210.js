@@ -87,7 +87,8 @@
     context.fillStyle = '#413e49'; context.fillRect(r.x * 32-2,r.y * 32-2,r.w * 32+4,r.h * 32+4);
     context.fillStyle = '#645863'; context.fillRect(r.x * 32+2,r.y * 32+2,r.w * 32-4,r.h * 32-4);
     context.fillStyle = '#49434f'; context.fillRect(r.x * 32+5,r.y * 32+5,r.w * 32-10,r.h * 32-10);
-    for (const prop of map.props) PokajanSprites210.draw(context,prop);
+    FloorOvergrowth.room(context,map,'pokajan210','tile');
+  for (const prop of map.props) PokajanSprites210.draw(context,prop);
     PokajanSprites210.door(context,map.entry,opened);
     if (byId('grid').checked) {
       context.strokeStyle = 'rgba(192,211,215,.22)';

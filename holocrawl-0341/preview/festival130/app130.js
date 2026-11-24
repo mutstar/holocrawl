@@ -75,6 +75,7 @@
     tile=classic ? floorTiles[RandomFloor.index(map.seed+':F8',0,x,y)] : festivalSurfaces.floorTile(x,y);
    }
    q.drawImage(tile,x*32,y*32);
+   if(map.cells[idx(x,y)]!==0) FloorOvergrowth.draw(q,'stone',map.seed+':'+map.floor,x,y);
   }
   for(const s of map.stairs)q.drawImage(stairTiles[s.kind],s.x*32,s.y*32);
   decor=canvas(base.width,base.height);const d=g(decor);for(const p of map.lanterns)d.drawImage(sprites['lantern-string'],p.x*32,p.y*32);

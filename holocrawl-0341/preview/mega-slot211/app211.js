@@ -95,7 +95,8 @@
       context.fillRect(x-1,y-3,2,8);context.fillRect(x-3,y-1,6,4);
       context.fillStyle='#6c4d65';context.fillRect(x-1,y,2,2);
     }
-    for (const prop of map.props) MegaSlotSprites211.draw(context,prop);
+    FloorOvergrowth.room(context,map,'mega-slot211','tile');
+  for (const prop of map.props) MegaSlotSprites211.draw(context,prop);
     MegaSlotSprites211.door(context,map.entry,opened);
     if (byId('grid').checked) {
       context.strokeStyle = 'rgba(192,211,215,.22)';

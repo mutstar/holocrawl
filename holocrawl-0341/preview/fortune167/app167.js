@@ -12,7 +12,8 @@ const entrySprites=new Map();function entranceSprite(open){if(entrySprites.has(o
 function drawEntrance(){q.drawImage(entranceSprite(opened),(m.entry.x-1)*32,m.entry.y*32-14);}
 function draw(){q.imageSmoothingEnabled=false;fill('#151d20',0,0,c.width,c.height);for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++){if(m.cells[y*m.w+x]===0)FortuneWall165.wall(q,structural,m.w,m.h,x,y,32);else{q.drawImage(floors[RandomFloor.index('PROMISE162',0,x,y)%floors.length],x*32,y*32);if(x>m.origin.x&&x<m.origin.x+m.origin.w-1&&y>m.origin.y&&y<m.origin.y+m.origin.h-1){q.fillStyle='rgba(40,88,84,.12)';q.fillRect(x*32,y*32,32,32);}}}
 // Passable floor links connect the five member terminals to a common relay.
-FortuneFixtures166.ground(q,m);drawEntrance();
+FloorOvergrowth.room(q,m,'fortune167','tile');
+  FortuneFixtures166.ground(q,m);drawEntrance();
 for(const p of m.props)drawProp(p);FortuneFixtures166.front(q,m);for(const k of ['body','boots','armour','helmet','sword'])q.drawImage(images[k],player.x*32,player.y*32,32,32);
 if($('grid').checked){q.strokeStyle='rgba(193,210,196,.3)';q.lineWidth=1;for(let y=0;y<m.h;y++)for(let x=0;x<m.w;x++)if(m.open[y*m.w+x])q.strokeRect(x*32+.5,y*32+.5,31,31);}
 if($('zones').checked){q.font='11px system-ui';q.textAlign='center';for(const p of m.props){const label=p.label.split(' · ')[0],cx=(p.x+p.w/2)*32;fill('rgba(12,18,21,.9)',cx-38,p.y*32-15,76,14);q.fillStyle='#e1e6de';q.fillText(label,cx,p.y*32-4);}}

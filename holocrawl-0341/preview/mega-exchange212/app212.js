@@ -95,7 +95,8 @@
       context.fillRect(x-1,y-3,2,8);context.fillRect(x-3,y-1,6,4);
       context.fillStyle='#53615d';context.fillRect(x-1,y,2,2);
     }
-    for (const prop of map.props) ExchangeSprites212.draw(context,prop);
+    FloorOvergrowth.room(context,map,'mega-exchange212','tile');
+  for (const prop of map.props) ExchangeSprites212.draw(context,prop);
     ExchangeSprites212.gate(context,map.stockroom,true,true);
     ExchangeSprites212.gate(context,map.entry,opened);
     if (byId('grid').checked) {

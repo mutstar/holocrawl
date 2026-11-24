@@ -160,7 +160,8 @@
         }
       }
     }
-    for (const bench of map.benches) drawBench(context,bench);
+    FloorOvergrowth.room(context,map,'pekora-derby205','tile');
+  for (const bench of map.benches) drawBench(context,bench);
     for (const prop of map.props) {
       const image = images[prop.id];
       const x = prop.x * tileSize + (prop.w * tileSize - image.width) / 2;

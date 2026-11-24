@@ -81,6 +81,7 @@ function createStudioVaultArt(art, props) {
     const p = paintWith(ctx);
     for (let y = 0; y < 5; y++) for (let x = 0; x < 8; x++) {
       ctx.drawImage(art.floorTile(x + 5, y + 4, true), x * 32, y * 32);
+      FloorOvergrowth.draw(ctx, 'wood', 'studio-room-wood', x, y);
     }
     p('#191a20', 0, 0, 256, 32);
     p('#282a34', 0, 8, 256, 24);
@@ -147,6 +148,7 @@ function createStudioVaultArt(art, props) {
     const p = paintWith(ctx);
     for (let y = 0; y < 6; y++) for (let x = 0; x < 6; x++) {
       ctx.drawImage(art.floorTile(x + 8, y + 2, false), x * 32, y * 32);
+      FloorOvergrowth.draw(ctx, 'tile', 'studio-room-tile', x, y);
     }
     p('#1b2227', 0, 0, 192, 32);
     p('#363f43', 3, 8, 186, 21);
