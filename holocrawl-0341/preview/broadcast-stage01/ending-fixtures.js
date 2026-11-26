@@ -1,4 +1,9 @@
 function drawEndingFixture(paint, id, placement, accent, wide = false) {
+  if (id === 'family-bakery' || id === 'oozora-police' || id === 'fubuki-er') return; // These rooms supply their own fittings.
+  if (id === 'fan-mail') {
+    drawMailFixture(paint, placement);
+    return;
+  }
   if (id === 'mirror') {
     if (placement === 'wall') return;
     paint('#24232b70', 8, 26, 46, 3);
@@ -16,7 +21,9 @@ function drawEndingFixture(paint, id, placement, accent, wide = false) {
     live: ['#8b8699', '#54505f'], office: ['#a19c85', '#656b64'],
     tower: ['#8e9eac', '#525f70'], garden: ['#8d9d73', '#526854'],
     archive: ['#a6977d', '#645a50'],
-    rail: ['#9a8667', '#615344'], power: ['#ad995d', '#6e6250'],
+    rail: ['#9a8667', '#615344'],
+    wardrobe: ['#ad9697','#75646a'],
+    foley: ['#ac9475','#695e4e'], revolve: ['#a19680','#686662'],
   };
   const [metal, body] = palette[id];
   const shadow = '#252a2b';
@@ -453,64 +460,6 @@ function drawDressingRoomScenery(p, {kind, pose = 'standing'}) {
   p('#775965', 27, 43, 4, 6);
   p('#c3aea5', 28, 42, 2, 2);
   p('#3b3b43', 116, 45, 13, 4);
-}
-
-function drawPowerScenery(p, {kind}) {
-  if (kind === 'switchboard') {
-    p('#252925', 3, 6, 185, 24);
-    for (let x = 5; x < 184; x += 36) {
-      p('#505b52', x, 3, 34, 23);
-      p('#899182', x, 3, 34, 2);
-      p('#2d3735', x+3, 7, 27, 8);
-      for (const offset of [5, 18]) {
-        p('#bdb79c', x+offset, 8, 8, 5);
-        p('#655648', x+offset+3, 10, 2, 3);
-      }
-      p('#323a36', x+4, 18, 18, 4);
-      p('#ada076', x+10, 17, 4, 5);
-      p('#87aa91', x+26, 18, 3, 3);
-    }
-    return;
-  }
-  // Both machines bolt to a concrete plinth; their upper silhouettes differ.
-  p('#29282380', 5, 54, 184, 8);
-  p('#4c4a40', 3, 48, 184, 10);
-  p('#8a8270', 3, 47, 182, 3);
-  p('#333630', 9, 41, 171, 6);
-  if (kind === 'diesel') {
-    p('#3f514b', 12, 13, 47, 30);
-    p('#849481', 14, 10, 43, 5);
-    for (let y = 18; y <= 36; y += 5) p('#263a35', 17, y, 36, 3);
-    p('#56665c', 61, 22, 108, 20);
-    p('#879081', 63, 21, 103, 3);
-    for (const x of [69, 90, 111, 132]) {
-      p('#3d4b43', x, 12, 15, 20);
-      p('#899581', x+2, 11, 12, 5);
-      p('#637966', x+1, 17, 12, 8);
-      p('#474942', x+9, 30, 4, 10);
-    }
-    p('#9a8770', 73, 6, 83, 4);
-    p('#796956', 152, 5, 6, 15);
-    p('#525852', 158, 26, 18, 17);
-    p('#b29f74', 164, 29, 5, 4);
-  } else {
-    p('#465152', 11, 19, 34, 23);
-    p('#87938a', 14, 17, 29, 4);
-    p('#8e806b', 44, 25, 16, 9);
-    p('#4f4e44', 58, 13, 78, 30);
-    for (const x of [61, 73, 85, 97, 109, 121]) {
-      p('#71604e', x, 11, 10, 32);
-      p('#b18c63', x+1, 12, 7, 5);
-      p('#967552', x+1, 17, 7, 18);
-      p('#634e41', x+2, 36, 7, 5);
-    }
-    p('#63716b', 137, 14, 32, 28);
-    p('#94a093', 139, 12, 26, 5);
-    for (const x of [143, 150, 157]) p('#3b4c48', x, 21, 3, 16);
-    p('#4a554f', 174, 19, 6, 25);
-    p('#b89157', 174, 18, 6, 4);
-  }
-  for (const x of [13, 173]) p('#b4ab92', x, 50, 3, 2);
 }
 
 function drawDressingMirror(p, x, y, w, h) {

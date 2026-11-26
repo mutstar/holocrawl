@@ -1,5 +1,5 @@
 function createFestivalWoodArch({canvas,g,texture,profile}){
- const {w,h,canvasW,xOffset}=profile.frame;
+ const {w,h}=profile.frame;
  const rim=2,jamb=1;
  function makeSprite(open){
   const c=canvas(w,h),q=g(c);
@@ -34,8 +34,6 @@ function createFestivalWoodArch({canvas,g,texture,profile}){
  }
  const sprites=[makeSprite(false),makeSprite(true)];
  return function drawWoodArch(q,map,door,open,base){
-  const offset=profile.direction(map,door)==='horizontal'?(canvasW-w)/2:xOffset;
-  profile.drawWallReturns(q,map,door,base,offset);
-  q.drawImage(sprites[Number(open)],door.x*canvasW+offset,door.y*h);
+  profile.drawFitted(q,map,door,sprites[Number(open)],base,0);
  };
 }

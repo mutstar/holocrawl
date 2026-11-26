@@ -3,12 +3,15 @@ function endingTile(ending, x, y) {
 }
 
 function endingWalkable(tile) {
-  return '.=ers'.includes(tile);
+  return '.=ersh'.includes(tile);
 }
 
-function pickStageEnding(seed) {
+function pickStageEnding(seed, originalPool = false) {
+  // Draw the expansion slots separately so an original slot keeps its original layout.
+  const slot = Math.floor(StreetGen.random(`${seed}:large-ending:12`)() * stageEndings.length);
+  if (!originalPool && slot >= 10) return stageEndings[slot];
   const random = StreetGen.random(`${seed}:stage-ending`);
-  return stageEndings[Math.floor(random() * stageEndings.length)];
+  return stageEndings[Math.floor(random() * 10)];
 }
 
 function endingFootprint(ending) {
@@ -73,6 +76,7 @@ function stampStageEnding(map, ending, footprint, x, y) {
   let reward;
   let guard;
   let exitDoor;
+  const wardDoors = [];
   for (const {x: dx, y: dy, tile} of footprint) {
     const point = {x: x + dx, y: y + dy};
     const index = point.y * w + point.x;
@@ -80,8 +84,9 @@ function stampStageEnding(map, ending, footprint, x, y) {
     if (tile === 'r') reward = point;
     if (tile === 's') guard = point;
     if (tile === 'd') exitDoor = point;
+    if (tile === 'h') wardDoors.push(point);
   }
-  return {ending, x, y, entry, reward, guard, exitDoor, width: ending.width, depth: ending.depth};
+  return {ending, x, y, entry, reward, guard, exitDoor, wardDoors, width: ending.width, depth: ending.depth};
 }
 
 function endingFloorMaterial(ending, tile, path, x, y) {
@@ -100,7 +105,7 @@ function endingFloorMaterial(ending, tile, path, x, y) {
 }
 
 function drawStageEnding(layer, ending, originX, originY, deepWater, seed = ending.id, gardenSprites, archiveConcrete) {
-  const {id, width, depth, palette: [floor, trim, wall, accent]} = ending;
+  const {id, width, depth, palette: [floor, trim, , accent]} = ending;
   const plantedCracks = new Map((ending.floorCracks ?? []).map(crack => [crack.y * width + crack.x, crack]));
   const paint = (color, x, y, w, h) => {
     layer.fillStyle = color;
@@ -112,14 +117,7 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
     const atEntrance = y >= depth - 3 && Math.abs(x - ending.entry.x) <= 2;
     layer.save();
     layer.translate((originX + x) * 32, (originY + y) * 32);
-    if (tile === '#') {
-      const inside = endingTile(ending, x, y + 1);
-      if (id !== 'mirror' && !atEntrance && inside !== '#' && inside !== ' ' && (x + y * 3) % 4 < 2) {
-        // Recess details into the existing dock wall face and retain its coping and lower trim.
-        paint(`${trim}38`, 3, 11, 26, 11);
-        drawEndingWallDetail(paint, id, wall, accent, x, y);
-      }
-    } else {
+    if (tile !== '#') {
       if (tile === '~') {
         const patch = Math.floor(StreetGen.random(`flood-water:${x}:${y}`)() * 16);
         layer.drawImage(deepWater, (patch % 4) * 32, Math.floor(patch / 4) * 32, 32, 32, 0, 0, 32, 32);
@@ -135,6 +133,8 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
           if (x%2 === 0) paint('#29272040',0,0,1,32);
           if (y%2 === 0) paint('#29272040',0,0,32,1);
         }
+        if (id === 'fan-mail') drawScatteredMail(paint, x, y);
+        drawLargeEndingGround(paint, ending, x, y);
         if (id === 'office') drawOfficeFloor(paint, x, y);
         if (ending.road) drawStreetSetGround(paint, ending, x, y);
         if (ending.liveShow) drawLiveShowGround(paint, ending.liveShow, x, y);
@@ -168,7 +168,7 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
     drawGardenYard(layer,ending);
     layer.restore();
   }
-  const drawScenery = {live: drawLiveShowScenery, street: drawStreetSetScenery, office: drawOfficeScenery, tower: drawTowerScenery, archive: drawFilmArchiveScenery, mirror: drawDressingRoomScenery, rail: drawModelRailScenery, power: drawPowerScenery}[id];
+  const drawScenery = {live: drawLiveShowScenery, street: drawStreetSetScenery, office: drawOfficeScenery, tower: drawTowerScenery, archive: drawFilmArchiveScenery, mirror: drawDressingRoomScenery, rail: drawModelRailScenery, 'fan-mail': drawMailScenery, 'family-bakery': drawBakeryScenery, 'oozora-police': drawPoliceScenery, 'fubuki-er': drawHospitalScenery}[id];
   if (id === 'rail') {
     layer.save();
     layer.translate(originX * 32, originY * 32);
@@ -179,7 +179,8 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
     layer.save();
     layer.translate((originX + scenery.x) * 32, (originY + scenery.y) * 32);
     if (id === 'garden') drawGardenScenery(layer, gardenSprites, scenery);
-    else drawScenery(paint, scenery);
+    else if (drawScenery) drawScenery(paint, scenery);
+    else drawLargeEndingScenery(paint, scenery);
     layer.restore();
   }
   for (const {x, y} of ending.wallFixtures) {
@@ -297,35 +298,6 @@ function drawFloodedEquipment(paint, kind) {
     }
     paint('#162f37', 101, 39, 12, 8);
     paint('#5e77776c', 95, 44, 23, 1);
-  }
-}
-
-function drawEndingWallDetail(paint, id, shadow, accent, x, y) {
-  if (id === 'garden') {
-    paint(shadow, 5, 11, 22, 10);
-    paint('#416a63', 6, 12, 20, 7);
-    paint('#c1dcd56d', 8, 14, 9, 1);
-    paint('#c1dcd56d', 9, 15, 4, 1);
-  } else if (id === 'street' || id === 'rail') {
-    paint('#241a1a4a', 0, 17, 32, 1);
-    paint('#241a1a4a', 0, 22, 32, 1);
-    paint('#241a1a4a', 13 + (x + y) % 4, 12, 1, 5);
-    paint('#241a1a4a', 5 + (x + y) % 3, 18, 1, 4);
-  } else if (id === 'office') {
-    paint('#848579', 0, 12, 32, 9);
-    paint('#a69f88', 0, 12, 32, 1);
-    paint('#575f59', 0, 20, 32, 2);
-  } else if (id === 'flood') {
-    paint('#567e7b', 0, 23, 32, 1);
-    paint('#304d4f', 0, 24, 32, 2);
-  } else if (id === 'tower' || id === 'live' || id === 'power') {
-    paint(shadow, 1, 12, 2, 8);
-    paint('#bcc3bd65', 5, 14, 2, 2);
-    paint('#bcc3bd65', 26, 14, 2, 2);
-    if (x % 4 === 2) paint(accent, 12, 18, 7, 2);
-  } else if (x % 2 === 0) {
-    paint(shadow, 5, 12, 22, 8);
-    paint(accent, 11, 17, 10, 3);
   }
 }
 
@@ -502,15 +474,7 @@ function drawEndingProp(p, id, trim, accent, alternate) {
     p('#bd8865', 11, 2, 10, 2);
     p('#30373a', 10, 14, 12, 7);
     p('#6b8983', 11, 15, 10, 5);
-  } else if (id === 'power') {
-    p('#282b2c', 3, 9, 26, 18);
-    p('#827150', 4, 8, 24, 8);
-    p('#b09b68', 5, 8, 22, 1);
-    p('#4e4f48', 6, 15, 18, 10);
-    for (const x of [8, 12, 16, 20]) p('#303633', x, 16, 2, 7);
-    p(alternate ? '#b98759' : '#8d9d72', 24, 17, 3, 3);
-    p('#b5aa8c', 7, 25, 2, 3);
-    p('#b5aa8c', 24, 25, 2, 3);
+
   }
 }
 

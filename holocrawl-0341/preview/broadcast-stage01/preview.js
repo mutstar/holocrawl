@@ -29,6 +29,7 @@
   const vaultArt = createStudioVaultArt(art, equipment);
   const equipmentArt = createEquipmentFloorArt(art, atlas, rects, planes);
   const dockArt = createLoadingDockArt(art, atlas, rects, planes);
+  const endingWallTile = createEndingWallArt(art.sprite, planes);
   const workAreaArt = createStageWorkAreaArt(art, equipmentArt, dockArt);
   const doors = {studio: art.doors[0], ...createStageDoorArt(art.sprite)};
   const studioWallChoices = [
@@ -53,13 +54,30 @@
   ctx.imageSmoothingEnabled = false;
   const seedInput = byId('seed');
   const floorSelect = byId('floor');
+  const endingExample = byId('ending-example');
+  const routeToggle = byId('routes');
+  routeToggle.checked = query.get('routes') === '1';
+  let reviewPaths = [];
+  // These seeds draw each vault through the regular floor generator.
+  const exampleSeeds = ['dock-review-5', 'dock-review-18', 'dock-review-10', 'dock-review-6',
+    'dock-review-8', 'dock-review-3', 'dock-review-1', 'dock-review-19', 'dock-review-2', 'dock-review-4',
+    'dock-large-6', 'dock-large-22', 'dock-large-4', 'dock-large-1'];
+  // Previously shared links have no pool parameter. Keep their original seed reproducible.
+  let originalSeed = !query.has('pool') && !exampleSeeds.slice(10).includes(query.get('seed'))
+    ? query.get('seed') : null;
+  for (const seed of exampleSeeds) {
+    const ending = pickStageEnding(seed);
+    endingExample.add(new Option((stageEndings.indexOf(ending) + 1) + '. ' + ending.name, seed));
+  }
   seedInput.value = (query.get('seed') || seedInput.value).slice(0, seedInput.maxLength);
   const requestedFloor = query.get('floor');
   if (['1', '2', '3', '4', '5'].includes(requestedFloor)) floorSelect.value = requestedFloor;
   const views = ['overview', 'studio', 'booth', 'rehearsal', 'storage', 'lighting', 'cable', 'loading',
-    'fan', 'curtain-roll', 'power-lever', 'service', 'freight', 'warehouse', 'goods-gate', 'wall-decor', 'work-area', 'door', 'ending'];
+    'fan', 'curtain-roll', 'power-lever', 'service', 'freight', 'warehouse', 'goods-gate', 'wall-decor', 'work-area', 'door', 'ending', 'ward-doors'];
   let map, rendered, points, decorations;
   let setOfficeExit, exitOpen;
+  let wardControls = [];
+  const wardButtons = Array.from(document.querySelectorAll('[data-ward]'));
   let focus = views.includes(query.get('view')) ? query.get('view') : 'studio';
 
   function buildLayout(seed) {
@@ -133,6 +151,8 @@
     const {w, h, cells} = map;
     const {decorations} = wallDecorations;
     map.doors = placeDoors(map, reserved, decorations);
+    const wallMap = endingVault?.wardDoors.length
+      ? {...map, doors:[...map.doors, ...endingVault.wardDoors]} : map;
     wallDecorations.fill(map.doors);
     const wall = (x, y, tiles = cells) => x >= 0 && y >= 0 && x < w && y < h && tiles[y * w + x] === StreetGen.WALL;
     return art.sprite(w * 32, h * 32, layer => {
@@ -141,10 +161,16 @@
       for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
         let tile;
         if (wall(x, y)) {
-          const walls = DoorFit159.wallCells(map, x, y);
+          const walls = DoorFit159.wallCells(wallMap, x, y);
           const mask = neighbors.reduce((bits, [dx, dy], bit) =>
             wall(x + dx, y + dy, walls) ? bits | (1 << bit) : bits, 0);
           tile = surface.wallTile(mask, x, y);
+          if (endingVault) {
+            const dx = x - endingVault.x, dy = y - endingVault.y;
+            const {ending} = endingVault;
+            const doorway = dy === ending.depth-1 && Math.abs(dx-ending.entry.x) <= 1;
+            if (!doorway && endingTile(ending,dx,dy) === '#') tile = endingWallTile(ending.id,tile,mask,dx);
+          }
         } else {
           const platform = isPlatform(x, y);
           tile = surface.floorTile(x, y, platform);
@@ -155,10 +181,8 @@
         }
         layer.drawImage(tile, x * 32, y * 32);
       }
-      const inset = (DoorFit159.frame.canvasW - DoorFit159.frame.w) / 2;
       for (const door of map.doors) {
-        DoorFit159.drawWallReturns(layer, map, door, layer.canvas, inset);
-        layer.drawImage(doorSprite, door.x * 32, door.y * 32);
+        DoorFit159.drawFitted(layer,map,door,doorSprite,layer.canvas,(DoorFit159.frame.canvasW-DoorFit159.frame.w)/2);
       }
       decorate(layer);
       for (const {sprite, x, y} of decorations) layer.drawImage(sprite, x * 32, y * 32);
@@ -263,31 +287,85 @@
         width: vault.width, depth: vault.depth},
     };
     const officeExit = vault.exitDoor && officeExitControl(source, map, vault.exitDoor);
-    return {map, source, points, decorations: wallDecorations.decorations, workAreas, vault, officeExit};
+    if (vault.wardDoors.length) {
+      const first = vault.wardDoors[0], last = vault.wardDoors[vault.wardDoors.length - 1];
+      points['ward-doors'] = {x:first.x, y:(first.y + last.y)/2};
+    }
+    const wardControls = vault.wardDoors.map(door => {
+      const layer = source.getContext('2d'), px = door.x * 32, py = door.y * 32;
+      const {frame} = DoorFit159;
+      const spriteInset = (frame.canvasW-frame.w)/2;
+      DoorFit159.prepareDoorway(layer,map,door,source);
+      const threshold = layer.getImageData(px,py,frame.canvasW,frame.h);
+      const control = {open:false, setOpen(open) {
+        this.open = open;
+        map.cells[door.y*map.w+door.x] = open ? StreetGen.FLOOR : StreetGen.BARRIER;
+        layer.putImageData(threshold,px,py);
+        DoorFit159.drawLeaf(layer,map,door,open ? doors.wardOpen : doors.ward,spriteInset);
+      }};
+      control.setOpen(false);
+      return control;
+    });
+    return {map, source, points, decorations: wallDecorations.decorations, workAreas, vault, officeExit, wardControls};
   }
 
   function draw() {
     const latch = byId('office-latch');
     latch.hidden = !(setOfficeExit && focus === 'ending');
     latch.textContent = exitOpen ? '사무실 문 닫기' : '사무실 안쪽 빗장 열기';
+    wardButtons.forEach((button,i) => {
+      const control = wardControls[i];
+      button.hidden = !control || (focus !== 'ending' && focus !== 'ward-doors');
+      button.textContent = button.dataset.ward + ' 병실 문 ' + (control?.open ? '닫기' : '열기');
+    });
     const overview = focus === 'overview';
     const point = points[focus] || map.start;
     const endingScale = points.ending && Math.min(1, field.width / ((points.ending.width + 4) * 32),
       field.height / ((points.ending.depth + 4) * 32));
-    const scale = overview ? .25 : focus === 'ending' ? endingScale : 1.5;
+    const scale = overview ? .25 : focus === 'ending' ? endingScale : focus === 'ward-doors' ? 2 : 1.5;
     const width = map.w * 32 * scale;
     const height = map.h * 32 * scale;
-    const offset = (coordinate, screen, extent) => overview
-      ? Math.floor((screen - extent) / 2)
-      : -Math.max(0, Math.min(extent - screen, Math.floor((coordinate + .5) * 32 * scale - screen / 2)));
+    const offset = (coordinate, screen, extent) => {
+      if (overview) return Math.floor((screen - extent) / 2);
+      const centered = Math.round(screen / 2 - (coordinate + .5) * 32 * scale);
+      if (focus === 'ending') return centered;
+      return -Math.max(0, Math.min(extent - screen, -centered));
+    };
     ctx.fillStyle = '#101419';
     ctx.fillRect(0, 0, field.width, field.height);
-    ctx.drawImage(rendered, offset(point.x, field.width, width), offset(point.y, field.height, height), width, height);
+    const left = offset(point.x, field.width, width);
+    const top = offset(point.y, field.height, height);
+    ctx.drawImage(rendered, left, top, width, height);
+    const canShowRoutes = reviewPaths.length > 0 && (focus === 'ending' || overview);
+    byId('routes-label').hidden = !canShowRoutes;
+    if (canShowRoutes && routeToggle.checked) {
+      ctx.save();
+      ctx.translate(left, top);
+      ctx.scale(scale, scale);
+      for (const [i, path] of reviewPaths.entries()) {
+        ctx.beginPath();
+        for (const [step, tile] of path.entries()) {
+          const x = (tile.x + .5) * 32, y = (tile.y + .5) * 32;
+          if (step === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.lineJoin = 'round';
+        ctx.setLineDash([]);
+        ctx.strokeStyle = '#28252d';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.strokeStyle = ['#ede3c9', '#84d8cf', '#f0bb78'][i];
+        ctx.setLineDash(i === 2 ? [8, 5] : []);
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
     for (const id of views) byId(id).setAttribute('aria-pressed', String(focus === id));
   }
 
   function renderFloor(seed, floor) {
-    const ending = floor === 5 ? pickStageEnding(seed) : null;
+    const ending = floor === 5 ? pickStageEnding(seed, seed === originalSeed) : null;
     const renderLayout = ending ? (variant => renderDock(variant, ending)) : floor >= 3 ? renderEquipment : render;
     const first = renderLayout(seed, floor);
     if (first.map.doors.length) return first;
@@ -306,8 +384,24 @@
     const result = renderFloor(seed, floor);
     const {workAreas = [], vault} = result;
     setOfficeExit = result.officeExit;
+    wardControls = result.wardControls || [];
     exitOpen = false;
     ({map, source: rendered, points, decorations} = result);
+    reviewPaths = [];
+    if (vault?.ending.reviewRoutes) {
+      const branches = vault.ending.reviewRoutes.map(stops => stops.map(([x,y]) => ({x:vault.x+x, y:vault.y+y})));
+      const routes = [[vault.entry, branches[0][0]], ...branches.map(branch => [...branch, vault.reward])];
+      reviewPaths = routes.map(stops => {
+        const path = [stops[0]];
+        for (const stop of stops.slice(1)) {
+          const segment = StreetGen.route(map, path[path.length - 1], stop);
+          if (!segment.length) return [];
+          path.push(...segment.slice(1));
+        }
+        return path;
+      });
+      if (reviewPaths.some(path => !path.length)) reviewPaths = [];
+    }
     if (decorations.length) {
       const {x, y, width} = decorations[0];
       points['wall-decor'] = {x: x + (width - 1) / 2, y};
@@ -318,6 +412,8 @@
     }
     if (map.doors.length) points.door = map.doors[0];
     if (vault) byId('ending').textContent = vault.ending.name;
+    byId('ending-examples').hidden = !isDock;
+    endingExample.value = exampleSeeds.includes(seed) ? seed : '';
     const goodsEntry = byId('goods-entry');
     goodsEntry.hidden = !isDock;
     if (isDock) goodsEntry.href = '../forbidden-goods01/?' + new URLSearchParams({ seed, view: 'arrival' });
@@ -329,6 +425,8 @@
     byId('title').textContent = document.title = title;
     field.setAttribute('aria-label', title + ' 지도');
     const params = new URLSearchParams({seed, floor, view: focus});
+    if (seed !== originalSeed) params.set('pool','14');
+    if (reviewPaths.length && routeToggle.checked) params.set('routes', '1');
     if (useArchiveConcrete) params.set('material','concrete');
     history.replaceState(null, '', '?' + params);
     const props = isDock ? '화물 리프트, 세트 보관창고, 금지된 굿즈 창고 셔터'
@@ -350,13 +448,33 @@
   }
   document.querySelector('form').onsubmit = event => { event.preventDefault(); refresh(); };
   floorSelect.onchange = refresh;
+  routeToggle.onchange = () => {
+    const params = new URLSearchParams(location.search);
+    if (routeToggle.checked) params.set('routes', '1');
+    else params.delete('routes');
+    history.replaceState(null, '', '?' + params);
+    draw();
+  };
+  endingExample.onchange = () => {
+    originalSeed = null;
+    seedInput.value = endingExample.value;
+    focus = 'ending';
+    refresh();
+  };
   byId('office-latch').onclick = () => {
     if (!setOfficeExit) return;
     exitOpen = !exitOpen;
     setOfficeExit(exitOpen);
     draw();
   };
+  wardButtons.forEach((button,i) => {
+    button.onclick = () => {
+      const control = wardControls[i];
+      if (control) { control.setOpen(!control.open); draw(); }
+    };
+  });
   byId('random').onclick = () => {
+    originalSeed = null;
     seedInput.value = 'rehearsal-' + Math.floor(Math.random() * 1e9);
     refresh();
   };

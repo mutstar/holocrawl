@@ -70,10 +70,43 @@ function drawWallReturns(q,m,d,base,xOffset=0){
   if(dx<xOffset)q.fillRect(x-1-dx,y+10,1,22);
  }
 }
-function draw(q,m,d,opened,im,base){const x=d.x*32,y=d.y*32;
- drawWallReturns(q,m,d,base);
- q.drawImage(sprite(opened),x,y);
- // The native rail replaces the final rows INSIDE the32px tile. Never append it below the wall.
- // Native wall coping is already in base; do not paint a second rail across the door.
+const frame={w:28,h:32,canvasW:32,xOffset:0,yOffset:0,leafWidth:12,closedSeamWidth:2,closedSeamOpaque:true,mirroredInterior:true,grayRight:27,shadowStart:28,shadowWidth:4,archRise:10,material:'solid iron',transparentExterior:true,shadowInSprite:false,nativeWallReturns:true,openBottom:true,flushThreshold:null,archMaterial:'silver steel',leafMaterial:'dark iron plate',bottomAtWallBoundary:true,wallSill:null,wallLineSource:"adjacent native wall in base; no independent door sill"};
+// Offset the vertical arch one pixel toward the wall's right-hand shadow.
+// Omit one panel column on each leaf so the arch, handles and center seam
+// keep their original pixels at every zoom.
+const verticalDoorInset=2;
+const verticalBands=[[0,8],[9,10],[20,8]];
+const verticalColumns=verticalBands.flatMap(([start,width])=>Array.from({length:width},(_,i)=>start+i));
+function prepareDoorway(ctx,map,door,base){
+ if(direction(map,door)==='horizontal'){
+  horizontalReturns(ctx,map,door,base,(frame.canvasW-frame.w)/2);return;
+ }
+ if(!base)return;
+ const x=door.x*32,y=door.y*32;
+ ctx.save();
+ ctx.imageSmoothingEnabled=false;
+ for(let col=0;col<frame.canvasW;col++){
+  const spriteColumn=verticalColumns[col-verticalDoorInset];
+  const height=spriteColumn===undefined?frame.h:archTop(spriteColumn);
+  if(height)ctx.drawImage(base,x+col,y-1,1,1,x+col,y,1,height);
+ }
+ ctx.restore();
 }
-root.DoorFit159={solids,wallCells,direction,draw,drawWallReturns,sprite,horizontalReturns,capProfile,archTop,openingTop,frame:{w:28,h:32,canvasW:32,xOffset:0,yOffset:0,leafWidth:12,closedSeamWidth:2,closedSeamOpaque:true,mirroredInterior:true,grayRight:27,shadowStart:28,shadowWidth:4,archRise:10,material:'solid iron',transparentExterior:true,shadowInSprite:false,nativeWallReturns:true,openBottom:true,flushThreshold:null,archMaterial:'silver steel',leafMaterial:'dark iron plate',bottomAtWallBoundary:true,wallSill:null,wallLineSource:"adjacent native wall in base; no independent door sill"}};})(globalThis);
+function drawLeaf(ctx,map,door,image,sourceInset){
+ const x=door.x*frame.canvasW,y=door.y*frame.h;
+ if(direction(map,door)==='horizontal'){
+  ctx.drawImage(image,sourceInset,0,frame.w,frame.h,x+(frame.canvasW-frame.w)/2,y,frame.w,frame.h);
+  return;
+ }
+ let dest=x+verticalDoorInset;
+ for(const [start,width] of verticalBands){
+  ctx.drawImage(image,sourceInset+start,0,width,frame.h,dest,y,width,frame.h);
+  dest+=width;
+ }
+}
+function drawFitted(ctx,map,door,image,base,sourceInset){
+ prepareDoorway(ctx,map,door,base);
+ drawLeaf(ctx,map,door,image,sourceInset);
+}
+function draw(q,m,d,opened,im,base){drawFitted(q,m,d,sprite(opened),base,0);}
+root.DoorFit159={solids,wallCells,direction,draw,prepareDoorway,drawLeaf,drawFitted,drawWallReturns,sprite,horizontalReturns,capProfile,archTop,openingTop,frame};})(globalThis);

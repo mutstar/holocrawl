@@ -46,13 +46,18 @@
     <button type="button" id="goods-gate" aria-pressed="false" hidden>굿즈 창고 셔터</button>
     <a id="goods-entry" href="../forbidden-goods01/" hidden>금지된 굿즈 창고 1층으로</a>
     <button type="button" id="ending" aria-pressed="false" hidden>보상 고정지형</button>
+    <button type="button" id="ward-doors" aria-pressed="false" hidden>병실 문 2배 확대</button>
+    <label id="ending-examples" hidden>지형별 예시 <select id="ending-example"><option value="" disabled>지형 선택</option></select></label>
+    <label id="routes-label" hidden><input id="routes" type="checkbox" style="width:auto"> 입구·보상 루트 표시</label>
     <button type="button" id="office-latch" hidden>사무실 안쪽 빗장 열기</button>
+    <button type="button" data-ward="북쪽" hidden>북쪽 병실 문 열기</button>
+    <button type="button" data-ward="남쪽" hidden>남쪽 병실 문 열기</button>
   </form>
   <canvas id="map" width="1152" height="576" role="img" aria-label="방송 지하무대 지도"></canvas>
   <p id="status" role="status">지도를 불러오는 중…</p>
 </main>
 <script src="../city-market124/generator.js?v=2"></script>
-<script src="../doorfit159/doors159.js?v=2"></script>
+<script src="../doorfit159/doors159.js?v=7"></script>
 <script src="../broadcast-street01/art.js?v=3"></script>
 <script src="studio-art.js?v=3"></script>
 <script src="studio-props.js?v=2"></script>
@@ -61,19 +66,25 @@
 <script src="studio-vaults.js?v=3"></script>
 <script src="equipment-floor.js?v=11"></script>
 <script src="loading-dock-art.js?v=4"></script>
-<script src="ending-layouts.js?v=50"></script>
+<script src="ending-layouts.js?v=65"></script>
 <script src="holo-server-art.js?v=2"></script>
-<script src="ending-fixtures.js?v=18"></script>
+<script src="fan-mail-art.js?v=2"></script>
+<script src="ending-fixtures.js?v=23"></script>
+<script src="hospital-art.js?v=3"></script>
+<script src="police-art.js?v=4"></script>
+<script src="bakery-art.js?v=7"></script>
+<script src="large-ending-art.js?v=5"></script>
 <script src="street-set-art.js?v=8"></script>
 <script src="live-show-art.js?v=4"></script>
 <script src="office-art.js?v=9"></script>
 <script src="tower-art.js?v=8"></script>
 <script src="garden-art.js?v=9"></script>
 <script src="film-archive-art.js?v=4"></script>
-<script src="ending-vaults.js?v=32"></script>
+<script src="ending-walls.js?v=7"></script>
+<script src="ending-vaults.js?v=40"></script>
 <script src="loading-dock-layout.js?v=11"></script>
 <script src="wall-decoration.js?v=3"></script>
 <script src="work-areas.js?v=2"></script>
-<script src="stage-doors.js?v=2"></script>
-<script src="preview.js?v=32"></script>
+<script src="stage-doors.js?v=4"></script>
+<script src="preview.js?v=42"></script>
 </html>

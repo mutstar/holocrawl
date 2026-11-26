@@ -481,31 +481,172 @@ const stageEndings = [
     },
   },
   {
-    id: 'power', name: '비상 발전실', width: 33, depth: 21, entrance: 16,
-    feature: '차단기 전실 → 발전기 사이 중앙 통로 또는 서쪽 정비 통로 → 전력 제어실',
-    palette: ['#514940', '#77674e', '#38332f', '#bea05d'],
+    id: 'fan-mail', name: '팬레터 집하장', width: 29, depth: 19, entrance: 14,
+    // Waypoints on opposite sides of the sorting desk, in local tile coordinates.
+    reviewRoutes: [
+      [[14,12], [9,12], [9,7], [11,7], [11,4]],
+      [[14,12], [18,12], [18,4]],
+    ],
+    feature: '빨간 우체통 → 편지 분류대 양옆 통로 → 발송함과 보상',
+    palette: ['#61534a', '#836b59', '#463e3b', '#b98c78'],
     scenery: [
-      {kind:'diesel', x:5, y:10, width:6, depth:2},
-      {kind:'alternator', x:22, y:10, width:6, depth:2},
-      {kind:'switchboard', x:13, y:1, width:6, depth:1},
+      {kind:'postbox', x:11, y:14, width:2, depth:2},
+      {kind:'sorting-desk', x:11, y:8, width:6, depth:2},
+      {kind:'sacks', x:4, y:7, width:3, depth:2},
+      {kind:'bundles', x:6, y:11, width:3, depth:1},
+      {kind:'bundles', x:20, y:2, width:3, depth:1},
+      {kind:'sacks', x:23, y:10, width:3, depth:2},
+      {kind:'dispatch-cart', x:16, y:2, width:3, depth:2},
+      {kind:'pigeonholes', x:9, y:1, width:5, depth:2},
     ],
     design(rect, mark) {
-      rect(8, 1, 17, 5);
-      rect(13, 5, 7, 3);
-      rect(1, 8, 31, 8);
-      rect(5, 15, 8, 3);
-      rect(20, 15, 8, 3);
-      rect(12, 16, 9, 4);
-      rect(3, 10, 9, 3, '=');
-      rect(21, 10, 9, 3, '=');
-      rect(7, 5, 3, 4);
-      rect(7, 5, 6, 2);
-      rect(15, 7, 3, 9);
-      rect(14, 15, 5, 3, '=');
-      mark('o', [[9,2],[23,2],[6,16],[26,16],[13,18],[19,18]]);
-      mark('p', [[10,3],[21,4],[8,15],[21,16]]);
-      mark('s', [[16,13]]);
-      mark('r', [[16,2]]);
+      rect(8, 1, 16, 5);
+      rect(10, 5, 4, 3);
+      rect(17, 5, 4, 3);
+      rect(3, 6, 8, 7);
+      rect(7, 7, 19, 6);
+      rect(21, 8, 7, 5);
+      rect(9, 12, 12, 3);
+      rect(11, 15, 7, 3);
+      mark('p', [[4,10],[22,8]]);
+      mark('s', [[16,7]]);
+      mark('r', [[16,4]]);
+    },
+  },
+  {
+    id:'family-bakery', name:'홀로GTA 빵집 패밀리', width:48, depth:28, entrance:10,
+    feature:'식빵 간판 아래 매장 또는 배송 골목 → 예식장 버진로드',
+    palette:['#706253','#93775f','#584941','#b39172'],
+    reviewRoutes:[
+      [[10,21],[10,17],[8,14],[8,10],[18,10],[18,14],[25,14],[32,14],[38,14]],
+      [[10,21],[22,21],[25,21],[25,14],[32,14],[38,14]],
+    ],
+    scenery:[
+      {kind:'bakery-window',x:3,y:18,width:6,depth:2},
+      {kind:'bakery-window',x:12,y:18,width:7,depth:2},
+      {kind:'bakery-counter',x:10,y:12,width:6,depth:2},
+      {kind:'bread-baskets',x:3,y:11,width:4,depth:2},
+      {kind:'cooling-rack',x:3,y:7,width:3,depth:2},
+      {kind:'bread-oven',x:3,y:2,width:5,depth:3},
+      {kind:'kneading-table',x:11,y:5,width:4,depth:2},
+      {kind:'family-aprons',x:9,y:2,width:3,depth:2},
+      {kind:'bread-van',x:21,y:17,width:5,depth:3},
+      {kind:'altar',x:35,y:2,width:7,depth:3},
+      // The runner occupies columns 37–39. Leave a side aisle between pews and flowers.
+      ...[8,11].flatMap(y=>[33,40].map(x=>({kind:'pew',x,y,width:4,depth:1}))),
+      ...[7,11].flatMap(y=>[31,45].map(x=>({kind:'chapel-flowers',x,y,width:1,depth:2}))),
+    ],
+    design(rect,mark) {
+      rect(7,20,7,7); rect(3,20,24,3);
+      rect(1,7,20,12); rect(3,18,6,2); rect(12,18,7,2);
+      rect(9,18,3,3); rect(2,2,14,6); rect(2,6,6,1,'#');
+      rect(20,12,12,4); rect(23,14,4,8); rect(21,17,5,3);
+      rect(31,5,15,12); rect(34,2,10,5); rect(36,1,6,2);
+      rect(28,11,4,4); rect(45,7,2,7);
+      mark('s',[[31,14]]); mark('r',[[38,5]]);
+    },
+  },
+  {
+    id:'fubuki-er', name:'후부키 원장의 응급병원', width:29, depth:46, entrance:14,
+    feature:'여우 왕진가방 정문과 후와모코 구급차 하차장 → 병실 또는 처치실 → 원장실 갈림길과 북쪽 수술실',
+    palette:['#64716b','#8a968a','#42534f','#a8b39c'],
+    reviewRoutes:[
+      [[14,39],[10,38],[10,32],[8,28],[9,23],[10,17],[11,12],[12,8]],
+      [[14,39],[22,39],[22,34],[22,27],[21,20],[20,14],[18,11],[17,8]],
+    ],
+    scenery:[
+      {kind:'fox-sign',x:7,y:37,width:3,depth:2},
+      {kind:'waiting',x:5,y:32,width:3,depth:1},
+      {kind:'admissions',x:11,y:31,width:4,depth:2},
+      {kind:'ambulance',x:23,y:32,width:4,depth:3},
+      {kind:'nurses',x:14,y:21,width:5,depth:2},
+      {kind:'curtain',x:3,y:17,width:4,depth:1},
+      {kind:'bed',x:4,y:18,width:1,depth:2},
+      {kind:'bed',x:6,y:18,width:1,depth:2},
+      {kind:'curtain',x:4,y:23,width:3,depth:1},
+      {kind:'bed',x:5,y:24,width:1,depth:2},
+      {kind:'gurney',x:24,y:24,width:2,depth:1},
+      {kind:'monitor',x:24,y:17,width:2,depth:2},
+      {kind:'gurney',x:22,y:18,width:2,depth:1},
+      {kind:'director-portrait',x:2,y:4,width:4,depth:2},
+      {kind:'director-desk',x:2,y:7,width:4,depth:2},
+      {kind:'supply',x:11,y:2,width:3,depth:2},
+      {kind:'operating',x:14,y:5,width:3,depth:3},
+      {kind:'monitor',x:18,y:4,width:2,depth:2},
+    ],
+    design(rect,mark) {
+      rect(12,39,5,6); rect(8,38,16,3);
+      rect(7,35,6,4); rect(4,30,12,6); rect(7,25,5,7);
+      rect(3,16,10,12); rect(9,12,4,7);
+      rect(12,20,8,4);
+      rect(21,35,4,5); rect(19,30,9,6); rect(20,25,4,7);
+      rect(19,16,8,11); rect(19,12,4,7);
+      rect(9,9,14,5); rect(11,7,8,4);
+      rect(8,3,14,6); rect(10,1,11,4);
+      rect(1,4,6,8); rect(5,12,2,1); rect(2,13,8,2);
+      // Enclose the two wards on the west side of the through corridor.
+      rect(3,16,6,1,'#'); rect(3,22,6,1,'#'); rect(3,27,6,1,'#');
+      rect(8,16,1,12,'#'); mark('h',[[8,20],[8,25]]);
+      mark('s',[[15,9]]); mark('r',[[15,3]]);
+    },
+  },
+  {
+    id:'foley', name:'폴리 효과음 녹음동', width:50, depth:25, entrance:6,
+    feature:'녹음 전실 → 자갈·판재·철판 발소리 실습장 → 믹싱 부스',
+    palette:['#665e4f','#98856a','#4c453e','#bd9e72'],
+    reviewRoutes:[[[6,17],[9,10],[24,9],[34,10],[44,9]],[[6,17],[15,18],[26,19],[36,17],[43,15]]],
+    scenery:[
+      {kind:'foley-door',x:10,y:8,width:2,depth:2},{kind:'foley-door',x:26,y:15,width:2,depth:2},
+      {kind:'boom',x:13,y:12,width:2,depth:2},{kind:'boom',x:29,y:10,width:2,depth:2},
+      {kind:'boom',x:36,y:14,width:2,depth:2},{kind:'mix-desk',x:43,y:4,width:4,depth:2},
+    ],
+    design(rect,mark) {
+      rect(3,17,8,7); rect(1,8,13,11); rect(8,3,12,16); rect(14,7,11,14);
+      rect(22,4,11,17); rect(30,8,12,13); rect(36,6,11,12);
+      rect(41,2,8,9); rect(19,9,2,6,'#'); rect(32,12,2,5,'#');
+      mark('p',[[5,11],[16,5],[23,18],[44,12]]);
+      mark('s',[[40,11]]); mark('r',[[46,6]]);
+    },
+  },
+  {
+    id:'oozora-police', name:'오오조라 경찰서', width:39, depth:36, entrance:19,
+    feature:'정문 접수대와 취조실 또는 순찰차 차고와 유치장 앞 이송 통로 → 무기고',
+    palette:['#546069','#777e78','#37464e','#bbab7c'],
+    reviewRoutes:[
+      [[19,31],[18,26],[12,23],[9,19],[9,14],[9,8],[15,6]],
+      [[19,31],[29,31],[29,26],[29,19],[29,14],[29,10],[25,7]],
+    ],
+    scenery:[
+      {kind:'subaru-crest',x:13,y:27,width:4,depth:2},
+      {kind:'baelz-crest',x:20,y:27,width:4,depth:2},
+      {kind:'front-desk',x:13,y:20,width:7,depth:2},
+      {kind:'waiting-bench',x:6,y:24,width:4,depth:1},
+      {kind:'case-board',x:3,y:11,width:4,depth:2},
+      {kind:'interview-table',x:3,y:14,width:4,depth:3},
+      {kind:'observation-glass',x:12,y:12,width:5,depth:1},
+      {kind:'radio-desk',x:14,y:9,width:5,depth:2},
+      {kind:'cruiser',x:31,y:21,width:5,depth:3},
+      {kind:'motor-lockers',x:32,y:17,width:4,depth:2},
+      {kind:'booking',x:32,y:9,width:3,depth:2},
+      ...[25,29,33].flatMap((x,i)=>[
+        {kind:'cell-divider',x,y:1,width:1,depth:4},
+        {kind:'cell-grille',x,y:5,width:3,depth:1},
+        {kind:'cell-cot',x:x+(i===1?2:1),y:i===2?2:1,width:1,depth:2,bedding:i},
+      ]),
+      {kind:'gun-rack',x:11,y:3,width:5,depth:2},
+      {kind:'patrol-gear',x:20,y:1,width:4,depth:3},
+    ],
+    design(rect,mark) {
+      rect(17,31,5,4); rect(13,30,19,3);
+      rect(17,26,3,5); rect(13,27,4,2); rect(20,27,4,2);
+      rect(5,20,19,7); rect(8,17,4,4);
+      rect(2,11,16,7); rect(12,9,8,5); rect(8,7,4,5);
+      rect(28,27,4,4); rect(25,17,12,11); rect(28,12,4,6);
+      rect(24,8,12,5); rect(24,6,4,4);
+      rect(8,3,20,5); rect(15,1,9,3);
+      // Three barred bays share a two-tile aisle connected to the booking room.
+      rect(25,1,12,7); rect(24,1,1,5,'#');
+      mark('s',[[20,6]]); mark('r',[[19,3]]);
     },
   },
 ].map(buildEndingLayout);

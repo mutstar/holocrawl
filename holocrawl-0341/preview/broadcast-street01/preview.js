@@ -151,8 +151,7 @@
       const {canvasW, w: doorWidth} = DoorFit159.frame;
       const inset = (canvasW - doorWidth) / 2;
       for (const door of placedDoors) {
-        DoorFit159.drawWallReturns(layer, doorMap, door, layer.canvas, inset);
-        stamp(equipment.door, door.x, door.y);
+        DoorFit159.drawFitted(layer,doorMap,door,equipment.door,layer.canvas,inset);
       }
       for (const {x, y, type} of layout.wallProps) {
         let sprite = equipment.walls[type];
