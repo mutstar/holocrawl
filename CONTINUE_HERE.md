@@ -1,3 +1,9 @@
+# 2026-11-27 이어서 할 작업
+
+방송지하무대 5층의 대형 보상 지형 13번은 ‘오카유의 냥냥 카 서비스’(50×25칸)다. 시드 `dock-large-4`에서 오카유 접수대, 로보코 정비 베이, 아오 도색·세차장과 부품창고를 검토한다. [일반 지도](holocrawl-0341/preview/broadcast-stage01/okayu-garage-map.png) · [동선](holocrawl-0341/preview/broadcast-stage01/okayu-garage-routes.png)
+
+22신 권능 이펙트는 지형 작업 이후에 검토한다. [피해 시점과 연출 확인 기준](holocrawl-0341/design/GOD_FRAMEWORK.md#권능-이펙트를-다시-작업할-때)
+
 # 회사에서 확인할 참고 자료
 
 - [오픈소스 게임 개발 도구 10개](holocrawl-0341/design/references/open-source-game-tools.md) · 잔향도시 바닥 변형에 쓸 Material Maker부터 검토.

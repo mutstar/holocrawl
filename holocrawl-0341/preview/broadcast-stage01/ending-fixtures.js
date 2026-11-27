@@ -1,5 +1,5 @@
 function drawEndingFixture(paint, id, placement, accent, wide = false) {
-  if (id === 'family-bakery' || id === 'oozora-police' || id === 'fubuki-er') return; // These rooms supply their own fittings.
+  if (id === 'okayu-garage' || id === 'family-bakery' || id === 'oozora-police' || id === 'fubuki-er') return; // These rooms supply their own fittings.
   if (id === 'fan-mail') {
     drawMailFixture(paint, placement);
     return;

@@ -591,21 +591,33 @@ const stageEndings = [
     },
   },
   {
-    id:'foley', name:'폴리 효과음 녹음동', width:50, depth:25, entrance:6,
-    feature:'녹음 전실 → 자갈·판재·철판 발소리 실습장 → 믹싱 부스',
-    palette:['#665e4f','#98856a','#4c453e','#bd9e72'],
-    reviewRoutes:[[[6,17],[9,10],[24,9],[34,10],[44,9]],[[6,17],[15,18],[26,19],[36,17],[43,15]]],
+    id:'okayu-garage', name:'오카유의 냥냥 카 서비스', width:50, depth:25, entrance:6,
+    feature:'오카유 접수대 → 로보코 리프트 정비 베이 또는 아오 도색·세차장 → 부품창고',
+    palette:['#595956','#887691','#45454a','#bcab78'],
+    reviewRoutes:[[[9,17],[12,11],[16,8],[23,9],[32,8],[39,8]],[[9,17],[15,18],[22,19],[31,18],[36,15],[41,12]]],
     scenery:[
-      {kind:'foley-door',x:10,y:8,width:2,depth:2},{kind:'foley-door',x:26,y:15,width:2,depth:2},
-      {kind:'boom',x:13,y:12,width:2,depth:2},{kind:'boom',x:29,y:10,width:2,depth:2},
-      {kind:'boom',x:36,y:14,width:2,depth:2},{kind:'mix-desk',x:43,y:4,width:4,depth:2},
+      {kind:'onigiri-counter',x:2,y:15,width:4,depth:2},
+      {kind:'keys',x:10,y:14,width:2,depth:1},
+      {kind:'lift',x:18,y:5,width:6,depth:3},
+      {kind:'diagnostics',x:24,y:5,width:2,depth:3},
+      {kind:'tools',x:17,y:3,width:4,depth:2},
+      {kind:'tyres',x:29,y:4,width:3,depth:2},
+      {kind:'compressor',x:10,y:9,width:3,depth:2},
+      {kind:'engine-hoist',x:34,y:5,width:3,depth:3},
+      {kind:'roller-chest',x:15,y:6,width:2,depth:2},
+      {kind:'paint-shell',x:17,y:16,width:4,depth:3},
+      {kind:'paint-door',x:22,y:16,width:3,depth:2},
+      {kind:'wash-reel',x:26,y:16,width:3,depth:2},
+      {kind:'paint-cart',x:32,y:16,width:2,depth:1},
+      {kind:'parts-rack',x:40,y:2,width:5,depth:2},
+      {kind:'bins',x:46,y:4,width:2,depth:2},
     ],
     design(rect,mark) {
-      rect(3,17,8,7); rect(1,8,13,11); rect(8,3,12,16); rect(14,7,11,14);
-      rect(22,4,11,17); rect(30,8,12,13); rect(36,6,11,12);
-      rect(41,2,8,9); rect(19,9,2,6,'#'); rect(32,12,2,5,'#');
-      mark('p',[[5,11],[16,5],[23,18],[44,12]]);
-      mark('s',[[40,11]]); mark('r',[[46,6]]);
+      rect(4,20,6,4); rect(2,14,12,7); rect(7,9,8,9);
+      rect(10,5,7,9); rect(14,3,20,10); rect(31,5,9,6);
+      rect(37,6,7,9); rect(39,2,10,9);
+      rect(10,16,10,4); rect(16,15,20,7); rect(32,13,9,6); rect(39,11,5,5);
+      mark('s',[[41,8]]); mark('r',[[46,3]]);
     },
   },
   {

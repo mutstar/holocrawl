@@ -68,19 +68,8 @@ function drawLargeEndingGround(p,ending,x,y) {
     drawBakeryGround(p,ending,x,y);
   } else if(id==='fubuki-er') {
     drawHospitalGround(p,x,y);
-  } else if(id==='foley') {
-    if(y<10||y>15||x<6||x>38) return;
-    if(x<=14) {
-      p('#635d52',0,0,32,32);
-      for(let i=0;i<15;i++){const dx=(i*17+x*13+y*7)%30,dy=(i*i*3+i*11+x*7)%30;
-        p(i%3?'#817a67':'#544f48',dx,dy,3+i%4,2); }
-    } else if(x>=21&&x<=29) {
-      p('#806b55',0,0,32,32);
-      for(let row=0;row<32;row+=8){p('#5b5043',0,row,32,1);p('#a38b69',2,row+1,21,1);}
-    } else if(x>=34) {
-      p('#596261',0,0,32,32);
-      for(let j=2;j<32;j+=8) for(let i=2;i<32;i+=8) p('#89908a',i+(j%16===2?0:3),j,3,2);
-    }
+  } else if(id==='okayu-garage') {
+    drawGarageGround(p,x,y);
   } else if(id==='oozora-police') {
     drawPoliceGround(p,x,y);
   }

@@ -152,6 +152,7 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
         paint('#777266', 0, 28, 32, 1);
         for (const x of [2, 25]) paint('#a18a53', x, 25, 5, 1);
       }
+      if (tile === 'e' && id === 'okayu-garage') drawGarageShutter(paint);
       if (tile === 'r') drawEndingReward(paint);
     }
     layer.restore();
@@ -168,7 +169,7 @@ function drawStageEnding(layer, ending, originX, originY, deepWater, seed = endi
     drawGardenYard(layer,ending);
     layer.restore();
   }
-  const drawScenery = {live: drawLiveShowScenery, street: drawStreetSetScenery, office: drawOfficeScenery, tower: drawTowerScenery, archive: drawFilmArchiveScenery, mirror: drawDressingRoomScenery, rail: drawModelRailScenery, 'fan-mail': drawMailScenery, 'family-bakery': drawBakeryScenery, 'oozora-police': drawPoliceScenery, 'fubuki-er': drawHospitalScenery}[id];
+  const drawScenery = {live: drawLiveShowScenery, street: drawStreetSetScenery, office: drawOfficeScenery, tower: drawTowerScenery, archive: drawFilmArchiveScenery, mirror: drawDressingRoomScenery, rail: drawModelRailScenery, 'fan-mail': drawMailScenery, 'family-bakery': drawBakeryScenery, 'oozora-police': drawPoliceScenery, 'okayu-garage': drawGarageScenery, 'fubuki-er': drawHospitalScenery}[id];
   if (id === 'rail') {
     layer.save();
     layer.translate(originX * 32, originY * 32);
